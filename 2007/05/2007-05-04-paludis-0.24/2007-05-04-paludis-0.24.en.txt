@@ -1,7 +1,7 @@
 Title: Changes for Paludis 0.24
 Author: Piotr Jaroszyński <peper@gentoo.org>
 Content-Type: text/plain
-Posted: 2007-03-25
+Posted: 2007-05-04
 Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: >=sys-apps/paludis-0.24
