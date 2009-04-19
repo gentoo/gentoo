@@ -1,8 +1,8 @@
 Title: Generation 1 Java Setup Deprecated
-Author: Petteri RÃ¤ty <betelgeuse@gentoo.org>
+Author: Petteri Räty <betelgeuse@gentoo.org>
 Content-Type: text/plain
 Posted: 2009-04-18
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: >=dev-java/java-config-wrapper-0.16
 
