@@ -1,7 +1,7 @@
 Title: xorg-x11-7.4 and xorg-server-1.5 kernel support
 Author: Tobias Klausmann <klausman@gentoo.org>
 Content-Type: text/plain
-Posted:
+Posted: 2009-07-12
 Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: x11-base/xorg-server
