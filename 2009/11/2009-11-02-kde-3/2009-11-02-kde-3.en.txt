@@ -1,9 +1,10 @@
 Title: KDE3 to be masked and removed from portage
 Author: Samuli Suominen <ssuominen@gentoo.org>
 Author: Tomáš Chvátal <scarabeus@gentoo.org>
+Author: Alex Alexander <wired@gentoo.org>
 Content-Type: text/plain
 Posted: 2009-11-02
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: <kde-base/kdelibs-4
 
@@ -18,7 +19,7 @@ KDE3 is currently being phased out of the tree, meaning ebuilds with
 KDE3 support found to be broken or clashing with KDE4 features are having
 that support removed.
 
-KDE3 packages will be moved to a special overlay named kde3.  
+KDE3 packages will be moved to a special overlay named kde-sunset.  
 This can be found in layman.  [2] Note that this overlay is going to be
 user maintained and will NOT be developer reviewed. [3]
 
