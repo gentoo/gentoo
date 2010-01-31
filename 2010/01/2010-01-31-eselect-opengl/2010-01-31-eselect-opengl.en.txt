@@ -11,6 +11,6 @@ thus we proceeded with its removal. It brings slight inconvenience on you fellow
 users. After emerging the new version =app-admin/eselect-opengl-1.1.1-r2 please
 emerge one more package dev-util/lafilefixer and use it for fixing all various
 compilation issues by running as root:
-# lafilefixer --just-fixit
+# lafilefixer --justfixit
 Note that not-running this command will bring you compilation issues so you
 should really pay attention to this message and act upon it.
