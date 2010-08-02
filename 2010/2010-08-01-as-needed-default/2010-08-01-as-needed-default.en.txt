@@ -1,6 +1,6 @@
 Title: --as-needed enabled in default profiles
 Author: Tomáš Chvátal <scarabeus@gentoo.org>
-Content-type: text/plain
+Content-Type: text/plain
 Posted: 2010-08-01
 Revision: 1
 News-Item-Format: 1.0
