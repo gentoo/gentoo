@@ -1,0 +1,20 @@
+Title: GNUstep packages new layout
+Author: Bernard Cafarelli <voyageur@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-04-26
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <gnustep-base/gnustep-make-2.6.0
+
+Traditionally, GNUstep used its own filesystem layout, installing
+everything under /usr/GNUstep. Starting with gnustep-make-2.6.0, the
+default filesystem layout has changed and is now the 'fhs' layout,
+installing files in standard Unix directories.
+
+Following upstream's change, GNUstep packages in Gentoo will now
+also use the new default layout. Your system will switch to it
+after updating gnustep-base/gnustep-make to >=2.6.0.
+
+This change means that you have to re-emerge all installed packages
+depending on GNUstep to move them to the new layout. You can use
+gnustep-base/gnustep-updater for this step
