@@ -6,9 +6,10 @@ Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: <dev-libs/glib-2.28
 
-The way of setting default URI handlers has changed since
-dev-libs/glib-2.28 and above. If you used the GConf registry to set
-them before, they will now be ignored.
+The method for setting default applications for specific URI types
+(https://, mailto://, etc.) changed in dev-libs/glib-2.28 and newer.
+If you previously set them in GConf using the Configuration Editor,
+they will now be ignored.
 
 If you use GNOME, you must upgrade gnome-session and
 gnome-control-center and set your default browser/mail-client again.
