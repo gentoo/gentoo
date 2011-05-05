@@ -8,7 +8,7 @@ News-Item-Format: 1.0
 -Wl,--as-needed has been added to the default profile's LDFLAGS.
 
 This option optimizes the linking process, only linking binaries to
-libraries that are trully needed. This way, fewer libraries are loaded
+libraries that are truly needed. This way, fewer libraries are loaded
 at runtime and fewer packages need to be rebuilt after library updates.
 
 To take advantage of the new default you can either rebuild world now
