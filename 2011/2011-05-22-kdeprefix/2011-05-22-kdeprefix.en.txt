@@ -2,9 +2,12 @@ Title: Removal of kdeprefix support
 Author: Jonathan Callen <abcd@gentoo.org>
 Content-Type: text/plain
 Posted: 2011-05-22
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
-Display-If-Installed: kde-base/kdelibs[kdeprefix]
+Display-If-Installed: >=kde-base/kdelibs-4
+
+This news item is relevant to you only if you unmasked and enabled
+kdeprefix useflag on your kde-base packages.
 
 On 2011-06-06, kdeprefix support will be removed from all KDE ebuilds in
 portage.  After this is done, only one version of KDE SC will be able to
