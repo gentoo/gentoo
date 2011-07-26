@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,4 +25,5 @@ HTML_DOCS=( doc/instop.html )
 PATCHES=(
 	"${FILESDIR}/pkgsysconfdir-install.patch"
 	"${FILESDIR}/${P}-64bit-compat.patch" # bug #399433
+	"${FILESDIR}/${P}-BJA-cross.diff" # bug #373347
 )
