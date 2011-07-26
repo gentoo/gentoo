@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+inherit autotools eutils
 
 DESCRIPTION="FreeRADIUS Client framework"
 HOMEPAGE="http://wiki.freeradius.org/Radiusclient"
@@ -16,6 +17,11 @@ IUSE="scp shadow"
 DEPEND="!net-dialup/radiusclient
 	!net-dialup/radiusclient-ng"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-BJA-cross.diff"
+	eautoreconf
+}
 
 src_configure() {
 	econf \
