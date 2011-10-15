@@ -1,7 +1,7 @@
 Title: Upgrade to libpng15
 Author: Samuli Suominen <ssuominen@gentoo.org>
 Content-Type: text/plain
-Posted: 2011-10-14
+Posted: 2011-10-15
 Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: <media-libs/libpng-1.5
