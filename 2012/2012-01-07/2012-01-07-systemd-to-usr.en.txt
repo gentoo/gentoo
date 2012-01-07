@@ -1,0 +1,37 @@
+Title: systemd /usr migration
+Author: Michał Górny <mgorny@gentoo.org>
+Content-Type: text/plain
+Posted: 2012-01-06
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: sys-apps/systemd
+
+We have decided to move our systemd installation into /usr prefix.
+After the upgrade, the main systemd executable will be installed
+as /usr/bin/systemd and the unit files will be installed
+to /usr/lib/systemd; however, systemd will still look for unit files
+in the /lib location.
+
+For this reason, new revisions of all systemd versions have been added
+to the tree and all users are advised to upgrade ASAP to make
+the transition as painless as possible. To achieve that, the following
+steps have been taken:
+
+1) the new systemd versions install and enable a path monitoring helper
+which automatically updates /etc/systemd symlinks when unit files
+are moved from /lib to /usr/lib;
+
+2) the systemd.eclass blocks older versions of systemd to ensure that
+the service files aren't installed in the new location before the helper
+service is in place;
+
+3) a symlink is installed at /bin/systemd to ensure that current init=
+specifications are still valid.
+
+Please note that these features will be removed after the transitional
+period and users upgrading afterwards will have to manually ensure
+correctness of their installations. The former two features will be
+removed on 2012-03-01, the last one on 2012-05-01.
+
+Users are advised to rebuild the packages providing systemd units
+and update their kernel command lines before those deadlines.
