@@ -13,7 +13,7 @@ platforms. It is based on libjpeg/SIMD but has numerous enhancements.
 
 All users are recommended to migrate:
 
-# emerge --deselect media-libs/jpeg:0
+# emerge --deselect media-libs/jpeg
 # emerge --oneshot media-libs/libjpeg-turbo
 
 media-libs/jpeg:0 will be left in tree as a fallback implementation.
