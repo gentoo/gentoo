@@ -1,0 +1,40 @@
+Title: Upgrading udev from 171 (or older) to 197
+Author: Samuli Suominen <ssuominen@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-01-23
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <sys-fs/udev-198
+
+Upgrading udev from 171 (or older) to 197 will require special attention:
+
+- Remove udev-postmount from runlevels.
+
+- The need of CONFIG_DEVTMPFS=y in the kernel; need to verify the fstype for
+  possible /dev line in /etc/fstab is devtmpfs (and not, for example, tmpfs)
+
+- The case of predictable network interface names; if the file
+  /etc/udev/rules.d/70-persistent-net.rules is being used for renaming
+  network interface names to already existing names, then you need to
+  read following bug[1] because it's no longer possible. This won't
+  be a problem with the new predictable network interface name scheme[2].
+
+  [1] http://bugs.gentoo.org/453494
+  [2] http://www.freedesktop.org/wiki/Software/systemd/
+      PredictableNetworkInterfaceNames
+
+- Support for older kernels than 2.6.39 is dropped. If you need older kernel
+  we recommend you to look into sys-fs/eudev or use local overlay for keeping
+  the old ebuild. Remember to also get the distfiles where the patchsets are.
+  The upgrade into current stable version of gentoo-sources is recommended.
+
+- The case of separate /usr; if it worked for you with 171 it will continue
+  to work for you with 197. We still recommend initramfs with separate /usr
+  mounting capabilities because you might need packages like sys-apps/kbd
+  (keymaps in /usr) or net-wireless/bluez (possible keyboard) in early boot.
+
+And read every message printed by the emerge of udev and udev-init-scripts
+to ensure the system is in order before booting as this news item might
+not be complete.
+
+Apologies if this news came too late for you.
