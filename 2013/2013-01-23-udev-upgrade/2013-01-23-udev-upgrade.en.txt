@@ -1,4 +1,4 @@
-Title: Upgrading udev from 171 (or older) to 197 or newer
+Title: Upgrading udev from 171 (or older) to 197 (or newer)
 Author: Samuli Suominen <ssuominen@gentoo.org>
 Content-Type: text/plain
 Posted: 2013-01-23
@@ -6,7 +6,7 @@ Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: <sys-fs/udev-198
 
-Upgrading udev from 171 (or older) to 197 or newer will require special attention:
+Upgrading udev from 171 (or older) to 197 (or newer) will require special attention:
 
 - Remove udev-postmount from runlevels.
 
@@ -24,7 +24,7 @@ Upgrading udev from 171 (or older) to 197 or newer will require special attentio
       PredictableNetworkInterfaceNames
 
 - The case of separate /usr; if it worked for you with 171 it will continue
-  to work for you with 197 or newer. We still recommend initramfs with separate
+  to work for you with 197 (or newer). We still recommend initramfs with separate
   /usr mounting capabilities because you might need packages like sys-apps/kbd
   (keymaps in /usr) or net-wireless/bluez (possible keyboard) in early boot.
 
