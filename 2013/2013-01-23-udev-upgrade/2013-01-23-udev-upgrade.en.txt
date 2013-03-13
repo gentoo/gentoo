@@ -1,4 +1,4 @@
-Title: Upgrading udev from 171 (or older) to 197
+Title: Upgrading udev from 171 (or older) to 197 or newer
 Author: Samuli Suominen <ssuominen@gentoo.org>
 Content-Type: text/plain
 Posted: 2013-01-23
@@ -6,7 +6,7 @@ Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: <sys-fs/udev-198
 
-Upgrading udev from 171 (or older) to 197 will require special attention:
+Upgrading udev from 171 (or older) to 197 or newer will require special attention:
 
 - Remove udev-postmount from runlevels.
 
@@ -23,18 +23,11 @@ Upgrading udev from 171 (or older) to 197 will require special attention:
   [2] http://www.freedesktop.org/wiki/Software/systemd/
       PredictableNetworkInterfaceNames
 
-- Support for older kernels than 2.6.39 is dropped. If you need older kernel
-  we recommend you to look into sys-fs/eudev or use local overlay for keeping
-  the old ebuild. Remember to also get the distfiles where the patchsets are.
-  The upgrade into current stable version of gentoo-sources is recommended.
-
 - The case of separate /usr; if it worked for you with 171 it will continue
-  to work for you with 197. We still recommend initramfs with separate /usr
-  mounting capabilities because you might need packages like sys-apps/kbd
+  to work for you with 197 or newer. We still recommend initramfs with separate
+  /usr mounting capabilities because you might need packages like sys-apps/kbd
   (keymaps in /usr) or net-wireless/bluez (possible keyboard) in early boot.
 
 And read every message printed by the emerge of udev and udev-init-scripts
 to ensure the system is in order before booting as this news item might
 not be complete.
-
-Apologies if this news came too late for you.
