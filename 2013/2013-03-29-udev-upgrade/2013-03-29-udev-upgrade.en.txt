@@ -34,7 +34,7 @@ since it's automounted without entry there anyway.
 
 If the system still has old network interface renaming rules in
 /etc/udev/rules.d, like 70-persistent-net.rules, those will need
-to be be either modified or removed.
+to be either modified or removed.
 
 If you choose to modify them, you must use free namespace (like net*
 or internet*) instead of kernel namespace (like eth* or wlan*)
