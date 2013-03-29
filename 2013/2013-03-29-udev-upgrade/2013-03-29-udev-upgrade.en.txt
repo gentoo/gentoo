@@ -97,7 +97,10 @@ likely backup and delete them all if they don't belong to any packages.
 This feature can also replace the functionality of sys-apps/biosdevname,
 but you can still keep using it if you want.
 
+The official wiki has dedicated page for udev upgrade notes[3].
+
 [1] http://www.kernel.org/doc/htmldocs/device-drivers/
     API-device-rename.html
 [2] http://www.freedesktop.org/wiki/Software/systemd/
     PredictableNetworkInterfaceNames
+[3] http://wiki.gentoo.org/wiki/Udev/upgrade
