@@ -1,4 +1,4 @@
-Title: udev upgrade from 197 (or older) to 200 (or newer)
+Title: Upgrading udev to version >=200
 Author: Samuli Suominen <ssuominen@gentoo.org>
 Content-Type: text/plain
 Posted: 2013-03-29
