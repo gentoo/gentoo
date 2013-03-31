@@ -80,7 +80,7 @@ of options.
 You can prepare the system for the new names before booting for example
 by renaming /etc/init.d/net.* symlinks, editing /etc/conf.d/net, etc.
 
-The feature can also be completely disabled using net.ifnames=0on the
+The feature can also be completely disabled using net.ifnames=0 on the
 kernel command line.
 
 If you only have one interface card, you don't necessarily have much
