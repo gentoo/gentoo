@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,18 +18,16 @@ IUSE="debug"
 RESTRICT="test"
 
 RDEPEND=""
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-Makefile.patch"
-	sed -i  -e "s:^\(# if defined(__alpha).*\):\1 || defined(__x86_64__):" \
-		port.h || die "sed failed"
+	epatch "${FILESDIR}/${P}-_IPADDR_T-arch.patch"
 }
 
 src_compile() {
 	use debug && export DEBUGDEFS="-DDEBUG"
-	emake CC="$(tc-getCC)" RES_LIB=/usr/$(get_libdir)/libresolv.a
+	emake CC="$(tc-getCC)" RES_LIB="-lresolv"
 }
 
 src_install () {

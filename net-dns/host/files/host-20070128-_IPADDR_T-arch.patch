@@ -1,0 +1,15 @@
+From: Bertrand Jacquin <bertrand@jacquin.bzh>
+Date: Sat Jun 8 23:58:25 2013 +0200
+Subject: ipaddr_t is typedef unsigned int for 64 bits
+
+--- port.h	2013-06-08 23:50:59.975794488 +0200
++++ port.h	2013-06-08 23:51:31.112464217 +0200
+@@ -247,7 +247,7 @@
+ #endif
+ 
+ #ifndef _IPADDR_T
+-# if defined(__alpha) || defined(__arch64__)
++# if defined(__alpha) || defined(__arch64__) || defined(__x86_64__)
+ typedef unsigned int	ipaddr_t;
+ # else
+ typedef unsigned long	ipaddr_t;
