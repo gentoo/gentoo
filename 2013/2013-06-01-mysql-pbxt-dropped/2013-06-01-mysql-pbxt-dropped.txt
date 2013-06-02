@@ -1,0 +1,41 @@
+Title: PBXT now unsupported in MySQL/MariaDB
+Author: Robin H. Johnson <robbat2@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-06-01
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: dev-db/mysql[pbxt,-minimal]
+Display-If-Installed: dev-db/mysql-cluster[pbxt,-minimal]
+Display-If-Installed: dev-db/mariadb[pbxt,-minimal]
+Display-If-Installed: dev-db/mariadb-galera[pbxt,-minimal]
+Display-If-Installed: dev-db/percona-server[pbxt,-minimal]
+Display-If-Installed: dev-db/google-mysql[pbxt,-minimal]
+
+The PBXT/PrimeBase engine is unsupported upstream in MySQL & MariaDB for some
+time now [1]. It is no longer built in the upstream MariaDB 5.5 binaries[2][3]
+and if it is enabled in a source build, it fails many tests [4].
+
+In light of this, the MySQL team has decided to mask it in
+profiles/base/package.use.mask for all relevant packages.
+>=dev-db/mysql-5.5 pbxt
+>=dev-db/mysql-cluster-5.5 pbxt # overlay
+>=dev-db/mariadb-5.5 pbxt
+>=dev-db/mariadb-galera-5.5 pbxt # overlay
+>=dev-db/percona-server-5.5 pbxt # overlay
+>=dev-db/google-mysql-5.5 pbxt # overlay
+
+All users who have data stored in PBXT-backed tables MUST convert the tables
+to another format BEFORE upgrading to MySQL/MariaDB 5.5, as the tables will
+become inaccessible otherwise.
+
+We will continue to allow it to be built in the 5.0/5.1 series, to make the
+above data migration easy, but we strongly encourage all users to move their
+data out of the PBXT engine.
+
+If you need to check for PBXT tables easily, look in your MySQL/MariaDB
+datadir for any files with a .xt extension.
+
+1. https://lists.launchpad.net/pbxt-discuss/msg00134.html
+2. http://www.bytebot.net/blog/archives/2012/05/25/mariadb-5-5-has-deprecated-pbxt
+3. https://kb.askmonty.org/en/about-pbxt/
+4. https://bugs.gentoo.org/show_bug.cgi?id=471616#c1
