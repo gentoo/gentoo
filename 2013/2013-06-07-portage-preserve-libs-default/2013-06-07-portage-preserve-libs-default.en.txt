@@ -1,7 +1,7 @@
 Title: Portage preserve-libs default
 Author: Zac Medico <zmedico@gentoo.org>
 Content-Type: text/plain
-Posted: 2012-06-07
+Posted: 2013-06-07
 Revision: 1
 News-Item-Format: 1.0
 Display-If-Installed: >=sys-apps/portage-2.1.12
