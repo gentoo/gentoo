@@ -1,0 +1,22 @@
+Title: Upgrade to GNOME 3.8
+Author: Pacho Ramos <pacho@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-11-23
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <gnome-base/gnome-3.8
+Display-If-Installed: <gnome-base/gnome-light-3.8
+Display-If-Installed: <gnome-base/gnome-session-3.8
+
+We are pleased to announce the stabilization of GNOME 3.8. Users are
+strongly encouraged to read the GNOME 3.8 Upgrade Guide to avoid any
+possible issues relating to the upgrade. The guide will also show you
+how to migrate to systemd as it is the only supported setup now,
+suggesting you how to avoid blockers and problems trying to let you
+have a smoother update.
+
+Additionally, it will inform you about important changes regarding
+configuration and troubleshooting.
+
+Please read the Gnome 3.8 Upgrade Guide:
+http://wiki.gentoo.org/wiki/GNOME/3.8-upgrade-guide
