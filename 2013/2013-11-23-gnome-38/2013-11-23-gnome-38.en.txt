@@ -7,6 +7,7 @@ News-Item-Format: 1.0
 Display-If-Installed: <gnome-base/gnome-3.8
 Display-If-Installed: <gnome-base/gnome-light-3.8
 Display-If-Installed: <gnome-base/gnome-session-3.8
+Display-If-Installed: <gnome-base/gdm-3.8
 
 We are pleased to announce the stabilization of GNOME 3.8. Users are
 strongly encouraged to read the GNOME 3.8 Upgrade Guide to avoid any
