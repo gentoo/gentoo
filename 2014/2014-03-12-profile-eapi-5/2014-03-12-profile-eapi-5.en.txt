@@ -4,7 +4,7 @@ Content-Type: text/plain
 Posted: 2014-03-02
 Revision: 1
 News-Item-Format: 1.0
-Display-If-Installed: <2.2.0_alpha130
+Display-If-Installed: <sys-apps/portage-2.2.0_alpha130
 
 The Gentoo Council has decided that the entire profile tree will be
 updated to require EAPI=5 support.
