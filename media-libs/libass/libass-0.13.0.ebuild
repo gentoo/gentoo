@@ -31,6 +31,11 @@ done
 
 DOCS="Changelog"
 
+src_prepare() {
+	# bug #509460
+	epatch "${FILESDIR}/${PV}-configure-Set-the-correct-x32-machine-option-for-yas.patch"
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable fontconfig) \
