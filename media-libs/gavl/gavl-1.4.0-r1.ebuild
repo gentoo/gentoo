@@ -23,6 +23,8 @@ DEPEND="doc? ( app-doc/doxygen )
 DOCS=( AUTHORS README TODO )
 
 src_prepare() {
+	epatch "${FILESDIR}/${PV}-x32.diff"
+
 	# AC_CONFIG_HEADERS, bug #467736
 	sed -i \
 		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \
