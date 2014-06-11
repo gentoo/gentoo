@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="5"
+MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit cdrom eutils gnome2-utils multilib
+inherit cdrom eutils gnome2-utils multilib-build
 
 MY_UPDATE_P="${PN}up2"
 MY_UPDATE_GTK="${PN}gtk216"
@@ -19,7 +20,7 @@ LICENSE="ATOK MIT"
 
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="multilib"
+IUSE=""
 
 RESTRICT="strip mirror"
 
@@ -52,16 +53,16 @@ RDEPEND="!app-i18n/atokx2
 	x11-libs/libXxf86vm
 	x11-libs/libdrm
 	x11-libs/pangox-compat
-	multilib? (
-		>=dev-libs/atk-2.10.0[abi_x86_32]
+	amd64? (
+		>=dev-libs/atk-2.10.0[abi_x86_32(-)]
 		>=dev-libs/glib-2.34.3:2[abi_x86_32(-)]
 		>=dev-libs/libxml2-2.9.1-r4:2[abi_x86_32(-)]
 		>=media-libs/fontconfig-2.10.92[abi_x86_32(-)]
 		>=media-libs/libpng-1.2.51[abi_x86_32(-)]
 		>=sys-apps/tcp-wrappers-7.6.22-r1[abi_x86_32(-)]
 		>=virtual/pam-0-r1[abi_x86_32(-)]
-		>=x11-libs/cairo-1.12.14-r4[abi_x86_32]
-		>=x11-libs/gtk+-2.24.23:2[abi_x86_32]
+		>=x11-libs/cairo-1.12.14-r4[abi_x86_32(-)]
+		>=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)]
 		>=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)]
 		>=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)]
 		>=x11-libs/libXcomposite-0.4.4-r1[abi_x86_32(-)]
@@ -75,7 +76,7 @@ RDEPEND="!app-i18n/atokx2
 		>=x11-libs/libXrender-0.9.8[abi_x86_32(-)]
 		>=x11-libs/libXxf86vm-1.1.3[abi_x86_32(-)]
 		>=x11-libs/libdrm-2.4.46[abi_x86_32(-)]
-		>=x11-libs/pangox-compat-0.0.2[abi_x86_32]
+		>=x11-libs/pangox-compat-0.0.2[abi_x86_32(-)]
 	)"
 
 QA_PREBUILT="opt/atokx3/lib/server/*
@@ -116,7 +117,7 @@ src_unpack() {
 	#	IIIMF/iiimf-docs-trunk_r3104-js*.i386.tar.gz
 	#	IIIMF/iiimf-notuse-trunk_r3104-js*.i386.tar.gz
 
-	if use amd64 ; then
+	if use abi_x86_64 ; then
 		targets="${targets}
 			IIIMF/iiimf-client-lib-64-trunk_r3104-js*.x86_64.tar.gz
 			IIIMF/iiimf-gtk-64-trunk_r3104-js*.x86_64.tar.gz
@@ -148,7 +149,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use amd64 ; then
+	if use abi_x86_64 ; then
 		local lib32="$(ABI=x86 get_libdir)"
 		local lib64="$(get_libdir)"
 		if [ "lib" != "${lib32}" ] ; then
@@ -176,7 +177,7 @@ src_install() {
 	cp -dpR * "${ED}" || die
 
 	# amd64 hack
-	if use amd64 ; then
+	if use abi_x86_64 ; then
 		local lib32="$(ABI=x86 get_libdir)"
 		local lib64="$(get_libdir)"
 		if [ "${lib32}" != "${lib64}" ] ; then
@@ -201,7 +202,7 @@ src_install() {
 
 pkg_preinst() {
 	# bug #343325
-	if use amd64 && has_multilib_profile && [ -L "${EPREFIX}/usr/$(get_libdir)/iiim" ] ; then
+	if use abi_x86_64 && has_multilib_profile && [ -L "${EPREFIX}/usr/$(get_libdir)/iiim" ] ; then
 		rm -f "${EPREFIX}/usr/$(get_libdir)/iiim"
 	fi
 }
@@ -212,9 +213,9 @@ pkg_postinst() {
 	elog
 	elog ". /opt/atokx3/bin/atokx3start.sh"
 	elog
-	gnome2_query_immodules_gtk2
+	multilib_foreach_abi gnome2_query_immodules_gtk2
 }
 
 pkg_postrm() {
-	gnome2_query_immodules_gtk2
+	multilib_foreach_abi gnome2_query_immodules_gtk2
 }
