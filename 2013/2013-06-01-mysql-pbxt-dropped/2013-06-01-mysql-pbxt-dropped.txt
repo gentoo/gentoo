@@ -2,7 +2,7 @@ Title: PBXT now unsupported in MySQL/MariaDB
 Author: Robin H. Johnson <robbat2@gentoo.org>
 Content-Type: text/plain
 Posted: 2013-06-01
-Revision: 2
+Revision: 3
 News-Item-Format: 1.0
 Display-If-Installed: dev-db/mysql[pbxt,-minimal]
 Display-If-Installed: dev-db/mysql-cluster[pbxt,-minimal]
@@ -18,8 +18,8 @@ and if it is enabled in a source build, it fails many tests [4].
 In light of this, the MySQL team has decided to mask it in
 profiles/base/package.use.mask for all relevant packages.
 >=dev-db/mysql-5.5 pbxt
->=dev-db/mysql-cluster-5.5 pbxt # overlay
 >=dev-db/mariadb-5.5 pbxt
+>=dev-db/mysql-cluster-5.5 pbxt # overlay
 >=dev-db/mariadb-galera-5.5 pbxt # overlay
 >=dev-db/percona-server-5.5 pbxt # overlay
 >=dev-db/google-mysql-5.5 pbxt # overlay
