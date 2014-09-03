@@ -2,7 +2,7 @@ Title: GCC 4.8.3 defaults to -fstack-protector
 Author: Ryan Hill <rhill@gentoo.org>
 Content-Type: text/plain
 Posted: 2014-06-15
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: >=sys-devel/gcc-4.8.3
 Display-If-Keyword: amd64
@@ -11,6 +11,8 @@ Display-If-Keyword: mips
 Display-If-Keyword: ppc
 Display-If-Keyword: ppc64
 Display-If-Keyword: x86
+Display-If-Keyword: amd64-fbsd
+Display-If-Keyword: x86-fbsd
 
 Beginning with GCC 4.8.3, Stack Smashing Protection (SSP) will be
 enabled by default.  The 4.8 series will enable -fstack-protector
