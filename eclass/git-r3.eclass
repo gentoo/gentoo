@@ -434,42 +434,6 @@ _git-r3_is_local_repo() {
 	[[ ${uri} == file://* || ${uri} == /* ]]
 }
 
-# @FUNCTION: _git-r3_find_head
-# @USAGE: <head-ref>
-# @INTERNAL
-# @DESCRIPTION:
-# Given a ref to which remote HEAD was fetched, try to find
-# a branch matching the commit. Expects 'git show-ref'
-# or 'git ls-remote' output on stdin.
-_git-r3_find_head() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	local head_ref=${1}
-	local head_hash=$(git rev-parse --verify "${1}" || die)
-	local matching_ref
-
-	# TODO: some transports support peeking at symbolic remote refs
-	# find a way to use that rather than guessing
-
-	# (based on guess_remote_head() in git-1.9.0/remote.c)
-	local h ref
-	while read h ref; do
-		# look for matching head
-		if [[ ${h} == ${head_hash} ]]; then
-			# either take the first matching ref, or master if it is there
-			if [[ ! ${matching_ref} || ${ref} == refs/heads/master ]]; then
-				matching_ref=${ref}
-			fi
-		fi
-	done
-
-	if [[ ! ${matching_ref} ]]; then
-		die "Unable to find a matching branch for remote HEAD (${head_hash})"
-	fi
-
-	echo "${matching_ref}"
-}
-
 # @FUNCTION: git-r3_fetch
 # @USAGE: [<repo-uri> [<remote-ref> [<local-id>]]]
 # @DESCRIPTION:
@@ -651,26 +615,10 @@ git-r3_fetch() {
 		set -- "${fetch_command[@]}"
 		echo "${@}" >&2
 		if "${@}"; then
-			if [[ ${clone_type} == mirror ]]; then
-				# find remote HEAD and update our HEAD properly
-				git symbolic-ref HEAD \
-					"$(_git-r3_find_head refs/git-r3/HEAD \
-						< <(git show-ref --heads || die))" \
+			if [[ ${clone_type} == mirror || ${fetch_l} == HEAD ]]; then
+				# update our HEAD to match our remote HEAD ref
+				git symbolic-ref HEAD refs/git-r3/HEAD \
 						|| die "Unable to update HEAD"
-			else # single or shallow
-				if [[ ${fetch_l} == HEAD ]]; then
-					# find out what branch we fetched as HEAD
-					local head_branch=$(_git-r3_find_head \
-						refs/git-r3/HEAD \
-						< <(git ls-remote --heads "${r}" || die))
-
-					# and move it to its regular place
-					git update-ref --no-deref "${head_branch}" \
-						refs/git-r3/HEAD \
-						|| die "Unable to sync HEAD branch ${head_branch}"
-					git symbolic-ref HEAD "${head_branch}" \
-						|| die "Unable to update HEAD"
-				fi
 			fi
 
 			# now let's see what the user wants from us
@@ -806,9 +754,7 @@ git-r3_checkout() {
 		# setup 'alternates' to avoid copying objects
 		echo "${orig_repo}/objects" > "${GIT_DIR}"/objects/info/alternates || die
 		# now copy the refs
-		# [htn]* safely catches heads, tags, notes without complaining
-		# on non-existing ones, and omits internal 'git-r3' ref
-		cp -R "${orig_repo}"/refs/[htn]* "${GIT_DIR}"/refs/ || die
+		cp -R "${orig_repo}"/refs/* "${GIT_DIR}"/refs/ || die
 
 		# (no need to copy HEAD, we will set it via checkout)
 
