@@ -84,5 +84,9 @@ else
 	fi
 fi
 
+for sh in /etc/bash/bashrc.d/* ; do
+	[[ -r ${sh} ]] && source "${sh}"
+done
+
 # Try to keep environment pollution down, EPA loves us.
-unset use_color safe_term match_lhs
+unset use_color safe_term match_lhs sh
