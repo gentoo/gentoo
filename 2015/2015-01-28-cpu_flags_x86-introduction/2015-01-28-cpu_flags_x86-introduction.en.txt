@@ -2,9 +2,12 @@ Title: CPU_FLAGS_X86 introduction
 Author: Michał Górny <mgorny@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-01-28
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
-Display-If-Keyword: amd64 ~amd64 x86 ~x86
+Display-If-Keyword: amd64
+Display-If-Keyword: ~amd64
+Display-If-Keyword: x86
+Display-If-Keyword: ~x86
 
 The USE flags corresponding to the instruction sets and other features
 specific to the x86 (amd64) architecture are being moved into a separate
