@@ -65,7 +65,7 @@ NOTE: As a result of the default auto-sync = True/Yes setting, commands
     your configs or scripts to adjust for the new operation.
 
 WARNING:
-    Due to the abaove default. For any repos that you EXPLICITLY do not
+    Due to the above default. For any repos that you EXPLICITLY do not
     want to be synced. You MUST set "auto-sync = no"
 
 The 'emaint sync' module operates similar to layman.  It can sync
