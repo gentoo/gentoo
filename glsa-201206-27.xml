@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-27">
+  <title>mini_httpd: Arbitrary code execution</title>
+  <synopsis>A vulnerability in mini_httpd could allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">mini_httpd</product>
+  <announced>June 24, 2012</announced>
+  <revised>June 24, 2012: 1</revised>
+  <bug>303755</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/mini_httpd" auto="yes" arch="*">
+      <vulnerable range="rle">1.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mini_httpd is a small webserver with optional SSL and IPv6 support.</p>
+  </background>
+  <description>
+    <p>mini_httpd does not properly check for shell escapes when parsing HTTP
+      requests.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send specially crafted HTTP requests, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process, or allowing for overwriting of files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo discontinued support for mini_httpd. We recommend that users
+      unmerge mini_httpd:
+    </p>
+    
+    <code>
+      # emerge --unmerge "www-servers/mini_httpd"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4490">CVE-2009-4490</uri>
+  </references>
+  <metadata timestamp="Fri, 11 May 2012 17:25:55 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 24 Jun 2012 22:37:57 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-20">
+  <title>o3read: Buffer overflow during file conversion</title>
+  <synopsis>
+    A buffer overflow in o3read allows an attacker to execute arbitrary code by
+    way of a specially crafted XML file.
+  </synopsis>
+  <product type="ebuild">o3read</product>
+  <announced>January 11, 2005</announced>
+  <revised>January 11, 2005: 01</revised>
+  <bug>74478</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/o3read" auto="yes" arch="*">
+      <unaffected range="ge">0.0.4</unaffected>
+      <vulnerable range="le">0.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    o3read is a standalone converter for OpenOffice.org files. It
+    allows a user to dump the contents tree (o3read) and convert to plain
+    text (o3totxt) or to HTML (o3tohtml) Writer and Calc files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Wiktor Kopec discovered that the parse_html function in o3read.c
+    copies any number of bytes into a 1024-byte t[] array.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Using a specially crafted file, possibly delivered by e-mail or
+    over the Web, an attacker may execute arbitrary code with the
+    permissions of the user running o3read.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All o3read users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/o3read-0.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1288">CAN-2004-1288</uri>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/o3read.txt">Wiktor Kopec advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Jan 2005 22:12:42 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 10 Jan 2005 22:13:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Jan 2005 11:55:34 +0000">
+    koon
+  </metadata>
+</glsa>

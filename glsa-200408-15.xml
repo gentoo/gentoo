@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-15">
+  <title>Tomcat: Insecure installation</title>
+  <synopsis>
+    Improper file ownership may allow a member of the tomcat group to execute
+    scripts as root.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>August 15, 2004</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>59232</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge">5.0.27-r3</unaffected>
+      <unaffected range="rge">4.1.30-r4</unaffected>
+      <unaffected range="rge">3.3.2-r2</unaffected>
+      <vulnerable range="lt">5.0.27-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tomcat is the Apache Jakarta Project's official implementation of Java
+    Servlets and Java Server Pages.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Gentoo ebuild for Tomcat sets the ownership of the Tomcat init
+    scripts as tomcat:tomcat, but those scripts are executed with root
+    privileges when the system is started. This may allow a member of the
+    tomcat group to run arbitrary code with root privileges when the Tomcat
+    init scripts are run.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This could lead to a local privilege escalation or root compromise by
+    authenticated users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users may change the ownership of /etc/init.d/tomcat* and
+    /etc/conf.d/tomcat* to be root:root:
+    </p>
+    <code>
+    # chown -R root:root /etc/init.d/tomcat*
+    # chown -R root:root /etc/conf.d/tomcat*</code>
+  </workaround>
+  <resolution>
+    <p>
+    All Tomcat users can upgrade to the latest stable version, or simply
+    apply the workaround:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv &quot;&gt;=www-servers/tomcat-5.0.27-r3&quot;
+    # emerge &quot;&gt;=www-servers/tomcat-5.0.27-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1452">CVE-2004-1452</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun,  8 Aug 2004 20:54:24 +0000">
+    dmargoli
+  </metadata>
+</glsa>

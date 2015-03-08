@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-12">
+  <title>Apache mod_tcl: Format string vulnerability</title>
+  <synopsis>
+    A format string vulnerabilty has been found in Apache mod_tcl, which could
+    lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mod_tcl</product>
+  <announced>October 24, 2006</announced>
+  <revised>October 24, 2006: 01</revised>
+  <bug>151359</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_tcl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1</unaffected>
+      <vulnerable range="lt">1.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Apache mod_tcl is a TCL interpreting module for the Apache 2.x web
+    server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sparfell discovered format string errors in calls to the set_var
+    function in tcl_cmds.c and tcl_core.c.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit the vulnerability to execute arbitrary
+    code with the rights of the user running the Apache server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mod_tcl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_tcl-1.0.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4154">CVE-2006-4154</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 21 Oct 2006 12:26:41 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 21 Oct 2006 20:37:41 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 23 Oct 2006 14:13:35 +0000">
+    vorlon078
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-29">
+  <title>ViewVC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple security issues have been reported in ViewVC, which can be
+    exploited by malicious people to bypass certain security restrictions.
+  </synopsis>
+  <product type="ebuild">viewvc</product>
+  <announced>March 19, 2008</announced>
+  <revised>April 01, 2009: 02</revised>
+  <bug>212288</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/viewvc" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ViewVC is a browser interface for CVS and Subversion version control
+    repositories.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple unspecified errors were reportedly fixed by the ViewVC
+    development team.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted URL to the server to
+    list CVS or SVN commits on "all-forbidden" files, access hidden CVSROOT
+    folders, and view restricted content via the revision view, the log
+    history, or the diff view.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ViewVC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/viewvc-1.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1290">CVE-2008-1290</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1291">CVE-2008-1291</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1292">CVE-2008-1292</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Mar 2008 22:06:35 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Mar 2008 22:06:42 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 21:33:23 +0000">
+    mfleming
+  </metadata>
+</glsa>

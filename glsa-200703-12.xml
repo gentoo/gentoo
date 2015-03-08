@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-12">
+  <title>SILC Server: Denial of Service</title>
+  <synopsis>
+    SILC Server is affected by a Denial of Service vulnerability.
+  </synopsis>
+  <product type="ebuild">silc-server</product>
+  <announced>March 14, 2007</announced>
+  <revised>March 14, 2007: 01</revised>
+  <bug>169599</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/silc-server" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2-r1</unaffected>
+      <vulnerable range="lt">1.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SILC Server is a server for the Secure Internet Live Conferencing
+    (SILC) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Frank Benkstein discovered a possible NULL pointer dereference in
+    apps/silcd/command.c if a new channel is created without specifying a
+    valid hmac or cipher algorithm name.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause the server to crash, resulting in a
+    Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SILC Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-server-1.0.2-r1&quot;</code>
+  </resolution>
+  <references/>
+  <metadata tag="requester" timestamp="Wed, 07 Mar 2007 14:35:02 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 Mar 2007 14:57:46 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 07 Mar 2007 15:20:03 +0000">
+    vorlon
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-18">
+  <title>Ringtone Tools: Buffer overflow vulnerability</title>
+  <synopsis>
+    The Ringtone Tools utilities contain a buffer overflow vulnerability,
+    potentially leading to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ringtonetools</product>
+  <announced>March 15, 2005</announced>
+  <revised>March 15, 2005: 01</revised>
+  <bug>74700</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-mobilephone/ringtonetools" auto="yes" arch="*">
+      <unaffected range="ge">2.23</unaffected>
+      <vulnerable range="lt">2.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ringtone Tools is a program for creating ringtones and logos for
+    mobile phones.
+    </p>
+  </background>
+  <description>
+    <p>
+    Qiao Zhang has discovered a buffer overflow vulnerability in the
+    'parse_emelody' function in 'parse_emelody.c'.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a Ringtone Tools user to open a
+    specially crafted eMelody file, which would potentially lead to the
+    execution of arbitrary code with the rights of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ringtone Tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-mobilephone/ringtonetools-2.23&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1292">CAN-2004-1292</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Mar 2005 02:28:50 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Mar 2005 09:56:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Mar 2005 14:11:25 +0000">
+    lewk
+  </metadata>
+</glsa>

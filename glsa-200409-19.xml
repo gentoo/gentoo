@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-19">
+  <title>Heimdal: ftpd root escalation</title>
+  <synopsis>
+    Several bugs exist in the Heimdal ftp daemon which could allow a remote
+    attacker to gain root privileges.
+  </synopsis>
+  <product type="ebuild">heimdal</product>
+  <announced>September 16, 2004</announced>
+  <revised>September 16, 2004: 01</revised>
+  <bug>61412</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/heimdal" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3</unaffected>
+      <vulnerable range="lt">0.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heimdal is an implementation of Kerberos 5.
+    </p>
+  </background>
+  <description>
+    <p>
+    Przemyslaw Frasunek discovered several flaws in lukemftpd, which also apply
+    to Heimdal ftpd's out-of-band signal handling code.
+    </p>
+    <p>
+    Additionally, a potential vulnerability that could lead to Denial of
+    Service by the Key Distribution Center (KDC) has been fixed in this
+    version.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could be able to run arbitrary code with escalated
+    privileges, which can result in a total compromise of the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Heimdal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-crypt/heimdal-0.6.3"
+    # emerge ">=app-crypt/heimdal-0.6.3"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.pdc.kth.se/heimdal/advisory/2004-09-13/">Heimdal advisory</uri>
+    <uri link="http://www.frasunek.com/lukemftpd.txt">Advisory by Przemyslaw Frasunek</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0794">CAN-2004-0794</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 13 Sep 2004 14:06:46 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Sep 2004 04:33:06 +0000">
+    jaervosz
+  </metadata>
+</glsa>

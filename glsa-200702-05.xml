@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-05">
+  <title>Fail2ban: Denial of Service</title>
+  <synopsis>
+    A flaw in Fail2ban may allow remote attackers to deny access to arbitrary
+    hosts.
+  </synopsis>
+  <product type="ebuild">fail2ban</product>
+  <announced>February 16, 2007</announced>
+  <revised>February 16, 2007: 01</revised>
+  <bug>157166</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/fail2ban" auto="yes" arch="*">
+      <unaffected range="ge">0.6.2</unaffected>
+      <vulnerable range="lt">0.6.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Fail2ban monitors log files for failed authentication attempts and can
+    block hosts responsible for repeated attacks.
+    </p>
+  </background>
+  <description>
+    <p>
+    A flaw in the method used to parse log entries allows remote,
+    unauthenticated attackers to forge authentication attempts from other
+    hosts.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can add arbitrary hosts to the block list, denying
+    legitimate users access to a resource.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Fail2ban users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/fail2ban-0.6.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6302">CVE-2006-6302</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 22:35:11 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Feb 2007 22:42:08 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 22:56:35 +0000">
+    taviso
+  </metadata>
+</glsa>

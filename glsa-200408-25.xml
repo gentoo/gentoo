@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-25">
+  <title>MoinMoin: Group ACL bypass</title>
+  <synopsis>
+    MoinMoin contains a bug allowing anonymous users to bypass ACLs (Access
+    Control Lists) and carry out operations that should be limited to
+    authorized users.
+  </synopsis>
+  <product type="ebuild">MoinMoin</product>
+  <announced>August 26, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>57913</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/moinmoin" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="le">1.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MoinMoin is a Python clone of WikiWiki, based on PikiPiki.
+    </p>
+  </background>
+  <description>
+    <p>
+    MoinMoin contains two unspecified bugs, one allowing anonymous users
+    elevated access when not using ACLs, and the other in the ACL handling
+    in the PageEditor.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Restrictions on anonymous users were not properly enforced. This could
+    lead to unauthorized users gaining administrative access to functions
+    such as "revert" and "delete". Sites are vulnerable whether or not they
+    are using ACLs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest available version of MoinMoin,
+    as follows:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-apps/moinmoin-1.2.3&quot;
+    # emerge &quot;&gt;=www-apps/moinmoin-1.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="https://sourceforge.net/project/shownotes.php?group_id=8482&amp;release_id=254801">MoinMoin Announcement</uri>
+    <uri link="http://www.osvdb.org/displayvuln.php?osvdb_id=8194">OSVDB Advisory 8194</uri>
+    <uri link="http://www.osvdb.org/displayvuln.php?osvdb_id=8195">OSVDB Advisory 8195</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1462">CVE-2004-1462</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1463">CVE-2004-1463</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 19 Aug 2004 05:10:31 +0000">
+    dmargoli
+  </metadata>
+</glsa>

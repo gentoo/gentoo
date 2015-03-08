@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-04">
+  <title>Dovecot: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Dovecot, the worst of which
+    allowing for remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Dovecot</product>
+  <announced>October 10, 2011</announced>
+  <revised>October 10, 2011: 2</revised>
+  <bug>286844</bug>
+  <bug>293954</bug>
+  <bug>314533</bug>
+  <bug>368653</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/dovecot" auto="yes" arch="*">
+      <unaffected range="rge">1.2.17</unaffected>
+      <unaffected range="ge">2.0.13</unaffected>
+      <vulnerable range="lt">2.0.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dovecot is an IMAP and POP3 server written with security primarily in
+      mind.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dovecot. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could exploit these vulnerabilities to cause the
+      remote execution of arbitrary code, or a Denial of Service condition, to
+      conduct directory traversal attacks, corrupt data, or disclose
+      information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dovecot 1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-1.2.17"
+    </code>
+    
+    <p>All Dovecot 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-2.0.13"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since May 28, 2011. It is likely that your system is already no
+      longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3235">CVE-2009-3235</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3897">CVE-2009-3897</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0745">CVE-2010-0745</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3304">CVE-2010-3304</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3706">CVE-2010-3706</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3707">CVE-2010-3707</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3779">CVE-2010-3779</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3780">CVE-2010-3780</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1929">CVE-2011-1929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2166">CVE-2011-2166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2167">CVE-2011-2167</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:19 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 10 Oct 2011 20:22:02 +0000" tag="submitter">craig</metadata>
+</glsa>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-02">
+  <title>MIT Kerberos 5: Arbitrary remote code execution</title>
+  <synopsis>
+    Multiple vulnerabilities in MIT Kerberos 5 could potentially result in
+    unauthenticated remote root code execution.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>April 03, 2007</announced>
+  <revised>April 03, 2007: 01</revised>
+  <bug>171889</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.5.2-r1</unaffected>
+      <vulnerable range="lt">1.5.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is a suite of applications that implement the Kerberos
+    network protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Kerberos telnet daemon fails to properly handle usernames allowing
+    unauthorized access to any account (CVE-2007-0956). The Kerberos
+    administration daemon, the KDC and possibly other applications using
+    the MIT Kerberos libraries are vulnerable to the following issues. The
+    krb5_klog_syslog function from the kadm5 library fails to properly
+    validate input leading to a stack overflow (CVE-2007-0957). The GSS-API
+    library is vulnerable to a double-free attack (CVE-2007-1216).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By exploiting the telnet vulnerability a remote attacker may obtain
+    access with root privileges. The remaining vulnerabilities may allow an
+    authenticated remote attacker to execute arbitrary code with root
+    privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.5.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0956">CVE-2007-0956</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0957">CVE-2007-0957</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1216">CVE-2007-1216</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 16:29:27 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 20:30:58 +0000">
+    vorlon
+  </metadata>
+</glsa>

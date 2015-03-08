@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-18">
+  <title>Ghostscript: Insecure temporary file use in multiple scripts</title>
+  <synopsis>
+    Multiple scripts in the Ghostscript package are vulnerable to symlink
+    attacks, potentially allowing a local user to overwrite arbitrary files
+    with the rights of the user running the script.
+  </synopsis>
+  <product type="ebuild">Ghostscript</product>
+  <announced>October 20, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>66357</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/ghostscript-esp" auto="yes" arch="*">
+      <unaffected range="ge">7.07.1-r7</unaffected>
+      <unaffected range="rge">7.05.6-r2</unaffected>
+      <vulnerable range="lt">7.07.1-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ghostscript is a software package providing an interpreter for the
+    PostScript language and the PDF file format. It also provides output
+    drivers for various file formats and printers.
+    </p>
+  </background>
+  <description>
+    <p>
+    The pj-gs.sh, ps2epsi, pv.sh and sysvlp.sh scripts create temporary files
+    in world-writeable directories with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When an
+    affected script is called, this would result in the file to be overwritten
+    with the rights of the user running the script, which could be the root
+    user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Ghostscript users on all architectures except PPC should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-text/ghostscript-esp-7.07.1-r7"
+    # emerge ">=app-text/ghostscript-esp-7.07.1-r7"</code>
+    <p>
+    Ghostscript users on the PPC architecture should upgrade to the latest
+    stable version on their architecture:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-text/ghostscript-esp-7.05.6-r2"
+    # emerge ">=app-text/ghostscript-esp-7.05.6-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0967">CAN-2004-0967</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 19 Oct 2004 12:27:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Oct 2004 12:27:18 +0000">
+    koon
+  </metadata>
+</glsa>

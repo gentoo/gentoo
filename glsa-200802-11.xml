@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-11">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in Asterisk.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>February 26, 2008</announced>
+  <revised>February 26, 2008: 01</revised>
+  <bug>185713</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="rge">1.2.17-r1</unaffected>
+      <unaffected range="ge">1.2.21.1-r1</unaffected>
+      <vulnerable range="lt">1.2.21.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source telephony engine and tool kit.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found in Asterisk:
+    </p>
+    <ul>
+    <li>Russel Bryant reported a stack buffer overflow in the IAX2 channel
+    driver (chan_iax2) when bridging calls between chan_iax2 and any
+    channel driver that uses RTP for media (CVE-2007-3762).</li>
+    <li>Chris
+    Clark and Zane Lackey (iSEC Partners) reported a NULL pointer
+    dereference in the IAX2 channel driver (chan_iax2)
+    (CVE-2007-3763).</li>
+    <li>Will Drewry (Google Security) reported a
+    vulnerability in the Skinny channel driver (chan_skinny), resulting in
+    an overly large memcpy (CVE-2007-3764).</li>
+    <li>Will Drewry (Google
+    Security) reported a vulnerability in the IAX2 channel driver
+    (chan_iax2), that does not correctly handle unauthenticated
+    transactions using a 3-way handshake (CVE-2007-4103).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a long voice or video RTP frame, a remote attacker could
+    possibly execute arbitrary code on the target machine. Sending
+    specially crafted LAGRQ or LAGRP frames containing information elements
+    of IAX frames, or a certain data length value in a crafted packet, or
+    performing a flood of calls not completing a 3-way handshake, could
+    result in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.17-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3762">CVE-2007-3762</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3763">CVE-2007-3763</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3764">CVE-2007-3764</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4103">CVE-2007-4103</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Nov 2007 19:55:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 22 Nov 2007 23:26:53 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 19:44:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

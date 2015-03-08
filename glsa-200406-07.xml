@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-07">
+  <title>Subversion: Remote heap overflow</title>
+  <synopsis>
+    Subversion is vulnerable to a remote Denial of Service that may be
+    exploitable to execute arbitrary code on the server running svnserve.
+  </synopsis>
+  <product type="ebuild">dev-util/subversion</product>
+  <announced>June 10, 2004</announced>
+  <revised>June 10, 2004: 01</revised>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/subversion" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4-r1</unaffected>
+      <vulnerable range="le">1.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Subversion is a revision control system that aims to be a &quot;compelling
+    replacement for CVS&quot;. It enjoys wide use in the open source community.
+    svnserve allows access to Subversion repositories using URIs with the
+    svn://, svn+ssh://, and other tunelled svn+*:// protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    The svn protocol parser trusts the indicated length of a URI string sent by
+    a client. This allows a client to specify a very long string, thereby
+    causing svnserve to allocate enough memory to hold that string. This may
+    cause a Denial of Service. Alternately, given a string that causes an
+    integer overflow in the variable holding the string length, the server
+    might allocate less memory than required, allowing a heap overflow. This
+    heap overflow may then be exploitable, allowing remote code execution. The
+    attacker does not need read or write access to the Subversion repository
+    being served, since even un-authenticated users can send svn protocol
+    requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Ranges from remote Denial of Service to potential arbitrary code execution
+    with privileges of the svnserve process.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Servers without svnserve running are not vulnerable. Disable svnserve and
+    use DAV for access instead.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest version of Subversion.
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-util/subversion-1.0.4-r1"
+    # emerge ">=dev-util/subversion-1.0.4-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0413">CAN-2004-0413</uri>
+  </references>
+  <metadata tag="submitter">
+    dmargoli
+  </metadata>
+</glsa>

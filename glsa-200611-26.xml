@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-26">
+  <title>ProFTPD: Remote execution of arbitrary code</title>
+  <synopsis>
+    ProFTPD is affected by mutiple vulnerabilities allowing for the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>November 30, 2006</announced>
+  <revised>November 30, 2006: 01</revised>
+  <bug>154650</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0a</unaffected>
+      <vulnerable range="lt">1.3.0a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ProFTPD is a highly-configurable FTP server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Evgeny Legerov discovered a stack-based buffer overflow in the
+    s_replace() function in support.c, as well as a buffer overflow in in
+    the mod_tls module. Additionally, an off-by-two error related to the
+    CommandBufferSize configuration directive was reported.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An authenticated attacker could exploit the s_replace() vulnerability
+    by uploading a crafted .message file or sending specially crafted
+    commands to the server, possibly resulting in the execution of
+    arbitrary code with the rights of the user running ProFTPD. An
+    unauthenticated attacker could send specially crafted data to the
+    server with mod_tls enabled which could result in the execution of
+    arbitrary code with the rights of the user running ProFTPD. Finally,
+    the off-by-two error related to the CommandBufferSize configuration
+    directive was fixed - exploitability of this error is disputed. Note
+    that the default configuration on Gentoo is to run ProFTPD as an
+    unprivileged user, and has mod_tls disabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ProFTPD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/proftpd-1.3.0a&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5815">CVE-2006-5815</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6170">CVE-2006-6170</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6171">CVE-2006-6171 (disputed)</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Nov 2006 20:50:41 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 29 Nov 2006 12:52:56 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 30 Nov 2006 22:38:58 +0000">
+    falco
+  </metadata>
+</glsa>

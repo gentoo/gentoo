@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-11">
+  <title>GNU cpio: Multiple vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been found in GNU cpio, the worst of which
+    could result in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">cpio</product>
+  <announced>February 15, 2015</announced>
+  <revised>February 15, 2015: 1</revised>
+  <bug>530512</bug>
+  <bug>536010</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/cpio" auto="yes" arch="*">
+      <unaffected range="ge">2.11-r3</unaffected>
+      <vulnerable range="lt">2.11-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU cpio copies files into or out of a cpio or tar archive.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been discovered in GNU cpio:</p>
+    
+    <ul>
+      <li>The list_file function in GNU cpio contains a heap-based buffer
+        overflow vulnerability (CVE-2014-9112)
+      </li>
+      <li>A directory traversal vulnerability has been found in GNU cpio
+        (CVE-2015-1197)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to entice a user to open a specially
+      crafted archive using GNU cpio, possibly resulting in execution of
+      arbitrary code, a Denial of Service condition, or overwriting arbitrary
+      files. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU cpio users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/cpio-2.11-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9112">CVE-2014-9112</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1197">CVE-2015-1197</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 17 Jan 2015 20:25:43 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Feb 2015 14:35:14 +0000">ackle</metadata>
+</glsa>

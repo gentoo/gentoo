@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-22">
+  <title>LIVE555 Media Server: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability has been reported in LIVE555 Media
+    Server.
+  </synopsis>
+  <product type="ebuild">live</product>
+  <announced>March 13, 2008</announced>
+  <revised>March 13, 2008: 01</revised>
+  <bug>204065</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-plugins/live" auto="yes" arch="*">
+      <unaffected range="ge">2008.02.08</unaffected>
+      <vulnerable range="lt">2008.02.08</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LIVE555 Media Server is a set of libraries for multimedia streaming.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma reported a signedness error in the
+    parseRTSPRequestString() function when processing short RTSP queries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted RTSP query to the
+    vulnerable server, resulting in a crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LIVE555 Media Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-plugins/live-2008.02.08&quot;</code>
+    <p>
+    Note: Due to ABI changes, applications built against LIVE555 Media
+    Server such as VLC or MPlayer should also be rebuilt.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6036">CVE-2007-6036</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Mar 2008 16:52:57 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Mar 2008 12:26:32 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Mar 2008 12:27:04 +0000">
+    p-y
+  </metadata>
+</glsa>

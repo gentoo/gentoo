@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-01">
+  <title>DenyHosts: Denial of Service</title>
+  <synopsis>
+    DenyHosts does not correctly parse log entries, potentially causing a
+    remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">denyhosts</product>
+  <announced>January 03, 2007</announced>
+  <revised>January 03, 2007: 01</revised>
+  <bug>157163</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/denyhosts" auto="yes" arch="*">
+      <unaffected range="ge">2.6</unaffected>
+      <vulnerable range="lt">2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DenyHosts is designed to monitor SSH servers for repeated failed login
+    attempts.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team discovered that
+    DenyHosts used an incomplete regular expression to parse failed login
+    attempts.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote unauthenticated attacker can add arbitrary hosts to the
+    blacklist by attempting to login with a specially crafted username. An
+    attacker may use this to prevent legitimate users from accessing a host
+    remotely.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DenyHosts users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/denyhosts-2.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6301">CVE-2006-6301</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 18 Dec 2006 22:34:37 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 01 Jan 2007 14:18:29 +0000">
+    taviso
+  </metadata>
+</glsa>

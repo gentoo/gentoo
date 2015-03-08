@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-09">
+  <title>Wine: Windows Metafile SETABORTPROC vulnerability</title>
+  <synopsis>
+    There is a flaw in Wine in the handling of Windows Metafiles (WMF) files,
+    which could possibly result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">wine</product>
+  <announced>January 13, 2006</announced>
+  <revised>February 26, 2007: 03</revised>
+  <bug>118101</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/wine" auto="yes" arch="*">
+      <unaffected range="ge">0.9</unaffected>
+      <vulnerable range="lt">20060000</vulnerable>
+      <vulnerable range="gt">20040000</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wine is a free implementation of Windows APIs for Unix-like systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    H D Moore discovered that Wine implements the insecure-by-design
+    SETABORTPROC GDI Escape function for Windows Metafile (WMF) files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted Windows
+    Metafile (WMF) file from within a Wine executed Windows application,
+    possibly resulting in the execution of arbitrary code with the rights
+    of the user running Wine.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wine users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/wine-0.9.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0106">CVE-2006-0106</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 08 Jan 2006 16:28:07 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 08 Jan 2006 17:43:07 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Jan 2006 08:25:50 +0000">
+    DerCorny
+  </metadata>
+</glsa>

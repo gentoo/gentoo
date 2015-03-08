@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-33">
+  <title>TWiki: Arbitrary command execution</title>
+  <synopsis>
+    A bug in the TWiki search function allows an attacker to execute arbitrary
+    commands with the permissions of the user running TWiki.
+  </synopsis>
+  <product type="ebuild">www-apps/twiki</product>
+  <announced>November 24, 2004</announced>
+  <revised>September 08, 2006: 02</revised>
+  <bug>71035</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/twiki" auto="yes" arch="*">
+      <unaffected range="ge">20040902 </unaffected>
+      <unaffected range="lt">20000000</unaffected>
+      <vulnerable range="lt">20040902 </vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TWiki is a Web-based groupware tool based around the concept of wiki
+    pages that can be edited by anybody with a Web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    The TWiki search function, which uses a shell command executed via the
+    Perl backtick operator, does not properly escape shell metacharacters
+    in the user-provided search string.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker can insert malicious commands into a search request,
+    allowing the execution of arbitrary commands with the privileges of the
+    user running TWiki (usually the Web server user).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/twiki-20040902&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://twiki.org/cgi-bin/view/Codev/SecurityAlertExecuteCommandsWithSearch">TWiki Security Alert</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1037">CAN-2004-1037</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Nov 2004 17:14:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 22 Nov 2004 23:25:58 +0000">
+    dmargoli
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 24 Nov 2004 08:52:40 +0000">
+    jaervosz
+  </metadata>
+</glsa>

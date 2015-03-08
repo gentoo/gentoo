@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-12">
+  <title>WordPress: HTTP response splitting and XSS vulnerabilities</title>
+  <synopsis>
+    WordPress contains HTTP response splitting and cross-site scripting
+    vulnerabilities.
+  </synopsis>
+  <product type="ebuild">wordpress</product>
+  <announced>October 14, 2004</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>65798</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">1.2.2</unaffected>
+      <vulnerable range="lt">1.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a PHP and MySQL based content management and publishing
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Due to the lack of input validation in the administration panel
+    scripts, WordPress is vulnerable to HTTP response splitting and
+    cross-site scripting attacks.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A malicious user could inject arbitrary response data, leading to
+    content spoofing, web cache poisoning and other cross-site scripting or
+    HTTP response splitting attacks. This could result in compromising the
+    victim's data or browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordPress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-1.2.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://wordpress.org/development/2004/12/one-point-two-two/">WordPress 1.2.2 Release Notes</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1584">CVE-2004-1584</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 12 Oct 2004 11:43:21 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 12 Oct 2004 11:44:27 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 12 Oct 2004 21:40:26 +0000">
+    lewk
+  </metadata>
+</glsa>

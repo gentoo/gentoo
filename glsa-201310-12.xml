@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-12">
+  <title>FFmpeg: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in FFmpeg, the worst of which
+    might enable remote attackers to cause user-assisted execution of arbitrary
+    code.                                 
+  </synopsis>
+  <product type="ebuild">FFmpeg</product>
+  <announced>October 25, 2013</announced>
+  <revised>October 25, 2013: 1</revised>
+  <bug>285719</bug>
+  <bug>307755</bug>
+  <bug>339036</bug>
+  <bug>352481</bug>
+  <bug>365273</bug>
+  <bug>378801</bug>
+  <bug>382301</bug>
+  <bug>384095</bug>
+  <bug>385511</bug>
+  <bug>389807</bug>
+  <bug>391421</bug>
+  <bug>397893</bug>
+  <bug>401069</bug>
+  <bug>411369</bug>
+  <bug>420305</bug>
+  <bug>433772</bug>
+  <bug>439054</bug>
+  <bug>454420</bug>
+  <bug>465496</bug>
+  <bug>473302</bug>
+  <bug>473790</bug>
+  <bug>476218</bug>
+  <bug>482136</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">1.0.7</unaffected>
+      <vulnerable range="lt">1.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FFmpeg is a complete solution to record, convert and stream audio and
+      video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FFmpeg. Please review
+      the CVE identifiers and FFmpeg changelogs referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file, possibly leading to the execution of arbitrary code with the
+      privileges of the user running the application or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FFmpeg users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-1.0.7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4631">CVE-2009-4631</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4632">CVE-2009-4632</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4633">CVE-2009-4633</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4634">CVE-2009-4634</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4635">CVE-2009-4635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4636">CVE-2009-4636</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4637">CVE-2009-4637</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4638">CVE-2009-4638</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4639">CVE-2009-4639</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4640">CVE-2009-4640</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3429">CVE-2010-3429</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3908">CVE-2010-3908</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4704">CVE-2010-4704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4704">CVE-2010-4704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4705">CVE-2010-4705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1931">CVE-2011-1931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3362">CVE-2011-3362</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3893">CVE-2011-3893</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3895">CVE-2011-3895</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3929">CVE-2011-3929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3934">CVE-2011-3934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3935">CVE-2011-3935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3936">CVE-2011-3936</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3937">CVE-2011-3937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3940">CVE-2011-3940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3941">CVE-2011-3941</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3944">CVE-2011-3944</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3945">CVE-2011-3945</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3946">CVE-2011-3946</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3947">CVE-2011-3947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3949">CVE-2011-3949</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3950">CVE-2011-3950</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3951">CVE-2011-3951</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3952">CVE-2011-3952</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3973">CVE-2011-3973</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3974">CVE-2011-3974</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4351">CVE-2011-4351</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4352">CVE-2011-4352</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4353">CVE-2011-4353</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4364">CVE-2011-4364</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0947">CVE-2012-0947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2771">CVE-2012-2771</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2772">CVE-2012-2772</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2773">CVE-2012-2773</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2774">CVE-2012-2774</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2775">CVE-2012-2775</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2776">CVE-2012-2776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2777">CVE-2012-2777</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2778">CVE-2012-2778</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2779">CVE-2012-2779</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2780">CVE-2012-2780</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2781">CVE-2012-2781</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2782">CVE-2012-2782</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2783">CVE-2012-2783</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2784">CVE-2012-2784</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2785">CVE-2012-2785</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2786">CVE-2012-2786</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2787">CVE-2012-2787</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2788">CVE-2012-2788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2789">CVE-2012-2789</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2790">CVE-2012-2790</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2791">CVE-2012-2791</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2792">CVE-2012-2792</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2793">CVE-2012-2793</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2794">CVE-2012-2794</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2795">CVE-2012-2795</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2796">CVE-2012-2796</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2797">CVE-2012-2797</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2798">CVE-2012-2798</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2799">CVE-2012-2799</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2800">CVE-2012-2800</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2801">CVE-2012-2801</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2802">CVE-2012-2802</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2803">CVE-2012-2803</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2804">CVE-2012-2804</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2805">CVE-2012-2805</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3670">CVE-2013-3670</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3671">CVE-2013-3671</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3672">CVE-2013-3672</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3673">CVE-2013-3673</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3674">CVE-2013-3674</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3675">CVE-2013-3675</uri>
+    <uri link="http://git.videolan.org/?p=ffmpeg.git;a=shortlog;h=refs/heads/release/0.10">
+      FFmpeg 0.10.x Changelog
+    </uri>
+    <uri link="http://git.videolan.org/?p=ffmpeg.git;a=shortlog;h=refs/heads/release/1.0">
+      FFmpeg 1.0.x Changelog
+    </uri>
+    <uri link="http://archives.neohapsis.com/archives/bugtraq/2011-04/0258.html">
+      NGS Secure Research NGS00068
+    </uri>
+    <uri link="http://secunia.com/advisories/36760/">Secunia Advisory SA36760</uri>
+    <uri link="https://secunia.com/advisories/46134/">Secunia Advisory SA46134</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:08 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 25 Oct 2013 18:49:10 +0000">craig</metadata>
+</glsa>

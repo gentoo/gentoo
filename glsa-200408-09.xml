@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-09">
+  <title>Roundup: Filesystem access vulnerability</title>
+  <synopsis>
+    Roundup will make files owned by the user that it's running as accessable
+    to a remote attacker.
+  </synopsis>
+  <product type="ebuild">Roundup</product>
+  <announced>August 11, 2004</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>53494</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/roundup" auto="yes" arch="*">
+      <unaffected range="ge">0.7.6</unaffected>
+      <vulnerable range="le">0.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Roundup is a simple to use issue-tracking system with command-line,
+    web, and e-mail interfaces.
+    </p>
+  </background>
+  <description>
+    <p>
+    Improper handling of a specially crafted URL allows access to the
+    server's filesystem, which could contain sensitive information.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could view files owned by the user running Roundup. This
+    will never be root however, as Roundup will not run as root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Roundup.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Roundup users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-apps/roundup-0.7.6&quot;
+    # emerge &quot;&gt;=www-apps/roundup-0.7.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/11801/">Secunia Advisory SA11801</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1444">CVE-2004-1444</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon,  9 Aug 2004 18:49:24 +0000">
+    chriswhite
+  </metadata>
+</glsa>

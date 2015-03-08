@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-04">
+  <title>Catfish: Multiple Vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Catfish, allowing local
+    attackers to escalate their privileges.
+  </synopsis>
+  <product type="ebuild">catfish</product>
+  <announced>August 13, 2014</announced>
+  <revised>August 13, 2014: 1</revised>
+  <bug>502536</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-util/catfish" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Catfish is a versatile file searching tool. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Catfish. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain escalated privileges via a specially crafted
+      shared library.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Catfish users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/catfish-1.0.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2093">CVE-2014-2093</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2094">CVE-2014-2094</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2095">CVE-2014-2095</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2096">CVE-2014-2096</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 02 Aug 2014 18:47:34 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Aug 2014 18:12:10 +0000">Zlogene</metadata>
+</glsa>

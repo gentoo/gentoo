@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-24">
+  <title>Apache Tomcat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Apache Tomcat, the worst of
+    which allowing to read, modify and overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">apache tomcat</product>
+  <announced>June 24, 2012</announced>
+  <revised>June 24, 2012: 1</revised>
+  <bug>272566</bug>
+  <bug>273662</bug>
+  <bug>303719</bug>
+  <bug>320963</bug>
+  <bug>329937</bug>
+  <bug>373987</bug>
+  <bug>374619</bug>
+  <bug>382043</bug>
+  <bug>386213</bug>
+  <bug>396401</bug>
+  <bug>399227</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="rge">6.0.35</unaffected>
+      <unaffected range="ge">7.0.23</unaffected>
+      <vulnerable range="rlt">5.5.34</vulnerable>
+      <vulnerable range="rlt">6.0.35</vulnerable>
+      <vulnerable range="lt">7.0.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache Tomcat is a Servlet-3.0/JSP-2.2 Container.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache Tomcat. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerabilities allow an attacker to cause a Denial of Service, to
+      hijack a session, to bypass authentication, to inject webscript, to
+      enumerate valid usernames, to read, modify and overwrite arbitrary files,
+      to bypass intended access restrictions, to delete work-directory files,
+      to discover the server's hostname or IP, to bypass read permissions for
+      files or HTTP headers, to read or write files outside of the intended
+      working directory, and to obtain sensitive information by reading a log
+      file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Tomcat 6.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-6.0.35"
+    </code>
+    
+    <p>All Apache Tomcat 7.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-7.0.23"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5515">CVE-2008-5515</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0033">CVE-2009-0033</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0580">CVE-2009-0580</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0781">CVE-2009-0781</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0783">CVE-2009-0783</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2693">CVE-2009-2693</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2901">CVE-2009-2901</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2902">CVE-2009-2902</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1157">CVE-2010-1157</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2227">CVE-2010-2227</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3718">CVE-2010-3718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4172">CVE-2010-4172</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4312">CVE-2010-4312</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0013">CVE-2011-0013</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0534">CVE-2011-0534</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1088">CVE-2011-1088</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1183">CVE-2011-1183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1184">CVE-2011-1184</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1419">CVE-2011-1419</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1475">CVE-2011-1475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1582">CVE-2011-1582</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2204">CVE-2011-2204</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2481">CVE-2011-2481</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2526">CVE-2011-2526</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2729">CVE-2011-2729</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3190">CVE-2011-3190</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3375">CVE-2011-3375</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4858">CVE-2011-4858</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5062">CVE-2011-5062</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5063">CVE-2011-5063</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5064">CVE-2011-5064</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0022">CVE-2012-0022</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:00 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Sun, 24 Jun 2012 14:10:42 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

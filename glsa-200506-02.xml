@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-02">
+  <title>Mailutils: SQL Injection</title>
+  <synopsis>
+    GNU Mailutils is vulnerable to SQL command injection attacks.
+  </synopsis>
+  <product type="ebuild">mailutils</product>
+  <announced>June 06, 2005</announced>
+  <revised>June 06, 2005: 01</revised>
+  <bug>94824</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/mailutils" auto="yes" arch="*">
+      <unaffected range="ge">0.6-r1</unaffected>
+      <vulnerable range="lt">0.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU Mailutils is a collection of mail-related utilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    When GNU Mailutils is built with the "mysql" or "postgres" USE
+    flag, the sql_escape_string function of the authentication module fails
+    to properly escape the "\" character, rendering it vulnerable to a SQL
+    command injection.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious remote user could exploit this vulnerability to inject
+    SQL commands to the underlying database.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Mailutils users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailutils-0.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1824">CAN-2005-1824</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 05 Jun 2005 13:35:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jun 2005 17:42:35 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 06 Jun 2005 11:45:10 +0000">
+    koon
+  </metadata>
+</glsa>

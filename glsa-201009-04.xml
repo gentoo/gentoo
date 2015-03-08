@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-04">
+  <title>SARG: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple stack-based buffer overflow vulnerabilities were discovered in
+    SARG allowing for remote code execution.
+  </synopsis>
+  <product type="ebuild">SARG sarg</product>
+  <announced>September 07, 2010</announced>
+  <revised>September 07, 2010: 01</revised>
+  <bug>222121</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/sarg" auto="yes" arch="*">
+      <unaffected range="ge">2.2.5-r5</unaffected>
+      <vulnerable range="lt">2.2.5-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SARG is the Squid Analysis Report Generator.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in SARG. For further
+    information please consult the CVE entries referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities might allow attackers to execute arbitrary code
+    via unknown vectors.
+    </p>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since April 18, 2009. It is likely that your system is
+    already no longer affected by this issue.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SARG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/sarg-2.2.5-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1922">CVE-2008-1922</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 12 Jul 2009 23:13:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 10 Apr 2010 02:16:14 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 03 Sep 2010 21:21:35 +0000">
+    p-y
+  </metadata>
+</glsa>

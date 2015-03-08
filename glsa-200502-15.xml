@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-15">
+  <title>PowerDNS: Denial of Service vulnerability</title>
+  <synopsis>
+    A vulnerability in PowerDNS could lead to a temporary Denial of Service.
+  </synopsis>
+  <product type="ebuild">PowerDNS</product>
+  <announced>February 13, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>80713</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdns" auto="yes" arch="*">
+      <unaffected range="ge">2.9.17</unaffected>
+      <vulnerable range="lt">2.9.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The PowerDNS Nameserver is an authoritative-only nameserver which uses
+    a flexible backend architecture.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been reported in the DNSPacket::expand method of
+    dnspacket.cc.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause a temporary Denial of Service by sending a
+    random stream of bytes to the PowerDNS Daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PowerDNS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdns-2.9.17&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://doc.powerdns.com/changelog.html#CHANGELOG-2-9-17">PowerDNS Release Notes</uri>
+    <uri link="http://ds9a.nl/cgi-bin/cvstrac/pdns/tktview?tn=21">PowerDNS Ticket #21</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0428">CVE-2005-0428</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 13 Feb 2005 17:12:23 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 Feb 2005 17:14:58 +0000">
+    vorlon078
+  </metadata>
+</glsa>

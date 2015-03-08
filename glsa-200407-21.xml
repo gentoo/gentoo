@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-21">
+  <title>Samba: Multiple buffer overflows</title>
+  <synopsis>
+    Two buffer overflows vulnerabilities were found in Samba, potentially
+    allowing the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Samba</product>
+  <announced>July 29, 2004</announced>
+  <revised>July 29, 2004: 02</revised>
+  <bug>57962</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.5</unaffected>
+      <vulnerable range="le">3.0.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a package which allows *nix systems to act as file servers for
+    Windows computers. It also allows *nix systems to mount shares exported by
+    a Samba/CIFS/Windows server. The Samba Web Administration Tool (SWAT) is a
+    web-based configuration tool part of the Samba package.
+    </p>
+  </background>
+  <description>
+    <p>
+    Evgeny Demidov found a buffer overflow in SWAT, located in the base64 data
+    decoder used to handle HTTP basic authentication (CAN-2004-0600). The same
+    flaw is present in the code used to handle the sambaMungedDial attribute
+    value, when using the ldapsam passdb backend. Another buffer overflow was
+    found in the code used to support the 'mangling method = hash' smb.conf
+    option (CAN-2004-0686). Note that the default Samba value for this option
+    is 'mangling method = hash2' which is not vulnerable.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The SWAT authentication overflow could be exploited to execute arbitrary
+    code with the rights of the Samba daemon process. The overflow in the
+    sambaMungedDial handling code is not thought to be exploitable. The buffer
+    overflow in 'mangling method = hash' code could also be used to execute
+    arbitrary code on vulnerable configurations.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users disabling SWAT, not using ldapsam passdb backends and not using the
+    'mangling method = hash' option are not vulnerable.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-fs/samba-3.0.5"
+    # emerge ">=net-fs/samba-3.0.5"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.samba.org/samba/whatsnew/samba-3.0.5.html">Samba 3.0.5 Release Notes</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0600">CAN-2004-0600</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0686">CAN-2004-0686</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

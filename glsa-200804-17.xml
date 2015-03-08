@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-17">
+  <title>Speex: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Improper input validation in Speex might lead to array indexing
+    vulnerabilities in multiple player applications.
+  </synopsis>
+  <product type="ebuild">speex</product>
+  <announced>April 17, 2008</announced>
+  <revised>April 17, 2008: 01</revised>
+  <bug>217715</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/speex" auto="yes" arch="*">
+      <unaffected range="ge">1.2_beta3_p2</unaffected>
+      <vulnerable range="lt">1.2_beta3_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Speex is an audio compression format designed for speech that is free
+    of patent restrictions.
+    </p>
+  </background>
+  <description>
+    <p>
+    oCERT reported that the Speex library does not properly validate the
+    "mode" value it derives from Speex streams, allowing for array indexing
+    vulnerabilities inside multiple player applications. Within Gentoo,
+    xine-lib, VLC, gst-plugins-speex from the GStreamer Good Plug-ins,
+    vorbis-tools, libfishsound, Sweep, SDL_sound, and speexdec were found
+    to be vulnerable.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted Speex
+    file or network stream with an application listed above. This might
+    lead to the execution of arbitrary code with privileges of the user
+    playing the file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Speex users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/speex-1.2_beta3_p2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1686">CVE-2008-1686</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 17 Apr 2008 09:58:14 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 17 Apr 2008 09:58:25 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Apr 2008 10:58:23 +0000">
+    rbu
+  </metadata>
+</glsa>

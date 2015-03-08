@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-03">
+  <title>Apache 2: Remote denial of service attack</title>
+  <synopsis>
+    A bug in Apache may allow a remote attacker to perform a Denial of Service
+    attack. With certain configurations this could lead to a heap based buffer
+    overflow.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>July 04, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>55441</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.0.49-r4</unaffected>
+      <unaffected range="lt">2</unaffected>
+      <vulnerable range="le">2.0.49-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP Server Project is an effort to develop and maintain an
+    open-source HTTP server for modern operating systems. The goal of this
+    project is to provide a secure, efficient and extensible server that
+    provides services in tune with the current HTTP standards.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in the protocol.c file handling header lines will cause Apache to
+    allocate memory for header lines starting with TAB or SPACE.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can exploit this vulnerability to perform a Denial of Service
+    attack by causing Apache to exhaust all memory. On 64 bit systems with more
+    than 4GB of virtual memory a possible integer signedness error could lead
+    to a buffer based overflow causing Apache to crash and under some
+    circumstances execute arbitrary code as the user running Apache, usually
+    "apache".
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version:
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Apache 2 users should upgrade to the latest version of Apache:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=www-servers/apache-2.0.49-r4"
+    # emerge ">=www-servers/apache-2.0.49-r4"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.guninski.com/httpd1.html">Georgi Guninski security advisory #70, 2004</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0493">CAN-2004-0493</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

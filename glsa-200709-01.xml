@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-01">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities have been found in MIT Kerberos 5, which could allow a
+    remote unauthenticated user to execute arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>September 11, 2007</announced>
+  <revised>September 11, 2007: 01</revised>
+  <bug>191301</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.5.3-r1</unaffected>
+      <vulnerable range="lt">1.5.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is a suite of applications that implement the Kerberos
+    network protocol. kadmind is the MIT Kerberos 5 administration daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    A stack buffer overflow (CVE-2007-3999) has been reported in
+    svcauth_gss_validate() of the RPC library of kadmind. Another
+    vulnerability (CVE-2007-4000) has been found in
+    kadm5_modify_policy_internal(), which does not check the return values
+    of krb5_db_get_policy() correctly.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The RPC related vulnerability can be exploited by a remote
+    unauthenticated attacker to execute arbitrary code with root privileges
+    on the host running kadmind. The second vulnerability requires the
+    remote attacker to be authenticated and to have "modify policy"
+    privileges. It could then also allow for the remote execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.5.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3999">CVE-2007-3999</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4000">CVE-2007-4000</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Sep 2007 22:29:04 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 09 Sep 2007 19:22:20 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Sep 2007 18:34:17 +0000">
+    vorlon
+  </metadata>
+</glsa>

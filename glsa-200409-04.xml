@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-04">
+  <title>Squid: Denial of service when using NTLM authentication</title>
+  <synopsis>
+    Squid is vulnerable to a denial of service attack which could crash its
+    NTLM helpers.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>September 02, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>61280</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.6-r2</unaffected>
+      <unaffected range="lt">2.5</unaffected>
+      <vulnerable range="le">2.5.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured Web Proxy Cache designed to run on Unix
+    systems. It supports proxying and caching of HTTP, FTP, and other URLs,
+    as well as SSL support, cache hierarchies, transparent caching, access
+    control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>
+    Squid 2.5.x versions contain a bug in the functions ntlm_fetch_string()
+    and ntlm_get_string() which lack checking the int32_t offset "o" for
+    negative values.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause a denial of service situation by sending
+    certain malformed NTLMSSP packets if NTLM authentication is enabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable NTLM authentication by removing any "auth_param ntlm program
+    ..." directives from squid.conf or use ntlm_auth from Samba-3.x.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-www/squid-2.5.6-r2&quot;
+    # emerge &quot;&gt;=net-www/squid-2.5.6-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www1.uk.squid-cache.org/squid/Versions/v2/2.5/bugs/#squid-2.5.STABLE6-ntlm_fetch_string">Squid-2.5 Patches</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0832">CVE-2004-0832</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  2 Sep 2004 10:25:32 +0000">
+    vorlon078
+  </metadata>
+</glsa>

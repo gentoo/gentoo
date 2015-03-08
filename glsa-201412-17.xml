@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-17">
+  <title>GPL Ghostscript: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GPL Ghostscript, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ghostscript-gpl</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>264594</bug>
+  <bug>300192</bug>
+  <bug>332061</bug>
+  <bug>437654</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">9.10-r2</unaffected>
+      <vulnerable range="lt">9.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ghostscript is an interpreter for the PostScript language and for PDF.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GPL Ghostscript. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted PostScript file or PDF using GPL Ghostscript, possibly resulting
+      in execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GPL Ghostscript users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-text/ghostscript-gpl-9.10-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0196">CVE-2009-0196</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0792">CVE-2009-0792</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3743">CVE-2009-3743</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4270">CVE-2009-4270</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4897">CVE-2009-4897</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1628">CVE-2010-1628</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2055">CVE-2010-2055</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4054">CVE-2010-4054</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4405">CVE-2012-4405</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:17 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 17:06:42 +0000">ackle</metadata>
+</glsa>

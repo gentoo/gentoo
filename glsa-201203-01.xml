@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-01">
+  <title>spamdyke: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in spamdyke might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">spamdyke</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>399157</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/spamdyke" auto="yes" arch="*">
+      <unaffected range="ge">4.3.0</unaffected>
+      <vulnerable range="lt">4.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>spamdyke is a drop-in connection-time spam filter for qmail.</p>
+  </background>
+  <description>
+    <p>Boundary errors related to the "snprintf()" and "vsnprintf()" functions
+      in spamdyke could cause a buffer overflow. 
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code or cause a
+      Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All spamdyke users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-filter/spamdyke-4.3.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0802">CVE-2012-0802</uri>
+  </references>
+  <metadata timestamp="Tue, 17 Jan 2012 23:00:49 +0000" tag="requester">ago</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:01:06 +0000" tag="submitter">ackle</metadata>
+</glsa>

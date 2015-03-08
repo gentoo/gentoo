@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-18">
+  <title>Multi-Threaded DAAP Daemon: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the web server in the Multi-Threaded DAAP
+    Daemon may lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mt-daapd</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>200110</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/mt-daapd" auto="yes" arch="*">
+      <unaffected range="ge">0.2.4.1</unaffected>
+      <vulnerable range="lt">0.2.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Multi-Threaded DAAP Daemon (mt-daapd), also known as the Firefly Media
+    Server, is a software to serve digital music to the Roku Soundbridge
+    and Apple's iTunes.
+    </p>
+  </background>
+  <description>
+    <p>
+    nnp discovered multiple vulnerabilities in the XML-RPC handler in the
+    file webserver.c. The ws_addarg() function contains a format string
+    vulnerability, as it does not properly sanitize username and password
+    data from the "Authorization: Basic" HTTP header line (CVE-2007-5825).
+    The ws_decodepassword() and ws_getheaders() functions do not correctly
+    handle empty Authorization header lines, or header lines without a ':'
+    character, leading to NULL pointer dereferences (CVE-2007-5824).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted HTTP requests to the web
+    server in the Multi-Threaded DAAP Daemon, possibly leading to the
+    execution of arbitrary code with the privileges of the user running the
+    web server or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Multi-Threaded DAAP Daemon users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/mt-daapd-0.2.4.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5824">CVE-2007-5824</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5825">CVE-2007-5825</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Dec 2007 21:05:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Dec 2007 20:01:54 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Dec 2007 20:02:16 +0000">
+    rbu
+  </metadata>
+</glsa>

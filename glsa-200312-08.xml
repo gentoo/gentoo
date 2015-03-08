@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200312-08">
+  <title>CVS: possible root compromise when using CVS pserver</title>
+  <synopsis>
+    A possible root compromise exists for CVS pservers.
+  </synopsis>
+  <product type="ebuild">cvs</product>
+  <announced>2003-12-28</announced>
+  <revised>2003-12-28: 01</revised>
+  <bug>36142</bug>
+  <access>unknown</access>
+  <affected>
+    <package name="dev-util/cvs" auto="yes" arch="*">
+      <unaffected range="ge">1.11.11</unaffected>
+      <vulnerable range="le">1.11.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CVS, which stands for Concurrent Versions System, is a client/server
+    application which tracks changes to sets of files.  It allows multiple users
+    to work concurrently on files, and then merge their changes back into the
+    main tree (which can be on a remote system).  It also allows branching, or
+    maintaining separate versions for files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Quote from ccvs.cvshome.org/servlets/NewsItemView?newsID=88:
+    "Stable CVS 1.11.11 has been released. Stable releases contain only bug
+    fixes from previous versions of CVS. This release adds code to the CVS
+    server to prevent it from continuing as root after a user login, as an extra
+    failsafe against a compromise of the CVSROOT/passwd file. Previously, any
+    user with the ability to write the CVSROOT/passwd file could execute
+    arbitrary code as the root user on systems with CVS pserver access enabled.
+    We recommend this upgrade for all CVS servers!"
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote user could execute arbitrary code with the permissions of the root
+    user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gentoo Linux machines with cvs installed should be updated to use
+    cvs-1.11.11 or higher.
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=dev-util/cvs-1.11.11'
+    # emerge '&gt;=dev-util/cvs-1.11.11'
+    # emerge clean</code>
+  </resolution>
+  <references/>
+</glsa>

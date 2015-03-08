@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-10">
+  <title>Cube: Multiple vulnerabilities</title>
+  <synopsis>
+    Cube is vulnerable to a buffer overflow, invalid memory access and remote
+    client crashes, possibly leading to a Denial of Service or remote code
+    execution.
+  </synopsis>
+  <product type="ebuild">cube</product>
+  <announced>March 13, 2006</announced>
+  <revised>March 13, 2006: 01</revised>
+  <bug>125289</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-fps/cube" auto="yes" arch="*">
+      <vulnerable range="le">20050829</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cube is an open source first person shooter game engine supporting
+    multiplayer via LAN or internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma reported that Cube is vulnerable to a buffer
+    overflow in the sgetstr() function (CVE-2006-1100) and that the
+    sgetstr() and getint() functions fail to verify the length of the
+    supplied argument, possibly leading to the access of invalid memory
+    regions (CVE-2006-1101). Furthermore, he discovered that a client
+    crashes when asked to load specially crafted mapnames (CVE-2006-1102).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit the buffer overflow to execute
+    arbitrary code with the rights of the user running cube. An attacker
+    could also exploit the other vulnerabilities to crash a Cube client or
+    server, resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Play solo games or restrict your multiplayer games to trusted
+    parties.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Upstream stated that there will be no fixed version of Cube, thus
+    the Gentoo Security Team decided to hardmask Cube for security reasons.
+    All Cube users are encouraged to uninstall Cube:
+    </p>
+    <code>
+    # emerge --ask --unmerge games-fps/cube</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1100">CVE-2006-1100</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1101">CVE-2006-1101</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1102">CVE-2006-1102</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 11 Mar 2006 12:37:07 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Mar 2006 16:16:08 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-01">
+  <title>pinentry: Local privilege escalation</title>
+  <synopsis>
+    pinentry is vulnerable to privilege escalation.
+  </synopsis>
+  <product type="ebuild">pinentry</product>
+  <announced>January 03, 2006</announced>
+  <revised>January 03, 2006: 01</revised>
+  <bug>116822</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-crypt/pinentry" auto="yes" arch="*">
+      <unaffected range="ge">0.7.2-r2</unaffected>
+      <vulnerable range="lt">0.7.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pinentry is a collection of simple PIN or passphrase entry dialogs
+    which utilize the Assuan protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team has
+    discovered that the pinentry ebuild incorrectly sets the permissions of
+    the pinentry binaries upon installation, so that the sgid bit is set
+    making them execute with the privileges of group ID 0.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A user of pinentry could potentially read and overwrite files with
+    a group ID of 0.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pinentry users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/pinentry-0.7.2-r2&quot;</code>
+  </resolution>
+  <references>
+        <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0071">CVE-2006-0071</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 31 Dec 2005 13:13:15 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 31 Dec 2005 13:13:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Jan 2006 22:02:30 +0000">
+    shellsage
+  </metadata>
+</glsa>

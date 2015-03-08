@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-07">
+  <title>vsftpd: Denial of Service</title>
+  <synopsis>A Denial of Service vulnerability was found in vsftpd.</synopsis>
+  <product type="ebuild">vsftpd</product>
+  <announced>October 10, 2011</announced>
+  <revised>October 10, 2011: 1</revised>
+  <bug>357001</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/vsftpd" auto="yes" arch="*">
+      <unaffected range="ge">2.3.4</unaffected>
+      <vulnerable range="lt">2.3.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>vsftpd is a very secure FTP daemon written with speed, size and security
+      in mind.
+    </p>
+  </background>
+  <description>
+    <p>A Denial of Service vulnerability was discovered in vsftpd. Please
+      review the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker could cause a Denial of Service.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All vsftpd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/vsftpd-2.3.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0762">CVE-2011-0762</uri>
+  </references>
+  <metadata timestamp="Sat, 08 Oct 2011 21:54:37 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 10 Oct 2011 20:41:01 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

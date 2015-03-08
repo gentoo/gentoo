@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-24">
+  <title>INN: Man-in-the-middle attack</title>
+  <synopsis>A vulnerability in INN's STARTTLS implementation could allow a
+    remote attacker to conduct a man-in-the-middle attack.
+  </synopsis>
+  <product type="ebuild">inn</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>432002</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nntp/inn" auto="yes" arch="*">
+      <unaffected range="ge">2.5.3</unaffected>
+      <vulnerable range="lt">2.5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>INN is a news server which can interface with Usenet.</p>
+  </background>
+  <description>
+    <p>INN’s I/O buffering is not correctly restricted.</p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could inject commands into encrypted NNTP sessions.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All INN users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-nntp/inn-2.5.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3523">CVE-2012-3523</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:56:39 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 20:26:02 +0000">
+    creffett
+  </metadata>
+</glsa>

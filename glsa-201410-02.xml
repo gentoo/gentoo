@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201410-02">
+  <title>Perl, Perl Locale-Maketext module: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the Perl
+    Locale-Maketext module, allowing remote attackers to inject and execute
+    arbitrary Perl code.
+  </synopsis>
+  <product type="ebuild">Locale-Maketext</product>
+  <announced>October 12, 2014</announced>
+  <revised>December 29, 2014: 2</revised>
+  <bug>446376</bug>
+  <access>remote</access>
+  <affected>
+    <package name="perl-core/Locale-Maketext" auto="yes" arch="*">
+      <unaffected range="ge">1.230.0</unaffected>
+      <vulnerable range="lt">1.230.0</vulnerable>
+    </package>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.17.7</unaffected>
+      <vulnerable range="lt">5.17.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Locale-Maketext - Perl framework for localization</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been reported in the Locale-Maketext module for
+      Perl, which can be exploited by malicious users to compromise an
+      application using the module.
+    </p>
+    
+    <p>The vulnerabilities are caused due to the “_compile()” function not
+      properly sanitising input, which can be exploited to inject and execute
+      arbitrary Perl code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All users of the Locale-Maketext module should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=perl-core/Locale-Maketext-1.230.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6329">CVE-2012-6329</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 01 Jan 2013 20:38:14 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 29 Dec 2014 20:02:06 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

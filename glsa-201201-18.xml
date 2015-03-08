@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-18">
+  <title>bip: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in bip might allow remote unauthenticated
+    attackers to cause a Denial of Service or possibly execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">bip</product>
+  <announced>January 30, 2012</announced>
+  <revised>January 30, 2012: 1</revised>
+  <bug>336321</bug>
+  <bug>400599</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/bip" auto="yes" arch="*">
+      <unaffected range="ge">0.8.8-r1</unaffected>
+      <vulnerable range="lt">0.8.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>bip is a multi-user IRC proxy with SSL support.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in bip:</p>
+    
+    <ul>
+      <li>Uli Schlachter reported that bip does not properly handle invalid
+        data during authentication, resulting in a daemon crash
+        (CVE-2010-3071).
+      </li>
+      <li>Julien Tinnes reported that bip does not check the number of open
+        file descriptors against FD_SETSIZE, resulting in a stack buffer
+        overflow (CVE-2012-0806).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could exploit these vulnerabilities to execute
+      arbitrary code with the privileges of the user running the bip daemon, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All bip users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/bip-0.8.8-r1"
+    </code>
+    
+    <p>NOTE: The CVE-2010-3071 flaw was already corrected in an earlier version
+      of bip and is included in this advisory for completeness.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3071">CVE-2010-3071</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0806">CVE-2012-0806</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:17 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 30 Jan 2012 12:28:13 +0000" tag="submitter">a3li</metadata>
+</glsa>

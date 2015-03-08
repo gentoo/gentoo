@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-07">
+  <title>Mantis: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Mantis, the most severe of
+    which leading to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mantisbt</product>
+  <announced>December 02, 2008</announced>
+  <revised>December 02, 2008: 01</revised>
+  <bug>238570</bug>
+  <bug>241940</bug>
+  <bug>242722</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mantisbt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4-r1</unaffected>
+      <vulnerable range="lt">1.1.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mantis is a PHP/MySQL/Web based bugtracking system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple issues have been reported in Mantis:
+    </p>
+    <ul>
+    <li>
+    EgiX reported that manage_proj_page.php does not correctly sanitize the
+    sort parameter before passing it to create_function() in
+    core/utility_api.php (CVE-2008-4687).
+    </li>
+    <li>
+    Privileges of viewers are not sufficiently checked before composing a
+    link with issue data in the source anchor (CVE-2008-4688).
+    </li>
+    <li>
+    Mantis does not unset the session cookie during logout (CVE-2008-4689).
+    </li>
+    <li>
+    Mantis does not set the secure flag for the session cookie in an HTTPS
+    session (CVE-2008-3102).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    Remote unauthenticated attackers could exploit these vulnerabilities to
+    execute arbitrary PHP commands, disclose sensitive issue data, or
+    hijack a user's sessions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mantis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-1.1.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3102">CVE-2008-3102</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4687">CVE-2008-4687</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4688">CVE-2008-4688</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4689">CVE-2008-4689</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 31 Oct 2008 21:35:00 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 19:39:16 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 19:39:31 +0000">
+    rbu
+  </metadata>
+</glsa>

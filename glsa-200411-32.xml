@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-32">
+  <title>phpBB: Remote command execution</title>
+  <synopsis>
+    phpBB contains a vulnerability which allows a remote attacker to execute
+    arbitrary commands with the rights of the web server user.
+  </synopsis>
+  <product type="ebuild">phpBB</product>
+  <announced>November 24, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>71681</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpbb" auto="yes" arch="*">
+      <unaffected range="ge">2.0.11</unaffected>
+      <vulnerable range="lt">2.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpBB is an Open Source bulletin board package.
+    </p>
+  </background>
+  <description>
+    <p>
+    phpBB contains a vulnerability in the highlighting code and several
+    vulnerabilities in the username handling code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker can exploit the highlighting vulnerability to access the
+    PHP exec() function without restriction, allowing them to run arbitrary
+    commands with the rights of the web server user (for example the apache
+    user). Furthermore, the username handling vulnerability might be abused
+    to execute SQL statements on the phpBB database.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is a one-line patch which will remediate the remote execution
+    vulnerability.
+    </p>
+    <p>
+    Locate the following block of code in viewtopic.php:
+    </p>
+    <code>
+    //
+    // Was a highlight request part of the URI?
+    //
+    $highlight_match = $highlight = '';
+    if (isset($HTTP_GET_VARS['highlight']))
+    {
+       // Split words and phrases
+       $words = explode(' ', trim(htmlspecialchars(urldecode($HTTP_GET_VARS['highlight']))));
+    
+       for($i = 0; $i &lt; sizeof($words); $i++)
+       {</code>
+    <p>
+    Replace with the following:
+    </p>
+    <code>
+    //
+    // Was a highlight request part of the URI?
+    //
+    $highlight_match = $highlight = '';
+    if (isset($HTTP_GET_VARS['highlight']))
+    {
+       // Split words and phrases
+       $words = explode(' ', trim(htmlspecialchars($HTTP_GET_VARS['highlight'])));
+    
+       for($i = 0; $i &lt; sizeof($words); $i++)
+       {</code>
+  </workaround>
+  <resolution>
+    <p>
+    All phpBB users should upgrade to the latest version to fix all known
+    vulnerabilities:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpbb-2.0.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.phpbb.com/phpBB/viewtopic.php?t=240513">phpBB.com Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1315">CVE-2004-1315</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 18 Nov 2004 17:31:41 +0000">
+    klieber
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 24 Nov 2004 08:51:46 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-30">
+  <title>Varnish: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Varnish, the worst of
+    which could allow a remote attacker to create a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">varnish</product>
+  <announced>December 15, 2014</announced>
+  <revised>December 15, 2014: 1</revised>
+  <bug>458888</bug>
+  <bug>489944</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/varnish" auto="yes" arch="*">
+      <unaffected range="ge">3.0.5</unaffected>
+      <vulnerable range="lt">3.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Varnish is a web application accelerator.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Varnish. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition via a
+      specially crafted GET request. Furthermore a local attacker could obtain
+      sensitive information through insecure permissions on logfiles. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Varnish users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/varnish-3.0.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0345">CVE-2013-0345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4484">CVE-2013-4484</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:10:40 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Dec 2014 11:43:22 +0000">Zlogene</metadata>
+</glsa>

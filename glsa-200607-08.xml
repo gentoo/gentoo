@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-08">
+  <title>GIMP: Buffer overflow</title>
+  <synopsis>
+    GIMP is prone to a buffer overflow which may lead to the execution of
+    arbitrary code when loading specially crafted XCF files.
+  </synopsis>
+  <product type="ebuild">gimp</product>
+  <announced>July 23, 2006</announced>
+  <revised>July 24, 2006: 02</revised>
+  <bug>139524</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gimp" auto="yes" arch="*">
+      <unaffected range="ge">2.2.12</unaffected>
+      <vulnerable range="lt">2.2.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GIMP is the GNU Image Manipulation Program. XCF is the native image
+    file format used by GIMP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Henning Makholm discovered that the "xcf_load_vector()" function is
+    vulnerable to a buffer overflow when loading a XCF file with a large
+    "num_axes" value.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this issue to execute arbitrary code by
+    enticing a user to open a specially crafted XCF file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GIMP users should update to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/gimp-2.2.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3404">CVE-2006-3404</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 12 Jul 2006 17:07:39 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 12 Jul 2006 18:38:18 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 12 Jul 2006 19:27:03 +0000">
+    DerCorny
+  </metadata>
+</glsa>

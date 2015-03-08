@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-32">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in phpMyAdmin, the worst of
+    which may allow for remote code execution.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>March 18, 2009</announced>
+  <revised>March 18, 2009: 01</revised>
+  <bug>237781</bug>
+  <bug>244914</bug>
+  <bug>246831</bug>
+  <bug>250752</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.11.9.4</unaffected>
+      <vulnerable range="lt">2.11.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a web-based management tool for MySQL databases.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in phpMyAdmin:
+    </p>
+    <ul>
+    <li>
+    libraries/database_interface.lib.php in phpMyAdmin allows remote
+    authenticated users to execute arbitrary code via a request to
+    server_databases.php with a sort_by parameter containing PHP sequences,
+    which are processed by create_function (CVE-2008-4096).
+    </li>
+    <li>
+    Cross-site scripting (XSS) vulnerability in pmd_pdf.php allows remote
+    attackers to inject arbitrary web script or HTML via the db parameter,
+    a different vector than CVE-2006-6942 and CVE-2007-5977
+    (CVE-2008-4775).
+    </li>
+    <li>
+    Cross-site request forgery (CSRF) vulnerability in phpMyAdmin allows
+    remote authenticated attackers to perform unauthorized actions as the
+    administrator via a link or IMG tag to tbl_structure.php with a
+    modified table parameter. NOTE: this can be leveraged to conduct SQL
+    injection attacks and execute arbitrary code (CVE-2008-5621).
+    </li>
+    <li>
+    Multiple cross-site request forgery (CSRF) vulnerabilities in
+    phpMyAdmin allow remote attackers to conduct SQL injection attacks via
+    unknown vectors related to the table parameter, a different vector than
+    CVE-2008-5621 (CVE-2008-5622).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may execute arbitrary code with the rights of the
+    webserver, inject and execute SQL with the rights of phpMyAdmin or
+    conduct XSS attacks against other users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.11.9.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6942">CVE-2006-6942</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5977">CVE-2007-5977</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4096">CVE-2008-4096</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4775">CVE-2008-4775</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5621">CVE-2008-5621</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5622">CVE-2008-5622</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 23 Sep 2008 18:59:26 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 14 Mar 2009 23:58:57 +0000">
+    mabi
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Mar 2009 21:41:59 +0000">
+    p-y
+  </metadata>
+</glsa>

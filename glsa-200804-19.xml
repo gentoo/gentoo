@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-19">
+  <title>PHP Toolkit: Data disclosure and Denial of Service</title>
+  <synopsis>
+    PHP Toolkit does not quote parameters, allowing for PHP source code
+    disclosure on Apache, and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">php-toolkit</product>
+  <announced>April 17, 2008</announced>
+  <revised>April 17, 2008: 01</revised>
+  <bug>209535</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/php-toolkit" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1</unaffected>
+      <vulnerable range="lt">1.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP Toolkit is a utility to manage parallel installations of PHP within
+    Gentoo. It is executed by the PHP ebuilds at setup.
+    </p>
+  </background>
+  <description>
+    <p>
+    Toni Arnold, David Sveningsson, Michal Bartoszkiewicz, and Joseph
+    reported that php-select does not quote parameters passed to the "tr"
+    command, which could convert the "-D PHP5" argument in the
+    "APACHE2_OPTS" setting in the file /etc/conf.d/apache2 to lower case.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a system administrator to run "<i>emerge
+    php</i>" or call "<i>php-select -t apache2 php5</i>" directly in a
+    directory containing a lower case single-character named file, which
+    would prevent Apache from loading mod_php and thereby disclose PHP
+    source code and cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "emerge" or "php-select" from a working directory which
+    contains a lower case single-character named file.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP Toolkit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/php-toolkit-1.0.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1734">CVE-2008-1734</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 07 Apr 2008 23:54:47 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Apr 2008 13:22:11 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 11 Apr 2008 19:26:49 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-01">
+  <title>gtkdiskfree: Insecure temporary file creation</title>
+  <synopsis>
+    gtkdiskfree is vulnerable to symlink attacks, potentially allowing a local
+    user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">gtkdiskfree</product>
+  <announced>October 03, 2005</announced>
+  <revised>October 03, 2005: 01</revised>
+  <bug>104565</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/gtkdiskfree" auto="yes" arch="*">
+      <unaffected range="ge">1.9.3-r1</unaffected>
+      <vulnerable range="lt">1.9.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gtkdiskfree is a GTK-based GUI to show free disk space.
+    </p>
+  </background>
+  <description>
+    <p>
+    Eric Romang discovered that gtkdiskfree insecurely creates a
+    predictable temporary file to handle command output.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create a symbolic link in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When gtkdiskfree is executed, this would result in the file being
+    overwritten with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gtkdiskfree users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/gtkdiskfree-1.9.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2918">CAN-2005-2918</uri>
+    <uri link="http://www.zataz.net/adviso/gtkdiskfree-09052005.txt">Original Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 03 Oct 2005 07:42:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 03 Oct 2005 07:42:18 +0000">
+    koon
+  </metadata>
+</glsa>

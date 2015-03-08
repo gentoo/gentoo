@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-09">
+  <title>Axel: Vulnerability in HTTP redirection handling</title>
+  <synopsis>
+    A buffer overflow vulnerability has been found in Axel which could lead to
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Axel</product>
+  <announced>April 12, 2005</announced>
+  <revised>April 12, 2005: 01</revised>
+  <bug>88264</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/axel" auto="yes" arch="*">
+      <unaffected range="ge">1.0b</unaffected>
+      <vulnerable range="lt">1.0b</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Axel is a console-based FTP/HTTP download accelerator.
+    </p>
+  </background>
+  <description>
+    <p>
+    A possible buffer overflow has been reported in the HTTP
+    redirection handling code in conn.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability by setting up a
+    malicious site and enticing a user to connect to it. This could
+    possibly lead to the execution of arbitrary code with the permissions
+    of the user running Axel.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Axel users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/axel-1.0b&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0390">CAN-2005-0390</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Apr 2005 18:36:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Apr 2005 19:29:05 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 12 Apr 2005 11:48:11 +0000">
+    vorlon078
+  </metadata>
+</glsa>

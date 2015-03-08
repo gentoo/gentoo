@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-09">
+  <title>Adobe Reader: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Adobe Reader is vulnerable to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>January 13, 2009</announced>
+  <revised>January 13, 2009: 01</revised>
+  <bug>225483</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">8.1.3</unaffected>
+      <vulnerable range="lt">8.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Reader (formerly Adobe Acrobat Reader) is a closed-source PDF
+    reader.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>
+    An unspecified vulnerability can be triggered by a malformed PDF
+    document, as demonstrated by 2008-HI2.pdf (CVE-2008-2549).
+    </li>
+    <li>
+    Peter Vreugdenhil, Dyon Balding, Will Dormann, Damian Frizza, and Greg
+    MacManus reported a stack-based buffer overflow in the util.printf
+    JavaScript function that incorrectly handles the format string argument
+    (CVE-2008-2992).
+    </li>
+    <li>
+    Greg MacManus of iDefense Labs reported an array index error that can
+    be leveraged for an out-of-bounds write, related to parsing of Type 1
+    fonts (CVE-2008-4812).
+    </li>
+    <li>
+    Javier Vicente Vallejo and Peter Vregdenhil, via Zero Day Initiative,
+    reported multiple unspecified memory corruption vulnerabilities
+    (CVE-2008-4813).
+    </li>
+    <li>
+    Thomas Garnier of SkyRecon Systems reported an unspecified
+    vulnerability in a JavaScript method, related to an "input validation
+    issue" (CVE-2008-4814).
+    </li>
+    <li>
+    Josh Bressers of Red Hat reported an untrusted search path
+    vulnerability (CVE-2008-4815).
+    </li>
+    <li>
+    Peter Vreugdenhil reported through iDefense that the Download Manager
+    can trigger a heap corruption via calls to the AcroJS function
+    (CVE-2008-4817).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    document, and local attackers could entice a user to run acroread from
+    an untrusted working directory. Both might result in the execution of
+    arbitrary code with the privileges of the user running the application,
+    or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2549">CVE-2008-2549</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2992">CVE-2008-2992</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4812">CVE-2008-4812</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4813">CVE-2008-4813</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4814">CVE-2008-4814</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4815">CVE-2008-4815</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4817">CVE-2008-4817</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:53:29 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 20:51:39 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 20:51:48 +0000">
+    rbu
+  </metadata>
+</glsa>

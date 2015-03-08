@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-25">
+  <title>X.org and some X.org libraries: Local privilege escalations</title>
+  <synopsis>
+    X.org, libX11, xdm, xf86dga, xinit, xload, xtrans, and xterm are vulnerable
+    to local privilege escalations because of unchecked setuid() calls.
+  </synopsis>
+  <product type="ebuild">xorg-x11,xorg-server,xtrans,xload,xinit,xterm,xf86dga,xdm,libX11</product>
+  <announced>August 28, 2006</announced>
+  <revised>December 13, 2006: 02</revised>
+  <bug>135974</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-apps/xdm" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4-r1</unaffected>
+      <vulnerable range="lt">1.0.4-r1</vulnerable>
+    </package>
+    <package name="x11-apps/xinit" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2-r6</unaffected>
+      <vulnerable range="lt">1.0.2-r6</vulnerable>
+    </package>
+    <package name="x11-apps/xload" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1-r1</unaffected>
+      <vulnerable range="lt">1.0.1-r1</vulnerable>
+    </package>
+    <package name="x11-apps/xf86dga" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1-r1</unaffected>
+      <vulnerable range="lt">1.0.1-r1</vulnerable>
+    </package>
+    <package name="x11-base/xorg-x11" auto="yes" arch="*">
+      <unaffected range="rge">6.8.2-r8</unaffected>
+      <unaffected range="ge">6.9.0-r2</unaffected>
+      <vulnerable range="lt">6.9.0-r2</vulnerable>
+    </package>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="rge">1.0.2-r6</unaffected>
+      <unaffected range="ge">1.1.0-r1</unaffected>
+      <vulnerable range="lt">1.1.0-r1</vulnerable>
+    </package>
+    <package name="x11-libs/libx11" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1-r1</unaffected>
+      <vulnerable range="lt">1.0.1-r1</vulnerable>
+    </package>
+    <package name="x11-libs/xtrans" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0-r1</unaffected>
+      <vulnerable range="lt">1.0.0-r1</vulnerable>
+    </package>
+    <package name="x11-terms/xterm" auto="yes" arch="*">
+      <unaffected range="ge">215</unaffected>
+      <vulnerable range="lt">215</vulnerable>
+    </package>
+    <package name="app-emulation/emul-linux-x86-xlibs" auto="yes" arch="amd64">
+      <unaffected range="ge">7.0-r2</unaffected>
+      <vulnerable range="lt">7.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    X.org is an implementation of the X Window System.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several X.org libraries and X.org itself contain system calls to
+    set*uid() functions, without checking their result.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Local users could deliberately exceed their assigned resource limits
+    and elevate their privileges after an unsuccessful set*uid() system
+    call. This requires resource limits to be enabled on the machine.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X.Org xdm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-apps/xdm-1.0.4-r1&quot;</code>
+    <p>
+    All X.Org xinit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-apps/xinit-1.0.2-r6&quot;</code>
+    <p>
+    All X.Org xload users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-apps/xload-1.0.1-r1&quot;</code>
+    <p>
+    All X.Org xf86dga users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-apps/xf86dga-1.0.1-r1&quot;</code>
+    <p>
+    All X.Org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-x11-6.9.0-r2&quot;</code>
+    <p>
+    All X.Org X servers users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.1.0-r1&quot;</code>
+    <p>
+    All X.Org X11 library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libx11-1.0.1-r1&quot;</code>
+    <p>
+    All X.Org xtrans library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/xtrans-1.0.1-r1&quot;</code>
+    <p>
+    All xterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/xterm-215&quot;</code>
+    <p>
+    All users of the X11R6 libraries for emulation of 32bit x86 on amd64
+    should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-xlibs-7.0-r2&quot;</code>
+    <p>
+    Please note that the fixed packages have been available for most
+    architectures since June 30th but the GLSA release was held up waiting
+    for the remaining architectures.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://lists.freedesktop.org/archives/xorg/2006-June/016146.html">X.Org security advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4447">CVE-2006-4447</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 16 Aug 2006 08:09:58 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Aug 2006 15:45:11 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 23 Aug 2006 20:02:52 +0000">
+    falco
+  </metadata>
+</glsa>

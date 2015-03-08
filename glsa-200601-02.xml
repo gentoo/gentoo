@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-02">
+  <title>KPdf, KWord: Multiple overflows in included Xpdf code</title>
+  <synopsis>
+    KPdf and KWord both include vulnerable Xpdf code to handle PDF files,
+    making them vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">kdegraphics, kpdf, koffice, kword</product>
+  <announced>January 04, 2006</announced>
+  <revised>January 07, 2006: 03</revised>
+  <bug>114429</bug>
+  <bug>115851</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdegraphics" auto="yes" arch="*">
+      <unaffected range="ge">3.4.3-r3</unaffected>
+      <vulnerable range="lt">3.4.3-r3</vulnerable>
+    </package>
+    <package name="kde-base/kpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.4.3-r3</unaffected>
+      <vulnerable range="lt">3.4.3-r3</vulnerable>
+    </package>
+    <package name="app-office/koffice" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2-r6</unaffected>
+      <vulnerable range="lt">1.4.2-r6</vulnerable>
+    </package>
+    <package name="app-office/kword" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2-r6</unaffected>
+      <vulnerable range="lt">1.4.2-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KPdf is a KDE-based PDF viewer included in the kdegraphics package.
+    KWord is a KDE-based word processor also included in the koffice
+    package.
+    </p>
+  </background>
+  <description>
+    <p>
+    KPdf and KWord both include Xpdf code to handle PDF files. This Xpdf
+    code is vulnerable to several heap overflows (GLSA 200512-08) as well
+    as several buffer and integer overflows discovered by Chris Evans
+    (CESA-2005-003).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted PDF file
+    with Kpdf or KWord, potentially resulting in the execution of arbitrary
+    code with the rights of the user running the affected application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdegraphics users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.4.3-r3&quot;</code>
+    <p>
+    All Kpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kpdf-3.4.3-r3&quot;</code>
+    <p>
+    All KOffice users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/koffice-1.4.2-r6&quot;</code>
+    <p>
+    All KWord users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/kword-1.4.2-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3191">CAN-2005-3191</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3192">CAN-2005-3192</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3193">CAN-2005-3193</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3624">CVE-2005-3624</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3625">CVE-2005-3625</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3626">CVE-2005-3626</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3627">CVE-2005-3627</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3628">CVE-2005-3628</uri>
+    <uri link="/security/en/glsa/glsa-200512-08.xml">GLSA 200512-08</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20051207-2.txt">KDE Security Advisory: kpdf/xpdf multiple integer overflows</uri>
+    <uri link="http://scary.beasts.org/security/CESA-2005-003.txt">CESA-2005-003</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2005 08:56:38 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 04 Jan 2006 21:03:58 +0000">
+    jaervosz
+  </metadata>
+</glsa>

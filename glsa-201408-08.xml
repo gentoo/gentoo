@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-08">
+  <title>file: Denial of Service</title>
+  <synopsis>A vulnerability in file could result in Denial of Service. </synopsis>
+  <product type="ebuild">file</product>
+  <announced>August 26, 2014</announced>
+  <revised>August 29, 2014: 6</revised>
+  <bug>505534</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">5.15</unaffected>
+      <vulnerable range="lt">5.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>file is a utility that guesses a file format by scanning binary data for
+      patterns. 
+    </p>
+  </background>
+  <description>
+    <p>BEGIN regular expression in the awk script detector in
+      magic/Magdir/commands uses multiple wildcards with unlimited repetitions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted file,
+      possibly resulting in a Denial of Service condition. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All file users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/file-5.15"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7345">CVE-2013-7345</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2014 21:48:15 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 12:33:10 +0000">Zlogene</metadata>
+</glsa>

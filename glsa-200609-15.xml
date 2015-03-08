@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-15">
+  <title>GnuTLS: RSA Signature Forgery</title>
+  <synopsis>
+    GnuTLS fails to handle excess data which could allow an attacker to forge a
+    PKCS #1 v1.5 signature.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>September 26, 2006</announced>
+  <revised>September 26, 2006: 01</revised>
+  <bug>147682</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">1.4.4</unaffected>
+      <vulnerable range="lt">1.4.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuTLS is an implementation of SSL 3.0 and TLS 1.0.
+    </p>
+  </background>
+  <description>
+    <p>
+    verify.c fails to properly handle excess data in
+    digestAlgorithm.parameters field while generating a hash when using an
+    RSA key with exponent 3. RSA keys that use exponent 3 are commonplace.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers could forge PKCS #1 v1.5 signatures that are signed
+    with an RSA key, preventing GnuTLS from correctly verifying X.509 and
+    other certificates that use PKCS.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuTLS users should update both packages:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --update --ask --verbose &quot;&gt;=net-libs/gnutls-1.4.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4790">CVE-2006-4790</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 23 Sep 2006 06:35:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 25 Sep 2006 13:07:32 +0000">
+    hlieberman
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Sep 2006 18:24:37 +0000">
+    falco
+  </metadata>
+</glsa>

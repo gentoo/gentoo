@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-10">
+  <title>LibXfont, TightVNC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in libXfont and TightVNC,
+    allowing for the execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">tightvnc, libxfont</product>
+  <announced>May 08, 2007</announced>
+  <revised>May 08, 2007: 01</revised>
+  <bug>172575</bug>
+  <bug>174200</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/tightvnc" auto="yes" arch="*">
+      <unaffected range="ge">1.2.9-r4</unaffected>
+      <vulnerable range="lt">1.2.9-r4</vulnerable>
+    </package>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="ge">1.2.7-r1</unaffected>
+      <vulnerable range="lt">1.2.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LibXfont is the X.Org font library. TightVNC is a VNC client/server for
+    X displays.
+    </p>
+  </background>
+  <description>
+    <p>
+    The libXfont code is prone to several integer overflows, in functions
+    ProcXCMiscGetXIDList(), bdfReadCharacters() and FontFileInitTable().
+    TightVNC contains a local copy of this code and is also affected.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could use a specially crafted BDF Font to gain root
+    privileges on the vulnerable host.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libXfont users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libXfont-1.2.7-r1&quot;</code>
+    <p>
+    All TightVNC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/tightvnc-1.2.9-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1003">CVE-2007-1003</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1351">CVE-2007-1351</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1352">CVE-2007-1352</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Apr 2007 09:12:59 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 23 Apr 2007 12:11:04 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Apr 2007 19:02:32 +0000">
+    p-y
+  </metadata>
+</glsa>

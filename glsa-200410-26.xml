@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-26">
+  <title>socat: Format string vulnerability</title>
+  <synopsis>
+    socat contains a format string vulnerability that can potentially lead to
+    remote or local execution of arbitrary code with the privileges of the
+    socat process.
+  </synopsis>
+  <product type="ebuild">socat</product>
+  <announced>October 25, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>68547</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/socat" auto="yes" arch="*">
+      <unaffected range="ge">1.4.0.3</unaffected>
+      <vulnerable range="lt">1.4.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    socat is a multipurpose bidirectional relay, similar to netcat.
+    </p>
+  </background>
+  <description>
+    <p>
+    socat contains a syslog() based format string vulnerablility in the
+    '_msg()' function of 'error.c'. Exploitation of this bug is only
+    possible when socat is run with the '-ly' option, causing it to log
+    messages to syslog.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote exploitation is possible when socat is used as a HTTP proxy
+    client and connects to a malicious server. Local privilege escalation
+    can be achieved when socat listens on a UNIX domain socket. Potential
+    execution of arbitrary code with the privileges of the socat process is
+    possible with both local and remote exploitations.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable logging to syslog by not using the '-ly' option when starting
+    socat.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All socat users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/socat-1.4.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.dest-unreach.org/socat/advisory/socat-adv-1.html">socat Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1484">CVE-2004-1484</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 23 Oct 2004 13:12:08 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 23 Oct 2004 13:30:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 24 Oct 2004 21:38:40 +0000">
+    lewk
+  </metadata>
+</glsa>

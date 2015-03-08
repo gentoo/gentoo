@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-26">
+  <title>bsd-games: Local privilege escalation in tetris-bsd</title>
+  <synopsis>
+    tetris-bsd is prone to local privilege escalation vulnerabilities.
+  </synopsis>
+  <product type="ebuild">bsd-games</product>
+  <announced>March 29, 2006</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>122399</bug>
+  <access>local</access>
+  <affected>
+    <package name="games-misc/bsd-games" auto="yes" arch="*">
+      <unaffected range="ge">2.17-r1</unaffected>
+      <vulnerable range="lt">2.17-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    bsd-games is a collection of NetBSD games ported to Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team discovered that
+    the checkscores() function in scores.c reads in the data from the
+    /var/games/tetris-bsd.scores file without validation, rendering it
+    vulnerable to buffer overflows and incompatible with the system used
+    for managing games on Gentoo Linux. As a result, it cannot be played
+    securely on systems with multiple users. Please note that this is
+    probably a Gentoo-specific issue.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local user who is a member of group "games" may be able to modify the
+    tetris-bsd.scores file to trigger the execution of arbitrary code with
+    the privileges of other players.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not add untrusted users to the "games" group.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All bsd-games users are advised to update to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-misc/bsd-games-2.17-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1539">CVE-2006-1539</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Mar 2006 19:50:34 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 27 Mar 2006 15:36:51 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 28 Mar 2006 18:00:28 +0000">
+    DerCorny
+  </metadata>
+</glsa>

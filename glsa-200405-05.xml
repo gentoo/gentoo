@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-05">
+  <title>Utempter symlink vulnerability</title>
+  <synopsis>
+    Utempter contains a vulnerability that may allow local users to overwrite
+    arbitrary files via a symlink attack.
+  </synopsis>
+  <product type="ebuild">utempter</product>
+  <announced>May 13, 2004</announced>
+  <revised>May 13, 2004: 01</revised>
+  <bug>49536</bug>
+  <access>local </access>
+  <affected>
+    <package name="sys-apps/utempter" auto="yes" arch="*">
+      <unaffected range="ge">0.5.5.4</unaffected>
+      <vulnerable range="lt">0.5.5.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Utempter is an application that allows non-privileged apps to write utmp
+    (login) info, which otherwise needs root access.
+    </p>
+  </background>
+  <description>
+    <p>
+    Utempter contains a vulnerability that may allow local users to overwrite
+    arbitrary files via a symlink attack.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This vulnerability may allow arbitrary files to be overwritten with root
+    privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of utempter.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of utempter should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=sys-apps/utempter-0.5.5.4"
+    # emerge ">=sys-apps/utempter-0.5.5.4"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0233">CAN-2004-0233</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

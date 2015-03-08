@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-25">
+  <title>Rootkit Hunter: Insecure temporary file creation</title>
+  <synopsis>
+    Rootkit Hunter is vulnerable to symlink attacks, potentially allowing a
+    local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">rkhunter</product>
+  <announced>April 26, 2005</announced>
+  <revised>April 26, 2005: 01</revised>
+  <bug>90007</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-forensics/rkhunter" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3-r1</unaffected>
+      <vulnerable range="lt">1.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Rootkit Hunter is a scanning tool to detect rootkits, backdoors
+    and local exploits on a local machine. Rootkit Hunter uses downloaded
+    data files to check file integrity. These files are updated via the
+    check_update.sh script.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sune Kloppenborg Jeppesen and Tavis Ormandy of the Gentoo Linux
+    Security Team have reported that the check_update.sh script and the
+    main rkhunter script insecurely creates several temporary files with
+    predictable filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When rkhunter or the check_update.sh script runs, this would result in
+    the file being overwritten with the rights of the user running the
+    utility, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Rootkit Hunter users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-forensics/rkhunter-1.2.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1270">CAN-2005-1270</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 26 Apr 2005 06:10:01 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Apr 2005 18:37:38 +0000">
+    koon
+  </metadata>
+</glsa>

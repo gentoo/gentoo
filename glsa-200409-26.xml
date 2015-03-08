@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-26">
+  <title>Mozilla, Firefox, Thunderbird, Epiphany: New releases fix vulnerabilities</title>
+  <synopsis>
+    New releases of Mozilla, Epiphany, Mozilla Thunderbird, and Mozilla Firefox
+    fix several vulnerabilities, including the remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">Mozilla</product>
+  <announced>September 20, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>63996</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.3</unaffected>
+      <vulnerable range="lt">1.7.3</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre</unaffected>
+      <vulnerable range="lt">1.0_pre</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">0.8</unaffected>
+      <vulnerable range="lt">0.8</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.3</unaffected>
+      <vulnerable range="lt">1.7.3</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre</unaffected>
+      <vulnerable range="lt">1.0_pre</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">0.8</unaffected>
+      <vulnerable range="lt">0.8</vulnerable>
+    </package>
+    <package name="www-client/epiphany" auto="yes" arch="*">
+      <unaffected range="ge">1.2.9-r1</unaffected>
+      <vulnerable range="lt">1.2.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla is a popular web browser that includes a mail and newsreader.
+    Epiphany is a web browser that uses Gecko, the Mozilla rendering
+    engine. Mozilla Firefox and Mozilla Thunderbird are respectively the
+    next-generation browser and mail client from the Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mozilla-based products are vulnerable to multiple security issues.
+    Firstly routines handling the display of BMP images and VCards contain
+    an integer overflow and a stack buffer overrun. Specific pages with
+    long links, when sent using the "Send Page" function, and links with
+    non-ASCII hostnames could both cause heap buffer overruns.
+    </p>
+    <p>
+    Several issues were found and fixed in JavaScript rights handling:
+    untrusted script code could read and write to the clipboard, signed
+    scripts could build confusing grant privileges dialog boxes, and when
+    dragged onto trusted frames or windows, JavaScript links could access
+    information and rights of the target frame or window. Finally,
+    Mozilla-based mail clients (Mozilla and Mozilla Thunderbird) are
+    vulnerable to a heap overflow caused by invalid POP3 mail server
+    responses.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker might be able to run arbitrary code with the rights of the
+    user running the software by enticing the user to perform one of the
+    following actions: view a specially-crafted BMP image or VCard, use the
+    "Send Page" function on a malicious page, follow links with malicious
+    hostnames, drag multiple JavaScript links in a row to another window,
+    or connect to an untrusted POP3 mail server. An attacker could also use
+    a malicious page with JavaScript to disclose clipboard contents or
+    abuse previously-given privileges to request XPI installation
+    privileges through a confusing dialog.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround covering all vulnerabilities.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv your-version
+    # emerge your-version</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#mozilla1.7.3">Mozilla Security Advisory</uri>
+    <uri link="http://www.us-cert.gov/cas/techalerts/TA04-261A.html">US-CERT Security Alert TA04-261A</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0902">CVE-2004-0902</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0903">CVE-2004-0903</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0904">CVE-2004-0904</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0905">CVE-2004-0905</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0906">CVE-2004-0906</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0907">CVE-2004-0907</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0908">CVE-2004-0908</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0909">CVE-2004-0909</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 19 Sep 2004 12:09:02 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Sep 2004 15:58:46 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-04">
+  <title>phpDocumentor: Function call injection</title>
+  <synopsis>phpDocumentor bundles Smarty which contains an input sanitation
+    flaw, allowing attackers to call arbitrary PHP functions. 
+  </synopsis>
+  <product type="ebuild">PhpDocumentor</product>
+  <announced>November 11, 2011</announced>
+  <revised>November 11, 2011: 1</revised>
+  <bug>213318</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/PEAR-PhpDocumentor" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3-r1</unaffected>
+      <vulnerable range="lt">1.4.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The phpDocumentor package provides automatic documenting of PHP API
+      directly from the source.
+    </p>
+  </background>
+  <description>
+    <p>phpDocumentor bundles Smarty with the modifier.regex_replace.php plug-in
+      which does not properly sanitize input related to the ASCII NUL character
+      in a search string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could call arbitrary PHP functions via templates.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All phpDocumentor users should upgrade to the latest stable version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-php/PEAR-PhpDocumentor-1.4.3-r1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since February 12, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1066">
+      CVE-2008-1066
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:01 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Fri, 11 Nov 2011 22:11:04 +0000" tag="submitter">ackle</metadata>
+</glsa>

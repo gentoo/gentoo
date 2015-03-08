@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-05">
+  <title>pip: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in pip, which may allow
+    remote attackers to execute arbitrary code or local attackers to conduct
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">pip</product>
+  <announced>September 12, 2013</announced>
+  <revised>September 12, 2013: 1</revised>
+  <bug>462616</bug>
+  <bug>480202</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-python/pip" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1</unaffected>
+      <vulnerable range="lt">1.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>pip is a tool for installing and managing Python packages.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in pip. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could conduct a Man-in-the-Middle attack to cause pip
+      to execute arbitrary code. A local attacker could perform symlink attacks
+      to overwrite arbitrary files with the privileges of the user running the
+      application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All pip users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pip-1.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1629">CVE-2013-1629</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1888">CVE-2013-1888</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 11 Jul 2013 20:41:57 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Sep 2013 20:57:59 +0000">
+    creffett
+  </metadata>
+</glsa>

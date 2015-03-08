@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-05">
+  <title>SiteBar: Multiple issues</title>
+  <synopsis>
+    Multiple issues have been identified in SiteBar that might allow execution
+    of arbitrary code and arbitrary file disclosure.
+  </synopsis>
+  <product type="ebuild">sitebar</product>
+  <announced>November 06, 2007</announced>
+  <revised>November 06, 2007: 01</revised>
+  <bug>195810</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/sitebar" auto="yes" arch="*">
+      <unaffected range="ge">3.3.9</unaffected>
+      <vulnerable range="lt">3.3.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SiteBar is a PHP application that allows users to store their bookmarks
+    on a web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tim Brown discovered these multiple issues: the translation module does
+    not properly sanitize the value to the "dir" parameter (CVE-2007-5491,
+    CVE-2007-5694); the translation module also does not sanitize the
+    values of the "edit" and "value" parameters which it passes to eval()
+    and include() (CVE-2007-5492, CVE-2007-5693); the log-in command does
+    not validate the URL to redirect users to after logging in
+    (CVE-2007-5695); SiteBar also contains several cross-site scripting
+    vulnerabilities (CVE-2007-5692).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An authenticated attacker in the "Translators" or "Admins" group could
+    execute arbitrary code, read arbitrary files and possibly change their
+    permissions with the privileges of the user running the web server by
+    passing a specially crafted parameter string to the "translator.php"
+    file. An unauthenticated attacker could entice a user to browse a
+    specially crafted URL, allowing for the execution of script code in the
+    context of the user's browser, for the theft of browser credentials or
+    for a redirection to an arbitrary web site after login.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SiteBar users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/sitebar-3.3.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5491">CVE-2007-5491</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5492">CVE-2007-5492</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5692">CVE-2007-5692</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5693">CVE-2007-5693</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5694">CVE-2007-5694</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5695">CVE-2007-5695</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 18 Oct 2007 20:00:51 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Oct 2007 20:01:07 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201409-03">
+  <title>dhcpcd: Denial of service</title>
+  <synopsis>A vulnerability in dhcpcd can lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">dhcpcd</product>
+  <announced>September 03, 2014</announced>
+  <revised>September 03, 2014: 1</revised>
+  <bug>518596</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcpcd" auto="yes" arch="*">
+      <unaffected range="ge">6.4.3</unaffected>
+      <vulnerable range="lt">6.4.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>dhcpcd is a fully featured, yet light weight RFC2131 compliant DHCP
+      client. 
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in dhcpcd. A malicious dhcp server
+      can set flags as part of the dhcp reply that can cause a Denial of
+      Service condition.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All dhcpcd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcpcd-6.4.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6060">CVE-2014-6060</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 01 Aug 2014 20:16:47 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Wed, 03 Sep 2014 15:31:47 +0000">Zlogene</metadata>
+</glsa>

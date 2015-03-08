@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-11">
+  <title>Gaim: Denial of Service vulnerabilities</title>
+  <synopsis>
+    Gaim contains two remote Denial of Service vulnerabilities.
+  </synopsis>
+  <product type="ebuild">gaim</product>
+  <announced>June 12, 2005</announced>
+  <revised>June 12, 2005: 01</revised>
+  <bug>95347</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1</unaffected>
+      <vulnerable range="lt">1.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a full featured instant messaging client which handles a
+    variety of instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jacopo Ottaviani discovered a vulnerability in the Yahoo! file
+    transfer code when being offered files with names containing non-ASCII
+    characters (CAN-2005-1269).
+    </p>
+    <p>
+    Hugo de Bokkenrijder discovered a
+    vulnerability when receiving malformed MSN messages (CAN-2005-1934).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Both vulnerabilities cause Gaim to crash, resulting in a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/gaim-1.3.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://gaim.sourceforge.net/security/?id=18">Gaim Vulnerability: Remote Yahoo! crash</uri>
+    <uri link="http://gaim.sourceforge.net/security/?id=19">Gaim Vulnerability: MSN Remote DoS</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1269">CAN-2005-1269</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1934">CAN-2005-1934</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jun 2005 08:03:05 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jun 2005 08:44:05 +0000">
+    r2d2
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Jun 2005 13:55:53 +0000">
+    koon
+  </metadata>
+</glsa>

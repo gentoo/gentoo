@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-15">
+  <title>Zabbix: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Zabbix, possibly
+    leading to SQL injection attacks, Denial of Service, or information
+    disclosure. 
+  </synopsis>
+  <product type="ebuild">zabbix</product>
+  <announced>November 25, 2013</announced>
+  <revised>November 25, 2013: 1</revised>
+  <bug>312875</bug>
+  <bug>394497</bug>
+  <bug>428372</bug>
+  <bug>452878</bug>
+  <bug>486696</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/zabbix" auto="yes" arch="*">
+      <unaffected range="ge">2.0.9_rc1-r2</unaffected>
+      <vulnerable range="lt">2.0.9_rc1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Zabbix is software for monitoring applications, networks, and servers.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Zabbix. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary SQL statements, cause
+      a Denial of Service condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Zabbix users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/zabbix-2.0.9_rc1-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1277">CVE-2010-1277</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2904">CVE-2011-2904</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3263">CVE-2011-3263</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4674">CVE-2011-4674</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3435">CVE-2012-3435</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1364">CVE-2013-1364</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5572">CVE-2013-5572</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:48 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 25 Nov 2013 17:22:15 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-09">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>
+    A flaw in sudo's -e option may allow local attackers to execute arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>321697</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.7.2_p6</unaffected>
+      <vulnerable range="lt">1.7.2_p6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sudo allows a system administrator to give users the ability to run
+    commands as other users.
+    </p>
+  </background>
+  <description>
+    <p>
+    The command matching functionality does not properly handle when a file
+    in the current working directory has the same name as a pseudo-command
+    in the sudoers file and the PATH contains an entry for ".".
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker with the permission to run sudoedit could, under
+    certain circumstances, execute arbitrary commands as whichever user he
+    has permission to run sudoedit as, typically root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sudo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.7.2_p6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1163">CVE-2010-1163</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 May 2010 20:27:33 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 30 May 2010 14:58:46 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 18:08:55 +0000">
+    vorlon
+  </metadata>
+</glsa>

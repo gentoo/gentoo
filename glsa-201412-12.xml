@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-12">
+  <title>D-Bus: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in D-Bus, possibly
+    resulting in local Denial of Service.
+  </synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>512940</bug>
+  <bug>516080</bug>
+  <bug>522982</bug>
+  <bug>528900</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.8.10</unaffected>
+      <vulnerable range="lt">1.8.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system, a simple way for applications to talk to
+      one another.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in D-Bus. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.8.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3477">CVE-2014-3477</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3532">CVE-2014-3532</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3533">CVE-2014-3533</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3635">CVE-2014-3635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3636">CVE-2014-3636</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3637">CVE-2014-3637</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3638">CVE-2014-3638</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3639">CVE-2014-3639</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7824">CVE-2014-7824</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2014 15:00:32 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 14:54:26 +0000">Zlogene</metadata>
+</glsa>

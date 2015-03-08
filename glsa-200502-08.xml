@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-08">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>
+    PostgreSQL contains several vulnerabilities which could lead to execution
+    of arbitrary code, Denial of Service and security bypass.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>February 07, 2005</announced>
+  <revised>June 26, 2007: 06</revised>
+  <bug>80342</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="eq">7.3*</unaffected>
+      <unaffected range="eq">7.4*</unaffected>
+      <unaffected range="ge">8.0.1</unaffected>
+      <vulnerable range="lt">7.3.10</vulnerable>
+      <vulnerable range="lt">7.4.7</vulnerable>
+      <vulnerable range="lt">8.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PostgreSQL is a SQL compliant, open source object-relational database
+    management system.
+    </p>
+  </background>
+  <description>
+    <p>
+    PostgreSQL's contains several vulnerabilities:
+    </p>
+    <ul>
+    <li>John Heasman discovered that the LOAD extension is vulnerable to
+    local privilege escalation (CAN-2005-0227).</li>
+    <li>It is possible to bypass the EXECUTE permission check for functions
+    (CAN-2005-0244).</li>
+    <li>The PL/PgSQL parser is vulnerable to heap-based buffer overflow
+    (CAN-2005-0244).</li>
+    <li>The intagg contrib module is vulnerable to a Denial of Service
+    (CAN-2005-0246).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this to execute arbitrary code with the
+    privileges of the PostgreSQL server, bypass security restrictions and
+    crash the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no know workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PostgreSQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-db/postgresql</code>
+  </resolution>
+  <references>
+    <uri link="http://archives.postgresql.org/pgsql-announce/2005-02/msg00000.php">PostgreSQL Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0227">CAN-2005-0227</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0244">CAN-2005-0244</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0245">CAN-2005-0245</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0246">CAN-2005-0246</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  2 Feb 2005 18:15:02 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 18:50:22 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  6 Feb 2005 17:27:47 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-24">
+  <title>MPlayer, xine-lib: vulnerabilities in RTSP stream handling</title>
+  <synopsis>
+    Multiple vulnerabilities, including remotely exploitable buffer overflows,
+    have been found in code common to MPlayer and the xine library.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>May 28, 2004</announced>
+  <revised>May 28, 2004: 01</revised>
+  <bug>49387</bug>
+  <access>remote </access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre4</unaffected>
+      <unaffected range="le">0.92-r1</unaffected>
+      <vulnerable range="lt">1.0_pre4</vulnerable>
+    </package>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1_rc4</unaffected>
+      <unaffected range="le">0.9.13-r3</unaffected>
+      <vulnerable range="lt">1_rc4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a movie player capable of handling multiple multimedia file
+    formats. xine-lib is a multimedia player library used by several graphical
+    user interfaces, including xine-ui. They both use the same code to handle
+    Real-Time Streaming Protocol (RTSP) streams from RealNetworks servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found and fixed in the RTSP handling
+    code common to recent versions of these two packages. These vulnerabilities
+    include several remotely exploitable buffer overflows.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker, posing as a RTSP stream server, can execute arbitrary
+    code with the rights of the user of the software playing the stream
+    (MPlayer or any player using xine-lib). Another attacker may entice a user
+    to use a maliciously crafted URL or playlist to achieve the same results.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    For MPlayer, there is no known workaround at this time. For xine-lib, you
+    can delete the xineplug_inp_rtsp.so file.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to non-vulnerable versions of MPlayer and
+    xine-lib:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-video/mplayer-1.0_pre4"
+    # emerge ">=media-video/mplayer-1.0_pre4"
+
+    # emerge -pv ">=media-libs/xine-lib-1_rc4"
+    # emerge ">=media-libs/xine-lib-1_rc4"</code>
+  </resolution>
+  <references>
+    <uri link="http://xinehq.de/index.php/security/XSA-2004-3">Xine security advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0433">CAN-2004-0433</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-07">
+  <title>Blender: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Blender, the worst of
+    which could allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">blender</product>
+  <announced>November 13, 2013</announced>
+  <revised>November 13, 2013: 1</revised>
+  <bug>219008</bug>
+  <bug>293130</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-gfx/blender" auto="yes" arch="*">
+      <unaffected range="ge">2.49b-r2</unaffected>
+      <vulnerable range="lt">2.49b-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Blender is a 3D Creation/Animation/Publishing System.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Blender. Please review
+      the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Blender users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/blender-2.49b-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1102">CVE-2008-1102</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1103">CVE-2008-1103</uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3850">
+      CVE-2009-3850
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:20 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Nov 2013 11:12:41 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-21">
+  <title>RealPlayer, Helix Player: Buffer overflow vulnerability</title>
+  <synopsis>
+    RealPlayer and Helix Player are vulnerable to a buffer overflow that could
+    lead to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">RealPlayer</product>
+  <announced>April 22, 2005</announced>
+  <revised>April 22, 2005: 01</revised>
+  <bug>89862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/realplayer" auto="yes" arch="*">
+      <unaffected range="ge">10.0.4</unaffected>
+      <vulnerable range="lt">10.0.4</vulnerable>
+    </package>
+    <package name="media-video/helixplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4</unaffected>
+      <vulnerable range="lt">1.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    RealPlayer is a multimedia player capable of handling multiple
+    multimedia file formats. Helix Player is the Open Source version of
+    RealPlayer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Piotr Bania has discovered a buffer overflow vulnerability in
+    RealPlayer and Helix Player when processing malicious RAM files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to play a specially crafted RAM file an
+    attacker could execute arbitrary code with the permissions of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All RealPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.4&quot;</code>
+    <p>
+    All Helix Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/helixplayer-1.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0755">CAN-2005-0755</uri>
+    <uri link="http://service.real.com/help/faq/security/050419_player/EN/">RealNetworks Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 21 Apr 2005 08:25:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 21 Apr 2005 21:28:38 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 22 Apr 2005 07:59:29 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-13">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MIT Kerberos 5, the
+    most severe of which may allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>303723</bug>
+  <bug>308021</bug>
+  <bug>321935</bug>
+  <bug>323525</bug>
+  <bug>339866</bug>
+  <bug>347369</bug>
+  <bug>352859</bug>
+  <bug>359129</bug>
+  <bug>363507</bug>
+  <bug>387585</bug>
+  <bug>393429</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.9.2-r1</unaffected>
+      <vulnerable range="lt">1.9.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MIT Kerberos 5 is a suite of applications that implement the Kerberos
+      network protocol.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MIT Kerberos 5. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker may be able to execute arbitrary code with the
+      privileges of the administration daemon or the Key Distribution Center
+      (KDC) daemon, cause a Denial of Service condition, or possibly obtain
+      sensitive information. Furthermore, a remote attacker may be able to
+      spoof Kerberos authorization, modify KDC responses, forge user data
+      messages, forge tokens, forge signatures, impersonate a client, modify
+      user-visible prompt text, or have other unspecified impact. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MIT Kerberos 5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.9.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3295">CVE-2009-3295</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4212">CVE-2009-4212</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0283">CVE-2010-0283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0629">CVE-2010-0629</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1320">CVE-2010-1320</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1321">CVE-2010-1321</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1322">CVE-2010-1322</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1323">CVE-2010-1323</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1324">CVE-2010-1324</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4020">CVE-2010-4020</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4021">CVE-2010-4021</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4022">CVE-2010-4022</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0281">CVE-2011-0281</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0282">CVE-2011-0282</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0283">CVE-2011-0283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0284">CVE-2011-0284</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0285">CVE-2011-0285</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1527">CVE-2011-1527</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1528">CVE-2011-1528</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1529">CVE-2011-1529</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1530">CVE-2011-1530</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4151">CVE-2011-4151</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:18 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 20:00:30 +0000" tag="submitter">craig</metadata>
+</glsa>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-29">
+  <title>PuTTY: Pre-authentication buffer overflow</title>
+  <synopsis>
+    PuTTY contains a vulnerability allowing an SSH server to execute arbitrary
+    code on the connecting client.
+  </synopsis>
+  <product type="ebuild">putty</product>
+  <announced>October 27, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>69123</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/putty" auto="yes" arch="*">
+      <unaffected range="ge">0.56</unaffected>
+      <vulnerable range="le">0.55</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PuTTY is a free implementation of Telnet and SSH for Win32 and Unix
+    platforms, along with an xterm terminal emulator.
+    </p>
+  </background>
+  <description>
+    <p>
+    PuTTY fails to do proper bounds checking on SSH2_MSG_DEBUG packets. The
+    "stringlen" parameter value is incorrectly checked due to signedness
+    issues. Note that this vulnerability is similar to the one described in
+    GLSA 200408-04 but not the same.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    When PuTTY connects to a server using the SSH2 protocol, an attacker
+    may be able to send specially crafted packets to the client, resulting
+    in the execution of arbitrary code with the permissions of the user
+    running PuTTY. Note that this is possible during the authentication
+    process but before host key verification.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PuTTY users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/putty-0.56&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=155">iDEFENSE Security Advisory 10.27.04</uri>
+    <uri link="http://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">PuTTY ChangeLog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1008">CVE-2004-1008</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 27 Oct 2004 15:40:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 27 Oct 2004 15:40:58 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 27 Oct 2004 16:43:51 +0000">
+    jaervosz
+  </metadata>
+</glsa>

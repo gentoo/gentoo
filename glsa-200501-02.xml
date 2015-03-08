@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-02">
+  <title>a2ps: Multiple vulnerabilities</title>
+  <synopsis>
+    The fixps and psmandup scripts in the a2ps package are vulnerable to
+    symlink attacks, potentially allowing a local user to overwrite arbitrary
+    files. A vulnerability in a2ps filename handling could also result in
+    arbitrary command execution.
+  </synopsis>
+  <product type="ebuild">a2ps</product>
+  <announced>January 04, 2005</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>75784</bug>
+  <bug>61500</bug>
+  <access>local and remote</access>
+  <affected>
+    <package name="app-text/a2ps" auto="yes" arch="*">
+      <unaffected range="ge">4.13c-r2</unaffected>
+      <vulnerable range="lt">4.13c-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    a2ps is an Any to Postscript filter that can convert to Postscript from
+    many filetypes. fixps is a script that fixes errors in Postscript
+    files. psmandup produces a Postscript file for printing in manual
+    duplex mode.
+    </p>
+  </background>
+  <description>
+    <p>
+    Javier Fernandez-Sanguino Pena discovered that the a2ps package
+    contains two scripts that create insecure temporary files (fixps and
+    psmandup). Furthermore, we fixed in a previous revision a vulnerability
+    in a2ps filename handling (CAN-2004-1170).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When
+    fixps or psmandup is executed, this would result in the file being
+    overwritten with the rights of the user running the utility. By
+    enticing a user or script to run a2ps on a malicious filename, an
+    attacker could execute arbitrary commands on the system with the rights
+    of that user or script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All a2ps users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/a2ps-4.13c-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/13641/">Secunia SA13641</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1170">CAN-2004-1170</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1377">CVE-2004-1377</uri>
+    <uri link="http://lists.netsys.com/pipermail/full-disclosure/2004-August/025678.html">Full-Disclosure Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue,  4 Jan 2005 09:44:14 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 09:44:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  4 Jan 2005 11:06:21 +0000">
+    SeJo
+  </metadata>
+</glsa>

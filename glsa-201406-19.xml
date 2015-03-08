@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-19">
+  <title>Mozilla Network Security Service: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been discovered in Mozilla Network
+    Security Service, the worst of which could lead to Denial of Service. 
+  </synopsis>
+  <product type="ebuild">nss</product>
+  <announced>June 21, 2014</announced>
+  <revised>June 21, 2014: 1</revised>
+  <bug>455558</bug>
+  <bug>486114</bug>
+  <bug>491234</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.15.3</unaffected>
+      <vulnerable range="lt">3.15.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Mozilla Network Security Service is a library implementing security
+      features like SSL v2/v3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS #12,
+      S/MIME and X.509 certificates. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the Mozilla Network
+      Security Service. Please review the CVE identifiers referenced below for
+      more details about the vulnerabilities. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Network Security Service users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.15.3"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1620">CVE-2013-1620</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1739">CVE-2013-1739</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1741">CVE-2013-1741</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2566">CVE-2013-2566</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5605">CVE-2013-5605</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5606">CVE-2013-5606</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5607">CVE-2013-5607</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 01:57:31 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 21 Jun 2014 21:43:15 +0000">K_F</metadata>
+</glsa>

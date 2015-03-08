@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-02">
+  <title>enscript: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Two buffer overflows in enscript might lead to the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">enscript</product>
+  <announced>December 02, 2008</announced>
+  <revised>December 02, 2008: 02</revised>
+  <bug>243228</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/enscript" auto="yes" arch="*">
+      <unaffected range="ge">1.6.4-r4</unaffected>
+      <vulnerable range="lt">1.6.4-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    enscript is a powerful ASCII to PostScript file converter.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two stack-based buffer overflows in the read_special_escape() function
+    in src/psgen.c have been reported. Ulf Harnhammar of Secunia Research
+    discovered a vulnerability related to the "setfilename" command
+    (CVE-2008-3863), and Kees Cook of Ubuntu discovered a vulnerability
+    related to the "font" escape sequence (CVE-2008-4306).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user or automated system to process
+    specially crafted input with the special escapes processing enabled
+    using the "-e" option, possibly resulting in the execution of arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All enscript users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/enscript-1.6.4-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3863">CVE-2008-3863</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4306">CVE-2008-4306</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 27 Nov 2008 17:28:05 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Nov 2008 17:37:26 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Nov 2008 17:37:33 +0000">
+    rbu
+  </metadata>
+</glsa>

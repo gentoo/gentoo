@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-09">
+  <title>bluez-utils: Bluetooth device name validation vulnerability</title>
+  <synopsis>
+    Improper validation of Bluetooth device names can lead to arbitrary command
+    execution.
+  </synopsis>
+  <product type="ebuild">bluez-utils</product>
+  <announced>August 17, 2005</announced>
+  <revised>August 17, 2005: 01</revised>
+  <bug>101557</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/bluez-utils" auto="yes" arch="*">
+      <unaffected range="ge">2.19</unaffected>
+      <vulnerable range="lt">2.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    bluez-utils are the utilities for use with the BlueZ
+    implementation of the Bluetooth wireless standards for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    The name of a Bluetooth device is improperly validated by the hcid
+    utility when a remote device attempts to pair itself with a computer.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could create a malicious device name on a Bluetooth
+    device resulting in arbitrary commands being executed as root upon
+    attempting to pair the device with the computer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All bluez-utils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/bluez-utils-2.19&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2547">CAN-2005-2547</uri>
+    <uri link="http://cvs.sourceforge.net/viewcvs.py/bluez/utils/ChangeLog?rev=1.28&amp;view=markup">bluez-utils ChangeLog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 09 Aug 2005 20:35:32 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 10 Aug 2005 02:45:23 +0000">
+    r2d2
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 17 Aug 2005 13:18:39 +0000">
+    jaervosz
+  </metadata>
+</glsa>

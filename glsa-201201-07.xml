@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-07">
+  <title>NX Server Free Edition, NX Node: Privilege escalation</title>
+  <synopsis>An unspecified vulnerability in NX Server Free Edition and NX Node
+    could allow local attackers to gain root privileges.
+  </synopsis>
+  <product type="ebuild">NX Server NX Node</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>378345</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/nxserver-freeedition" auto="yes" arch="*">
+      <unaffected range="ge">3.5.0.5</unaffected>
+      <vulnerable range="lt">3.5.0.5</vulnerable>
+    </package>
+    <package name="net-misc/nxnode" auto="yes" arch="*">
+      <unaffected range="ge">3.5.0.4</unaffected>
+      <vulnerable range="lt">3.5.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NX Server Free Edition is a remote display technology by No Machine. NX
+      Node provides the shared components for NX Server.
+    </p>
+  </background>
+  <description>
+    <p>NX Server Free Edition and NX Node use nxconfigure.sh, a setuid script
+      containing an unspecified vulnerability. 
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NX Server Free Edition users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-misc/nxserver-freeedition-3.5.0.5"
+    </code>
+    
+    <p>All NX Node users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/nxnode-3.5.0.4"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 23, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3977">
+      CVE-2011-3977
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:19 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 11:55:50 +0000" tag="submitter">ackle</metadata>
+</glsa>

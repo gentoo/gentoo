@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-23">
+  <title>WordPress: Multiple vulnerabilities</title>
+  <synopsis>
+    Wordpress contains several cross-site scripting, cross-site request forgery
+    and information leak vulnerabilities.
+  </synopsis>
+  <product type="ebuild">wordpress</product>
+  <announced>March 20, 2007</announced>
+  <revised>March 20, 2007: 01</revised>
+  <bug>168529</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <vulnerable range="le">2.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a popular personal publishing platform with a web
+    interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    WordPress contains cross-site scripting or cross-site scripting forgery
+    vulnerabilities reported by:
+    </p>
+    <ul><li>g30rg3_x in the "year"
+    parameter of the wp_title() function</li>
+    <li>Alexander Concha in the
+    "demo" parameter of wp-admin/admin.php</li>
+    <li>Samenspender and Stefan
+    Friedli in the "post" parameter of wp-admin/post.php and
+    wp-admin/page.php, in the "cat_ID" parameter of wp-admin/categories.php
+    and in the "c" parameter of wp-admin/comment.php</li>
+    <li>PsychoGun in
+    the "file" parameter of wp-admin/templates.php</li>
+    </ul> <p>
+    </p>
+    <p>
+    Additionally, WordPress prints the full PHP script paths in some error
+    messages.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    The cross-site scripting vulnerabilities can be triggered to steal
+    browser session data or cookies. A remote attacker can entice a user to
+    browse to a specially crafted web page that can trigger the cross-site
+    request forgery vulnerability and perform arbitrary WordPress actions
+    with the permissions of the user. Additionally, the path disclosure
+    vulnerability could help an attacker to perform other attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all these
+    vulnerabilities.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Due to the numerous recently discovered vulnerabilities in WordPress,
+    this package has been masked in the portage tree. All WordPress users
+    are advised to unmerge it.
+    </p>
+    <code>
+    
+    # emerge --unmerge &quot;www-apps/wordpress&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1049">CVE-2007-1049</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1230">CVE-2007-1230</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1244">CVE-2007-1244</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1409">CVE-2007-1409</uri>
+    <uri link="http://secunia.com/advisories/24430/">SA 24430</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 09 Mar 2007 22:36:03 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 Mar 2007 15:44:31 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 20 Mar 2007 11:36:10 +0000">
+    falco
+  </metadata>
+</glsa>

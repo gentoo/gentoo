@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-03">
+  <title>ClamAV VirusEvent parameter vulnerability</title>
+  <synopsis>
+    With a specific configuration (using %f in the VirusEvent parameter), Clam
+    AntiVirus is vulnerable to an attack allowing execution of arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">ClamAV</product>
+  <announced>May 11, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>46264</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.70</unaffected>
+      <vulnerable range="lt">0.70</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    From <uri link="http://www.clamav.net/">http://www.clamav.net/</uri> :
+    </p>
+    <p>
+    "Clam AntiVirus is a GPL anti-virus toolkit for UNIX. The main purpose
+    of this software is the integration with mail servers (attachment
+    scanning). The package provides a flexible and scalable multi-threaded
+    daemon, a command line scanner, and a tool for automatic updating via
+    Internet. The programs are based on a shared library distributed with
+    the Clam AntiVirus package, which you can use with your own software.
+    Most importantly, the virus database is kept up to date."
+    </p>
+  </background>
+  <description>
+    <p>
+    The VirusEvent parameter in the clamav.conf configuration file allows
+    to specify a system command to run whenever a virus is found. This
+    system command can make use of the "%f" parameter which is replaced by
+    the name of the file infected. The name of the file scanned is under
+    control of the attacker and is not sufficiently checked. Version 0.70
+    of clamav disables the use of the "%f" parameter.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Sending a virus with a malicious file name can result in execution of
+    arbirary system commands with the rights of the antivirus process.
+    Since clamav is often associated to mail servers for email scanning,
+    this attack can be used remotely.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You should not use the "%f" parameter in your VirusEvent configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of Clam AntiVirus should upgrade to the latest stable
+    version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-antivirus/clamav-0.70&quot;
+    # emerge &quot;&gt;=app-antivirus/clamav-0.70&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1876">CVE-2004-1876</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

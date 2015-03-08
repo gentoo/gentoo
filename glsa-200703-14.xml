@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-14">
+  <title>Asterisk: SIP Denial of Service</title>
+  <synopsis>
+    Asterisk is vulnerable to Denial of Service in the SIP channel.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>March 16, 2007</announced>
+  <revised>March 16, 2007: 01</revised>
+  <bug>169616</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.14-r1</unaffected>
+      <unaffected range="rge">1.0.12-r1</unaffected>
+      <vulnerable range="lt">1.2.14-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source implementation of a telephone private branch
+    exchange (PBX).
+    </p>
+  </background>
+  <description>
+    <p>
+    The MU Security Research Team discovered that Asterisk contains a
+    NULL-pointer dereferencing error in the SIP channel when handling
+    request messages.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause an Asterisk server listening for SIP
+    messages to crash by sending a specially crafted SIP request message.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-misc/asterisk</code>
+    <p>
+    Note: Asterisk 1.0.x is no longer supported upstream so users should
+    consider upgrading to Asterisk 1.2.x.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1306">CVE-2007-1306</uri>
+    <uri link="http://labs.musecurity.com/advisories/MU-200703-01.txt">MU-200703-01</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 16 Mar 2007 07:59:58 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 16 Mar 2007 10:36:56 +0000">
+    falco
+  </metadata>
+</glsa>

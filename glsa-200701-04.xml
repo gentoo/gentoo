@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-04">
+  <title>SeaMonkey: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in the SeaMonkey project, some
+    of which may allow the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">seamonkey</product>
+  <announced>January 10, 2007</announced>
+  <revised>January 10, 2007: 01</revised>
+  <bug>158576</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.0.7</unaffected>
+      <vulnerable range="lt">1.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The SeaMonkey project is a community effort to deliver
+    production-quality releases of code derived from the application
+    formerly known as the 'Mozilla Application Suite'.
+    </p>
+  </background>
+  <description>
+    <p>
+    An anonymous researcher found evidence of memory corruption in the way
+    SeaMonkey handles certain types of SVG comment DOM nodes. Georgi
+    Guninski and David Bienvenu discovered buffer overflows in the
+    processing of long "Content-Type:" and long non-ASCII MIME email
+    headers. Additionally, Frederik Reiss discovered a heap-based buffer
+    overflow in the conversion of a CSS cursor. Several other issues with
+    memory corruption were also fixed. SeaMonkey also contains less severe
+    vulnerabilities involving JavaScript and Java.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could entice a user to load malicious JavaScript or a
+    malicious web page with a SeaMonkey application, possibly leading to
+    the execution of arbitrary code with the rights of the user running
+    those products. An attacker could also perform cross-site scripting
+    attacks, leading to the exposure of sensitive information, like user
+    credentials. Note that the execution of JavaScript or Java applets is
+    disabled by default in the SeaMonkey email client, and enabling it is
+    strongly discouraged.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds for all the issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SeaMonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.0.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6497">CVE-2006-6497</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6498">CVE-2006-6498</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6499">CVE-2006-6499</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6500">CVE-2006-6500</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6501">CVE-2006-6501</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6502">CVE-2006-6502</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6503">CVE-2006-6503</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6504">CVE-2006-6504</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6505">CVE-2006-6505</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 28 Dec 2006 16:02:48 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 10 Jan 2007 21:26:08 +0000">
+    falco
+  </metadata>
+</glsa>

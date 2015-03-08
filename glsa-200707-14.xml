@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-14">
+  <title>tcpdump: Integer overflow</title>
+  <synopsis>
+    A vulnerability has been discovered in tcpdump, allowing for the execution
+    of arbitrary code, possibly with root privileges.
+  </synopsis>
+  <product type="ebuild">tcpdump</product>
+  <announced>July 28, 2007</announced>
+  <revised>July 28, 2007: 01</revised>
+  <bug>184815</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/tcpdump" auto="yes" arch="*">
+      <unaffected range="ge">3.9.5-r3</unaffected>
+      <vulnerable range="lt">3.9.5-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    tcpdump is a tool for capturing and inspecting network traffic.
+    </p>
+  </background>
+  <description>
+    <p>
+    mu-b from Digital Labs discovered that the return value of a snprintf()
+    call is not properly checked before being used. This could lead to an
+    integer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted BGP packets on a network
+    being monitored with tcpdump, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running tcpdump, which
+    is usually root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All tcpdump users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/tcpdump-3.9.5-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3798">CVE-2007-3798</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Jul 2007 22:01:53 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Jul 2007 18:00:19 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 Jul 2007 18:48:59 +0000">
+    p-y
+  </metadata>
+</glsa>

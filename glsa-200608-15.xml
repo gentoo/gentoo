@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-15">
+  <title>MIT Kerberos 5: Multiple local privilege escalation vulnerabilities</title>
+  <synopsis>
+    Some applications shipped with MIT Kerberos 5 are vulnerable to local
+    privilege escalation.
+  </synopsis>
+  <product type="ebuild">MIT Kerberos 5</product>
+  <announced>August 10, 2006</announced>
+  <revised>August 10, 2006: 01</revised>
+  <bug>143240</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3-r3</unaffected>
+      <vulnerable range="lt">1.4.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is a suite of applications that implement the Kerberos
+    network protocol. It is designed to provide strong authentication for
+    client/server applications by using secret-key cryptography.
+    </p>
+  </background>
+  <description>
+    <p>
+    Unchecked calls to setuid() in krshd and v4rcp, as well as unchecked
+    calls to seteuid() in kftpd and in ksu, have been found in the MIT
+    Kerberos 5 program suite and may lead to a local root privilege
+    escalation.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could exploit this vulnerability to execute arbitrary
+    code with elevated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.4.3-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3083">CVE-2006-3083</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3084">CVE-2006-3084</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 09 Aug 2006 18:31:59 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Aug 2006 20:23:17 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Aug 2006 14:34:58 +0000">
+    falco
+  </metadata>
+</glsa>

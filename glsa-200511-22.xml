@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-22">
+  <title>Inkscape: Buffer overflow</title>
+  <synopsis>
+    A vulnerability has been identified that allows a specially crafted SVG
+    file to exploit a buffer overflow and potentially execute arbitrary code
+    when opened.
+  </synopsis>
+  <product type="ebuild">Inkscape</product>
+  <announced>November 28, 2005</announced>
+  <revised>November 28, 2005: 01</revised>
+  <bug>109993</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/inkscape" auto="yes" arch="*">
+      <unaffected range="ge">0.43</unaffected>
+      <vulnerable range="lt">0.43</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Inkscape is an Open Source vector graphics editor using the W3C
+    standard Scalable Vector Graphics (SVG) file format.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joxean Koret has discovered that Inkscape incorrectly allocates
+    memory when opening an SVG file, creating the possibility of a buffer
+    overflow if the SVG file being opened is specially crafted.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user into opening a maliciously crafted
+    SVG file, allowing for the execution of arbitrary code on a machine
+    with the privileges of the user running Inkscape.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Inkscape users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/inkscape-0.43&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3737">CVE-2005-3737</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Nov 2005 12:36:14 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 23 Nov 2005 22:39:24 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 27 Nov 2005 21:35:11 +0000">
+    jaervosz
+  </metadata>
+</glsa>

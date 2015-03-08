@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-07">
+  <title>Freeciv: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in Freeciv may allow a remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">freeciv</product>
+  <announced>February 06, 2014</announced>
+  <revised>February 06, 2014: 1</revised>
+  <bug>329949</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-strategy/freeciv" auto="yes" arch="*">
+      <unaffected range="ge">2.2.1</unaffected>
+      <vulnerable range="lt">2.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Freeciv is an open-source empire building strategy game.</p>
+  </background>
+  <description>
+    <p>The Lua component of Freeciv does not restrict which modules may be
+      loaded by scenario scripts.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      scenario file, possibly resulting in execution of arbitrary code or
+      reading of arbitrary files with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Freeciv users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=games-strategy/freeciv-2.2.1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since July 26, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2445">CVE-2010-2445</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Oct 2011 22:27:04 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 06 Feb 2014 14:16:02 +0000">
+    creffett
+  </metadata>
+</glsa>

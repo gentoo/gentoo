@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-34">
+  <title>BIND: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, possibly
+    resulting in Denial of Service.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>January 29, 2014</announced>
+  <revised>January 29, 2014: 1</revised>
+  <bug>437828</bug>
+  <bug>446094</bug>
+  <bug>453974</bug>
+  <bug>463497</bug>
+  <bug>478316</bug>
+  <bug>483208</bug>
+  <bug>498016</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.9.4_p2</unaffected>
+      <vulnerable range="lt">9.9.4_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND is the Berkeley Internet Name Domain Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BIND users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.9.4_p2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5166">CVE-2012-5166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5688">CVE-2012-5688</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5689">CVE-2012-5689</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2266">CVE-2013-2266</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3919">CVE-2013-3919</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4854">CVE-2013-4854</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0591">CVE-2014-0591</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:52:11 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Wed, 29 Jan 2014 22:28:10 +0000">ackle</metadata>
+</glsa>

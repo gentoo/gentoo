@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-02">
+  <title>SpamAssassin: Long URI Denial of Service</title>
+  <synopsis>
+    SpamAssassin is vulnerable to a Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">spamassassin</product>
+  <announced>March 02, 2007</announced>
+  <revised>March 02, 2007: 01</revised>
+  <bug>166969</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/spamassassin" auto="yes" arch="*">
+      <unaffected range="ge">3.1.8</unaffected>
+      <vulnerable range="lt">3.1.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SpamAssassin is an extensible email filter used to identify junk email.
+    </p>
+  </background>
+  <description>
+    <p>
+    SpamAssassin does not correctly handle very long URIs when scanning
+    emails.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause SpamAssassin to consume large amounts of CPU
+    and memory resources by sending one or more emails containing very long
+    URIs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SpamAssassin users should upgrade to the latest version.
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/spamassassin-3.1.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0451">CVE-2007-0451</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 25 Feb 2007 19:43:02 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 25 Feb 2007 19:46:27 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 26 Feb 2007 18:49:30 +0000">
+    DerCorny
+  </metadata>
+</glsa>

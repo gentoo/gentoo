@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-18">
+  <title>udev: Multiple vulnerabilities</title>
+  <synopsis>
+    Two errors in udev allow for a local root compromise and a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">udev</product>
+  <announced>April 18, 2009</announced>
+  <revised>April 18, 2009: 01</revised>
+  <bug>266290</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/udev" auto="yes" arch="*">
+      <unaffected range="ge">124-r2</unaffected>
+      <vulnerable range="lt">124-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    udev is the device manager used in the Linux 2.6 kernel series.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sebastian Krahmer of SUSE discovered the following two vulnerabilities:
+    </p>
+    <ul>
+    <li>udev does not verify the origin of NETLINK messages
+    properly (CVE-2009-1185).</li>
+    <li>A buffer overflow exists in the
+    util_path_encode() function in lib/libudev-util.c (CVE-2009-1186).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could gain root privileges by sending specially
+    crafted NETLINK messages to udev or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All udev users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-fs/udev-124-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1185">CVE-2009-1185</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1186">CVE-2009-1186</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Apr 2009 09:13:51 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Apr 2009 09:38:24 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 18 Apr 2009 18:32:47 +0000">
+    a3li
+  </metadata>
+</glsa>

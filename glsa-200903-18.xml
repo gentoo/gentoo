@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-18">
+  <title>Openswan: Insecure temporary file creation</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in Openswan, allowing
+    for symlink attacks.
+  </synopsis>
+  <product type="ebuild">openswan</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>238574</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/openswan" auto="yes" arch="*">
+      <unaffected range="ge">2.4.13-r2</unaffected>
+      <vulnerable range="lt">2.4.13-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Openswan is an implementation of IPsec for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that the IPSEC livetest tool does not
+    handle the ipseclive.conn and ipsec.olts.remote.log temporary files
+    securely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to execute arbitrary
+    code and overwrite arbitrary files with the privileges of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Openswan users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openswan-2.4.13-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4190">CVE-2008-4190</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:17:28 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:08:11 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:08:22 +0000">
+    rbu
+  </metadata>
+</glsa>

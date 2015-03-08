@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-04">
+  <title>lighttpd: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in lighttpd may lead to information disclosure or
+    a Denial of Service.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>December 02, 2008</announced>
+  <revised>December 02, 2008: 01</revised>
+  <bug>238180</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.20</unaffected>
+      <vulnerable range="lt">1.4.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    lighttpd is a lightweight high-performance web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in lighttpd:
+    </p>
+    <ul>
+    <li>
+    Qhy reported a memory leak in the http_request_parse() function in
+    request.c (CVE-2008-4298).
+    </li>
+    <li>
+    Gaetan Bisson reported that URIs are not decoded before applying
+    url.redirect and url.rewrite rules (CVE-2008-4359).
+    </li>
+    <li>
+    Anders1 reported that mod_userdir performs case-sensitive comparisons
+    on filename components in configuration options, which is insufficient
+    when case-insensitive filesystems are used (CVE-2008-4360).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities to cause a Denial
+    of Service, to bypass intended access restrictions, to obtain sensitive
+    information, or to possibly modify data.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.20&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4298">CVE-2008-4298</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4359">CVE-2008-4359</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4360">CVE-2008-4360</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:41:57 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 22:38:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 22:39:43 +0000">
+    rbu
+  </metadata>
+</glsa>

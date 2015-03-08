@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-23">
+  <title>libzip: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libzip, the worst of
+    which might allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libzip</product>
+  <announced>March 29, 2012</announced>
+  <revised>March 29, 2012: 1</revised>
+  <bug>409117</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libzip" auto="yes" arch="*">
+      <unaffected range="ge">0.10.1</unaffected>
+      <vulnerable range="lt">0.10.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libzip is a library for manipulating zip archives.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in the "_zip_readcdir()" function in
+      zip_open.c of libzip:
+    </p>
+    
+    <ul>
+      <li>An incorrect loop construct, which could cause a heap-based buffer
+        overflow (CVE-2012-1162).
+      </li>
+      <li>An integer overflow, which may not restrict operations within the
+        memory buffer (CVE-2012-1163).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted ZIP
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the process, a Denial of Service condition, or information
+      leaks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libzip users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libzip-0.10.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1162">CVE-2012-1162</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1163">CVE-2012-1163</uri>
+  </references>
+  <metadata timestamp="Fri, 23 Mar 2012 11:20:26 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Thu, 29 Mar 2012 11:18:55 +0000" tag="submitter">ackle</metadata>
+</glsa>

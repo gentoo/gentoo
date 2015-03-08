@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-07">
+  <title>ModPlug XMMS Plugin: Multiple vulnerabilities</title>
+  <synopsis> 	
+    
+    Multiple vulnerabilities have been found in ModPlug XMMS Plugin, worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">modplug</product>
+  <announced>August 16, 2014</announced>
+  <revised>August 16, 2014: 1</revised>
+  <bug>480388</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libmodplug" auto="yes" arch="*">
+      <unaffected range="ge">0.8.8.5</unaffected>
+      <vulnerable range="lt">0.8.8.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ModPlug XMMS Plugin is a library for playing MOD-like music files</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ModPlug XMMS Plugin.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ModPlug XMMS Plugin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libmodplug-0.8.8.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4233">CVE-2013-4233</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4234">CVE-2013-4234</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 15 Aug 2014 23:38:01 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 16 Aug 2014 17:57:57 +0000">Zlogene</metadata>
+</glsa>

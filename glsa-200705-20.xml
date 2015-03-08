@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-20">
+  <title>Blackdown Java: Applet privilege escalation</title>
+  <synopsis>
+    The Blackdown JDK and the Blackdown JRE suffer from the multiple
+    unspecified vulnerabilities that already affected the Sun JDK and JRE.
+  </synopsis>
+  <product type="ebuild">blackdown-jdk,blackdown-jre</product>
+  <announced>May 26, 2007</announced>
+  <revised>May 26, 2007: 01</revised>
+  <bug>161835</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/blackdown-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.03-r14</unaffected>
+      <vulnerable range="lt">1.4.2.03-r14</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jre" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.03-r14</unaffected>
+      <vulnerable range="lt">1.4.2.03-r14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Blackdown provides implementations of the Java Development Kit (JDK)
+    and the Java Runtime Environment (JRE).
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans has discovered multiple buffer overflows in the Sun JDK and
+    the Sun JRE possibly related to various AWT and font layout functions.
+    Tom Hawtin has discovered an unspecified vulnerability in the Sun JDK
+    and the Sun JRE relating to unintended applet data access. He has also
+    discovered multiple other unspecified vulnerabilities in the Sun JDK
+    and the Sun JRE allowing unintended Java applet or application resource
+    acquisition. Additionally, a memory corruption error has been found in
+    the handling of GIF images with zero width field blocks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to run a specially crafted Java applet
+    or application that could read, write, or execute local files with the
+    privileges of the user running the JVM, access data maintained in other
+    Java applets, or escalate the privileges of the currently running Java
+    applet or application allowing for unauthorized access to system
+    resources.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the "nsplugin" USE flag in order to prevent web applets from
+    being run.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Since there is no fixed update from Blackdown and since the flaw only
+    occurs in the applets, the "nsplugin" USE flag has been masked in the
+    portage tree. Emerge the ebuild again in order to fix the
+    vulnerability. Another solution is to switch to another Java
+    implementation such as the Sun implementation (dev-java/sun-jdk and
+    dev-java/sun-jre-bin).
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;dev-java/blackdown-jdk&quot;
+    # emerge --ask --oneshot --verbose &quot;dev-java/blackdown-jre&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6731">CVE-2006-6731</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6736">CVE-2006-6736</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6737">CVE-2006-6737</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6745">CVE-2006-6745</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 May 2007 18:56:59 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 May 2007 22:34:22 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 21 May 2007 21:16:03 +0000">
+    falco
+  </metadata>
+</glsa>

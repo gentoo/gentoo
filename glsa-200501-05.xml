@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-05">
+  <title>mit-krb5: Heap overflow in libkadm5srv</title>
+  <synopsis>
+    The MIT Kerberos 5 administration library (libkadm5srv) contains a heap
+    overflow that could lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>January 05, 2005</announced>
+  <revised>January 05, 2005: 01</revised>
+  <bug>75143</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.3.6</unaffected>
+      <vulnerable range="lt">1.3.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT krb5 is the free implementation of the Kerberos network
+    authentication protocol by the Massachusetts Institute of Technology.
+    </p>
+  </background>
+  <description>
+    <p>
+    The MIT Kerberos 5 administration library libkadm5srv contains a
+    heap overflow in the code handling password changing.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Under specific circumstances an attacker could execute arbitary
+    code with the permissions of the user running mit-krb5, which could be
+    the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mit-krb5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.3.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1189">CAN 2004-1189</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 30 Dec 2004 15:16:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 30 Dec 2004 19:47:37 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  5 Jan 2005 19:34:46 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-10">
+  <title>Icecast denial of service vulnerability</title>
+  <synopsis>
+    Icecast is vulnerable to a denial of service attack allowing remote users
+    to crash the application.
+  </synopsis>
+  <product type="ebuild">icecast</product>
+  <announced>May 19, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>50935</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/icecast" auto="yes" arch="*">
+      <unaffected range="ge">2.0.1</unaffected>
+      <vulnerable range="le">2.0.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Icecast is a program that streams audio data to listeners over the
+    Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is an out-of-bounds read error in the web interface of Icecast
+    when handling Basic Authorization requests. This vulnerability can
+    theorically be exploited by sending a specially crafted Authorization
+    header to the server.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By exploiting this vulnerability, it is possible to crash the Icecast
+    server remotely, resulting in a denial of service attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to
+    upgrade to the latest available version of Icecast.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of Icecast should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-misc/icecast-2.0.1&quot;
+    # emerge &quot;&gt;=net-misc/icecast-2.0.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.xiph.org/archives/icecast/7144.html">Icecast 2.0.1 announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2027">CVE-2004-2027</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

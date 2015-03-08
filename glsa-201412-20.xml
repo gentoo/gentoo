@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-20">
+  <title>GNUstep Base library: Denial of Service</title>
+  <synopsis>A vulnerability in GNUstep Base library could lead to Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">gnustep-base</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>508370</bug>
+  <access>remote</access>
+  <affected>
+    <package name="gnustep-base/gnustep-base" auto="yes" arch="*">
+      <unaffected range="ge">1.24.6-r1</unaffected>
+      <vulnerable range="lt">1.24.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNUstep Base library is a free software package implementing the API of
+      the OpenStep Foundation Kit (tm), including later additions.
+    </p>
+  </background>
+  <description>
+    <p>GNUstep Base library does not properly handle the file descriptor for
+      logging, when run as a daemon.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNUstep Base library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=gnustep-base/gnustep-base-1.24.6-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2980">CVE-2014-2980</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:07:11 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:03:50 +0000">ackle</metadata>
+</glsa>

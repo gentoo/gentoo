@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-20">
+  <title>International Components for Unicode: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities have been discovered in the International Components
+    for Unicode, possibly resulting in the remote execution of arbitrary code
+    or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">icu</product>
+  <announced>March 11, 2008</announced>
+  <revised>May 28, 2009: 03</revised>
+  <bug>208001</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">3.8.1-r1</unaffected>
+      <unaffected range="rge">3.6-r2</unaffected>
+      <vulnerable range="lt">3.8.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    International Components for Unicode is a set of C/C++ and Java
+    libraries providing Unicode and Globalization support for software
+    applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Will Drewry (Google Security) reported a vulnerability in the regular
+    expression engine when using back references to capture \0 characters
+    (CVE-2007-4770). He also found that the backtracking stack size is not
+    limited, possibly allowing for a heap-based buffer overflow
+    (CVE-2007-4771).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could submit specially crafted regular expressions to
+    an application using the library, possibly resulting in the remote
+    execution of arbitrary code with the privileges of the user running the
+    application or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All International Components for Unicode users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/icu-3.8.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4770">CVE-2007-4770</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4771">CVE-2007-4771</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 20 Feb 2008 08:30:44 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 20 Feb 2008 08:30:59 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Mar 2008 12:40:50 +0000">
+    p-y
+  </metadata>
+</glsa>

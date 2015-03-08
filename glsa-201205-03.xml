@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201205-03">
+  <title>Chromium, V8: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium and V8,
+    some of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium v8</product>
+  <announced>May 21, 2012</announced>
+  <revised>May 21, 2012: 1</revised>
+  <bug>416119</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">19.0.1084.46</unaffected>
+      <vulnerable range="lt">19.0.1084.46</vulnerable>
+    </package>
+    <package name="dev-lang/v8" auto="yes" arch="*">
+      <unaffected range="ge">3.9.24.21</unaffected>
+      <vulnerable range="lt">3.9.24.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project. V8 is Google’s open
+      source JavaScript engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and V8. Please
+      review the CVE identifiers and release notes referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted web site or JavaScript program using Chromium or V8, possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-19.0.1084.46"
+    </code>
+    
+    <p>All V8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/v8-3.9.24.21"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3083">
+      CVE-2011-3083
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3084">
+      CVE-2011-3084
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3085">
+      CVE-2011-3085
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3086">
+      CVE-2011-3086
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3087">
+      CVE-2011-3087
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3088">
+      CVE-2011-3088
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3089">
+      CVE-2011-3089
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3090">
+      CVE-2011-3090
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3091">
+      CVE-2011-3091
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3092">
+      CVE-2011-3092
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3093">
+      CVE-2011-3093
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3094">
+      CVE-2011-3094
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3095">
+      CVE-2011-3095
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3096">
+      CVE-2011-3096
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3100">
+      CVE-2011-3100
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3101">
+      CVE-2011-3101
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/05/stable-channel-update.html">
+      Release Notes 19.0.1084.46
+    </uri>
+  </references>
+  <metadata timestamp="Wed, 16 May 2012 06:58:58 +0000" tag="requester">
+    phajdan.jr
+  </metadata>
+  <metadata timestamp="Mon, 21 May 2012 06:46:40 +0000" tag="submitter">
+    phajdan.jr
+  </metadata>
+</glsa>

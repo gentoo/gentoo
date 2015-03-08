@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-17">
+  <title>PDFlib: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple stack-based buffer overflows have been reported in PDFlib.
+  </synopsis>
+  <product type="ebuild">pdflib</product>
+  <announced>March 10, 2008</announced>
+  <revised>March 10, 2008: 01</revised>
+  <bug>203287</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/pdflib" auto="yes" arch="*">
+      <unaffected range="ge">7.0.2_p8</unaffected>
+      <vulnerable range="lt">7.0.2_p8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PDFlib is a library for generating PDF on the fly.
+    </p>
+  </background>
+  <description>
+    <p>
+    poplix reported multiple boundary errors in the pdc_fsearch_fopen()
+    function when processing overly long filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted content to a vulnerable
+    application using PDFlib, possibly resulting in the remote execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PDFlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/pdflib-7.0.2_p8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6561">CVE-2007-6561</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Mar 2008 16:26:44 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Mar 2008 12:46:32 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 10 Mar 2008 12:46:45 +0000">
+    p-y
+  </metadata>
+</glsa>

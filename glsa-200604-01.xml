@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-01">
+  <title>MediaWiki: Cross-site scripting vulnerability</title>
+  <synopsis>
+    MediaWiki is vulnerable to a cross-site scripting attack that could allow
+    arbitrary JavaScript code execution.
+  </synopsis>
+  <product type="ebuild">mediawiki</product>
+  <announced>April 04, 2006</announced>
+  <revised>April 04, 2006: 01</revised>
+  <bug>127971</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mediawiki" auto="yes" arch="*">
+      <unaffected range="ge">1.4.15</unaffected>
+      <vulnerable range="lt">1.4.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MediaWiki is a collaborative editing software, used by big
+    projects like Wikipedia.
+    </p>
+  </background>
+  <description>
+    <p>
+    MediaWiki fails to decode certain encoded URLs correctly.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By supplying specially crafted links, a remote attacker could
+    exploit this vulnerability to inject malicious HTML or JavaScript code
+    that will be executed in a user's browser session in the context of the
+    vulnerable site.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MediaWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mediawiki-1.4.15&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1498">CVE-2006-1498</uri>
+    <uri link="http://sourceforge.net/project/shownotes.php?release_id=404869">MediaWiki 1.4.15 Release Notes</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Apr 2006 08:58:31 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 02 Apr 2006 08:58:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Apr 2006 17:15:00 +0000">
+    DerCorny
+  </metadata>
+</glsa>

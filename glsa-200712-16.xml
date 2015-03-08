@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-16">
+  <title>Exiv2: Integer overflow</title>
+  <synopsis>
+    An integer overflow vulnerability in Exiv2 possibly allows for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">exiv2</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>202351</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/exiv2" auto="yes" arch="*">
+      <unaffected range="ge">0.13-r1</unaffected>
+      <vulnerable range="lt">0.13-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Exiv2 is a C++ library and set of tools for parsing, editing and saving
+    Exif and IPTC metadata from images. Exif, the Exchangeable image file
+    format, specifies the addition of metadata tags to JPEG, TIFF and RIFF
+    files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Meder Kydyraliev (Google Security) discovered an integer overflow
+    vulnerability in the JpegThumbnail::setDataArea() method leading to a
+    heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice the user of an application making use of Exiv2
+    or an application included in Exiv2 to load an image file with
+    specially crafted Exif tags, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Exiv2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/exiv2-0.13-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6353">CVE-2007-6353</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Dec 2007 23:04:55 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Dec 2007 19:26:11 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Dec 2007 19:28:25 +0000">
+    rbu
+  </metadata>
+</glsa>

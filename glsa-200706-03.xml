@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-03">
+  <title>ELinks: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability has been discovered in ELinks allowing for the
+    user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">elinks</product>
+  <announced>June 06, 2007</announced>
+  <revised>June 06, 2007: 01</revised>
+  <bug>177512</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-client/elinks" auto="yes" arch="*">
+      <unaffected range="ge">0.11.2-r1</unaffected>
+      <vulnerable range="lt">0.11.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ELinks is a text-mode web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Arnaud Giersch discovered that the "add_filename_to_string()" function
+    in file intl/gettext/loadmsgcat.c uses an untrusted relative path,
+    allowing for a format string attack with a malicious .po file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user to run ELinks in a specially
+    crafted directory environment containing a malicious ".po" file,
+    possibly resulting in the execution of arbitrary code with the
+    privileges of the user running ELinks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ELinks users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/elinks-0.11.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2027">CVE-2007-2027</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 03 Jun 2007 06:18:54 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 03 Jun 2007 06:19:11 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 03 Jun 2007 17:56:00 +0000">
+    p-y
+  </metadata>
+</glsa>

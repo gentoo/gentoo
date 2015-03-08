@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-25">
+  <title>Courier Authentication Library: SQL Injection vulnerability</title>
+  <synopsis>
+    An SQL injection vulnerability has been discovered in the Courier
+    Authentication Library.
+  </synopsis>
+  <product type="ebuild">courier-authlib</product>
+  <announced>March 11, 2009</announced>
+  <revised>March 11, 2009: 01</revised>
+  <bug>252576</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/courier-authlib" auto="yes" arch="*">
+      <unaffected range="ge">0.62.2</unaffected>
+      <vulnerable range="lt">0.62.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Courier Authentication Library is a generic authentication API that
+    encapsulates the process of validating account passwords.
+    </p>
+  </background>
+  <description>
+    <p>
+    It has been reported that some parameters used in SQL queries are not
+    properly sanitized before being processed when using a non-Latin locale
+    Postgres database.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted input to an application
+    using the library, possibly resulting in the execution of arbitrary SQL
+    commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Courier Authentication Library users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/courier-authlib-0.62.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2380">CVE-2008-2380</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 18:32:02 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 10 Mar 2009 12:55:53 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 11 Mar 2009 10:55:30 +0000">
+    p-y
+  </metadata>
+</glsa>

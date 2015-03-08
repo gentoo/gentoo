@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-10">
+  <title>Asterisk: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which could lead to Denial of Service. 
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>November 23, 2014</announced>
+  <revised>November 23, 2014: 1</revised>
+  <bug>523216</bug>
+  <bug>526208</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">11.13.1</unaffected>
+      <vulnerable range="lt">11.13.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Multiple unspecified vulnerabilities have been discovered in Asterisk.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit the vulnerabilities to cause a man in
+      the middle attack or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-11.13.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6610">CVE-2014-6610</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Sep 2014 19:18:45 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Nov 2014 17:54:08 +0000">ackle</metadata>
+</glsa>

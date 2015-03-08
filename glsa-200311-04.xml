@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200311-04">
+  <title>FreeRADIUS: heap exploit and NULL pointer dereference vulnerability</title>
+  <synopsis>
+    FreeRADIUS is vulnerable to a heap exploit and a NULL pointer dereference
+    vulnerability.
+  </synopsis>
+  <product type="ebuild">FreeRADIUS</product>
+  <announced>2003-11-23</announced>
+  <revised>2003-11-23: 01</revised>
+  <bug>33989</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">0.9.3</unaffected>
+      <vulnerable range="le">0.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeRADIUS is a popular open source RADIUS server.
+    </p>
+  </background>
+  <description>
+    <p>
+    FreeRADIUS versions below 0.9.3 are vulnerable to a heap exploit, however,
+    the attack code must be in the form of a valid RADIUS packet which limits
+    the possible exploits.
+    </p>
+    <p>
+    Also corrected in the 0.9.3 release is another vulnerability which causes
+    the RADIUS server to de-reference a NULL pointer and crash when an
+    Access-Request packet with a Tunnel-Password is received.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a RADIUS packet which would cause the RADIUS
+    server to crash, or could possibly overflow the heap resulting in a system
+    compromise.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to perform an 'emerge sync' and upgrade the package to
+    the latest available version - 0.9.3 is available in portage and is marked
+    as stable.
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=net-dialup/freeradius-0.9.3'
+    # emerge '&gt;=net-dialup/freeradius-0.9.3'
+    # emerge clean</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securitytracker.com/alerts/2003/Nov/1008263.html">SecurityTracker.com Security Alert</uri>
+  </references>
+</glsa>

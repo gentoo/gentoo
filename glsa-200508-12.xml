@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-12">
+  <title>Evolution: Format string vulnerabilities</title>
+  <synopsis>
+    Evolution is vulnerable to format string vulnerabilities which may result
+    in remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">evolution</product>
+  <announced>August 23, 2005</announced>
+  <revised>August 23, 2005: 01</revised>
+  <bug>102051</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/evolution" auto="yes" arch="*">
+      <unaffected range="ge">2.2.3-r3</unaffected>
+      <vulnerable range="lt">2.2.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evolution is a GNOME groupware application.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar discovered that Evolution is vulnerable to format
+    string bugs when viewing attached vCards and when displaying contact
+    information from remote LDAP servers or task list data from remote
+    servers (CAN-2005-2549). He also discovered that Evolution fails to
+    handle special calendar entries if the user switches to the Calendars
+    tab (CAN-2005-2550).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could attach specially crafted vCards to emails or
+    setup malicious LDAP servers or calendar entries which would trigger
+    the format string vulnerabilities when viewed or accessed from
+    Evolution. This could potentially result in the execution of arbitrary
+    code with the rights of the user running Evolution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Evolution users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/evolution-2.2.3-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2549">CAN-2005-2549</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2550">CAN-2005-2550</uri>
+    <uri link="http://www.sitic.se/eng/advisories_and_recommendations/sa05-001.html">SITIC Vulnerability Advisory SA05-001</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Aug 2005 20:42:02 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 22 Aug 2005 11:14:56 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 23 Aug 2005 07:46:15 +0000">
+    koon
+  </metadata>
+</glsa>

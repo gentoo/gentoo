@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-31">
+  <title>libcdaudio: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability in libcdaudio might allow for the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">libcdaudio</product>
+  <announced>March 17, 2009</announced>
+  <revised>March 17, 2009: 01</revised>
+  <bug>245649</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libcdaudio" auto="yes" arch="*">
+      <unaffected range="ge">0.99.12-r1</unaffected>
+      <vulnerable range="lt">0.99.12-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libcdaudio is a library of CD audio related routines.
+    </p>
+  </background>
+  <description>
+    <p>
+    A heap-based buffer overflow has been reported in the
+    cddb_read_disc_data() function in cddb.c when processing overly long
+    CDDB data.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect to a malicious CDDB
+    server, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libcdaudio users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libcdaudio-0.99.12-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5030">CVE-2008-5030</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 16 Mar 2009 12:45:13 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Mar 2009 12:45:24 +0000">
+    p-y
+  </metadata>
+</glsa>

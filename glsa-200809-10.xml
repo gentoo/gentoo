@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-10">
+  <title>Mantis: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mantis.
+  </synopsis>
+  <product type="ebuild">mantisbt</product>
+  <announced>September 21, 2008</announced>
+  <revised>November 26, 2008: 02</revised>
+  <bug>222649</bug>
+  <bug>233336</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mantisbt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2</unaffected>
+      <vulnerable range="lt">1.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mantis is a PHP/MySQL/Web based bugtracking system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Antonio Parata and Francesco Ongaro reported a Cross-Site Request
+    Forgery vulnerability in manage_user_create.php (CVE-2008-2276), a
+    Cross-Site Scripting vulnerability in return_dynamic_filters.php
+    (CVE-2008-3331), and an insufficient input validation in
+    adm_config_set.php (CVE-2008-3332). A directory traversal vulnerability
+    in core/lang_api.php (CVE-2008-3333) has also been reported.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities to execute
+    arbitrary HTML and script code, create arbitrary users with
+    administrative privileges, execute arbitrary PHP commands, and include
+    arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mantis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-1.1.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2276">CVE-2008-2276</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3331">CVE-2008-3331</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3332">CVE-2008-3332</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3333">CVE-2008-3333</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 19 Sep 2008 19:55:47 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 19 Sep 2008 19:59:03 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 20 Sep 2008 21:37:36 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-29">
+  <title>Cyrus IMAP Server: Multiple overflow vulnerabilities</title>
+  <synopsis>
+    The Cyrus IMAP Server is affected by several overflow vulnerabilities which
+    could potentially lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">cyrus-imapd</product>
+  <announced>February 23, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>82404</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/cyrus-imapd" auto="yes" arch="*">
+      <unaffected range="ge">2.2.12</unaffected>
+      <vulnerable range="lt">2.2.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Cyrus IMAP Server is an efficient, highly-scalable IMAP e-mail
+    server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Possible single byte overflows have been found in the imapd annotate
+    extension and mailbox handling code. Furthermore stack buffer overflows
+    have been found in fetchnews, the backend and imapd.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker, who could be an authenticated user or an admin of a
+    peering news server, could exploit these vulnerabilities to execute
+    arbitrary code with the rights of the user running the Cyrus IMAP
+    Server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cyrus IMAP Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/cyrus-imapd-2.2.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&amp;msg=33723">Cyrus IMAP Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0546">CVE-2005-0546</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 18 Feb 2005 10:42:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 19 Feb 2005 20:45:06 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 23 Feb 2005 12:49:07 +0000">
+    vorlon078
+  </metadata>
+</glsa>

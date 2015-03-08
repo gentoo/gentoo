@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-08">
+  <title>Libav: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Libav, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">libav</product>
+  <announced>February 07, 2015</announced>
+  <revised>February 07, 2015: 1</revised>
+  <bug>492582</bug>
+  <bug>515234</bug>
+  <bug>531832</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/libav" auto="yes" arch="*">
+      <unaffected range="ge">9.17</unaffected>
+      <vulnerable range="lt">9.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libav is a complete solution to record, convert and stream audio and
+      video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Libav. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file in an application linked against Libav, possibly resulting in
+      execution of arbitrary code with the privileges of the application or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libav users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/libav-9.17"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3934">CVE-2011-3934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3935">CVE-2011-3935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3946">CVE-2011-3946</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0848">CVE-2013-0848</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0851">CVE-2013-0851</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0852">CVE-2013-0852</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0860">CVE-2013-0860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0868">CVE-2013-0868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3672">CVE-2013-3672</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3674">CVE-2013-3674</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4609">CVE-2014-4609</uri>
+    <uri link="https://libav.org/news.html#0.8.9">Libav News November 2, 2013</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Jan 2015 02:04:44 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 20:33:22 +0000">ackle</metadata>
+</glsa>

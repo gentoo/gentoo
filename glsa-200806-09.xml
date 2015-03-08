@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-09">
+  <title>libvorbis: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in libvorbis might lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">libvorbis</product>
+  <announced>June 23, 2008</announced>
+  <revised>June 23, 2008: 02</revised>
+  <bug>222085</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libvorbis" auto="yes" arch="*">
+      <unaffected range="ge">1.2.1_rc1</unaffected>
+      <vulnerable range="lt">1.2.1_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libvorbis is the reference implementation of the Xiph.org Ogg Vorbis
+    audio file format. It is used by many applications for playback of Ogg
+    Vorbis files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Will Drewry of the Google Security Team reported multiple
+    vulnerabilities in libvorbis:
+    </p>
+    <ul>
+    <li>
+    A zero value for "codebook.dim" is not properly handled, leading to a
+    crash, infinite loop or triggering an integer overflow
+    (CVE-2008-1419).
+    </li>
+    <li>
+    An integer overflow in "residue partition value" evaluation might lead
+    to a heap-based buffer overflow (CVE-2008-1420).
+    </li>
+    <li>
+    An integer overflow in a certain "quantvals" and "quantlist"
+    calculation might lead to a heap-based buffer overflow
+    (CVE-2008-1423).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by enticing a
+    user to open a specially crafted Ogg Vorbis file or network stream with
+    an application using libvorbis. This might lead to the execution of
+    arbitrary code with the privileges of the user playing the file or a
+    Denial of Service by a crash or CPU consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libvorbis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libvorbis-1.2.1_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1419">CVE-2008-1419</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1420">CVE-2008-1420</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1423">CVE-2008-1423</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jun 2008 22:45:51 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Jun 2008 23:30:07 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 23:30:17 +0000">
+    rbu
+  </metadata>
+</glsa>

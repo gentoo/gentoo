@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200911-01">
+  <title>Horde: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the Horde Application Framework can allow for
+    arbitrary files to be overwritten and cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">horde horde-webmail horde-groupware</product>
+  <announced>November 06, 2009</announced>
+  <revised>November 06, 2009: 01</revised>
+  <bug>285052</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde" auto="yes" arch="*">
+      <unaffected range="ge">3.3.5</unaffected>
+      <vulnerable range="lt">3.3.5</vulnerable>
+    </package>
+    <package name="www-apps/horde-webmail" auto="yes" arch="*">
+      <unaffected range="ge">1.2.4</unaffected>
+      <vulnerable range="lt">1.2.4</vulnerable>
+    </package>
+    <package name="www-apps/horde-groupware" auto="yes" arch="*">
+      <unaffected range="ge">1.2.4</unaffected>
+      <vulnerable range="lt">1.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Horde is a web application framework written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Horde:
+    </p>
+    <ul>
+    <li>Stefan Esser of Sektion1 reported an error within the form library
+    when handling image form fields (CVE-2009-3236).</li>
+    <li>Martin
+    Geisler and David Wharton reported that an error exists in the MIME
+    viewer library when viewing unknown text parts and the preferences
+    system in services/prefs.php when handling number preferences
+    (CVE-2009-3237).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote authenticated attacker could exploit these vulnerabilities to
+    overwrite arbitrary files on the server, provided that the user has
+    write permissions. A remote authenticated attacker could conduct
+    Cross-Site Scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.3.5&quot;</code>
+    <p>
+    All Horde webmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-webmail-1.2.4&quot;</code>
+    <p>
+    All Horde groupware users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-groupware-1.2.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3236">CVE-2009-3236</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3237">CVE-2009-3237</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 Oct 2009 19:14:03 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 28 Oct 2009 17:35:14 +0000">
+    chainsaw
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 Nov 2009 12:02:09 +0000">
+    a3li
+  </metadata>
+</glsa>

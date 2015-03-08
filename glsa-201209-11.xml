@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-11">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Opera, the worst of
+    which may allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>September 25, 2012</announced>
+  <revised>September 25, 2012: 1</revised>
+  <bug>429478</bug>
+  <bug>434584</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">12.01.1532</unaffected>
+      <vulnerable range="lt">12.01.1532</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Opera is a fast web browser that is available free of charge.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Opera. Please review
+      the CVE identifiers and Opera Release Notes referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted web
+      page using Opera, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+      Furthermore, a remote attacker may be able to trick a user into
+      downloading and executing files, conduct Cross-Site Scripting (XSS)
+      attacks, spoof the address bar, or have other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Opera users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/opera-12.01.1532"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4010">CVE-2012-4010</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4142">CVE-2012-4142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4143">CVE-2012-4143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4144">CVE-2012-4144</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4145">CVE-2012-4145</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4146">CVE-2012-4146</uri>
+    <uri link="http://www.opera.com/docs/changelogs/unix/1201/">Opera 12.01 for
+      UNIX changelog
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 03 Aug 2012 11:42:44 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Tue, 25 Sep 2012 21:25:23 +0000">ackle</metadata>
+</glsa>

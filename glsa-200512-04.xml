@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-04">
+  <title>Openswan, IPsec-Tools: Vulnerabilities in ISAKMP Protocol implementation</title>
+  <synopsis>
+    Openswan and IPsec-Tools suffer from an implementation flaw which may allow
+    a Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">openswan ipsec-tools</product>
+  <announced>December 12, 2005</announced>
+  <revised>December 14, 2005: 02</revised>
+  <bug>112568</bug>
+  <bug>113201</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openswan" auto="yes" arch="*">
+      <unaffected range="ge">2.4.4</unaffected>
+      <vulnerable range="lt">2.4.4</vulnerable>
+    </package>
+    <package name="net-firewall/ipsec-tools" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3</unaffected>
+      <unaffected range="rge">0.6.2-r1</unaffected>
+      <unaffected range="rge">0.4-r2</unaffected>
+      <vulnerable range="lt">0.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Openswan is an implementation of IPsec for Linux. IPsec-Tools is a port
+    of KAME's implementation of the IPsec utilities, including racoon, an
+    Internet Key Exchange daemon. Internet Key Exchange version 1 (IKEv1),
+    a derivate of ISAKMP, is an important part of IPsec. IPsec is widely
+    used to secure exchange of packets at the IP layer and mostly used to
+    implement Virtual Private Networks (VPNs).
+    </p>
+  </background>
+  <description>
+    <p>
+    The Oulu University Secure Programming Group (OUSPG) discovered that
+    various ISAKMP implementations, including Openswan and racoon (included
+    in the IPsec-Tools package), behave in an anomalous way when they
+    receive and handle ISAKMP Phase 1 packets with invalid or abnormal
+    contents.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could craft specific packets that would result in a
+    Denial of Service attack, if Openswan and racoon are used in specific,
+    weak configurations.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Openswan users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openswan-2.4.4&quot;</code>
+    <p>
+    All IPsec-Tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-firewall/ipsec-tools</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3671">CVE-2005-3671</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3732">CVE-2005-3732</uri>
+    <uri link="http://www.ee.oulu.fi/research/ouspg/protos/testing/c09/isakmp/">Original Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 02 Dec 2005 12:39:46 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Dec 2005 03:24:10 +0000">
+    adir
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Dec 2005 03:54:41 +0000">
+    adir
+  </metadata>
+</glsa>

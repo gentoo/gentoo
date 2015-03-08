@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-12">
+  <title>CVS heap overflow vulnerability</title>
+  <synopsis>
+    CVS is subject to a heap overflow vulnerability allowing source repository
+    compromise.
+  </synopsis>
+  <product type="ebuild">cvs</product>
+  <announced>May 20, 2004</announced>
+  <revised>May 20, 2004: 01</revised>
+  <bug>51460</bug>
+  <access>remote </access>
+  <affected>
+    <package name="dev-util/cvs" auto="yes" arch="*">
+      <unaffected range="ge">1.11.16</unaffected>
+      <vulnerable range="le">1.11.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CVS (Concurrent Versions System) is an open-source network-transparent
+    version control system. It contains both a client utility and a server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser discovered a heap overflow in the CVS server, which can be
+    triggered by sending malicious "Entry" lines and manipulating the flags
+    related to that Entry. This vulnerability was proven to be exploitable.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can execute arbitrary code on the CVS server, with the
+    rights of the CVS server. By default, Gentoo uses the "cvs" user to run the
+    CVS server. In particular, this flaw allows a complete compromise of CVS
+    source repositories. If you're not running a server, then you are not
+    vulnerable.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of CVS.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users running a CVS server should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-util/cvs-1.11.16"
+    # emerge ">=dev-util/cvs-1.11.16"</code>
+  </resolution>
+  <references>
+    <uri link="http://security.e-matters.de/advisories/072004.html">E-matters advisory 07/2004</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0396">CAN-2004-0396</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

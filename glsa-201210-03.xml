@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201210-03">
+  <title>rdesktop: Directory Traversal</title>
+  <synopsis>A vulnerability which allows a remote attacking server to read or
+    overwrite arbitrary files has been found in rdesktop.
+  </synopsis>
+  <product type="ebuild">rdesktop</product>
+  <announced>October 18, 2012</announced>
+  <revised>October 18, 2012: 1</revised>
+  <bug>364191</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rdesktop" auto="yes" arch="*">
+      <unaffected range="ge">1.7.0</unaffected>
+      <vulnerable range="lt">1.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>rdesktop is a Remote Desktop Protocol (RDP) Client.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in rdesktop. Please review the CVE
+      identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote RDP servers may be able to read or overwrite arbitrary files via
+      a .. (dot dot) in a pathname.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rdesktop users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rdesktop-1.7.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1595">CVE-2011-1595</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:09 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:47:56 +0000">craig</metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-06">
+  <title>XnView: Stack-based buffer overflow</title>
+  <synopsis>
+    XnView is vulnerable to a stack-based buffer overflow and possible remote
+    code execution when handling XPM image files.
+  </synopsis>
+  <product type="ebuild">xnview</product>
+  <announced>July 11, 2007</announced>
+  <revised>July 11, 2007: 01</revised>
+  <bug>175670</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-misc/xnview" auto="yes" arch="x86">
+      <vulnerable range="lt">1.70</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XnView is software to view and convert graphics files. XPixMap (XPM) is
+    a simple ascii-based graphics format.
+    </p>
+  </background>
+  <description>
+    <p>
+    XnView is vulnerable to a stack-based buffer overflow while processing
+    an XPM file with an overly long section string (greater than 1024
+    bytes).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to view a specially crafted XPM file
+    with XnView that could trigger the vulnerability and possibly execute
+    arbitrary code with the rights of the user running XnView.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    No update appears to be forthcoming from the XnView developer and
+    XnView is proprietary, so the XnView package has been masked in
+    Portage. We recommend that users select an alternate graphics viewer
+    and conversion utility, and unmerge XnView:
+    </p>
+    <code>
+    # emerge --unmerge xnview</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2194">CVE-2007-2194</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jul 2007 10:38:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Jul 2007 18:12:51 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 11 Jul 2007 19:39:42 +0000">
+    DerCorny
+  </metadata>
+</glsa>

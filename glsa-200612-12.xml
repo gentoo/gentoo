@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-12">
+  <title>F-PROT Antivirus: Multiple vulnerabilities</title>
+  <synopsis>
+    F-Prot Antivirus contains a buffer overflow and other unspecified
+    vulnerabilities, possibly allowing the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">f-prot</product>
+  <announced>December 12, 2006</announced>
+  <revised>December 12, 2006: 01</revised>
+  <bug>157612</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/f-prot" auto="yes" arch="*">
+      <unaffected range="ge">4.6.7</unaffected>
+      <vulnerable range="lt">4.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    F-Prot Antivirus is a FRISK Software antivirus program that can used
+    with procmail.
+    </p>
+  </background>
+  <description>
+    <p>
+    F-Prot Antivirus version 4.6.7 fixes a heap-based buffer overflow, an
+    infinite loop, and other unspecified vulnerabilities.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Among other weaker impacts, a remote attacker could send an e-mail
+    containing a malicious file that would trigger the buffer overflow
+    vulnerability and execute arbitrary code with the privileges of the
+    user running F-Prot, which may be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All F-Prot users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/f-prot-4.6.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6293">CVE-2006-6293</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6294">CVE-2006-6294</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6352">CVE-2006-6352</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Dec 2006 17:16:15 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Dec 2006 20:51:14 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 23:24:00 +0000">
+    falco
+  </metadata>
+</glsa>

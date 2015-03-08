@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-06">
+  <title>Adobe Reader: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Adobe Reader is vulnerable to remote code execution via crafted PDF files.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>July 12, 2009</announced>
+  <revised>July 12, 2009: 01</revised>
+  <bug>267846</bug>
+  <bug>273908</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">8.1.6</unaffected>
+      <vulnerable range="lt">8.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Reader is a PDF reader released by Adobe.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Adobe Reader:
+    </p>
+    <ul>
+    <li>Alin Rad Pop of Secunia Research reported a heap-based buffer
+    overflow in the JBIG2 filter (CVE-2009-0198).
+    </li>
+    <li>Mark Dowd of the IBM Internet Security Systems X-Force and
+    Nicolas Joly of VUPEN Security reported multiple heap-based buffer
+    overflows in the JBIG2 filter (CVE-2009-0509, CVE-2009-0510,
+    CVE-2009-0511, CVE-2009-0512, CVE-2009-0888, CVE-2009-0889)
+    </li>
+    <li>Arr1val reported that multiple methods in the JavaScript API
+    might lead to memory corruption when called with crafted arguments
+    (CVE-2009-1492, CVE-2009-1493).
+    </li>
+    <li>
+    An anonymous researcher reported a stack-based buffer overflow related
+    to U3D model files with a crafted extension block (CVE-2009-1855).
+    </li>
+    <li>
+    Jun Mao and Ryan Smith of iDefense Labs reported an integer overflow
+    related to the FlateDecode filter, which triggers a heap-based buffer
+    overflow (CVE-2009-1856).
+    </li>
+    <li>
+    Haifei Li of Fortinet's FortiGuard Global Security Research Team
+    reported a memory corruption vulnerability related to TrueType fonts
+    (CVE-2009-1857).
+    </li>
+    <li>
+    The Apple Product Security Team reported a memory corruption
+    vulnerability in the JBIG2 filter (CVE-2009-1858).
+    </li>
+    <li>
+    Matthew Watchinski of Sourcefire VRT reported an unspecified memory
+    corruption (CVE-2009-1859).
+    </li>
+    <li>
+    Will Dormann of CERT reported multiple heap-based buffer overflows when
+    processing JPX (aka JPEG2000) stream that trigger heap memory
+    corruption (CVE-2009-1861).
+    </li>
+    <li>
+    Multiple unspecified vulnerabilities have been discovered
+    (CVE-2009-2028).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    document, possibly resulting in the execution of arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0198">CVE-2009-0198</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0509">CVE-2009-0509</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0510">CVE-2009-0510</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0511">CVE-2009-0511</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0512">CVE-2009-0512</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0888">CVE-2009-0888</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0889">CVE-2009-0889</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1492">CVE-2009-1492</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1493">CVE-2009-1493</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1855">CVE-2009-1855</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1856">CVE-2009-1856</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1857">CVE-2009-1857</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1858">CVE-2009-1858</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1859">CVE-2009-1859</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1861">CVE-2009-1861</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2028">CVE-2009-2028</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Jun 2009 19:11:36 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 09 Jul 2009 17:45:58 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 09 Jul 2009 17:47:39 +0000">
+    rbu
+  </metadata>
+</glsa>

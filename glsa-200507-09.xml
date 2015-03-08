@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-09">
+  <title>Adobe Acrobat Reader: Buffer overflow vulnerability</title>
+  <synopsis>
+    Adobe Acrobat Reader is vulnerable to a buffer overflow that could lead to
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>July 11, 2005</announced>
+  <revised>July 11, 2005: 01</revised>
+  <bug>98101</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">7.0</unaffected>
+      <vulnerable range="le">5.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Acrobat Reader is a utility used to view PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been discovered in the
+    UnixAppOpenFilePerform() function, which is called when Adobe Acrobat
+    Reader tries to open a file with the "\Filespec" tag.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted PDF document, a
+    remote attacker could exploit this vulnerability to execute arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Since Adobe will most likely not update the 5.0 series of Adobe
+    Acrobat Reader for Linux, all users should upgrade to the latest
+    available version of the 7.0 series:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-7.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1625">CAN-2005-1625</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=279&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Security Advisory</uri>
+    <uri link="http://www.adobe.com/support/techdocs/329083.html">Adobe Security Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 08 Jul 2005 08:39:08 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 08 Jul 2005 15:11:50 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 09 Jul 2005 18:37:26 +0000">
+    vorlon078
+  </metadata>
+</glsa>

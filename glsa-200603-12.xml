@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-12">
+  <title>zoo: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow in zoo may be exploited to execute arbitrary when
+    creating archives of specially crafted directories and files.
+  </synopsis>
+  <product type="ebuild">zoo</product>
+  <announced>March 16, 2006</announced>
+  <revised>March 16, 2006: 01</revised>
+  <bug>125622</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-arch/zoo" auto="yes" arch="*">
+      <unaffected range="ge">2.10-r2</unaffected>
+      <vulnerable range="lt">2.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    zoo is a file archiving utility for maintaining collections of
+    files, written by Rahul Dhesi.
+    </p>
+  </background>
+  <description>
+    <p>
+    zoo is vulnerable to a new buffer overflow due to insecure use of
+    the strcpy() function when trying to create an archive from certain
+    directories or filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this issue by enticing a user to create
+    a zoo archive of specially crafted directories and filenames, possibly
+    leading to the execution of arbitrary code with the rights of the user
+    running zoo.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zoo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/zoo-2.10-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=183426">RedHat Bug #183426</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1269">CVE-2006-1269</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 11 Mar 2006 11:35:08 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 12 Mar 2006 16:19:21 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Mar 2006 17:50:06 +0000">
+    DerCorny
+  </metadata>
+</glsa>

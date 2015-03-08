@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-17">
+  <title>libwmf: Buffer overflow vulnerability</title>
+  <synopsis>
+    libwmf is vulnerable to an integer overflow potentially resulting in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libwmf</product>
+  <announced>August 10, 2006</announced>
+  <revised>August 10, 2006: 01</revised>
+  <bug>139325</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libwmf" auto="yes" arch="*">
+      <unaffected range="ge">0.2.8.4</unaffected>
+      <vulnerable range="lt">0.2.8.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libwmf is a library for reading and converting vector images in
+    Microsoft's native Windows Metafile Format (WMF).
+    </p>
+  </background>
+  <description>
+    <p>
+    infamous41md discovered that libwmf fails to do proper bounds checking
+    on the MaxRecordSize variable in the WMF file header. This could lead
+    to an head-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted WMF file, a remote
+    attacker could cause a heap-based buffer overflow and execute arbitrary
+    code with the permissions of the user running the application that uses
+    libwmf.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround for this issue.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libwmf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libwmf-0.2.8.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3376">CVE-2006-3376</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 07 Aug 2006 08:01:55 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Aug 2006 12:39:07 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 08 Aug 2006 11:33:41 +0000">
+    falco
+  </metadata>
+</glsa>

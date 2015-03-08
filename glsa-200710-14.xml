@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-14">
+  <title>DenyHosts: Denial of Service</title>
+  <synopsis>
+    DenyHosts does not correctly parse log entries, potentially causing a
+    remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">denyhosts</product>
+  <announced>October 13, 2007</announced>
+  <revised>October 13, 2007: 01</revised>
+  <bug>181213</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/denyhosts" auto="yes" arch="*">
+      <unaffected range="ge">2.6-r1</unaffected>
+      <vulnerable range="lt">2.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DenyHosts is designed to monitor SSH servers for repeated failed login
+    attempts.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel B. Cid discovered that DenyHosts used an incomplete regular
+    expression to parse failed login attempts, a different issue than GLSA
+    200701-01.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote unauthenticated attacker can add arbitrary hosts into the
+    blacklist, including the "all" keyword, by submitting specially crafted
+    version identification strings to the SSH server banner. An attacker
+    may use this to prevent legitimate users from accessing a host
+    remotely.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DenyHosts users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/denyhosts-2.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4323">CVE-2007-4323</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 06 Oct 2007 13:32:04 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 06 Oct 2007 13:32:42 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 22:16:56 +0000">
+    falco
+  </metadata>
+</glsa>

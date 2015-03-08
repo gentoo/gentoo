@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-06">
+  <title>fetchmail: Password exposure in fetchmailconf</title>
+  <synopsis>
+    fetchmailconf fails to properly handle file permissions, temporarily
+    exposing sensitive information to other local users.
+  </synopsis>
+  <product type="ebuild">fetchmail</product>
+  <announced>November 06, 2005</announced>
+  <revised>November 06, 2005: 01</revised>
+  <bug>110366</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-mail/fetchmail" auto="yes" arch="*">
+      <unaffected range="ge">6.2.5.2-r1</unaffected>
+      <vulnerable range="lt">6.2.5.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    fetchmail is a utility that retrieves and forwards mail from
+    remote systems using IMAP, POP, and other protocols. It ships with
+    fetchmailconf, a graphical utility used to create configuration files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Thomas Wolff discovered that fetchmailconf opens the configuration
+    file with default permissions, writes the configuration to it, and only
+    then restricts read permissions to the owner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit the race condition to retrieve
+    sensitive information like IMAP/POP passwords.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Run "umask 077" to temporarily strengthen default permissions,
+    then run "fetchmailconf" from the same shell.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All fetchmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/fetchmail-6.2.5.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://fetchmail.berlios.de/fetchmail-SA-2005-02.txt">Fetchmail Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3088">CVE-2005-3088</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 04 Nov 2005 12:31:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 04 Nov 2005 12:31:54 +0000">
+    koon
+  </metadata>
+</glsa>

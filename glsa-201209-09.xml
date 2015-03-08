@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-09">
+  <title>Atheme IRC Services: Denial of Service</title>
+  <synopsis>A vulnerability has been found in Atheme which may lead to Denial
+    of Service or a bypass of security restrictions.
+  </synopsis>
+  <product type="ebuild">atheme</product>
+  <announced>September 25, 2012</announced>
+  <revised>September 25, 2012: 1</revised>
+  <bug>409103</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/atheme-services" auto="yes" arch="*">
+      <unaffected range="ge">6.0.10</unaffected>
+      <vulnerable range="lt">6.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Atheme is a portable and secure set of open-source and modular IRC
+      services. CertFP is certificate fingerprinting used to authenticate users
+      to nicknames.
+    </p>
+  </background>
+  <description>
+    <p>The “myuser_delete()” function in account.c does not properly remove
+      CertFP entries when deleting user accounts.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker may be able to cause a Denial of Service
+      condition or gain access to an Atheme IRC Services user account.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Atheme users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/atheme-services-6.0.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1576">CVE-2012-1576</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:09:52 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 25 Sep 2012 10:53:52 +0000">ackle</metadata>
+</glsa>

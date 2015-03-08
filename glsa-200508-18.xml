@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-18">
+  <title>PhpWiki: Arbitrary command execution through XML-RPC</title>
+  <synopsis>
+    PhpWiki includes PHP XML-RPC code which is vulnerable to arbitrary command
+    execution.
+  </synopsis>
+  <product type="ebuild">phpwiki</product>
+  <announced>August 26, 2005</announced>
+  <revised>August 26, 2005: 01</revised>
+  <bug>102380</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.3.10-r2</unaffected>
+      <vulnerable range="lt">1.3.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PhpWiki is an application that creates a web site where anyone can
+    edit the pages through HTML forms.
+    </p>
+  </background>
+  <description>
+    <p>
+    Earlier versions of PhpWiki contain an XML-RPC library that
+    improperly handles XML-RPC requests and responses with malformed nested
+    tags.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to inject
+    arbitrary PHP script code into eval() statements by sending a specially
+    crafted XML document to PhpWiki.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PhpWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwiki-1.3.10-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Aug 2005 08:45:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 25 Aug 2005 11:46:47 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 25 Aug 2005 20:44:22 +0000">
+    koon
+  </metadata>
+</glsa>

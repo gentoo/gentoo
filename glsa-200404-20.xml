@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-20">
+  <title>Multiple vulnerabilities in xine</title>
+  <synopsis>
+    Several vulnerabilities have been found in xine-ui and xine-lib,
+    potentially allowing an attacker to overwrite files with the rights of the
+    user.
+  </synopsis>
+  <product type="ebuild">xine</product>
+  <announced>April 27, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>45448</bug>
+  <bug>48107</bug>
+  <bug>48108</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/xine-ui" auto="yes" arch="*">
+      <unaffected range="ge">0.9.23-r2</unaffected>
+      <vulnerable range="le">0.9.23-r1</vulnerable>
+    </package>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1_rc3-r3</unaffected>
+      <vulnerable range="le">1_rc3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine is a multimedia player allowing to play back CDs, DVDs, and VCDs
+    and decoding multimedia files like AVI, MOV, WMV, and MP3 from local
+    disk drives, and displays multimedia streamed over the Internet. It is
+    available in Gentoo as a reusable library (xine-lib) with a standard
+    user interface (xine-ui).
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were found in xine-ui and xine-lib. By opening
+    a malicious MRL in any xine-lib based media player, an attacker can
+    write arbitrary content to an arbitrary file, only restricted by the
+    permissions of the user running the application. By opening a malicious
+    playlist in the xine-ui media player, an attacker can write arbitrary
+    content to an arbitrary file, only restricted by the permissions of the
+    user running xine-ui. Finally, a temporary file is created in an
+    insecure manner by the xine-check and xine-bugreport scripts,
+    potentially allowing a local attacker to use a symlink attack.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These three vulnerabilities may alow an attacker to corrupt system
+    files, thus potentially leading to a Denial of Service. It is also
+    theoretically possible, though very unlikely, to use these
+    vulnerabilities to elevate the privileges of the attacker.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to
+    upgrade to the latest available versions of xine-ui and xine-lib.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of xine-ui or another xine-based player should upgrade to the
+    latest stable versions:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=media-video/xine-ui-0.9.23-r2&quot;
+    # emerge &quot;&gt;=media-video/xine-ui-0.9.23-r2&quot;
+    
+    # emerge -pv &quot;&gt;=media-libs/xine-lib-1_rc3-r3&quot;
+    # emerge &quot;&gt;=media-libs/xine-lib-1_rc3-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://xinehq.de/index.php/security">Xine Security Advisories</uri>
+    <uri link="http://nettwerked.mg2.org/advisories/xinebug">xine-bugreport and xine-check vulnerability</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0372">CVE-2004-0372</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1951">CVE-2004-1951</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

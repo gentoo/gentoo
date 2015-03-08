@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-12">
+  <title>TikiWiki: Arbitrary command execution</title>
+  <synopsis>
+    A bug in TikiWiki allows certain users to upload and execute malicious PHP
+    scripts.
+  </synopsis>
+  <product type="ebuild">tikiwiki</product>
+  <announced>January 10, 2005</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>75568</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.8.4.1</unaffected>
+      <vulnerable range="lt">1.8.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TikiWiki is a web-based groupware and content management system (CMS),
+    using PHP, ADOdb and Smarty.
+    </p>
+  </background>
+  <description>
+    <p>
+    TikiWiki lacks a check on uploaded images in the Wiki edit page.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A malicious user could run arbitrary commands on the server by
+    uploading and calling a PHP script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TikiWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.8.4.1&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://tikiwiki.org/tiki-read_article.php?articleId=97">TikiWiki Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1386">CVE-2004-1386</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  7 Jan 2005 09:12:58 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri,  7 Jan 2005 09:13:09 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri,  7 Jan 2005 20:49:48 +0000">
+    vorlon078
+  </metadata>
+</glsa>

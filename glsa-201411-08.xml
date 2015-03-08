@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-08">
+  <title>Aircrack-ng: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities have been found in Aircrack-ng, possibly
+    resulting in local privilege escalation, remote code execution, or Denial
+    of Service.
+  </synopsis>
+  <product type="ebuild">aircrack-ng</product>
+  <announced>November 23, 2014</announced>
+  <revised>November 23, 2014: 1</revised>
+  <bug>528132</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-wireless/aircrack-ng" auto="yes" arch="*">
+      <unaffected range="ge">1.2_rc1</unaffected>
+      <vulnerable range="lt">1.2_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Aircrack-ng is an 802.11 WEP and WPA-PSK keys cracking program that can
+      recover keys once enough data packets have been captured.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Aircrack-ng. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker can use this flaw to execute arbitrary code or gain
+      escalated privileges. A remote attacker execute arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Aircrack-ng users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-wireless/aircrack-ng-1.2_rc1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8321">CVE-2014-8321</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8322">CVE-2014-8322</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8323">CVE-2014-8323</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8324">CVE-2014-8324</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Nov 2014 22:39:08 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Nov 2014 17:49:06 +0000">ackle</metadata>
+</glsa>

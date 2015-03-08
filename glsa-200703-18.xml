@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-18">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mozilla Thunderbird, some of
+    which may allow user-assisted arbitrary remote code execution.
+  </synopsis>
+  <product type="ebuild">mozilla-thunderbird</product>
+  <announced>March 18, 2007</announced>
+  <revised>March 18, 2007: 01</revised>
+  <bug>165555</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.10</unaffected>
+      <vulnerable range="lt">1.5.0.10</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.10</unaffected>
+      <vulnerable range="lt">1.5.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Thunderbird is a popular open-source email client from the
+    Mozilla Project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Georgi Guninski reported a possible integer overflow in the code
+    handling text/enhanced or text/richtext MIME emails. Additionally,
+    various researchers reported errors in the JavaScript engine
+    potentially leading to memory corruption. Additionally, the binary
+    version of Mozilla Thunderbird includes a vulnerable NSS library which
+    contains two possible buffer overflows involving the SSLv2 protocol.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to read a specially crafted email that
+    could trigger one of the vulnerabilities, some of them being related to
+    Mozilla Thunderbird's handling of JavaScript, possibly leading to the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all of these issues, but
+    some of them can be avoided by disabling JavaScript. Note that the
+    execution of JavaScript is disabled by default and enabling it is
+    strongly discouraged.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.5.0.10&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.5.0.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0008">CVE-2007-0008</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0009">CVE-2007-0009</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0775">CVE-2007-0775</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0776">CVE-2007-0776</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0777">CVE-2007-0777</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1282">CVE-2007-1282</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 13 Mar 2007 23:29:16 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 Mar 2007 00:11:26 +0000">
+    falco
+  </metadata>
+</glsa>

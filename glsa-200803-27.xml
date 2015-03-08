@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-27">
+  <title>MoinMoin: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities have been reported in MoinMoin Wiki Engine.
+  </synopsis>
+  <product type="ebuild">moinmoin</product>
+  <announced>March 18, 2008</announced>
+  <revised>March 18, 2008: 01</revised>
+  <bug>209133</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/moinmoin" auto="yes" arch="*">
+      <unaffected range="ge">1.6.1</unaffected>
+      <vulnerable range="lt">1.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MoinMoin is an advanced, easy to use and extensible Wiki Engine.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered:
+    </p>
+    <ul>
+    <li>
+    A vulnerability exists in the file wikimacro.py because the
+    _macro_Getval function does not properly enforce ACLs
+    (CVE-2008-1099).</li>
+    <li>
+    A directory traversal vulnerability exists in the userform action
+    (CVE-2008-0782).</li>
+    <li>
+    A Cross-Site Scripting vulnerability exists in the login action
+    (CVE-2008-0780).</li>
+    <li>
+    Multiple Cross-Site Scripting vulnerabilities exist in the file
+    action/AttachFile.py when using the message, pagename, and target
+    filenames (CVE-2008-0781).</li>
+    <li>
+    Multiple Cross-Site Scripting vulnerabilities exist in
+    formatter/text_gedit.py (aka the gui editor formatter) which can be
+    exploited via a page name or destination page name, which trigger an
+    injection in the file PageEditor.py (CVE-2008-1098).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities can be exploited to allow remote attackers to
+    inject arbitrary web script or HTML, overwrite arbitrary files, or read
+    protected pages.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MoinMoin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/moinmoin-1.6.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0780">CVE-2008-0780</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0781">CVE-2008-0781</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0782">CVE-2008-0782</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1098">CVE-2008-1098</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1099">CVE-2008-1099</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 26 Feb 2008 09:02:13 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 09:03:06 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 19:53:09 +0000">
+    mfleming
+  </metadata>
+</glsa>

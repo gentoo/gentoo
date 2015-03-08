@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-12">
+  <title>Ruby: Denial of Service vulnerability</title>
+  <synopsis>
+    The Ruby cgi.rb CGI library is vulnerable to a Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>November 20, 2006</announced>
+  <revised>June 11, 2009: 02</revised>
+  <bug>153497</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5-r3</unaffected>
+      <vulnerable range="lt">1.8.5-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is a dynamic, open source programming language with a focus on
+    simplicity and productivity.
+    </p>
+  </background>
+  <description>
+    <p>
+    Zed Shaw, Jeremy Kemper, and Jamis Buck of the Mongrel project reported
+    that the CGI library shipped with Ruby is vulnerable to a remote Denial
+    of Service by an unauthenticated user.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    The vulnerability can be exploited by sending the cgi.rb library an
+    HTTP request with multipart MIME encoding that contains a malformed
+    MIME boundary specifier beginning with "-" instead of "--". Successful
+    exploitation of the vulnerability causes the library to go into an
+    infinite loop waiting for additional nonexistent input.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.5-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5467">CVE-2006-5467</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 10 Nov 2006 13:03:41 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Nov 2006 21:17:28 +0000">
+    vorlon
+  </metadata>
+</glsa>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-15">
+  <title>Nagios: Execution of arbitrary code</title>
+  <synopsis>
+    Multiple vulnerabilities in Nagios may lead to the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">nagios-core</product>
+  <announced>July 19, 2009</announced>
+  <revised>July 19, 2009: 01</revised>
+  <bug>245887</bug>
+  <bug>249876</bug>
+  <bug>275288</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/nagios-core" auto="yes" arch="*">
+      <unaffected range="ge">3.0.6-r2</unaffected>
+      <vulnerable range="lt">3.0.6-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Nagios is an open source host, service and network monitoring program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Nagios:
+    </p>
+    <ul>
+    <li>
+    Paul reported that statuswml.cgi does not properly sanitize shell
+    metacharacters in the (1) ping and (2) traceroute parameters
+    (CVE-2009-2288).
+    </li>
+    <li>
+    Nagios does not properly verify whether an authenticated user is
+    authorized to run certain commands (CVE-2008-5027).
+    </li>
+    <li>
+    Andreas Ericsson reported that Nagios does not perform validity checks
+    to verify HTTP requests, leading to Cross-Site Request Forgery
+    (CVE-2008-5028).
+    </li>
+    <li>
+    An unspecified vulnerability in Nagios related to CGI programs,
+    "adaptive external commands," and "writing newlines and submitting
+    service comments" has been reported (CVE-2008-6373).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote authenticated or unauthenticated attacker may exploit these
+    vulnerabilities to execute arbitrary commands or elevate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Nagios users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/nagios-core-3.0.6-r2&quot;</code>
+    <p>
+    NOTE: Users of the Nagios 2 branch can update to version 2.12-r1 which
+    contains a patch to fix CVE-2009-2288. However, that branch is not
+    supported upstream or in Gentoo and we are unaware whether the other
+    vulnerabilities affect 2.x installations.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5027">CVE-2008-5027</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5028">CVE-2008-5028</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6373">CVE-2008-6373</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2288">CVE-2009-2288</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 13:14:06 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Jul 2009 15:48:17 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Jul 2009 15:48:53 +0000">
+    rbu
+  </metadata>
+</glsa>

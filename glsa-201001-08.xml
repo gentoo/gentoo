@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-08">
+  <title>SquirrelMail: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in SquirrelMail of which the worst
+    results in remote code execution.
+  </synopsis>
+  <product type="ebuild">squirrelmail</product>
+  <announced>January 13, 2010</announced>
+  <revised>January 13, 2010: 01</revised>
+  <bug>269567</bug>
+  <bug>270671</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <unaffected range="ge">1.4.19</unaffected>
+      <vulnerable range="lt">1.4.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SquirrelMail is a standards-based webmail package written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in SquirrelMail:
+    </p>
+    <ul><li>Niels
+    Teusink reported multiple input sanitation flaws in certain encrypted
+    strings in e-mail headers, related to contrib/decrypt_headers.php,
+    PHP_SELF and the query string (aka QUERY_STRING) (CVE-2009-1578).
+    </li>
+    <li>Niels Teusink also reported that the map_yp_alias() function
+    in functions/imap_general.php does not filter shell metacharacters in a
+    username and that the original patch was incomplete (CVE-2009-1381,
+    CVE-2009-1579).
+    </li>
+    <li>Tomas Hoger discovered an unspecified session fixation
+    vulnerability (CVE-2009-1580).
+    </li>
+    <li>Luc Beurton reported that functions/mime.php does not protect
+    the application's content from Cascading Style Sheets (CSS) positioning
+    in HTML e-mail messages (CVE-2009-1581).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    The vulnerabilities allow remote attackers to execute arbitrary code
+    with the privileges of the user running the web server, to hijack web
+    sessions via a crafted cookie, to spoof the user interface and to
+    conduct Cross-Site Scripting and phishing attacks, via a specially
+    crafted message.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SquirrelMail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.19&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1381">CVE-2009-1381</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1578">CVE-2009-1578</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1579">CVE-2009-1579</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1580">CVE-2009-1580</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1581">CVE-2009-1581</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:49:10 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 13 Jan 2010 21:54:28 +0000">
+    craig
+  </metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-09">
+  <title>oftpd: Denial of Service</title>
+  <synopsis>
+    An assertion in oftpd could lead to a denial of service vulnerability.
+  </synopsis>
+  <product type="ebuild">oftpd</product>
+  <announced>January 15, 2007</announced>
+  <revised>January 15, 2007: 01</revised>
+  <bug>159178</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/oftpd" auto="yes" arch="*">
+      <unaffected range="ge">0.3.7-r3</unaffected>
+      <vulnerable range="lt">0.3.7-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    oftpd is a small, anonymous only ftp daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    By specifying an unsupported address family in the arguments to a LPRT
+    or LPASV command, an assertion in oftpd will cause the daemon to abort.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote, unauthenticated attackers may be able to terminate any oftpd
+    process, denying service to legitimate users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All oftpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/oftpd-0.3.7-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6767">CVE-2006-6767</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 14 Jan 2007 22:33:02 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 23:05:10 +0000">
+    falco
+  </metadata>
+</glsa>

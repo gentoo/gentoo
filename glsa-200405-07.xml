@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-07">
+  <title>Exim verify=header_syntax buffer overflow</title>
+  <synopsis>
+    When the verify=header_syntax option is set, there is a buffer overflow in
+    Exim that allows remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Exim</product>
+  <announced>May 14, 2004</announced>
+  <revised>May 14, 2004: 01</revised>
+  <bug>50217</bug>
+  <access>remote </access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.33-r1</unaffected>
+      <vulnerable range="le">4.33</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Exim is an highly configurable message transfer agent (MTA) developed at
+    the University of Cambridge.
+    </p>
+  </background>
+  <description>
+    <p>
+    When the option "verify = header_syntax" is used in an ACL in the
+    configuration file, Exim is vulnerable to a buffer overflow attack that can
+    be triggered remotely by sending malicious headers in an email message.
+    Note that this option is not enabled in Exim's default configuration file.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    This vulnerability can be exploited to trigger a denial of service attack
+    and potentially execute arbitrary code with the rights of the user used by
+    the Exim daemon (by default this is the "mail" user in Gentoo Linux).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Make sure the verify=header_syntax option is not used in your exim.conf
+    file.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of Exim should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=mail-mta/exim-4.33-r1"
+    # emerge ">=mail-mta/exim-4.33-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0400">CAN-2004-0400</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

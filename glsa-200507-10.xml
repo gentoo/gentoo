@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-10">
+  <title>Ruby: Arbitrary command execution through XML-RPC</title>
+  <synopsis>
+    A vulnerability in XMLRPC.iPIMethods allows remote attackers to execute
+    arbitrary commands.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>July 11, 2005</announced>
+  <revised>July 11, 2005: 01</revised>
+  <bug>96784</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.2-r2</unaffected>
+      <vulnerable range="lt">1.8.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an interpreted scripting language for quick and easy
+    object-oriented programming. XML-RPC is a remote procedure call
+    protocol encoded in XML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Nobuhiro IMAI reported that an invalid default value in "utils.rb"
+    causes the security protections of the XML-RPC server to fail.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to execute
+    arbitrary commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.2-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1992">CAN-2005-1992</uri>
+    <uri link="http://www.ruby-lang.org/en/20050701.html">Ruby Security Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 09 Jul 2005 18:51:00 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 09 Jul 2005 19:20:33 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Jul 2005 12:47:35 +0000">
+    koon
+  </metadata>
+</glsa>

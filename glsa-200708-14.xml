@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-14">
+  <title>NVIDIA drivers: Denial of Service</title>
+  <synopsis>
+    A vulnerability has been discovered in the NVIDIA graphic drivers, allowing
+    for a Denial of Service.
+  </synopsis>
+  <product type="ebuild">nvidia-drivers</product>
+  <announced>August 19, 2007</announced>
+  <revised>October 11, 2007: 03</revised>
+  <bug>183567</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-drivers/nvidia-drivers" auto="yes" arch="*">
+      <unaffected range="ge">71.86.01</unaffected>
+      <unaffected range="rge">1.0.7185</unaffected>
+      <unaffected range="rge">1.0.9639</unaffected>
+      <vulnerable range="eq">100.14.06</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The NVIDIA drivers provide support for NVIDIA graphic boards.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gregory Shikhman discovered that the default Gentoo setup of NVIDIA
+    drivers creates the /dev/nvidia* with insecure file permissions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could send arbitrary values into the devices, possibly
+    resulting in hardware damage on the graphic board or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NVIDIA drivers users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;x11-drivers/nvidia-drivers&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3532">CVE-2007-3532</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 28 Jul 2007 07:38:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 28 Jul 2007 07:39:35 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 12 Aug 2007 20:41:51 +0000">
+    p-y
+  </metadata>
+</glsa>

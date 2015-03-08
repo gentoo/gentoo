@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-05">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in Wireshark.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>297388</bug>
+  <bug>318935</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.2.8-r1</unaffected>
+      <vulnerable range="lt">1.2.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a versatile network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in the Daintree SNA file parser,
+    the SMB, SMB2, IPMI, and DOCSIS dissectors. For further information
+    please consult the CVE entries referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause a Denial of Service and possibly execute
+    arbitrary code via crafted packets or malformed packet trace files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.2.8-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4376">CVE-2009-4376</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4377">CVE-2009-4377</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4378">CVE-2009-4378</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1455">CVE-2010-1455</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 08 Jan 2010 17:26:37 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 May 2010 13:48:39 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 17:50:20 +0000">
+    vorlon
+  </metadata>
+</glsa>

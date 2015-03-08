@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-08">
+  <title>Cfengine: RSA Authentication Heap Corruption</title>
+  <synopsis>
+    Cfengine is vulnerable to a remote root exploit from clients in
+    AllowConnectionsFrom.
+  </synopsis>
+  <product type="ebuild">Cfengine</product>
+  <announced>August 10, 2004</announced>
+  <revised>May 22, 2006: 05</revised>
+  <bug>59895</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/cfengine" auto="yes" arch="*">
+      <unaffected range="ge">2.1.8</unaffected>
+      <unaffected range="lt">2.0.0</unaffected>
+      <vulnerable range="le">2.1.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cfengine is an agent/software robot and a high level policy language
+    for building expert systems to administrate and configure large
+    computer networks.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities have been found in cfservd. One is a buffer
+    overflow in the AuthenticationDialogue function and the other is a
+    failure to check the proper return value of the ReceiveTransaction
+    function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could use the buffer overflow to execute arbitrary code
+    with the permissions of the user running cfservd, which is usually the
+    root user. However, before such an attack could be mounted, the
+    IP-based ACL would have to be bypassed. With the second vulnerability,
+    an attacker could cause a denial of service attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Cfengine. (It should be
+    noted that disabling cfservd will work around this particular problem.
+    However, in many cases, doing so will cripple your Cfengine setup.
+    Upgrading is strongly recommended.)
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cfengine users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-misc/cfengine-2.1.8&quot;
+    # emerge &quot;&gt;=net-misc/cfengine-2.1.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.coresecurity.com/common/showdoc.php?idx=387&amp;idxseccion=10">Corelabs Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1701">CVE-2004-1701</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1702">CVE-2004-1702</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon,  9 Aug 2004 21:29:04 +0000">
+    jaervosz
+  </metadata>
+</glsa>

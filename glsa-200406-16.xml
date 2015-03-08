@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-16">
+  <title>Apache 1.3: Buffer overflow in mod_proxy</title>
+  <synopsis>
+    A bug in mod_proxy may allow a remote attacker to execute arbitrary code
+    when Apache is configured a certain way.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>June 21, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>53544</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">1.3.31-r2</unaffected>
+      <vulnerable range="le">1.3.31-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP Server Project is an effort to develop and maintain an
+    open-source HTTP server for modern operating systems. The goal of this
+    project is to provide a secure, efficient and extensible server that
+    provides services in tune with the current HTTP standards.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in the proxy_util.c file may lead to a remote buffer overflow. To
+    trigger the vulnerability an attacker would have to get mod_proxy to
+    connect to a malicous server which returns an invalid (negative)
+    Content-Length.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause a Denial of Service as the Apache child handling
+    the request, which will die and under some circumstances execute arbitrary
+    code as the user running Apache, usually &quot;apache&quot;.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version:
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Apache 1.x users should upgrade to the latest version of Apache:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=www-servers/apache-1.3.31-r2"
+    # emerge ">=www-servers/apache-1.3.31-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.guninski.com/modproxy1.html">Georgi Guninski security advisory #69, 2004</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0492">CAN-2004-0492</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

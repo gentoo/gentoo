@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-14">
+  <title>PHP: Integer overflow</title>
+  <synopsis>
+    PHP is vulnerable to an integer overflow potentially allowing the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>October 30, 2006</announced>
+  <revised>March 29, 2008: 04</revised>
+  <bug>150261</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="rge">4.4.4-r6</unaffected>
+      <unaffected range="rge">4.4.6</unaffected>
+      <unaffected range="rge">4.4.7</unaffected>
+      <unaffected range="rge">4.4.8_pre20070816</unaffected>
+      <unaffected range="ge">5.1.6-r6</unaffected>
+      <vulnerable range="lt">5.1.6-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a widely-used general-purpose scripting language that is
+    especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>
+    A flaw in the PHP memory handling routines allows an unserialize() call
+    to be executed on non-allocated memory due to a previous integer
+    overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could execute arbitrary code with the rights of the web
+    server user or the user running a vulnerable PHP script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP 5.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-5.1.6-r6&quot;</code>
+    <p>
+    All PHP 4.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-4.4.4-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4812">CVE-2006-4812</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Oct 2006 12:42:57 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 18 Oct 2006 18:52:45 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 10:10:01 +0000">
+    falco
+  </metadata>
+</glsa>

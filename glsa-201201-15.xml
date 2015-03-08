@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-15">
+  <title>ktsuss: Privilege escalation</title>
+  <synopsis>Two vulnerabilities have been found in ktsuss, allowing local
+    attackers to gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">ktsuss</product>
+  <announced>January 27, 2012</announced>
+  <revised>January 27, 2012: 1</revised>
+  <bug>381115</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-misc/ktsuss" auto="yes" arch="*">
+      <vulnerable range="le">1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ktsuss is a simple, graphical version of su written in C and GTK+. </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in ktuss:</p>
+    
+    <ul>
+      <li>Under specific circumstances, ktsuss skips authentication and fails
+        to change the effective UID back to the real UID (CVE-2011-2921).
+      </li>
+      <li>The GTK interface spawned by the ktsuss binary is run as root
+        (CVE-2011-2922).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges and use the
+      "GTK_MODULES" environment variable to possibly execute arbitrary code
+      with root privileges. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo discontinued support for ktsuss. We recommend that users unmerge
+      ktsuss:
+    </p>
+    
+    <code>
+      # emerge --unmerge "x11-misc/ktsuss"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2921">CVE-2011-2921</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2922">CVE-2011-2922</uri>
+  </references>
+  <metadata timestamp="Thu, 27 Oct 2011 21:00:00 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Fri, 27 Jan 2012 14:41:59 +0000" tag="submitter">ackle</metadata>
+</glsa>

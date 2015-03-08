@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-15">
+  <title>Asterisk: IAX2 video frame buffer overflow</title>
+  <synopsis>
+    Asterisk contains a bug in the IAX2 channel driver making it vulnerable to
+    the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>June 14, 2006</announced>
+  <revised>June 14, 2006: 01</revised>
+  <bug>135680</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.0.11_p1</unaffected>
+      <vulnerable range="lt">1.0.11_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source implementation of a telephone private branch
+    exchange (PBX).
+    </p>
+  </background>
+  <description>
+    <p>
+    Asterisk fails to properly check the length of truncated video frames
+    in the IAX2 channel driver which results in a buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability by sending a specially
+    crafted IAX2 video stream resulting in the execution of arbitrary code
+    with the permissions of the user running Asterisk.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable public IAX2 support.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.0.11_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2898">CVE-2006-2898</uri>
+    <uri link="http://www.coresecurity.com/common/showdoc.php?idx=547&amp;idxseccion=10">Corelabs Asterisk PBX truncated video frame vulnerability advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 08 Jun 2006 10:46:16 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 09 Jun 2006 08:21:48 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 Jun 2006 09:36:11 +0000">
+    jaervosz
+  </metadata>
+</glsa>

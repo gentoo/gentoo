@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-25">
+  <title>CUPS: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in CUPS, ranging from local Denial
+    of Service attacks to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">CUPS</product>
+  <announced>December 28, 2004</announced>
+  <revised>January 12, 2005: 02</revised>
+  <bug>74479</bug>
+  <bug>75197</bug>
+  <bug>77023</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.1.23</unaffected>
+      <vulnerable range="lt">1.1.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Common UNIX Printing System (CUPS) is a cross-platform print
+    spooler, hpgltops is a CUPS filter handling printing of HPGL files and
+    lppasswd is a program used locally to manage spooler passwords.
+    </p>
+  </background>
+  <description>
+    <p>
+    CUPS makes use of vulnerable Xpdf code to handle PDF files
+    (CAN-2004-1125). Furthermore, Ariel Berkman discovered a buffer
+    overflow in the ParseCommand function in hpgl-input.c in the hpgltops
+    program (CAN-2004-1267). Finally, Bartlomiej Sieka discovered several
+    problems in the lppasswd program: it ignores some write errors
+    (CAN-2004-1268), it can leave the passwd.new file in place
+    (CAN-2004-1269) and it does not verify that passwd.new file is
+    different from STDERR (CAN-2004-1270).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The Xpdf and hpgltops vulnerabilities may be exploited by a remote
+    attacker to execute arbitrary code by sending specific print jobs to a
+    CUPS spooler. The lppasswd vulnerabilities may be exploited by a local
+    attacker to write data to the CUPS password file or deny further
+    password modifications.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.1.23&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1267">CAN-2004-1267</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1268">CAN-2004-1268</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1269">CAN-2004-1269</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1270">CAN-2004-1270</uri>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/cups.txt">Ariel Berkman Advisory</uri>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/cups2.txt">Bartlomiej Sieka Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 27 Dec 2004 17:52:31 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 28 Dec 2004 09:42:46 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 28 Dec 2004 12:52:03 +0000">
+    koon
+  </metadata>
+</glsa>

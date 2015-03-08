@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-10">
+  <title>KHTML: Cross-site scripting (XSS) vulnerability</title>
+  <synopsis>
+    The KHTML component shipped with the KDE libraries is prone to a cross-site
+    scripting (XSS) vulnerability.
+  </synopsis>
+  <product type="ebuild">kdelibs</product>
+  <announced>March 10, 2007</announced>
+  <revised>March 10, 2007: 01</revised>
+  <bug>165606</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.5.5-r8</unaffected>
+      <vulnerable range="lt">3.5.5-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. KHTML is the HTML interpreter used in
+    Konqueror and other parts of KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    The KHTML code allows for the execution of JavaScript code located
+    inside the "Title" HTML element, a related issue to the Safari error
+    found by Jose Avila.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    When viewing a HTML page that renders unsanitized attacker-supplied
+    input in the page title, Konqueror and other parts of KDE will execute
+    arbitrary JavaScript code contained in the page title, allowing for the
+    theft of browser session data or cookies.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KDElibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdelibs-3.5.5-r8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0537">CVE-2007-0537</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0478">CVE-2007-0478</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 16:04:07 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 27 Feb 2007 16:19:36 +0000">
+    falco
+  </metadata>
+</glsa>

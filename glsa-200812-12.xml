@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-12">
+  <title>Honeyd: Insecure temporary file creation</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in Honeyd, possibly
+    leading to symlink attacks.
+  </synopsis>
+  <product type="ebuild">honeyd</product>
+  <announced>December 12, 2008</announced>
+  <revised>December 12, 2008: 01</revised>
+  <bug>237481</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/honeyd" auto="yes" arch="*">
+      <unaffected range="ge">1.5c-r1</unaffected>
+      <vulnerable range="lt">1.5c-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Honeyd is a small daemon that creates virtual hosts on a network.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported an insecure temporary file usage within the
+    "test.sh" script.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks and overwrite arbitrary
+    files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Honeyd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/honeyd-1.5c-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3928">CVE-2008-3928</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 18 Oct 2008 20:32:05 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Oct 2008 20:17:52 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 20:14:32 +0000">
+    p-y
+  </metadata>
+</glsa>

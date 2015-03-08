@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-25">
+  <title>VMware Player, Server, Workstation: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VMware Player, Server,
+    and Workstation, allowing remote and local attackers to conduct several
+    attacks, including privilege escalation, remote execution of arbitrary
+    code, and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">vmware-server vmware-player vmware-workstation</product>
+  <announced>September 29, 2012</announced>
+  <revised>September 29, 2012: 2</revised>
+  <bug>213548</bug>
+  <bug>224637</bug>
+  <bug>236167</bug>
+  <bug>245941</bug>
+  <bug>265139</bug>
+  <bug>282213</bug>
+  <bug>297367</bug>
+  <bug>335866</bug>
+  <bug>385727</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/vmware-player" auto="yes" arch="*">
+      <vulnerable range="le">2.5.5.328052</vulnerable>
+    </package>
+    <package name="app-emulation/vmware-workstation" auto="yes" arch="*">
+      <vulnerable range="le">6.5.5.328052</vulnerable>
+    </package>
+    <package name="app-emulation/vmware-server" auto="yes" arch="*">
+      <vulnerable range="le">1.0.9.156507</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VMware Player, Server, and Workstation allow emulation of a complete PC
+      on a PC without the usual performance overhead of most emulators.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VMware Player, Server,
+      and Workstation. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Local users may be able to gain escalated privileges, cause a Denial of
+      Service, or gain sensitive information. 
+    </p>
+    
+    <p>A remote attacker could entice a user to open a specially crafted file,
+      possibly resulting in the remote execution of arbitrary code, or a Denial
+      of Service. Remote attackers also may be able to spoof DNS traffic, read
+      arbitrary files, or inject arbitrary web script to the VMware Server
+      Console. 
+    </p>
+    
+    <p>Furthermore, guest OS users may be able to execute arbitrary code on the
+      host OS, gain escalated privileges on the guest OS, or cause a Denial of
+      Service (crash the host OS).
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo discontinued support for VMware Player. We recommend that users
+      unmerge VMware Player:
+    </p>
+    
+    <code>
+      # emerge --unmerge "app-emulation/vmware-player"
+    </code>
+    
+    <p>NOTE: Users could upgrade to
+      “&gt;=app-emulation/vmware-player-3.1.5”, however these packages are
+      not currently stable.
+    </p>
+    
+    <p>Gentoo discontinued support for VMware Workstation. We recommend that
+      users unmerge VMware Workstation:
+    </p>
+    
+    <code>
+      # emerge --unmerge "app-emulation/vmware-workstation"
+    </code>
+    
+    <p>NOTE: Users could upgrade to
+      “&gt;=app-emulation/vmware-workstation-7.1.5”, however these packages
+      are not currently stable.
+    </p>
+    
+    <p>Gentoo discontinued support for VMware Server. We recommend that users
+      unmerge VMware Server:
+    </p>
+    
+    <code>
+      # emerge --unmerge "app-emulation/vmware-server"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5269">CVE-2007-5269</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5503 ">
+      CVE-2007-5503 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5671 ">
+      CVE-2007-5671 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0967 ">
+      CVE-2008-0967 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1340 ">
+      CVE-2008-1340 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1361 ">
+      CVE-2008-1361 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1362 ">
+      CVE-2008-1362 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1363 ">
+      CVE-2008-1363 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1364 ">
+      CVE-2008-1364 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1392 ">
+      CVE-2008-1392 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1447 ">
+      CVE-2008-1447 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1806 ">
+      CVE-2008-1806 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1807 ">
+      CVE-2008-1807 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1808 ">
+      CVE-2008-1808 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2098 ">
+      CVE-2008-2098 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2100 ">
+      CVE-2008-2100 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2101 ">
+      CVE-2008-2101 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4915 ">
+      CVE-2008-4915 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4916 ">
+      CVE-2008-4916 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4917 ">
+      CVE-2008-4917 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0040 ">
+      CVE-2009-0040 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0909 ">
+      CVE-2009-0909 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0910 ">
+      CVE-2009-0910 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1244">CVE-2009-1244</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2267 ">
+      CVE-2009-2267 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3707 ">
+      CVE-2009-3707 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3732 ">
+      CVE-2009-3732 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3733 ">
+      CVE-2009-3733 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4811 ">
+      CVE-2009-4811 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1137 ">
+      CVE-2010-1137 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1138 ">
+      CVE-2010-1138 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1139 ">
+      CVE-2010-1139 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1140 ">
+      CVE-2010-1140 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1141 ">
+      CVE-2010-1141 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1142 ">
+      CVE-2010-1142 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1143 ">
+      CVE-2010-1143 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3868">CVE-2011-3868</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:01 +0000">system</metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Sep 2012 13:12:45 +0000">ackle</metadata>
+</glsa>

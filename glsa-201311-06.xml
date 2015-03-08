@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-06">
+  <title>libxml2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libxml2, allowing
+    remote attackers to execute arbitrary code or cause Denial of Service. 
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>November 10, 2013</announced>
+  <revised>November 10, 2013: 1</revised>
+  <bug>434344</bug>
+  <bug>444836</bug>
+  <bug>458430</bug>
+  <bug>458740</bug>
+  <bug>466238</bug>
+  <bug>476438</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.9.1-r1</unaffected>
+      <vulnerable range="lt">2.9.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxml2 is the XML C parser and toolkit developed for the Gnome project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libxml2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      document with an application linked against libxml2, possibly resulting
+      in execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxml2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.9.1-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2871">CVE-2012-2871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5134">CVE-2012-5134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0338">CVE-2013-0338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1664">CVE-2013-1664</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1969">CVE-2013-1969</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2877">CVE-2013-2877</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Sep 2012 19:04:07 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Nov 2013 14:54:33 +0000">ackle</metadata>
+</glsa>

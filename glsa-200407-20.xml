@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-20">
+  <title>Subversion: Vulnerability in mod_authz_svn</title>
+  <synopsis>
+    Users with write access to parts of a Subversion repository may bypass read
+    restrictions in mod_authz_svn and read any part of the repository they
+    wish.
+  </synopsis>
+  <product type="ebuild">subversion</product>
+  <announced>July 26, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>57747</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/subversion" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6</unaffected>
+      <vulnerable range="le">1.0.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Subversion is an advanced version control system, similar to CVS, which
+    supports additional functionality such as the ability to move, copy and
+    delete files and directories. A Subversion server may be run as an
+    Apache module, a standalone server (svnserve), or on-demand over ssh (a
+    la CVS' ":ext:" protocol). The mod_authz_svn Apache module works with
+    Subversion in Apache to limit access to parts of Subversion
+    repositories based on policy set by the administrator.
+    </p>
+  </background>
+  <description>
+    <p>
+    Users with write access to part of a Subversion repository may bypass
+    read restrictions on any part of that repository. This can be done
+    using an "svn copy" command to copy the portion of a repository the
+    user wishes to read into an area where they have write access.
+    </p>
+    <p>
+    Since copies are versioned, any such copy attempts will be readily
+    apparent.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    This is a low-risk vulnerability. It affects only users of Subversion
+    who are running servers inside Apache and using mod_authz_svn.
+    Additionally, this vulnerability may be exploited only by users with
+    write access to some portion of a repository.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Keep sensitive content separated into different Subversion
+    repositories, or disable the Apache Subversion server and use svnserve
+    instead.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Subversion users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=dev-util/subversion-1.0.6&quot;
+    # emerve &quot;&gt;=dev-util/subversion-1.0.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://svn.collab.net/repos/svn/tags/1.0.6/CHANGES">ChangeLog for Subversion 1.0.6</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1438">CVE-2004-1438</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter">
+    condordes
+  </metadata>
+</glsa>

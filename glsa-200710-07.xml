@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-07">
+  <title>Tk: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in Tk.
+  </synopsis>
+  <product type="ebuild">tk</product>
+  <announced>October 07, 2007</announced>
+  <revised>October 07, 2007: 01</revised>
+  <bug>192539</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/tk" auto="yes" arch="*">
+      <unaffected range="ge">8.4.15-r1</unaffected>
+      <vulnerable range="lt">8.4.15-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tk is a toolkit for creating graphical user interfaces.
+    </p>
+  </background>
+  <description>
+    <p>
+    Reinhard Max discovered a boundary error in Tk when processing an
+    interlaced GIF with two frames where the second is smaller than the
+    first one.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted GIF
+    image with a Tk-based software, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/tk-8.4.15-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4851">CVE-2007-4851</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 25 Sep 2007 09:49:33 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 25 Sep 2007 09:49:45 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 20:07:14 +0000">
+    p-y
+  </metadata>
+</glsa>

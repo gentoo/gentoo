@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-07">
+  <title>Cacti: Multiple vulnerabilities in included ADOdb</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in the ADOdb layer included
+    in Cacti, potentially resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Cacti</product>
+  <announced>April 14, 2006</announced>
+  <revised>April 14, 2006: 01</revised>
+  <bug>129284</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6h_p20060108-r2</unaffected>
+      <vulnerable range="lt">0.8.6h_p20060108-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cacti is a complete web-based frontend to rrdtool. ADOdb is a
+    PHP-based database abstraction layer which is included in Cacti.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities have been identified in the copy of ADOdb
+    included in Cacti. Andreas Sandblad discovered a dynamic code
+    evaluation vulnerability (CVE-2006-0147) and a potential SQL injection
+    vulnerability (CVE-2006-0146). Andy Staudacher reported another SQL
+    injection vulnerability (CVE-2006-0410), and Gulftech Security
+    discovered multiple cross-site-scripting issues (CVE-2006-0806).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Remote attackers could trigger these vulnerabilities by sending
+    malicious queries to the Cacti web application, resulting in arbitrary
+    code execution, database compromise through arbitrary SQL execution,
+    and malicious HTML or JavaScript code injection.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cacti users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.6h_p20060108-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0146">CVE-2006-0146</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0147">CVE-2006-0147</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0410">CVE-2006-0410</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0806">CVE-2006-0806</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 13 Apr 2006 06:13:49 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Apr 2006 16:58:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 13 Apr 2006 20:36:27 +0000">
+    koon
+  </metadata>
+</glsa>

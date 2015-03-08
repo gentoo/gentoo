@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-11">
+  <title>OpenSSH, Dropbear: Insecure use of system() call</title>
+  <synopsis>
+    A flaw in OpenSSH and Dropbear allows local users to elevate their
+    privileges via scp.
+  </synopsis>
+  <product type="ebuild">OpenSSH</product>
+  <announced>February 20, 2006</announced>
+  <revised>February 20, 2006: 01</revised>
+  <bug>119232</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">4.2_p1-r1</unaffected>
+      <vulnerable range="lt">4.2_p1-r1</vulnerable>
+    </package>
+    <package name="net-misc/dropbear" auto="yes" arch="*">
+      <unaffected range="ge">0.47-r1</unaffected>
+      <vulnerable range="lt">0.47-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSH is a free application suite consisting of server and
+    clients that replace tools like telnet, rlogin, rcp and ftp with more
+    secure versions offering additional functionality. Dropbear is an SSH
+    server and client designed with a small memory footprint that includes
+    OpenSSH scp code.
+    </p>
+  </background>
+  <description>
+    <p>
+    To copy from a local filesystem to another local filesystem, scp
+    constructs a command line using 'cp' which is then executed via
+    system(). Josh Bressers discovered that special characters are not
+    escaped by scp, but are simply passed to the shell.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By tricking other users or applications to use scp on maliciously
+    crafted filenames, a local attacker user can execute arbitrary commands
+    with the rights of the user running scp.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSH users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.2_p1-r1&quot;</code>
+    <p>
+    All Dropbear users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dropbear-0.47-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0225">CVE-2006-0225</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 06 Feb 2006 20:22:40 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 07 Feb 2006 06:29:22 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Feb 2006 20:03:36 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201204-04">
+  <title>FreeType: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FreeType, allowing
+    remote attackers to possibly execute arbitrary code or cause Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">FreeType</product>
+  <announced>April 17, 2012</announced>
+  <revised>April 17, 2012: 1</revised>
+  <bug>407257</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.4.9</unaffected>
+      <vulnerable range="lt">2.4.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeType is a high-quality and portable font engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FreeType. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted font,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the user running the application, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeType users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/freetype-2.4.9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1126">CVE-2012-1126</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1127">CVE-2012-1127</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1128">CVE-2012-1128</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1129">CVE-2012-1129</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1130">CVE-2012-1130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1131">CVE-2012-1131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1132">CVE-2012-1132</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1133">CVE-2012-1133</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1134">CVE-2012-1134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1135">CVE-2012-1135</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1136">CVE-2012-1136</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1137">CVE-2012-1137</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1138">CVE-2012-1138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1139">CVE-2012-1139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1140">CVE-2012-1140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1141">CVE-2012-1141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1142">CVE-2012-1142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1143">CVE-2012-1143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1144">CVE-2012-1144</uri>
+  </references>
+  <metadata timestamp="Sat, 17 Mar 2012 18:44:31 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 17 Apr 2012 22:43:12 +0000" tag="submitter">ackle</metadata>
+</glsa>

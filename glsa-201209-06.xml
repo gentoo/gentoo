@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-06">
+  <title>Expat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Expat, possibly
+    resulting in Denial of Service.
+  </synopsis>
+  <product type="ebuild">expat</product>
+  <announced>September 24, 2012</announced>
+  <revised>September 24, 2012: 1</revised>
+  <bug>280615</bug>
+  <bug>303727</bug>
+  <bug>407519</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/expat" auto="yes" arch="*">
+      <unaffected range="ge">2.1.0_beta3</unaffected>
+      <vulnerable range="lt">2.1.0_beta3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Expat is a set of XML parsing libraries.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Expat. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted XML
+      file in an application linked against Expat, possibly resulting in a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Expat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/expat-2.1.0_beta3"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3560">CVE-2009-3560</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3720">CVE-2009-3720</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0876">CVE-2012-0876</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1147">CVE-2012-1147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1148">CVE-2012-1148</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:05:51 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 10:37:12 +0000">ackle</metadata>
+</glsa>

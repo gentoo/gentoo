@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-19">
+  <title>NUT: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in NUT might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">nut</product>
+  <announced>September 27, 2012</announced>
+  <revised>September 27, 2012: 1</revised>
+  <bug>419377</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-power/nut" auto="yes" arch="*">
+      <unaffected range="ge">2.6.3</unaffected>
+      <vulnerable range="lt">2.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Network UPS Tools (NUT) provide support for power devices.</p>
+  </background>
+  <description>
+    <p>An error in the addchar() function in parseconf.c may cause a buffer
+      overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted string to upsd,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NUT users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-power/nut-2.6.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2944">CVE-2012-2944</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Sep 2012 13:16:15 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 19:53:02 +0000">ackle</metadata>
+</glsa>

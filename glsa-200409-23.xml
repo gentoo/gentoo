@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-23">
+  <title>SnipSnap: HTTP response splitting</title>
+  <synopsis>
+    SnipSnap is vulnerable to HTTP response splitting attacks such as web cache
+    poisoning, cross-user defacement, and cross-site scripting.
+  </synopsis>
+  <product type="ebuild">snipsnap</product>
+  <announced>September 17, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>64154</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/snipsnap-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0_beta1</unaffected>
+      <vulnerable range="lt">1.0_beta1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SnipSnap is a user friendly content management system with features
+    such as wiki and weblog.
+    </p>
+  </background>
+  <description>
+    <p>
+    SnipSnap contains various HTTP response splitting vulnerabilities that
+    could potentially compromise the sites data. Some of these attacks
+    include web cache poisoning, cross-user defacement, hijacking pages
+    with sensitive user information, and cross-site scripting. This
+    vulnerability is due to the lack of illegal input checking in the
+    software.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A malicious user could inject and execute arbitrary script code,
+    potentially compromising the victim's data or browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SnipSnap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=dev-java/snipsnap-bin-1.0_beta1&quot;
+    # emerge &quot;&gt;=dev-java/snipsnap-bin-1.0beta1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://snipsnap.org/space/start/2004-09-14/1#SnipSnap_1.0b1_(uttoxeter)_released">SnipSnap Release Notes</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1470">CVE-2004-1470</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 16 Sep 2004 20:00:37 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Sep 2004 20:40:46 +0000">
+    lewk
+  </metadata>
+</glsa>

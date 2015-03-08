@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-30">
+  <title>PCRE: Multiple vulnerabilities</title>
+  <synopsis>
+    PCRE is vulnerable to multiple buffer overflow and memory corruption
+    vulnerabilities, possibly leading to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpcre</product>
+  <announced>November 20, 2007</announced>
+  <revised>November 20, 2007: 01</revised>
+  <bug>198198</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libpcre" auto="yes" arch="*">
+      <unaffected range="ge">7.3-r1</unaffected>
+      <vulnerable range="lt">7.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PCRE is a library providing functions for Perl-compatible regular
+    expressions.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy (Google Security) discovered multiple vulnerabilities in
+    PCRE. He reported an error when processing "\Q\E" sequences with
+    unmatched "\E" codes that can lead to the compiled bytecode being
+    corrupted (CVE-2007-1659). PCRE does not properly calculate sizes for
+    unspecified "multiple forms of character class", which triggers a
+    buffer overflow (CVE-2007-1660). Further improper calculations of
+    memory boundaries were reported when matching certain input bytes
+    against regex patterns in non UTF-8 mode (CVE-2007-1661) and when
+    searching for unmatched brackets or parentheses (CVE-2007-1662).
+    Multiple integer overflows when processing escape sequences may lead to
+    invalid memory read operations or potentially cause heap-based buffer
+    overflows (CVE-2007-4766). PCRE does not properly handle "\P" and
+    "\P{x}" sequences which can lead to heap-based buffer overflows or
+    trigger the execution of infinite loops (CVE-2007-4767), PCRE is also
+    prone to an error when optimizing character classes containing a
+    singleton UTF-8 sequence which might lead to a heap-based buffer
+    overflow (CVE-2007-4768).
+    </p>
+    <p>
+    Chris Evans also reported multiple integer overflow vulnerabilities in
+    PCRE when processing a large number of named subpatterns ("name_count")
+    or long subpattern names ("max_name_size") (CVE-2006-7227), and via
+    large "min", "max", or "duplength" values (CVE-2006-7228) both possibly
+    leading to buffer overflows. Another vulnerability was reported when
+    compiling patterns where the "-x" or "-i" UTF-8 options change within
+    the pattern, which might lead to improper memory calculations
+    (CVE-2006-7230).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities by sending specially
+    crafted regular expressions to applications making use of the PCRE
+    library, which could possibly lead to the execution of arbitrary code,
+    a Denial of Service or the disclosure of sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PCRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libpcre-7.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7227">CVE-2006-7227</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7228">CVE-2006-7228</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7230">CVE-2006-7230</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1659">CVE-2007-1659</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1660">CVE-2007-1660</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1661">CVE-2007-1661</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1662">CVE-2007-1662</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4766">CVE-2007-4766</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4767">CVE-2007-4767</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4768">CVE-2007-4768</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 09 Nov 2007 10:23:13 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 20 Nov 2007 00:43:59 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 20 Nov 2007 00:44:04 +0000">
+    rbu
+  </metadata>
+</glsa>

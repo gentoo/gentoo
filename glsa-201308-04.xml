@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201308-04">
+  <title>Puppet: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Puppet, the worst of
+    which could lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">puppet</product>
+  <announced>August 23, 2013</announced>
+  <revised>August 23, 2013: 1</revised>
+  <bug>456002</bug>
+  <bug>461656</bug>
+  <bug>473720</bug>
+  <bug>481186</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/puppet" auto="yes" arch="*">
+      <unaffected range="ge">2.7.23</unaffected>
+      <vulnerable range="lt">2.7.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Puppet is a system configuration management tool written in Ruby.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Puppet. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Puppet users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/puppet-2.7.23"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6120">CVE-2012-6120</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1640">CVE-2013-1640</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1652">CVE-2013-1652</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1653">CVE-2013-1653</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1654">CVE-2013-1654</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1655">CVE-2013-1655</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2274">CVE-2013-2274</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2275">CVE-2013-2275</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3567">CVE-2013-3567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4761">CVE-2013-4761</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4956">CVE-2013-4956</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 21:39:55 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 23 Aug 2013 18:13:33 +0000">ackle</metadata>
+</glsa>

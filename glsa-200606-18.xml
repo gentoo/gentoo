@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-18">
+  <title>PAM-MySQL: Multiple vulnerabilities</title>
+  <synopsis>
+    Vulnerabilities in PAM-MySQL can lead to a Denial of Service, making it
+    impossible to log into a machine.
+  </synopsis>
+  <product type="ebuild">pam_mysql</product>
+  <announced>June 15, 2006</announced>
+  <revised>July 29, 2006: 02</revised>
+  <bug>120842</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-auth/pam_mysql" auto="yes" arch="*">
+      <unaffected range="ge">0.7_rc1</unaffected>
+      <vulnerable range="lt">0.7_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PAM-MySQL is a PAM module used to authenticate users against a MySQL
+    backend.
+    </p>
+  </background>
+  <description>
+    <p>
+    A flaw in handling the result of pam_get_item() as well as further
+    unspecified flaws were discovered in PAM-MySQL.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By exploiting the mentioned flaws an attacker can cause a Denial of
+    Service and thus prevent users that authenticate against PAM-MySQL from
+    logging into a machine. There is also a possible additional attack
+    vector with more malicious impact that has not been confirmed yet.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PAM-MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/pam_mysql-0.7_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://pam-mysql.sourceforge.net/News/">Official release information</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4713">CVE-2005-4713</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0056">CVE-2006-0056</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jun 2006 20:13:52 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 11 Jun 2006 20:15:46 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Jun 2006 04:26:43 +0000">
+    frilled
+  </metadata>
+</glsa>

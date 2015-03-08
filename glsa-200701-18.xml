@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-18">
+  <title>xine-ui: Format string vulnerabilities</title>
+  <synopsis>
+    xine-ui improperly handles format strings, possibly allowing for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-ui</product>
+  <announced>January 23, 2007</announced>
+  <revised>January 23, 2007: 01</revised>
+  <bug>161558</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/xine-ui" auto="yes" arch="*">
+      <unaffected range="ge">0.99.5_pre20060716</unaffected>
+      <vulnerable range="lt">0.99.5_pre20060716</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-ui is a skin-based user interface for xine. xine is a free
+    multimedia player. It plays CDs, DVDs, and VCDs, and can also decode
+    other common multimedia formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Due to the improper handling and use of format strings, the
+    errors_create_window() function in errors.c does not safely write data
+    to memory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted media file
+    with xine-ui, and possibly execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-ui users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/xine-ui-0.99.5_pre20060716&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0254">CVE-2007-0254</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 17 Jan 2007 22:36:36 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 17 Jan 2007 22:40:52 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 01:55:17 +0000">
+    shellsage
+  </metadata>
+</glsa>

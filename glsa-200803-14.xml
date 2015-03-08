@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-14">
+  <title>Ghostscript: Buffer overflow</title>
+  <synopsis>
+    A stack-based buffer overflow has been discovered in Ghostscript, allowing
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">ghostscript</product>
+  <announced>March 08, 2008</announced>
+  <revised>March 08, 2008: 01</revised>
+  <bug>208999</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-esp" auto="yes" arch="*">
+      <unaffected range="ge">8.15.4-r1</unaffected>
+      <vulnerable range="lt">8.15.4-r1</vulnerable>
+    </package>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">8.61-r3</unaffected>
+      <vulnerable range="lt">8.61-r3</vulnerable>
+    </package>
+    <package name="app-text/ghostscript-gnu" auto="yes" arch="*">
+      <unaffected range="ge">8.60.0-r2</unaffected>
+      <vulnerable range="lt">8.60.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ghostscript is a suite of software based on an interpreter for
+    PostScript and PDF.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans (Google Security) discovered a stack-based buffer overflow
+    within the zseticcspace() function in the file zicc.c when processing a
+    PostScript file containing a long "Range" array in a .seticcscpate
+    operator.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability by enticing a user
+    to open a specially crafted PostScript file, which could possibly lead
+    to the execution of arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ghostscript ESP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-esp-8.15.4-r1&quot;</code>
+    <p>
+    All Ghostscript GPL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gpl-8.61-r3&quot;</code>
+    <p>
+    All Ghostscript GNU users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gnu-8.60.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0411">CVE-2008-0411</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Mar 2008 15:25:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 02 Mar 2008 15:25:54 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Mar 2008 20:06:31 +0000">
+    psychoschlumpf
+  </metadata>
+</glsa>

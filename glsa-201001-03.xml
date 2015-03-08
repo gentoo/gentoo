@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-03">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in PHP, the worst of which leading to
+    the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>January 05, 2010</announced>
+  <revised>January 05, 2010: 01</revised>
+  <bug>249875</bug>
+  <bug>255121</bug>
+  <bug>260576</bug>
+  <bug>261192</bug>
+  <bug>266125</bug>
+  <bug>274670</bug>
+  <bug>280602</bug>
+  <bug>285434</bug>
+  <bug>292132</bug>
+  <bug>293888</bug>
+  <bug>297369</bug>
+  <bug>297370</bug>
+  <access>local remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.2.12</unaffected>
+      <vulnerable range="lt">5.2.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a widely-used general-purpose scripting language that is
+    especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in PHP. Please review the
+    CVE identifiers referenced below and the associated PHP release notes
+    for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A context-dependent attacker could execute arbitrary code via a
+    specially crafted string containing an HTML entity when the mbstring
+    extension is enabled. Furthermore a remote attacker could execute
+    arbitrary code via a specially crafted GD graphics file.
+    </p>
+    <p>
+    A remote attacker could also cause a Denial of Service via a malformed
+    string passed to the json_decode() function, via a specially crafted
+    ZIP file passed to the php_zip_make_relative_path() function, via a
+    malformed JPEG image passed to the exif_read_data() function, or via
+    temporary file exhaustion. It is also possible for an attacker to spoof
+    certificates, bypass various safe_mode and open_basedir restrictions
+    when certain criteria are met, perform Cross-site scripting attacks,
+    more easily perform SQL injection attacks, manipulate settings of other
+    virtual hosts on the same server via a malicious .htaccess entry when
+    running on Apache, disclose memory portions, and write arbitrary files
+    via a specially crafted ZIP archive. Some vulnerabilities with unknown
+    impact and attack vectors have been reported as well.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version. As PHP is
+    statically linked against a vulnerable version of the c-client library
+    when the imap or kolab USE flag is enabled (GLSA 200911-03), users
+    should upgrade net-libs/c-client beforehand:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/c-client-2007e&quot;
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-5.2.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5498">CVE-2008-5498</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5514">CVE-2008-5514</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5557">CVE-2008-5557</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5624">CVE-2008-5624</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5625">CVE-2008-5625</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5658">CVE-2008-5658</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5814">CVE-2008-5814</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5844">CVE-2008-5844</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7002">CVE-2008-7002</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0754">CVE-2009-0754</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1271">CVE-2009-1271</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1272">CVE-2009-1272</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2626">CVE-2009-2626</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2687">CVE-2009-2687</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3291">CVE-2009-3291</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3292">CVE-2009-3292</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3293">CVE-2009-3293</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3546">CVE-2009-3546</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3557">CVE-2009-3557</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3558">CVE-2009-3558</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4017">CVE-2009-4017</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4142">CVE-2009-4142</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4143">CVE-2009-4143</uri>
+    <uri link="/security/en/glsa/glsa-200911-03.xml">GLSA 200911-03</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 06 Nov 2009 10:26:06 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 26 Nov 2009 09:22:21 +0000">
+    rbu
+  </metadata>
+</glsa>

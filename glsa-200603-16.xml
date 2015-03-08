@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-16">
+  <title>Metamail: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow in Metamail could possibly be exploited to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">metamail</product>
+  <announced>March 17, 2006</announced>
+  <revised>March 17, 2006: 01</revised>
+  <bug>126052</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/metamail" auto="yes" arch="*">
+      <unaffected range="ge">2.7.45.3-r1</unaffected>
+      <vulnerable range="lt">2.7.45.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Metamail is a program that decodes MIME encoded mail.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar discovered a buffer overflow in Metamail when
+    processing mime boundraries.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a specially crafted email, attackers could potentially
+    exploit this vulnerability to crash Metamail or to execute arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Metamail users should update to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/metamail-2.7.45.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0709">CVE-2006-0709</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Mar 2006 21:16:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Mar 2006 09:48:07 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Mar 2006 21:04:49 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-02">
+  <title>GLib: Execution of arbitrary code</title>
+  <synopsis>
+    Multiple integer overflows might allow for the execution of arbitrary code
+    when performing base64 conversion.
+  </synopsis>
+  <product type="ebuild">glib</product>
+  <announced>April 03, 2009</announced>
+  <revised>April 05, 2009: 02</revised>
+  <bug>249214</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/glib" auto="yes" arch="*">
+      <unaffected range="ge">2.18.4-r1</unaffected>
+      <unaffected range="rge">2.16.6-r1</unaffected>
+      <unaffected range="lt">2</unaffected>
+      <vulnerable range="lt">2.18.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GLib is a library of C routines that is used by a multitude of
+    programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Diego E. Petteno` reported multiple integer overflows in glib/gbase64.c
+    when converting a long string from or to a base64 representation.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to perform a
+    base64 conversion via an application using GLib, possibly resulting in
+    the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GLib 2.18 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/glib-2.18.4-r1&quot;</code>
+    <p>
+    All GLib 2.16 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/glib-2.16.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4316">CVE-2008-4316</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 02 Apr 2009 12:01:03 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 02 Apr 2009 12:09:57 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 02 Apr 2009 12:10:20 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-18">
+  <title>gzip: Insecure creation of temporary files</title>
+  <synopsis>
+    gzip contain a bug potentially allowing an attacker to execute arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">gzip</product>
+  <announced>June 24, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>54890</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-arch/gzip" auto="yes" arch="*">
+      <unaffected range="ge">1.3.3-r4</unaffected>
+      <vulnerable range="le">1.3.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gzip (GNU zip) is popular compression program. The included gzexe
+    utility allows you to compress executables in place and have them
+    automatically uncompress and execute when you run them.
+    </p>
+  </background>
+  <description>
+    <p>
+    The script gzexe included with gzip contains a bug in the code that
+    handles tempfile creation. If the creation of a temp file fails when
+    using gzexe fails instead of bailing out it executes the command given
+    as argument.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This could lead to priviege escalation by running commands under the
+    rights of the user running the self extracting file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gzip users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-arch/gzip-1.3.3-r4&quot;
+    # emerge &quot;&gt;=app-arch/gzip-1.3.3-r4&quot;</code>
+    <p>
+    Additionally, once the upgrade is complete, all self extracting files
+    created with earlier versions gzexe should be recreated, since the
+    vulnerability is actually embedded in those executables.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0603">CVE-2004-0603</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

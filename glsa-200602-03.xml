@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-03">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>
+    Apache can be exploited for cross-site scripting attacks and is vulnerable
+    to a Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>February 06, 2006</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>115324</bug>
+  <bug>118875</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.0.55-r1</unaffected>
+      <unaffected range="rge">2.0.54-r16</unaffected>
+      <unaffected range="eq">1.3.34-r2</unaffected>
+      <unaffected range="rge">1.3.34-r11</unaffected>
+      <unaffected range="rge">1.3.37</unaffected>
+      <vulnerable range="lt">2.0.55-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of the most popular web servers on the
+    Internet. mod_imap provides support for server-side image maps; mod_ssl
+    provides secure HTTP connections.
+    </p>
+  </background>
+  <description>
+    <p>
+    Apache's mod_imap fails to properly sanitize the "Referer" directive of
+    imagemaps in some cases, leaving the HTTP Referer header unescaped. A
+    flaw in mod_ssl can lead to a NULL pointer dereference if the site uses
+    a custom "Error 400" document. These vulnerabilities were reported by
+    Marc Cox and Hartmut Keil, respectively.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit mod_imap to inject arbitrary HTML or
+    JavaScript into a user's browser to gather sensitive information.
+    Attackers could also cause a Denial of Service on hosts using the SSL
+    module (Apache 2.0.x only).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache users should upgrade to the latest version, depending on
+    whether they still use the old configuration style
+    (/etc/apache/conf/*.conf) or the new one (/etc/apache2/httpd.conf).
+    </p>
+    <p>
+    2.0.x users, new style config:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.0.55-r1&quot;</code>
+    <p>
+    2.0.x users, old style config:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=www-servers/apache-2.0.54-r16&quot;</code>
+    <p>
+    1.x users, new style config:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=www-servers/apache-1.3.34-r11&quot;</code>
+    <p>
+    1.x users, old style config:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=www-servers/apache-1.3.34-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3352">CVE-2005-3352</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3357">CVE-2005-3357</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 23 Jan 2006 08:56:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 27 Jan 2006 06:31:39 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 06 Feb 2006 06:26:14 +0000">
+    jaervosz
+  </metadata>
+</glsa>

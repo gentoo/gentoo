@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-09">
+  <title>Cyrus-SASL: DIGEST-MD5 Pre-Authentication Denial of Service</title>
+  <synopsis>
+    Cyrus-SASL contains a vulnerability in the DIGEST-MD5 process that could
+    lead to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">cyrus-sasl</product>
+  <announced>April 21, 2006</announced>
+  <revised>April 21, 2006: 01</revised>
+  <bug>129523</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/cyrus-sasl" auto="yes" arch="*">
+      <unaffected range="ge">2.1.21-r2</unaffected>
+      <vulnerable range="lt">2.1.21-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cyrus-SASL is an implementation of the Simple Authentication and
+    Security Layer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cyrus-SASL contains an unspecified vulnerability in the DIGEST-MD5
+    process that could lead to a Denial of Service.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could possibly exploit this vulnerability by sending
+    specially crafted data stream to the Cyrus-SASL server, resulting in a
+    Denial of Service even if the attacker is not able to authenticate.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cyrus-SASL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/cyrus-sasl-2.1.21-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1721">CVE-2006-1721</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 15 Apr 2006 12:54:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Apr 2006 16:43:15 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 20 Apr 2006 16:06:22 +0000">
+    jaervosz
+  </metadata>
+</glsa>

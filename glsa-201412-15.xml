@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-15">
+  <title>MCollective: Privilege escalation</title>
+  <synopsis>Two vulnerabilities have been found in MCollective, the worst of
+    which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">mcollective</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>513292</bug>
+  <bug>517286</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/mcollective" auto="yes" arch="*">
+      <unaffected range="ge">2.5.3</unaffected>
+      <vulnerable range="lt">2.5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MCollective is a framework to build server orchestration or parallel job
+      execution systems.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in MCollective:</p>
+    
+    <ul>
+      <li>An untrusted search path vulnerability exists in MCollective
+        (CVE-2014-3248)
+      </li>
+      <li>MCollective does not properly validate server certificates
+        (CVE-2014-3251)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A local attacker can execute arbitrary a Trojan horse shared library,
+      potentially resulting in arbitrary code execution and privilege
+      escalation. Furthermore, a local attacker may be able to establish
+      unauthorized MCollective connections.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MCollective users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/mcollective-2.5.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3248">CVE-2014-3248</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3251">CVE-2014-3251</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 22 Jul 2014 21:26:18 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 17:06:37 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-10">
+  <title>JasPer: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple memory management errors in JasPer could result in
+    execution of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">JasPer</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>394879</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jasper" auto="yes" arch="*">
+      <unaffected range="ge">1.900.1-r4</unaffected>
+      <vulnerable range="lt">1.900.1-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The JasPer Project is an open-source initiative to provide a free
+      software-based reference implementation of the codec specified in the
+      JPEG-2000 Part-1 (jpeg2k) standard.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in JasPer:</p>
+    
+    <ul>
+      <li>The jpc_cox_getcompparms function in libjasper/jpc/jpc_cs.c contains
+        an error that could overwrite certain callback pointers, possibly
+        causing a heap-based buffer overflow (CVE-2011-4516).
+      </li>
+      <li>The jpc_crg_getparms function in libjasper/jpc/jpc_cs.c uses an
+        incorrect data type, possibly causing a heap-based buffer overflow
+        (CVE-2011-4517).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to process
+      specially crafted JPEG-2000 files with an application using JasPer,
+      possibly resulting in the execution of arbitrary code with the privileges
+      of the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All JasPer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/jasper-1.900.1-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4516">CVE-2011-4516</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4517">CVE-2011-4517</uri>
+  </references>
+  <metadata timestamp="Tue, 27 Dec 2011 05:22:50 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 19:50:54 +0000" tag="submitter">ackle</metadata>
+</glsa>

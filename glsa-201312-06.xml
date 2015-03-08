@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-06">
+  <title>Festival: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Festival could result in arbitrary code
+    execution, and privilege escalation.
+  </synopsis>
+  <product type="ebuild">festival</product>
+  <announced>December 09, 2013</announced>
+  <revised>December 09, 2013: 1</revised>
+  <bug>386319</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-accessibility/festival" auto="yes" arch="*">
+      <unaffected range="ge">2.1</unaffected>
+      <vulnerable range="lt">2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Festival is a Text to Speech Engine from The Centre for Speech
+      Technology Research.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in Festival Server has an incorrect path in
+      LD_LIBRARY_PATH, which allows local users to place a Trojan horse shared
+      library in the current working directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker can execute arbitrary a Trojan horse shared library,
+      potentially resulting in arbitrary code execution and privilege
+      escalation.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Festival users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-accessibility/festival-2.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3996">CVE-2010-3996</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Dec 2012 22:54:17 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 09 Dec 2013 05:41:22 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

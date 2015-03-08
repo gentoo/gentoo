@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-04">
+  <title>phpLDAPadmin: Authentication bypass</title>
+  <synopsis>
+    A flaw in phpLDAPadmin may allow attackers to bypass security restrictions
+    and connect anonymously.
+  </synopsis>
+  <product type="ebuild">phpLDAPadmin</product>
+  <announced>September 06, 2005</announced>
+  <revised>September 06, 2005: 01</revised>
+  <bug>104293</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nds/phpldapadmin" auto="yes" arch="*">
+      <unaffected range="ge">0.9.7_alpha6</unaffected>
+      <vulnerable range="lt">0.9.7_alpha6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpLDAPadmin is a web-based LDAP client allowing to easily manage
+    LDAP servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alexander Gerasiov discovered a flaw in login.php preventing the
+    application from validating whether anonymous bind has been disabled in
+    the target LDAP server configuration.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Anonymous users can access the LDAP server, even if the
+    "disable_anon_bind" parameter was explicitly set to avoid this.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpLDAPadmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-nds/phpldapadmin-0.9.7_alpha6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2654">CAN-2005-2654</uri>
+    <uri link="http://secunia.com/advisories/16611/">Secunia Advisory SA16611</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 31 Aug 2005 17:15:50 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 31 Aug 2005 17:15:59 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 02 Sep 2005 18:39:01 +0000">
+    koon
+  </metadata>
+</glsa>

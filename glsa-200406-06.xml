@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-06">
+  <title>CVS: additional DoS and arbitrary code execution vulnerabilities</title>
+  <synopsis>
+    Several serious new vulnerabilities have been found in CVS, which may allow
+    an attacker to remotely compromise a CVS server.
+  </synopsis>
+  <product type="ebuild">CVS</product>
+  <announced>June 10, 2004</announced>
+  <revised>June 10, 2004: 01</revised>
+  <bug>53408</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/cvs" auto="yes" arch="*">
+      <unaffected range="ge">1.11.17</unaffected>
+      <vulnerable range="le">1.11.16-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CVS (Concurrent Versions System) is an open-source network-transparent
+    version control system. It contains both a client utility and a server.
+    </p>
+  </background>
+  <description>
+    <p>
+    A team audit of the CVS source code performed by Stefan Esser and Sebastian
+    Krahmer resulted in the discovery of several remotely exploitable
+    vulnerabilities including:
+    </p>
+    <ul>
+    <li>no-null-termination of &quot;Entry&quot; lines</li>
+    <li>error_prog_name &quot;double-free()&quot;</li>
+    <li>Argument integer overflow</li>
+    <li>serve_notify() out of bounds writes</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could use these vulnerabilities to cause a Denial of Service or
+    execute arbitrary code with the permissions of the user running cvs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of CVS.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CVS users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-util/cvs-1.11.17"
+    # emerge ">=dev-util/cvs-1.11.17"</code>
+  </resolution>
+  <references>
+    <uri link="http://security.e-matters.de/advisories/092004.html">E-matters Advisory 09/2004</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0414">CAN-2004-0414</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0416">CAN-2004-0416</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0417">CAN-2004-0417</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0418">CAN-2004-0418</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-11">
+  <title>Nagios Plugins: Two buffer overflows</title>
+  <synopsis>
+    Two buffer overflow vulnerabilities in the Nagios Plugins might allow for
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nagios-plugins</product>
+  <announced>November 08, 2007</announced>
+  <revised>November 08, 2007: 01</revised>
+  <bug>196308</bug>
+  <bug>194178</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/nagios-plugins" auto="yes" arch="*">
+      <unaffected range="ge">1.4.10-r1</unaffected>
+      <vulnerable range="lt">1.4.10-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Nagios Plugins are an official set of plugins for Nagios, an open
+    source host, service and network monitoring program.
+    </p>
+  </background>
+  <description>
+    <p>
+    fabiodds reported a boundary checking error in the "check_snmp" plugin
+    when processing SNMP "GET" replies that could lead to a stack-based
+    buffer overflow (CVE-2007-5623). Nobuhiro Ban reported a boundary
+    checking error in the redir() function of the "check_http" plugin when
+    processing HTTP "Location:" header information which might lead to a
+    buffer overflow (CVE-2007-5198).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities to execute
+    arbitrary code with the privileges of the user running Nagios or cause
+    a Denial of Service by (1) sending a specially crafted SNMP "GET" reply
+    to the Nagios daemon or (2) sending an overly long string in the
+    "Location:" header of an HTTP reply. Note that to exploit (2), the
+    malicious or compromised web server has to be configured in Nagios and
+    the "-f" (follow) option has to be enabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of the Nagios Plugins should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/nagios-plugins-1.4.10-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5198">CVE-2007-5198</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5623">CVE-2007-5623</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 03 Nov 2007 12:12:46 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Nov 2007 00:16:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 Nov 2007 19:12:11 +0000">
+    jaervosz
+  </metadata>
+</glsa>

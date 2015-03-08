@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-03">
+  <title>OpenTTD: Format string vulnerabilities</title>
+  <synopsis>
+    OpenTTD is vulnerable to format string vulnerabilities which may result in
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openttd</product>
+  <announced>September 05, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>102631</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-simulation/openttd" auto="yes" arch="*">
+      <unaffected range="ge">0.4.0.1-r1</unaffected>
+      <vulnerable range="lt">0.4.0.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenTTD is an open source clone of the simulation game "Transport
+    Tycoon Deluxe" by Microprose.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alexey Dobriyan discovered several format string vulnerabilities in
+    OpenTTD.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities to crash the
+    OpenTTD server or client and possibly execute arbitrary code with the
+    rights of the user running OpenTTD.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenTTD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-simulation/openttd-0.4.0.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2763">CAN-2005-2763</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2764">CVE-2005-2764</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Sep 2005 05:03:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 01 Sep 2005 08:12:01 +0000">
+    adir
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 04 Sep 2005 15:43:14 +0000">
+    DerCorny
+  </metadata>
+</glsa>

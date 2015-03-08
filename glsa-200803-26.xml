@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-26">
+  <title>Adobe Acrobat Reader: Insecure temporary file creation</title>
+  <synopsis>
+    An insecure temporary file creation vulnerability has been discovered in
+    Adobe Acrobat Reader.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>March 18, 2008</announced>
+  <revised>March 18, 2008: 01</revised>
+  <bug>212367</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">8.1.2-r1</unaffected>
+      <vulnerable range="lt">8.1.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Acrobat Reader is a PDF reader released by Adobe.
+    </p>
+  </background>
+  <description>
+    <p>
+    SUSE reported that the "acroread" wrapper script does not create
+    temporary files in a secure manner when handling SSL certificates
+    (CVE-2008-0883).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to overwrite
+    arbitrary files via a symlink attack on temporary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Acrobat Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0883">CVE-2008-0883</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Mar 2008 13:19:39 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 17 Mar 2008 11:44:20 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 18 Mar 2008 13:28:58 +0000">
+    rbu
+  </metadata>
+</glsa>

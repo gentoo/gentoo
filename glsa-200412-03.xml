@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-03">
+  <title>imlib: Buffer overflows in image decoding</title>
+  <synopsis>
+    Multiple overflows have been found in the imlib library image decoding
+    routines, potentially allowing execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">imlib</product>
+  <announced>December 06, 2004</announced>
+  <revised>December 06, 2004: 01</revised>
+  <bug>72681</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/imlib" auto="yes" arch="*">
+      <unaffected range="ge">1.9.14-r3</unaffected>
+      <vulnerable range="le">1.9.14-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    imlib is an advanced replacement library for image manipulation
+    libraries like libXpm. It is called by numerous programs, including
+    gkrellm and several window managers, to help in displaying images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Pavel Kankovsky discovered that several overflows found in the
+    libXpm library (see GLSA 200409-34) also applied to imlib. He also
+    fixed a number of other potential flaws.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a carefully-crafted
+    image file, which would potentially lead to execution of arbitrary code
+    with the rights of the user viewing the image. This affects any program
+    that makes use of the imlib library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All imlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/imlib-1.9.14-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200409-34.xml">GLSA 200409-34</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1026">CAN-2004-1026</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon,  6 Dec 2004 09:59:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  6 Dec 2004 09:59:29 +0000">
+    koon
+  </metadata>
+</glsa>

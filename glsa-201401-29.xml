@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-29">
+  <title>VIPS: Privilege Escalation</title>
+  <synopsis>A vulnerability in VIPS could result in privilege escalation.</synopsis>
+  <product type="ebuild">vips</product>
+  <announced>January 26, 2014</announced>
+  <revised>January 26, 2014: 1</revised>
+  <bug>344561</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-libs/vips" auto="yes" arch="*">
+      <unaffected range="ge">7.22.4</unaffected>
+      <vulnerable range="lt">7.22.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VIPS is a free image processing system.</p>
+  </background>
+  <description>
+    <p>VIPS places a zero-length directory name in the LD_LIBRARY_PATH, which
+      might result in the current working directory (.) to be included when
+      searching for dynamically linked libraries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain escalated privileges via a specially crafted
+      shared library.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VIPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/vips-7.22.4"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since November 23, 2010. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3364">
+      CVE-2010-3364
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:13 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jan 2014 19:04:41 +0000">Zlogene</metadata>
+</glsa>

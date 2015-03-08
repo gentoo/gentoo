@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-08">
+  <title>oftpd DoS vulnerability</title>
+  <synopsis>
+    A remotely-exploitable overflow exists in oftpd, allowing an attacker to
+    crash the oftpd daemon.
+  </synopsis>
+  <product type="ebuild">oftpd</product>
+  <announced>March 29, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>45738</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/oftpd" auto="yes" arch="*">
+      <unaffected range="ge">0.3.7</unaffected>
+      <vulnerable range="le">0.3.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Quote from <uri
+    link="http://www.time-travellers.org/oftpd/">http://www.time-travellers
+    .org/oftpd/</uri>
+    </p>
+    <p>
+    "oftpd is designed to be as secure as an anonymous FTP server can
+    possibly be. It runs as non-root for most of the time, and uses the
+    Unix chroot() command to hide most of the systems directories from
+    external users - they cannot change into them even if the server is
+    totally compromised! It contains its own directory change code, so that
+    it can run efficiently as a threaded server, and its own directory
+    listing code (most FTP servers execute the system "ls" command to list
+    files)."
+    </p>
+  </background>
+  <description>
+    <p>
+    Issuing a port command with a number higher than 255 causes the server
+    to crash. The port command may be issued before any authentication
+    takes place, meaning the attacker does not need to know a valid
+    username and password in order to exploit this vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This exploit causes a denial of service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    While a workaround is not currently known for this issue, all users are
+    advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the current version of the affected
+    package:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-ftp/oftpd-0.3.7&quot;
+    # emerge &quot;&gt;=net-ftp/oftpd-0.3.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.time-travellers.org/oftpd/oftpd-dos.html">osftpd DoS Vulnerability</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0376">CVE-2004-0376</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:52:22 +0000">
+    DerCorny
+  </metadata>
+</glsa>

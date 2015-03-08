@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-20">
+  <title>Shorewall: Security policy bypass</title>
+  <synopsis>
+    A vulnerability in Shorewall allows clients authenticated by MAC address
+    filtering to bypass all other security rules.
+  </synopsis>
+  <product type="ebuild">shorewall</product>
+  <announced>July 22, 2005</announced>
+  <revised>September 14, 2005: 02</revised>
+  <bug>99398</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-firewall/shorewall" auto="yes" arch="*">
+      <unaffected range="ge">2.4.2</unaffected>
+      <vulnerable range="le">2.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Shorewall is a high level tool for configuring Netfilter, the firewall
+    facility included in the Linux Kernel.
+    </p>
+  </background>
+  <description>
+    <p>
+    Shorewall fails to enforce security policies if configured with
+    "MACLIST_DISPOSITION" set to "ACCEPT" or "MACLIST_TTL" set to a value
+    greater or equal to 0.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A client authenticated by MAC address filtering could bypass all
+    security policies, possibly allowing him to gain access to restricted
+    services. The default installation has MACLIST_DISPOSITION=REJECT and
+    MACLIST_TTL=(blank) (equivalent to 0). This can be checked by looking
+    at the settings in /etc/shorewall/shorewall.conf
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Set "MACLIST_TTL" to "0" and "MACLIST_DISPOSITION" to "REJECT" in the
+    Shorewall configuration file (usually /etc/shorewall/shorewall.conf).
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Shorewall users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-firewall/shorewall</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2317">CAN-2005-2317</uri>
+    <uri link="http://www.shorewall.net/News.htm#20050717">Shorewall Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 20 Jul 2005 08:32:24 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2005 09:04:23 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 21 Jul 2005 21:07:14 +0000">
+    DerCorny
+  </metadata>
+</glsa>

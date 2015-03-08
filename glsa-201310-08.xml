@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-08">
+  <title>Quagga: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Quagga, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">quagga</product>
+  <announced>October 10, 2013</announced>
+  <revised>October 10, 2013: 1</revised>
+  <bug>408507</bug>
+  <bug>475706</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/quagga" auto="yes" arch="*">
+      <unaffected range="ge">0.99.22.4</unaffected>
+      <vulnerable range="lt">0.99.22.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Quagga is a free routing daemon replacing Zebra supporting RIP, OSPF and
+      BGP.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Quagga. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause arbitrary code execution or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Quagga users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/quagga-0.99.22.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0249">CVE-2012-0249</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0250">CVE-2012-0250</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0255">CVE-2012-0255</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1820">CVE-2012-1820</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2236">CVE-2013-2236</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Jan 2013 19:08:42 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 10 Oct 2013 11:51:02 +0000">ackle</metadata>
+</glsa>

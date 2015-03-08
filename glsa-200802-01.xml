@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-01">
+  <title>SDL_image: Two buffer overflow vulnerabilities</title>
+  <synopsis>
+    Two boundary errors have been identified in SDL_image allowing for the
+    remote execution of arbitrary code or the crash of the application using
+    the library.
+  </synopsis>
+  <product type="ebuild">sdl-image</product>
+  <announced>February 06, 2008</announced>
+  <revised>February 06, 2008: 01</revised>
+  <bug>207933</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/sdl-image" auto="yes" arch="*">
+      <unaffected range="ge">1.2.6-r1</unaffected>
+      <vulnerable range="lt">1.2.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SDL_image is an image file library that loads images as SDL surfaces,
+    and supports various formats like BMP, GIF, JPEG, LBM, PCX, PNG, PNM,
+    TGA, TIFF, XCF, XPM, and XV.
+    </p>
+  </background>
+  <description>
+    <p>
+    The LWZReadByte() function in file IMG_gif.c and the IMG_LoadLBM_RW()
+    function in file IMG_lbm.c each contain a boundary error that can be
+    triggered to cause a static buffer overflow and a heap-based buffer
+    overflow. The first boundary error comes from some old vulnerable GD
+    PHP code (CVE-2006-4484).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can make an application using the SDL_image library
+    to process a specially crafted GIF file or IFF ILBM file that will
+    trigger a buffer overflow, resulting in the execution of arbitrary code
+    with the permissions of the application or the application crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SDL_image users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/sdl-image-1.2.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/28640/">SA28640</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6697">CVE-2007-6697</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0544">CVE-2008-0544</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 29 Jan 2008 09:35:04 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 29 Jan 2008 09:36:22 +0000">
+    falco
+  </metadata>
+</glsa>

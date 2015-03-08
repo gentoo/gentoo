@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201202-01">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium, some of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>February 18, 2012</announced>
+  <revised>February 18, 2012: 1</revised>
+  <bug>402841</bug>
+  <bug>404067</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">17.0.963.56</unaffected>
+      <vulnerable range="lt">17.0.963.56</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers and release notes referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted web
+      site using Chromium, possibly resulting in the execution of arbitrary
+      code with the privileges of the process, a Denial of Service condition,
+      information leak (clipboard contents), bypass of the Same Origin Policy,
+      or escape from NativeClient's sandbox.
+    </p>
+    
+    <p>A remote attacker could also entice the user to perform a set of UI
+      actions (drag and drop) to trigger an URL bar spoofing vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/chromium-17.0.963.56"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3016">
+      CVE-2011-3016
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3017">
+      CVE-2011-3017
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3018">
+      CVE-2011-3018
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3019">
+      CVE-2011-3019
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3020">
+      CVE-2011-3020
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3021">
+      CVE-2011-3021
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3022">
+      CVE-2011-3022
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3023">
+      CVE-2011-3023
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3024">
+      CVE-2011-3024
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3025">
+      CVE-2011-3025
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3027">
+      CVE-2011-3027
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3953">
+      CVE-2011-3953
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3954">
+      CVE-2011-3954
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3955">
+      CVE-2011-3955
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3956">
+      CVE-2011-3956
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3957">
+      CVE-2011-3957
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3958">
+      CVE-2011-3958
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3959">
+      CVE-2011-3959
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3960">
+      CVE-2011-3960
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3961">
+      CVE-2011-3961
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3962">
+      CVE-2011-3962
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3963">
+      CVE-2011-3963
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3964">
+      CVE-2011-3964
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3965">
+      CVE-2011-3965
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3966">
+      CVE-2011-3966
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3967">
+      CVE-2011-3967
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3968">
+      CVE-2011-3968
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3969">
+      CVE-2011-3969
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3970">
+      CVE-2011-3970
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3971">
+      CVE-2011-3971
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3972">
+      CVE-2011-3972
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/02/stable-channel-update.html">
+      Release Notes 17.0.963.46
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/02/chrome-stable-update.html">
+      Release Notes 17.0.963.56
+    </uri>
+  </references>
+  <metadata timestamp="Mon, 13 Feb 2012 09:29:19 +0000" tag="requester">
+    phajdan.jr
+  </metadata>
+  <metadata timestamp="Sat, 18 Feb 2012 17:34:34 +0000" tag="submitter">
+    phajdan.jr
+  </metadata>
+</glsa>

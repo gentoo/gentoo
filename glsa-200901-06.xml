@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-06">
+  <title>Tremulous: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in Tremulous.
+  </synopsis>
+  <product type="ebuild">tremulous tremulous-bin</product>
+  <announced>January 11, 2009</announced>
+  <revised>January 11, 2009: 01</revised>
+  <bug>222119</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-fps/tremulous" auto="yes" arch="*">
+      <unaffected range="ge">1.1.0-r2</unaffected>
+      <vulnerable range="lt">1.1.0-r2</vulnerable>
+    </package>
+    <package name="games-fps/tremulous-bin" auto="yes" arch="*">
+      <vulnerable range="lt">1.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tremulous is a team-based First Person Shooter game.
+    </p>
+  </background>
+  <description>
+    <p>
+    It has been reported that Tremulous includes a vulnerable version of
+    the ioQuake3 engine (GLSA 200605-12, CVE-2006-2236).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect to a malicious games
+    server, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Tremulous users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/tremulous-1.1.0-r2&quot;</code>
+    <p>
+    Note: The binary version of Tremulous has been removed from the Portage
+    tree.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2236">CVE-2006-2236</uri>
+    <uri link="/security/en/glsa/glsa-200605-12.xml">GLSA 200605-12</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 13 Oct 2008 16:40:23 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 22:54:22 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 22:54:33 +0000">
+    p-y
+  </metadata>
+</glsa>

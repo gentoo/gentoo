@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-13">
+  <title>pam_ldap and nss_ldap: Plain text authentication leak</title>
+  <synopsis>
+    pam_ldap and nss_ldap fail to restart TLS when following a referral,
+    possibly leading to credentials being sent in plain text.
+  </synopsis>
+  <product type="ebuild">pam_ldap nss_ldap</product>
+  <announced>July 14, 2005</announced>
+  <revised>July 14, 2005: 01</revised>
+  <bug>96767</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-auth/nss_ldap" auto="yes" arch="*">
+      <unaffected range="ge">239-r1</unaffected>
+      <unaffected range="rge">226-r1</unaffected>
+      <vulnerable range="lt">239-r1</vulnerable>
+    </package>
+    <package name="sys-auth/pam_ldap" auto="yes" arch="*">
+      <unaffected range="ge">178-r1</unaffected>
+      <vulnerable range="lt">178-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pam_ldap is a Pluggable Authentication Module which allows
+    authentication against an LDAP directory. nss_ldap is a Name Service
+    Switch module which allows 'passwd', 'group' and 'host' database
+    information to be pulled from LDAP. TLS is Transport Layer Security, a
+    protocol that allows encryption of network communications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Rob Holland of the Gentoo Security Audit Team discovered that
+    pam_ldap and nss_ldap fail to use TLS for referred connections if they
+    are referred to a master after connecting to a slave, regardless of the
+    "ssl start_tls" ldap.conf setting.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could sniff passwords or other sensitive information
+    as the communication is not encrypted.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    pam_ldap and nss_ldap can be set to force the use of SSL instead
+    of TLS.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pam_ldap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/pam_ldap-178-r1&quot;</code>
+    <p>
+    All nss_ldap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose sys-auth/nss_ldap</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2069">CAN-2005-2069</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Jul 2005 08:55:26 +0000">
+    tigger
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 04 Jul 2005 14:18:57 +0000">
+    tigger
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 14 Jul 2005 09:08:58 +0000">
+    koon
+  </metadata>
+</glsa>

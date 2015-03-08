@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-12">
+  <title>Libtasn1: Denial of Service</title>
+  <synopsis>A vulnerability in Libtasn1 might cause a Denial of Service
+    condition. 
+  </synopsis>
+  <product type="ebuild">libtasn1</product>
+  <announced>September 25, 2012</announced>
+  <revised>September 25, 2012: 1</revised>
+  <bug>409031</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libtasn1" auto="yes" arch="*">
+      <unaffected range="ge">2.12</unaffected>
+      <vulnerable range="lt">2.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libtasn1 is a library used to parse ASN.1 (Abstract Syntax Notation One)
+      objects, and perform DER (Distinguished Encoding Rules) decoding.
+    </p>
+  </background>
+  <description>
+    <p>Libtasn1 does not properly handle length fields when performing DER
+      decoding.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      DER-encoded object in an application linked against Libtasn1, possibly
+      resulting in Denial of Service. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libtasn1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtasn1-2.12"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1569">CVE-2012-1569</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:07:38 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 25 Sep 2012 21:25:29 +0000">ackle</metadata>
+</glsa>

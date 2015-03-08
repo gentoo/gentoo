@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-15">
+  <title>libpng: Execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability in libpng may allow for execution of arbitrary code in
+    certain applications that handle untrusted images.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>April 15, 2008</announced>
+  <revised>April 15, 2008: 01</revised>
+  <bug>217047</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.2.26-r1</unaffected>
+      <vulnerable range="lt">1.2.26-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpng is a free ANSI C library used to process and manipulate PNG
+    images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team discovered that libpng does
+    not handle zero-length unknown chunks in PNG files correctly, which
+    might lead to memory corruption in applications that call
+    png_set_read_user_chunk_fn() or png_set_keep_unknown_chunks().
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could entice a user or automated system to process a
+    specially crafted PNG image in an application using libpng and possibly
+    execute arbitrary code with the privileges of the user running the
+    application. Note that processing of unknown chunks is disabled by
+    default in most PNG applications, but some such as ImageMagick are
+    affected.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libpng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.26-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1382">CVE-2008-1382</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 14 Apr 2008 01:44:56 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 01:49:03 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Apr 2008 08:39:38 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-10">
+  <title>Tomcat: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Tomcat may lead to local file overwriting,
+    session hijacking or information disclosure.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>April 10, 2008</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>196066</bug>
+  <bug>203169</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="rge">5.5.26</unaffected>
+      <unaffected range="ge">6.0.16</unaffected>
+      <unaffected range="rge">5.5.27</unaffected>
+      <vulnerable range="lt">6.0.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tomcat is the Apache Jakarta Project's official implementation of Java
+    Servlets and Java Server Pages.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were reported:
+    </p>
+    <ul>
+    <li>Delian Krustev discovered that the JULI logging component does not
+    properly enforce access restrictions, allowing web application to add
+    or overwrite files (CVE-2007-5342).</li>
+    <li>
+    When the native APR connector is used, Tomcat does not properly handle
+    an empty request to the SSL port, which allows remote attackers to
+    trigger handling of a duplicate copy of one of the recent requests
+    (CVE-2007-6286).</li>
+    <li>
+    If the processing or parameters is interrupted, i.e. by an exception,
+    then it is possible for the parameters to be processed as part of later
+    request (CVE-2008-0002).</li>
+    <li>
+    An absolute path traversal vulnerability exists due to the way that
+    WebDAV write requests are handled (CVE-2007-5461).</li>
+    <li>
+    Tomcat does not properly handle double quote (") characters or %5C
+    (encoded backslash) sequences in a cookie value, which might cause
+    sensitive information such as session IDs to be leaked to remote
+    attackers and enable session hijacking attacks
+    (CVE-2007-5333).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities can be exploited by:
+    </p>
+    <ul>
+    <li>
+    a malicious web application to add or overwrite files with the
+    permissions of the user running Tomcat.
+    </li>
+    <li>
+    a remote attacker to conduct session hijacking or disclose sensitive
+    data.
+    </li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tomcat 5.5.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/tomcat-5.5.26&quot;</code>
+    <p>
+    All Tomcat 6.0.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/tomcat-6.0.16&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5333">CVE-2007-5333</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5342">CVE-2007-5342</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5461">CVE-2007-5461</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6286">CVE-2007-6286</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0002">CVE-2008-0002</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Mar 2008 02:25:49 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Mar 2008 18:05:04 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 04 Apr 2008 15:09:23 +0000">
+    p-y
+  </metadata>
+</glsa>

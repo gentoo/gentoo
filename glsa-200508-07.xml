@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-07">
+  <title>AWStats: Arbitrary code execution using malicious Referrer information</title>
+  <synopsis>
+    AWStats fails to validate certain log input, which could lead to the
+    execution of arbitrary Perl code during the generation of the statistics.
+  </synopsis>
+  <product type="ebuild">awstats</product>
+  <announced>August 16, 2005</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>102145</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-misc/awstats" auto="yes" arch="*">
+      <unaffected range="ge">6.5</unaffected>
+      <vulnerable range="lt">6.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    AWStats is an advanced log file analyzer and statistics generator.
+    In HTTP reports it parses Referrer information in order to display the
+    most common Referrer values that caused users to visit the website.
+    </p>
+  </background>
+  <description>
+    <p>
+    When using a URLPlugin, AWStats fails to sanitize Referrer URL
+    data before using them in a Perl eval() routine.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can include arbitrary Referrer information in a
+    HTTP request to a web server, therefore injecting tainted data in the
+    log files. When AWStats is run on this log file, this can result in the
+    execution of arbitrary Perl code with the rights of the user running
+    AWStats.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable all URLPlugins in the AWStats configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AWStats users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-misc/awstats-6.5&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1527">CAN-2005-1527</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=290&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 12 Aug 2005 17:33:30 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 13 Aug 2005 08:56:51 +0000">
+    koon
+  </metadata>
+</glsa>

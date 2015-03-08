@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-11">
+  <title>Firewall Builder: Privilege escalation</title>
+  <synopsis>Insecure temporary file usage in Firewall Builder could allow
+    attackers to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">fwbuilder</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>235809</bug>
+  <bug>285861</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-firewall/fwbuilder" auto="yes" arch="*">
+      <unaffected range="ge">3.0.7</unaffected>
+      <vulnerable range="lt">3.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Firewall Builder is a GUI for easy management of multiple firewall
+      platforms.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities in Firewall Builder allow the iptables and
+      fwb_install scripts to use temporary files insecurely. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly overwrite arbitrary files with the
+      privileges of the user running Firewall Builder. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firewall Builder users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-firewall/fwbuilder-3.0.7"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since March 09, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4956">CVE-2008-4956</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4664">CVE-2009-4664</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:46 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 19:53:36 +0000" tag="submitter">ackle</metadata>
+</glsa>

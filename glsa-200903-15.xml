@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-15">
+  <title>git: Multiple vulnerabilties</title>
+  <synopsis>
+    Multiple vulnerabilities in gitweb allow for remote execution of arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>251343</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/git" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0.6</unaffected>
+      <vulnerable range="lt">1.6.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GIT - the stupid content tracker, the revision control system used by
+    the Linux kernel team.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in gitweb that is part of
+    the git package:
+    </p>
+    <ul>
+    <li>
+    Shell metacharacters related to git_search are not properly sanitized
+    (CVE-2008-5516).
+    </li>
+    <li>
+    Shell metacharacters related to git_snapshot and git_object are not
+    properly sanitized (CVE-2008-5517).
+    </li>
+    <li>
+    The diff.external configuration variable as set in a repository can be
+    executed by gitweb (CVE-2008-5916).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote unauthenticated attacker can execute arbitrary commands via
+    shell metacharacters in a query, remote attackers with write access to
+    a git repository configuration can execute arbitrary commands with the
+    privileges of the user running gitweb by modifying the diff.external
+    configuration variable in the repository and sending a crafted query to
+    gitweb.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All git users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/git-1.6.0.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5516">CVE-2008-5516</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5517">CVE-2008-5517</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5916">CVE-2008-5916</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:26:05 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:42:55 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:43:18 +0000">
+    rbu
+  </metadata>
+</glsa>

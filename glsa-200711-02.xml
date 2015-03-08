@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-02">
+  <title>OpenSSH: Security bypass</title>
+  <synopsis>
+    A flaw has been discovered in OpenSSH which could allow a local attacker to
+    bypass security restrictions.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>November 01, 2007</announced>
+  <revised>November 01, 2007: 01</revised>
+  <bug>191321</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">4.7</unaffected>
+      <vulnerable range="lt">4.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSH is a complete SSH protocol implementation that includes an SFTP
+    client and server support.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jan Pechanec discovered that OpenSSH uses a trusted X11 cookie when it
+    cannot create an untrusted one.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could bypass the SSH client security policy and gain
+    privileges by causing an X client to be treated as trusted.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSH users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4752">CVE-2007-4752</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 25 Sep 2007 19:38:10 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 25 Sep 2007 19:38:18 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Sep 2007 12:20:41 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-32">
+  <title>Feynmf: Insecure temporary file creation</title>
+  <synopsis>
+    A vulnerability has been discovered in Feynmf allowing local users to
+    overwrite arbitrary files via a symlink attack.
+  </synopsis>
+  <product type="ebuild">feynmf</product>
+  <announced>November 20, 2007</announced>
+  <revised>November 20, 2007: 01</revised>
+  <bug>198231</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-tex/feynmf" auto="yes" arch="*">
+      <unaffected range="ge">1.08-r2</unaffected>
+      <vulnerable range="lt">1.08-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Feynmf is a combined LaTeX and Metafont package for easy drawing of
+    professional quality Feynman (and maybe other) diagrams.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kevin B. McCarty discovered that the feynmf.pl script creates a
+    temporary "properly list" file at the location "$TMPDIR/feynmf$PID.pl",
+    where $PID is the process ID.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the directory where the
+    temporary files are written, pointing to a valid file somewhere on the
+    filesystem that is writable by the user running Feynmf. When Feynmf
+    writes the temporary file, the target valid file would then be
+    overwritten with the contents of the Feynmf temporary file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Feynmf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-tex/feynmf-1.08-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5940">CVE-2007-5940</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 19 Nov 2007 21:43:28 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 19 Nov 2007 21:44:51 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 20 Nov 2007 00:07:40 +0000">
+    rbu
+  </metadata>
+</glsa>

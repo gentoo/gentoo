@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-32">
+  <title>Wireshark: Denial of Service</title>
+  <synopsis>
+    Multiple Denial of Service vulnerabilities have been discovered in
+    Wireshark.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>March 24, 2008</announced>
+  <revised>March 24, 2008: 01</revised>
+  <bug>212149</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">0.99.8</unaffected>
+      <vulnerable range="lt">0.99.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a network protocol analyzer with a graphical front-end.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple unspecified errors exist in the SCTP, SNMP, and TFTP
+    dissectors.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause a Denial of Service by sending a
+    malformed packet.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the SCTP, SNMP, and TFTP dissectors.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-0.99.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1070">CVE-2008-1070</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1071">CVE-2008-1071</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1072">CVE-2008-1072</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Mar 2008 02:18:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Mar 2008 21:01:15 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 24 Mar 2008 19:58:33 +0000">
+    p-y
+  </metadata>
+</glsa>

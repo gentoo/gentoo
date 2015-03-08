@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-08">
+  <title>C* music player: Insecure temporary file usage</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in the C* music player,
+    allowing for symlink attacks.
+  </synopsis>
+  <product type="ebuild">cmus</product>
+  <announced>September 09, 2009</announced>
+  <revised>September 09, 2009: 01</revised>
+  <bug>250474</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-sound/cmus" auto="yes" arch="*">
+      <unaffected range="ge">2.2.0-r1</unaffected>
+      <vulnerable range="lt">2.2.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The C* Music Player (cmus) is a modular and very configurable
+    ncurses-based audio player.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that cmus-status-display does not handle
+    the "/tmp/cmus-status" temporary file securely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to overwrite arbitrary
+    files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All C* music player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/cmus-2.2.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5375">CVE-2008-5375</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 23 Jun 2009 20:29:45 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 07:44:23 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:37:47 +0000">
+    a3li
+  </metadata>
+</glsa>

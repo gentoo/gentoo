@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-05">
+  <title>Opera: Multiple new vulnerabilities</title>
+  <synopsis>
+    Several new vulnerabilities were found and fixed in Opera, including one
+    allowing an attacker to read the local filesystem remotely.
+  </synopsis>
+  <product type="ebuild">Opera</product>
+  <announced>August 05, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>59503</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">7.54</unaffected>
+      <vulnerable range="le">7.53</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found in the Opera web browser.
+    Opera fails to deny write access to the "location" browser object. An
+    attacker can overwrite methods in this object and gain script access to
+    any page that uses one of these methods. Furthermore, access to file://
+    URLs is possible even from pages loaded using other protocols. Finally,
+    spoofing a legitimate web page is still possible, despite the fixes
+    announced in GLSA 200407-15.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing an user to visit specially crafted web pages, an attacker
+    can read files located on the victim's file system, read emails written
+    or received by M2, Opera's mail program, steal cookies, spoof URLs,
+    track user browsing history, etc.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-client/opera-7.54&quot;
+    # emerge &quot;&gt;=www-client/opera-7.54&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.opera.com/linux/changelogs/754/">Opera Changelog</uri>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2004-07/1056.html">Address bar spoofing issue disclosure</uri>
+    <uri link="http://www.greymagic.com/security/advisories/gm008-op/">GreyMagic Security Advisory GM#008-OP</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2570">CVE-2004-2570</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 18:21:29 +0000">
+    jaervosz
+  </metadata>
+</glsa>

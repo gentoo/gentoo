@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-13">
+  <title>R: Insecure temporary file creation</title>
+  <synopsis>
+    R is vulnerable to symlink attacks due to an insecure usage of temporary
+    files.
+  </synopsis>
+  <product type="ebuild">R</product>
+  <announced>September 22, 2008</announced>
+  <revised>September 22, 2008: 01</revised>
+  <bug>235822</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/R" auto="yes" arch="*">
+      <unaffected range="ge">2.7.1</unaffected>
+      <vulnerable range="lt">2.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    R is a GPL licensed implementation of S, a language and environment for
+    statistical computing and graphics.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that the "javareconf" script uses temporary
+    files in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to overwrite
+    arbitrary files with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All R users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/R-2.7.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3931">CVE-2008-3931</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 18 Sep 2008 21:52:27 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Sep 2008 22:01:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 19 Sep 2008 11:52:28 +0000">
+    p-y
+  </metadata>
+</glsa>

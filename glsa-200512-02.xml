@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-02">
+  <title>Webmin, Usermin: Format string vulnerability</title>
+  <synopsis>
+    Webmin and Usermin are vulnerable to a format string vulnerability which
+    may lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">webmin usermin</product>
+  <announced>December 07, 2005</announced>
+  <revised>December 07, 2005: 01</revised>
+  <bug>113888</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/webmin" auto="yes" arch="*">
+      <unaffected range="ge">1.250</unaffected>
+      <vulnerable range="lt">1.250</vulnerable>
+    </package>
+    <package name="app-admin/usermin" auto="yes" arch="*">
+      <unaffected range="ge">1.180</unaffected>
+      <vulnerable range="lt">1.180</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Webmin is a web-based interface for Unix-like systems. Usermin is
+    a simplified version of Webmin designed for use by normal users rather
+    than system administrators.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jack Louis discovered that the Webmin and Usermin "miniserv.pl"
+    web server component is vulnerable to a Perl format string
+    vulnerability. Login with the supplied username is logged via the Perl
+    "syslog" facility in an unsafe manner.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can trigger this vulnerability via a specially
+    crafted username containing format string data. This can be exploited
+    to consume a large amount of CPU and memory resources on a vulnerable
+    system, and possibly to execute arbitrary code of the attacker's choice
+    with the permissions of the user running Webmin.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Webmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/webmin-1.250&quot;</code>
+    <p>
+    All Usermin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/usermin-1.180&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3912">CVE-2005-3912</uri>
+    <uri link="http://www.dyadsecurity.com/webmin-0001.html">Dyad Security Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Dec 2005 16:39:12 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 04 Dec 2005 19:02:00 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Dec 2005 03:16:21 +0000">
+    adir
+  </metadata>
+</glsa>

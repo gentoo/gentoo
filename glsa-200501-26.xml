@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-26">
+  <title>ImageMagick: PSD decoding heap overflow</title>
+  <synopsis>
+    ImageMagick is vulnerable to a heap overflow when decoding Photoshop
+    Document (PSD) files, which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>January 20, 2005</announced>
+  <revised>January 20, 2005: 01</revised>
+  <bug>77932</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.1.8.8</unaffected>
+      <vulnerable range="lt">6.1.8.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is a collection of tools to read, write and manipulate
+    images in many formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Andrei Nigmatulin discovered that a Photoshop Document (PSD) file
+    with more than 24 layers could trigger a heap overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could potentially design a mailicous PSD image file to
+    cause arbitrary code execution with the permissions of the user running
+    ImageMagick.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.1.8.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0005">CAN-2005-0005</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=184&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 18 Jan 2005 13:50:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Jan 2005 09:15:57 +0000">
+    koon
+  </metadata>
+</glsa>

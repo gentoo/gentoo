@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-09">
+  <title>Weex: Format string vulnerability</title>
+  <synopsis>
+    Weex contains a format string error that may be exploited by malicious
+    servers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">Weex</product>
+  <announced>October 08, 2005</announced>
+  <revised>October 08, 2005: 01</revised>
+  <bug>107849</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/weex" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1.5-r1</unaffected>
+      <vulnerable range="lt">2.6.1.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Weex is a non-interactive FTP client typically used to update web
+    pages.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar discovered a format string bug in Weex that can be
+    triggered when it is first run (or when its cache files are rebuilt,
+    using the -r option).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could setup a malicious FTP server which, when
+    accessed using Weex, could trigger the format string bug and end up
+    executing arbitrary code with the rights of the user running Weex.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Weex users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/weex-2.6.1.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3150">CAN-2005-3150</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 07 Oct 2005 11:45:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Oct 2005 11:46:02 +0000">
+    koon
+  </metadata>
+</glsa>

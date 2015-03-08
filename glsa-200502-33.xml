@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-33">
+  <title>MediaWiki: Multiple vulnerabilities</title>
+  <synopsis>
+    MediaWiki is vulnerable to cross-site scripting, data manipulation and
+    security bypass attacks.
+  </synopsis>
+  <product type="ebuild">mediawiki</product>
+  <announced>February 28, 2005</announced>
+  <revised>February 28, 2005: 01</revised>
+  <bug>80729</bug>
+  <bug>82954</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mediawiki" auto="yes" arch="*">
+      <unaffected range="ge">1.3.11</unaffected>
+      <vulnerable range="lt">1.3.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MediaWiki is a collaborative editing software, used by big
+    projects like Wikipedia.
+    </p>
+  </background>
+  <description>
+    <p>
+    A security audit of the MediaWiki project discovered that
+    MediaWiki is vulnerable to several cross-site scripting and cross-site
+    request forgery attacks, and that the image deletion code does not
+    sufficiently sanitize input parameters.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By tricking a user to load a carefully crafted URL, a remote
+    attacker could hijack sessions and authentication cookies to inject
+    malicious script code that will be executed in a user's browser session
+    in context of the vulnerable site, or use JavaScript submitted forms to
+    perform restricted actions. Using the image deletion flaw, it is also
+    possible for authenticated administrators to delete arbitrary files via
+    directory traversal.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MediaWiki users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync 
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mediawiki-1.3.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/14125/">Secunia Advisory SA14125</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0534">CAN-2005-0534</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0535">CAN-2005-0535</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0536">CAN-2005-0536</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 24 Feb 2005 11:32:05 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Feb 2005 09:25:41 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 27 Feb 2005 16:48:17 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-16">
+  <title>ModPlug: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities in ModPlug could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">libmodplug</product>
+  <announced>March 16, 2012</announced>
+  <revised>March 16, 2012: 2</revised>
+  <bug>362503</bug>
+  <bug>379557</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libmodplug" auto="yes" arch="*">
+      <unaffected range="ge">0.8.8.4</unaffected>
+      <vulnerable range="lt">0.8.8.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ModPlug is a library for playing MOD-like music.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in ModPlug:</p>
+    
+    <ul>
+      <li>The ReadS3M method in load_s3m.cpp fails to validate user-supplied
+        information, which could cause a stack-based buffer overflow
+        (CVE-2011-1574).
+      </li>
+      <li>The "CSoundFile::ReadWav()" function in load_wav.cpp contains an
+        integer overflow which could cause a heap-based buffer overflow
+        (CVE-2011-2911). 
+      </li>
+      <li>The "CSoundFile::ReadS3M()" function in load_s3m.cpp contains
+        multiple boundary errors which could cause a stack-based buffer
+        overflow (CVE-2011-2912).
+      </li>
+      <li>The "CSoundFile::ReadAMS()" function in load_ams.cpp contains an
+        off-by-one error which could cause memory corruption (CVE-2011-2913).
+      </li>
+      <li>The "CSoundFile::ReadDSM()" function in load_dms.cpp contains an
+        off-by-one error which could cause memory corruption (CVE-2011-2914).
+      </li>
+      <li>The "CSoundFile::ReadAMS2()" function in load_ams.cpp contains an
+        off-by-one error which could cause memory corruption (CVE-2011-2915).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file, possibly resulting in execution of arbitrary code, or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ModPlug users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libmodplug-0.8.8.4"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 27, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1574">CVE-2011-1574</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2911">CVE-2011-2911</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2912">CVE-2011-2912</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2913">CVE-2011-2913</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2914">CVE-2011-2914</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2915">CVE-2011-2915</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:18 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Fri, 16 Mar 2012 11:02:28 +0000" tag="submitter">ackle</metadata>
+</glsa>

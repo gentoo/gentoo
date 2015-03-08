@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200912-02">
+  <title>Ruby on Rails: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Rails, the worst of which
+    leading to the execution of arbitrary SQL statements.
+  </synopsis>
+  <product type="ebuild">rails</product>
+  <announced>December 20, 2009</announced>
+  <revised>December 20, 2009: 01</revised>
+  <bug>200159</bug>
+  <bug>237385</bug>
+  <bug>247549</bug>
+  <bug>276279</bug>
+  <bug>283396</bug>
+  <bug>294797</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rails" auto="yes" arch="*">
+      <unaffected range="ge">2.3.5</unaffected>
+      <unaffected range="rge">2.2.3-r1</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby on Rails is a web-application and persistence framework.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were discovered:
+    </p>
+    <ul>
+    <li>sameer
+    reported that lib/action_controller/cgi_process.rb removes the
+    :cookie_only attribute from the default session options
+    (CVE-2007-6077), due to an incomplete fix for CVE-2007-5380 (GLSA
+    200711-17).</li>
+    <li>Tobias Schlottke reported that the :limit and
+    :offset parameters of ActiveRecord::Base.find() are not properly
+    sanitized before being processed (CVE-2008-4094).</li>
+    <li>Steve from
+    Coderrr reported that the CRSF protection in protect_from_forgery()
+    does not parse the text/plain MIME format (CVE-2008-7248).</li>
+    <li>Nate reported a documentation error that leads to the assumption
+    that a block returning nil passed to
+    authenticate_or_request_with_http_digest() would deny access to the
+    requested resource (CVE-2009-2422).</li>
+    <li>Brian Mastenbrook reported
+    an input sanitation flaw, related to multibyte characters
+    (CVE-2009-3009).</li>
+    <li>Gabe da Silveira reported an input sanitation
+    flaw in the strip_tags() function (CVE-2009-4214).</li>
+    <li>Coda Hale
+    reported an information disclosure vulnerability related to HMAC
+    digests (CVE-2009-3086).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted requests to a vulnerable
+    application, possibly leading to the execution of arbitrary SQL
+    statements or a circumvention of access control. A remote attacker
+    could also conduct session fixation attacks to hijack a user's session
+    or bypass the CSRF protection mechanism, or furthermore conduct
+    Cross-Site Scripting attacks or forge a digest via multiple attempts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby on Rails 2.3.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ruby/rails-2.3.5&quot;</code>
+    <p>
+    All Ruby on Rails 2.2.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=dev-ruby/rails-2.2.3-r1&quot;</code>
+    <p>
+    NOTE: All applications using Ruby on Rails should also be configured to
+    use the latest version available by running "rake rails:update" inside
+    the application directory.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5380">CVE-2007-5380</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6077">CVE-2007-6077</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4094">CVE-2008-4094</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7248">CVE-2008-7248</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2422">CVE-2009-2422</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3009">CVE-2009-3009</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3086">CVE-2009-3086</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4214">CVE-2009-4214</uri>
+    <uri link="/security/en/glsa/glsa-200711-17.xml">GLSA 200711-17</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 30 Nov 2008 18:11:48 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 11 Mar 2009 19:07:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 19 Mar 2009 12:17:35 +0000">
+    p-y
+  </metadata>
+</glsa>

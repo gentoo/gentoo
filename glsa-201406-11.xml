@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-11">
+  <title>libXfont: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libXfont, the worst of
+    which allow for local privilege escalation. 
+  </synopsis>
+  <product type="ebuild">libXfont</product>
+  <announced>June 14, 2014</announced>
+  <revised>June 14, 2014: 1</revised>
+  <bug>510250</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="ge">1.4.8</unaffected>
+      <vulnerable range="lt">1.4.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libXfont is an X11 font rasterisation library. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libXfont. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker could use a specially crafted file to gain
+      privileges, cause a Denial of Service condition or possibly execute
+      arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libXfont users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.4.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0209">CVE-2014-0209</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0210">CVE-2014-0210</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0211">CVE-2014-0211</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 Jun 2014 00:46:03 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 14 Jun 2014 08:39:05 +0000">Zlogene</metadata>
+</glsa>

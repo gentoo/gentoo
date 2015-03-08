@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-09">
+  <title>Ruby-GNOME2: Format string error</title>
+  <synopsis>
+    A format string error has been discovered in Ruby-GNOME2, possibly leading
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ruby-gtk2</product>
+  <announced>December 09, 2007</announced>
+  <revised>December 09, 2007: 01</revised>
+  <bug>200623</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/ruby-gtk2" auto="yes" arch="*">
+      <unaffected range="ge">0.16.0-r2</unaffected>
+      <vulnerable range="lt">0.16.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby-GNOME2 is a set of bindings for using GTK+ within the Ruby
+    programming language.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Rohlf discovered that the "Gtk::MessageDialog.new()" method in
+    the file gtk/src/rbgtkmessagedialog.c does not properly sanitize the
+    "message" parameter before passing it to the gtk_message_dialog_new()
+    function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted string to an
+    application using Ruby-GNOME2, possibly leading to the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby-GNOME2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ruby/ruby-gtk2-0.16.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6183">CVE-2007-6183</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Dec 2007 18:00:54 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Dec 2007 22:24:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 04 Dec 2007 22:25:12 +0000">
+    p-y
+  </metadata>
+</glsa>

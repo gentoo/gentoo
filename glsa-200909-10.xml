@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-10">
+  <title>LMBench: Insecure temporary file usage</title>
+  <synopsis>
+    Multiple insecure temporary file usage issues have been reported in
+    LMBench, allowing for symlink attacks.
+  </synopsis>
+  <product type="ebuild">lmbench</product>
+  <announced>September 09, 2009</announced>
+  <revised>September 09, 2009: 01</revised>
+  <bug>246015</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-benchmarks/lmbench" auto="yes" arch="*">
+      <vulnerable range="le">3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LMBench is a suite of simple, portable benchmarks for UNIX platforms.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that the rccs and STUFF scripts do not
+    handle "/tmp/sdiff.#####" temporary files securely. NOTE: There might
+    be further occurances of insecure temporary file usage.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to overwrite arbitrary
+    files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    LMBench has been removed from Portage. We recommend that users unmerge
+    LMBench:
+    </p>
+    <code>
+    # emerge --unmerge app-benchmarks/lmbench</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4968">CVE-2008-4968</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 10:54:15 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 07:58:27 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:05 +0000">
+    a3li
+  </metadata>
+</glsa>

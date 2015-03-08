@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-02">
+  <title>LibYAML: Arbitrary code execution</title>
+  <synopsis>A Vulnerability in LibYAML could result in execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">libyaml</product>
+  <announced>March 08, 2014</announced>
+  <revised>March 08, 2014: 1</revised>
+  <bug>499920</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libyaml" auto="yes" arch="*">
+      <unaffected range="ge">0.1.5</unaffected>
+      <vulnerable range="lt">0.1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibYAML is a YAML 1.1 parser and emitter written in C.</p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow flaw was found in the way libyaml parsed
+      YAML tags.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could provide a specially-crafted YAML document which
+      when parsed by LibYAML, would cause the application to crash or,
+      potentially, execute arbitrary code with the privileges the user who is
+      running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibYAML users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libyaml-0.1.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6393">CVE-2013-6393</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Feb 2014 09:37:47 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 08 Mar 2014 18:35:33 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

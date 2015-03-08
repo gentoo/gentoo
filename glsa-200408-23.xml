@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-23">
+  <title>kdelibs: Cross-domain cookie injection vulnerability</title>
+  <synopsis>
+    The cookie manager component in kdelibs contains a vulnerability allowing
+    an attacker to potentially gain access to a user's session on a legitimate
+    web server.
+  </synopsis>
+  <product type="ebuild">kdelibs</product>
+  <announced>August 24, 2004</announced>
+  <revised>August 24, 2004: 01</revised>
+  <bug>61389</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.2.3-r2</unaffected>
+      <vulnerable range="le">3.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a widely-used desktop environment based on the Qt toolkit.
+    kcookiejar in kdelibs is responsible for storing and managing HTTP cookies.
+    Konqueror uses kcookiejar for storing and managing cookies.
+    </p>
+  </background>
+  <description>
+    <p>
+    kcookiejar contains a vulnerability which may allow a malicious website to
+    set cookies for other websites under the same second-level domain.
+    </p>
+    <p>
+    This vulnerability applies to country-specific secondary top level domains
+    that use more than 2 characters in the secondary part of the domain name,
+    and that use a secondary part other than com, net, mil, org, gov, edu or
+    int. However, certain popular domains, such as co.uk, are not affected.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Users visiting a malicious website using the Konqueror browser may have a
+    session cookie set for them by that site. Later, when the user visits
+    another website under the same domain, the attacker's session cookie will
+    be used instead of the cookie issued by the legitimate site. Depending on
+    the design of the legitimate site, this may allow an attacker to gain
+    access to the user's session. For further explanation on this type of
+    attack, see the paper titled &quot;Session Fixation Vulnerability in
+    Web-based Applications&quot; (reference 2).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of kdelibs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=kde-base/kdelibs-3.2.3-r2"
+    # emerge ">=kde-base/kdelibs-3.2.3-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kde.org/info/security/advisory-20040823-1.txt">KDE Advisory</uri>
+    <uri link="http://www.acros.si/papers/session_fixation.pdf">Session Fixation Vulnerability in Web-based Applications</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 23 Aug 2004 20:45:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 24 Aug 2004 19:26:35 +0000">
+    condordes
+  </metadata>
+</glsa>

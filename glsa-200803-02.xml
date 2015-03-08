@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-02">
+  <title>Firebird: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Firebird may allow the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">firebird</product>
+  <announced>March 02, 2008</announced>
+  <revised>March 02, 2008: 01</revised>
+  <bug>208034</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/firebird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3.12981.0-r5</unaffected>
+      <vulnerable range="lt">2.0.3.12981.0-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Firebird is a multi-platform, open source relational database.
+    </p>
+  </background>
+  <description>
+    <p>
+    Firebird does not properly handle certain types of XDR requests,
+    resulting in an integer overflow (CVE-2008-0387). Furthermore, it is
+    vulnerable to a buffer overflow when processing usernames
+    (CVE-2008-0467).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted XDR requests or an
+    overly long username to the vulnerable server, possibly resulting in
+    the remote execution of arbitrary code with the privileges of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Firebird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/firebird-2.0.3.12981.0-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0387">CVE-2008-0387</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0467">CVE-2008-0467</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 25 Feb 2008 20:05:19 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Feb 2008 20:05:28 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Feb 2008 12:57:14 +0000">
+    p-y
+  </metadata>
+</glsa>

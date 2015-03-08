@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200910-02">
+  <title>Pidgin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Pidgin, leading to the
+    remote execution of arbitrary code, unauthorized information disclosure, or
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>October 22, 2009</announced>
+  <revised>October 22, 2009: 01</revised>
+  <bug>276000</bug>
+  <bug>281545</bug>
+  <bug>283324</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.5.9-r1</unaffected>
+      <vulnerable range="lt">2.5.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pidgin is a client for a variety of instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in Pidgin:
+    </p>
+    <ul>
+    <li>Yuriy
+    Kaminskiy reported that the OSCAR protocol implementation in Pidgin
+    misinterprets the ICQWebMessage message type as the ICQSMS message
+    type, triggering an allocation of a large amount of memory
+    (CVE-2009-1889).</li>
+    <li>Federico Muttis of Core Security Technologies
+    reported that the msn_slplink_process_msg() function in
+    libpurple/protocols/msn/slplink.c in libpurple as used in Pidgin
+    doesn't properly process incoming SLP messages, triggering an overwrite
+    of an arbitrary memory location (CVE-2009-2694). NOTE: This issue
+    reportedly exists because of an incomplete fix for CVE-2009-1376 (GLSA
+    200905-07).</li>
+    <li>bugdave reported that protocols/jabber/auth.c in
+    libpurple as used in Pidgin does not follow the "require TSL/SSL"
+    preference when connecting to older Jabber servers that do not follow
+    the XMPP specification, resulting in a connection to the server without
+    the expected encryption (CVE-2009-3026).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted SLP (via MSN) or ICQ web
+    messages, possibly leading to execution of arbitrary code with the
+    privileges of the user running Pidgin, unauthorized information
+    disclosure, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pidgin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/pidgin-2.5.9-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1376">CVE-2009-1376</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1889">CVE-2009-1889</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2694">CVE-2009-2694</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3026">CVE-2009-3026</uri>
+    <uri link="/security/en/glsa/glsa-200905-07.xml">GLSA 200905-07</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 31 Aug 2009 02:16:12 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 31 Aug 2009 07:10:07 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 22 Oct 2009 19:06:35 +0000">
+    keytoaster
+  </metadata>
+</glsa>

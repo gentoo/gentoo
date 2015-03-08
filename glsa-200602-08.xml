@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-08">
+  <title>libtasn1, GNU TLS: Security flaw in DER decoding</title>
+  <synopsis>
+    A flaw in the parsing of Distinguished Encoding Rules (DER) has been
+    discovered in libtasn1, potentially resulting in the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">libtasn1</product>
+  <announced>February 16, 2006</announced>
+  <revised>February 16, 2006: 01</revised>
+  <bug>122307</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libtasn1" auto="yes" arch="*">
+      <unaffected range="ge">0.2.18</unaffected>
+      <vulnerable range="lt">0.2.18</vulnerable>
+    </package>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">1.2.10</unaffected>
+      <vulnerable range="lt">1.2.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Libtasn1 is a library used to parse ASN.1 (Abstract Syntax
+    Notation One) objects, and perform DER (Distinguished Encoding Rules)
+    decoding. Libtasn1 is included with the GNU TLS library, which is used
+    by applications to provide a cryptographically secure communications
+    channel.
+    </p>
+  </background>
+  <description>
+    <p>
+    Evgeny Legerov has reported a flaw in the DER decoding routines
+    provided by libtasn1, which could cause an out of bounds access to
+    occur.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could cause an application using libtasn1 to
+    crash and potentially execute arbitrary code by sending specially
+    crafted input.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libtasn1 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libtasn1-0.2.18&quot;</code>
+    <p>
+    All GNU TLS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gnutls-1.2.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0645">CVE-2006-0645</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 13 Feb 2006 20:11:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 13 Feb 2006 20:11:49 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 14 Feb 2006 22:53:09 +0000">
+    taviso
+  </metadata>
+</glsa>

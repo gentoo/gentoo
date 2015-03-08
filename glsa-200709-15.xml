@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-15">
+  <title>BEA JRockit: Multiple vulnerabilities</title>
+  <synopsis>
+    BEA JRockit contains several vulnerabilities, some of which may allow the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">jrockit-jdk-bin</product>
+  <announced>September 23, 2007</announced>
+  <revised>September 23, 2007: 01</revised>
+  <bug>190686</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/jrockit-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.11_p1</unaffected>
+      <vulnerable range="lt">1.5.0.11_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    BEA JRockit provides tools, utilities, and a complete runtime
+    environment for developing and running applications using the Java
+    programming language.
+    </p>
+  </background>
+  <description>
+    <p>
+    An integer overflow vulnerability exists in the embedded ICC profile
+    image parser (CVE-2007-2788), an unspecified vulnerability exists in
+    the font parsing implementation (CVE-2007-4381), and an error exists
+    when processing XSLT stylesheets contained in XSLT Transforms in XML
+    signatures (CVE-2007-3716), among other vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could trigger the integer overflow to execute
+    arbitrary code or crash the JVM through a specially crafted file. Also,
+    an attacker could perform unauthorized actions via an applet that
+    grants certain privileges to itself because of the font parsing
+    vulnerability. The error when processing XSLT stylesheets can be
+    exploited to execute arbitrary code. Other vulnerabilities could lead
+    to establishing restricted network connections to certain services,
+    Cross Site Scripting and Denial of Service attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all these
+    vulnerabilities.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BEA JRockit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/jrockit-jdk-bin-1.5.0.11_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3004">CVE-2007-3004</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3005">CVE-2007-3005</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3503">CVE-2007-3503</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3698">CVE-2007-3698</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3716">CVE-2007-3716</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3922">CVE-2007-3922</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4381">CVE-2007-4381</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 15 Sep 2007 21:57:11 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Sep 2007 12:51:05 +0000">
+    vorlon
+  </metadata>
+</glsa>

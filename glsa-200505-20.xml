@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-20">
+  <title>Mailutils: Multiple vulnerabilities in imap4d and mail</title>
+  <synopsis>
+    The imap4d server and the mail utility from GNU Mailutils contain multiple
+    vulnerabilities, potentially allowing a remote attacker to execute
+    arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">mailutils</product>
+  <announced>May 27, 2005</announced>
+  <revised>May 27, 2005: 01</revised>
+  <bug>94053</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/mailutils" auto="yes" arch="*">
+      <unaffected range="ge">0.6-r1</unaffected>
+      <vulnerable range="lt">0.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU Mailutils is a collection of mail-related utilities, including
+    an IMAP4 server (imap4d) and a Mail User Agent (mail).
+    </p>
+  </background>
+  <description>
+    <p>
+    infamous41d discovered several vulnerabilities in GNU Mailutils.
+    imap4d does not correctly implement formatted printing of command tags
+    (CAN-2005-1523), fails to validate the range sequence of the "FETCH"
+    command (CAN-2005-1522), and contains an integer overflow in the
+    "fetch_io" routine (CAN-2005-1521). mail contains a buffer overflow in
+    "header_get_field_name()" (CAN-2005-1520).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can exploit the format string and integer
+    overflow in imap4d to execute arbitrary code as the imap4d user, which
+    is usually root. By sending a specially crafted email message, a remote
+    attacker could exploit the buffer overflow in the "mail" utility to
+    execute arbitrary code with the rights of the user running mail.
+    Finally, a remote attacker can also trigger a Denial of Service by
+    sending a malicious FETCH command to an affected imap4d, causing
+    excessive resource consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Mailutils users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailutils-0.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1520">CAN-2005-1520</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1521">CAN-2005-1521</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1522">CAN-2005-1522</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1523">CAN-2005-1523</uri>
+    <uri link="http://www.idefense.com/application/poi/display?type=vulnerabilities&amp;showYear=2005">iDEFENSE 05.25.05 advisories</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 26 May 2005 13:21:14 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 27 May 2005 07:50:06 +0000">
+    koon
+  </metadata>
+</glsa>

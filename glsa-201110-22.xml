@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-22">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in the PostgreSQL server and client allow
+    remote attacker to conduct several attacks, including the execution of
+    arbitrary code and Denial of Service.
+  </synopsis>
+  <product type="ebuild">postgresql-server postgresql-base</product>
+  <announced>October 25, 2011</announced>
+  <revised>March 05, 2012: 3</revised>
+  <bug>261223</bug>
+  <bug>284274</bug>
+  <bug>297383</bug>
+  <bug>308063</bug>
+  <bug>313335</bug>
+  <bug>320967</bug>
+  <bug>339935</bug>
+  <bug>353387</bug>
+  <bug>384539</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <vulnerable range="le">9</vulnerable>
+    </package>
+    <package name="dev-db/postgresql-server" auto="yes" arch="*">
+      <unaffected range="ge">9.0.5</unaffected>
+      <unaffected range="rge">8.4.9</unaffected>
+      <unaffected range="rge">8.3.16</unaffected>
+      <unaffected range="rge">8.2.22</unaffected>
+      <unaffected range="rge">8.4.10</unaffected>
+      <unaffected range="rge">8.3.17</unaffected>
+      <unaffected range="rge">8.2.23</unaffected>
+      <unaffected range="ge">8.4.11</unaffected>
+      <unaffected range="ge">8.3.18</unaffected>
+      <vulnerable range="lt">9.0.5</vulnerable>
+    </package>
+    <package name="dev-db/postgresql-base" auto="yes" arch="*">
+      <unaffected range="ge">9.0.5</unaffected>
+      <unaffected range="rge">8.4.9</unaffected>
+      <unaffected range="rge">8.3.16</unaffected>
+      <unaffected range="rge">8.2.22</unaffected>
+      <unaffected range="rge">8.4.10</unaffected>
+      <unaffected range="rge">8.3.17</unaffected>
+      <unaffected range="rge">8.2.23</unaffected>
+      <unaffected range="ge">8.4.11</unaffected>
+      <unaffected range="ge">8.3.18</unaffected>
+      <vulnerable range="lt">9.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker could send a specially crafted SQL query
+      to a PostgreSQL server with the "intarray" module enabled, possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      PostgreSQL server process, or a Denial of Service condition. Furthermore,
+      a remote authenticated attacker could execute arbitrary Perl code, cause
+      a Denial of Service condition via different vectors, bypass LDAP
+      authentication, bypass X.509 certificate validation, gain database
+      privileges, exploit weak blowfish encryption and possibly cause other
+      unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 8.2 users should upgrade to the latest 8.2 base version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-base-8.2.22:8.2"
+    </code>
+    
+    <p>All PostgreSQL 8.3 users should upgrade to the latest 8.3 base version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-base-8.3.16:8.3"
+    </code>
+    
+    <p>All PostgreSQL 8.4 users should upgrade to the latest 8.4 base version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-base-8.4.9:8.4"
+    </code>
+    
+    <p>All PostgreSQL 9.0 users should upgrade to the latest 9.0 base version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-base-9.0.5:9.0"
+    </code>
+    
+    <p>All PostgreSQL 8.2 server users should upgrade to the latest 8.2 server
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-server-8.2.22:8.2"
+    </code>
+    
+    <p>All PostgreSQL 8.3 server users should upgrade to the latest 8.3 server
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-server-8.3.16:8.3"
+    </code>
+    
+    <p>All PostgreSQL 8.4 server users should upgrade to the latest 8.4 server
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-server-8.4.9:8.4"
+    </code>
+    
+    <p>All PostgreSQL 9.0 server users should upgrade to the latest 9.0 server
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/postgresql-server-9.0.5:9.0"
+    </code>
+    
+    <p>The old unsplit PostgreSQL packages have been removed from portage.
+      Users still using them are urged to migrate to the new PostgreSQL
+      packages as stated above and to remove the old package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "dev-db/postgresql"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0922">CVE-2009-0922</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3229">CVE-2009-3229</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3230">CVE-2009-3230</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3231">CVE-2009-3231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4034">CVE-2009-4034</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4136">CVE-2009-4136</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0442">CVE-2010-0442</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0733">CVE-2010-0733</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1169">CVE-2010-1169</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1170">CVE-2010-1170</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1447">CVE-2010-1447</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1975">CVE-2010-1975</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3433">CVE-2010-3433</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4015">CVE-2010-4015</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2483">CVE-2011-2483</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:07 +0000" tag="requester">
+    keytoaster
+  </metadata>
+  <metadata timestamp="Mon, 05 Mar 2012 19:10:41 +0000" tag="submitter">a3li</metadata>
+</glsa>

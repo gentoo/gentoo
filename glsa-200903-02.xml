@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-02">
+  <title>ZNC: Privilege escalation</title>
+  <synopsis>
+    A vulnerability in ZNC allows for privilege escalation.
+  </synopsis>
+  <product type="ebuild">znc</product>
+  <announced>March 06, 2009</announced>
+  <revised>March 06, 2009: 01</revised>
+  <bug>260148</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/znc" auto="yes" arch="*">
+      <unaffected range="ge">0.066</unaffected>
+      <vulnerable range="lt">0.066</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ZNC is an advanced IRC bouncer.
+    </p>
+  </background>
+  <description>
+    <p>
+    cnu discovered multiple CRLF injection vulnerabilities in ZNC's
+    webadmin module.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote authenticated attacker could modify the znc.conf configuration
+    file and gain privileges via newline characters in e.g. the QuitMessage
+    field, and possibly execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ZNC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/znc-0.066&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0759">CVE-2009-0759</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:11:58 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 05 Mar 2009 22:51:15 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 Mar 2009 22:00:32 +0000">
+    p-y
+  </metadata>
+</glsa>

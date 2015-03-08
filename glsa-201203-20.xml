@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-20">
+  <title>Logwatch: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Logwatch might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">Logwatch</product>
+  <announced>March 28, 2012</announced>
+  <revised>March 28, 2012: 1</revised>
+  <bug>356387</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/logwatch" auto="yes" arch="*">
+      <unaffected range="ge">7.4.0</unaffected>
+      <vulnerable range="lt">7.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Logwatch analyzes and reports on system logs.</p>
+  </background>
+  <description>
+    <p>logwatch.pl does not properly sanitize log filenames against shell
+      metacharacters before passing them to the "system()" function. 
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could pass a specially crafted log filename to
+      Logwatch, possibly resulting in execution of arbitrary code with root
+      privileges or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Logwatch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/logwatch-7.4.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1018">CVE-2011-1018</uri>
+  </references>
+  <metadata timestamp="Fri, 16 Mar 2012 19:51:03 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Wed, 28 Mar 2012 10:30:33 +0000" tag="submitter">ackle</metadata>
+</glsa>

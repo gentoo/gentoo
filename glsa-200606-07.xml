@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-07">
+  <title>Vixie Cron: Privilege Escalation</title>
+  <synopsis>
+    Vixie Cron allows local users to execute programs as root.
+  </synopsis>
+  <product type="ebuild">vixie-cron</product>
+  <announced>June 09, 2006</announced>
+  <revised>June 09, 2006: 01</revised>
+  <bug>134194</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/vixie-cron" auto="yes" arch="*">
+      <unaffected range="ge">4.1-r9</unaffected>
+      <vulnerable range="lt">4.1-r9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Vixie Cron is a command scheduler with extended syntax over cron.
+    </p>
+  </background>
+  <description>
+    <p>
+    Roman Veretelnikov discovered that Vixie Cron fails to properly
+    check whether it can drop privileges accordingly if setuid() in
+    do_command.c fails due to a user exceeding assigned resource limits.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Local users can execute code with root privileges by deliberately
+    exceeding their assigned resource limits and then starting a command
+    through Vixie Cron. This requires resource limits to be in place on the
+    machine.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Vixie Cron users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-process/vixie-cron-4.1-r9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2607">CVE-2006-2607</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Jun 2006 19:26:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 20:17:38 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 09 Jun 2006 03:56:58 +0000">
+    jaervosz
+  </metadata>
+</glsa>

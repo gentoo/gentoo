@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-26">
+  <title>RPM: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in RPM, possibly allowing
+    local attackers to gain elevated privileges or remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">RPM</product>
+  <announced>June 24, 2012</announced>
+  <revised>June 24, 2012: 1</revised>
+  <bug>335880</bug>
+  <bug>384967</bug>
+  <bug>410949</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-arch/rpm" auto="yes" arch="*">
+      <unaffected range="ge">4.9.1.3</unaffected>
+      <vulnerable range="lt">4.9.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Red Hat Package Manager (RPM) is a command line driven package
+      management system capable of installing, uninstalling, verifying,
+      querying, and updating computer software packages.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in RPM:</p>
+    
+    <ul>
+      <li>fsm.c fails to properly strip setuid and setgid bits from executable
+        files during a package upgrade (CVE-2010-2059).
+      </li>
+      <li>RPM does not properly parse spec files (CVE-2010-2197).</li>
+      <li>fsm.c fails to properly strip POSIX file capabilities from executable
+        files during a package upgrade or removal (CVE-2010-2198).
+      </li>
+      <li>fsm.c fails to properly strip POSIX ACLs from executable files during
+        a package upgrade or removal (CVE-2010-2199).
+      </li>
+      <li>header.c does not properly parse region offsets in package files
+        (CVE-2011-3378).
+      </li>
+      <li>RPM does not properly sanitize region tags in package headers
+        (CVE-2012-0060).
+      </li>
+      <li>RPM does not properly sanitize region sizes in package headers
+        (CVE-2012-0061).
+      </li>
+      <li>RPM does not properly sanitize region offsets in package
+        headers(CVE-2012-0815).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to gain elevated privileges. Furthermore, a
+      remote attacker could entice a user to open a specially crafted RPM
+      package, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RPM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/rpm-4.9.1.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2059">CVE-2010-2059</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2197">CVE-2010-2197</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2198">CVE-2010-2198</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2199">CVE-2010-2199</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3378">CVE-2011-3378</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0060">CVE-2012-0060</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0061">CVE-2012-0061</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0815">CVE-2012-0815</uri>
+  </references>
+  <metadata timestamp="Sun, 25 Mar 2012 14:53:26 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 24 Jun 2012 22:36:58 +0000" tag="submitter">ackle</metadata>
+</glsa>

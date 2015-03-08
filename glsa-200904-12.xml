@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-12">
+  <title>Wicd: Information disclosure</title>
+  <synopsis>
+    A vulnerability in Wicd may allow for disclosure of sensitive information.
+  </synopsis>
+  <product type="ebuild">wicd</product>
+  <announced>April 10, 2009</announced>
+  <revised>April 10, 2009: 01</revised>
+  <bug>258596</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/wicd" auto="yes" arch="*">
+      <unaffected range="ge">1.5.9</unaffected>
+      <vulnerable range="lt">1.5.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wicd is an open source wired and wireless network manager for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tiziano Mueller of Gentoo discovered that the DBus configuration file
+    for Wicd allows arbitrary users to own the org.wicd.daemon object.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to receive messages
+    that were intended for the Wicd daemon, possibly including credentials
+    e.g. for wireless networks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wicd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/wicd-1.5.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0489">CVE-2009-0489</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 08 Apr 2009 22:52:50 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 09 Apr 2009 11:29:45 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 09 Apr 2009 21:59:43 +0000">
+    p-y
+  </metadata>
+</glsa>

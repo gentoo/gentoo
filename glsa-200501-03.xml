@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-03">
+  <title>Mozilla, Firefox, Thunderbird: Various vulnerabilities</title>
+  <synopsis>
+    Various vulnerabilities were found and fixed in Mozilla-based products,
+    ranging from a potential buffer overflow and temporary files disclosure to
+    anti-spoofing issues.
+  </synopsis>
+  <product type="ebuild">Mozilla</product>
+  <announced>January 05, 2005</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>76112</bug>
+  <bug>68976</bug>
+  <bug>70749</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.5</unaffected>
+      <vulnerable range="lt">1.7.5</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.5</unaffected>
+      <vulnerable range="lt">1.7.5</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.0</unaffected>
+      <vulnerable range="lt">1.0</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0</unaffected>
+      <vulnerable range="lt">1.0</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">0.9</unaffected>
+      <vulnerable range="lt">0.9</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">0.9</unaffected>
+      <vulnerable range="lt">0.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla is a popular web browser that includes a mail and newsreader.
+    Mozilla Firefox and Mozilla Thunderbird are respectively the
+    next-generation browser and mail client from the Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Maurycy Prodeus from isec.pl found a potentially exploitable buffer
+    overflow in the handling of NNTP URLs. Furthermore, Martin (from
+    ptraced.net) discovered that temporary files in recent versions of
+    Mozilla-based products were sometimes stored world-readable with
+    predictable names. The Mozilla Team also fixed a way of spoofing
+    filenames in Firefox's "What should Firefox do with this file" dialog
+    boxes and a potential information leak about the existence of local
+    filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malicious NNTP link and entice a user
+    to click it, potentially resulting in the execution of arbitrary code
+    with the rights of the user running the browser. A local attacker could
+    leverage the temporary file vulnerability to read the contents of
+    another user's attachments or downloads. A remote attacker could also
+    design a malicious web page that would allow to spoof filenames if the
+    user uses the "Open with..." function in Firefox, or retrieve
+    information on the presence of specific files in the local filesystem.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.5&quot;</code>
+    <p>
+    All Mozilla binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.5&quot;</code>
+    <p>
+    All Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0&quot;</code>
+    <p>
+    All Firefox binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0&quot;</code>
+    <p>
+    All Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-0.9&quot;</code>
+    <p>
+    All Thunderbird binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-0.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://isec.pl/vulnerabilities/isec-0020-mozilla.txt">isec.pl Advisory</uri>
+    <uri link="http://broadcast.ptraced.net/advisories/008-firefox.thunderbird.txt">Martin (from ptraced.net) Advisory</uri>
+    <uri link="http://secunia.com/advisories/13144/">Secunia Advisory SA13144</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2227">CVE-2004-2227</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2228">CVE-2004-2228</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue,  4 Jan 2005 10:09:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 10:10:52 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-03">
+  <title>Fail2ban: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Fail2ban, the worst of
+    which allows remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">fail2ban</product>
+  <announced>June 01, 2014</announced>
+  <revised>June 01, 2014: 1</revised>
+  <bug>364883</bug>
+  <bug>473118</bug>
+  <bug>499802</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/fail2ban" auto="yes" arch="*">
+      <unaffected range="ge">0.8.12</unaffected>
+      <vulnerable range="lt">0.8.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Fail2ban is a tool for parsing log files and banning IP addresses which
+      show suspicious behavior.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Fail2ban. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a crafted URL to a web site which, when
+      parsed by Fail2ban, would deny a specific IP address. Also, errors in
+      regular expressions within certain filters can cause arbitrary IP
+      addresses to be banned. Furthermore, a local attacker could perform
+      symlink attacks to overwrite arbitrary files with the privileges of the
+      user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Fail2ban users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/fail2ban-0.8.12
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5023">CVE-2009-5023</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2178">CVE-2013-2178</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7176">CVE-2013-7176</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:06 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jun 2014 15:17:17 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

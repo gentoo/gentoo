@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-05">
+  <title>Gallery: Arbitrary command execution</title>
+  <synopsis>
+    The Gallery image upload code contains a temporary file handling
+    vulnerability which could lead to execution of arbitrary commands.
+  </synopsis>
+  <product type="ebuild">Gallery</product>
+  <announced>September 02, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>60742</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/gallery" auto="yes" arch="*">
+      <unaffected range="ge">1.4.4_p2</unaffected>
+      <vulnerable range="lt">1.4.4_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gallery is a PHP script for maintaining online photo albums.
+    </p>
+  </background>
+  <description>
+    <p>
+    The upload handling code in Gallery places uploaded files in a
+    temporary directory. After 30 seconds, these files are deleted if they
+    are not valid images. However, since the file exists for 30 seconds, a
+    carefully crafted script could be initiated by the remote attacker
+    during this 30 second timeout. Note that the temporary directory has to
+    be located inside the webroot and an attacker needs to have upload
+    rights either as an authenticated user or via "EVERYBODY".
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could run arbitrary code as the user running PHP.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are several workarounds to this vulnerability:
+    </p>
+    <ul>
+    <li>Make sure that your temporary directory is not contained in the
+    webroot; by default it is located outside the webroot.</li>
+    <li>Disable upload rights to all albums for "EVERYBODY"; upload is
+    disabled by default.</li>
+    <li>Disable debug and dev mode; these settings are disabled by
+    default.</li>
+    <li>Disable allow_url_fopen in php.ini.</li>
+    </ul>
+  </workaround>
+  <resolution>
+    <p>
+    All Gallery users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-apps/gallery-1.4.4_p2&quot;
+    # emerge &quot;&gt;=www-apps/gallery-1.4.4_p2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2004-08/0757.html">Full Disclosure Announcement</uri>
+    <uri link="http://gallery.menalto.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=134&amp;mode=thread&amp;order=0&amp;thold=0">Gallery Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1466">CVE-2004-1466</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 Aug 2004 09:02:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Aug 2004 23:33:36 +0000">
+    chriswhite
+  </metadata>
+</glsa>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-32">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>
+    Mozilla Thunderbird is vulnerable to multiple issues, including the remote
+    execution of arbitrary code through malicious GIF images.
+  </synopsis>
+  <product type="ebuild">Thunderbird</product>
+  <announced>March 25, 2005</announced>
+  <revised>March 25, 2005: 01</revised>
+  <bug>84075</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Thunderbird is the next-generation mail client from the
+    Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found and fixed in Mozilla
+    Thunderbird:
+    </p>
+    <ul>
+    <li>Mark Dowd from ISS X-Force reported an
+    exploitable heap overrun in the GIF processing of obsolete Netscape
+    extension 2 (CAN-2005-0399)</li>
+    <li>Daniel de Wildt and Gael Delalleau
+    discovered a memory overwrite in a string library (CAN-2005-0255)</li>
+    <li>Wind Li discovered a possible heap overflow in UTF8 to Unicode
+    conversion (CAN-2005-0592)</li>
+    <li>Phil Ringnalda reported a possible
+    way to spoof Install source with user:pass@host (CAN-2005-0590)</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    The GIF heap overflow could be triggered by a malicious GIF image
+    that would end up executing arbitrary code with the rights of the user
+    running Thunderbird. The other overflow issues, while not thought to be
+    exploitable, would have the same impact. Furthermore, by setting up
+    malicious websites and convincing users to follow untrusted links,
+    attackers may leverage the spoofing issue to trick user into installing
+    malicious extensions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.0.2&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.0.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0255">CAN-2005-0255</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0399">CAN-2005-0399</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0590">CAN-2005-0590</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0592">CAN-2005-0592</uri>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Security Advisories</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 22 Mar 2005 10:54:32 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Mar 2005 08:41:58 +0000">
+    koon
+  </metadata>
+</glsa>

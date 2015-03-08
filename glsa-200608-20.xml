@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-20">
+  <title>Ruby on Rails: Several vulnerabilities</title>
+  <synopsis>
+    Ruby on Rails has some weaknesses potentially allowing a Denial of Service
+    and maybe the remote execution of arbitrary Ruby scripts.
+  </synopsis>
+  <product type="ebuild">rails</product>
+  <announced>August 14, 2006</announced>
+  <revised>December 13, 2006: 02</revised>
+  <bug>143369</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rails" auto="yes" arch="*">
+      <unaffected range="ge">1.1.6</unaffected>
+      <vulnerable range="lt">1.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby on Rails is an open-source web framework.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Ruby on Rails developers have corrected some weaknesses in
+    action_controller/, relative to the handling of the user input and the
+    LOAD_PATH variable. A remote attacker could inject arbitrary entries
+    into the LOAD_PATH variable and alter the main Ruby on Rails process.
+    The security hole has only been partly solved in version 1.1.5. Version
+    1.1.6 now fully corrects it.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker that would exploit these weaknesses might cause a
+    Denial of Service of the web framework and maybe inject arbitrary Ruby
+    scripts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby on Rails users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ruby/rails-1.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://weblog.rubyonrails.org/2006/8/9/rails-1-1-5-mandatory-security-patch-and-other-tidbits">Ruby on Rails original advisory (1.1.5)</uri>
+    <uri link="http://weblog.rubyonrails.org/2006/8/10/rails-1-1-6-backports-and-full-disclosure">Ruby on Rails update  (1.1.6)</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4111">CVE-2006-4111</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4112">CVE-2006-4112</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 10 Aug 2006 07:34:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 10 Aug 2006 14:54:45 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Aug 2006 21:05:59 +0000">
+    falco
+  </metadata>
+</glsa>

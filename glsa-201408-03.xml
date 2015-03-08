@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-03">
+  <title>LibSSH: Information disclosure</title>
+  <synopsis>A vulnerability in LibSSH can result in leakage of private key
+    information. 
+  </synopsis>
+  <product type="ebuild">libssh</product>
+  <announced>August 10, 2014</announced>
+  <revised>August 10, 2014: 1</revised>
+  <bug>503504</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-libs/libssh" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3</unaffected>
+      <vulnerable range="lt">0.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibSSH is a C library providing SSHv2 and SSHv1.</p>
+  </background>
+  <description>
+    <p>A new connection inherits the state of the PRNG without re-seeding with
+      random data.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Servers using ECC (ECDSA) or DSA certificates in non-deterministic mode
+      may under certain conditions leak their private key.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibSSH users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libssh-0.6.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0017">CVE-2014-0017</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:25:42 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Aug 2014 16:35:47 +0000">K_F</metadata>
+</glsa>

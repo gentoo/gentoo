@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-25">
+  <title>tla: Multiple vulnerabilities in included libneon</title>
+  <synopsis>
+    tla includes a vulnerable version of the neon library.
+  </synopsis>
+  <product type="ebuild">tla</product>
+  <announced>May 30, 2004</announced>
+  <revised>June 02, 2004: 02</revised>
+  <bug>51586</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/tla" auto="yes" arch="*">
+      <unaffected range="ge">1.2-r2</unaffected>
+      <vulnerable range="le">1.2-r1</vulnerable>
+      <vulnerable range="eq">1.2.1_pre1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU Arch (tla) is a revision control system suited for widely distributed
+    development.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple format string vulnerabilities and a heap overflow vulnerability
+    were discovered in the code of the neon library (GLSA 200405-01 and
+    200405-13). Current versions of the tla package include their own version
+    of this library.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    When connected to a malicious WebDAV server, these vulnerabilities could
+    allow execution of arbitrary code with the rights of the user running tla.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of tla should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-util/tla-1.2-r2"
+    # emerge ">=dev-util/tla-1.2-r2"</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200405-01.xml">GLSA 200405-01</uri>
+    <uri link="/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

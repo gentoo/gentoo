@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-19">
+  <title>Sendmail: Denial of Service</title>
+  <synopsis>
+    Faulty multipart MIME messages can cause forked Sendmail processes to
+    crash.
+  </synopsis>
+  <product type="ebuild">sendmail</product>
+  <announced>June 15, 2006</announced>
+  <revised>June 15, 2006: 01</revised>
+  <bug>135141</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/sendmail" auto="yes" arch="*">
+      <unaffected range="ge">8.13.6-r1</unaffected>
+      <vulnerable range="lt">8.13.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sendmail is a popular mail transfer agent (MTA).
+    </p>
+  </background>
+  <description>
+    <p>
+    Frank Sheiness discovered that the mime8to7() function can recurse
+    endlessly during the decoding of multipart MIME messages until the
+    stack of the process is filled and the process crashes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending specially crafted multipart MIME messages, a remote
+    attacker can cause a subprocess forked by Sendmail to crash. If
+    Sendmail is not set to use a randomized queue processing, the attack
+    will effectively halt the delivery of queued mails as well as the
+    malformed one, incoming mail delivered interactively is not affected.
+    Additionally, on systems where core dumps with an individual naming
+    scheme (like "core.pid") are enabled, a filesystem may fill up with
+    core dumps. Core dumps are disabled by default in Gentoo.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The Sendmail 8.13.7 release information offers some workarounds, please
+    see the Reference below. Note that the issue has actually been fixed in
+    the 8.13.6-r1 ebuild.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sendmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/sendmail-8.13.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1173">CVE-2006-1173</uri>
+    <uri link="http://www.sendmail.org/releases/8.13.7.html">Sendmail 8.13.7 release information</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 Jun 2006 18:47:59 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Jun 2006 19:21:03 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 15 Jun 2006 16:00:46 +0000">
+    jaervosz
+  </metadata>
+</glsa>

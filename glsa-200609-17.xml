@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-17">
+  <title>OpenSSH: Denial of Service</title>
+  <synopsis>
+    A flaw in the OpenSSH daemon allows remote unauthenticated attackers to
+    cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>September 27, 2006</announced>
+  <revised>September 27, 2006: 02</revised>
+  <bug>148228</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">4.3_p2-r5</unaffected>
+      <vulnerable range="lt">4.3_p2-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSH is a free suite of applications for the SSH protocol, developed
+    and maintained by the OpenBSD project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team discovered a Denial of
+    Service vulnerability in the SSH protocol version 1 CRC compensation
+    attack detector.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote unauthenticated attacker may be able to trigger excessive CPU
+    usage by sending a pathological SSH message, denying service to other
+    legitimate users or processes.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The system administrator may disable SSH protocol version 1 in
+    /etc/ssh/sshd_config.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSH users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.3_p2-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4924">CVE-2006-4924</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 21 Sep 2006 22:24:46 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 27 Sep 2006 16:06:09 +0000">
+    vorlon078
+  </metadata>
+</glsa>

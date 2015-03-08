@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-09">
+  <title>LibRaw, libkdcraw: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LibRaw and libkdcraw,
+    the worst of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">libraw</product>
+  <announced>September 15, 2013</announced>
+  <revised>September 15, 2013: 1</revised>
+  <bug>471694</bug>
+  <bug>482926</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libraw" auto="yes" arch="*">
+      <unaffected range="ge">0.15.4</unaffected>
+      <vulnerable range="lt">0.15.4</vulnerable>
+    </package>
+    <package name="kde-base/libkdcraw" auto="yes" arch="*">
+      <unaffected range="ge">4.10.5-r1</unaffected>
+      <vulnerable range="lt">4.10.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibRaw is a library for reading RAW files obtained from digital photo
+      cameras. libkdcraw is a wrapper for LibRaw within KDE.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibRaw and libkdcraw.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file,
+      possibly resulting in arbitrary code execution or Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibRaw users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libraw-0.15.4"
+    </code>
+    
+    <p>All libkdcraw users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-base/libkdcraw-4.10.5-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1438">CVE-2013-1438</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1439">CVE-2013-1439</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2126">CVE-2013-2126</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2127">CVE-2013-2127</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 Aug 2013 06:34:07 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:41:15 +0000">
+    creffett
+  </metadata>
+</glsa>

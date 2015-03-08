@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201409-10">
+  <title>Bash: Code Injection (Updated fix for GLSA 201409-09)</title>
+  <synopsis>A parsing flaw related to functions and environments in Bash could
+    allow attackers to inject code. The unaffected packages listed in GLSA
+    201409-09 had an incomplete fix.
+  </synopsis>
+  <product type="ebuild">bash</product>
+  <announced>September 25, 2014</announced>
+  <revised>October 04, 2014: 2</revised>
+  <bug>523592</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-shells/bash" auto="yes" arch="*">
+      <unaffected range="rge">3.1_p18-r1</unaffected>
+      <unaffected range="rge">3.2_p52-r1</unaffected>
+      <unaffected range="rge">4.0_p39-r1</unaffected>
+      <unaffected range="rge">4.1_p12-r1</unaffected>
+      <unaffected range="ge">4.2_p48-r1</unaffected>
+      <vulnerable range="lt">4.2_p48-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bash is the standard GNU Bourne Again SHell.</p>
+  </background>
+  <description>
+    <p>Stephane Chazelas reported that Bash incorrectly handles function
+      definitions, allowing attackers to inject arbitrary code (CVE-2014-6271).
+      Gentoo Linux informed about this issue in GLSA 201409-09.
+    </p>
+    
+    <p>Tavis Ormandy reported that the patch for CVE-2014-6271 was incomplete.
+      As such, this GLSA supersedes GLSA 201409-09.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could exploit this vulnerability to execute arbitrary
+      commands even in restricted environments.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bash 3.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-3.1_p18-r1:3.1"
+    </code>
+    
+    <p>All Bash 3.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-3.2_p52-r1:3.2"
+    </code>
+    
+    <p>All Bash 4.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.0_p39-r1:4.0"
+    </code>
+    
+    <p>All Bash 4.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.1_p12-r1:4.1"
+    </code>
+    
+    <p>All Bash 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.2_p48-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7169">CVE-2014-7169</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Sep 2014 12:49:54 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 04 Oct 2014 22:27:37 +0000">
+    keytoaster
+  </metadata>
+</glsa>

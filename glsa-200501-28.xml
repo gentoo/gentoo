@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-28">
+  <title>Xpdf, GPdf: Stack overflow in Decrypt::makeFileKey2</title>
+  <synopsis>
+    A stack overflow was discovered in Xpdf, potentially resulting in the
+    execution of arbitrary code. GPdf includes Xpdf code and therefore is
+    vulnerable to the same issue.
+  </synopsis>
+  <product type="ebuild">Xpdf</product>
+  <announced>January 21, 2005</announced>
+  <revised>January 21, 2005: 01</revised>
+  <bug>77888</bug>
+  <bug>78128</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.00-r8</unaffected>
+      <vulnerable range="le">3.00-r7</vulnerable>
+    </package>
+    <package name="app-text/gpdf" auto="yes" arch="*">
+      <unaffected range="ge">2.8.2</unaffected>
+      <vulnerable range="lt">2.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xpdf is an open source viewer for Portable Document Format (PDF)
+    files. GPdf is a Gnome-based PDF viewer that includes some Xpdf code.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDEFENSE reports that the Decrypt::makeFileKey2 function in Xpdf's
+    Decrypt.cc insufficiently checks boundaries when processing /Encrypt
+    /Length tags in PDF files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice an user to open a specially-crafted PDF
+    file which would trigger a stack overflow, potentially resulting in
+    execution of arbitrary code with the rights of the user running Xpdf or
+    GPdf.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.00-r8&quot;</code>
+    <p>
+    All GPdf users should also upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.8.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=186&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 18 Jan 2005 13:34:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 21 Jan 2005 20:37:01 +0000">
+    koon
+  </metadata>
+</glsa>

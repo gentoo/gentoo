@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-10">
+  <title>ejabberd: Multiple Denial of Service vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ejabberd, the worst of
+    which allowing for remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">ejabberd</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>308047</bug>
+  <bug>370201</bug>
+  <bug>386075</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/ejabberd" auto="yes" arch="*">
+      <unaffected range="ge">2.1.9</unaffected>
+      <vulnerable range="lt">2.1.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ejabberd is the Erlang jabber daemon.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ejabberd. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>ejabberd allows remote attackers to cause a Denial of Service condition
+      with the result of either crashing the daemon or the whole system by
+      causing memory and CPU consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ejabberd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/ejabberd-2.1.9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0305">CVE-2010-0305</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1753">CVE-2011-1753</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4320">CVE-2011-4320</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:20 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 18:14:54 +0000" tag="submitter">craig</metadata>
+</glsa>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-16">
+  <title>rsync: Execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow in rsync might lead to the remote execution of arbitrary
+    code when extended attributes are being used.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>April 17, 2008</announced>
+  <revised>April 17, 2008: 01</revised>
+  <bug>216887</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">2.6.9-r6</unaffected>
+      <vulnerable range="lt">2.6.9-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rsync is a file transfer program to keep remote directories
+    synchronized.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sebastian Krahmer of SUSE reported an integer overflow in the
+    expand_item_list() function in the file util.c which might lead to a
+    heap-based buffer overflow when extended attribute (xattr) support is
+    enabled.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a file containing specially crafted
+    extended attributes to an rsync deamon, or entice a user to sync from
+    an rsync server containing specially crafted files, possibly leading to
+    the execution of arbitrary code.
+    </p>
+    <p>
+    Please note that extended attributes are only enabled when USE="acl" is
+    enabled, which is the default setting.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable extended attributes in the rsync daemon by setting "<i>refuse
+    options = xattrs</i>" in the file "/etc/rsyncd.conf" (or append
+    "xattrs" to an existing "refuse" statement). When synchronizing to a
+    server, do not provide the "-X" parameter to rsync. You can also
+    disable the "acl" USE flag for rsync and recompile the package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All rsync users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/rsync-2.6.9-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1720">CVE-2008-1720</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 14 Apr 2008 22:37:35 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 23:01:29 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Apr 2008 23:01:42 +0000">
+    rbu
+  </metadata>
+</glsa>

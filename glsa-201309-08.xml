@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-08">
+  <title>FileZilla: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FileZilla, the worst of
+    which could result in arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">filezilla</product>
+  <announced>September 15, 2013</announced>
+  <revised>September 15, 2013: 1</revised>
+  <bug>479880</bug>
+  <bug>482672</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-ftp/filezilla" auto="yes" arch="*">
+      <unaffected range="ge">3.7.3</unaffected>
+      <vulnerable range="lt">3.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FileZilla is an open source FTP client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FileZilla. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to connect to a malicious server,
+      resulting in possible arbitrary code execution or a Denial of Service.
+      Additionally, a local attacker could read sensitive memory, potentially
+      resulting in password disclosure.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FileZilla users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/filezilla-3.7.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4206">
+      CVE-2013-4206
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4207">
+      CVE-2013-4207
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4208">
+      CVE-2013-4208
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4852">CVE-2013-4852</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:35:29 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:36:50 +0000">
+    creffett
+  </metadata>
+</glsa>

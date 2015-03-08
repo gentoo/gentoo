@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-22">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were discovered in Opera, allowing for the
+    execution of arbitrary code and cross domain scripting.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>December 30, 2007</announced>
+  <revised>December 30, 2007: 01</revised>
+  <bug>202770</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.25</unaffected>
+      <vulnerable range="lt">9.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a fast Web browser that is available free of charge.
+    </p>
+  </background>
+  <description>
+    <p>
+    David Bloom reported two vulnerabilities where plug-ins (CVE-2007-6520)
+    and Rich text editing (CVE-2007-6522) could be used to allow cross
+    domain scripting. Alexander Klink (Cynops GmbH) discovered an issue
+    with TLS certificates (CVE-2007-6521). Gynvael Coldwind reported that
+    bitmaps might reveal random data from memory (CVE-2007-6524).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities, possibly leading
+    to the execution of arbitrary code and cross domain scripting.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.25&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6520">CVE-2007-6520</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6521">CVE-2007-6521</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6522">CVE-2007-6522</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6524">CVE-2007-6524</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Dec 2007 14:34:50 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Dec 2007 15:15:57 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Dec 2007 19:32:13 +0000">
+    rbu
+  </metadata>
+</glsa>

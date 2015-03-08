@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-12">
+  <title>MediaWiki: Cross-site scripting vulnerability</title>
+  <synopsis>
+    MediaWiki is vulnerable to a cross-site scripting attack that could allow
+    arbitrary scripting code execution.
+  </synopsis>
+  <product type="ebuild">mediawiki</product>
+  <announced>June 13, 2005</announced>
+  <revised>June 13, 2005: 01</revised>
+  <bug>95255</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mediawiki" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5</unaffected>
+      <unaffected range="rge">1.3.13</unaffected>
+      <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MediaWiki is a collaborative editing software, used by big
+    projects like Wikipedia.
+    </p>
+  </background>
+  <description>
+    <p>
+    MediaWiki incorrectly handles page template inclusions, rendering
+    it vulnerable to cross-site scripting attacks.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could exploit this vulnerability to inject
+    malicious script code that will be executed in a user's browser session
+    in the context of the vulnerable site.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MediaWiki users should upgrade to the latest available
+    versions:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose www-apps/mediawiki</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/project/shownotes.php?release_id=332231">MediaWiki 1.4.5 Release Notes</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jun 2005 11:34:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Jun 2005 11:34:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Jun 2005 12:24:08 +0000">
+    DerCorny
+  </metadata>
+</glsa>

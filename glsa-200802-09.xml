@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-09">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in ClamAV may result in the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>February 21, 2008</announced>
+  <revised>February 21, 2008: 01</revised>
+  <bug>209915</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.92.1</unaffected>
+      <vulnerable range="lt">0.92.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a free anti-virus toolkit for UNIX, designed
+    especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>
+    An integer overflow has been reported in the "cli_scanpe()" function in
+    file libclamav/pe.c (CVE-2008-0318). Another unspecified vulnerability
+    has been reported in file libclamav/mew.c (CVE-2008-0728).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could entice a user or automated system to scan a
+    specially crafted file, possibly leading to the execution of arbitrary
+    code with the privileges of the user running ClamAV (either a system
+    user or the "clamav" user if clamd is compromised).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.92.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0318">CVE-2008-0318</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0728">CVE-2008-0728</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Feb 2008 20:13:32 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Feb 2008 20:14:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Feb 2008 21:50:12 +0000">
+    p-y
+  </metadata>
+</glsa>

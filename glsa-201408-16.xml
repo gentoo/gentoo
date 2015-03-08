@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-16">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which can allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>August 30, 2014</announced>
+  <revised>August 30, 2014: 1</revised>
+  <bug>504328</bug>
+  <bug>504890</bug>
+  <bug>507212</bug>
+  <bug>508788</bug>
+  <bug>510288</bug>
+  <bug>510904</bug>
+  <bug>512944</bug>
+  <bug>517304</bug>
+  <bug>519788</bug>
+  <bug>521276</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">37.0.2062.94</unaffected>
+      <vulnerable range="lt">37.0.2062.94</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could conduct a number of attacks which include: cross
+      site scripting attacks, bypassing of sandbox protection,  potential
+      execution of arbitrary code with the privileges of the process, or cause
+      a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-37.0.2062.94"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1741">
+      CVE-2014-1741
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0538">CVE-2014-0538</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1700">CVE-2014-1700</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1701">CVE-2014-1701</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1702">CVE-2014-1702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1703">CVE-2014-1703</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1704">CVE-2014-1704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1705">CVE-2014-1705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1713">CVE-2014-1713</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1714">CVE-2014-1714</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1715">CVE-2014-1715</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1716">CVE-2014-1716</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1717">CVE-2014-1717</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1718">CVE-2014-1718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1719">CVE-2014-1719</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1720">CVE-2014-1720</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1721">CVE-2014-1721</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1722">CVE-2014-1722</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1723">CVE-2014-1723</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1724">CVE-2014-1724</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1725">CVE-2014-1725</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1726">CVE-2014-1726</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1727">CVE-2014-1727</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1728">CVE-2014-1728</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1729">CVE-2014-1729</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1730">CVE-2014-1730</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1731">CVE-2014-1731</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1732">CVE-2014-1732</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1733">CVE-2014-1733</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1734">CVE-2014-1734</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1735">CVE-2014-1735</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1740">CVE-2014-1740</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1742">CVE-2014-1742</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1743">CVE-2014-1743</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1744">CVE-2014-1744</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1745">CVE-2014-1745</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1746">CVE-2014-1746</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1747">CVE-2014-1747</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1748">CVE-2014-1748</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1749">CVE-2014-1749</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3154">CVE-2014-3154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3155">CVE-2014-3155</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3156">CVE-2014-3156</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3157">CVE-2014-3157</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3160">CVE-2014-3160</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3162">CVE-2014-3162</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3165">CVE-2014-3165</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3166">CVE-2014-3166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3167">CVE-2014-3167</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3168">CVE-2014-3168</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3169">CVE-2014-3169</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3170">CVE-2014-3170</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3171">CVE-2014-3171</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3172">CVE-2014-3172</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3173">CVE-2014-3173</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3174">CVE-2014-3174</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3175">CVE-2014-3175</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3176">CVE-2014-3176</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3177">CVE-2014-3177</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Mar 2014 12:20:02 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Aug 2014 00:34:13 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

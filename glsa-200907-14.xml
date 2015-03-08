@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-14">
+  <title>Rasterbar libtorrent: Directory traversal</title>
+  <synopsis>
+    A directory traversal vulnerability in Rasterbar libtorrent might allow a
+    remote attacker to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">rb_libtorrent deluge</product>
+  <announced>July 17, 2009</announced>
+  <revised>July 17, 2009: 01</revised>
+  <bug>273156</bug>
+  <bug>273961</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/rb_libtorrent" auto="yes" arch="*">
+      <unaffected range="ge">0.13-r1</unaffected>
+      <vulnerable range="lt">0.13-r1</vulnerable>
+    </package>
+    <package name="net-p2p/deluge" auto="yes" arch="*">
+      <unaffected range="ge">1.1.9</unaffected>
+      <vulnerable range="lt">1.1.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Rasterbar libtorrent is a C++ BitTorrent implementation focusing on
+    efficiency and scalability. Deluge is a BitTorrent client that ships a
+    copy of libtorrent.
+    </p>
+  </background>
+  <description>
+    <p>
+    census reported a directory traversal vulnerability in
+    src/torrent_info.cpp that can be triggered via .torrent files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system using
+    Rasterbar libtorrent to load a specially crafted BitTorrent file to
+    create or overwrite arbitrary files using dot dot sequences in
+    filenames.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Rasterbar libtorrent users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/rb_libtorrent-0.13-r1&quot;</code>
+    <p>
+    All Deluge users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/deluge-1.1.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1760">CVE-2009-1760</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 10:55:00 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 02:02:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 17 Jul 2009 06:51:09 +0000">
+    rbu
+  </metadata>
+</glsa>

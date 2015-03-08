@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-15">
+  <title>XChat 2.0.x SOCKS5 Vulnerability</title>
+  <synopsis>
+    XChat is vulnerable to a stack overflow that may allow a remote attacker to
+    run arbitrary code.
+  </synopsis>
+  <product type="ebuild">xchat</product>
+  <announced>April 19, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>46856</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/xchat" auto="yes" arch="*">
+      <unaffected range="ge">2.0.8-r1</unaffected>
+      <vulnerable range="lt">2.0.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XChat is a multiplatform IRC client.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SOCKS 5 proxy code in XChat is vulnerable to a remote exploit.
+    Users would have to be using XChat through a SOCKS 5 server, enable
+    SOCKS 5 traversal which is disabled by default and also connect to an
+    attacker's custom proxy server.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    This vulnerability may allow an attacker to run arbitrary code within
+    the context of the user ID of the XChat client.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are
+    advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All XChat users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-irc/xchat-2.0.8-r1&quot;
+    # emerge &quot;&gt;=net-irc/xchat-2.0.8-r1&quot;</code>
+    <p>
+    Note that users of the gtk1 version of xchat (1.8.*) should upgrade to
+    xchat-1.8.11-r1:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;=net-irc/xchat-1.8.11-r1&quot;
+    # emerge &quot;=net-irc/xchat-1.8.11-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://mail.nl.linux.org/xchat-announce/2004-04/msg00000.html">XChat 2.0.x SOCKS5 Vulnerability</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0409">CVE-2004-0409</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

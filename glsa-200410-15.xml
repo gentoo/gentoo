@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-15">
+  <title>Squid: Remote DoS vulnerability</title>
+  <synopsis>
+    Squid contains a vulnerability in the SNMP module which may lead to a
+    denial of service.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>October 18, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>67167</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.7</unaffected>
+      <vulnerable range="lt">2.5.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured Web proxy cache designed to run on Unix
+    systems. It supports proxying and caching of HTTP, FTP, and other URLs,
+    as well as SSL support, cache hierarchies, transparent caching, access
+    control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>
+    A parsing error exists in the SNMP module of Squid where a
+    specially-crafted UDP packet can potentially cause the server to
+    restart, closing all current connections. This vulnerability only
+    exists in versions of Squid compiled with the 'snmp' USE flag.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can repeatedly send these malicious UDP packets to the
+    Squid server, leading to a denial of service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable SNMP support or filter the port that has SNMP processing
+    (default is 3401) to allow only SNMP data from trusted hosts.
+    </p>
+    <p>
+    To disable SNMP support put the entry snmp_port 0 in the squid.conf
+    configuration file.
+    </p>
+    <p>
+    To allow only the local interface to process SNMP, add the entry
+    "snmp_incoming_address 127.0.0.1" in the squid.conf configuration file.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-proxy/squid-2.5.7&quot;
+    # emerge &quot;&gt;=net-proxy/squid-2.5.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=152&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0918">CVE-2004-0918</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 17 Oct 2004 17:38:48 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 17 Oct 2004 17:38:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 17 Oct 2004 18:44:11 +0000">
+    lewk
+  </metadata>
+</glsa>

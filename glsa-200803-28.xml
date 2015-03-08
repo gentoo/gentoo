@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-28">
+  <title>OpenLDAP: Denial of Service vulnerabilities</title>
+  <synopsis>
+    Multiple Denial of Service vulnerabilities have been reported in OpenLDAP.
+  </synopsis>
+  <product type="ebuild">openldap</product>
+  <announced>March 19, 2008</announced>
+  <revised>March 19, 2008: 01</revised>
+  <bug>197446</bug>
+  <bug>209677</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nds/openldap" auto="yes" arch="*">
+      <unaffected range="ge">2.3.41</unaffected>
+      <vulnerable range="lt">2.3.41</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenLDAP Software is an open source implementation of the Lightweight
+    Directory Access Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following errors have been discovered in OpenLDAP:
+    </p>
+    <ul>
+    <li>
+    Tony Blake discovered an error which exists within the normalisation of
+    "objectClasses" (CVE-2007-5707).</li>
+    <li>
+    Thomas Sesselmann reported that, when running as a proxy-caching server
+    the "add_filter_attrs()" function in servers/slapd/overlay/pcache.c
+    does not correctly NULL terminate "new_attrs" (CVE-2007-5708).</li>
+    <li>
+    A double-free bug exists in attrs_free() in the file
+    servers/slapd/back-bdb/modrdn.c, which was discovered by Jonathan
+    Clarke (CVE-2008-0658).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can cause a Denial of Serivce by sending a malformed
+    "objectClasses" attribute, and via unknown vectors that prevent the
+    "new_attrs" array from being NULL terminated, and via a modrdn
+    operation with a NOOP (LDAP_X_NO_OPERATION) control.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenLDAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-nds/openldap-2.3.41&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5707">CVE-2007-5707</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5708">CVE-2007-5708</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0658">CVE-2008-0658</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 17:57:19 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 19 Mar 2008 01:23:44 +0000">
+    rbu
+  </metadata>
+</glsa>

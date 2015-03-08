@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-03">
+  <title>Gaim: Multiple Denial of Service issues</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in Gaim which could allow a remote
+    attacker to crash the application.
+  </synopsis>
+  <product type="ebuild">gaim</product>
+  <announced>March 01, 2005</announced>
+  <revised>March 01, 2005: 01</revised>
+  <bug>83253</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a full featured instant messaging client which handles a
+    variety of instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Specially crafted SNAC packets sent by other instant-messaging
+    users can cause Gaim to loop endlessly (CAN-2005-0472). Malformed HTML
+    code could lead to invalid memory accesses (CAN-2005-0208 and
+    CAN-2005-0473).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers could exploit these issues, resulting in a Denial
+    of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/gaim-1.1.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0208">CAN-2005-0208</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0472">CAN-2005-0472</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0473">CAN-2005-0473</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 25 Feb 2005 09:54:05 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 25 Feb 2005 10:52:36 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  1 Mar 2005 08:51:34 +0000">
+    koon
+  </metadata>
+</glsa>

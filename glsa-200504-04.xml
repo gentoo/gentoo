@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-04">
+  <title>mit-krb5: Multiple buffer overflows in telnet client</title>
+  <synopsis>
+    The mit-krb5 telnet client is vulnerable to two buffer overflows, which
+    could allow a malicious telnet server operator to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">telnet</product>
+  <announced>April 06, 2005</announced>
+  <revised>April 06, 2005: 01</revised>
+  <bug>87145</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.3.6-r2</unaffected>
+      <vulnerable range="lt">1.3.6-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The MIT Kerberos 5 implementation provides a command line telnet
+    client which is used for remote login via the telnet protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been identified in the env_opt_add()
+    function, where a response requiring excessive escaping can cause a
+    heap-based buffer overflow. Another issue has been identified in the
+    slc_add_reply() function, where a large number of SLC commands can
+    overflow a fixed size buffer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would require a vulnerable user to connect
+    to an attacker-controlled telnet host, potentially executing arbitrary
+    code with the permissions of the telnet user on the client.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mit-krb5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.3.6-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0468">CAN-2005-0468</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
+    <uri link="http://web.mit.edu/kerberos/www/advisories/MITKRB5-SA-2005-001-telnet.txt">MITKRB5-SA-2005-001</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri,  1 Apr 2005 09:42:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  6 Apr 2005 09:05:02 +0000">
+    koon
+  </metadata>
+</glsa>

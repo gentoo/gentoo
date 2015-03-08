@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-08">
+  <title>GNU shtool, ocaml-mysql: Insecure temporary file creation</title>
+  <synopsis>
+    GNU shtool and ocaml-mysql are vulnerable to symlink attacks, potentially
+    allowing a local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">GNU shtool</product>
+  <announced>June 11, 2005</announced>
+  <revised>June 11, 2005: 01</revised>
+  <bug>93782</bug>
+  <bug>93784</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-util/shtool" auto="yes" arch="*">
+      <unaffected range="ge">2.0.1-r2</unaffected>
+      <vulnerable range="lt">2.0.1-r2</vulnerable>
+    </package>
+    <package name="dev-ml/ocaml-mysql" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3-r1</unaffected>
+      <vulnerable range="lt">1.0.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU shtool is a compilation of small shell scripts into a single
+    shell tool. The ocaml-mysql package includes the GNU shtool code.
+    </p>
+  </background>
+  <description>
+    <p>
+    Eric Romang has discovered that GNU shtool insecurely creates
+    temporary files with predictable filenames (CAN-2005-1751). On closer
+    inspection, Gentoo Security discovered that the shtool temporary file,
+    once created, was being reused insecurely (CAN-2005-1759).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When a GNU shtool script is executed, this would result in the file
+    being overwritten with the rights of the user running the script, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU shtool users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/shtool-2.0.1-r2&quot;</code>
+    <p>
+    All ocaml-mysql users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ml/ocaml-mysql-1.0.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1751">CAN-2005-1751</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1759">CAN-2005-1759</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 27 May 2005 16:05:53 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 28 May 2005 21:16:10 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Jun 2005 15:51:35 +0000">
+    koon
+  </metadata>
+</glsa>

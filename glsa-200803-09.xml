@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-09">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Opera, allowing for file
+    disclosure, privilege escalation and Cross-Site scripting.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>March 04, 2008</announced>
+  <revised>March 04, 2008: 01</revised>
+  <bug>210260</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.26</unaffected>
+      <vulnerable range="lt">9.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a fast web browser that is available free of charge.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mozilla discovered that Opera does not handle input to file form fields
+    properly, allowing scripts to manipulate the file path (CVE-2008-1080).
+    Max Leonov found out that image comments might be treated as scripts,
+    and run within the wrong security context (CVE-2008-1081). Arnaud
+    reported that a wrong representation of DOM attribute values of
+    imported XML documents allows them to bypass sanitization filters
+    (CVE-2008-1082).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to upload a file with a known
+    path by entering text into a specially crafted form, to execute scripts
+    outside intended security boundaries and conduct Cross-Site Scripting
+    attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.26&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1080">CVE-2008-1080</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1081">CVE-2008-1081</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1082">CVE-2008-1082</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 26 Feb 2008 10:02:38 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 10:02:54 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Mar 2008 22:56:26 +0000">
+    keytoaster
+  </metadata>
+</glsa>

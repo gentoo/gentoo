@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-17">
+  <title>Wireshark: Multiple Denials of Service</title>
+  <synopsis>
+    Multiple Denial of Service vulnerabilities have been discovered in
+    Wireshark.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>September 25, 2008</announced>
+  <revised>September 25, 2008: 01</revised>
+  <bug>236515</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3</unaffected>
+      <vulnerable range="lt">1.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a network protocol analyzer with a graphical front-end.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were reported:
+    </p>
+    <ul>
+    <li>
+    Multiple buffer overflows in the NCP dissector (CVE-2008-3146).
+    </li>
+    <li>
+    Infinite loop in the NCP dissector (CVE-2008-3932).
+    </li>
+    <li>
+    Invalid read in the tvb_uncompress() function when processing zlib
+    compressed data (CVE-2008-3933).
+    </li>
+    <li>
+    Unspecified error when processing Textronix .rf5 files
+    (CVE-2008-3934).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by sending
+    specially crafted packets on a network being monitored by Wireshark or
+    by enticing a user to read a malformed packet trace file, causing a
+    Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3146">CVE-2008-3146</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3932">CVE-2008-3932</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3933">CVE-2008-3933</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3934">CVE-2008-3934</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:39:05 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 24 Sep 2008 19:29:18 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 24 Sep 2008 19:30:10 +0000">
+    p-y
+  </metadata>
+</glsa>

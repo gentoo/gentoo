@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-22">
+  <title>Squid: Multiple Denial of Service vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities have been found in Squid which make it susceptible to
+    Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>January 25, 2007</announced>
+  <revised>January 25, 2007: 01</revised>
+  <bug>162364</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a multi-protocol proxy server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Squid fails to correctly handle ftp:// URI's. There is also an error in
+    the external_acl queue which can cause an infinite looping condition.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could attempt to retrieve a specially crafted URI via a
+    Squid server causing the service to crash. If an attacker could
+    generate a sufficiently high load on the Squid services, they could
+    cause a Denial of Service by forcing Squid into an infinite loop.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.6.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0247">CVE-2007-0247</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0248">CVE-2007-0248</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Jan 2007 16:59:17 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 23 Jan 2007 10:26:06 +0000">
+    hyakuhei
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 24 Jan 2007 12:52:50 +0000">
+    hyakuhei
+  </metadata>
+</glsa>

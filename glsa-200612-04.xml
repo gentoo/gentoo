@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-04">
+  <title>ModPlug: Multiple buffer overflows</title>
+  <synopsis>
+    ModPlug contains several boundary errors that could lead to buffer
+    overflows resulting in the possible execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libmodplug</product>
+  <announced>December 10, 2006</announced>
+  <revised>December 10, 2006: 01</revised>
+  <bug>143404</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libmodplug" auto="yes" arch="*">
+      <unaffected range="ge">0.8-r1</unaffected>
+      <vulnerable range="lt">0.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ModPlug is a library for playing MOD-like music.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma has reported various boundary errors in load_it.cpp and
+    a boundary error in the "CSoundFile::ReadSample()" function in
+    sndfile.cpp.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can entice a user to read crafted modules or ITP
+    files, which may trigger a buffer overflow resulting in the execution
+    of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ModPlug users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libmodplug-0.8-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4192">CVE-2006-4192</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Dec 2006 19:55:31 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 07 Dec 2006 10:06:27 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 08 Dec 2006 13:57:46 +0000">
+    falco
+  </metadata>
+</glsa>

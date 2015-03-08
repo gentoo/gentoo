@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-26">
+  <title>HPLIP: Privilege escalation</title>
+  <synopsis>
+    The hpssd daemon might allow local attackers to execute arbitrary commands
+    with root privileges.
+  </synopsis>
+  <product type="ebuild">hplip</product>
+  <announced>October 24, 2007</announced>
+  <revised>October 24, 2007: 01</revised>
+  <bug>195565</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-print/hplip" auto="yes" arch="*">
+      <unaffected range="rge">1.7.4a-r2</unaffected>
+      <unaffected range="ge">2.7.9-r1</unaffected>
+      <vulnerable range="lt">2.7.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Hewlett-Packard Linux Imaging and Printing system (HPLIP) provides
+    drivers for HP's inkjet and laser printers, scanners and fax machines.
+    It integrates with the Common UNIX Printing System (CUPS) and Scanner
+    Access Now Easy (SANE).
+    </p>
+  </background>
+  <description>
+    <p>
+    Kees Cook from the Ubuntu Security team discovered that the hpssd
+    daemon does not correctly validate user supplied data before passing it
+    to a "popen3()" call.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker may be able to exploit this vulnerability by sending a
+    specially crafted request to the hpssd daemon to execute arbitrary
+    commands with the privileges of the user running hpssd, usually root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All HPLIP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;net-print/hplip&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5208">CVE-2007-5208</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Oct 2007 20:50:24 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 21 Oct 2007 20:51:40 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 21 Oct 2007 21:46:02 +0000">
+    rbu
+  </metadata>
+</glsa>

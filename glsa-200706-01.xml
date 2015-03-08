@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-01">
+  <title>libexif: Integer overflow vulnerability</title>
+  <synopsis>
+    libexif fails to handle Exif (EXchangeable Image File) data inputs, making
+    it vulnerable to an integer overflow.
+  </synopsis>
+  <product type="ebuild">libexif</product>
+  <announced>June 05, 2007</announced>
+  <revised>June 05, 2007: 01</revised>
+  <bug>178081</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libexif" auto="yes" arch="*">
+      <unaffected range="ge">0.6.15</unaffected>
+      <vulnerable range="lt">0.6.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libexif is a library for parsing, editing and saving Exif data.
+    </p>
+  </background>
+  <description>
+    <p>
+    Victor Stinner reported an integer overflow in the
+    exif_data_load_data_entry() function from file exif-data.c while
+    handling Exif data.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to process a file with specially
+    crafted Exif extensions with an application making use of libexif,
+    which will trigger the integer overflow and potentially execute
+    arbitrary code or crash the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libexif users should upgrade to the latest version. Please note
+    that users upgrading from "&lt;=media-libs/libexif-0.6.13" should also run
+    revdep-rebuild after their upgrade.
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libexif-0.6.15&quot;
+    # revdep-rebuild --library=/usr/lib/libexif.so</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2645">CVE-2007-2645</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 05 Jun 2007 18:50:35 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 03 Jun 2007 06:19:11 +0000">
+    falco
+  </metadata>
+</glsa>

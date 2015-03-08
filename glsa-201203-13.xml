@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-13">
+  <title>Openswan: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities in Openswan may create a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">Openswan</product>
+  <announced>March 16, 2012</announced>
+  <revised>March 16, 2012: 1</revised>
+  <bug>372961</bug>
+  <bug>389097</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/openswan" auto="yes" arch="*">
+      <unaffected range="ge">2.6.37</unaffected>
+      <vulnerable range="lt">2.6.37</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Openswan is an implementation of IPsec for Linux.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in Openswan:</p>
+    
+    <ul>
+      <li>Improper permissions are used on /var/run/starter.pid and
+        /var/lock/subsys/ipsec (CVE-2011-2147).
+      </li>
+      <li>Openswan contains a use-after-free error in the cryptographic helper
+        handler (CVE-2011-4073).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker or a local attacker may be able to cause
+      a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Openswan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openswan-2.6.37"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since November 10, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2147">CVE-2011-2147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4073">CVE-2011-4073</uri>
+  </references>
+  <metadata timestamp="Tue, 06 Mar 2012 21:14:35 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Fri, 16 Mar 2012 10:56:03 +0000" tag="submitter">ackle</metadata>
+</glsa>

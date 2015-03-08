@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-10">
+  <title>WordPress: Multiple vulnerabilities</title>
+  <synopsis>
+    Flaws in WordPress allow a Denial of Service, the disclosure of user
+    metadata and the overwriting of restricted files.
+  </synopsis>
+  <product type="ebuild">wordpress</product>
+  <announced>November 17, 2006</announced>
+  <revised>November 17, 2006: 01</revised>
+  <bug>153303</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">2.0.5</unaffected>
+      <vulnerable range="lt">2.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a PHP and MySQL based multiuser blogging system.
+    </p>
+  </background>
+  <description>
+    <p>
+    "random" discovered that users can enter serialized objects as strings
+    in their profiles that will be harmful when unserialized. "adapter"
+    found out that user-edit.php fails to effectively deny non-permitted
+    users access to other user's metadata. Additionally, a directory
+    traversal vulnerability in the wp-db-backup module was discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By entering specially crafted strings in his profile, an attacker can
+    crash PHP or even the web server running WordPress. Additionally, by
+    crafting a simple URL, an attacker can read metadata of any other user,
+    regardless of their own permissions. A user with the permission to use
+    the database backup plugin can possibly overwrite files he otherwise
+    has no access to.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordPress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-2.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5705">CVE-2006-5705</uri>
+    <uri link="http://trac.wordpress.org/ticket/3142">WordPress Ticket 3142</uri>
+    <uri link="http://trac.wordpress.org/ticket/2591">WordPress Ticket 2591</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 08 Nov 2006 12:56:04 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 09 Nov 2006 06:33:42 +0000">
+    frilled
+  </metadata>
+</glsa>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-04">
+  <title>GnuTLS: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in GnuTLS might result in a Denial of Service,
+    spoofing or the generation of invalid keys.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>May 24, 2009</announced>
+  <revised>May 24, 2009: 01</revised>
+  <bug>267774</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">2.6.6</unaffected>
+      <vulnerable range="lt">2.6.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuTLS is an Open Source implementation of the TLS 1.0 and SSL 3.0
+    protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found in GnuTLS:
+    </p>
+    <ul>
+    <li>Miroslav Kratochvil reported that lib/pk-libgcrypt.c does not
+    properly handle corrupt DSA signatures, possibly leading to a
+    double-free vulnerability (CVE-2009-1415).</li>
+    <li>Simon Josefsson
+    reported that GnuTLS generates RSA keys stored in DSA structures when
+    creating a DSA key (CVE-2009-1416).</li>
+    <li>Romain Francoise reported
+    that the _gnutls_x509_verify_certificate() function in
+    lib/x509/verify.c does not perform time checks, resulting in the
+    "gnutls-cli" program accepting X.509 certificates with validity times
+    in the past or future (CVE-2009-1417).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to process a
+    specially crafted DSA certificate, possibly resulting in a Denial of
+    Service condition. NOTE: This issue might have other unspecified impact
+    including the execution of arbitrary code. Furthermore, a remote
+    attacker could spoof signatures on certificates and the "gnutls-cli"
+    application can be tricked into accepting an invalid certificate.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuTLS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gnutls-2.6.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1415">CVE-2009-1415</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1416">CVE-2009-1416</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1417">CVE-2009-1417</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 May 2009 18:48:21 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 May 2009 11:40:21 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 24 May 2009 11:17:39 +0000">
+    p-y
+  </metadata>
+</glsa>

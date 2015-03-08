@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-06">
+  <title>OpenSSH: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSH, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>May 11, 2014</announced>
+  <revised>May 11, 2014: 1</revised>
+  <bug>231292</bug>
+  <bug>247466</bug>
+  <bug>386307</bug>
+  <bug>410869</bug>
+  <bug>419357</bug>
+  <bug>456006</bug>
+  <bug>505066</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">6.6_p1-r1</unaffected>
+      <vulnerable range="lt">6.6_p1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSH is a complete SSH protocol implementation that includes an SFTP
+      client and server support.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSH. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code, cause a Denial of
+      Service condition, obtain sensitive information, or bypass environment
+      restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSH users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-6.6_p1-r1"
+    </code>
+    
+    <p>NOTE: One or more of the issues described in this advisory have been
+      fixed in previous updates. They are included in this advisory for the
+      sake of completeness. It is likely that your system is already no longer
+      affected by them.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5161">
+      CVE-2008-5161
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4478">
+      CVE-2010-4478
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755">
+      CVE-2010-4755
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5107">CVE-2010-5107</uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-5000">
+      CVE-2011-5000
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0814">
+      CVE-2012-0814
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2532">
+      CVE-2014-2532
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:16 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 May 2014 13:22:11 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

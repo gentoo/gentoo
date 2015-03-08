@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-16">
+  <title>CUPS: Memory corruption</title>
+  <synopsis>
+    CUPS contains a boundary checking error that might lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>November 12, 2007</announced>
+  <revised>November 12, 2007: 01</revised>
+  <bug>196736</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.2.12-r2</unaffected>
+      <vulnerable range="lt">1.2.12-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CUPS provides a portable printing layer for UNIX-based operating
+    systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alin Rad Pop (Secunia Research) discovered an off-by-one error in the
+    ippReadIO() function when handling Internet Printing Protocol (IPP)
+    tags that might allow to overwrite one byte on the stack.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could send a specially crafted IPP request containing
+    "textWithLanguage" or "nameWithLanguage" tags, leading to a Denial of
+    Service or the execution of arbitrary code with the privileges of the
+    "lp" user. If CUPS is configured to allow network printing, this
+    vulnerability might be remotely exploitable.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    To avoid remote exploitation, network access to CUPS servers on port
+    631/udp should be restricted. In order to do this, update the "Listen"
+    setting in cupsd.conf to "<i>Listen localhost:631</i>" or add a rule to
+    the system's firewall. However, this will not avoid local users from
+    exploiting this vulnerability.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.2.12-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4351">CVE-2007-4351</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 04 Nov 2007 00:16:24 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 11 Nov 2007 08:38:00 +0000">
+    jaervosz
+  </metadata>
+</glsa>

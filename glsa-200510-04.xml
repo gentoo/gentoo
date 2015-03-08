@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-04">
+  <title>Texinfo: Insecure temporary file creation</title>
+  <synopsis>
+    Texinfo is vulnerable to symlink attacks, potentially allowing a local user
+    to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">Texinfo</product>
+  <announced>October 05, 2005</announced>
+  <revised>October 05, 2005: 01</revised>
+  <bug>106105</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/texinfo" auto="yes" arch="*">
+      <unaffected range="ge">4.8-r1</unaffected>
+      <vulnerable range="lt">4.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Texinfo is the official documentation system created by the GNU
+    project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Frank Lichtenheld has discovered that the "sort_offline()"
+    function in texindex insecurely creates temporary files with
+    predictable filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When texindex is executed, this would result in the file being
+    overwritten with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Texinfo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/texinfo-4.8-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3011">CAN-2005-3011</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 29 Sep 2005 14:54:06 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 29 Sep 2005 19:15:57 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 01 Oct 2005 09:53:58 +0000">
+    koon
+  </metadata>
+</glsa>

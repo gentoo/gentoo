@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-02">
+  <title>WordPress: Multiple vulnerabilities</title>
+  <synopsis>
+    WordPress contains PHP script injection, cross-site scripting and path
+    disclosure vulnerabilities.
+  </synopsis>
+  <product type="ebuild">wordpress</product>
+  <announced>July 04, 2005</announced>
+  <revised>July 04, 2005: 01</revised>
+  <bug>97374</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1.3</unaffected>
+      <vulnerable range="lt">1.5.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a PHP and MySQL based content management and
+    publishing system.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Bercegay of the GulfTech Security Research Team discovered
+    that WordPress insufficiently checks data passed to the XML-RPC server.
+    He also discovered that WordPress has several cross-site scripting and
+    full path disclosure vulnerabilities.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could use the PHP script injection vulnerabilities to
+    execute arbitrary PHP script commands. Furthermore the cross-site
+    scripting vulnerabilities could be exploited to execute arbitrary
+    script code in a user's browser session in context of a vulnerable
+    site.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordPress users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-1.5.1.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+    <uri link="http://www.gulftech.org/?node=research&amp;article_id=00085-06282005">GulfTech Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 30 Jun 2005 16:03:34 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 30 Jun 2005 17:49:02 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 04 Jul 2005 09:45:20 +0000">
+    koon
+  </metadata>
+</glsa>

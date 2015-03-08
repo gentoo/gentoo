@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-29">
+  <title>Comix: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Comix may lead to execution of arbitrary
+    commands and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">comix</product>
+  <announced>April 25, 2008</announced>
+  <revised>April 25, 2008: 01</revised>
+  <bug>215694</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-gfx/comix" auto="yes" arch="*">
+      <unaffected range="ge">3.6.4-r1</unaffected>
+      <vulnerable range="lt">3.6.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Comix is a GTK comic book viewer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Comix does not properly sanitize filenames containing shell
+    metacharacters when they are passed to the rar, unrar, or jpegtran
+    programs (CVE-2008-1568). Comix also creates directories with
+    predictable names (CVE-2008-1796).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit the first vulnerability by enticing a
+    user to use Comix to open a file with a specially crafted filename,
+    resulting in the execution of arbitrary commands. The second
+    vulnerability could be exploited by a local attacker to cause a Denial
+    of Service by creating a file or directory with the same filename as
+    the predictable filename used by Comix.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Comix users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/comix-3.6.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1568">CVE-2008-1568</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1796">CVE-2008-1796</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 10 Apr 2008 14:29:23 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 10 Apr 2008 22:35:39 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 Apr 2008 23:01:03 +0000">
+    rbu
+  </metadata>
+</glsa>

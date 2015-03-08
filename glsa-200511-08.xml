@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-08">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    PHP suffers from multiple issues, resulting in security functions bypass,
+    local Denial of service, cross-site scripting or PHP variables overwrite.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>November 13, 2005</announced>
+  <revised>November 13, 2005: 01</revised>
+  <bug>107602</bug>
+  <bug>111032</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="dev-php/php" auto="yes" arch="*">
+      <unaffected range="rge">4.3.11-r4</unaffected>
+      <unaffected range="ge">4.4.0-r4</unaffected>
+      <vulnerable range="lt">4.4.0-r4</vulnerable>
+    </package>
+    <package name="dev-php/mod_php" auto="yes" arch="*">
+      <unaffected range="rge">4.3.11-r4</unaffected>
+      <unaffected range="ge">4.4.0-r8</unaffected>
+      <vulnerable range="lt">4.4.0-r8</vulnerable>
+    </package>
+    <package name="dev-php/php-cgi" auto="yes" arch="*">
+      <unaffected range="rge">4.3.11-r5</unaffected>
+      <unaffected range="ge">4.4.0-r5</unaffected>
+      <vulnerable range="lt">4.4.0-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a general-purpose scripting language widely used to develop
+    web-based applications. It can run inside a web server using the
+    mod_php module or the CGI version and also stand-alone in a CLI.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found and fixed in PHP:
+    </p>
+    <ul>
+    <li>a possible $GLOBALS variable overwrite problem through file
+    upload handling, extract() and import_request_variables()
+    (CVE-2005-3390)</li>
+    <li>a local Denial of Service through the use of
+    the session.save_path option (CVE-2005-3319)</li>
+    <li>an issue with
+    trailing slashes in allowed basedirs (CVE-2005-3054)</li>
+    <li>an issue
+    with calling virtual() on Apache 2, allowing to bypass safe_mode and
+    open_basedir restrictions (CVE-2005-3392)</li>
+    <li>a problem when a
+    request was terminated due to memory_limit constraints during certain
+    parse_str() calls (CVE-2005-3389)</li>
+    <li>The curl and gd modules
+    allowed to bypass the safe mode open_basedir restrictions
+    (CVE-2005-3391)</li>
+    <li>a cross-site scripting (XSS) vulnerability in
+    phpinfo() (CVE-2005-3388)</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    Attackers could leverage these issues to exploit applications that
+    are assumed to be secure through the use of proper register_globals,
+    safe_mode or open_basedir parameters. Remote attackers could also
+    conduct cross-site scripting attacks if a page calling phpinfo() was
+    available. Finally, a local attacker could cause a local Denial of
+    Service using malicious session.save_path options.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround that would solve all issues at this
+    time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-php/php</code>
+    <p>
+    All mod_php users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-php/mod_php</code>
+    <p>
+    All php-cgi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-php/php-cgi</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3054">CVE-2005-3054</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3319">CVE-2005-3319</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3388">CVE-2005-3388</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3389">CVE-2005-3389</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3390">CVE-2005-3390</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3391">CVE-2005-3391</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3392">CVE-2005-3392</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 07 Nov 2005 14:11:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 Nov 2005 14:44:31 +0000">
+    vorlon078
+  </metadata>
+</glsa>

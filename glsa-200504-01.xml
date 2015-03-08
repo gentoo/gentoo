@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-01">
+  <title>telnet-bsd: Multiple buffer overflows</title>
+  <synopsis>
+    The telnet-bsd telnet client is vulnerable to two buffer overflows, which
+    could allow a malicious telnet server operator to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">telnet</product>
+  <announced>April 01, 2005</announced>
+  <revised>April 01, 2005: 01</revised>
+  <bug>87019</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/telnet-bsd" auto="yes" arch="*">
+      <unaffected range="ge">1.0-r1</unaffected>
+      <vulnerable range="lt">1.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    telnet-bsd provides a command line telnet client which is used for
+    remote login using the telnet protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been identified in the env_opt_add()
+    function of telnet-bsd, where a response requiring excessive escaping
+    can cause a heap-based buffer overflow. Another issue has been
+    identified in the slc_add_reply() function, where a large number of SLC
+    commands can overflow a fixed size buffer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would require a vulnerable user to connect
+    to an attacker-controlled host using telnet, potentially executing
+    arbitrary code with the permissions of the telnet user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All telnet-bsd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/telnet-bsd-1.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0468">CAN-2005-0468</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=221&amp;type=vulnerabilities">IDEF0867</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=220&amp;type=vulnerabilities">IDEF0866</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Mar 2005 16:15:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 29 Mar 2005 17:09:56 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 31 Mar 2005 06:01:07 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-01">
+  <title>Asterisk: Two SIP Denial of Service vulnerabilities</title>
+  <synopsis>
+    Asterisk is vulnerable to two Denial of Service issues in the SIP channel.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>April 02, 2007</announced>
+  <revised>April 02, 2007: 01</revised>
+  <bug>171467</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.14-r2</unaffected>
+      <unaffected range="rge">1.0.12-r2</unaffected>
+      <vulnerable range="lt">1.2.14-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source implementation of a telephone private branch
+    exchange (PBX).
+    </p>
+  </background>
+  <description>
+    <p>
+    The Madynes research team at INRIA has discovered that Asterisk
+    contains a null pointer dereferencing error in the SIP channel when
+    handling INVITE messages. Furthermore qwerty1979 discovered that
+    Asterisk 1.2.x fails to properly handle SIP responses with return code
+    0.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause an Asterisk server listening for SIP
+    messages to crash by sending a specially crafted SIP message or
+    answering with a 0 return code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-misc/asterisk</code>
+    <p>
+    Note: Asterisk 1.0.x is no longer supported upstream so users should
+    consider upgrading to Asterisk 1.2.x.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1561">CVE-2007-1561</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1594">CVE-2007-1594</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 20 Mar 2007 20:55:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 02 Apr 2007 16:33:39 +0000">
+    jaervosz
+  </metadata>
+</glsa>

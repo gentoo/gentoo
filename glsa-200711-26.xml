@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-26">
+  <title>teTeX: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in teTeX, possibly allowing
+    to execute arbitrary code or overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">tetex</product>
+  <announced>November 18, 2007</announced>
+  <revised>November 18, 2007: 01</revised>
+  <bug>198238</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/tetex" auto="yes" arch="*">
+      <unaffected range="ge">3.0_p1-r6</unaffected>
+      <vulnerable range="lt">3.0_p1-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    teTeX is a complete TeX distribution for editing documents.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joachim Schrod discovered several buffer overflow vulnerabilities and
+    an insecure temporary file creation in the "dvilj" application that is
+    used by dvips to convert DVI files to printer formats (CVE-2007-5937,
+    CVE-2007-5936). Bastien Roucaries reported that the "dvips" application
+    is vulnerable to two stack-based buffer overflows when processing DVI
+    documents with long \href{} URIs (CVE-2007-5935). teTeX also includes
+    code from Xpdf that is vulnerable to a memory corruption and two
+    heap-based buffer overflows (GLSA 200711-22); and it contains code from
+    T1Lib that is vulnerable to a buffer overflow when processing an overly
+    long font filename (GLSA 200710-12).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process a specially crafted
+    DVI or PDF file which could lead to the execution of arbitrary code
+    with the privileges of the user running the application. A local
+    attacker could exploit the "dvilj" vulnerability to conduct a symlink
+    attack to overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All teTeX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/tetex-3.0_p1-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5935">CVE-2007-5935</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5936">CVE-2007-5936</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5937">CVE-2007-5937</uri>
+    <uri link="/security/en/glsa/glsa-200710-12.xml">GLSA 200710-12</uri>
+    <uri link="/security/en/glsa/glsa-200711-22.xml">GLSA 200711-22</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 01:13:42 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 21:46:32 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-07">
+  <title>Prewikka: password disclosure</title>
+  <synopsis>
+    Due to a world-readable file, a local attacker can obtain the SQL database
+    password used by Prewikka.
+  </synopsis>
+  <product type="ebuild">Prewikka</product>
+  <announced>January 16, 2011</announced>
+  <revised>January 16, 2011: 01</revised>
+  <bug>270056</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/prewikka" auto="yes" arch="*">
+      <unaffected range="ge">0.9.14-r2</unaffected>
+      <vulnerable range="lt">0.9.14-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Prewikka is a graphical front-end analysis console for the Prelude
+    Hybrid IDS Framework.
+    </p>
+  </background>
+  <description>
+    <p>
+    The permissions of the prewikka.conf file are set world readable.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could obtain the SQL database password used by
+    Prewikka.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Prewikka users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/prewikka-0.9.14-r2&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since May 18, 2009 . It is likely that your system is already
+    no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2058">CVE-2010-2058</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 23 Jun 2009 20:26:04 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Apr 2010 12:57:02 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2010 20:08:51 +0000">
+    p-y
+  </metadata>
+</glsa>

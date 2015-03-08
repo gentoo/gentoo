@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-03">
+  <title>BIND: Multiple Vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, allowing remote
+    attackers to cause a
+    denial of service condition.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>February 07, 2015</announced>
+  <revised>February 07, 2015: 1</revised>
+  <bug>531998</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.10.1_p1</unaffected>
+      <vulnerable range="lt">9.10.1_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND (Berkeley Internet Name Domain) is a Name Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause a denial of service condition by the lack of
+      GeoIP databases, or via a large or infinite number of referrals.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All bind users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.10.1_p1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3214">CVE-2014-3214</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8500">CVE-2014-8500</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8680">CVE-2014-8680</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 29 Dec 2014 00:38:51 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 16:05:19 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

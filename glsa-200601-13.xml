@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-13">
+  <title>Gallery: Cross-site scripting vulnerability</title>
+  <synopsis>
+    Gallery is possibly vulnerable to a cross-site scripting attack that could
+    allow arbitrary JavaScript code execution.
+  </synopsis>
+  <product type="ebuild">gallery</product>
+  <announced>January 26, 2006</announced>
+  <revised>January 26, 2006: 01</revised>
+  <bug>119590</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/gallery" auto="yes" arch="*">
+      <unaffected range="ge">1.5.2</unaffected>
+      <vulnerable range="lt">1.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gallery is a web application written in PHP which is used to
+    organize and publish photo albums. It allows multiple users to build
+    and maintain their own albums. It also supports the mirroring of images
+    on other servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Peter Schumacher discovered that Gallery fails to sanitize the
+    fullname set by users, possibly leading to a cross-site scripting
+    vulnerability.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By setting a specially crafted fullname, an attacker can inject
+    and execute script code in the victim's browser window and potentially
+    compromise the user's gallery.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gallery users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/gallery-1.5.2&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://gallery.menalto.com/page/gallery_1_5_2_release">Gallery Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0330">CVE-2006-0330</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 Jan 2006 19:16:38 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 22 Jan 2006 19:17:06 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 Jan 2006 19:28:37 +0000">
+    DerCorny
+  </metadata>
+</glsa>

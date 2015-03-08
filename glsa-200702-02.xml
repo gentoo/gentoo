@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-02">
+  <title>ProFTPD: Local privilege escalation</title>
+  <synopsis>
+    A flaw in ProFTPD may allow a local attacker to obtain root privileges.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>February 13, 2007</announced>
+  <revised>February 13, 2007: 01</revised>
+  <bug>158122</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1_rc1</unaffected>
+      <vulnerable range="lt">1.3.1_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ProFTPD is a powerful, configurable, and free FTP daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    A flaw exists in the mod_ctrls module of ProFTPD, normally used to
+    allow FTP server administrators to configure the daemon at runtime.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An FTP server administrator permitted to interact with mod_ctrls could
+    potentially compromise the ProFTPD process and execute arbitrary code
+    with the privileges of the FTP Daemon, which is normally the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable mod_ctrls, or ensure only trusted users can access this
+    feature.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ProFTPD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/proftpd-1.3.1_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6563">CVE-2006-6563</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Feb 2007 19:05:16 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 10 Feb 2007 23:53:16 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 23:07:04 +0000">
+    taviso
+  </metadata>
+</glsa>

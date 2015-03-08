@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-04">
+  <title>MadWifi: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in MadWifi, possibly allowing
+    for the execution of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">madwifi-ng</product>
+  <announced>June 11, 2007</announced>
+  <revised>June 11, 2007: 01</revised>
+  <bug>179532</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/madwifi-ng" auto="yes" arch="*">
+      <unaffected range="ge">0.9.3.1</unaffected>
+      <vulnerable range="lt">0.9.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The MadWifi driver provides support for Atheros based IEEE 802.11
+    Wireless Lan cards.
+    </p>
+  </background>
+  <description>
+    <p>
+    Md Sohail Ahmad from AirTight Networks has discovered a divison by zero
+    in the ath_beacon_config() function (CVE-2007-2830). The vendor has
+    corrected an input validation error in the
+    ieee80211_ioctl_getwmmparams() and ieee80211_ioctl_getwmmparams()
+    functions(CVE-207-2831), and an input sanitization error when parsing
+    nested 802.3 Ethernet frame lengths (CVE-2007-2829).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could send specially crafted packets to a vulnerable host
+    to exploit one of these vulnerabilities, possibly resulting in the
+    execution of arbitrary code with root privileges, or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MadWifi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/madwifi-ng-0.9.3.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2829">CVE-2007-2829</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2830">CVE-2007-2830</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2831">CVE-2007-2831</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 08 Jun 2007 06:19:00 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 14:16:00 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 14:16:10 +0000">
+    p-y
+  </metadata>
+</glsa>

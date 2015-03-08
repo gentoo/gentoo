@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-03">
+  <title>IPSec Tools: Denial of Service</title>
+  <synopsis>
+    Multiple errors in the IPSec Tools racoon daemon might allow remote
+    attackers to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">ipsec-tools</product>
+  <announced>May 24, 2009</announced>
+  <revised>May 24, 2009: 01</revised>
+  <bug>267135</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-firewall/ipsec-tools" auto="yes" arch="*">
+      <unaffected range="ge">0.7.2</unaffected>
+      <vulnerable range="lt">0.7.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The IPSec Tools are a port of KAME's IPsec utilities to the Linux-2.6
+    IPsec implementation. They include racoon, an Internet Key Exchange
+    daemon for automatically keying IPsec connections.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities have been found in the racoon daemon as
+    shipped with IPSec Tools:
+    </p>
+    <ul>
+    <li>Neil Kettle reported that
+    racoon/isakmp_frag.c is prone to a null-pointer dereference
+    (CVE-2009-1574).</li>
+    <li>Multiple memory leaks exist in (1) the
+    eay_check_x509sign() function in racoon/crypto_openssl.c and (2)
+    racoon/nattraversal.c (CVE-2009-1632).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted fragmented ISAKMP
+    packets without a payload or exploit vectors related to X.509
+    certificate authentication and NAT traversal, possibly resulting in a
+    crash of the racoon daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IPSec Tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-firewall/ipsec-tools-0.7.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1574">CVE-2009-1574</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1632">CVE-2009-1632</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 May 2009 21:47:03 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 May 2009 10:56:09 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 23 May 2009 07:52:41 +0000">
+    rbu
+  </metadata>
+</glsa>

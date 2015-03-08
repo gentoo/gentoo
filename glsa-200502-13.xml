@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-13">
+  <title>Perl: Vulnerabilities in perl-suid wrapper</title>
+  <synopsis>
+    Vulnerabilities leading to file overwriting and code execution with
+    elevated privileges have been discovered in the perl-suid wrapper.
+  </synopsis>
+  <product type="ebuild">Perl</product>
+  <announced>February 11, 2005</announced>
+  <revised>February 11, 2005: 01</revised>
+  <bug>80460</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.8.6-r3</unaffected>
+      <unaffected range="rge">5.8.5-r4</unaffected>
+      <unaffected range="rge">5.8.4-r3</unaffected>
+      <unaffected range="rge">5.8.2-r3</unaffected>
+      <vulnerable range="lt">5.8.6-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Perl is a stable, cross-platform programming language created by
+    Larry Wall. The perl-suid wrapper allows the use of setuid perl
+    scripts, i.e. user-callable Perl scripts which have elevated
+    privileges. This function is enabled only if you have the perlsuid USE
+    flag set.
+    </p>
+  </background>
+  <description>
+    <p>
+    perl-suid scripts honor the PERLIO_DEBUG environment variable and
+    write to that file with elevated privileges (CAN-2005-0155).
+    Furthermore, calling a perl-suid script with a very long path while
+    PERLIO_DEBUG is set could trigger a buffer overflow (CAN-2005-0156).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could set the PERLIO_DEBUG environment variable
+    and call existing perl-suid scripts, resulting in file overwriting and
+    potentially the execution of arbitrary code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You are not vulnerable if you do not have the perlsuid USE flag
+    set or do not use perl-suid scripts.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Perl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-lang/perl</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0155">CAN-2005-0155</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0156">CAN-2005-0156</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  4 Feb 2005 14:45:58 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 11 Feb 2005 15:34:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 11 Feb 2005 16:11:49 +0000">
+    koon
+  </metadata>
+</glsa>

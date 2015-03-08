@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-07">
+  <title>X.Org X server: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in the X.Org X server,
+    possibly allowing for the remote execution of arbitrary code with root
+    privileges.
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>June 19, 2008</announced>
+  <revised>June 19, 2008: 01</revised>
+  <bug>225419</bug>
+  <access>remote, local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0.0-r6</unaffected>
+      <vulnerable range="lt">1.3.0.0-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The X Window System is a graphical windowing system based on a
+    client/server model.
+    </p>
+  </background>
+  <description>
+    <p>
+    Regenrecht reported multiple vulnerabilities in various X server
+    extensions via iDefense:
+    </p>
+    <ul>
+    <li>The
+    SProcSecurityGenerateAuthorization() and SProcRecordCreateContext()
+    functions of the RECORD and Security extensions are lacking proper
+    parameter validation (CVE-2008-1377).</li>
+    <li>An integer overflow is
+    possible in the function ShmPutImage() of the MIT-SHM extension
+    (CVE-2008-1379).</li>
+    <li>The RENDER extension contains several
+    possible integer overflows in the AllocateGlyph() function
+    (CVE-2008-2360) which could possibly lead to a heap-based buffer
+    overflow. Further possible integer overflows have been found in the
+    ProcRenderCreateCursor() function (CVE-2008-2361) as well as in the
+    SProcRenderCreateLinearGradient(), SProcRenderCreateRadialGradient()
+    and SProcRenderCreateConicalGradient() functions (CVE-2008-2362).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    Exploitation of these vulnerabilities could possibly lead to the remote
+    execution of arbitrary code with root privileges, if the server is
+    running as root, which is the default. It is also possible to crash the
+    server by making use of these vulnerabilities.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    It is possible to avoid these vulnerabilities by disabling the affected
+    server extensions. Therefore edit the configuration file
+    (/etc/X11/xorg.conf) to contain the following in the appropriate
+    places:
+    </p>
+    <code>
+      Section &quot;Extensions&quot;   
+    	Option &quot;MIT-SHM&quot; &quot;disable&quot;
+    	Option &quot;RENDER&quot; &quot;disable&quot; 
+    	Option &quot;SECURITY&quot; &quot;disable&quot;
+      EndSection
+    
+      Section &quot;Module&quot;
+       Disable &quot;record&quot;
+      EndSection</code>
+  </workaround>
+  <resolution>
+    <p>
+    All X.org X Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.3.0.0-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1377">CVE-2008-1377</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1379">CVE-2008-1379</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2360">CVE-2008-2360</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2361">CVE-2008-2361</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2362">CVE-2008-2362</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 11 Jun 2008 10:16:02 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 08:09:32 +0000">
+    vorlon
+  </metadata>
+</glsa>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-33">
+  <title>FFmpeg: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in FFmpeg may lead to the remote execution of
+    arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">ffmpeg gst-plugins-ffmpeg mplayer</product>
+  <announced>March 19, 2009</announced>
+  <revised>March 19, 2009: 01</revised>
+  <bug>231831</bug>
+  <bug>231834</bug>
+  <bug>245313</bug>
+  <bug>257217</bug>
+  <bug>257381</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">0.4.9_p20090201</unaffected>
+      <vulnerable range="lt">0.4.9_p20090201</vulnerable>
+    </package>
+    <package name="media-plugins/gst-plugins-ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">0.10.5</unaffected>
+      <vulnerable range="lt">0.10.5</vulnerable>
+    </package>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_rc2_p28450</unaffected>
+      <vulnerable range="lt">1.0_rc2_p28450</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FFmpeg is a complete solution to record, convert and stream audio and
+    video. gst-plugins-ffmpeg is a FFmpeg based gstreamer plugin which
+    includes a vulnerable copy of FFmpeg code. Mplayer is a multimedia
+    player which also includes a vulnerable copy of the code.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in FFmpeg:
+    </p>
+    <ul><li>astrange
+    reported a stack-based buffer overflow in the str_read_packet() in
+    libavformat/psxstr.c when processing .str files (CVE-2008-3162).</li>
+    <li>Multiple buffer overflows in libavformat/utils.c
+    (CVE-2008-4866).</li>
+    <li>A buffer overflow in libavcodec/dca.c
+    (CVE-2008-4867).</li>
+    <li>An unspecified vulnerability in the
+    avcodec_close() function in libavcodec/utils.c (CVE-2008-4868).</li>
+    <li>Unspecified memory leaks (CVE-2008-4869).</li>
+    <li>Tobias Klein
+    repoerted a NULL pointer dereference due to an integer signedness error
+    in the fourxm_read_header() function in libavformat/4xm.c
+    (CVE-2009-0385).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted media
+    file, possibly leading to the execution of arbitrary code with the
+    privileges of the user running the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FFmpeg users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/ffmpeg-0.4.9_p20090201&quot;</code>
+    <p>
+    All gst-plugins-ffmpeg users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-plugins/gst-plugins-ffmpeg-0.10.5&quot;</code>
+    <p>
+    All Mplayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc2_p28450&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3162 ">CVE-2008-3162</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4866">CVE-2008-4866</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4867">CVE-2008-4867</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4868">CVE-2008-4868</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4869">CVE-2008-4869</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0385">CVE-2009-0385</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 31 Oct 2008 21:30:59 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Mar 2009 22:05:30 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 Mar 2009 22:05:39 +0000">
+    p-y
+  </metadata>
+</glsa>

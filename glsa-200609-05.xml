@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-05">
+  <title>OpenSSL, AMD64 x86 emulation base libraries: RSA signature forgery</title>
+  <synopsis>
+    OpenSSL fails to properly validate PKCS #1 v1.5 signatures.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>September 07, 2006</announced>
+  <revised>September 08, 2006: 02</revised>
+  <bug>146375</bug>
+  <bug>146438</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.7k</unaffected>
+      <vulnerable range="lt">0.9.7k</vulnerable>
+    </package>
+    <package name="app-emulation/emul-linux-x86-baselibs" auto="yes" arch="amd64">
+      <unaffected range="ge">2.5.2</unaffected>
+      <vulnerable range="lt">2.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is a toolkit implementing the Secure Sockets Layer, Transport
+    Layer Security protocols and a general-purpose cryptography library.
+    The x86 emulation base libraries for AMD64 contain a vulnerable version
+    of OpenSSL.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel Bleichenbacher discovered that it might be possible to forge
+    signatures signed by RSA keys with the exponent of 3.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Since several CAs are using an exponent of 3 it might be possible for
+    an attacker to create a key with a false CA signature.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.7k&quot;</code>
+    <p>
+    All AMD64 x86 emulation base libraries users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-baselibs-2.5.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4339">CVE-2006-4339</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Sep 2006 19:16:58 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 06 Sep 2006 10:57:51 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 07 Sep 2006 20:02:33 +0000">
+    jaervosz
+  </metadata>
+</glsa>

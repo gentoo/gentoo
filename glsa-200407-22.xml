@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-22">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in phpMyAdmin may allow a remote attacker with a
+    valid user account to alter configuration variables and execute arbitrary
+    PHP code.
+  </synopsis>
+  <product type="ebuild">dev-db/phpmyadmin</product>
+  <announced>July 29, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>57890</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.5.7_p1</unaffected>
+      <vulnerable range="le">2.5.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a popular, web-based MySQL administration tool written in
+    PHP. It allows users to administer a MySQL database from a web-browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two serious vulnerabilities exist in phpMyAdmin. The first allows any
+    user to alter the server configuration variables (including host, name,
+    and password) by appending new settings to the array variables that
+    hold the configuration in a GET statement. The second allows users to
+    include arbitrary PHP code to be executed within an eval() statement in
+    table name configuration settings. This second vulnerability is only
+    exploitable if $cfg['LeftFrameLight'] is set to FALSE.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Authenticated users can alter configuration variables for their running
+    copy of phpMyAdmin. The impact of this should be minimal. However, the
+    second vulnerability would allow an authenticated user to execute
+    arbitrary PHP code with the permissions of the webserver, potentially
+    allowing a serious Denial of Service or further remote compromise.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The second, more serious vulnerability is only exploitable if
+    $cfg['LeftFrameLight'] is set to FALSE. In the default Gentoo
+    installation, this is set to TRUE. There is no known workaround for the
+    first.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=dev-db/phpmyadmin-2.5.7_p1&quot;
+    # emerge &quot;&gt;=dev-db/phpmyadmin-2.5.7_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/367486">BugTraq Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2631">CVE-2004-2631</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2632">CVE-2004-2632</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter">
+    dmargoli
+  </metadata>
+</glsa>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-04">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in VirtualBox were found, the worst of which
+    allowing for privilege escalation.
+  </synopsis>
+  <product type="ebuild">virtualbox-bin virtualbox-ose virtualbox-guest-additions virtualbox-ose-additions</product>
+  <announced>January 13, 2010</announced>
+  <revised>January 13, 2010: 01</revised>
+  <bug>288836</bug>
+  <bug>294678</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
+      <unaffected range="ge">3.0.12</unaffected>
+      <vulnerable range="lt">3.0.12</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-ose" auto="yes" arch="*">
+      <unaffected range="ge">3.0.12</unaffected>
+      <vulnerable range="lt">3.0.12</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-guest-additions" auto="yes" arch="*">
+      <unaffected range="ge">3.0.12</unaffected>
+      <vulnerable range="lt">3.0.12</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-ose-additions" auto="yes" arch="*">
+      <unaffected range="ge">3.0.12</unaffected>
+      <vulnerable range="lt">3.0.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The VirtualBox family provides powerful x86 virtualization products.
+    </p>
+  </background>
+  <description>
+    <p>
+    Thomas Biege of SUSE discovered multiple vulnerabilities:
+    </p>
+    <ul><li>A shell metacharacter injection in popen() (CVE-2009-3692) and
+    a possible buffer overflow in strncpy() in the VBoxNetAdpCtl
+    configuration tool.</li>
+    <li>An unspecified vulnerability in VirtualBox
+    Guest Additions (CVE-2009-3940).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A local, unprivileged attacker with the permission to run VirtualBox
+    could gain root privileges. A guest OS local user could cause a Denial
+    of Service (memory consumption) on the guest OS via unknown vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of the binary version of VirtualBox should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-bin-3.0.12&quot;</code>
+    <p>
+    All users of the Open Source version of VirtualBox should upgrade to
+    the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-ose-3.0.12&quot;</code>
+    <p>
+    All users of the binary VirtualBox Guest Additions should upgrade to
+    the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-guest-additions-3.0.12&quot;</code>
+    <p>
+    All users of the Open Source VirtualBox Guest Additions should upgrade
+    to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-ose-additions-3.0.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3692">CVE-2009-3692</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3940">CVE-2009-3940</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Nov 2009 23:19:24 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 20:50:17 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:41:20 +0000">
+    craig
+  </metadata>
+</glsa>

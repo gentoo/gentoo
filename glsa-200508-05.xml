@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-05">
+  <title>Heartbeat: Insecure temporary file creation</title>
+  <synopsis>
+    Heartbeat is vulnerable to symlink attacks, potentially allowing a local
+    user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">Heartbeat</product>
+  <announced>August 07, 2005</announced>
+  <revised>August 07, 2005: 01</revised>
+  <bug>97175</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-cluster/heartbeat" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3-r1</unaffected>
+      <vulnerable range="lt">1.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heartbeat is a component of the High-Availability Linux project.
+    It it used to perform death-of-node detection, communications and
+    cluster management.
+    </p>
+  </background>
+  <description>
+    <p>
+    Eric Romang has discovered that Heartbeat insecurely creates
+    temporary files with predictable filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary file
+    directory, pointing to a valid file somewhere on the filesystem. When a
+    vulnerable script is executed, this could lead to the file being
+    overwritten with the rights of the user running the affected
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Heartbeat users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/heartbeat-1.2.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2231">CAN-2005-2231</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 05 Aug 2005 07:37:14 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 05 Aug 2005 14:33:59 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 05 Aug 2005 14:54:26 +0000">
+    formula7
+  </metadata>
+</glsa>

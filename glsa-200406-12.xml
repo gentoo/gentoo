@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-12">
+  <title>Webmin: Multiple vulnerabilities</title>
+  <synopsis>
+    Webmin contains two security vulnerabilities which could lead to a Denial
+    of Service attack and information disclosure.
+  </synopsis>
+  <product type="ebuild">webmin</product>
+  <announced>June 16, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>53375</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/webmin" auto="yes" arch="*">
+      <unaffected range="ge">1.150</unaffected>
+      <vulnerable range="le">1.140-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Webmin is a web-based administration tool for Unix. It supports a wide
+    range of applications including Apache, DNS, file sharing and others.
+    </p>
+  </background>
+  <description>
+    <p>
+    Webmin contains two security vulnerabilities. One allows any user to
+    view the configuration of any module and the other could allow an
+    attacker to lock out a valid user by sending an invalid username and
+    password.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An authenticated user could use these vulnerabilities to view the
+    configuration of any module thus potentially obtaining important
+    knowledge about configuration settings. Furthermore an attacker could
+    lock out legitimate users by sending invalid login information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Webmin users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-admin/app-admin/webmin-1.150&quot;
+    # emerge &quot;&gt;=app-admin/app-admin/webmin-1.150&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/10474">Bugtraq Announcement</uri>
+    <uri link="http://www.webmin.com/changes-1.150.html">Webmin Changelog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0582">CVE-2004-0582</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0583">CVE-2004-0583</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

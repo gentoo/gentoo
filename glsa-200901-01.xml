@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-01">
+  <title>NDISwrapper: Arbitrary remote code execution</title>
+  <synopsis>
+    Multiple buffer overflows might lead to remote execution of arbitrary code
+    with root privileges.
+  </synopsis>
+  <product type="ebuild">ndiswrapper</product>
+  <announced>January 11, 2009</announced>
+  <revised>January 11, 2009: 01</revised>
+  <bug>239371</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/ndiswrapper" auto="yes" arch="*">
+      <unaffected range="ge">1.53-r1</unaffected>
+      <vulnerable range="lt">1.53-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NDISwrapper is a Linux kernel module that enables the use of Microsoft
+    Windows drivers for wireless network devices.
+    </p>
+  </background>
+  <description>
+    <p>
+    Anders Kaseorg reported multiple buffer overflows related to long
+    ESSIDs.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A physically proximate attacker could send packets over a wireless
+    network that might lead to the execution of arbitrary code with root
+    privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NDISwrapper users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/ndiswrapper-1.53-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4395">CVE-2008-4395</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 06 Nov 2008 16:33:13 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 23:45:28 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 23:45:36 +0000">
+    rbu
+  </metadata>
+</glsa>

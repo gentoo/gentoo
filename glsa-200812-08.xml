@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-08">
+  <title>Mgetty: Insecure temporary file usage</title>
+  <synopsis>
+    Mgetty uses temporary files in an insecure manner, allowing for symlink
+    attacks.
+  </synopsis>
+  <product type="ebuild">mgetty</product>
+  <announced>December 06, 2008</announced>
+  <revised>December 23, 2008: 02</revised>
+  <bug>235806</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-dialup/mgetty" auto="yes" arch="*">
+      <unaffected range="ge">1.1.36-r3</unaffected>
+      <vulnerable range="lt">1.1.36-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mgetty is a set of fax and voice modem programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that the "spooldir" directory in
+    fax/faxspool.in is created in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to overwrite
+    arbitrary files with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mgetty users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/mgetty-1.1.36-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4936">CVE-2008-4936</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:40:45 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 23 Sep 2008 11:36:13 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 23 Sep 2008 11:36:50 +0000">
+    p-y
+  </metadata>
+</glsa>

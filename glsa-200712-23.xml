@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-23">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Wireshark, allowing for
+    the remote execution of arbitrary code and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>December 30, 2007</announced>
+  <revised>December 30, 2007: 01</revised>
+  <bug>199958</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">0.99.7</unaffected>
+      <vulnerable range="lt">0.99.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a network protocol analyzer with a graphical front-end.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple buffer overflows and infinite loops were discovered in
+    multiple dissector and parser components, including those for MP3 and
+    NCP (CVE-2007-6111), PPP (CVE-2007-6112), DNP (CVE-2007-6113), SSL and
+    iSeries (OS/400) Communication traces (CVE-2007-6114), ANSI MAP
+    (CVE-2007-6115), Firebird/Interbase (CVE-2007-6116), HTTP
+    (CVE-2007-6117), MEGACO (CVE-2007-6118), DCP ETSI (CVE-2007-6119),
+    Bluetooth SDP (CVE-2007-6120), RPC Portmap (CVE-2007-6121), SMB
+    (CVE-2007-6438), IPv6 amd USB (CVE-2007-6439), WiMAX (CVE-2007-6441),
+    RPL (CVE-2007-6450), CIP (CVE-2007-6451). The vulnerabilities were
+    discovered by Stefan Esser, Beyond Security, Fabiodds, Peter Leeming,
+    Steve and ainsley.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted packets on a network
+    being monitored with Wireshark or entice a user to open a specially
+    crafted file, possibly resulting in the execution of arbitrary code
+    with the privileges of the user running Wireshark (which might be the
+    root user), or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-0.99.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6111">CVE-2007-6111</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6112">CVE-2007-6112</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6113">CVE-2007-6113</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6114">CVE-2007-6114</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6115">CVE-2007-6115</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6116">CVE-2007-6116</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6117">CVE-2007-6117</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6118">CVE-2007-6118</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6119">CVE-2007-6119</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6120">CVE-2007-6120</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6121">CVE-2007-6121</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6438">CVE-2007-6438</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6439">CVE-2007-6439</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6441">CVE-2007-6441</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6450">CVE-2007-6450</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6451">CVE-2007-6451</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Dec 2007 11:44:15 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Dec 2007 21:41:40 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 29 Dec 2007 22:00:22 +0000">
+    rbu
+  </metadata>
+</glsa>

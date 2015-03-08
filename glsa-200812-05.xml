@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-05">
+  <title>libsamplerate: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow vulnerability in libsamplerate might lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libsamplerate</product>
+  <announced>December 02, 2008</announced>
+  <revised>December 02, 2008: 01</revised>
+  <bug>237037</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libsamplerate" auto="yes" arch="*">
+      <unaffected range="ge">0.1.4</unaffected>
+      <vulnerable range="lt">0.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for
+    audio.
+    </p>
+  </background>
+  <description>
+    <p>
+    Russell O'Connor reported a buffer overflow in src/src_sinc.c related
+    to low conversion ratios.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to process a
+    specially crafted audio file possibly leading to the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libsamplerate users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libsamplerate-0.1.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5008">CVE-2008-5008</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Nov 2008 13:51:38 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Nov 2008 16:25:38 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Nov 2008 16:25:44 +0000">
+    rbu
+  </metadata>
+</glsa>

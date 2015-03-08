@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-07">
+  <title>Samba: Data disclosure</title>
+  <synopsis>
+    A missing boundary check in Samba might lead to the disclosure of memory
+    contents.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>March 07, 2009</announced>
+  <revised>March 07, 2009: 01</revised>
+  <bug>247620</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.33</unaffected>
+      <vulnerable range="lt">3.0.33</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a suite of SMB and CIFS client/server programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Samba does not properly check memory boundaries when handling trans,
+    rans2, and nttrans requests.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted requests to a Samba
+    daemon, leading to the disclosure of arbitrary memory or to a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.33&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4314">CVE-2008-4314</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:43:46 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:28:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:28:16 +0000">
+    rbu
+  </metadata>
+</glsa>

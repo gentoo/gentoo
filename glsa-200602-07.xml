@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-07">
+  <title>Sun JDK/JRE: Applet privilege escalation</title>
+  <synopsis>
+    Sun's Java Development Kit (JDK) and Java Runtime Environment (JRE) do not
+    adequately constrain applets from privilege escalation and arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">Sun JDK, applet</product>
+  <announced>February 15, 2006</announced>
+  <revised>February 15, 2006: 01</revised>
+  <bug>122156</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.10</unaffected>
+      <vulnerable range="lt">1.4.2.10</vulnerable>
+    </package>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.10</unaffected>
+      <vulnerable range="lt">1.4.2.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sun's JDK and JRE provide interpreters for Java Applets in a
+    sandboxed environment. These implementations provide the Java Web Start
+    technology that can be used for easy client-side deployment of Java
+    applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Applets executed using JRE or JDK can use "reflection" APIs
+    functions to elevate its privileges beyond the sandbox restrictions.
+    Adam Gowdiak discovered five vulnerabilities that use this method for
+    privilege escalation. Two more vulnerabilities were discovered by the
+    vendor. Peter Csepely discovered that Web Start Java applications also
+    can an escalate their privileges.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious Java applet can bypass Java sandbox restrictions and
+    hence access local files, connect to arbitrary network locations and
+    execute arbitrary code on the user's machine. Java Web Start
+    applications are affected likewise.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Select another Java implementation using java-config.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.10&quot;</code>
+    <p>
+    All Sun JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-102170-1">Sun Security Alert ID 102170</uri>
+    <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-102171-1">Sun Security Alert ID 102171</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0614">CVE-2006-0614</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0615">CVE-2006-0615</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0616">CVE-2006-0616</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0617">CVE-2006-0617</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 09 Feb 2006 20:48:45 +0000">
+    dragonheart
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Feb 2006 13:04:50 +0000">
+    koon
+  </metadata>
+</glsa>

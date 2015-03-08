@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-23">
+  <title>Sun JDK/JRE: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified in Sun Java Development Kit
+    (JDK) and Java Runtime Environment (JRE).
+  </synopsis>
+  <product type="ebuild">sun-jdk,sun-jre-bin</product>
+  <announced>May 31, 2007</announced>
+  <revised>May 28, 2009: 05</revised>
+  <bug>176675</bug>
+  <bug>178851</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.11</unaffected>
+      <unaffected range="rge">1.4.2.14</unaffected>
+      <unaffected range="rge">1.4.2.15</unaffected>
+      <unaffected range="rge">1.4.2.19</unaffected>
+      <vulnerable range="lt">1.5.0.11</vulnerable>
+    </package>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0.01</unaffected>
+      <unaffected range="rge">1.5.0.16</unaffected>
+      <unaffected range="rge">1.5.0.15</unaffected>
+      <unaffected range="rge">1.5.0.12</unaffected>
+      <unaffected range="rge">1.5.0.11</unaffected>
+      <unaffected range="rge">1.4.2.18</unaffected>
+      <unaffected range="rge">1.4.2.17</unaffected>
+      <unaffected range="rge">1.4.2.15</unaffected>
+      <unaffected range="rge">1.4.2.14</unaffected>
+      <unaffected range="rge">1.4.2.19</unaffected>
+      <unaffected range="rge">1.5.0.17</unaffected>
+      <unaffected range="rge">1.5.0.18</unaffected>
+      <vulnerable range="lt">1.6.0.01</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Sun Java Development Kit (JDK) and the Sun Java Runtime Environment
+    (JRE) provide the Sun Java platform.
+    </p>
+  </background>
+  <description>
+    <p>
+    An unspecified vulnerability involving an "incorrect use of system
+    classes" was reported by the Fujitsu security team. Additionally, Chris
+    Evans from the Google Security Team reported an integer overflow
+    resulting in a buffer overflow in the ICC parser used with JPG or BMP
+    files, and an incorrect open() call to /dev/tty when processing certain
+    BMP files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run a specially crafted Java
+    class or applet that will trigger one of the vulnerabilities. This
+    could lead to the execution of arbitrary code outside of the Java
+    sandbox and of the Java security restrictions, or crash the Java
+    application or the browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun Java Development Kit users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;dev-java/sun-jdk&quot;</code>
+    <p>
+    All Sun Java Runtime Environment users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;dev-java/sun-jre-bin&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 21 May 2007 03:51:23 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 27 May 2007 22:03:03 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 31 May 2007 08:44:39 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-04">
+  <title>Adobe products: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Adobe Reader and Adobe Flash Player allow for
+    attacks including the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash acroread</product>
+  <announced>August 07, 2009</announced>
+  <revised>August 07, 2009: 01</revised>
+  <bug>278813</bug>
+  <bug>278819</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">10.0.32.18</unaffected>
+      <vulnerable range="lt">10.0.32.18</vulnerable>
+    </package>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">9.1.3</unaffected>
+      <vulnerable range="lt">9.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Flash Player is a closed-source playback software for Flash SWF
+    files. Adobe Reader is a closed-source PDF reader that plays Flash
+    content as well.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Adobe Flash Player:
+    </p>
+    <ul>
+    <li>lakehu of Tencent Security Center reported an unspecified
+    memory corruption vulnerability (CVE-2009-1862).</li>
+    <li>Mike Wroe
+    reported an unspecified vulnerability, related to "privilege
+    escalation" (CVE-2009-1863).</li>
+    <li>An anonymous researcher through
+    iDefense reported an unspecified heap-based buffer overflow
+    (CVE-2009-1864).</li>
+    <li>Chen Chen of Venustech reported an
+    unspecified "null pointer vulnerability" (CVE-2009-1865).</li>
+    <li>Chen
+    Chen of Venustech reported an unspecified stack-based buffer overflow
+    (CVE-2009-1866).</li>
+    <li>Joran Benker reported that Adobe Flash Player
+    facilitates "clickjacking" attacks (CVE-2009-1867).</li>
+    <li>Jun Mao of
+    iDefense reported a heap-based buffer overflow, related to URL parsing
+    (CVE-2009-1868).</li>
+    <li>Roee Hay of IBM Rational Application Security
+    reported an unspecified integer overflow (CVE-2009-1869).</li>
+    <li>Gareth Heyes and Microsoft Vulnerability Research reported that the
+    sandbox in Adobe Flash Player allows for information disclosure, when
+    "SWFs are saved to the hard drive" (CVE-2009-1870).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    file or web site containing Adobe Flash (SWF) contents, possibly
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application, or a Denial of Service (application
+    crash). Furthermore, a remote attacker could trick a user into clicking
+    a button on a dialog by supplying a specially crafted SWF file and
+    disclose sensitive information by exploiting a sandbox issue.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Flash Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-10.0.32.18&quot;</code>
+    <p>
+    All Adobe Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-9.1.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1862">CVE-2009-1862</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1863">CVE-2009-1863</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1864">CVE-2009-1864</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1865">CVE-2009-1865</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1866">CVE-2009-1866</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1867">CVE-2009-1867</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1868">CVE-2009-1868</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1869">CVE-2009-1869</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1870">CVE-2009-1870</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 01 Aug 2009 14:34:28 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Aug 2009 13:16:39 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Aug 2009 13:32:24 +0000">
+    a3li
+  </metadata>
+</glsa>

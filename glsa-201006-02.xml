@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-02">
+  <title>CamlImages: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple integer overflows in CamlImages might result in the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">camlimages</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>276235</bug>
+  <bug>290222</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ml/camlimages" auto="yes" arch="*">
+      <unaffected range="ge">3.0.2</unaffected>
+      <vulnerable range="lt">3.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CamlImages is an image processing library for Objective Caml.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tielei Wang reported multiple integer overflows, possibly leading to
+    heap-based buffer overflows in the (1) read_png_file() and
+    read_png_file_as_rgb24() functions, when processing a PNG image
+    (CVE-2009-2295) and (2) gifread.c and jpegread.c files when processing
+    GIF or JPEG images (CVE-2009-2660).
+    </p>
+    <p>
+    Other integer overflows were also found in tiffread.c (CVE-2009-3296).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted,
+    overly large PNG, GIF, TIFF, or JPEG image using an application that
+    uses the CamlImages library, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CamlImages users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose =dev-ml/camlimages-3.0.2</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2295">CVE-2009-2295</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2660">CVE-2009-2660</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3296">CVE-2009-3296</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 09 Aug 2009 15:21:06 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 14 Aug 2009 12:48:53 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 01 Jun 2010 09:26:19 +0000">
+    a3li
+  </metadata>
+</glsa>

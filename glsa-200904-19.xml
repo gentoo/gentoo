@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-19">
+  <title>LittleCMS: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple errors in LittleCMS allow for attacks including the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">littlecms</product>
+  <announced>April 19, 2009</announced>
+  <revised>April 19, 2009: 01</revised>
+  <bug>260269</bug>
+  <bug>264604</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/lcms" auto="yes" arch="*">
+      <unaffected range="ge">1.18-r1</unaffected>
+      <vulnerable range="lt">1.18-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LittleCMS, or short lcms, is a color management system for working with
+    ICC profiles. It is used by many applications including GIMP and
+    Firefox.
+    </p>
+  </background>
+  <description>
+    <p>
+    RedHat reported a null-pointer dereference flaw while processing
+    monochrome ICC profiles (CVE-2009-0793).
+    </p>
+    <p>
+    Chris Evans of Google discovered the following vulnerabilities:
+    </p>
+    <ul>
+    <li>LittleCMS contains severe memory leaks (CVE-2009-0581).</li>
+    <li>LittleCMS is prone to multiple integer overflows, leading to a
+    heap-based buffer overflow (CVE-2009-0723).</li>
+    <li>The
+    ReadSetOfCurves() function is vulnerable to stack-based buffer
+    overflows when called from code paths without a bounds check on channel
+    counts (CVE-2009-0733).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to open a
+    specially crafted file containing a malicious ICC profile, possibly
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application or memory exhaustion, leading to a Denial
+    of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LittleCMS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/lcms-1.18-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0581">CVE-2009-0581</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0723">CVE-2009-0723</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0733">CVE-2009-0733</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0793">CVE-2009-0793</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 12 Apr 2009 15:32:46 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Apr 2009 22:41:26 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Apr 2009 12:36:20 +0000">
+    a3li
+  </metadata>
+</glsa>

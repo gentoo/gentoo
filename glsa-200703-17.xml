@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-17">
+  <title>ulogd: Remote execution of arbitrary code</title>
+  <synopsis>
+    ulogd contains a possible buffer overflow potentially allowing for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ulogd</product>
+  <announced>March 18, 2007</announced>
+  <revised>March 18, 2007: 01</revised>
+  <bug>161882</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/ulogd" auto="yes" arch="*">
+      <unaffected range="ge">1.23-r1</unaffected>
+      <vulnerable range="lt">1.23-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ulogd is a userspace daemon for netfilter related logging.
+    </p>
+  </background>
+  <description>
+    <p>
+    SUSE reported unspecified buffer overflows in ulogd involving the
+    calculation of string lengths.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could trigger a possible buffer overflow through
+    unspecified vectors, potentially leading to the remote execution of
+    arbitrary code with the rights of the user running the ulogd daemon, or
+    more probably leading to the crash of the daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ulogd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/ulogd-1.23-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0460">CVE-2007-0460</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 Mar 2007 07:34:19 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 16 Mar 2007 12:57:18 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Mar 2007 21:32:10 +0000">
+    falco
+  </metadata>
+</glsa>

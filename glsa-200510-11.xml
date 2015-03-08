@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-11">
+  <title>OpenSSL: SSL 2.0 protocol rollback</title>
+  <synopsis>
+    When using a specific option, OpenSSL can be forced to fallback to the less
+    secure SSL 2.0 protocol.
+  </synopsis>
+  <product type="ebuild">OpenSSL</product>
+  <announced>October 12, 2005</announced>
+  <revised>November 07, 2005: 02</revised>
+  <bug>108852</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.7h</unaffected>
+      <unaffected range="rge">0.9.7g-r1</unaffected>
+      <unaffected range="rge">0.9.7e-r2</unaffected>
+      <vulnerable range="lt">0.9.7h</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is a toolkit implementing the Secure Sockets Layer, Transport
+    Layer Security protocols and a general-purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Applications setting the SSL_OP_MSIE_SSLV2_RSA_PADDING option (or the
+    SSL_OP_ALL option, that implies it) can be forced by a third-party to
+    fallback to the less secure SSL 2.0 protocol, even if both parties
+    support the more secure SSL 3.0 or TLS 1.0 protocols.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A man-in-the-middle attacker can weaken the encryption used to
+    communicate between two parties, potentially revealing sensitive
+    information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    If possible, disable the use of SSL 2.0 in all OpenSSL-enabled
+    applications.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-libs/openssl</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2969">CAN-2005-2969</uri>
+    <uri link="http://www.openssl.org/news/secadv_20051011.txt ">OpenSSL security advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Oct 2005 07:50:27 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Oct 2005 08:03:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 12 Oct 2005 07:47:42 +0000">
+    koon
+  </metadata>
+</glsa>

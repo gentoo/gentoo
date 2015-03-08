@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-08">
+  <title>nano: Multiple vulnerabilities</title>
+  <synopsis>
+    Race conditions when editing files could lead to symlink attacks or changes
+    of ownerships of important files.
+  </synopsis>
+  <product type="ebuild">nano</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>315355</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-editors/nano" auto="yes" arch="*">
+      <unaffected range="ge">2.2.4</unaffected>
+      <vulnerable range="lt">2.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    nano is a GNU GPL'd Pico clone with more functionality.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple race condition vulnerabilities have been discovered in nano.
+    For further information please consult the CVE entries referenced
+    below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Under certain conditions, a local, user-assisted attacker could
+    possibly overwrite arbitrary files via a symlink attack on an
+    attacker-owned file that is being edited by the victim, or change the
+    ownership of arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All nano users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/nano-2.2.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1160">CVE-2010-1160</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1161">CVE-2010-1161</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 Apr 2010 14:22:38 +0000">
+    chiiph
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 May 2010 14:24:42 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 17:43:51 +0000">
+    vorlon
+  </metadata>
+</glsa>

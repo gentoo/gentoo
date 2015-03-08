@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-12">
+  <title>Trac: Cross-site scripting vulnerability</title>
+  <synopsis>
+    Trac is vulnerable to a cross-site scripting attack that could allow
+    arbitrary JavaScript code execution.
+  </synopsis>
+  <product type="ebuild">trac</product>
+  <announced>January 26, 2006</announced>
+  <revised>January 26, 2006: 01</revised>
+  <bug>118302</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/trac" auto="yes" arch="*">
+      <unaffected range="ge">0.9.3</unaffected>
+      <vulnerable range="lt">0.9.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Trac is a minimalistic web-based project management, wiki and bug
+    tracking system including a Subversion interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Christophe Truc discovered that Trac fails to properly sanitize
+    input passed in the URL.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could exploit this to inject and execute
+    malicious script code or to steal cookie-based authentication
+    credentials, potentially compromising the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Trac users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/trac-0.9.3&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4305">CVE-2005-4305</uri>
+    <uri link="http://projects.edgewall.com/trac/wiki/ChangeLog#a0.9.3">Trac Changelog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Jan 2006 15:05:49 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 18 Jan 2006 15:05:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 Jan 2006 19:44:58 +0000">
+    DerCorny
+  </metadata>
+</glsa>

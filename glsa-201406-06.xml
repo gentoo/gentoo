@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-06">
+  <title>Mumble: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mumble, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">mumble</product>
+  <announced>June 06, 2014</announced>
+  <revised>June 06, 2014: 1</revised>
+  <bug>500486</bug>
+  <bug>510380</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/mumble" auto="yes" arch="*">
+      <unaffected range="ge">1.2.6</unaffected>
+      <vulnerable range="lt">1.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mumble is low-latency voice chat software intended for use with gaming.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mumble:</p>
+    
+    <ul>
+      <li>A crafted length prefix value can trigger a heap-based buffer
+        overflow or NULL pointer dereference in the
+        opus_packet_get_samples_per_frame function (CVE-2014-0044)
+      </li>
+      <li>A crafted packet can trigger an error in the opus_decode_float
+        function, leading to a heap-based buffer overflow (CVE-2014-0045)
+      </li>
+      <li>A crafted SVG referencing local files can lead to resource exhaustion
+        or hangs (CVE-2014-3755)
+      </li>
+      <li>Mumble does not properly escape HTML in some external strings before
+        displaying them (CVE-2014-3756)
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mumble users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/mumble-1.2.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0044">CVE-2014-0044</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0045">CVE-2014-0045</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3755">CVE-2014-3755</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3756">CVE-2014-3756</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 May 2014 03:01:45 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 06 Jun 2014 12:14:42 +0000">
+    creffett
+  </metadata>
+</glsa>

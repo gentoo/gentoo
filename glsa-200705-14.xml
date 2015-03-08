@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-14">
+  <title>XScreenSaver: Privilege escalation</title>
+  <synopsis>
+    XScreenSaver allows local users to bypass authentication under certain
+    configurations.
+  </synopsis>
+  <product type="ebuild">xscreensaver</product>
+  <announced>May 13, 2007</announced>
+  <revised>May 13, 2007: 01</revised>
+  <bug>176584</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-misc/xscreensaver" auto="yes" arch="*">
+      <unaffected range="ge">5.02</unaffected>
+      <vulnerable range="lt">5.02</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XScreenSaver is a widely used screen saver collection shipped on
+    systems running the X11 Window System.
+    </p>
+  </background>
+  <description>
+    <p>
+    XScreenSaver incorrectly handles the results of the getpwuid() function
+    in drivers/lock.c when using directory servers during a network outage.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local user can crash XScreenSaver by preventing network connectivity
+    if the system uses a remote directory service for credentials such as
+    NIS or LDAP, which will unlock the screen.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All XScreenSaver users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-misc/xscreensaver-5.02&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1859">CVE-2007-1859</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 08 May 2007 10:52:36 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 08 May 2007 15:43:15 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 May 2007 21:32:41 +0000">
+    falco
+  </metadata>
+</glsa>

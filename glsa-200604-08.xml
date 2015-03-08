@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-08">
+  <title>libapreq2: Denial of Service vulnerability</title>
+  <synopsis>
+    A vulnerability has been reported in libapreq2 which could lead to a Denial
+    of Service.
+  </synopsis>
+  <product type="ebuild">libapreq2</product>
+  <announced>April 17, 2006</announced>
+  <revised>April 17, 2006: 01</revised>
+  <bug>128610</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/libapreq2" auto="yes" arch="*">
+      <unaffected range="ge">2.07</unaffected>
+      <vulnerable range="lt">2.07</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libapreq is a shared library with associated modules for
+    manipulating client request data via the Apache API.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been reported in the apreq_parse_headers() and
+    apreq_parse_urlencoded() functions of Apache2::Request.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly exploit the vulnerability to
+    cause a Denial of Service by CPU consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libapreq2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/libapreq2-2.07&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0042">CVE-2006-0042</uri>
+    <uri link="http://svn.apache.org/viewcvs.cgi/httpd/apreq/tags/v2_07/CHANGES?rev=376998&amp;view=markup">libapreq2 Changes</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 09 Apr 2006 19:33:11 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Apr 2006 17:20:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Apr 2006 19:11:49 +0000">
+    vorlon078
+  </metadata>
+</glsa>

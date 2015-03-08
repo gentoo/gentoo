@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-02">
+  <title>ModSecurity: Denial of Service</title>
+  <synopsis>
+    Two vulnerabilities in ModSecurity might lead to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">mod_security</product>
+  <announced>July 02, 2009</announced>
+  <revised>July 02, 2009: 01</revised>
+  <bug>262302</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_security" auto="yes" arch="*">
+      <unaffected range="ge">2.5.9</unaffected>
+      <vulnerable range="lt">2.5.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ModSecurity is a popular web application firewall for the Apache HTTP
+    server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in ModSecurity:
+    </p>
+    <ul>
+    <li>Juan Galiana Lara of ISecAuditors discovered a NULL pointer
+    dereference when processing multipart requests without a part header
+    name (CVE-2009-1902).</li>
+    <li>Steve Grubb of Red Hat reported that the
+    "PDF XSS protection" feature does not properly handle HTTP requests to
+    a PDF file that do not use the GET method (CVE-2009-1903).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might send requests containing specially crafted
+    multipart data or send certain requests to access a PDF file, possibly
+    resulting in a Denial of Service (crash) of the Apache HTTP daemon.
+    NOTE: The PDF XSS protection is not enabled by default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ModSecurity users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_security-2.5.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1902">CVE-2009-1902</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1903">CVE-2009-1903</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Jun 2009 22:17:27 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 27 Jun 2009 20:29:14 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 02 Jul 2009 11:54:37 +0000">
+    a3li
+  </metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-19">
+  <title>Xerces-C++: Denial of Service</title>
+  <synopsis>
+    An error in Xerces-C++ allows for a Denial of Service via malicious XML
+    schema files.
+  </synopsis>
+  <product type="ebuild">xerces-c</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>240496</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/xerces-c" auto="yes" arch="*">
+      <unaffected range="ge">3.0.0-r1</unaffected>
+      <vulnerable range="lt">3.0.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xerces-C++ is a validating XML parser written in a portable subset of
+    C++.
+    </p>
+  </background>
+  <description>
+    <p>
+    Frank Rast reported that the XML parser in Xerces-C++ does not
+    correctly handle an XML schema definition with a large maxOccurs value,
+    which triggers excessive memory consumption during the validation of an
+    XML file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to validate
+    an XML file using a specially crafted XML schema file, leading to a
+    Denial of Service (stack consumption and crash).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xerces-C++ users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/xerces-c-3.0.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4482">CVE-2008-4482</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 17:39:39 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:13:38 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:13:55 +0000">
+    rbu
+  </metadata>
+</glsa>

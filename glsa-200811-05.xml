@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200811-05">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    PHP contains several vulnerabilities including buffer and integer overflows
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>November 16, 2008</announced>
+  <revised>November 16, 2008: 01</revised>
+  <bug>209148</bug>
+  <bug>212211</bug>
+  <bug>215266</bug>
+  <bug>228369</bug>
+  <bug>230575</bug>
+  <bug>234102</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.2.6-r6</unaffected>
+      <vulnerable range="lt">5.2.6-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a widely-used general-purpose scripting language that is
+    especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilitites were found in PHP:
+    </p>
+    <ul>
+    <li>PHP ships a
+    vulnerable version of the PCRE library which allows for the
+    circumvention of security restrictions or even for remote code
+    execution in case of an application which accepts user-supplied regular
+    expressions (CVE-2008-0674).</li>
+    <li>Multiple crash issues in several
+    PHP functions have been discovered.</li>
+    <li>Ryan Permeh reported that
+    the init_request_info() function in sapi/cgi/cgi_main.c does not
+    properly consider operator precedence when calculating the length of
+    PATH_TRANSLATED (CVE-2008-0599).</li>
+    <li>An off-by-one error in the
+    metaphone() function may lead to memory corruption.</li>
+    <li>Maksymilian Arciemowicz of SecurityReason Research reported an
+    integer overflow, which is triggerable using printf() and related
+    functions (CVE-2008-1384).</li>
+    <li>Andrei Nigmatulin reported a
+    stack-based buffer overflow in the FastCGI SAPI, which has unknown
+    attack vectors (CVE-2008-2050).</li>
+    <li>Stefan Esser reported that PHP
+    does not correctly handle multibyte characters inside the
+    escapeshellcmd() function, which is used to sanitize user input before
+    its usage in shell commands (CVE-2008-2051).</li>
+    <li>Stefan Esser
+    reported that a short-coming in PHP's algorithm of seeding the random
+    number generator might allow for predictible random numbers
+    (CVE-2008-2107, CVE-2008-2108).</li>
+    <li>The IMAP extension in PHP uses
+    obsolete c-client API calls making it vulnerable to buffer overflows as
+    no bounds checking can be done (CVE-2008-2829).</li>
+    <li>Tavis Ormandy
+    reported a heap-based buffer overflow in pcre_compile.c in the PCRE
+    version shipped by PHP when processing user-supplied regular
+    expressions (CVE-2008-2371).</li>
+    <li>CzechSec reported that specially
+    crafted font files can lead to an overflow in the imageloadfont()
+    function in ext/gd/gd.c, which is part of the GD extension
+    (CVE-2008-3658).</li>
+    <li>Maksymilian Arciemowicz of SecurityReason
+    Research reported that a design error in PHP's stream wrappers allows
+    to circumvent safe_mode checks in several filesystem-related PHP
+    functions (CVE-2008-2665, CVE-2008-2666).</li>
+    <li>Laurent Gaffie
+    discovered a buffer overflow in the internal memnstr() function, which
+    is used by the PHP function explode() (CVE-2008-3659).</li>
+    <li>An
+    error in the FastCGI SAPI when processing a request with multiple dots
+    preceding the extension (CVE-2008-3660).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities might allow a remote attacker to execute
+    arbitrary code, to cause a Denial of Service, to circumvent security
+    restrictions, to disclose information, and to manipulate files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-5.2.6-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0599">CVE-2008-0599</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0674">CVE-2008-0674</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1384">CVE-2008-1384</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2050">CVE-2008-2050</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2051">CVE-2008-2051</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2107">CVE-2008-2107</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2108">CVE-2008-2108</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2371">CVE-2008-2371</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2665">CVE-2008-2665</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2666">CVE-2008-2666</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2829">CVE-2008-2829</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3658">CVE-2008-3658</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3659">CVE-2008-3659</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3660">CVE-2008-3660</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 17 Mar 2008 01:12:26 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Nov 2008 18:29:08 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 16 Nov 2008 16:06:26 +0000">
+    keytoaster
+  </metadata>
+</glsa>

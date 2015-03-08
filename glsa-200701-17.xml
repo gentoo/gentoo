@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-17">
+  <title>libgtop: Privilege escalation</title>
+  <synopsis>
+    libgtop improperly handles filenames, possibly allowing for the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libgtop</product>
+  <announced>January 23, 2007</announced>
+  <revised>January 23, 2007: 01</revised>
+  <bug>162169</bug>
+  <access>local</access>
+  <affected>
+    <package name="gnome-base/libgtop" auto="yes" arch="*">
+      <unaffected range="ge">2.14.6</unaffected>
+      <vulnerable range="lt">2.14.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libgtop facilitates the libgtop_daemon, which is used by GNOME to
+    obtain information about remote systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Liu Qishuai discovered that glibtop_get_proc_map_s() in
+    sysdeps/linux/procmap.c does not properly allocate memory for storing a
+    filename, allowing certain filenames to cause the buffer to overflow on
+    the stack.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By tricking a victim into executing an application that uses the
+    libgtop library (e.g. libgtop_daemon or gnome-system-monitor), a local
+    attacker could specify a specially crafted filename to be used by
+    libgtop causing a buffer overflow and possibly execute arbitrary code
+    with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libgtop users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-base/libgtop-2.14.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0235">CVE-2007-0235</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 17 Jan 2007 22:40:30 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 17:24:28 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 22 Jan 2007 12:14:40 +0000">
+    falco
+  </metadata>
+</glsa>

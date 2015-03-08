@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201205-04">
+  <title>Chromium, V8: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium and V8,
+    some of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium v8</product>
+  <announced>May 27, 2012</announced>
+  <revised>May 27, 2012: 1</revised>
+  <bug>417321</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">19.0.1084.52</unaffected>
+      <vulnerable range="lt">19.0.1084.52</vulnerable>
+    </package>
+    <package name="dev-lang/v8" auto="yes" arch="*">
+      <unaffected range="ge">3.9.24.28</unaffected>
+      <vulnerable range="lt">3.9.24.28</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project. V8 is Google’s open
+      source JavaScript engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and V8. Please
+      review the CVE identifiers and release notes referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted web site or JavaScript program using Chromium or V8, possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-19.0.1084.52"
+    </code>
+    
+    <p>All V8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/v8-3.9.24.28"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3103">
+      CVE-2011-3103
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3104">
+      CVE-2011-3104
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3105">
+      CVE-2011-3105
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3106">
+      CVE-2011-3106
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3107">
+      CVE-2011-3107
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3108">
+      CVE-2011-3108
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3109">
+      CVE-2011-3109
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3111">
+      CVE-2011-3111
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3115">
+      CVE-2011-3115
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/05/stable-channel-update_23.html">
+      Release Notes 19.0.1084.52
+    </uri>
+  </references>
+  <metadata timestamp="Sat, 26 May 2012 16:55:13 +0000" tag="requester">
+    phajdan.jr
+  </metadata>
+  <metadata timestamp="Sun, 27 May 2012 22:45:29 +0000" tag="submitter">
+    phajdan.jr
+  </metadata>
+</glsa>

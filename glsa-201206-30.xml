@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-30">
+  <title>sendmail: X.509 NULL spoofing vulnerability</title>
+  <synopsis>An error in the hostname matching in sendmail might enable remote
+    attackers to conduct man-in-the-middle attacks.   
+  </synopsis>
+  <product type="ebuild">sendmail</product>
+  <announced>June 25, 2012</announced>
+  <revised>June 25, 2012: 1</revised>
+  <bug>299120</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/sendmail" auto="yes" arch="*">
+      <unaffected range="ge">8.14.4</unaffected>
+      <vulnerable range="lt">8.14.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sendmail is a widely-used Mail Transport Agent (MTA).</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in sendmail. Please review the CVE
+      identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might employ a specially crafted certificate to
+      conduct man-in-the-middle attacks on SSL connections made using sendmail.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sendmail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/sendmail-8.14.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4565">CVE-2009-4565</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:22 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 25 Jun 2012 18:51:12 +0000" tag="submitter">craig</metadata>
+</glsa>

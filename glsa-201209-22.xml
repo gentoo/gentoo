@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-22">
+  <title>libgssglue: Privilege escalation</title>
+  <synopsis>A vulnerability in libgssglue may allow a local attacker to gain
+    escalated privileges.
+  </synopsis>
+  <product type="ebuild">libgssglue</product>
+  <announced>September 28, 2012</announced>
+  <revised>September 28, 2012: 1</revised>
+  <bug>385321</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-libs/libgssglue" auto="yes" arch="*">
+      <unaffected range="ge">0.4</unaffected>
+      <vulnerable range="lt">0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libgssglue exports a GSSAPI interface which calls other random GSSAPI
+      libraries.
+    </p>
+  </background>
+  <description>
+    <p>libgssglue does not securely use getenv() when loading a library for a
+      setuid application.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libgssglue users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libgssglue-0.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2709">CVE-2011-2709</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 09 Sep 2012 12:06:10 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Sep 2012 00:34:59 +0000">ackle</metadata>
+</glsa>

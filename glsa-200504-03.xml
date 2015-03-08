@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-03">
+  <title>Dnsmasq: Poisoning and Denial of Service vulnerabilities</title>
+  <synopsis>
+    Dnsmasq is vulnerable to DNS cache poisoning attacks and a potential Denial
+    of Service from the local network.
+  </synopsis>
+  <product type="ebuild">Dnsmasq</product>
+  <announced>April 04, 2005</announced>
+  <revised>April 04, 2005: 01</revised>
+  <bug>86718</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.22</unaffected>
+      <vulnerable range="lt">2.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dnsmasq is a lightweight and easily-configurable DNS forwarder and
+    DHCP server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dnsmasq does not properly detect that DNS replies received do not
+    correspond to any DNS query that was sent. Rob Holland of the Gentoo
+    Linux Security Audit team also discovered two off-by-one buffer
+    overflows that could crash DHCP lease files parsing.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could send malicious answers to insert arbitrary
+    DNS data into the Dnsmasq cache. These attacks would in turn help an
+    attacker to perform man-in-the-middle and site impersonation attacks.
+    The buffer overflows might allow an attacker on the local network to
+    crash Dnsmasq upon restart.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dnsmasq users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/dnsmasq-2.22&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.thekelleys.org.uk/dnsmasq/CHANGELOG">Dnsmasq Changelog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 28 Mar 2005 07:00:46 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Mar 2005 13:54:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  4 Apr 2005 11:10:45 +0000">
+    koon
+  </metadata>
+</glsa>

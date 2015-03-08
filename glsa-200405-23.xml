@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-23">
+  <title>Heimdal: Kerberos 4 buffer overflow in kadmin</title>
+  <synopsis>
+    A possible buffer overflow in the Kerberos 4 component of Heimdal has been
+    discovered.
+  </synopsis>
+  <product type="ebuild">Heimdal</product>
+  <announced>May 27, 2004</announced>
+  <revised>May 27, 2004: 01</revised>
+  <bug>50208</bug>
+  <access>remote </access>
+  <affected>
+    <package name="app-crypt/heimdal" auto="yes" arch="*">
+      <unaffected range="ge">0.6.2</unaffected>
+      <vulnerable range="lt">0.6.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heimdal is a free implementation of Kerberos.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow was discovered in kadmind, a server for administrative
+    access to the Kerberos database.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a specially formatted message to kadmind, a remote attacker may
+    be able to crash kadmind causing a denial of service, or execute arbitrary
+    code with the permissions of the kadmind process.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    For a temporary workaround, providing you do not require Kerberos 4
+    support, you may turn off Kerberos 4 kadmin by running kadmind with the
+    --no-kerberos4 option.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Heimdal users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-crypt/heimdal-0.6.2"
+    # emerge ">=app-crypt/heimdal-0.6.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.pdc.kth.se/heimdal/advisory/2004-05-06/">Heimdal 0.6.2 Release Notice</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0434">CAN-2004-0434</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

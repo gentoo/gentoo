@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-06">
+  <title>Ethereal: Buffer overflow in OSPF protocol dissector</title>
+  <synopsis>
+    Ethereal is missing bounds checking in the OSPF protocol dissector that
+    could lead to abnormal program termination or the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">Ethereal</product>
+  <announced>December 14, 2005</announced>
+  <revised>December 14, 2005: 01</revised>
+  <bug>115030</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.13-r2</unaffected>
+      <vulnerable range="lt">0.10.13-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a feature-rich network protocol analyzer. It provides
+    protocol analyzers for various network flows, including one for Open
+    Shortest Path First (OSPF) Interior Gateway Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDEFENSE reported a possible overflow due to the lack of bounds
+    checking in the dissect_ospf_v3_address_prefix() function, part of the
+    OSPF protocol dissector.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker might be able to craft a malicious network flow that
+    would crash Ethereal. It may be possible, though unlikely, to exploit
+    this flaw to execute arbitrary code with the permissions of the user
+    running Ethereal, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ethereal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.13-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3651">CVE-2005-3651</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=349&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 12 Dec 2005 15:18:48 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 Dec 2005 12:23:23 +0000">
+    koon
+  </metadata>
+</glsa>

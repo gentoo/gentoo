@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-01">
+  <title>wv library: Multiple integer overflows</title>
+  <synopsis>
+    The wv library is vulnerable to multiple integer overflows which could lead
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">wv library</product>
+  <announced>December 07, 2006</announced>
+  <revised>December 07, 2006: 01</revised>
+  <bug>153800</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/wv" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3-r1</unaffected>
+      <vulnerable range="lt">1.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    wv is a library for conversion of MS Word DOC and RTF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    The wv library fails to do proper arithmetic checks in multiple places,
+    possibly leading to integer overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious file that, when handled with the wv
+    library, could lead to the execution of arbitrary code with the
+    permissions of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All wv library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/wv-1.2.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4513">CVE-2006-4513</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 24 Nov 2006 19:24:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 19:46:34 +0000">
+    jaervosz
+  </metadata>
+</glsa>

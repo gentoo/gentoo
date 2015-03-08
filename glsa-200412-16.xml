@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-16">
+  <title>kdelibs, kdebase: Multiple vulnerabilities</title>
+  <synopsis>
+    kdelibs and kdebase contain a flaw allowing password disclosure when
+    creating a link to a remote file. Furthermore Konqueror is vulnerable to
+    window injection.
+  </synopsis>
+  <product type="ebuild">KDE</product>
+  <announced>December 19, 2004</announced>
+  <revised>December 19, 2004: 01</revised>
+  <bug>72804</bug>
+  <bug>73869</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="rge">3.2.3-r4</unaffected>
+      <unaffected range="rge">3.3.1-r2</unaffected>
+      <unaffected range="ge">3.3.2-r1</unaffected>
+      <vulnerable range="lt">3.3.2-r1</vulnerable>
+    </package>
+    <package name="kde-base/kdebase" auto="yes" arch="*">
+      <unaffected range="rge">3.2.3-r3</unaffected>
+      <unaffected range="rge">3.3.1-r2</unaffected>
+      <vulnerable range="lt">3.3.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. The KDE core libraries (kdebase and
+    kdelibs) provide native support for many protocols. Konqueror is the
+    KDE web browser and filemanager.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel Fabian discovered that the KDE core libraries contain a
+    flaw allowing password disclosure by making a link to a remote file.
+    When creating this link, the resulting URL contains authentication
+    credentials used to access the remote file (CAN 2004-1171).
+    </p>
+    <p>
+    The Konqueror webbrowser allows websites to load webpages into a window
+    or tab currently used by another website (CAN-2004-1158).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious user could have access to the authentication
+    credentials of other users depending on the file permissions.
+    </p>
+    <p>
+    A malicious website could use the window injection vulnerability to
+    load content in a window apparently belonging to another website.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdelibs-3.2.3-r4&quot;</code>
+    <p>
+    All kdebase users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdebase-3.2.3-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kde.org/info/security/advisory-20041209-1.txt">KDE Security Advisory: plain text password exposure</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1171">CAN 2004-1171</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20041213-1.txt">KDE Security Advisory: Konqueror Window Injection Vulnerability</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1158">CAN 2004-1158</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  9 Dec 2004 20:24:54 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 14:04:36 +0000">
+    koon
+  </metadata>
+</glsa>

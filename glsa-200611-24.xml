@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-24">
+  <title>LHa: Multiple vulnerabilities</title>
+  <synopsis>
+    LHa is affected by several vulnerabilities including the remote execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">lha</product>
+  <announced>November 28, 2006</announced>
+  <revised>November 28, 2006: 01</revised>
+  <bug>151252</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/lha" auto="yes" arch="*">
+      <unaffected range="ge">114i-r6</unaffected>
+      <vulnerable range="lt">114i-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LHa is a console-based program for packing and unpacking LHarc
+    archives.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team discovered several
+    vulnerabilities in the LZH decompression component used by LHa. The
+    make_table function of unlzh.c contains an array index error and a
+    buffer overflow vulnerability. The build_tree function of unpack.c
+    contains a buffer underflow vulnerability. Additionally, unlzh.c
+    contains a code that could run in an infinite loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to uncompress a specially crafted archive, a remote
+    attacker could cause a Denial of Service by CPU consumption or execute
+    arbitrary code with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LHa users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/lha-114i-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4335">CVE-2006-4335</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4336">CVE-2006-4336</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4337">CVE-2006-4337</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4338">CVE-2006-4338</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 24 Nov 2006 21:52:23 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 27 Nov 2006 17:02:28 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 27 Nov 2006 17:07:24 +0000">
+    falco
+  </metadata>
+</glsa>

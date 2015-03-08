@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-09">
+  <title>NX 2.1: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    NX in the 2.1 series uses XFree86 4.3 code which is prone to an integer
+    overflow vulnerability.
+  </synopsis>
+  <product type="ebuild">nx, nxnode</product>
+  <announced>October 09, 2007</announced>
+  <revised>October 09, 2007: 01</revised>
+  <bug>192712</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/nx" auto="yes" arch="*">
+      <unaffected range="ge">3.0.0</unaffected>
+      <vulnerable range="lt">3.0.0</vulnerable>
+    </package>
+    <package name="net-misc/nxnode" auto="yes" arch="*">
+      <unaffected range="ge">3.0.0-r3</unaffected>
+      <vulnerable range="lt">3.0.0-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NoMachine's NX establishes remote connections to X11 desktops over
+    small bandwidth links. NX and NX Node are the compression core
+    libraries, whereas NX is used by FreeNX and NX Node by the binary-only
+    NX servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans reported an integer overflow within the FreeType PCF font
+    file parser (CVE-2006-1861). NX and NX Node are vulnerable to this due
+    to shipping XFree86 4.3.0, which includes the vulnerable FreeType code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these integer overflows by enticing a
+    user to load a specially crafted PCF font file which might lead to the
+    execution of arbitrary code with the privileges of the user on the
+    machine running the NX server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nx-3.0.0&quot;</code>
+    <p>
+    All NX Node users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nxnode-3.0.0-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1861">CVE-2006-1861</uri>
+    <uri link="/security/en/glsa/glsa-200607-02.xml">GLSA 200607-02</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Sep 2007 13:00:55 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Sep 2007 13:01:53 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 16:18:36 +0000">
+    rbu
+  </metadata>
+</glsa>

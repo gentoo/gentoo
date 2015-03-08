@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-04">
+  <title>Netpbm: Arbitrary code execution in pstopnm</title>
+  <synopsis>
+    The pstopnm utility, part of the Netpbm tools, contains a vulnerability
+    which can potentially result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Netpbm</product>
+  <announced>August 05, 2005</announced>
+  <revised>May 28, 2009: 06</revised>
+  <bug>100398</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/netpbm" auto="yes" arch="*">
+      <unaffected range="ge">10.28</unaffected>
+      <unaffected range="rge">10.26.32</unaffected>
+      <unaffected range="rge">10.26.33</unaffected>
+      <unaffected range="rge">10.26.42</unaffected>
+      <unaffected range="rge">10.26.43</unaffected>
+      <unaffected range="rge">10.26.44</unaffected>
+      <unaffected range="rge">10.26.48</unaffected>
+      <unaffected range="rge">10.26.49</unaffected>
+      <unaffected range="rge">10.26.59</unaffected>
+      <unaffected range="rge">10.26.61</unaffected>
+      <vulnerable range="lt">10.28</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Netpbm is a package of 220 graphics programs and a programming
+    libraries, including pstopnm. pstopnm is a tool which converts
+    PostScript files to PNM image files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Max Vozeler reported that pstopnm calls the GhostScript interpreter on
+    untrusted PostScript files without specifying the -dSAFER option, to
+    convert a PostScript file into a PBM, PGM, or PNM file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious PostScript file and entice a user
+    to run pstopnm on it, resulting in the execution of arbitrary commands
+    with the permissions of the user running pstopnm.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Netpbm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose media-libs/netpbm</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2471">CAN-2005-2471</uri>
+    <uri link="http://secunia.com/advisories/16184/">Secunia Advisory SA16184</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 02 Aug 2005 10:10:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 02 Aug 2005 11:24:11 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 05 Aug 2005 10:42:23 +0000">
+    koon
+  </metadata>
+</glsa>

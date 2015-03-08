@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-12">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Wireshark, allowing for
+    the remote execution of arbitrary code and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>August 16, 2007</announced>
+  <revised>August 16, 2007: 01</revised>
+  <bug>183520</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">0.99.6</unaffected>
+      <vulnerable range="lt">0.99.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a network protocol analyzer with a graphical front-end.
+    </p>
+  </background>
+  <description>
+    <p>
+    Wireshark doesn't properly handle chunked encoding in HTTP responses
+    (CVE-2007-3389), iSeries capture files (CVE-2007-3390), certain types
+    of DCP ETSI packets (CVE-2007-3391), and SSL or MMS packets
+    (CVE-2007-3392). An off-by-one error has been discovered in the
+    DHCP/BOOTP dissector when handling DHCP-over-DOCSIS packets
+    (CVE-2007-3393).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted packets on a network
+    being monitored with Wireshark, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running Wireshark which
+    might be the root user, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    In order to prevent root compromise, take network captures with tcpdump
+    and analyze them running Wireshark as a least privileged user.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-0.99.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3389">CVE-2007-3389</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3390">CVE-2007-3390</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3391">CVE-2007-3391</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3392">CVE-2007-3392</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3393">CVE-2007-3393</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 24 Jul 2007 10:55:17 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Jul 2007 05:32:32 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 12 Aug 2007 20:22:11 +0000">
+    p-y
+  </metadata>
+</glsa>

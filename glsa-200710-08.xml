@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-08">
+  <title>KOffice, KWord, KPDF, KDE Graphics Libraries: Stack-based buffer overflow</title>
+  <synopsis>
+    KPDF includes code from xpdf that is vulnerable to a stack-based buffer
+    overflow.
+  </synopsis>
+  <product type="ebuild">koffice, kword, kdegraphics, kpdf</product>
+  <announced>October 09, 2007</announced>
+  <revised>October 09, 2007: 01</revised>
+  <bug>187139</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/koffice" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r1</unaffected>
+      <vulnerable range="lt">1.6.3-r1</vulnerable>
+    </package>
+    <package name="app-office/kword" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r1</unaffected>
+      <vulnerable range="lt">1.6.3-r1</vulnerable>
+    </package>
+    <package name="kde-base/kdegraphics" auto="yes" arch="*">
+      <unaffected range="ge">3.5.7-r1</unaffected>
+      <vulnerable range="lt">3.5.7-r1</vulnerable>
+    </package>
+    <package name="kde-base/kpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.5.7-r1</unaffected>
+      <vulnerable range="lt">3.5.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KOffice is an integrated office suite for KDE. KWord is the KOffice
+    word processor. KPDF is a KDE-based PDF viewer included in the
+    kdegraphics package.
+    </p>
+  </background>
+  <description>
+    <p>
+    KPDF includes code from xpdf that is vulnerable to an integer overflow
+    in the StreamPredictor::StreamPredictor() function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    file in KWord or KPDF that would exploit the integer overflow to cause
+    a stack-based buffer overflow in the StreamPredictor::getNextLine()
+    function, possibly resulting in the execution of arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KOffice users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/koffice-1.6.3-r1&quot;</code>
+    <p>
+    All KWord users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/kword-1.6.3-r1&quot;</code>
+    <p>
+    All KDE Graphics Libraries users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.5.7-r1&quot;</code>
+    <p>
+    All KPDF users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kpdf-3.5.7-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Sep 2007 22:26:21 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 08 Sep 2007 23:59:58 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 16:13:55 +0000">
+    aetius
+  </metadata>
+</glsa>

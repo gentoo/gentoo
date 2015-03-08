@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-15">
+  <title>phpMyAdmin: SQL injection vulnerability</title>
+  <synopsis>
+    A SQL injection vulnerability has been discovered in phpMyAdmin.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>March 09, 2008</announced>
+  <revised>March 09, 2008: 01</revised>
+  <bug>212000</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.11.5</unaffected>
+      <vulnerable range="lt">2.11.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a free web-based database administration tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Richard Cunningham reported that phpMyAdmin uses the $_REQUEST variable
+    of $_GET and $_POST as a source for its parameters.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could entice a user to visit a malicious web application
+    that sets an "sql_query" cookie and is hosted on the same domain as
+    phpMyAdmin, and thereby conduct SQL injection attacks with the
+    privileges of the user authenticating in phpMyAdmin afterwards.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.11.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1149">CVE-2008-1149</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 05 Mar 2008 09:53:35 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Mar 2008 08:44:33 +0000">
+    psychoschlumpf
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Mar 2008 10:05:31 +0000">
+    p-y
+  </metadata>
+</glsa>

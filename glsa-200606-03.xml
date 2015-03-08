@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-03">
+  <title>Dia: Format string vulnerabilities</title>
+  <synopsis>
+    Format string vulnerabilities in Dia may lead to the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">dia</product>
+  <announced>June 07, 2006</announced>
+  <revised>June 07, 2006: 01</revised>
+  <bug>133699</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/dia" auto="yes" arch="*">
+      <unaffected range="ge">0.95.1</unaffected>
+      <vulnerable range="lt">0.95.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dia is a GTK+ based diagram creation program.
+    </p>
+  </background>
+  <description>
+    <p>
+    KaDaL-X discovered a format string error within the handling of
+    filenames. Hans de Goede also discovered several other format
+    string errors in the processing of dia files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted file, a remote
+    attacker could exploit these vulnerabilities to execute arbitrary code
+    with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dia users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/dia-0.95.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2453">CVE-2006-2453</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2480">CVE-2006-2480</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 30 May 2006 16:11:11 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 30 May 2006 23:25:33 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:20:31 +0000">
+    falco
+  </metadata>
+</glsa>

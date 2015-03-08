@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-37">
+  <title>QEMU: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which could result in execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>December 24, 2014</announced>
+  <revised>December 24, 2014: 1</revised>
+  <bug>528922</bug>
+  <bug>529030</bug>
+  <bug>531666</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">2.1.2-r2</unaffected>
+      <vulnerable range="lt">2.1.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker may be able to execute arbitrary code,
+      cause a Denial of Service condition, obtain sensitive information, or
+      bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-2.1.2-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3689">CVE-2014-3689</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7840">CVE-2014-7840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8106">CVE-2014-8106</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Dec 2014 03:02:15 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 20:51:55 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

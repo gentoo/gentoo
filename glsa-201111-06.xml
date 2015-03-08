@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-06">
+  <title>MaraDNS: Arbitrary code execution</title>
+  <synopsis>A buffer overflow vulnerability in MaraDNS allows remote attackers
+    to execute arbitrary code or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">MaraDNS</product>
+  <announced>November 20, 2011</announced>
+  <revised>November 20, 2011: 1</revised>
+  <bug>352569</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/maradns" auto="yes" arch="*">
+      <unaffected range="ge">1.4.06</unaffected>
+      <vulnerable range="lt">1.4.06</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MaraDNS is a proxy DNS server with permanent caching.</p>
+  </background>
+  <description>
+    <p>A long DNS hostname with a large number of labels could trigger a buffer
+      overflow in the compress_add_dlabel_points() function of dns/Compress.c. 
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote unauthenticated attacker could execute arbitrary code or cause
+      a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MaraDNS users should upgrade to the latest stable version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/maradns-1.4.06"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since February 12, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0520">CVE-2011-0520</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:03 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 20 Nov 2011 17:56:41 +0000" tag="submitter">ackle</metadata>
+</glsa>

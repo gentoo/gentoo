@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-10">
+  <title>Evince: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Evince, allowing remote
+    attackers to execute arbitrary code or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">evince</product>
+  <announced>November 20, 2011</announced>
+  <revised>November 20, 2011: 1</revised>
+  <bug>350681</bug>
+  <bug>363447</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/evince" auto="yes" arch="*">
+      <unaffected range="ge">2.32.0-r2</unaffected>
+      <vulnerable range="lt">2.32.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Evince is a document viewer for multiple document formats, including
+      PostScript.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Evince. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to load a DVI file with a
+      specially crafted font, resulting in the execution of arbitrary code with
+      the privileges of the user running the application or a Denial of
+      Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Evince users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/evince-2.32.0-r2"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since April 26, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2640">CVE-2010-2640</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2641">CVE-2010-2641</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2642">CVE-2010-2642</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2643">CVE-2010-2643</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:07 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 20 Nov 2011 17:56:53 +0000" tag="submitter">ackle</metadata>
+</glsa>

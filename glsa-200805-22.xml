@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-22">
+  <title>MPlayer: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    An integer overflow vulnerability in MPlayer may allow for the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>May 29, 2008</announced>
+  <revised>May 29, 2008: 01</revised>
+  <bug>215006</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_rc2_p26753</unaffected>
+      <vulnerable range="lt">1.0_rc2_p26753</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player including support for a wide range of audio
+    and video formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    k`sOSe reported an integer overflow vulnerability in the
+    sdpplin_parse() function in the file stream/realrtsp/sdpplin.c, which
+    can be exploited to overwrite arbitrary memory regions via an overly
+    large "StreamCount" SDP parameter.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted media
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc2_p26753&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1558">CVE-2008-1558</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 22 May 2008 17:37:55 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 May 2008 21:32:21 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 28 May 2008 13:57:42 +0000">
+    p-y
+  </metadata>
+</glsa>

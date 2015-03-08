@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-17">
+  <title>Pidgin: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in Pidgin might allow remote attackers to execute
+    arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>September 27, 2012</announced>
+  <revised>September 27, 2012: 1</revised>
+  <bug>425076</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.10.6</unaffected>
+      <vulnerable range="lt">2.10.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pidgin is a GTK Instant Messenger client for a variety of instant
+      messaging protocols. libpurple is the core library for Pidgin.
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow vulnerability has been found in the MXit
+      protocol plug-in for libpurple.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the Pidgin process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pidgin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.10.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3374">CVE-2012-3374</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Sep 2012 13:28:52 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 11:52:16 +0000">ackle</metadata>
+</glsa>

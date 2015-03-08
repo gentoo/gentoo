@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200811-01">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Opera, allowing for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>November 03, 2008</announced>
+  <revised>November 03, 2008: 01</revised>
+  <bug>235298</bug>
+  <bug>240500</bug>
+  <bug>243060</bug>
+  <bug>244980</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.62</unaffected>
+      <vulnerable range="lt">9.62</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a fast web browser that is available free of charge.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Opera:
+    </p>
+    <ul>
+    <li>Opera does not restrict the ability of a framed web page to change
+    the address associated with a different frame (CVE-2008-4195).</li>
+    <li>Chris Weber (Casaba Security) discovered a Cross-site scripting
+    vulnerability (CVE-2008-4196).</li>
+    <li>Michael A. Puls II discovered
+    that Opera can produce argument strings that contain uninitialized
+    memory, when processing custom shortcut and menu commands
+    (CVE-2008-4197).</li>
+    <li>Lars Kleinschmidt discovered that Opera, when
+    rendering an HTTP page that has loaded an HTTPS page into a frame,
+    displays a padlock icon and offers a security information dialog
+    reporting a secure connection (CVE-2008-4198).</li>
+    <li>Opera does not
+    prevent use of links from web pages to feed source files on the local
+    disk (CVE-2008-4199).</li>
+    <li>Opera does not ensure that the address
+    field of a news feed represents the feed's actual URL
+    (CVE-2008-4200).</li>
+    <li>Opera does not check the CRL override upon
+    encountering a certificate that lacks a CRL (CVE-2008-4292).</li>
+    <li>Chris (Matasano Security) reported that Opera may crash if it is
+    redirected by a malicious page to a specially crafted address
+    (CVE-2008-4694).</li>
+    <li>Nate McFeters reported that Opera runs Java
+    applets in the context of the local machine, if that applet has been
+    cached and a page can predict the cache path for that applet and load
+    it from the cache (CVE-2008-4695).</li>
+    <li>Roberto Suggi Liverani
+    (Security-Assessment.com) reported that Opera's History Search results
+    does not escape certain constructs correctly, allowing for the
+    injection of scripts into the page (CVE-2008-4696).</li>
+    <li>David
+    Bloom reported that Opera's Fast Forward feature incorrectly executes
+    scripts from a page held in a frame in the outermost page instead of
+    the page the JavaScript URL was located (CVE-2008-4697).</li>
+    <li>David
+    Bloom reported that Opera does not block some scripts when previewing a
+    news feed (CVE-2008-4698).</li>
+    <li>Opera does not correctly sanitize
+    content when certain parameters are passed to Opera's History Search,
+    allowing scripts to be injected into the History Search results page
+    (CVE-2008-4794).</li>
+    <li>Opera's links panel incorrectly causes
+    scripts from a page held in a frame to be executed in the outermost
+    page instead of the page where the URL was located
+    (CVE-2008-4795).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilties allow remote attackers to execute arbitrary code,
+    to run scripts injected into Opera's History Search with elevated
+    privileges, to inject arbitrary web script or HTML into web pages, to
+    manipulate the address bar, to change Opera's preferences, to determine
+    the validity of local filenames, to read cache files, browsing history,
+    and subscribed feeds or to conduct other attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.62&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4195">CVE-2008-4195</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4196">CVE-2008-4196</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4197">CVE-2008-4197</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4198">CVE-2008-4198</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4199">CVE-2008-4199</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4200">CVE-2008-4200</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4292">CVE-2008-4292</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4694">CVE-2008-4694</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4695">CVE-2008-4695</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4696">CVE-2008-4696</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4697">CVE-2008-4697</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4698">CVE-2008-4698</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4794">CVE-2008-4794</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4795">CVE-2008-4795</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 13 Oct 2008 21:25:07 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 03 Nov 2008 18:39:54 +0000">
+    keytoaster
+  </metadata>
+</glsa>

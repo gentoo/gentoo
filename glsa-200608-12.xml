@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-12">
+  <title>x11vnc: Authentication bypass in included LibVNCServer code</title>
+  <synopsis>
+    VNC servers created with x11vnc accept insecure protocol types, even when
+    the server does not offer it, resulting in the possibility of unauthorized
+    access to the server.
+  </synopsis>
+  <product type="ebuild">x11vnc</product>
+  <announced>August 07, 2006</announced>
+  <revised>August 07, 2006: 01</revised>
+  <bug>142559</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-misc/x11vnc" auto="yes" arch="*">
+      <unaffected range="ge">0.8.1</unaffected>
+      <vulnerable range="lt">0.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    x11vnc provides VNC servers for X displays.
+    </p>
+  </background>
+  <description>
+    <p>
+    x11vnc includes vulnerable LibVNCServer code, which fails to properly
+    validate protocol types effectively letting users decide what protocol
+    to use, such as "Type 1 - None" (GLSA-200608-05). x11vnc will accept
+    this security type, even if it is not offered by the server.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability to gain unauthorized
+    access with the privileges of the user running the VNC server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All x11vnc users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-misc/x11vnc-0.8.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2450">CVE-2006-2450</uri>
+    <uri link="/security/en/glsa/glsa-200608-05.xml">GLSA-200608-05</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 05 Aug 2006 07:18:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 05 Aug 2006 16:44:29 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 05 Aug 2006 17:17:11 +0000">
+    falco
+  </metadata>
+</glsa>

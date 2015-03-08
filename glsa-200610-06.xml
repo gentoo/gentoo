@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-06">
+  <title>Mozilla Network Security Service (NSS): RSA signature forgery</title>
+  <synopsis>
+    NSS fails to properly validate PKCS #1 v1.5 signatures.
+  </synopsis>
+  <product type="ebuild">nss</product>
+  <announced>October 17, 2006</announced>
+  <revised>October 17, 2006: 01</revised>
+  <bug>148283</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.11.3</unaffected>
+      <vulnerable range="lt">3.11.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Network Security Service is a library implementing security
+    features like SSL v.2/v.3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS #12,
+    S/MIME and X.509 certificates.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel Bleichenbacher discovered that it might be possible to forge
+    signatures signed by RSA keys with the exponent of 3. This affects a
+    number of RSA signature implementations, including Mozilla's NSS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Since several Certificate Authorities (CAs) are using an exponent of 3
+    it might be possible for an attacker to create a key with a false CA
+    signature. This impacts any software using the NSS library, like the
+    Mozilla products Firefox, Thunderbird and Seamonkey.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NSS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/nss-3.11.3&quot;</code>
+    <p>
+    Note: As usual after updating a library, you should run
+    'revdep-rebuild' (from the app-portage/gentoolkit package) to ensure
+    that all applications linked to it are properly rebuilt.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4339">CVE-2006-4339</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4340">CVE-2006-4340</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 25 Sep 2006 12:57:17 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Oct 2006 18:27:05 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 08 Oct 2006 19:45:16 +0000">
+    frilled
+  </metadata>
+</glsa>

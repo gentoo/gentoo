@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-25">
+  <title>Apache HTTP Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Apache HTTP Server.</synopsis>
+  <product type="ebuild">apache</product>
+  <announced>June 24, 2012</announced>
+  <revised>June 24, 2012: 1</revised>
+  <bug>308049</bug>
+  <bug>330195</bug>
+  <bug>380475</bug>
+  <bug>382971</bug>
+  <bug>385859</bug>
+  <bug>389353</bug>
+  <bug>392189</bug>
+  <bug>398761</bug>
+  <bug>401081</bug>
+  <bug>412481</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.2.22-r1</unaffected>
+      <vulnerable range="lt">2.2.22-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache HTTP Server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache HTTP Server.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker might obtain sensitive information, gain privileges,
+      send requests to unintended servers behind proxies, bypass certain
+      security restrictions, obtain the values of HTTPOnly cookies, or cause a
+      Denial of Service in various ways.
+    </p>
+    
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache HTTP Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.22-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0408">CVE-2010-0408</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0434">CVE-2010-0434</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1452">CVE-2010-1452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2791">CVE-2010-2791</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3192">CVE-2011-3192</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3348">CVE-2011-3348</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3368">CVE-2011-3368</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3607">CVE-2011-3607</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4317">CVE-2011-4317</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0021">CVE-2012-0021</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0031">CVE-2012-0031</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0053">CVE-2012-0053</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0883">CVE-2012-0883</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:41 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Sun, 24 Jun 2012 14:28:33 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

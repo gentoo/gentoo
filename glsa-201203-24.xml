@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-24">
+  <title>Chromium, V8: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium and V8,
+    some of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium v8</product>
+  <announced>March 30, 2012</announced>
+  <revised>March 30, 2012: 1</revised>
+  <bug>410045</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">18.0.1025.142</unaffected>
+      <vulnerable range="lt">18.0.1025.142</vulnerable>
+    </package>
+    <package name="dev-lang/v8" auto="yes" arch="*">
+      <unaffected range="ge">3.8.9.16</unaffected>
+      <vulnerable range="lt">3.8.9.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project. V8 is Google's open
+      source JavaScript engine. SPDY is an experimental networking protocol.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and V8. Please
+      review the CVE identifiers and release notes referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted web site or JavaScript program using Chromium or V8, possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process, or a Denial of Service condition.
+    </p>
+    
+    <p>The attacker could also entice a user to open a specially crafted web
+      site using Chromium, possibly resulting in cross-site scripting (XSS), or
+      an unspecified SPDY certificate checking error.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-18.0.1025.142"
+    </code>
+    
+    <p>All V8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/v8-3.8.9.16"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3057">
+      CVE-2011-3057
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3058">
+      CVE-2011-3058
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3059">
+      CVE-2011-3059
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3060">
+      CVE-2011-3060
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3061">
+      CVE-2011-3061
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3062">
+      CVE-2011-3062
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3063">
+      CVE-2011-3063
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3064">
+      CVE-2011-3064
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3065">
+      CVE-2011-3065
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/03/stable-channel-release-and-beta-channel.html">
+      Release Notes 18.0.1025.142
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 30 Mar 2012 07:32:06 +0000" tag="requester">
+    phajdan.jr
+  </metadata>
+  <metadata timestamp="Fri, 30 Mar 2012 22:22:41 +0000" tag="submitter">
+    phajdan.jr
+  </metadata>
+</glsa>

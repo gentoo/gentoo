@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-19">
+  <title>PowerDNS: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities have been discovered in PowerDNS, possibly leading to a
+    Denial of Service and easing cache poisoning attacks.
+  </synopsis>
+  <product type="ebuild">pdns</product>
+  <announced>December 19, 2008</announced>
+  <revised>December 19, 2008: 01</revised>
+  <bug>234032</bug>
+  <bug>247079</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdns" auto="yes" arch="*">
+      <unaffected range="ge">2.9.21.2</unaffected>
+      <vulnerable range="lt">2.9.21.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The PowerDNS Nameserver is an authoritative-only nameserver which uses
+    a flexible backend architecture.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel Drown reported an error when receiving a HINFO CH query
+    (CVE-2008-5277). Brian J. Dowling of Simplicity Communications
+    discovered a previously unknown security implication of the PowerDNS
+    behavior to not respond to certain queries it considers malformed
+    (CVE-2008-3337).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted queries to cause a
+    Denial of Service. The second vulnerability in itself does not pose a
+    security risk to PowerDNS Nameserver. However, not answering a query
+    for an invalid DNS record within a valid domain allows for a larger
+    spoofing window on third-party nameservers for domains being hosted by
+    PowerDNS Nameserver itself.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PowerDNS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdns-2.9.21.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3337">CVE-2008-3337</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5277">CVE-2008-5277</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 06 Sep 2008 21:05:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 06 Sep 2008 21:06:12 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 10 Sep 2008 17:38:51 +0000">
+    jaervosz
+  </metadata>
+</glsa>

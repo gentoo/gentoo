@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-19">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    PHP contains several vulnerabilities including buffer and integer overflows
+    which could under certain conditions lead to the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>May 26, 2007</announced>
+  <revised>March 29, 2008: 02</revised>
+  <bug>169372</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="rge">4.4.7</unaffected>
+      <unaffected range="rge">4.4.8_pre20070816</unaffected>
+      <unaffected range="ge">5.2.2</unaffected>
+      <vulnerable range="lt">5.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a widely-used general-purpose scripting language that is
+    especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were found in PHP, most of them during the
+    Month Of PHP Bugs (MOPB) by Stefan Esser. The most severe of these
+    vulnerabilities are integer overflows in wbmp.c from the GD library
+    (CVE-2007-1001) and in the substr_compare() PHP 5 function
+    (CVE-2007-1375). Ilia Alshanetsky also reported a buffer overflow in
+    the make_http_soap_request() and in the user_filter_factory_create()
+    functions (CVE-2007-2510, CVE-2007-2511), and Stanislav Malyshev
+    discovered another buffer overflow in the bundled XMLRPC library
+    (CVE-2007-1864). Additionally, the session_regenerate_id() and the
+    array_user_key_compare() functions contain a double-free vulnerability
+    (CVE-2007-1484, CVE-2007-1521). Finally, there exist implementation
+    errors in the Zend engine, in the mb_parse_str(), the unserialize() and
+    the mail() functions and other elements.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Remote attackers might be able to exploit these issues in PHP
+    applications making use of the affected functions, potentially
+    resulting in the execution of arbitrary code, Denial of Service,
+    execution of scripted contents in the context of the affected site,
+    security bypass or information leak.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-5.2.2&quot;</code>
+    <p>
+    All PHP 4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-4.4.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1001">CVE-2007-1001</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1285">CVE-2007-1285</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1286">CVE-2007-1286</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1484">CVE-2007-1484</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1521">CVE-2007-1521</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1583">CVE-2007-1583</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1700">CVE-2007-1700</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1701">CVE-2007-1701</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1711">CVE-2007-1711</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1717">CVE-2007-1717</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1718">CVE-2007-1718</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1864">CVE-2007-1864</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1900">CVE-2007-1900</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2509">CVE-2007-2509</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2510">CVE-2007-2510</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2511">CVE-2007-2511</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 May 2007 07:27:54 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 May 2007 07:28:08 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 May 2007 21:15:17 +0000">
+    falco
+  </metadata>
+</glsa>

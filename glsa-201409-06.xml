@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201409-06">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which can allow remote attackers to cause Denial of Service. 
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>September 19, 2014</announced>
+  <revised>September 19, 2014: 1</revised>
+  <bug>522484</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">37.0.2062.120</unaffected>
+      <vulnerable range="lt">37.0.2062.120</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition or
+      possibly have other unspecified impact by leveraging improper handling of
+      render-tree inconsistencies.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-37.0.2062.120"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3178">CVE-2014-3178</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3179">CVE-2014-3179</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 11 Sep 2014 17:05:58 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 19 Sep 2014 18:50:35 +0000">K_F</metadata>
+</glsa>

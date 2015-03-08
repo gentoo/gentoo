@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-17">
+  <title>Real VNC: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    The Real VNC client is vulnerable to execution of arbitrary code when
+    connecting to a malicious server.
+  </synopsis>
+  <product type="ebuild">vnc</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>255225</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/vnc" auto="yes" arch="*">
+      <unaffected range="ge">4.1.3</unaffected>
+      <vulnerable range="lt">4.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Real VNC is a remote desktop viewer display system.
+    </p>
+  </background>
+  <description>
+    <p>
+    An unspecified vulnerability has been discovered int the
+    CMsgReader::readRect() function in the VNC Viewer component, related to
+    the encoding type of RFB protocol data.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect to a malicious VNC
+    server, or leverage Man-in-the-Middle attacks, to cause the execution
+    of arbitrary code with the privileges of the user running the VNC
+    viewer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Real VNC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/vnc-4.1.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4770">CVE-2008-4770</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 28 Jan 2009 00:30:00 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 16:35:19 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 16:35:29 +0000">
+    rbu
+  </metadata>
+</glsa>

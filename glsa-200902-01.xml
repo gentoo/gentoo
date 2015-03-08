@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200902-01">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>
+    A vulnerability in sudo may allow for privilege escalation.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>February 06, 2009</announced>
+  <revised>February 06, 2009: 01</revised>
+  <bug>256633</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.7.0</unaffected>
+      <vulnerable range="lt">1.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sudo allows a system administrator to give users the ability to run
+    commands as other users.
+    </p>
+  </background>
+  <description>
+    <p>
+    Harald Koenig discovered that sudo incorrectly handles group
+    specifications in Runas_Alias (and related) entries when a group is
+    specified in the list (using %group syntax, to allow a user to run
+    commands as any member of that group) and the user is already a member
+    of that group.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could possibly run commands as an arbitrary system
+    user (including root).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sudo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.7.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0034">CVE-2009-0034</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Feb 2009 22:59:48 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Feb 2009 23:20:12 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 Feb 2009 22:19:55 +0000">
+    keytoaster
+  </metadata>
+</glsa>

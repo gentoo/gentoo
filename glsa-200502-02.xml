@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-02">
+  <title>UW IMAP: CRAM-MD5 authentication bypass</title>
+  <synopsis>
+    UW IMAP contains a vulnerability in the code handling CRAM-MD5
+    authentication allowing authentication bypass.
+  </synopsis>
+  <product type="ebuild">uw-imap</product>
+  <announced>February 02, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>79874</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/uw-imap" auto="yes" arch="*">
+      <unaffected range="ge">2004b</unaffected>
+      <vulnerable range="le">2004a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    UW IMAP is the University of Washington IMAP toolkit which includes
+    POP3 and IMAP daemons.
+    </p>
+  </background>
+  <description>
+    <p>
+    A logic bug in the code handling CRAM-MD5 authentication incorrectly
+    specifies the condition for successful authentication.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this vulnerability to authenticate as any
+    mail user on a server with CRAM-MD5 authentication enabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable CRAM-MD5 authentication.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All UW IMAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/uw-imap-2004b&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kb.cert.org/vuls/id/702777">US-CERT VU#702777</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0198">CVE-2005-0198</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 31 Jan 2005 15:19:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 31 Jan 2005 21:25:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  1 Feb 2005 20:33:12 +0000">
+    vorlon078
+  </metadata>
+</glsa>

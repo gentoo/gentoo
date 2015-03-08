@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-20">
+  <title>Pioneers: Multiple Denials of Service</title>
+  <synopsis>
+    Two Denial of Service vulnerabilities were discovered in Pioneers.
+  </synopsis>
+  <product type="ebuild">pioneers</product>
+  <announced>November 14, 2007</announced>
+  <revised>November 29, 2007: 04</revised>
+  <bug>198807</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-board/pioneers" auto="yes" arch="*">
+      <unaffected range="ge">0.11.3-r1</unaffected>
+      <vulnerable range="lt">0.11.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pioneers (formerly gnocatan) is a clone of the popular board game "The
+    Settlers of Catan".
+    </p>
+  </background>
+  <description>
+    <p>
+    Roland Clobus discovered that the Pioneers server may free sessions
+    objects while they are still in use, resulting in access to invalid
+    memory zones (CVE-2007-5933). Bas Wijnen discovered an error when
+    closing connections which can lead to a failed assertion
+    (CVE-2007-6010).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted data to the vulnerable
+    server, resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pioneers users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-board/pioneers-0.11.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5933">CVE-2007-5933</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6010">CVE-2007-6010</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Nov 2007 15:28:52 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 Nov 2007 22:49:53 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 23:00:46 +0000">
+    p-y
+  </metadata>
+</glsa>

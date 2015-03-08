@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-04">
+  <title>aria2: Directory traversal</title>
+  <synopsis>
+    A directory traversal vulnerability has been found in aria2.
+  </synopsis>
+  <product type="ebuild">aria2</product>
+  <announced>January 15, 2011</announced>
+  <revised>January 15, 2011: 01</revised>
+  <bug>320975</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/aria2" auto="yes" arch="*">
+      <unaffected range="ge">1.9.3</unaffected>
+      <vulnerable range="lt">1.9.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    aria2 is a download utility with resuming and segmented downloading
+    with HTTP/HTTPS/FTP/BitTorrent support.
+    </p>
+  </background>
+  <description>
+    <p>
+    A directory traversal vulnerability was discovered in aria2.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to download from a specially
+    crafted metalink file, resulting in the creation of arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All aria2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/aria2-1.9.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1512">CVE-2010-1512</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 23 May 2010 20:17:09 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 May 2010 13:19:55 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 18:46:48 +0000">
+    vorlon
+  </metadata>
+</glsa>

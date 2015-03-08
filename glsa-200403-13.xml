@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-13">
+  <title>Remote buffer overflow in MPlayer</title>
+  <synopsis>
+    MPlayer contains a remotely exploitable buffer overflow in the HTTP parser
+    that may allow attackers to run arbitrary code on a user's computer.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>March 31, 2004</announced>
+  <revised>October 11, 2006: 03</revised>
+  <bug>46246</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="x86 and sparc">
+      <unaffected range="ge">0.92-r1</unaffected>
+      <vulnerable range="le">0.92</vulnerable>
+    </package>
+    <package name="media-video/mplayer" auto="yes" arch="amd64">
+      <unaffected range="ge">1.0_pre2-r1</unaffected>
+      <vulnerable range="le">1.0_pre2</vulnerable>
+    </package>
+    <package name="media-video/mplayer" auto="yes" arch="ppc">
+      <unaffected range="ge">1.0_pre3-r3</unaffected>
+      <vulnerable range="le">1.0_pre3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Quote from <uri link="http://mplayerhq.hu">http://mplayerhq.hu</uri>
+    </p>
+    <p>
+    "MPlayer is a movie player for LINUX (runs on many other Unices, and
+    non-x86 CPUs, see the documentation). It plays most MPEG, VOB, AVI,
+    OGG/OGM, VIVO, ASF/WMA/WMV, QT/MOV/MP4, FLI, RM, NuppelVideo, YUV4MPEG,
+    FILM, RoQ, PVA files, supported by many native, XAnim, and Win32 DLL
+    codecs. You can watch VideoCD, SVCD, DVD, 3ivx, DivX 3/4/5 and even WMV
+    movies, too."
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability exists in the MPlayer HTTP parser which may allow an
+    attacker to craft a special HTTP header ("Location:") which will trick
+    MPlayer into executing arbitrary code on the user's computer.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker without privileges may exploit this vulnerability remotely,
+    allowing arbitrary code to be executed in order to gain unauthorized
+    access.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are
+    advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    MPlayer may be upgraded as follows:
+    </p>
+    <p>
+    x86 and SPARC users should:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=media-video/mplayer-0.92-r1&quot;
+    # emerge &quot;&gt;=media-video/mplayer-0.92-r1&quot;</code>
+    <p>
+    AMD64 users should:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=media-video/mplayer-1.0_pre2-r1&quot;
+    # emerge &quot;&gt;=media-video/mplayer-1.0_pre2-r1&quot;</code>
+    <p>
+    PPC users should:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=media-video/mplayer-1.0_pre3-r2&quot;
+    # emerge &quot;&gt;=media-video/mplayer-1.0_pre3-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mplayerhq.hu/homepage/design6/news.html">MPlayerHQ News</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0386">CVE-2004-0386</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:45:24 +0000">
+    DerCorny
+  </metadata>
+</glsa>

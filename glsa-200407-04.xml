@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-04">
+  <title>Pure-FTPd: Potential DoS when maximum connections is reached</title>
+  <synopsis>
+    Pure-FTPd contains a bug potentially allowing a Denial of Service attack
+    when the maximum number of connections is reached.
+  </synopsis>
+  <product type="ebuild">Pure-FTPd</product>
+  <announced>July 04, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>54590</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/pure-ftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.0.18-r1</unaffected>
+      <vulnerable range="le">1.0.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pure-FTPd is a fast, production-quality and standards-compliant FTP
+    server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Pure-FTPd contains a bug in the accept_client function handling the
+    setup of new connections.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    When the maximum number of connections is reached an attacker could
+    exploit this vulnerability to perform a Denial of Service attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pure-FTPd users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-ftp/pure-ftpd-1.0.18-r1&quot;
+    # emerge &quot;&gt;=net-ftp/pure-ftpd-1.0.18-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.pureftpd.org">Pure-FTPd website</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0656">CVE-2004-0656</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

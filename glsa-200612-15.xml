@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-15">
+  <title>McAfee VirusScan: Insecure DT_RPATH</title>
+  <synopsis>
+    McAfee VirusScan for Linux is distributed with an insecure DT_RPATH,
+    potentially allowing a remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlnx</product>
+  <announced>December 14, 2006</announced>
+  <revised>December 14, 2006: 01</revised>
+  <bug>156989</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/vlnx" auto="yes" arch="*">
+      <vulnerable range="le">4510e</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    McAfee VirusScan for Linux is a commercial antivirus solution for
+    Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jakub Moc of Gentoo Linux discovered that McAfee VirusScan was
+    distributed with an insecure DT_RPATH which included the current
+    working directory, rather than $ORIGIN which was probably intended.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could entice a VirusScan user to scan an arbitrary file and
+    execute arbitrary code with the privileges of the VirusScan user by
+    tricking the dynamic loader into loading an untrusted ELF DSO. An
+    automated system, such as a mail scanner, may be subverted to execute
+    arbitrary code with the privileges of the process invoking VirusScan.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not scan files or execute VirusScan from an untrusted working
+    directory.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    As VirusScan verifies that it has not been modified before executing,
+    it is not possible to correct the DT_RPATH. Furthermore, this would
+    violate the license that VirusScan is distributed under. For this
+    reason, the package has been masked in Portage pending the resolution
+    of this issue.
+    </p>
+    <code>
+    # emerge --ask --verbose --unmerge &quot;app-antivirus/vlnx&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6474">CVE-2006-6474</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 18:55:04 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Dec 2006 21:23:39 +0000">
+    falco
+  </metadata>
+</glsa>

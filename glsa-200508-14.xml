@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-14">
+  <title>TikiWiki, eGroupWare: Arbitrary command execution through XML-RPC</title>
+  <synopsis>
+    TikiWiki and eGroupWare both include PHP XML-RPC code vulnerable to
+    arbitrary command execution.
+  </synopsis>
+  <product type="ebuild">tikiwiki egroupware</product>
+  <announced>August 24, 2005</announced>
+  <revised>August 24, 2005: 01</revised>
+  <bug>102374</bug>
+  <bug>102377</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5-r2</unaffected>
+      <vulnerable range="lt">1.8.5-r2</vulnerable>
+    </package>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0.009</unaffected>
+      <vulnerable range="lt">1.0.0.009</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TikiWiki is a full featured Free Software Wiki, CMS and Groupware
+    written in PHP. eGroupWare is a web-based collaboration software suite.
+    Both TikiWiki and eGroupWare include a PHP library to handle XML-RPC
+    requests.
+    </p>
+  </background>
+  <description>
+    <p>
+    The XML-RPC library shipped in TikiWiki and eGroupWare improperly
+    handles XML-RPC requests and responses with malformed nested tags.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to inject
+    arbitrary PHP script code into eval() statements by sending a specially
+    crafted XML document to TikiWiki or eGroupWare.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TikiWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.8.5-r2&quot;</code>
+    <p>
+    All eGroupWare users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/egroupware-1.0.0.009&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Aug 2005 20:59:23 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 23 Aug 2005 23:39:36 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 24 Aug 2005 19:23:08 +0000">
+    koon
+  </metadata>
+</glsa>

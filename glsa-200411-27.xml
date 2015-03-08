@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-27">
+  <title>Fcron: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Fcron can allow a local user to potentially
+    cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">fcron</product>
+  <announced>November 18, 2004</announced>
+  <revised>November 18, 2004: 01</revised>
+  <bug>71311</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/fcron" auto="yes" arch="*">
+      <unaffected range="rge">2.0.2</unaffected>
+      <unaffected range="ge">2.9.5.1</unaffected>
+      <vulnerable range="le">2.9.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Fcron is a command scheduler with extended capabilities over cron
+    and anacron.
+    </p>
+  </background>
+  <description>
+    <p>
+    Due to design errors in the fcronsighup program, Fcron may allow a
+    local user to bypass access restrictions (CAN-2004-1031), view the
+    contents of root owned files (CAN-2004-1030), remove arbitrary files or
+    create empty files (CAN-2004-1032), and send a SIGHUP to any process. A
+    vulnerability also exists in fcrontab which may allow local users to
+    view the contents of fcron.allow and fcron.deny (CAN-2004-1033).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit these vulnerabilities to perform a
+    Denial of Service on the system running Fcron.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Make sure the fcronsighup and fcrontab binaries are only
+    executable by trusted users.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Fcron users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-process/fcron-2.0.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1030">CAN-2004-1030</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1031">CAN-2004-1031</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1032">CAN-2004-1032</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1033">CAN-2004-1033</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 16 Nov 2004 16:18:47 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 16 Nov 2004 19:52:12 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 17 Nov 2004 19:04:05 +0000">
+    lewk
+  </metadata>
+</glsa>

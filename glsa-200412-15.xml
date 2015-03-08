@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-15">
+  <title>Ethereal: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities exist in Ethereal, which may allow an attacker to
+    run arbitrary code, crash the program or perform DoS by CPU and disk
+    utilization.
+  </synopsis>
+  <product type="ebuild">Ethereal</product>
+  <announced>December 19, 2004</announced>
+  <revised>December 19, 2004: 01</revised>
+  <bug>74443</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.8</unaffected>
+      <vulnerable range="lt">0.10.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a feature rich network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are multiple vulnerabilities in versions of Ethereal earlier
+    than 0.10.8, including:
+    </p>
+    <ul>
+    <li>Bug in DICOM dissection
+    discovered by Bing could make Ethereal crash (CAN 2004-1139).</li>
+    <li>An invalid RTP timestamp could make Ethereal hang and create a
+    large temporary file (CAN 2004-1140).</li>
+    <li>The HTTP dissector could
+    access previously-freed memory (CAN 2004-1141).</li>
+    <li>Brian Caswell
+    discovered that an improperly formatted SMB could make Ethereal hang
+    (CAN 2004-1142).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker might be able to use these vulnerabilities to crash
+    Ethereal, perform DoS by CPU and disk space utilization or even execute
+    arbitrary code with the permissions of the user running Ethereal, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    For a temporary workaround you can disable all affected protocol
+    dissectors by selecting Analyze->Enabled Protocols... and deselecting
+    them from the list. However, it is strongly recommended to upgrade to
+    the latest stable version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ethereal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ethereal.com/appnotes/enpa-sa-00016.html">Ethereal enpa-sa-00016</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1139">CAN 2004-1139</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1140">CAN 2004-1140</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1141">CAN 2004-1141</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1142">CAN 2004-1142</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 15 Dec 2004 13:06:28 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 14:01:55 +0000">
+    koon
+  </metadata>
+</glsa>

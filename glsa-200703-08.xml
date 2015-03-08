@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-08">
+  <title>SeaMonkey: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in SeaMonkey, some of which may
+    allow user-assisted arbitrary remote code execution.
+  </synopsis>
+  <product type="ebuild">seamonkey</product>
+  <announced>March 09, 2007</announced>
+  <revised>March 09, 2007: 01</revised>
+  <bug>165555</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1</unaffected>
+      <vulnerable range="lt">1.1.1</vulnerable>
+    </package>
+    <package name="www-client/seamonkey-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1</unaffected>
+      <vulnerable range="lt">1.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The SeaMonkey project is a community effort to deliver
+    production-quality releases of code derived from the application
+    formerly known as the 'Mozilla Application Suite'.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tom Ferris reported a heap-based buffer overflow involving wide SVG
+    stroke widths that affects SeaMonkey. Various researchers reported some
+    errors in the JavaScript engine potentially leading to memory
+    corruption. SeaMonkey also contains minor vulnerabilities involving
+    cache collision and unsafe pop-up restrictions, filtering or CSS
+    rendering under certain conditions. All those vulnerabilities are the
+    same as in GLSA 200703-04 affecting Mozilla Firefox.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to view a specially crafted web page or
+    to read a specially crafted email that will trigger one of the
+    vulnerabilities, possibly leading to the execution of arbitrary code.
+    It is also possible for an attacker to spoof the address bar, steal
+    information through cache collision, bypass the local file protection
+    mechanism with pop-ups, or perform cross-site scripting attacks,
+    leading to the exposure of sensitive information, such as user
+    credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all of these issues, but
+    most of them can be avoided by disabling JavaScript. Note that the
+    execution of JavaScript is disabled by default in the SeaMonkey email
+    client, and enabling it is strongly discouraged.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users upgrading to the following release of SeaMonkey should note that
+    the corresponding Mozilla Firefox upgrade has been found to lose the
+    saved passwords file in some cases. The saved passwords are encrypted
+    and stored in the 'signons.txt' file of ~/.mozilla/ and we advise our
+    users to save that file before performing the upgrade.
+    </p>
+    <p>
+    All SeaMonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.1&quot;</code>
+    <p>
+    All SeaMonkey binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6077">CVE-2006-6077</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0775">CVE-2007-0775</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0776">CVE-2007-0776</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0777">CVE-2007-0777</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0778">CVE-2007-0778</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0779">CVE-2007-0779</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0780">CVE-2007-0780</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0800">CVE-2007-0800</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0801">CVE-2007-0801</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0981">CVE-2007-0981</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0995">CVE-2007-0995</uri>
+    <uri link="https://bugzilla.mozilla.org/show_bug.cgi?id=360493#c366">Mozilla Password Loss Bug</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 04 Mar 2007 00:05:48 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 09 Mar 2007 22:48:00 +0000">
+    falco
+  </metadata>
+</glsa>

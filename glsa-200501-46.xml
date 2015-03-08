@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-46">
+  <title>ClamAV: Multiple issues</title>
+  <synopsis>
+    ClamAV contains two vulnerabilities that could lead to Denial of Service
+    and evasion of virus scanning.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>January 31, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>78656</bug>
+  <bug>79194</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.81</unaffected>
+      <vulnerable range="le">0.80</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is an antivirus toolkit. It includes a multi-threaded daemon and
+    a command line scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    ClamAV fails to properly scan ZIP files with special headers
+    (CAN-2005-0133) and base64 encoded images in URLs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a base64 encoded image file in a URL an attacker could evade
+    virus scanning. By sending a specially-crafted ZIP file an attacker
+    could cause a Denial of Service by crashing the clamd daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.81&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0133">CAN-2005-0133</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0218">CVE-2005-0218</uri>
+    <uri link="http://sourceforge.net/forum/forum.php?forum_id=440649">ClamAV Release Announcement</uri>
+    <uri link="http://secunia.com/advisories/13900/">Secunia SA13900</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 27 Jan 2005 15:17:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Jan 2005 21:31:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Jan 2005 09:07:27 +0000">
+    koon
+  </metadata>
+</glsa>

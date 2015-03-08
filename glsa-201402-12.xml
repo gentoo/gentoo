@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-12">
+  <title>PAM S/Key: Information disclosure</title>
+  <synopsis>PAM S/Key does not clear provided credentials from memory, allowing
+    local attackers to gain access to cleartext credentials.
+  </synopsis>
+  <product type="ebuild">pam_skey</product>
+  <announced>February 09, 2014</announced>
+  <revised>February 09, 2014: 1</revised>
+  <bug>482588</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-auth/pam_skey" auto="yes" arch="*">
+      <unaffected range="ge">1.1.5-r5</unaffected>
+      <vulnerable range="lt">1.1.5-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PAM S/Key is a pluggable authentication module for the OpenBSD
+      Single-key Password system.
+    </p>
+  </background>
+  <description>
+    <p>Ulrich Müller reported that a Gentoo patch to PAM S/Key does not remove
+      credentials provided by the user from memory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker with privileged access could inspect a memory dump to
+      gain access to cleartext credentials provided by users.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PAM S/Key users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-auth/pam_skey-1.1.5-r5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4285">CVE-2013-4285</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 28 Aug 2013 10:10:48 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Sun, 09 Feb 2014 10:46:24 +0000">a3li</metadata>
+</glsa>

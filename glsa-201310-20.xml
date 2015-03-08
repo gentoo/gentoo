@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-20">
+  <title>acpid2: Privilege escalation</title>
+  <synopsis>A vulnerability in acpid2 may allow a local attacker to gain
+    escalated privileges.
+  </synopsis>
+  <product type="ebuild">acpid</product>
+  <announced>October 28, 2013</announced>
+  <revised>October 28, 2013: 1</revised>
+  <bug>434522</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-power/acpid" auto="yes" arch="*">
+      <unaffected range="ge">2.0.17</unaffected>
+      <vulnerable range="lt">2.0.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>acpid2 is a daemon for Advanced Configuration and Power Interface.</p>
+  </background>
+  <description>
+    <p>acpid2 does not properly use the pidof program in powerbtn.sh. </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All acpid2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-power/acpid-2.0.17"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2777">CVE-2011-2777</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 18 Nov 2012 14:31:23 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Oct 2013 16:52:47 +0000">ackle</metadata>
+</glsa>

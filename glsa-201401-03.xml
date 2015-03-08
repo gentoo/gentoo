@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-03">
+  <title>Nagstamon: Information disclosure</title>
+  <synopsis>A vulnerability in Nagstamon could expose user credentials to a
+    remote attacker.
+  </synopsis>
+  <product type="ebuild">nagstamon</product>
+  <announced>January 06, 2014</announced>
+  <revised>January 06, 2014: 2</revised>
+  <bug>476538</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/nagstamon" auto="yes" arch="*">
+      <unaffected range="ge">0.9.11_rc1</unaffected>
+      <vulnerable range="lt">0.9.11_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nagstamon is a Nagios status monitor application.</p>
+  </background>
+  <description>
+    <p>Nagstamon’s automatic request to check for updates includes plaintext
+      username and password information for one of the monitor servers that the
+      Nagstamon instance connects to.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could eavesdrop on this request and gain user
+      credentials for a monitor server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nagstamon users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/nagstamon-0.9.11_rc1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4114">CVE-2013-4114</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:16 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Jan 2014 22:22:38 +0000">
+    creffett
+  </metadata>
+</glsa>

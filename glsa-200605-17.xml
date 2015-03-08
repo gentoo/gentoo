@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-17">
+  <title>libTIFF: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in libTIFF could lead to the execution of
+    arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">libtiff</product>
+  <announced>May 30, 2006</announced>
+  <revised>May 30, 2006: 01</revised>
+  <bug>129675</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">3.8.1</unaffected>
+      <vulnerable range="lt">3.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libTIFF provides support for reading and manipulating TIFF images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities, ranging from integer overflows and NULL
+    pointer dereferences to double frees, were reported in libTIFF.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities by enticing a user
+    to open a specially crafted TIFF image, possibly leading to the
+    execution of arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libTIFF users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.8.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0405">CVE-2006-0405</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2024">CVE-2006-2024</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2025">CVE-2006-2025</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2026">CVE-2006-2026</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 28 May 2006 21:42:59 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 28 May 2006 21:43:06 +0000">
+    DerCorny
+  </metadata>
+</glsa>

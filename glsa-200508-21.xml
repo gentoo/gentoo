@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-21">
+  <title>phpWebSite: Arbitrary command execution through XML-RPC and SQL injection</title>
+  <synopsis>
+    phpWebSite is vulnerable to multiple issues which result in the execution
+    of arbitrary code and SQL injection.
+  </synopsis>
+  <product type="ebuild">phpwebsite</product>
+  <announced>August 31, 2005</announced>
+  <revised>August 31, 2005: 01</revised>
+  <bug>102785</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpwebsite" auto="yes" arch="*">
+      <unaffected range="ge">0.10.2_rc2</unaffected>
+      <vulnerable range="lt">0.10.2_rc2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpWebSite is a web site content management system.
+    </p>
+  </background>
+  <description>
+    <p>
+    phpWebSite uses an XML-RPC library that improperly handles XML-RPC
+    requests and responses with malformed nested tags. Furthermore,
+    "matrix_killer" reported that phpWebSite is vulnerable to an SQL
+    injection attack.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A malicious remote user could exploit this vulnerability to inject
+    arbitrary PHP script code into eval() statements by sending a specially
+    crafted XML document, and also inject SQL commands to access the
+    underlying database directly.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpWebSite users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwebsite-0.10.2_rc2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2005-08/0497.html">Original Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Aug 2005 18:35:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 29 Aug 2005 11:14:08 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 31 Aug 2005 02:40:59 +0000">
+    DerCorny
+  </metadata>
+</glsa>

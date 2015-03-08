@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-08">
+  <title>Multiple Ralink wireless drivers: Execution of arbitrary code</title>
+  <synopsis>
+    An integer overflow in multiple Ralink wireless drivers might lead to the
+    execution of arbitrary code with elevated privileges.
+  </synopsis>
+  <product type="ebuild">rt2400 rt2500 rt2570 rt61 ralink-rt61</product>
+  <announced>July 12, 2009</announced>
+  <revised>July 12, 2009: 01</revised>
+  <bug>257023</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/rt2400" auto="yes" arch="*">
+      <vulnerable range="le">1.2.2_beta3</vulnerable>
+    </package>
+    <package name="net-wireless/rt2500" auto="yes" arch="*">
+      <vulnerable range="le">1.1.0_pre2007071515</vulnerable>
+    </package>
+    <package name="net-wireless/rt2570" auto="yes" arch="*">
+      <vulnerable range="le">20070209</vulnerable>
+    </package>
+    <package name="net-wireless/rt61" auto="yes" arch="*">
+      <vulnerable range="le">1.1.0_beta2</vulnerable>
+    </package>
+    <package name="net-wireless/ralink-rt61" auto="yes" arch="*">
+      <vulnerable range="le">1.1.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    All listed packages are external kernel modules that provide drivers
+    for multiple Ralink devices. ralink-rt61 is released by ralinktech.com,
+    the other packages by the rt2x00.serialmonkey.com project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Aviv reported an integer overflow in multiple Ralink wireless card
+    drivers when processing a probe request packet with a long SSID,
+    possibly related to an integer signedness error.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A physically proximate attacker could send specially crafted packets to
+    a user who has wireless networking enabled, possibly resulting in the
+    execution of arbitrary code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Unload the kernel modules.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All external kernel modules have been masked and we recommend that
+    users unmerge those drivers. The Linux mainline kernel has equivalent
+    support for these devices and the vulnerability has been resolved in
+    stable versions of sys-kernel/gentoo-sources.
+    </p>
+    <code>
+    # emerge --unmerge &quot;net-wireless/rt2400&quot;
+    # emerge --unmerge &quot;net-wireless/rt2500&quot;
+    # emerge --unmerge &quot;net-wireless/rt2570&quot;
+    # emerge --unmerge &quot;net-wireless/rt61&quot;
+    # emerge --unmerge &quot;net-wireless/ralink-rt61&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0282">CVE-2009-0282</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 09 Jul 2009 18:18:38 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 09 Jul 2009 18:30:24 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Jul 2009 15:41:07 +0000">
+    rbu
+  </metadata>
+</glsa>

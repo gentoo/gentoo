@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201308-01">
+  <title>PuTTY: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Putty, allowing
+    attackers to compromise user system
+  </synopsis>
+  <product type="ebuild">putty</product>
+  <announced>August 21, 2013</announced>
+  <revised>August 21, 2013: 2</revised>
+  <bug>394429</bug>
+  <bug>479872</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/putty" auto="yes" arch="*">
+      <unaffected range="ge">0.63</unaffected>
+      <vulnerable range="lt">0.63</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PuTTY is a telnet and SSH client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PuTTY. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could entice a user to open connection to specially crafted
+      SSH server, possibly resulting in  execution of arbitrary code with the
+      privileges of the process or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PuTTY users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/putty-0.63"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4607">CVE-2011-4607</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4852">CVE-2013-4852</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 21:22:42 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 21 Aug 2013 11:27:53 +0000">
+    creffett
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-08">
+  <title>xine-lib: Format string vulnerability</title>
+  <synopsis>
+    xine-lib contains a format string error in CDDB response handling that may
+    be exploited to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>October 08, 2005</announced>
+  <revised>October 08, 2005: 01</revised>
+  <bug>107854</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.0-r5</unaffected>
+      <unaffected range="rge">1.0.1-r4</unaffected>
+      <unaffected range="rge">1_rc8-r2</unaffected>
+      <vulnerable range="lt">1.1.0-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is a multimedia library which can be utilized to create
+    multimedia frontends. It includes functions to retrieve information
+    about audio CD contents from public CDDB servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar discovered a format string bug in the routines
+    handling CDDB server response contents.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could submit malicious information about an audio CD
+    to a public CDDB server (or impersonate a public CDDB server). When the
+    victim plays this CD on a multimedia frontend relying on xine-lib, it
+    could end up executing arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose media-libs/xine-lib</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2967">CAN-2005-2967</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 07 Oct 2005 11:30:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 08 Oct 2005 16:01:28 +0000">
+    jaervosz
+  </metadata>
+</glsa>

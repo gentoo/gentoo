@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-15">
+  <title>GNU Automake: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNU Automake, allowing
+    local arbitrary command execution with the privileges of the user running
+    an Automake-based build.
+  </synopsis>
+  <product type="ebuild">automake</product>
+  <announced>October 25, 2013</announced>
+  <revised>October 25, 2013: 1</revised>
+  <bug>295357</bug>
+  <bug>426336</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-devel/automake" auto="yes" arch="*">
+      <unaffected range="ge">1.11.6</unaffected>
+      <vulnerable range="lt">1.11.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Automake is a tool for automatically generating Makefile.in files
+      compliant with the GNU Coding Standards.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU Automake. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could execute arbitrary commands with the privileges of
+      the user running an Automake-based build.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Automake users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/automake-1.11.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4029">CVE-2009-4029</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3386">CVE-2012-3386</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:36 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 25 Oct 2013 23:54:51 +0000">
+    phajdan.jr
+  </metadata>
+</glsa>

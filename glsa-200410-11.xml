@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-11">
+  <title>tiff: Buffer overflows in image decoding</title>
+  <synopsis>
+    Multiple heap-based overflows have been found in the tiff library image
+    decoding routines, potentially allowing to execute arbitrary code with the
+    rights of the user viewing a malicious image.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>October 13, 2004</announced>
+  <revised>October 13, 2004: 01</revised>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">3.6.1-r2</unaffected>
+      <vulnerable range="lt">3.6.1-r2</vulnerable>
+    </package>
+    <package name="media-gfx/xv" auto="yes" arch="*">
+      <unaffected range="ge">3.10a-r8</unaffected>
+      <vulnerable range="le">3.10a-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The tiff library contains encoding and decoding routines for the Tag Image
+    File Format. It is called by numerous programs, including GNOME and KDE, to
+    help in displaying TIFF images. xv is a multi-format image manipulation
+    utility that is statically linked to the tiff library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans found heap-based overflows in RLE decoding routines in
+    tif_next.c, tif_thunder.c and potentially tif_luv.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a carefully crafted TIFF
+    image file, which would potentially lead to execution of arbitrary code
+    with the rights of the user viewing the image. This affects any program
+    that makes use of the tiff library, including GNOME and KDE web browsers or
+    mail readers.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All tiff library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-libs/tiff-3.6.1-r2"
+    # emerge ">=media-libs/tiff-3.6.1-r2"</code>
+    <p>
+    xv makes use of the tiff library and needs to be recompiled to receive the
+    new patched version of the library. All xv users should also upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-gfx/xv-3.10a-r8"
+    # emerge ">=media-gfx/xv-3.10a-r8"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0803">CAN-2004-0803</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 11 Oct 2004 13:05:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 13 Oct 2004 14:38:12 +0000">
+    koon
+  </metadata>
+</glsa>

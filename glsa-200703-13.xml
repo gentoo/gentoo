@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-13">
+  <title>SSH Communications Security's Secure Shell Server: SFTP privilege escalation</title>
+  <synopsis>
+    The SSH Secure Shell Server SFTP function is vulnerable to privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">net-misc/ssh</product>
+  <announced>March 14, 2007</announced>
+  <revised>March 14, 2007: 01</revised>
+  <bug>168584</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ssh" auto="yes" arch="*">
+      <vulnerable range="lt">4.3.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The SSH Secure Shell Server from SSH Communications Security
+    (www.ssh.com) is a commercial SSH implementation available free for
+    non-commercial use.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SSH Secure Shell Server contains a format string vulnerability in
+    the SFTP code that handles file transfers (scp2 and sftp2). In some
+    situations, this code passes the accessed filename to the system log.
+    During this operation, an unspecified error could allow uncontrolled
+    stack access.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An authenticated system user may be able to exploit this vulnerability
+    to bypass command restrictions, or run commands as another user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    This package is currently masked, there is no upgrade path for the
+    3.2.x version, and a license must be purchased in order to update to a
+    non-vulnerable version. Because of this, we recommend unmerging this
+    package:
+    </p>
+    <code>
+    # emerge --ask --verbose --unmerge net-misc/ssh</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0705">CVE-2006-0705</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 05 Mar 2007 21:03:07 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 Mar 2007 14:57:32 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 09 Mar 2007 13:16:30 +0000">
+    aetius
+  </metadata>
+</glsa>

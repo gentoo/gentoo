@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-09">
+  <title>mod_fcgid: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in mod_fcgid, allowing
+    execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">mod_fcgid</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>344685</bug>
+  <bug>409373</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-apache/mod_fcgid" auto="yes" arch="*">
+      <unaffected range="ge">2.3.7</unaffected>
+      <vulnerable range="lt">2.3.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mod_fcgid is a binary-compatible alternative to mod_fastcgi with better
+      process management.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in mod_fcgid:</p>
+    
+    <ul>
+      <li>An error in the "fcgid_header_bucket_read()" function in
+        fcgid_bucket.c could cause a stack-based buffer overflow
+        (CVE-2010-3872).
+      </li>
+      <li>An error in the "is_spawn_allowed() function in fcgid_spawn_ctl.c
+        prevents Apache from recognizing the FcgidMaxProcessesPerClass
+        directive for a virtual host (CVE-2012-1181).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+      Furthermore, a remote attacker could send specially crafted HTTP
+      requests, possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mod_fcgid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_fcgid-2.3.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3872">CVE-2010-3872</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1181">CVE-2012-1181</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:12 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 23:33:49 +0000" tag="submitter">ackle</metadata>
+</glsa>

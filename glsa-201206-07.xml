@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-07">
+  <title>nginx: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow vulnerability in nginx could result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nginx</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>411751</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/nginx" auto="yes" arch="*">
+      <unaffected range="ge">1.0.15</unaffected>
+      <vulnerable range="lt">1.0.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nginx is a robust, small, and high performance HTTP and reverse proxy
+      server.
+    </p>
+  </background>
+  <description>
+    <p>An error in ngx_http_mp4_module.c could cause a buffer overflow.</p>
+    
+    <p>NOTE: nginx must have been emerged with USE="nginx_modules_http_mp4" in
+      order to be affected by this vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to place a specially crafted MP4
+      file on the nginx server, possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nginx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-1.0.15"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2089">CVE-2012-2089</uri>
+  </references>
+  <metadata timestamp="Sun, 15 Apr 2012 17:34:10 +0000" tag="requester">ago</metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 10:10:12 +0000" tag="submitter">ackle</metadata>
+</glsa>

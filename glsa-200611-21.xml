@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-21">
+  <title>Kile: Incorrect backup file permission</title>
+  <synopsis>
+    Kile uses default permissions for backup files, potentially leading to
+    information disclosure.
+  </synopsis>
+  <product type="ebuild">kile</product>
+  <announced>November 27, 2006</announced>
+  <revised>November 27, 2006: 01</revised>
+  <bug>155613</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-editors/kile" auto="yes" arch="*">
+      <unaffected range="ge">1.9.2-r1</unaffected>
+      <vulnerable range="lt">1.9.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Kile is a TeX/LaTeX editor for KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kile fails to set the same permissions on backup files as on the
+    original file. This is similar to CVE-2005-1920.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A kile user may inadvertently grant access to sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Kile users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/kile-1.9.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1920">CVE-2005-1920</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 24 Nov 2006 10:25:19 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 27 Nov 2006 07:49:07 +0000">
+    jaervosz
+  </metadata>
+</glsa>

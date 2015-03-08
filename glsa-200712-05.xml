@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-05">
+  <title>PEAR::MDB2: Information disclosure</title>
+  <synopsis>
+    A vulnerability when handling database input in PEAR::MDB2 allows remote
+    attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">PEAR-MDB2</product>
+  <announced>December 09, 2007</announced>
+  <revised>December 09, 2007: 01</revised>
+  <bug>198446</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/PEAR-MDB2" auto="yes" arch="*">
+      <unaffected range="ge">2.5.0_alpha1</unaffected>
+      <vulnerable range="lt">2.5.0_alpha1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PEAR::MDB2 is a database abstraction layer for PHP aimed to provide a
+    common API for all supported relational database management systems. A
+    LOB ("large object") is a database field holding binary data.
+    </p>
+  </background>
+  <description>
+    <p>
+    priyadi discovered that the request to store a URL string as a LOB is
+    treated as a request to retrieve and store the contents of the URL.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If an application using PEAR::MDB2 allows input of LOB values via a web
+    form, remote attackers could use the application as an indirect proxy
+    or obtain sensitive information, including "file://" URLs local to the
+    web server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    As a workaround, manually filter input before storing it as a LOB in
+    PEAR::MDB2.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PEAR::MDB2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-MDB2-2.5.0_alpha1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5934">CVE-2007-5934</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Dec 2007 12:32:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Dec 2007 01:58:28 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Dec 2007 01:59:26 +0000">
+    rbu
+  </metadata>
+</glsa>

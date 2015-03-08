@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-02">
+  <title>Net-SNMP: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Net-SNMP allow for authentication bypass in
+    snmpd and execution of arbitrary code in Perl applications using Net-SMNP.
+  </synopsis>
+  <product type="ebuild">net-snmp</product>
+  <announced>August 06, 2008</announced>
+  <revised>August 06, 2008: 01</revised>
+  <bug>222265</bug>
+  <bug>225105</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/net-snmp" auto="yes" arch="*">
+      <unaffected range="ge">5.4.1.1</unaffected>
+      <vulnerable range="lt">5.4.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Net-SNMP is a collection of tools for generating and retrieving SNMP
+    data. The SNMPv3 protocol uses a keyed-Hash Message Authentication Code
+    (HMAC) to verify data integrity and authenticity of SNMP messages.
+    </p>
+  </background>
+  <description>
+    <p>
+    Wes Hardaker reported that the SNMPv3 HMAC verification relies on the
+    client to specify the HMAC length (CVE-2008-0960). John Kortink
+    reported a buffer overflow in the Perl bindings of Net-SNMP when
+    processing the OCTETSTRING in an attribute value pair (AVP) received by
+    an SNMP agent (CVE-2008-2292).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could send SNMPv3 packets to an instance of snmpd providing
+    a valid user name and an HMAC length value of 1, and easily conduct
+    brute-force attacks to bypass SNMP authentication. An attacker could
+    further entice a user to connect to a malicious SNMP agent with an SNMP
+    client using the Perl bindings, possibly resulting in the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Net-SNMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/net-snmp-5.4.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0960">CVE-2008-0960</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2292">CVE-2008-2292</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Jul 2008 11:15:36 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 04 Jul 2008 13:09:07 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Jul 2008 08:46:03 +0000">
+    rbu
+  </metadata>
+</glsa>

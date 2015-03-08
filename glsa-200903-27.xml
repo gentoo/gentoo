@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-27">
+  <title>ProFTPD: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities in ProFTPD might allow for SQL injection attacks.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>March 12, 2009</announced>
+  <revised>March 12, 2009: 01</revised>
+  <bug>258450</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.2</unaffected>
+      <vulnerable range="lt">1.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ProFTPD is an advanced and very configurable FTP server.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were reported:
+    </p>
+    <ul><li>
+    Percent characters in the username are not properly handled, which
+    introduces a single quote character during variable substitution by
+    mod_sql (CVE-2009-0542).
+    </li>
+    <li>
+    Some invalid, encoded multibyte characters are not properly handled in
+    mod_sql_mysql and mod_sql_postgres when NLS support is enabled
+    (CVE-2009-0543).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted requests to the server,
+    possibly resulting in the execution of arbitrary SQL statements.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ProFTPD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/proftpd-1.3.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0542">CVE-2009-0542</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0543">CVE-2009-0543</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 18:36:42 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Mar 2009 12:43:00 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Mar 2009 12:43:09 +0000">
+    p-y
+  </metadata>
+</glsa>

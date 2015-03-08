@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-37">
+  <title>GraphicsMagick: PSD decoding heap overflow</title>
+  <synopsis>
+    GraphicsMagick is vulnerable to a heap overflow when decoding Photoshop
+    Document (PSD) files, which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">GraphicsMagick</product>
+  <announced>January 26, 2005</announced>
+  <revised>January 26, 2005: 01</revised>
+  <bug>79336</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/graphicsmagick" auto="yes" arch="*">
+      <unaffected range="ge">1.1.5</unaffected>
+      <vulnerable range="lt">1.1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GraphicsMagick is a collection of tools to read, write and
+    manipulate images in many formats. GraphicsMagick is originally derived
+    from ImageMagick 5.5.2.
+    </p>
+  </background>
+  <description>
+    <p>
+    Andrei Nigmatulin discovered that handling a Photoshop Document
+    (PSD) file with more than 24 layers in ImageMagick could trigger a heap
+    overflow (GLSA 200501-26). GraphicsMagick is based on the same code and
+    therefore suffers from the same flaw.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could potentially design a malicious PSD image file to
+    cause arbitrary code execution with the permissions of the user running
+    GraphicsMagick.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GraphicsMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/graphicsmagick-1.1.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0005">CAN-2005-0005</uri>
+    <uri link="/security/en/glsa/glsa-200501-26.xml">GLSA 200501-26</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 26 Jan 2005 12:20:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Jan 2005 12:21:35 +0000">
+    koon
+  </metadata>
+</glsa>

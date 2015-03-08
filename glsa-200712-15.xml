@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-15">
+  <title>libexif: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities in libexif possibly allow for the execution of
+    arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">libexif</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>202350</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libexif" auto="yes" arch="*">
+      <unaffected range="ge">0.6.16-r1</unaffected>
+      <vulnerable range="lt">0.6.16-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libexif is a library for parsing, editing and saving Exif metadata from
+    images. Exif, the Exchangeable image file format, specifies the
+    addition of metadata tags to JPEG, TIFF and RIFF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Meder Kydyraliev (Google Security) discovered an integer overflow
+    vulnerability in the exif_data_load_data_thumbnail() function leading
+    to a memory corruption (CVE-2007-6352) and an infinite recursion in the
+    exif_loader_write() function (CVE-2007-6351).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice the user of an application making use of
+    libexif to load an image file with specially crafted Exif tags,
+    possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libexif users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libexif-0.6.16-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6351">CVE-2007-6351</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6352">CVE-2007-6352</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Dec 2007 23:07:24 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Dec 2007 19:26:36 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Dec 2007 19:28:21 +0000">
+    rbu
+  </metadata>
+</glsa>

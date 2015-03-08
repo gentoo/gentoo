@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-07">
+  <title>phpWebSite: Multiple vulnerabilities</title>
+  <synopsis>
+    phpWebSite is vulnerable to the remote execution of arbitrary PHP script
+    code and to other, yet undisclosed, vulnerabilities.
+  </synopsis>
+  <product type="ebuild">phpwebsite</product>
+  <announced>July 10, 2005</announced>
+  <revised>July 10, 2005: 01</revised>
+  <bug>97461</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpwebsite" auto="yes" arch="*">
+      <unaffected range="ge">0.10.1-r1</unaffected>
+      <vulnerable range="lt">0.10.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpWebSite is a content management system written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    phpWebSite fails to sanitize input sent to the XML-RPC server
+    using the "POST" method. Other unspecified vulnerabilities have been
+    discovered by Diabolic Crab of Hackers Center.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit the XML-RPC vulnerability to
+    execute arbitrary PHP script code by sending specially crafted XML data
+    to phpWebSite. The undisclosed vulnerabilities do have an unknown
+    impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpWebSite users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-app/phpwebsite-0.10.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+    <uri link="http://phpwebsite.appstate.edu/index.php?module=announce&amp;ANN_user_op=view&amp;ANN_id=989">phpWebSite announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 Jul 2005 12:51:16 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 06 Jul 2005 14:39:13 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 09 Jul 2005 22:50:54 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-18">
+  <title>Cacti: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were discovered in Cacti.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>March 10, 2008</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>209918</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">0.8.7b</unaffected>
+      <unaffected range="rge">0.8.6j-r8</unaffected>
+      <vulnerable range="lt">0.8.7b</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cacti is a web-based network graphing and reporting tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following inputs are not properly sanitized before being processed:
+    </p>
+    <ul><li>"view_type" parameter in the file graph.php, "filter" parameter
+    in the file graph_view.php, "action" and "login_username" parameters in
+    the file index.php (CVE-2008-0783).</li>
+    <li>"local_graph_id" parameter in the file graph.php
+    (CVE-2008-0784).</li>
+    <li>"graph_list" parameter in the file graph_view.php, "leaf_id" and
+    "id" parameters in the file tree.php, "local_graph_id" in the file
+    graph_xport.php (CVE-2008-0785).</li>
+    </ul>
+    <p>
+    Furthermore, CRLF injection attack are possible via unspecified vectors
+    (CVE-2008-0786).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities, leading to path
+    disclosure, Cross-Site Scripting attacks, SQL injection, and HTTP
+    response splitting.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cacti users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.7b&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0783">CVE-2008-0783</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0784">CVE-2008-0784</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0785">CVE-2008-0785</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0786">CVE-2008-0786</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 25 Feb 2008 22:16:20 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Mar 2008 23:16:40 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Mar 2008 23:16:51 +0000">
+    p-y
+  </metadata>
+</glsa>

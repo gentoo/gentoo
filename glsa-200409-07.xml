@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-07">
+  <title>xv: Buffer overflows in image handling</title>
+  <synopsis>
+    xv contains multiple exploitable buffer overflows in the image handling
+    code.
+  </synopsis>
+  <product type="ebuild">xv</product>
+  <announced>September 03, 2004</announced>
+  <revised>September 03, 2004: 01</revised>
+  <bug>61619</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xv" auto="yes" arch="*">
+      <unaffected range="ge">3.10a-r7</unaffected>
+      <vulnerable range="lt">3.10a-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xv is a multi-format image manipulation utility.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple buffer overflow and integer handling vulnerabilities have been
+    discovered in xv's image processing code. These vulnerabilities have been
+    found in the xvbmp.c, xviris.c, xvpcx.c and xvpm.c source files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker might be able to embed malicious code into an image, which
+    would lead to the execution of arbitrary code under the privileges of the
+    user viewing the image.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xv users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-gfx/xv-3.10a-r7"
+    # emerge ">=media-gfx/xv-3.10a-r7"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/372345/2004-08-15/2004-08-21/0">BugTraq Advisory</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0802">CAN-2004-0802</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu,  2 Sep 2004 20:38:02 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  2 Sep 2004 23:57:51 +0000">
+    lewk
+  </metadata>
+</glsa>

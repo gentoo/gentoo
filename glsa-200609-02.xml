@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-02">
+  <title>GTetrinet: Remote code execution</title>
+  <synopsis>
+    GTetrinet is vulnerable to a remote buffer overflow, potentially leading to
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">GTetrinet</product>
+  <announced>September 06, 2006</announced>
+  <revised>September 07, 2006: 02</revised>
+  <bug>144867</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-puzzle/gtetrinet" auto="yes" arch="*">
+      <unaffected range="ge">0.7.10</unaffected>
+      <vulnerable range="lt">0.7.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GTetrinet is a networked Tetris clone for GNOME 2.
+    </p>
+  </background>
+  <description>
+    <p>
+    Michael Gehring has found that GTetrinet fails to properly handle array
+    indexes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can potentially execute arbitrary code by sending a
+    negative number of players to the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GTetrinet users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-puzzle/gtetrinet-0.7.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3125">CVE-2006-3125</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Sep 2006 17:41:35 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Sep 2006 18:25:31 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Sep 2006 19:36:59 +0000">
+    jaervosz
+  </metadata>
+</glsa>

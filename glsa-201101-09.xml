@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-09">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Adobe Flash Player might allow remote attackers
+    to execute arbitrary code or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>January 21, 2011</announced>
+  <revised>January 21, 2011: 01</revised>
+  <bug>307749</bug>
+  <bug>322855</bug>
+  <bug>332205</bug>
+  <bug>337204</bug>
+  <bug>343089</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">10.1.102.64</unaffected>
+      <vulnerable range="lt">10.1.102.64</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Adobe Flash Player is a renderer for the SWF file format, which is
+    commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in Adobe Flash Player. For
+    further information please consult the CVE entries and the Adobe
+    Security Bulletins referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted SWF
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Flash Player users should upgrade to the latest stable
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-10.1.102.64&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-06.html">APSB10-06</uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-14.html">APSB10-14</uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-16.html">APSB10-16</uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-22.html">APSB10-22</uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-26.html">APSB10-26</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4546">CVE-2008-4546</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3793">CVE-2009-3793</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0186">CVE-2010-0186</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0187">CVE-2010-0187</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0209">CVE-2010-0209</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1297">CVE-2010-1297</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2160">CVE-2010-2160</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2161">CVE-2010-2161</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2162">CVE-2010-2162</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2163">CVE-2010-2163</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2164">CVE-2010-2164</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2165">CVE-2010-2165</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2166">CVE-2010-2166</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2167">CVE-2010-2167</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2169">CVE-2010-2169</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2170">CVE-2010-2170</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2171">CVE-2010-2171</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2172">CVE-2010-2172</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2173">CVE-2010-2173</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2174">CVE-2010-2174</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2175">CVE-2010-2175</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2176">CVE-2010-2176</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2177">CVE-2010-2177</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2178">CVE-2010-2178</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2179">CVE-2010-2179</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2180">CVE-2010-2180</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2181">CVE-2010-2181</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2182">CVE-2010-2182</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2183">CVE-2010-2183</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2184">CVE-2010-2184</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2185">CVE-2010-2185</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2186">CVE-2010-2186</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2187">CVE-2010-2187</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2188">CVE-2010-2188</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2189">CVE-2010-2189</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2213">CVE-2010-2213</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2214">CVE-2010-2214</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2215">CVE-2010-2215</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2216">CVE-2010-2216</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2884">CVE-2010-2884</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3636">CVE-2010-3636</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3639">CVE-2010-3639</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3640">CVE-2010-3640</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3641">CVE-2010-3641</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3642">CVE-2010-3642</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3643">CVE-2010-3643</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3644">CVE-2010-3644</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3645">CVE-2010-3645</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3646">CVE-2010-3646</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3647">CVE-2010-3647</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3648">CVE-2010-3648</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3649">CVE-2010-3649</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3650">CVE-2010-3650</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3652">CVE-2010-3652</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3654">CVE-2010-3654</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3976">CVE-2010-3976</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 12 Aug 2010 07:58:07 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Jan 2011 16:16:21 +0000">
+    underling
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 15 Jan 2011 16:16:33 +0000">
+    underling
+  </metadata>
+</glsa>

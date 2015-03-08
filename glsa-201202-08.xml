@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201202-08">
+  <title>stunnel: Arbitrary code execution</title>
+  <synopsis>A vulnerability was found in stunnel, allowing remote attackers to
+    cause a Denial of Service and potentially arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">ebuild stunnel</product>
+  <announced>February 29, 2012</announced>
+  <revised>July 30, 2012: 2</revised>
+  <bug>379859</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/stunnel" auto="yes" arch="*">
+      <unaffected range="ge">4.44</unaffected>
+      <unaffected range="lt">4</unaffected>
+      <vulnerable range="lt">4.44</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The stunnel program is designed to work as an SSL encryption wrapper
+      between a client and a local or remote server.
+    </p>
+  </background>
+  <description>
+    <p>An unspecified heap vulnerability was discovered in stunnel.</p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerability may possibly be leveraged to perform remote code
+      execution or a Denial of Service attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All stunnel 4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/stunnel-4.44"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2940">CVE-2011-2940</uri>
+  </references>
+  <metadata timestamp="Sun, 30 Oct 2011 18:44:45 +0000" tag="requester">ago</metadata>
+  <metadata timestamp="Mon, 30 Jul 2012 23:07:18 +0000" tag="submitter">ago</metadata>
+</glsa>

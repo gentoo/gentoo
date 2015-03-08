@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-13">
+  <title>Pidgin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Pidgin, allowing for
+    remote arbitrary code execution, Denial of Service and service spoofing.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>January 20, 2009</announced>
+  <revised>January 20, 2009: 01</revised>
+  <bug>230045</bug>
+  <bug>234135</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.5.1</unaffected>
+      <vulnerable range="lt">2.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pidgin (formerly Gaim) is an instant messaging client for a variety of
+    instant messaging protocols. It is based on the libpurple instant
+    messaging library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Pidgin and the
+    libpurple library:
+    </p>
+    <ul><li>
+    A participant to the TippingPoint ZDI reported multiple integer
+    overflows in the msn_slplink_process_msg() function in the MSN protocol
+    implementation (CVE-2008-2927).
+    </li>
+    <li>
+    Juan Pablo Lopez Yacubian is credited for reporting a use-after-free
+    flaw in msn_slplink_process_msg() in the MSN protocol implementation
+    (CVE-2008-2955).
+    </li>
+    <li>
+    The included UPnP server does not limit the size of data to be
+    downloaded for UPnP service discovery, according to a report by Andrew
+    Hunt and Christian Grothoff (CVE-2008-2957).
+    </li>
+    <li>
+    Josh Triplett discovered that the NSS plugin for libpurple does not
+    properly verify SSL certificates (CVE-2008-3532).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted messages or files using
+    the MSN protocol which could result in the execution of arbitrary code
+    or crash Pidgin. NOTE: Successful exploitation might require the
+    victim's interaction. Furthermore, an attacker could conduct
+    man-in-the-middle attacks to obtain sensitive information using bad
+    certificates and cause memory and disk resources to exhaust.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pidgin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/pidgin-2.5.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2927">CVE-2008-2927</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2955">CVE-2008-2955</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2957">CVE-2008-2957</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3532">CVE-2008-3532</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2008 18:20:14 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Nov 2008 14:01:14 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 02 Dec 2008 14:32:53 +0000">
+    rbu
+  </metadata>
+</glsa>

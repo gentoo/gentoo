@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-02">
+  <title>dnsmasq: Denial of Service and DNS spoofing</title>
+  <synopsis>
+    Two vulnerabilities in dnsmasq might allow for a Denial of Service or
+    spoofing of DNS replies.
+  </synopsis>
+  <product type="ebuild">dnsmasq</product>
+  <announced>September 04, 2008</announced>
+  <revised>September 04, 2008: 01</revised>
+  <bug>231282</bug>
+  <bug>232523</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.45</unaffected>
+      <vulnerable range="lt">2.45</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dnsmasq is a lightweight and easily-configurable DNS forwarder and DHCP
+    server.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>
+    Dan Kaminsky of IOActive reported that dnsmasq does not randomize UDP
+    source ports when forwarding DNS queries to a recursing DNS server
+    (CVE-2008-1447).
+    </li>
+    <li>
+    Carlos Carvalho reported that dnsmasq in the 2.43 version does not
+    properly handle clients sending inform or renewal queries for unknown
+    DHCP leases, leading to a crash (CVE-2008-3350).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send spoofed DNS response traffic to dnsmasq,
+    possibly involving generating queries via multiple vectors, and spoof
+    DNS replies, which could e.g. lead to the redirection of web or mail
+    traffic to malicious sites. Furthermore, an attacker could generate
+    invalid DHCP traffic and cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All dnsmasq users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/dnsmasq-2.45&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3350">CVE-2008-3350</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 13 Jul 2008 19:25:11 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Aug 2008 23:52:40 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Aug 2008 23:52:59 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-08">
+  <title>libxslt: Denial of Service</title>
+  <synopsis>A vulnerability in libxslt could result in Denial of Service.</synopsis>
+  <product type="ebuild">libxslt</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>402861</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxslt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.26-r3</unaffected>
+      <vulnerable range="lt">1.1.26-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxslt is the XSLT C library developed for the GNOME project. XSLT is
+      an XML language to define transformations for XML.
+    </p>
+  </background>
+  <description>
+    <p>An out of bounds read error has been found in libxslt/pattern.c in
+      libxslt.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process an XML file using a
+      specially crafted XSLT stylesheet in an application linked against
+      libxslt, possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxslt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxslt-1.1.26-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3970">CVE-2011-3970</uri>
+  </references>
+  <metadata timestamp="Sat, 03 Mar 2012 04:30:56 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:41:06 +0000" tag="submitter">ackle</metadata>
+</glsa>

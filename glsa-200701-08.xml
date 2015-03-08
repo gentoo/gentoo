@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-08">
+  <title>Opera: Two remote code execution vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities may allow the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>January 12, 2007</announced>
+  <revised>January 12, 2007: 01</revised>
+  <bug>160369</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.10</unaffected>
+      <vulnerable range="lt">9.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Christoph Deal discovered that JPEG files with a specially crafted DHT
+    marker can be exploited to cause a heap overflow. Furthermore, an
+    anonymous person discovered that Opera does not correctly handle
+    objects passed to the "createSVGTransformFromMatrix()" function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could potentially exploit the vulnerabilities to execute
+    arbitrary code with the privileges of the user running Opera by
+    enticing a victim to open a specially crafted JPEG file or a website
+    containing malicious JavaScript code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The vendor recommends disabling JavaScript to avoid the
+    "createSVGTransformFromMatrix" vulnerability. There is no known
+    workaround for the other vulnerability.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should update to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.opera.com/support/search/supsearch.dml?index=851">Opera Advisory (createSVGTransformFromMatrix)</uri>
+    <uri link="http://www.opera.com/support/search/supsearch.dml?index=852">Opera Advisory (JPEG)</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0126">CVE-2007-0126</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0127">CVE-2007-0127</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 09 Jan 2007 12:37:33 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 09 Jan 2007 12:37:44 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 09 Jan 2007 18:43:10 +0000">
+    DerCorny
+  </metadata>
+</glsa>

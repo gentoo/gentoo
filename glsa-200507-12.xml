@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-12">
+  <title>Bugzilla: Unauthorized access and information disclosure</title>
+  <synopsis>
+    Multiple vulnerabilities in Bugzilla could allow remote users to modify bug
+    flags or gain sensitive information.
+  </synopsis>
+  <product type="ebuild">bugzilla</product>
+  <announced>July 13, 2005</announced>
+  <revised>July 13, 2005: 01</revised>
+  <bug>98348</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/bugzilla" auto="yes" arch="*">
+      <unaffected range="ge">2.18.3</unaffected>
+      <vulnerable range="lt">2.18.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Bugzilla is a web-based bug-tracking system used by many projects.
+    </p>
+  </background>
+  <description>
+    <p>
+    Bugzilla allows any user to modify the flags of any bug
+    (CAN-2005-2173). Bugzilla inserts bugs into the database before marking
+    them as private, in connection with MySQL replication this could lead
+    to a race condition (CAN-2005-2174).
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By manually changing the URL to process_bug.cgi, a remote attacker
+    could modify the flags of any given bug, which could trigger an email
+    including the bug summary to be sent to the attacker. The race
+    condition when using Bugzilla with MySQL replication could lead to a
+    short timespan (usually less than a second) where the summary of
+    private bugs is exposed to all users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Bugzilla users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/bugzilla-2.18.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2173">CAN-2005-2173</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2174">CAN-2005-2174</uri>
+    <uri link="http://www.bugzilla.org/security/2.18.1/">Bugzilla Security Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 12 Jul 2005 07:49:18 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 12 Jul 2005 08:01:09 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 12 Jul 2005 08:53:54 +0000">
+    DerCorny
+  </metadata>
+</glsa>

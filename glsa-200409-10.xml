@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-10">
+  <title>multi-gnome-terminal: Information leak</title>
+  <synopsis>
+    Active keystroke logging in multi-gnome-terminal has been discovered in
+    potentially world-readable files. This could allow any authorized user on
+    the system to read sensitive data, including passwords.
+  </synopsis>
+  <product type="ebuild">multi-gnome-terminal</product>
+  <announced>September 06, 2004</announced>
+  <revised>September 06, 2004: 01</revised>
+  <bug>62322</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-terms/multi-gnome-terminal" auto="yes" arch="*">
+      <unaffected range="ge">1.6.2-r1</unaffected>
+      <vulnerable range="lt">1.6.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    multi-gnome-terminal is an enhanced terminal emulator that is derived from
+    gnome-terminal.
+    </p>
+  </background>
+  <description>
+    <p>
+    multi-gnome-terminal contains debugging code that has been known to output
+    active keystrokes to a potentially unsafe location. Output has been seen to
+    show up in the '.xsession-errors' file in the users home directory. Since
+    this file is world-readable on many machines, this bug has the potential to
+    leak sensitive information to anyone using the system.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Any authorized user on the local machine has the ability to read any
+    critical data that has been entered into the terminal, including passwords.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All multi-gnome-terminal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=x11-terms/multi-gnome-terminal-1.6.2-r1"
+    # emerge ">=x11-terms/multi-gnome-terminal-1.6.2-r1"</code>
+  </resolution>
+  <references/>
+  <metadata tag="requester" timestamp="Sun,  5 Sep 2004 20:51:40 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  6 Sep 2004 00:32:18 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  6 Sep 2004 17:31:16 +0000">
+    jaervosz
+  </metadata>
+</glsa>

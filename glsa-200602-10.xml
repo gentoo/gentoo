@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-10">
+  <title>GnuPG: Incorrect signature verification</title>
+  <synopsis>
+    Applications relying on GnuPG to authenticate digital signatures may
+    incorrectly believe a signature has been verified.
+  </synopsis>
+  <product type="ebuild">gnupg</product>
+  <announced>February 18, 2006</announced>
+  <revised>February 18, 2006: 01</revised>
+  <bug>122721</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.1</unaffected>
+      <vulnerable range="lt">1.4.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuPG (The GNU Privacy Guard) is a free replacement for PGP
+    (Pretty Good Privacy). As GnuPG does not rely on any patented
+    algorithms, it can be used without any restrictions. gpgv is the
+    OpenPGP signature verification tool provided by the GnuPG system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Auditing Team
+    discovered that automated systems relying on the return code of GnuPG
+    or gpgv to authenticate digital signatures may be misled by malformed
+    signatures. GnuPG documentation states that a return code of zero (0)
+    indicates success, however gpg and gpgv may also return zero if no
+    signature data was found in a detached signature file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may be able to bypass authentication in automated
+    systems relying on the return code of gpg or gpgv to authenticate
+    digital signatures.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuPG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/gnupg-1.4.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://lists.gnupg.org/pipermail/gnupg-announce/2006q1/000211.html">GnuPG Security Announcement</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0455">CVE-2006-0455</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 15 Feb 2006 16:05:31 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 18 Feb 2006 12:22:36 +0000">
+    koon
+  </metadata>
+</glsa>

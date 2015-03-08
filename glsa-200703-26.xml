@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-26">
+  <title>file: Integer underflow</title>
+  <synopsis>
+    A buffer underflow vulnerability has been reported in file allowing for the
+    user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">file</product>
+  <announced>March 30, 2007</announced>
+  <revised>March 30, 2007: 01</revised>
+  <bug>171452</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">4.20</unaffected>
+      <vulnerable range="lt">4.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    file is a utility that guesses a file format by scanning binary data
+    for patterns.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jean-Sebastien Guay-Leroux reported an integer underflow in
+    file_printf function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could entice a user to run the "file" program on a
+    specially crafted file that would trigger a heap-based buffer overflow
+    possibly leading to the execution of arbitrary code with the rights of
+    the user running "file". Note that this vulnerability could be also
+    triggered through an automatic file scanner like amavisd-new.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Since file is a system package, all Gentoo users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/file-4.20&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1536">CVE-2007-1536</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 24 Mar 2007 17:59:07 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 26 Mar 2007 20:27:32 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 21:14:57 +0000">
+    falco
+  </metadata>
+</glsa>

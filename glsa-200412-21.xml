@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-21">
+  <title>MPlayer: Multiple overflows</title>
+  <synopsis>
+    Multiple overflow vulnerabilities have been found in MPlayer, potentially
+    resulting in remote executing of arbitrary code.
+  </synopsis>
+  <product type="ebuild">MPlayer</product>
+  <announced>December 20, 2004</announced>
+  <revised>December 20, 2004: 01</revised>
+  <bug>74473</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre5-r5</unaffected>
+      <vulnerable range="le">1.0_pre5-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player capable of handling multiple multimedia
+    file formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDEFENSE, Ariel Berkman and the MPlayer development team found
+    multiple vulnerabilities in MPlayer. These include potential heap
+    overflows in Real RTSP and pnm streaming code, stack overflows in MMST
+    streaming code and multiple buffer overflows in BMP demuxer and mp3lib
+    code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malicious file or design a
+    malicious streaming server. Using MPlayer to view this file or connect
+    to this server could trigger an overflow and execute
+    attacker-controlled code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_pre5-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=168&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=167&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=166&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/mplayer.txt">Ariel Berkman Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 19 Dec 2004 14:28:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 22:01:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Dec 2004 09:31:29 +0000">
+    koon
+  </metadata>
+</glsa>

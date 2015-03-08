@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-08">
+  <title>Python: Heap overflow in the included PCRE library</title>
+  <synopsis>
+    The "re" Python module is vulnerable to a heap overflow, possibly leading
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Python</product>
+  <announced>September 12, 2005</announced>
+  <revised>September 12, 2005: 01</revised>
+  <bug>104009</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">2.3.5-r2</unaffected>
+      <vulnerable range="lt">2.3.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Python is an interpreted, interactive, object-oriented,
+    cross-platform programming language. The "re" Python module provides
+    regular expression functions.
+    </p>
+  </background>
+  <description>
+    <p>
+    The "re" Python module makes use of a private copy of libpcre
+    which is subject to an integer overflow leading to a heap overflow (see
+    GLSA 200508-17).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could target a Python-based web application (or SUID
+    application) that would use untrusted data as regular expressions,
+    potentially resulting in the execution of arbitrary code (or privilege
+    escalation).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Python users that don't run any Python web application or SUID
+    application (or that run one that wouldn't use untrusted inputs as
+    regular expressions) are not affected by this issue.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Python users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.3.5-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Sep 2005 18:18:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 11 Sep 2005 15:37:16 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Sep 2005 18:47:02 +0000">
+    koon
+  </metadata>
+</glsa>

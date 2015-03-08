@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-16">
+  <title>MPlayer: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in MPlayer, possibly allowing
+    for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>March 10, 2008</announced>
+  <revised>March 10, 2008: 01</revised>
+  <bug>208566</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_rc2_p25993</unaffected>
+      <vulnerable range="lt">1.0_rc2_p25993</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player incuding support for a wide range of audio
+    and video formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following errors have been discovered in MPlayer:
+    </p>
+    <ul>
+    <li>Felipe Manzano and Anibal Sacco (Core Security Technologies)
+    reported an array indexing error in the file libmpdemux/demux_mov.c
+    when parsing MOV file headers (CVE-2008-0485).</li>
+    <li>Damian Frizza
+    and Alfredo Ortega (Core Security Technologies) reported a boundary
+    error in the file libmpdemux/demux_audio.c when parsing FLAC comments
+    (CVE-2008-0486).</li>
+    <li>Adam Bozanich (Mu Security) reported boundary
+    errors in the cddb_parse_matches_list() and cddb_query_parse()
+    functions in the file stream_cddb.c when parsing CDDB album titles
+    (CVE-2008-0629) and in the url_scape_string() function in the file
+    stream/url.c when parsing URLS (CVE-2008-0630).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file,
+    possibly resulting in the execution of arbitrary code with the
+    privileges of the user running MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc2_p25993&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0485">CVE-2008-0485</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0486">CVE-2008-0486</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0629">CVE-2008-0629</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0630">CVE-2008-0630</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Feb 2008 20:10:11 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Feb 2008 20:13:04 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Mar 2008 23:38:09 +0000">
+    p-y
+  </metadata>
+</glsa>

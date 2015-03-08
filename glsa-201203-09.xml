@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-09">
+  <title>ImageMagick: User-assisted execution of arbitrary code</title>
+  <synopsis>Vulnerabilities found in ImageMagick might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ImageMagick</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>402999</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.7.5.3</unaffected>
+      <vulnerable range="lt">6.7.5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ImageMagick is a collection of tools and libraries for manipulating
+      various image formats.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in ImageMagick:</p>
+    
+    <ul>
+      <li>Incorrect offset and count values in the ResolutionUnit tag in EXIF
+        IFD could cause memory corruption (CVE-2012-0247).
+      </li>
+      <li>IOP tag offsets pointing to the beginning of an IFD could cause an
+        infinite loop of ImageMagick parsing the IFD structure (CVE-2012-0248).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image,
+      possibly resulting in execution of arbitrary code or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.7.5.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0247">CVE-2012-0247</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0248">CVE-2012-0248</uri>
+  </references>
+  <metadata timestamp="Sat, 03 Mar 2012 14:41:18 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:41:55 +0000" tag="submitter">ackle</metadata>
+</glsa>

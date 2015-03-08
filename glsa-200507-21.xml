@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-21">
+  <title>fetchmail: Buffer Overflow</title>
+  <synopsis>
+    fetchmail is susceptible to a buffer overflow resulting in a Denial of
+    Service or arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">fetchmail</product>
+  <announced>July 25, 2005</announced>
+  <revised>July 25, 2005: 01</revised>
+  <bug>99865</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/fetchmail" auto="yes" arch="*">
+      <unaffected range="ge">6.2.5.2</unaffected>
+      <vulnerable range="lt">6.2.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    fetchmail is a utility that retrieves and forwards mail from
+    remote systems using IMAP, POP, and other protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    fetchmail does not properly validate UIDs coming from a POP3 mail
+    server. The UID is placed in a fixed length buffer on the stack, which
+    can be overflown.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Very long UIDs returned from a malicious or compromised POP3
+    server can cause fetchmail to crash, resulting in a Denial of Service,
+    or allow arbitrary code to be placed on the stack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All fetchmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/fetchmail-6.2.5.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://fetchmail.berlios.de/fetchmail-SA-2005-01.txt">Fetchmail Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2335">CAN-2005-2335</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 22 Jul 2005 05:37:13 +0000">
+    r2d2
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 24 Jul 2005 07:43:36 +0000">
+    adir
+  </metadata>
+</glsa>

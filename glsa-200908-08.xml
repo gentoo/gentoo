@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-08">
+  <title>ISC DHCP: dhcpd Denial of Service</title>
+  <synopsis>
+    dhcpd as included in the ISC DHCP implementation does not properly handle
+    special conditions, leading to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">dhcp</product>
+  <announced>August 18, 2009</announced>
+  <revised>August 18, 2009: 01</revised>
+  <bug>275231</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcp" auto="yes" arch="*">
+      <unaffected range="ge">3.1.2_p1</unaffected>
+      <vulnerable range="lt">3.1.2_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC DHCP is the reference implementation of the Dynamic Host
+    Configuration Protocol as specified in RFC 2131.
+    </p>
+  </background>
+  <description>
+    <p>
+    Christoph Biedl discovered that dhcpd does not properly handle certain
+    DHCP requests when configured both using "dhcp-client-identifier" and
+    "hardware ethernet".
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might send a specially crafted request to dhcpd,
+    possibly resulting in a Denial of Service (daemon crash).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ISC DHCP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dhcp-3.1.2_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1892">CVE-2009-1892</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Jul 2009 17:01:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Aug 2009 19:40:02 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Aug 2009 13:32:31 +0000">
+    a3li
+  </metadata>
+</glsa>

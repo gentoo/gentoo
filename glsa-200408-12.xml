@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-12">
+  <title>Gaim: MSN protocol parsing function buffer overflow</title>
+  <synopsis>
+    Gaim contains a remotely exploitable buffer overflow vulnerability in the
+    MSN-protocol parsing code that may allow remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">gaim</product>
+  <announced>August 12, 2004</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>60034</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">0.81-r1</unaffected>
+      <vulnerable range="le">0.81</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a multi-protocol instant messaging client for Linux which
+    supports many instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sebastian Krahmer of the SuSE Security Team has discovered a remotely
+    exploitable buffer overflow vulnerability in the code handling MSN
+    protocol parsing.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a carefully-crafted message, an attacker may execute
+    arbitrary code with the permissions of the user running Gaim.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Gaim.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-im/gaim-0.81-r1&quot;
+    # emerge &quot;&gt;=net-im/gaim-0.81-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.osvdb.org/displayvuln.php?osvdb_id=8382">OSVDB ID: 8382</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0500">CVE-2004-0500</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 12 Aug 2004 16:07:01 +0000">
+    jaervosz
+  </metadata>
+</glsa>

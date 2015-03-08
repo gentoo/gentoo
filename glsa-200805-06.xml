@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-06">
+  <title>Firebird: Data disclosure</title>
+  <synopsis>
+    Firebird allows remote connections to the administrative account without
+    verifying credentials.
+  </synopsis>
+  <product type="ebuild">firebird</product>
+  <announced>May 09, 2008</announced>
+  <revised>May 09, 2008: 01</revised>
+  <bug>216158</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/firebird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3.12981.0-r6</unaffected>
+      <vulnerable range="lt">2.0.3.12981.0-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Firebird is a multi-platform, open source relational database.
+    </p>
+  </background>
+  <description>
+    <p>
+    Viesturs reported that the default configuration for Gentoo's init
+    script ("/etc/conf.d/firebird") sets the "ISC_PASSWORD" environment
+    variable when starting Firebird. It will be used when no password is
+    supplied by a client connecting as the "SYSDBA" user.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can authenticate as the "SYSDBA" user without
+    providing the credentials, resulting in complete disclosure of all
+    databases except for the user and password database (security2.fdb).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Firebird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/firebird-2.0.3.12981.0-r6&quot;</code>
+    <p>
+    Note: /etc/conf.d is protected by Portage as a configuration directory.
+    Do not forget to use "<i>etc-update</i>" or "<i>dispatch-conf</i>" to
+    overwrite the "firebird" configuration file, and then restart Firebird.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1880">CVE-2008-1880</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 02:05:02 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Apr 2008 09:22:33 +0000">
+    vorlon
+  </metadata>
+</glsa>

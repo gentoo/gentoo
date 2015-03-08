@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-03">
+  <title>ClamAV: Buffer overflow in Freshclam</title>
+  <synopsis>
+    Freshclam is vulnerable to a buffer overflow that could lead to execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>May 02, 2006</announced>
+  <revised>May 02, 2006: 01</revised>
+  <bug>131791</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.88.2</unaffected>
+      <vulnerable range="lt">0.88.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner. Freshclam is a utility to download
+    virus signature updates.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar and an anonymous German researcher discovered that
+    Freshclam fails to check the size of the header data returned by a
+    webserver.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to connect to a malicious webserver an attacker
+    could cause the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1989">CVE-2006-1989</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 02 May 2006 04:03:38 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 02 May 2006 04:54:25 +0000">
+    jaervosz
+  </metadata>
+</glsa>

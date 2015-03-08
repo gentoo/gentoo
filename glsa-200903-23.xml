@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-23">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified, the worst of which allow
+    arbitrary code execution on a user's system via a malicious Flash file.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>March 10, 2009</announced>
+  <revised>May 28, 2009: 04</revised>
+  <bug>239543</bug>
+  <bug>251496</bug>
+  <bug>260264</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">10.0.22.87</unaffected>
+      <vulnerable range="lt">10.0.22.87</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Adobe Flash Player is a renderer for the popular SWF file format,
+    which is commonly used to provide interactive websites, digital
+    experiences and mobile content.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Adobe Flash Player:
+    </p>
+    <ul>
+    <li>The access scope of SystemsetClipboard() allows ActionScript
+    programs to execute the method without user interaction
+    (CVE-2008-3873).</li>
+    <li>The access scope of FileReference.browse() and
+    FileReference.download() allows ActionScript programs to execute the
+    methods without user interaction (CVE-2008-4401).</li>
+    <li>The Settings Manager controls can be disguised as normal graphical
+    elements. This so-called "clickjacking" vulnerability was disclosed by
+    Robert Hansen of SecTheory, Jeremiah Grossman of WhiteHat Security,
+    Eduardo Vela, Matthew Mastracci of DotSpots, and Liu Die Yu of
+    TopsecTianRongXin (CVE-2008-4503).</li>
+    <li>Adan Barth (UC Berkely) and Collin Jackson (Stanford University)
+    discovered a flaw occurring when interpreting HTTP response headers
+    (CVE-2008-4818).</li>
+    <li>Nathan McFeters and Rob Carter of Ernst and Young's Advanced
+    Security Center are credited for finding an unspecified vulnerability
+    facilitating DNS rebinding attacks (CVE-2008-4819).</li>
+    <li>When used in a Mozilla browser, Adobe Flash Player does not
+    properly interpret jar: URLs, according to a report by Gregory
+    Fleischer of pseudo-flaw.net (CVE-2008-4821).</li>
+    <li>Alex "kuza55" K. reported that Adobe Flash Player does not properly
+    interpret policy files (CVE-2008-4822).</li>
+    <li>The vendor credits Stefano Di Paola of Minded Security for
+    reporting that an ActionScript attribute is not interpreted properly
+    (CVE-2008-4823).</li>
+    <li>Riley Hassell and Josh Zelonis of iSEC Partners reported multiple
+    input validation errors (CVE-2008-4824).</li>
+    <li>The aforementioned researchers also reported that ActionScript 2
+    does not verify a member element's size when performing several known
+    and other unspecified actions, that DefineConstantPool accepts an
+    untrusted input value for a "constant count" and that character
+    elements are not validated when retrieved from a data structure,
+    possibly resulting in a null-pointer dereference (CVE-2008-5361,
+    CVE-2008-5362, CVE-2008-5363).</li>
+    <li>The vendor reported an unspecified arbitrary code execution
+    vulnerability (CVE-2008-5499).</li>
+    <li>Liu Die Yu of TopsecTianRongXin reported an unspecified flaw in the
+    Settings Manager related to "clickjacking" (CVE-2009-0114).</li>
+    <li>The vendor credits Roee Hay from IBM Rational Application Security
+    for reporting an input validation error when processing SWF files
+    (CVE-2009-0519).</li>
+    <li>Javier Vicente Vallejo reported via the iDefense VCP that Adobe
+    Flash does not remove object references properly, leading to a freed
+    memory dereference (CVE-2009-0520).</li>
+    <li>Josh Bressers of Red Hat and Tavis Ormandy of the Google Security
+    Team reported an untrusted search path vulnerability
+    (CVE-2009-0521).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted SWF
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user or a Denial of Service (crash). Furthermore a
+    remote attacker could gain access to sensitive information, disclose
+    memory contents by enticing a user to open a specially crafted PDF file
+    inside a Flash application, modify the victim's clipboard or render it
+    temporarily unusable, persuade a user into uploading or downloading
+    files, bypass security restrictions with the assistance of the user to
+    gain access to camera and microphone, conduct Cross-Site Scripting and
+    HTTP Header Splitting attacks, bypass the "non-root domain policy" of
+    Flash, and gain escalated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Flash Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-10.0.22.87&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3873">CVE-2008-3873</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4401">CVE-2008-4401</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4503">CVE-2008-4503</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4818">CVE-2008-4818</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4819">CVE-2008-4819</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4821">CVE-2008-4821</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4822">CVE-2008-4822</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4823">CVE-2008-4823</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4824">CVE-2008-4824</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5361">CVE-2008-5361</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5362">CVE-2008-5362</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5363">CVE-2008-5363</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5499">CVE-2008-5499</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0114">CVE-2009-0114</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0519">CVE-2009-0519</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0520">CVE-2009-0520</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0521">CVE-2009-0521</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 09 Mar 2009 11:37:22 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 09 Mar 2009 12:37:48 +0000">
+    p-y
+  </metadata>
+</glsa>

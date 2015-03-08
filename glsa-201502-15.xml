@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-15">
+  <title>Samba: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Samba, the worst of
+    which allowing a context-dependent attacker to bypass intended file
+    restrictions, cause a Denial of Service or execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>February 25, 2015</announced>
+  <revised>February 25, 2015: 1</revised>
+  <bug>479868</bug>
+  <bug>491070</bug>
+  <bug>493664</bug>
+  <bug>504494</bug>
+  <bug>511764</bug>
+  <bug>514676</bug>
+  <bug>541182</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.6.25</unaffected>
+      <vulnerable range="lt">3.6.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Samba is a suite of SMB and CIFS client/server programs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Samba. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker may be able to execute arbitrary code,
+      cause a Denial of Service condition, bypass intended file restrictions,
+      or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Samba users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-3.6.25"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6150">CVE-2012-6150</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4124">CVE-2013-4124</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4408">CVE-2013-4408</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4475">CVE-2013-4475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4476">CVE-2013-4476</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4496">CVE-2013-4496</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0178">CVE-2014-0178</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0239">CVE-2014-0239</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0244">CVE-2014-0244</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3493">CVE-2014-3493</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0240">CVE-2015-0240</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 May 2014 04:10:53 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Feb 2015 22:04:57 +0000">K_F</metadata>
+</glsa>

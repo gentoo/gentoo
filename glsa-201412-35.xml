@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-35">
+  <title>RSYSLOG: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities have been found in RSYSLOG, allowing
+    attackers to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">rsyslog</product>
+  <announced>December 24, 2014</announced>
+  <revised>December 24, 2014: 1</revised>
+  <bug>395709</bug>
+  <bug>491856</bug>
+  <bug>524058</bug>
+  <bug>524290</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/rsyslog" auto="yes" arch="*">
+      <unaffected range="ge">8.4.2</unaffected>
+      <vulnerable range="lt">8.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>RSYSLOG is an enhanced multi-threaded syslogd with database support and
+      more.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in RSYSLOG. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker may be able to create a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RSYSLOG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/rsyslog-8.4.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4623">CVE-2011-4623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3634">CVE-2014-3634</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3683">CVE-2014-3683</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Aug 2014 19:34:54 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 20:04:37 +0000">ackle</metadata>
+</glsa>

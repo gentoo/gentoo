@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-22">
+  <title>Samba: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Samba, the worst of
+    which may allow execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">Samba</product>
+  <announced>June 24, 2012</announced>
+  <revised>June 24, 2012: 1</revised>
+  <bug>290633</bug>
+  <bug>310105</bug>
+  <bug>323785</bug>
+  <bug>332063</bug>
+  <bug>337295</bug>
+  <bug>356917</bug>
+  <bug>382263</bug>
+  <bug>386375</bug>
+  <bug>405551</bug>
+  <bug>411487</bug>
+  <bug>414319</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.5.15</unaffected>
+      <vulnerable range="lt">3.5.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Samba is a suite of SMB and CIFS client/server programs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Samba. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with root
+      privileges, cause a Denial of Service condition, take ownership of shared
+      files, or bypass file permissions. Furthermore, a local attacker may be
+      able to cause a Denial of Service condition or obtain sensitive
+      information in a Samba credentials file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Samba users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-3.5.15"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2906">CVE-2009-2906</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2948">CVE-2009-2948</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0728">CVE-2010-0728</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1635">CVE-2010-1635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1642">CVE-2010-1642</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2063">CVE-2010-2063</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3069">CVE-2010-3069</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0719">CVE-2011-0719</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1678">CVE-2011-1678</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2724">CVE-2011-2724</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0870">CVE-2012-0870</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1182">CVE-2012-1182</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2111">CVE-2012-2111</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:36:59 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 24 Jun 2012 12:38:35 +0000" tag="submitter">ackle</metadata>
+</glsa>

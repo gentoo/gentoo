@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-04">
+  <title>Wordpress: Multiple vulnerabilities</title>
+  <synopsis>
+    Wordpress contains SQL injection and XSS vulnerabilities.
+  </synopsis>
+  <product type="ebuild">Wordpress</product>
+  <announced>June 06, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>88926</bug>
+  <bug>94512</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1.2</unaffected>
+      <vulnerable range="lt">1.5.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a PHP and MySQL based content management and publishing
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Due to a lack of input validation, WordPress is vulnerable to SQL
+    injection and XSS attacks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could use the SQL injection vulnerabilities to gain
+    information from the database. Furthermore the cross-site scripting
+    issues give an attacker the ability to inject and execute malicious
+    script code or to steal cookie-based authentication credentials,
+    potentially compromising the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wordpress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-1.5.1.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1102">CVE-2005-1102</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1687">CVE-2005-1687</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1810">CVE-2005-1810</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 01 Jun 2005 07:49:47 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 01 Jun 2005 07:49:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Jun 2005 05:09:09 +0000">
+    jaervosz
+  </metadata>
+</glsa>

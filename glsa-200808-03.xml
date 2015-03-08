@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-03">
+  <title>Mozilla products: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mozilla Firefox,
+    Thunderbird, SeaMonkey and XULRunner, some of which may allow user-assisted
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mozilla-firefox mozilla-firefox-bin mozilla-thunderbird mozilla-thunderbird-bin seamonkey seamonkey-bin xulrunner xulrunner-bin</product>
+  <announced>August 06, 2008</announced>
+  <revised>August 06, 2008: 01</revised>
+  <bug>204337</bug>
+  <bug>218065</bug>
+  <bug>230567</bug>
+  <bug>231975</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.16</unaffected>
+      <vulnerable range="lt">2.0.0.16</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.16</unaffected>
+      <vulnerable range="lt">2.0.0.16</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.16</unaffected>
+      <vulnerable range="lt">2.0.0.16</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.16</unaffected>
+      <vulnerable range="lt">2.0.0.16</vulnerable>
+    </package>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.1.11</unaffected>
+      <vulnerable range="lt">1.1.11</vulnerable>
+    </package>
+    <package name="www-client/seamonkey-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.1.11</unaffected>
+      <vulnerable range="lt">1.1.11</vulnerable>
+    </package>
+    <package name="net-libs/xulrunner" auto="yes" arch="*">
+      <unaffected range="ge">1.8.1.16</unaffected>
+      <vulnerable range="lt">1.8.1.16</vulnerable>
+    </package>
+    <package name="net-libs/xulrunner-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.1.16</unaffected>
+      <vulnerable range="lt">1.8.1.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is an open-source web browser and Mozilla Thunderbird
+    an open-source email client, both from the Mozilla Project. The
+    SeaMonkey project is a community effort to deliver production-quality
+    releases of code derived from the application formerly known as the
+    'Mozilla Application Suite'. XULRunner is a Mozilla runtime package
+    that can be used to bootstrap XUL+XPCOM applications like Firefox and
+    Thunderbird.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were reported in all mentioned Mozilla
+    products:
+    </p>
+    <ul>
+    <li>
+    TippingPoint's Zero Day Initiative reported that an incorrect integer
+    data type is used as a CSS object reference counter, leading to a
+    counter overflow and a free() of in-use memory (CVE-2008-2785).
+    </li>
+    <li>
+    Igor Bukanov, Jesse Ruderman and Gary Kwong reported crashes in the
+    JavaScript engine, possibly triggering memory corruption
+    (CVE-2008-2799).
+    </li>
+    <li>
+    Devon Hubbard, Jesse Ruderman, and Martijn Wargers reported crashes in
+    the layout engine, possibly triggering memory corruption
+    (CVE-2008-2798).
+    </li>
+    <li>
+    moz_bug_r_a4 reported that XUL documents that include a script from a
+    chrome: URI that points to a fastload file would be executed with the
+    privileges specified in the file (CVE-2008-2802).
+    </li>
+    <li>
+    moz_bug_r_a4 reported that the mozIJSSubScriptLoader.LoadScript()
+    function only apply XPCNativeWrappers to scripts loaded from standard
+    "chrome:" URIs, which could be the case in third-party add-ons
+    (CVE-2008-2803).
+    </li>
+    <li>
+    Astabis reported a crash in the block reflow implementation related to
+    large images (CVE-2008-2811).
+    </li>
+    <li>
+    John G. Myers, Frank Benkstein and Nils Toedtmann reported a weakness
+    in the trust model used by Mozilla, that when a user accepts an SSL
+    server certificate on the basis of the CN domain name in the DN field,
+    the certificate is also regarded as accepted for all domain names in
+    subjectAltName:dNSName fields (CVE-2008-2809).
+    </li>
+    </ul> <p>
+    The following vulnerabilities were reported in Firefox, SeaMonkey and
+    XULRunner:
+    </p>
+    <ul>
+    <li>
+    moz_bug_r_a4 reported that the Same Origin Policy is not properly
+    enforced on JavaScript (CVE-2008-2800).
+    </li>
+    <li>
+    Collin Jackson and Adam Barth reported that JAR signing is not properly
+    implemented, allowing injection of JavaScript into documents within a
+    JAR archive (CVE-2008-2801).
+    </li>
+    <li>
+    Opera Software reported an error allowing for arbitrary local file
+    upload (CVE-2008-2805).
+    </li>
+    <li>
+    Daniel Glazman reported that an invalid .properties file for an add-on
+    might lead to the usage of uninitialized memory (CVE-2008-2807).
+    </li>
+    <li>
+    Masahiro Yamada reported that HTML in "file://" URLs in directory
+    listings is not properly escaped (CVE-2008-2808).
+    </li>
+    <li>
+    Geoff reported that the context of Windows Internet shortcut files is
+    not correctly identified (CVE-2008-2810).
+    </li>
+    <li>
+    The crash vulnerability (CVE-2008-1380) that was previously announced
+    in GLSA 200805-18 is now also also resolved in Seamonkey binary
+    ebuilds.
+    </li>
+    </ul> <p>
+    The following vulnerability was reported in Firefox only:
+    </p>
+    <ul>
+    <li>
+    Billy Rios reported that the Pipe character in a command-line URI is
+    identified as a request to open multiple tabs, allowing to open
+    "chrome" and "file" URIs (CVE-2008-2933).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a specially crafted web
+    page or email that will trigger one of the vulnerabilities, possibly
+    leading to the execution of arbitrary code or a Denial of Service. It
+    is also possible for an attacker to trick a user to upload arbitrary
+    files or to accept an invalid certificate for a spoofed web site, to
+    read uninitialized memory, to violate Same Origin Policy, or to conduct
+    Cross-Site Scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.16&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.16&quot;</code>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-2.0.0.16&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-2.0.0.16&quot;</code>
+    <p>
+    All Seamonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.11&quot;</code>
+    <p>
+    All Seamonkey binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.11&quot;</code>
+    <p>
+    All XULRunner users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/xulrunner-1.8.1.16&quot;</code>
+    <p>
+    All XULRunner binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/xulrunner-bin-1.8.1.16&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1380">CVE-2008-1380</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2785">CVE-2008-2785</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2798">CVE-2008-2798</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2799">CVE-2008-2799</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2800">CVE-2008-2800</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2801">CVE-2008-2801</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2802">CVE-2008-2802</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2803">CVE-2008-2803</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2805">CVE-2008-2805</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2807">CVE-2008-2807</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2808">CVE-2008-2808</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2809">CVE-2008-2809</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2810">CVE-2008-2810</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2811">CVE-2008-2811</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2933">CVE-2008-2933</uri>
+    <uri link="/security/en/glsa/glsa-200805-18.xml">GLSA 200805-18</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2008 18:09:54 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Jul 2008 20:08:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 06 Aug 2008 00:34:26 +0000">
+    rbu
+  </metadata>
+</glsa>

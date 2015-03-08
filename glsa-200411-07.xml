@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-07">
+  <title>Proxytunnel: Format string vulnerability</title>
+  <synopsis>
+    Proxytunnel is vulnerable to a format string vulnerability, potentially
+    allowing a remote server to execute arbitrary code with the rights of the
+    Proxytunnel process.
+  </synopsis>
+  <product type="ebuild">Proxytunnel</product>
+  <announced>November 03, 2004</announced>
+  <revised>November 03, 2004: 01</revised>
+  <bug>69379</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/proxytunnel" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Proxytunnel is a program that tunnels connections to a remote server
+    through a standard HTTPS proxy.
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Schilhabel of the Gentoo Linux Security Audit project found a
+    format string vulnerability in Proxytunnel. When the program is started in
+    daemon mode (-a [port]), it improperly logs invalid proxy answers to
+    syslog.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious remote server could send specially-crafted invalid answers to
+    exploit the format string vulnerability, potentially allowing the execution
+    of arbitrary code on the tunnelling host with the rights of the Proxytunnel
+    process.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You can mitigate the issue by only allowing connections to trusted remote
+    servers.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Proxytunnel users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-misc/proxytunnel-1.2.3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0992">CAN-2004-0992</uri>
+    <uri link="http://proxytunnel.sourceforge.net/news.html">Proxytunnel News</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue,  2 Nov 2004 21:56:56 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  3 Nov 2004 09:32:39 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  3 Nov 2004 14:02:21 +0000">
+    koon
+  </metadata>
+</glsa>

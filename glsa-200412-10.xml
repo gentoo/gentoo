@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-10">
+  <title>Vim, gVim: Vulnerable options in modelines</title>
+  <synopsis>
+    Several vulnerabilities related to the use of options in modelines have
+    been found and fixed in Vim. They could potentially result in a local user
+    escalating privileges.
+  </synopsis>
+  <product type="ebuild">vim</product>
+  <announced>December 15, 2004</announced>
+  <revised>December 15, 2004: 01</revised>
+  <bug>73715</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-editors/vim" auto="yes" arch="*">
+      <unaffected range="ge">6.3-r2</unaffected>
+      <vulnerable range="lt">6.3-r2</vulnerable>
+    </package>
+    <package name="app-editors/gvim" auto="yes" arch="*">
+      <unaffected range="ge">6.3-r2</unaffected>
+      <vulnerable range="lt">6.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Vim is an efficient, highly configurable improved version of the
+    classic 'vi' text editor. gVim is the GUI version of Vim.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gentoo's Vim maintainer, Ciaran McCreesh, found several
+    vulnerabilities related to the use of options in Vim modelines. Options
+    like 'termcap', 'printdevice', 'titleold', 'filetype', 'syntax',
+    'backupext', 'keymap', 'patchmode' or 'langmenu' could be abused.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could write a malicious file in a world readable
+    location which, when opened in a modeline-enabled Vim, could trigger
+    arbitrary commands with the rights of the user opening the file,
+    resulting in privilege escalation. Please note that modelines are
+    disabled by default in the /etc/vimrc file provided in Gentoo.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Vim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/vim-6.3-r2&quot;</code>
+    <p>
+    All gVim users should also upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gvim-6.3-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1138">CAN-2004-1138</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Dec 2004 22:32:12 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 13 Dec 2004 17:03:31 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Dec 2004 14:00:28 +0000">
+    koon
+  </metadata>
+</glsa>

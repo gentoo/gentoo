@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-08">
+  <title>Win32 binary codecs: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the Win32 codecs for Linux may result in the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">win32codecs</product>
+  <announced>March 04, 2008</announced>
+  <revised>March 04, 2008: 01</revised>
+  <bug>150288</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/win32codecs" auto="yes" arch="*">
+      <unaffected range="ge">20071007-r2</unaffected>
+      <vulnerable range="lt">20071007-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Win32 binary codecs provide support for video and audio playback.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple buffer overflow, heap overflow, and integer overflow
+    vulnerabilities were discovered in the Quicktime plugin when processing
+    MOV, FLC, SGI, H.264 and FPX files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted video
+    file, possibly resulting in the remote execution of arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Win32 binary codecs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/win32codecs-20071007-r2&quot;</code>
+    <p>
+    Note: Since no updated binary versions have been released, the
+    Quicktime libraries have been removed from the package. Please use the
+    free alternative Quicktime implementations within VLC, MPlayer or Xine
+    for playback.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4382">CVE-2006-4382</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4384">CVE-2006-4384</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4385">CVE-2006-4385</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4386">CVE-2006-4386</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4388">CVE-2006-4388</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4389">CVE-2006-4389</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4674">CVE-2007-4674</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6166">CVE-2007-6166</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Nov 2007 22:48:06 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 Nov 2007 22:48:15 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Feb 2008 10:44:06 +0000">
+    p-y
+  </metadata>
+</glsa>

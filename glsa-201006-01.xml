@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-01">
+  <title>FreeType 1: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple vulnerabilities in FreeType might result in the remote execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">freetype</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>271234</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">1.4_pre20080316-r2</unaffected>
+      <vulnerable range="lt">1.4_pre20080316-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeType is a True Type Font rendering library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple issues found in FreeType 2 were also discovered in FreeType 1.
+    For details on these issues, please review the Gentoo Linux Security
+    Advisories and CVE identifiers referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted TTF
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running FreeType.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeType 1 users should upgrade to an unaffected version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/freetype-1.4_pre20080316-r2&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since May 27, 2009. It is likely that your system is already
+    no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1861">CVE-2006-1861</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2754">CVE-2007-2754</uri>
+    <uri link="/security/en/glsa/glsa-200607-02.xml">GLSA 200607-02</uri>
+    <uri link="/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 01 Jun 2009 22:26:35 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 30 May 2010 10:59:47 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 15:32:56 +0000">
+    a3li
+  </metadata>
+</glsa>

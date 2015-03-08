@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-06">
+  <title>AWStats: Remote execution of arbitrary code</title>
+  <synopsis>
+    AWStats contains a bug in the sanitization of the input parameters which
+    can lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">awstats</product>
+  <announced>June 07, 2006</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>130487</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-misc/awstats" auto="yes" arch="*">
+      <unaffected range="ge">6.5-r1</unaffected>
+      <vulnerable range="lt">6.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    AWStats is an advanced log file analyzer and statistics generator.
+    </p>
+  </background>
+  <description>
+    <p>
+    Hendrik Weimer has found that if updating the statistics via the
+    web frontend is enabled, it is possible to inject arbitrary code via a
+    pipe character in the "migrate" parameter. Additionally, r0t has
+    discovered that AWStats fails to properly sanitize user-supplied input
+    in awstats.pl.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can execute arbitrary code on the server in the
+    context of the application running the AWStats CGI script if updating
+    of the statistics via web frontend is allowed. Nonetheless, all
+    configurations are affected by a cross-site scripting vulnerability in
+    awstats.pl, allowing a remote attacker to execute arbitrary scripts
+    running in the context of the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable statistics updates using the web frontend to avoid code
+    injection. However, there is no known workaround at this time
+    concerning the cross-site scripting vulnerability.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AWStats users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-misc/awstats-6.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1945">CVE-2006-1945</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2237">CVE-2006-2237</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 20 May 2006 08:51:28 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 21 May 2006 19:06:44 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:20:28 +0000">
+    falco
+  </metadata>
+</glsa>

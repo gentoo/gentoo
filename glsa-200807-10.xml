@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-10">
+  <title>Bacula: Information disclosure</title>
+  <synopsis>
+    A vulnerability in Bacula may allow local attackers to obtain sensitive
+    information.
+  </synopsis>
+  <product type="ebuild">bacula</product>
+  <announced>July 21, 2008</announced>
+  <revised>July 21, 2008: 01</revised>
+  <bug>196834</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-backup/bacula" auto="yes" arch="*">
+      <unaffected range="ge">2.4.1</unaffected>
+      <vulnerable range="lt">2.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Bacula is a network based backup suite.
+    </p>
+  </background>
+  <description>
+    <p>
+    Matthijs Kooijman reported that the "make_catalog_backup" script uses
+    the MySQL password as a command line argument when invoking other
+    programs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could list the processes on the local machine when the
+    script is running to obtain the MySQL password. Note: The password
+    could also be disclosed via network sniffing attacks when the script
+    fails, in which case it would be sent via cleartext e-mail.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    A warning about this issue has been added in version 2.4.1, but the
+    issue is still unfixed. We advise not to use the make_catalog_backup
+    script, but to put all MySQL parameters into a dedicated file readable
+    only by the user running Bacula.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5626">CVE-2007-5626</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Jul 2008 10:41:52 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Jul 2008 11:29:18 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Jul 2008 11:29:25 +0000">
+    p-y
+  </metadata>
+</glsa>

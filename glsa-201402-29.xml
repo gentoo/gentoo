@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-29">
+  <title>ArgyllCMS: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple integer overflow vulnerabilities have been found in
+    ArgyllCMS which could allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">argyllcms</product>
+  <announced>February 28, 2014</announced>
+  <revised>February 28, 2014: 1</revised>
+  <bug>437652</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/argyllcms" auto="yes" arch="*">
+      <unaffected range="ge">1.4.0-r1</unaffected>
+      <vulnerable range="lt">1.4.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ArgyllCMS is an ICC compatible color management system that supports
+      accurate ICC profile creation for scanners, cameras and film recorders.
+    </p>
+  </background>
+  <description>
+    <p>Multiple integer overflow vulnerabilities have been discovered in the
+      ICC Format Library in ArgyllCMS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using ArgyllCMS, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ArgyllCMS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/argyllcms-1.4.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4405">CVE-2012-4405</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Dec 2012 14:48:08 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Feb 2014 10:11:22 +0000">ackle</metadata>
+</glsa>

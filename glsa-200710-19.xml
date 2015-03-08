@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-19">
+  <title>The Sleuth Kit: Integer underflow</title>
+  <synopsis>
+    An integer underflow vulnerability has been reported in The Sleuth Kit
+    allowing for the user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">sleuthkit</product>
+  <announced>October 18, 2007</announced>
+  <revised>October 18, 2007: 01</revised>
+  <bug>181977</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-forensics/sleuthkit" auto="yes" arch="*">
+      <unaffected range="ge">2.0.9</unaffected>
+      <vulnerable range="lt">2.0.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Sleuth Kit is a collection of file system and media management
+    forensic analysis tools.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jean-Sebastien Guay-Leroux reported an integer underflow in the
+    file_printf() function of the "file" utility which is bundled with The
+    Sleuth Kit (CVE-2007-1536, GLSA 200703-26). Note that Gentoo is not
+    affected by the improper fix for this vulnerability (identified as
+    CVE-2007-2799, see GLSA 200705-25) since version 4.20 of "file" was
+    never shipped with The Sleuth Kit ebuilds.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run The Sleuth Kit on a file
+    system containing a specially crafted file that would trigger a
+    heap-based buffer overflow possibly leading to the execution of
+    arbitrary code with the rights of the user running The Sleuth Kit.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All The Sleuth Kit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-forensics/sleuthkit-2.0.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1536">CVE-2007-1536</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2799">CVE-2007-2799</uri>
+    <uri link="/security/en/glsa/glsa-200703-26.xml">GLSA 200703-26</uri>
+    <uri link="/security/en/glsa/glsa-200705-25.xml">GLSA 200705-25</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Sep 2007 13:59:12 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 29 Sep 2007 13:59:20 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 23:47:34 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-10">
+  <title>libmikmod: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple buffer overflow vulnerabilities in libmikmod may allow an
+    attacker to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libmikmod</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>335892</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libmikmod" auto="yes" arch="*">
+      <unaffected range="ge">3.2.0_beta2-r3</unaffected>
+      <unaffected range="rge">3.1.12-r1</unaffected>
+      <vulnerable range="lt">3.2.0_beta2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libmikmod is a library to play a wide range of module formats.</p>
+  </background>
+  <description>
+    <p>Multiple boundary errors have been found in load_it.c in libmikmod,
+      which may cause a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open specially crafted files in
+      an application linked against libmikmod, possibly resulting in execution
+      of arbitrary code with the permissions of the user running the
+      application, or Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libmikmod 3.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/libmikmod-3.2.0_beta2-r3"
+    </code>
+    
+    <p>All libmikmod 3.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libmikmod-3.1.12-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2546">CVE-2010-2546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2971">CVE-2010-2971</uri>
+  </references>
+  <metadata timestamp="Fri, 02 Mar 2012 20:38:21 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:42:39 +0000" tag="submitter">ackle</metadata>
+</glsa>

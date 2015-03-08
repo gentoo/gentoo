@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-04">
+  <title>po4a: Insecure temporary file creation</title>
+  <synopsis>
+    A vulnerability has been discovered in po4a, allowing for a symlink attack.
+  </synopsis>
+  <product type="ebuild">po4a</product>
+  <announced>September 13, 2007</announced>
+  <revised>September 13, 2007: 01</revised>
+  <bug>189440</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/po4a" auto="yes" arch="*">
+      <unaffected range="ge">0.32-r1</unaffected>
+      <vulnerable range="lt">0.32-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    po4a is a set of tools for helping with the translation of
+    documentation.
+    </p>
+  </background>
+  <description>
+    <p>
+    The po4a development team reported a race condition in the gettextize()
+    function when creating the file "/tmp/gettextization.failed.po".
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform a symlink attack, possibly overwriting
+    files with the permissions of the user running po4a.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All po4a users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/po4a-0.32-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4462">CVE-2007-4462</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Aug 2007 20:28:00 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 28 Aug 2007 20:28:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 08 Sep 2007 16:20:41 +0000">
+    p-y
+  </metadata>
+</glsa>

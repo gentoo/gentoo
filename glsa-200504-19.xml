@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-19">
+  <title>MPlayer: Two heap overflow vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities have been found in MPlayer which could lead to the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">MPlayer</product>
+  <announced>April 20, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>89277</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre6-r4</unaffected>
+      <vulnerable range="lt">1.0_pre6-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player capable of handling multiple multimedia file
+    formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Heap overflows have been found in the code handling RealMedia RTSP and
+    Microsoft Media Services streams over TCP (MMST).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By setting up a malicious server and enticing a user to use its
+    streaming data, a remote attacker could possibly execute arbitrary code
+    on the client computer with the permissions of the user running
+    MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_pre6-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mplayerhq.hu/homepage/design7/news.html#vuln10">MPlayer News: Real RTSP heap overflow</uri>
+    <uri link="http://www.mplayerhq.hu/homepage/design7/news.html#vuln11">MPlayer News: MMST heap overflow</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1195">CVE-2005-1195</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 16 Apr 2005 16:59:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 18 Apr 2005 09:17:55 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Apr 2005 07:28:03 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-49">
+  <title>fish: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in fish, the worst of
+    which could result in local privilege escalation or remote arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">fish</product>
+  <announced>December 28, 2014</announced>
+  <revised>December 28, 2014: 1</revised>
+  <bug>509044</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-shells/fish" auto="yes" arch="*">
+      <unaffected range="ge">2.1.1</unaffected>
+      <vulnerable range="lt">2.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>fish is the Friendly Interactive SHell.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in fish. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to gain escalated privileges or overwrite
+      arbitrary files. Furthermore, a remote attacker may be able to execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All fish users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/fish-2.1.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2905">CVE-2014-2905</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2906">CVE-2014-2906</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2914">CVE-2014-2914</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3219">CVE-2014-3219</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 26 Dec 2014 19:46:39 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 28 Dec 2014 08:15:27 +0000">Zlogene</metadata>
+</glsa>

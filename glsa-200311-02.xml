@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200311-02">
+  <title>Opera: buffer overflows in 7.11 and 7.20</title>
+  <synopsis>
+    Buffer overflows exist in Opera 7.11 and 7.20 that can cause Opera to crash,
+    and can potentially overwrite arbitrary bytes on the heap leading to a
+    system compromise.
+  </synopsis>
+  <product type="ebuild">Opera</product>
+  <announced>2003-11-19</announced>
+  <revised>2003-11-19: 01</revised>
+  <bug>31775</bug>
+  <access>local / remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">7.21</unaffected>
+      <vulnerable range="eq">7.20</vulnerable>
+      <vulnerable range="eq">7.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Opera browser can cause a buffer allocated on the heap to overflow under
+    certain HREFs when rendering HTML.  The mail system is also deemed
+    vulnerable and an attacker can send an email containing a malformed HREF, or
+    plant the malicious HREF on a web site.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Certain HREFs can cause a buffer allocated on the heap to overflow when
+    rendering HTML which can allow arbitrary bytes on the heap to be overwritten
+    which can result in a system compromise.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to perform an 'emerge sync' and upgrade the package
+    to the latest available version.  Opera 7.22 is recommended as Opera 7.21 is
+    vulnerable to other security flaws. Specific steps to upgrade:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=www-client/opera-7.22'
+    # emerge '&gt;=www-client/opera-7.22'
+    # emerge clean</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0870">CAN-2003-0870</uri>
+    <uri link="http://www.atstake.com/research/advisories/2003/a102003-1.txt">@stake Security Advisory</uri>
+  </references>
+</glsa>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-07">
+  <title>OpenLDAP, Gauche: RUNPATH issues</title>
+  <synopsis>
+    OpenLDAP and Gauche suffer from RUNPATH issues that may allow users in the
+    "portage" group to escalate privileges.
+  </synopsis>
+  <product type="ebuild">OpenLDAP Gauche</product>
+  <announced>December 15, 2005</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>105380</bug>
+  <bug>112577</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-nds/openldap" auto="yes" arch="*">
+      <unaffected range="ge">2.2.28-r3</unaffected>
+      <unaffected range="rge">2.1.30-r6</unaffected>
+      <vulnerable range="lt">2.2.28-r3</vulnerable>
+    </package>
+    <package name="dev-scheme/gauche" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6-r1</unaffected>
+      <vulnerable range="lt">0.8.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenLDAP is a suite of LDAP-related application and development tools.
+    Gauche is an R5RS Scheme interpreter.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gentoo packaging for OpenLDAP and Gauche may introduce insecure paths
+    into the list of directories that are searched for libraries at
+    runtime.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A local attacker, who is a member of the "portage" group, could create
+    a malicious shared object in the Portage temporary build directory that
+    would be loaded at runtime by a dependent binary, potentially resulting
+    in privilege escalation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Only grant "portage" group rights to trusted users.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenLDAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-nds/openldap</code>
+    <p>
+    All Gauche users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-scheme/gauche-0.8.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4442">CVE-2005-4442</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4443">CVE-2005-4443</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 14 Dec 2005 13:30:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 Dec 2005 13:31:28 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-18">
+  <title>mod_ssl: Format string vulnerability</title>
+  <synopsis>
+    A bug in mod_ssl may allow a remote attacker to execute arbitrary code when
+    Apache is configured to use mod_ssl and mod_proxy.
+  </synopsis>
+  <product type="ebuild">mod_ssl</product>
+  <announced>July 22, 2004</announced>
+  <revised>July 22, 2004: 01</revised>
+  <bug>57379</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-www/mod_ssl" auto="yes" arch="*">
+      <unaffected range="ge">2.8.19</unaffected>
+      <vulnerable range="le">2.8.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mod_ssl provides Secure Sockets Layer encryption and authentication to
+    Apache 1.3.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in ssl_engine_ext.c makes mod_ssl vulnerable to a ssl_log() related
+    format string vulnerability in the mod_proxy hook functions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Given the right server configuration, an attacker could execute code as the
+    user running Apache, usually &quot;apache&quot;.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A server should not be vulnerable if it is not using both mod_ssl and
+    mod_proxy. Otherwise there is no workaround other than to disable mod_ssl.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mod_ssl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-www/mod_ssl-2.8.19"
+    # emerge ">=net-www/mod_ssl-2.8.19"</code>
+  </resolution>
+  <references>
+    <uri link="http://marc.theaimsgroup.com/?l=apache-modssl&amp;m=109001100906749&amp;w=2">mod_ssl Announcement</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

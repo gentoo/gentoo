@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-29">
+  <title>Pound: Buffer overflow vulnerability</title>
+  <synopsis>
+    Pound is vulnerable to a buffer overflow that could lead to the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Pound</product>
+  <announced>April 30, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>90851</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/pound" auto="yes" arch="*">
+      <unaffected range="ge">1.8.3</unaffected>
+      <vulnerable range="lt">1.8.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pound is a reverse proxy, load balancer and HTTPS front-end.
+    </p>
+  </background>
+  <description>
+    <p>
+    Steven Van Acker has discovered a buffer overflow vulnerability in the
+    "add_port()" function in Pound.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a request for an overly long hostname
+    parameter, which could lead to the remote execution of arbitrary code
+    with the rights of the Pound daemon process (by default, Gentoo uses
+    the "nobody" user to run the Pound daemon).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pound users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/pound-1.8.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.apsis.ch/pound/pound_list/archive/2005/2005-04/1114516112000">Original announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1391">CVE-2005-1391</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 Apr 2005 17:01:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Apr 2005 20:39:56 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 30 Apr 2005 08:11:33 +0000">
+    jaervosz
+  </metadata>
+</glsa>

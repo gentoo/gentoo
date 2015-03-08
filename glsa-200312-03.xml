@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200312-03">
+  <title>rsync: exploitable heap overflow</title>
+  <synopsis>
+    rsync contains a heap overflow vulnerability that can be used to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>2003-12-04</announced>
+  <revised>2003-12-04: 01</revised>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">2.5.7</unaffected>
+      <vulnerable range="lt">2.5.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rsync is a popular file transfer package used to synchronize the Portage
+    tree.
+    </p>
+  </background>
+  <description>
+    <p>
+    Rsync version 2.5.6 contains a vulnerability that can be used to run
+    arbitrary code.  The Gentoo infrastructure team has some reasonably good
+    forensic evidence that this exploit may have been used in combination with
+    the Linux kernel do_brk() vulnerability (see GLSA 200312-02) to exploit a
+    rsync.gentoo.org rotation server (see GLSA-200312-01.)
+    </p>
+    <p>
+    Please see http://lwn.net/Articles/61541/ for the security advisory released
+    by the rsync development team.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could execute arbitrary code with the permissions of the
+    root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    To address this vulnerability, all Gentoo users should read GLSA-200312-02
+    and ensure that all systems are upgraded to a version of the Linux kernel
+    without the do_brk() vulnerability, and upgrade to version 2.5.7 of rsync:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=net-misc/rsync-2.5.7'
+    # emerge '&gt;=net-misc/rsync-2.5.7'
+    # emerge clean</code>
+    <p>
+    Review your /etc/rsync/rsyncd.conf configuration file; ensure that the use
+    chroot="no" command is commented out or removed, or change use chroot="no"
+    to use chroot="yes".  Then, if necessary, restart rsyncd:
+    </p>
+    <code>
+    # /etc/init.d/rsyncd restart</code>
+  </resolution>
+  <references>
+    <uri link="http://rsync.samba.org/#security_dec03">Rsync Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0962">CAN-2003-0962</uri>
+    <uri link="http://security.gentoo.org/glsa/glsa-200312-02.xml">GLSA-200312-02</uri>
+    <uri link="http://security.gentoo.org/glsa/glsa-200312-01.xml">GLSA-200312-01</uri>
+  </references>
+</glsa>

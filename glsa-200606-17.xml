@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-17">
+  <title>OpenLDAP: Buffer overflow</title>
+  <synopsis>
+    The OpenLDAP replication server slurpd contains a buffer overflow that
+    could result in arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">net-nds/openldap</product>
+  <announced>June 15, 2006</announced>
+  <revised>June 15, 2006: 01</revised>
+  <bug>134010</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-nsd/openldap" auto="yes" arch="*">
+      <unaffected range="ge">2.3.22</unaffected>
+      <vulnerable range="lt">2.3.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenLDAP is a suite of LDAP-related applications and development tools.
+    It includes slapd (the standalone LDAP server), slurpd (the standalone
+    LDAP replication server), various LDAP libraries, utilities and example
+    clients.
+    </p>
+  </background>
+  <description>
+    <p>
+    slurpd contains a buffer overflow when reading very long hostnames from
+    the status file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By injecting an overly long hostname in the status file, an attacker
+    could possibly cause the execution of arbitrary code with the
+    permissions of the user running slurpd.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All openLDAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-nds/openldap-2.3.22&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2754">CVE-2006-2754</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 08 Jun 2006 10:43:24 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 11 Jun 2006 20:44:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Jun 2006 07:06:11 +0000">
+    SeJo
+  </metadata>
+</glsa>

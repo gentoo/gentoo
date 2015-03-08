@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-02">
+  <title>MySQL: Insecure temporary file creation in mysqlhotcopy</title>
+  <synopsis>
+    The mysqlhotcopy utility can create temporary files with predictable paths,
+    allowing an attacker to use a symlink to trick MySQL into overwriting
+    important data.
+  </synopsis>
+  <product type="ebuild">MySQL</product>
+  <announced>September 01, 2004</announced>
+  <revised>September 01, 2004: 01</revised>
+  <bug>60744</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">4.0.20-r1</unaffected>
+      <vulnerable range="le">4.0.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular open-source multi-threaded, multi-user SQL database
+    server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jeroen van Wolffelaar discovered that the MySQL database hot copy utility
+    (mysqlhotcopy.sh), when using the scp method, uses temporary files with
+    predictable names. A malicious local user with write access to the /tmp
+    directory could create a symbolic link pointing to a file, which may then
+    be overwritten. In cases where mysqlhotcopy is run as root, a malicious
+    user could create a symlink to a critical file such as /etc/passwd and
+    cause it to be overwritten.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could use this vulnerability to destroy other users' data
+    or corrupt and destroy system files, possibly leading to a denial of
+    service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-db/mysql-4.0.20-r1"
+    # emerge ">=dev-db/mysql-4.0.20-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0457">CAN-2004-0457</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 31 Aug 2004 08:03:33 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 31 Aug 2004 15:42:33 +0000">
+    koon
+  </metadata>
+</glsa>

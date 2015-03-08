@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-23">
+  <title>chmlib, KchmViewer: Stack-based buffer overflow</title>
+  <synopsis>
+    chmlib and KchmViewer contain a buffer overflow vulnerability which may
+    lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chmlib kchmviewer</product>
+  <announced>November 28, 2005</announced>
+  <revised>May 28, 2009: 03</revised>
+  <bug>110557</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/chmlib" auto="yes" arch="*">
+      <unaffected range="ge">0.37.4</unaffected>
+      <vulnerable range="lt">0.37.4</vulnerable>
+    </package>
+    <package name="app-text/kchmviewer" auto="yes" arch="*">
+      <unaffected range="ge">1.1</unaffected>
+      <vulnerable range="lt">1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    chmlib is a library for dealing with Microsoft ITSS and CHM format
+    files. KchmViewer is a CHM viewer that includes its own copy of the
+    chmlib library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sven Tantau reported about a buffer overflow vulnerability in
+    chmlib. The function "_chm_decompress_block()" does not properly
+    perform boundary checking, resulting in a stack-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By convincing a user to open a specially crafted ITSS or CHM file,
+    using KchmViewer or a program makes use of chmlib, a remote attacker
+    could execute arbitrary code with the privileges of the user running
+    the software.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All chmlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/chmlib-0.37.4&quot;</code>
+    <p>
+    All KchmViewer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/kchmviewer-1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3318">CVE-2005-3318</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 25 Nov 2005 10:03:15 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 26 Nov 2005 02:10:11 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 27 Nov 2005 20:16:26 +0000">
+    adir
+  </metadata>
+</glsa>

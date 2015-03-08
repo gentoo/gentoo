@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200311-05">
+  <title>Ethereal: security problems in ethereal 0.9.15</title>
+  <synopsis>
+    Ethereal is vulnerable to heap and buffer overflows in the GTP, ISAKMP,
+    MEGACO, and SOCKS protocol dissectors.
+  </synopsis>
+  <product type="ebuild">Ethereal</product>
+  <announced>2003-11-22</announced>
+  <revised>2003-11-22: 01</revised>
+  <bug>32691</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.9.16</unaffected>
+      <vulnerable range="lt">0.9.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a popular network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ethereal contains buffer overflow vulnerabilities in the GTP, ISAKMP, and
+    MEGACO protocol dissectors, and a heap overflow vulnerability in the SOCKS
+    protocol dissector, which could cause Ethereal to crash or to execute
+    arbitrary code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malformed packet which would cause Ethereal
+    to crash or run arbitrary code with the permissions of the user running
+    Ethereal.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time, other than to disable the GTP,
+    ISAKMP, MEGACO, and SOCKS protocol dissectors.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    It is recommended that all Gentoo Linux users who are running
+    net-analyzer/ethereal 0.9.x upgrade:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=net-analyzer/ethereal-0.9.16'
+    # emerge '&gt;=net-analyzer/ethereal-0.9.16'
+    # emerge clean</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ethereal.com/appnotes/enpa-sa-00011.html">Ethereal Security Advisory</uri>
+  </references>
+</glsa>

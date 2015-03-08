@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-13">
+  <title>E2fsprogs: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple heap-based buffer overflows in E2fsprogs could result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">e2fsprogs</product>
+  <announced>December 18, 2007</announced>
+  <revised>December 18, 2007: 01</revised>
+  <bug>201546</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-fs/e2fsprogs" auto="yes" arch="*">
+      <unaffected range="ge">1.40.3</unaffected>
+      <vulnerable range="lt">1.40.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    E2fsprogs provides utilities for use with the ext2 and ext3 file
+    systems including the libext2fs library that allows user-level programs
+    to manipulate an ext2 or ext3 file system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Rafal Wojtczuk (McAfee AVERT Research) discovered multiple integer
+    overflows in libext2fs, that are triggered when processing information
+    from within the file system, resulting in heap-based buffer overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to process a specially-crafted ext2 or
+    ext3 file system image (with tools linking against libext2fs, e.g.
+    fsck, forensic tools or Xen's pygrub), possibly resulting in the
+    execution of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All E2fsprogs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-fs/e2fsprogs-1.40.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5497">CVE-2007-5497</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 12 Dec 2007 09:56:09 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Dec 2007 21:11:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 13 Dec 2007 23:03:39 +0000">
+    rbu
+  </metadata>
+</glsa>

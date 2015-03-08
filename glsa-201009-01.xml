@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-01">
+  <title>wxGTK: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    An integer overflow vulnerability in wxGTK might enable remote attackers to
+    cause the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">wxGTK</product>
+  <announced>September 02, 2010</announced>
+  <revised>September 02, 2010: 01</revised>
+  <bug>277722</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/wxGTK" auto="yes" arch="*">
+      <unaffected range="rge">2.6.4.0-r5</unaffected>
+      <unaffected range="ge">2.8.10.1-r1</unaffected>
+      <vulnerable range="lt">2.8.10.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    wxGTK is the GTK+ version of wxWidgets, a cross-platform C++ GUI
+    toolkit.
+    </p>
+  </background>
+  <description>
+    <p>
+    wxGTK is prone to an integer overflow error in the wxImage::Create()
+    function in src/common/image.cpp, possibly leading to a heap-based
+    buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might entice a user to open a specially crafted JPEG
+    file using a program that uses wxGTK, possibly resulting in the remote
+    execution of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All wxGTK 2.6 users should upgrade to an updated version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/wxGTK-2.6.4.0-r5&quot;</code>
+    <p>
+    All wxGTK 2.8 users should upgrade to an updated version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/wxGTK-2.8.10.1-r1&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since August 9, 2009. It is likely that your system is
+    already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2369">CVE-2009-2369</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 04 Oct 2009 23:41:42 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 01 Jun 2010 12:09:45 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 01 Jun 2010 14:53:47 +0000">
+    a3li
+  </metadata>
+</glsa>

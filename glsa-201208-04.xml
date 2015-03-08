@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201208-04">
+  <title>Gajim: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Gajim, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gajim</product>
+  <announced>August 14, 2012</announced>
+  <revised>August 14, 2012: 1</revised>
+  <bug>411269</bug>
+  <bug>412215</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-im/gajim" auto="yes" arch="*">
+      <unaffected range="ge">0.15-r1</unaffected>
+      <vulnerable range="lt">0.15-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Gajim is a Jabber and XMPP client written in PyGTK.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Gajim. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted link
+      using Gajim, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition. Furthermore,
+      a remote attacker could use a specially crafted Jabber ID, possibly
+      resulting in execution of arbitrary SQL statements.
+    </p>
+    
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Gajim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/gajim-0.15-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2085">CVE-2012-2085</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2086">CVE-2012-2086</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2093">CVE-2012-2093</uri>
+  </references>
+  <metadata timestamp="Tue, 10 Jul 2012 21:42:30 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 14 Aug 2012 20:30:50 +0000" tag="submitter">ackle</metadata>
+</glsa>

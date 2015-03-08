@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-21">
+  <title>Macromedia Flash Player: Remote arbitrary code execution</title>
+  <synopsis>
+    A vulnerability has been identified that allows arbitrary code execution on
+    a user's system via the handling of malicious SWF files.
+  </synopsis>
+  <product type="ebuild">Flash</product>
+  <announced>November 25, 2005</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>112251</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">7.0.61</unaffected>
+      <vulnerable range="lt">7.0.61</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Macromedia Flash Player is a renderer for the popular SWF
+    filetype which is commonly used to provide interactive websites,
+    digital experiences and mobile content.
+    </p>
+  </background>
+  <description>
+    <p>
+    When handling a SWF file, the Macromedia Flash Player incorrectly
+    validates the frame type identifier stored in the SWF file which is
+    used as an index to reference an array of function pointers. A
+    specially crafted SWF file can cause this index to reference memory
+    outside of the scope of the Macromedia Flash Player, which in turn can
+    cause the Macromedia Flash Player to use unintended memory address(es)
+    as function pointers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker serving a maliciously crafted SWF file could entice a
+    user to view the SWF file and execute arbitrary code on the user's
+    machine.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Macromedia Flash Player users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-7.0.61&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2628">CVE-2005-2628</uri>
+    <uri link="http://www.macromedia.com/devnet/security/security_zone/mpsb05-07.html">Macromedia Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 18 Nov 2005 12:28:16 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 18 Nov 2005 22:27:02 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Nov 2005 08:20:52 +0000">
+    koon
+  </metadata>
+</glsa>

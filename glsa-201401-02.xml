@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-02">
+  <title>Gajim: Information disclosure</title>
+  <synopsis>An error in Gajim causes invalid OpenSSL certificates to be
+    accepted as valid.
+  </synopsis>
+  <product type="ebuild">gajim</product>
+  <announced>January 06, 2014</announced>
+  <revised>January 06, 2014: 1</revised>
+  <bug>442860</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gajim" auto="yes" arch="*">
+      <unaffected range="ge">0.15.3-r1</unaffected>
+      <vulnerable range="lt">0.15.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Gajim is a Jabber/XMPP client which uses GTK+.</p>
+  </background>
+  <description>
+    <p>The _ssl_verify_callback() function in tls_nb.py does not properly
+      validate SSL certificates, causing any certificate to be accepted as
+      valid as long as the root CA is valid.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker might employ a specially crafted certificate to
+      conduct man-in-the-middle attacks on SSL connections and potentially
+      disclose sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Gajim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/gajim-0.15.3-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5524">CVE-2012-5524</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 11 Dec 2013 01:48:29 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Jan 2014 19:16:07 +0000">
+    creffett
+  </metadata>
+</glsa>

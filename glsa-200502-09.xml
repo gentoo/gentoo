@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-09">
+  <title>Python: Arbitrary code execution through SimpleXMLRPCServer</title>
+  <synopsis>
+    Python-based XML-RPC servers may be vulnerable to remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">Python</product>
+  <announced>February 08, 2005</announced>
+  <revised>February 08, 2005: 01</revised>
+  <bug>80592</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">2.3.4-r1</unaffected>
+      <unaffected range="rge">2.3.3-r2</unaffected>
+      <unaffected range="rge">2.2.3-r6</unaffected>
+      <vulnerable range="le">2.3.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Python is an interpreted, interactive, object-oriented,
+    cross-platform programming language.
+    </p>
+  </background>
+  <description>
+    <p>
+    Graham Dumpleton discovered that XML-RPC servers making use of the
+    SimpleXMLRPCServer library that use the register_instance() method to
+    register an object without a _dispatch() method are vulnerable to a
+    flaw allowing to read or modify globals of the associated module.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker may be able to exploit the flaw in such XML-RPC
+    servers to execute arbitrary code on the server host with the rights of
+    the XML-RPC server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Python users that don't make use of any SimpleXMLRPCServer-based
+    XML-RPC servers, or making use of servers using only the
+    register_function() method are not affected.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Python users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-lang/python</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0089">CAN-2005-0089</uri>
+    <uri link="http://www.python.org/security/PSF-2005-001/">Python PSF-2005-001</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  4 Feb 2005 14:45:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  7 Feb 2005 08:31:41 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  8 Feb 2005 19:35:29 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-04">
+  <title>Multiple security vulnerabilities in Apache 2</title>
+  <synopsis>
+    A memory leak in mod_ssl allows a remote denial of service attack against
+    an SSL-enabled server via plain HTTP requests. Another flaw was found when
+    arbitrary client-supplied strings can be written to the error log, allowing
+    the exploit of certain terminal emulators. A third flaw exists with the
+    mod_disk_cache module.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>March 22, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>45206</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="eq">1.3*</unaffected>
+      <unaffected range="ge">2.0.49</unaffected>
+      <vulnerable range="le">2.0.48</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP Server Project is an effort to develop and maintain an
+    open-source HTTP server for modern operating systems. The goal of this
+    project is to provide a secure, efficient and extensible server that
+    provides services in tune with the current HTTP standards.
+    </p>
+  </background>
+  <description>
+    <p>
+    Three vulnerabilities were found:
+    </p>
+    <ol>
+    <li>
+    A memory leak in ssl_engine_io.c for mod_ssl in Apache 2.0.48 and below
+    allows remote attackers to cause a denial of service attack via plain
+    HTTP requests to the SSL port of an SSL-enabled server.
+    </li>
+    <li>
+    Apache fails to filter terminal escape sequences from error logs that
+    begin with the ASCII (0x1B) sequence and are followed by a  series of
+    arguments. If a remote attacker could inject escape sequences into an
+    Apache error log, the attacker could take advantages of weaknesses in
+    various terminal emulators, launching attacks against remote users
+    including further denial of service attacks, file modification, and the
+    execution of arbitrary commands.
+    </li>
+    <li>
+    The Apache mod_disk_cache has been found to be vulnerable to a weakness
+    that allows attackers to gain access to authentication credentials
+    through the issue of caching HTTP hop-by-hop headers which would
+    contain plaintext user passwords. There is no available resolution for
+    this issue yet.
+    </li>
+    </ol>
+  </description>
+  <impact type="normal">
+    <p>
+    No special privileges are required for these vulnerabilities. As a
+    result, all users are recommended to upgrade their Apache
+    installations.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no immediate workaround; a software upgrade is required. There
+    is no workaround for the mod_disk_cache issue; users are recommended to
+    disable the feature on their servers until a patched version is
+    released.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are urged to upgrade to Apache 2.0.49:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv &quot;&gt;=www-servers/apache-2.0.49&quot;
+    # emerge &quot;&gt;=www-servers/apache-2.0.49&quot;
+    
+    # ** IMPORTANT **
+    
+    # If you are migrating from Apache 2.0.48-r1 or earlier versions,
+    # it is important that the following directories are removed.
+    
+    # The following commands should cause no data loss since these
+    # are symbolic links.
+    
+    # rm /etc/apache2/lib /etc/apache2/logs /etc/apache2/modules
+    # rm /etc/apache2/modules
+    
+    # ** ** ** ** **
+    
+    # ** ALSO NOTE **
+    
+    # Users who use mod_disk_cache should edit their Apache
+    # configuration and disable mod_disk_cache.</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/9933/info/">Apache mod_disk_cache authentication storage weakness vulnerability</uri>
+    <uri link="http://www.apache.org/dist/httpd/Announcement2.html">Apache HTTP Server 2.0.49 Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0113">CVE-2004-0113</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:52:59 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-11">
+  <title>MPlayer: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow was found in MPlayer's RTSP plugin that could lead to a
+    Denial of Service or arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">MPlayer</product>
+  <announced>February 27, 2007</announced>
+  <revised>February 27, 2007: 01</revised>
+  <bug>159727</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_rc1-r2</unaffected>
+      <vulnerable range="lt">1.0_rc1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player capable of playing multiple media formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    When checking for matching asm rules in the asmrp.c code, the results
+    are stored in a fixed-size array without boundary checks which may
+    allow a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can entice a user to connect to a manipulated RTSP server
+    resulting in a Denial of Service and possibly execution of arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mplayerhq.hu/design7/news.html#vuln14">Original Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6172">CVE-2006-6172</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 12:10:45 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Feb 2007 11:54:03 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 Feb 2007 12:06:52 +0000">
+    falco
+  </metadata>
+</glsa>

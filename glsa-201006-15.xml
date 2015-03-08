@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-15">
+  <title>XEmacs: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple integer overflow errors in XEmacs might allow remote,
+    user-assisted attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xemacs</product>
+  <announced>June 03, 2010</announced>
+  <revised>June 03, 2010: 01</revised>
+  <bug>275397</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-editors/xemacs" auto="yes" arch="*">
+      <unaffected range="ge">21.4.22-r1</unaffected>
+      <vulnerable range="lt">21.4.22-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XEmacs is a highly extensible and customizable text editor.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tielei Wang reported multiple integer overflow vulnerabilities in the
+    tiff_instantiate(), png_instantiate() and jpeg_instantiate() functions
+    in glyphs-eimage.c, all possibly leading to heap-based buffer
+    overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted TIFF,
+    JPEG or PNG file using XEmacs, possibly resulting in the remote
+    execution of arbitrary code with the privileges of the user running the
+    application, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All XEmacs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/xemacs-21.4.22-r1&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since July 26, 2009. It is likely that your system is already
+    no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2688">CVE-2009-2688</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 30 Jul 2009 20:43:44 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 31 May 2010 06:40:54 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 06:41:02 +0000">
+    a3li
+  </metadata>
+</glsa>

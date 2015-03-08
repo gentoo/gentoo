@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-06">
+  <title>Firebird: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple stack-based buffer overflows were discovered in Firebird.
+  </synopsis>
+  <product type="ebuild">firebird</product>
+  <announced>December 09, 2007</announced>
+  <revised>December 09, 2007: 01</revised>
+  <bug>195569</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/firebird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3.12981.0-r2</unaffected>
+      <vulnerable range="lt">2.0.3.12981.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Firebird is a multi-platfrom, open source relational database.
+    </p>
+  </background>
+  <description>
+    <p>
+    Adriano Lima and Ramon de Carvalho Valle reported that functions
+    isc_attach_database() and isc_create_database() do not perform proper
+    boundary checking when processing their input.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted requests to the Firebird
+    server on TCP port 3050, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running Firebird
+    (usually firebird).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Firebird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/firebird-2.0.3.12981.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4992">CVE-2007-4992</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5246">CVE-2007-5246</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 28 Nov 2007 11:24:49 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Nov 2007 00:06:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 08 Dec 2007 23:26:04 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-16">
+  <title>X.Org X Server/X Keyboard Configuration Database: Screen lock bypass</title>
+  <synopsis>A debugging functionality in the X.Org X Server that is bound to a
+    hotkey by default can be used by local attackers to circumvent screen
+    locking utilities.
+  </synopsis>
+  <product type="ebuild">xkeyboard-config xorg-server</product>
+  <announced>January 27, 2012</announced>
+  <revised>January 27, 2012: 1</revised>
+  <bug>399347</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-misc/xkeyboard-config" auto="yes" arch="amd64 arm hppa x86">
+      <unaffected range="ge">2.4.1-r3</unaffected>
+      <vulnerable range="lt">2.4.1-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Keyboard Configuration Database provides keyboard configuration
+      for various X server implementations.
+    </p>
+  </background>
+  <description>
+    <p>Starting with the =x11-base/xorg-server-1.11 package, the X.Org X Server
+      again provides debugging functionality that can be used terminate an
+      application that exclusively grabs mouse and keyboard input, like screen
+      locking utilities.
+    </p>
+    
+    <p>Gu1 reported that the X Keyboard Configuration Database maps this
+      functionality by default to the Ctrl+Alt+Numpad * key combination.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A physically proximate attacker could exploit this vulnerability to gain
+      access to a locked X session without providing the correct credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>Downgrade to any version of x11-base/xorg-server below
+      x11-base/xorg-server-1.11:
+    </p>
+    
+    <code>
+      # emerge --oneshot --verbose "&lt;x11-base/xorg-server-1.11"
+    </code>
+  </workaround>
+  <resolution>
+    <p>All xkeyboard-config users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=x11-misc/xkeyboard-config-2.4.1-r3"
+    </code>
+    
+    <p>NOTE: The X.Org X Server 1.11 was only stable on the AMD64, ARM, HPPA,
+      and x86 architectures. Users of the stable branches of all other
+      architectures are not affected and will be directly provided with a fixed
+      X Keyboard Configuration Database version.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0064">CVE-2012-0064</uri>
+  </references>
+  <metadata timestamp="Thu, 19 Jan 2012 17:45:40 +0000" tag="requester">a3li</metadata>
+  <metadata timestamp="Fri, 27 Jan 2012 20:35:28 +0000" tag="submitter">a3li</metadata>
+</glsa>

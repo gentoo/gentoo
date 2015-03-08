@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-15">
+  <title>util-linux: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in util-linux, the worst
+    of which may lead to Denial of Service.
+  </synopsis>
+  <product type="ebuild">util-linux</product>
+  <announced>May 18, 2014</announced>
+  <revised>May 18, 2014: 1</revised>
+  <bug>359759</bug>
+  <bug>450740</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/util-linux" auto="yes" arch="*">
+      <unaffected range="ge">2.22.2</unaffected>
+      <vulnerable range="lt">2.22.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>util-linux is a suite of Linux programs including mount and umount,
+      programs used to mount and unmount filesystems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in util-linux. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker may be able to cause a Denial of Service condition,
+      trigger corruption of /etc/mtab, obtain sensitive information, or have
+      other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All util-linux users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/util-linux-2.22.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1675">CVE-2011-1675</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1676">CVE-2011-1676</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1677">CVE-2011-1677</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0157">CVE-2013-0157</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:08 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:27:32 +0000">ackle</metadata>
+</glsa>

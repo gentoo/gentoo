@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-17">
+  <title>pmake: Insecure temporary file usage</title>
+  <synopsis>pmake uses temporary files in an insecure manner, allowing for
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">pmake</product>
+  <announced>October 28, 2013</announced>
+  <revised>October 28, 2013: 2</revised>
+  <bug>367891</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-devel/pmake" auto="yes" arch="*">
+      <unaffected range="ge">1.111.3.1</unaffected>
+      <vulnerable range="lt">1.111.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>pmake is Debian’s version of NetBSD’s make, a tool to build programs
+      in parallel.
+    </p>
+  </background>
+  <description>
+    <p>/usr/share/mk/bsd.lib.mk and /usr/share/mk/bsd.prog.mk create temporary
+      files insecurely, with predictable names (/tmp/_depend[PID]), and
+      without using $TMPDIR.
+    </p>
+  </description>
+  <impact type="low">
+    <p>The make include files allow local users to overwrite arbitrary files
+      via a symlink attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All pmake users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/pmake-1.111.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1920">CVE-2011-1920</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:19:21 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Oct 2013 11:31:35 +0000">craig</metadata>
+</glsa>

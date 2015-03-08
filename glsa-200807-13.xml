@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-13">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in VLC may allow for the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>July 31, 2008</announced>
+  <revised>July 31, 2008: 01</revised>
+  <bug>221959</bug>
+  <bug>230692</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6i</unaffected>
+      <vulnerable range="lt">0.8.6i</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VLC is a cross-platform media player and streaming server.
+    </p>
+  </background>
+  <description>
+    <ul><li>Remi Denis-Courmont reported that VLC loads plugins from the
+    current working directory in an unsafe manner (CVE-2008-2147).</li>
+    <li>Alin Rad Pop (Secunia Research) reported an integer overflow error
+    in the Open() function in the file modules/demux/wav.c
+    (CVE-2008-2430).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted .wav
+    file, and a local attacker could entice a user to run VLC from a
+    directory containing specially crafted modules, possibly resulting in
+    the execution of arbitrary code with the privileges of the user running
+    the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VLC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6i&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2147">CVE-2008-2147</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2430">CVE-2008-2430</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 22 May 2008 17:39:12 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Jun 2008 15:20:33 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Jul 2008 11:52:52 +0000">
+    p-y
+  </metadata>
+</glsa>

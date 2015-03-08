@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-09">
+  <title>Buffer overflow in Midnight Commander</title>
+  <synopsis>
+    A remotely-exploitable buffer overflow in Midnight Commander allows
+    arbitrary code to be run on a user's computer
+  </synopsis>
+  <product type="ebuild">mc</product>
+  <announced>March 29, 2004</announced>
+  <revised>March 29, 2004: 01</revised>
+  <bug>45957</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-misc/mc" auto="yes" arch="*">
+      <unaffected range="ge">4.6.0-r5</unaffected>
+      <vulnerable range="le">4.6.0-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Midnight Commander is a visual file manager.
+    </p>
+  </background>
+  <description>
+    <p>
+    A stack-based buffer overflow has been found in Midnight Commander's
+    virtual filesystem.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    This overflow allows an attacker to run arbitrary code on the user's
+    computer during the symlink conversion process.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    While a workaround is not currently known for this issue, all users are
+    advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the current version of the affected package:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv ">=app-misc/mc-4.6.0-r5"
+    # emerge ">=app-misc/mc-4.6.0-r5"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-1023">CAN-2003-1023</uri>
+  </references>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-22">
+  <title>Ingo H3: Folder name shell command injection</title>
+  <synopsis>
+    Ingo H3 is vulnerable to arbitrary shell command execution when handling
+    procmail rules.
+  </synopsis>
+  <product type="ebuild">horde-ingo</product>
+  <announced>November 27, 2006</announced>
+  <revised>November 27, 2006: 01</revised>
+  <bug>153927</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde-ingo" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2</unaffected>
+      <vulnerable range="lt">1.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ingo H3 is a generic frontend for editing Sieve, procmail, maildrop and
+    IMAP filter rules.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ingo H3 fails to properly escape shell metacharacters in procmail
+    rules.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote authenticated attacker could craft a malicious rule which
+    could lead to the execution of arbitrary shell commands on the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Don't use procmail with Ingo H3.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ingo H3 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-ingo-1.1.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5449">CVE-2006-5449</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:42:39 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 24 Nov 2006 19:04:29 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 19:46:46 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-04">
+  <title>Wireshark: Denial of Service</title>
+  <synopsis>
+    Multiple Denial of Service vulnerabilities have been discovered in
+    Wireshark.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>August 06, 2008</announced>
+  <revised>August 06, 2008: 01</revised>
+  <bug>230411</bug>
+  <bug>231587</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a network protocol analyzer with a graphical front-end.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities related to memory management were discovered
+    in the GSM SMS dissector (CVE-2008-3137), the PANA and KISMET
+    dissectors (CVE-2008-3138), the RTMPT dissector (CVE-2008-3139), the
+    syslog dissector (CVE-2008-3140) and the RMI dissector (CVE-2008-3141)
+    and when reassembling fragmented packets (CVE-2008-3145).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by sending a
+    specially crafted packet on a network being monitored by Wireshark or
+    enticing a user to read a malformed packet trace file, causing a Denial
+    of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3137">CVE-2008-3137</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3138">CVE-2008-3138</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3139">CVE-2008-3139</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3140">CVE-2008-3140</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3141">CVE-2008-3141</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3145">CVE-2008-3145</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Jul 2008 10:40:07 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Jul 2008 18:25:58 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 30 Jul 2008 18:26:07 +0000">
+    rbu
+  </metadata>
+</glsa>

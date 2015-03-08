@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-22">
+  <title>fbida: Arbitrary command execution</title>
+  <synopsis>
+    The fbgs script provided by fbida allows the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">fbida</product>
+  <announced>August 23, 2006</announced>
+  <revised>August 23, 2006: 01</revised>
+  <bug>141684</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/fbida" auto="yes" arch="*">
+      <unaffected range="ge">2.03-r4</unaffected>
+      <vulnerable range="lt">2.03-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    fbida is a collection of image viewers and editors for the framebuffer
+    console and X11. fbgs is a PostScript and PDF viewer for the linux
+    framebuffer console.
+    </p>
+  </background>
+  <description>
+    <p>
+    Toth Andras has discovered a typographic mistake in the "fbgs" script,
+    shipped with fbida if the "fbcon" and "pdf" USE flags are both enabled.
+    This script runs "gs" without the -dSAFER option, thus allowing a
+    PostScript file to execute, delete or create any kind of file on the
+    system.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can entice a vulnerable user to view a malicious
+    PostScript or PDF file with fbgs, which may result with the execution
+    of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All fbida users with the "fbcon" and "pdf" USE flags both enabled
+    should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/fbida-2.03-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3119">CVE-2006-3119</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 19 Aug 2006 16:25:22 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Aug 2006 14:00:00 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 23 Aug 2006 14:19:22 +0000">
+    falco
+  </metadata>
+</glsa>

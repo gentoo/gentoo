@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-06">
+  <title>iSCSI Enterprise Target: Arbitrary code execution</title>
+  <synopsis>Format string vulnerabilities in iSCSI Enterprise Target could
+    result in execution of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">iscsitarget</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>314187</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-block/iscsitarget" auto="yes" arch="*">
+      <unaffected range="ge">1.4.19</unaffected>
+      <vulnerable range="lt">1.4.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>iSCSI Enterprise Target is an open source iSCSI target with professional
+      features.
+    </p>
+  </background>
+  <description>
+    <p>Multiple functions in usr/iscsi/isns.c of iSCSI Enterprise Target
+      contain format string errors.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially-crafted Internet Storage Name
+      Service (iSNS) request, possibly resulting in the execution of arbitrary
+      code with root privileges or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All iSCSI Enterprise Target users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-block/iscsitarget-1.4.19"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 11, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0743">CVE-2010-0743</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:07 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 11:50:37 +0000" tag="submitter">ackle</metadata>
+</glsa>

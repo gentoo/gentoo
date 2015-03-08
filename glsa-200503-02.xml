@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-02">
+  <title>phpBB: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities allow remote attackers to gain phpBB administrator
+    rights or expose and manipulate sensitive data.
+  </synopsis>
+  <product type="ebuild">phpbb</product>
+  <announced>March 01, 2005</announced>
+  <revised>March 01, 2005: 01</revised>
+  <bug>82955</bug>
+  <access>local and remote</access>
+  <affected>
+    <package name="www-apps/phpBB" auto="yes" arch="*">
+      <unaffected range="ge">2.0.13</unaffected>
+      <vulnerable range="lt">2.0.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpBB is an Open Source bulletin board package.
+    </p>
+  </background>
+  <description>
+    <p>
+    It was discovered that phpBB contains a flaw in the session
+    handling code and a path disclosure bug. AnthraX101 discovered that
+    phpBB allows local users to read arbitrary files, if the "Enable remote
+    avatars" and "Enable avatar uploading" options are set (CAN-2005-0259).
+    He also found out that incorrect input validation in
+    "usercp_avatar.php" and "usercp_register.php" makes phpBB vulnerable to
+    directory traversal attacks, if the "Gallery avatars" setting is
+    enabled (CAN-2005-0258).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers can exploit the session handling flaw to gain
+    phpBB administrator rights. By providing a local and a remote location
+    for an avatar and setting the "Upload Avatar from a URL:" field to
+    point to the target file, a malicious local user can read arbitrary
+    local files. By inserting "/../" sequences into the "avatarselect"
+    parameter, a remote attacker can exploit the directory traversal
+    vulnerability to delete arbitrary files. A flaw in the "viewtopic.php"
+    script can be exploited to expose the full path of PHP scripts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpBB users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpBB-2.0.13&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0258">CAN-2005-0258</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0259">CAN-2005-0259</uri>
+    <uri link="http://www.phpbb.com/phpBB/viewtopic.php?f=14&amp;t=267563">phpBB announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 28 Feb 2005 14:35:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Feb 2005 15:10:08 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  1 Mar 2005 18:22:22 +0000">
+    koon
+  </metadata>
+</glsa>

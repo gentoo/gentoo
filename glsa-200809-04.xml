@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-04">
+  <title>MySQL: Privilege bypass</title>
+  <synopsis>
+    A vulnerability in MySQL might allow users to bypass privileges and gain
+    access to other databases.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>September 04, 2008</announced>
+  <revised>September 04, 2008: 01</revised>
+  <bug>220399</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.0.60-r1</unaffected>
+      <vulnerable range="lt">5.0.60-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular multi-threaded, multi-user SQL server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sergei Golubchik reported that MySQL imposes no restrictions on the
+    specification of "DATA DIRECTORY" or "INDEX DIRECTORY" in SQL "CREATE
+    TABLE" statements.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An authenticated remote attacker could create MyISAM tables, specifying
+    DATA or INDEX directories that contain future table files by other
+    database users, or existing table files in the MySQL data directory,
+    gaining access to those tables.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-5.0.60-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2079">CVE-2008-2079</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 20 Aug 2008 00:05:23 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 21 Aug 2008 15:32:52 +0000">
+    rbu
+  </metadata>
+</glsa>

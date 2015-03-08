@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-03">
+  <title>RealPlayer: Buffer overflow</title>
+  <synopsis>
+    RealPlayer is vulnerable to a buffer overflow allowing for the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">realplayer</product>
+  <announced>September 04, 2008</announced>
+  <revised>September 04, 2008: 01</revised>
+  <bug>232997</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/realplayer" auto="yes" arch="*">
+      <unaffected range="ge">11.0.0.4028-r1</unaffected>
+      <vulnerable range="lt">11.0.0.4028-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    RealPlayer is a multimedia player capable of handling multiple
+    multimedia file formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dyon Balding of Secunia Research reported an unspecified heap-based
+    buffer overflow in the Shockwave Flash (SWF) frame handling.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted SWF (Shockwave Flash)
+    file, a remote attacker could be able to execute arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All RealPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-11.0.0.4028-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5400">CVE-2007-5400</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 19 Aug 2008 23:23:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Aug 2008 23:23:18 +0000">
+    rbu
+  </metadata>
+</glsa>

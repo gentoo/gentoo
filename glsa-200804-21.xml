@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-21">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified, the worst of which allow
+    arbitrary code execution on a user's system via a malicious Flash file.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>April 18, 2008</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>204344</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">9.0.124.0</unaffected>
+      <vulnerable range="lt">9.0.124.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Adobe Flash Player is a renderer for the popular SWF file format,
+    which is commonly used to provide interactive websites, digital
+    experiences and mobile content.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Adobe Flash:
+    </p>
+    <ul>
+    <li>
+    Secunia Research and Zero Day Initiative reported a boundary error
+    related to DeclareFunction2 Actionscript tags in SWF files
+    (CVE-2007-6019).
+    </li>
+    <li>
+    The ISS X-Force and the Zero Day Initiative reported an unspecified
+    input validation error that might lead to a buffer overflow
+    (CVE-2007-0071).
+    </li>
+    <li>
+    Microsoft, UBsecure and JPCERT/CC reported that cross-domain policy
+    files are not checked before sending HTTP headers to another domain
+    (CVE-2008-1654) and that it does not sufficiently restrict the
+    interpretation and usage of cross-domain policy files (CVE-2007-6243).
+    </li>
+    <li>
+    The Stanford University and Ernst and Young's Advanced Security Center
+    reported that Flash does not pin DNS hostnames to a single IP
+    addresses, allowing for DNS rebinding attacks (CVE-2007-5275,
+    CVE-2008-1655).
+    </li>
+    <li>
+    The Google Security Team and Minded Security Multiple reported multiple
+    cross-site scripting vulnerabilities when passing input to Flash
+    functions (CVE-2007-6637).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file
+    (usually in a web browser), possibly leading to the execution of
+    arbitrary code with the privileges of the user running the Adobe Flash
+    Player. The attacker could also cause a user's machine to send HTTP
+    requests to other hosts, establish TCP sessions with arbitrary hosts,
+    bypass the security sandbox model, or conduct Cross-Site Scripting and
+    Cross-Site Request Forgery attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Flash Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-9.0.124.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0071">CVE-2007-0071</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5275">CVE-2007-5275</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6019">CVE-2007-6019</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6243">CVE-2007-6243</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6637">CVE-2007-6637</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1654">CVE-2008-1654</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1655">CVE-2008-1655</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 17 Apr 2008 10:39:32 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 18 Apr 2008 01:16:42 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 18 Apr 2008 01:18:41 +0000">
+    rbu
+  </metadata>
+</glsa>

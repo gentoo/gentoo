@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-19">
+  <title>MySQL: Multiple vulnerabilities</title>
+  <synopsis>
+    MySQL contains several vulnerabilities potentially leading to the
+    overwriting of local files or to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>March 16, 2005</announced>
+  <revised>March 16, 2005: 02</revised>
+  <bug>84819</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">4.0.24</unaffected>
+      <vulnerable range="lt">4.0.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a fast, multi-threaded, multi-user SQL database server.
+    </p>
+  </background>
+  <description>
+    <p>
+    MySQL fails to properly validate input for authenticated users with
+    INSERT and DELETE privileges (CAN-2005-0709 and CAN-2005-0710).
+    Furthermore MySQL uses predictable filenames when creating temporary
+    files with CREATE TEMPORARY TABLE (CAN-2005-0711).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker with INSERT and DELETE privileges could exploit this to
+    manipulate the mysql table or accessing libc calls, potentially leading
+    to the execution of arbitrary code with the permissions of the user
+    running MySQL. An attacker with CREATE TEMPORARY TABLE privileges could
+    exploit this to overwrite arbitrary files via a symlink attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-4.0.24&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0709">CAN-2005-0709</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0710">CAN-2005-0710</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0711">CAN-2005-0711</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 14 Mar 2005 05:33:03 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Mar 2005 06:04:30 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Mar 2005 15:41:11 +0000">
+    koon
+  </metadata>
+</glsa>

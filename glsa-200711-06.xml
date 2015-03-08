@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-06">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Apache, possibly resulting
+    in a Denial of Service or the disclosure of sensitive information.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>November 07, 2007</announced>
+  <revised>November 07, 2007: 01</revised>
+  <bug>186219</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="rge">2.0.59-r5</unaffected>
+      <unaffected range="ge">2.2.6</unaffected>
+      <vulnerable range="lt">2.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of the most popular web servers on the
+    Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple cross-site scripting vulnerabilities have been discovered in
+    mod_status and mod_autoindex (CVE-2006-5752, CVE-2007-4465). An error
+    has been discovered in the recall_headers() function in mod_mem_cache
+    (CVE-2007-1862). The mod_cache module does not properly sanitize
+    requests before processing them (CVE-2007-1863). The Prefork module
+    does not properly check PID values before sending signals
+    (CVE-2007-3304). The mod_proxy module does not correctly check headers
+    before processing them (CVE-2007-3847).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit one of these vulnerabilities to inject
+    arbitrary script or HTML content, obtain sensitive information or cause
+    a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.0.59-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5752">CVE-2006-5752</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1862">CVE-2007-1862</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1863">CVE-2007-1863</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3304">CVE-2007-3304</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3847">CVE-2007-3847</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4465">CVE-2007-4465</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 25 Sep 2007 14:34:09 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 25 Sep 2007 14:34:48 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Oct 2007 20:07:35 +0000">
+    p-y
+  </metadata>
+</glsa>

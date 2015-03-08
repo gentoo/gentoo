@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-12">
+  <title>Tomboy: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Tomboy doesn't properly handle environment variables, potentially allowing
+    a local attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">tomboy</product>
+  <announced>November 08, 2007</announced>
+  <revised>November 08, 2007: 01</revised>
+  <bug>189249</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-misc/tomboy" auto="yes" arch="*">
+      <unaffected range="ge">0.8.1-r1</unaffected>
+      <vulnerable range="lt">0.8.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tomboy is a GTK-based desktop note-taking application written in C# and
+    the Mono C#.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jan Oravec reported that the "/usr/bin/tomboy" script sets the
+    "LD_LIBRARY_PATH" environment variable incorrectly, which might result
+    in the current working directory (.) to be included when searching for
+    dynamically linked libraries of the Mono Runtime application.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user into running Tomboy in a directory
+    containing a specially crafted library file to execute arbitrary code
+    with the privileges of the user running Tomboy.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run Tomboy from an untrusted working directory.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tomboy users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc/tomboy-0.8.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4790">CVE-2005-4790</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Nov 2007 01:11:29 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 06 Nov 2007 04:11:22 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 06 Nov 2007 04:11:35 +0000">
+    rbu
+  </metadata>
+</glsa>

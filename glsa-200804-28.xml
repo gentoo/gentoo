@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-28">
+  <title>JRockit: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified in BEA JRockit.
+  </synopsis>
+  <product type="ebuild">jrockit-jdk-bin</product>
+  <announced>April 24, 2008</announced>
+  <revised>April 24, 2008: 01</revised>
+  <bug>218226</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/jrockit-jdk-bin" auto="yes" arch="*">
+      <unaffected range="rge">1.4.2.16</unaffected>
+      <unaffected range="ge">1.5.0.14</unaffected>
+      <vulnerable range="lt">1.5.0.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    JRockit is BEA WebLogic's J2SE Development Kit.
+    </p>
+  </background>
+  <description>
+    <p>
+    Because of sharing the same codebase, JRockit is affected by the
+    vulnerabilities mentioned in GLSA 200804-20.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run a specially crafted applet
+    on a website or start an application in Java Web Start to execute
+    arbitrary code outside of the Java sandbox and of the Java security
+    restrictions with the privileges of the user running Java. The attacker
+    could also obtain sensitive information, create, modify, rename and
+    read local files, execute local applications, establish connections in
+    the local network, bypass the same origin policy, and cause a Denial of
+    Service via multiple vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All JRockit 1.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/jrockit-jdk-bin-1.4.2.16&quot;</code>
+    <p>
+    All JRockit 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/jrockit-jdk-bin-1.5.0.14&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200804-20.xml">GLSA 200804-20</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Apr 2008 16:40:01 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 23 Apr 2008 17:27:24 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 23 Apr 2008 17:27:42 +0000">
+    keytoaster
+  </metadata>
+</glsa>

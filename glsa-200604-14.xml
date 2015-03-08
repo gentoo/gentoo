@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-14">
+  <title>Dia: Arbitrary code execution through XFig import</title>
+  <synopsis>
+    Buffer overflows in Dia's XFig import could allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">dia</product>
+  <announced>April 23, 2006</announced>
+  <revised>April 23, 2006: 01</revised>
+  <bug>128107</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/dia" auto="yes" arch="*">
+      <unaffected range="ge">0.94-r5</unaffected>
+      <vulnerable range="lt">0.94-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dia is a GTK+ based diagram creation program.
+    </p>
+  </background>
+  <description>
+    <p>
+    infamous41md discovered multiple buffer overflows in Dia's XFig
+    file import plugin.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to import a specially crafted XFig file into
+    Dia, an attacker could exploit this issue to execute arbitrary code
+    with the rights of the user running Dia.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dia users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/dia-0.94-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1550">CVE-2006-1550</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Apr 2006 17:58:09 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 22 Apr 2006 17:58:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Apr 2006 20:01:59 +0000">
+    DerCorny
+  </metadata>
+</glsa>

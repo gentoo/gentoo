@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-02">
+  <title>KVIrc: Remote arbitrary code execution</title>
+  <synopsis>
+    A vulnerability has been discovered in KVIrc, allowing for the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">kvirc</product>
+  <announced>September 13, 2007</announced>
+  <revised>September 13, 2007: 01</revised>
+  <bug>183174</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/kvirc" auto="yes" arch="*">
+      <unaffected range="ge">3.2.6_pre20070714</unaffected>
+      <vulnerable range="lt">3.2.6_pre20070714</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KVIrc is a free portable IRC client based on Qt.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Cornelius from Secunia Research discovered that the
+    "parseIrcUrl()" function in file src/kvirc/kernel/kvi_ircurl.cpp does
+    not properly sanitise parts of the URI when building the command for
+    KVIrc's internal script system.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    irc:// URI, possibly leading to the remote execution of arbitrary code
+    with the privileges of the user running KVIrc. Successful exploitation
+    requires that KVIrc is registered as the default handler for irc:// or
+    similar URIs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KVIrc users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/kvirc-3.2.6_pre20070714&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2951">CVE-2007-2951</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 06 Aug 2007 14:12:16 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Aug 2007 18:59:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Aug 2007 11:26:17 +0000">
+    p-y
+  </metadata>
+</glsa>

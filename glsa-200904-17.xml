@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-17">
+  <title>Adobe Reader: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Adobe Reader is vulnerable to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>April 18, 2009</announced>
+  <revised>April 18, 2009: 01</revised>
+  <bug>259992</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">8.1.4</unaffected>
+      <vulnerable range="lt">8.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Reader (formerly Adobe Acrobat Reader) is a closed-source PDF
+    reader.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Adobe Reader:
+    </p>
+    <ul>
+    <li>
+    Alin Rad Pop of Secunia Research reported a heap-based buffer overflow
+    when processing PDF files containing a malformed JBIG2 symbol
+    dictionary segment (CVE-2009-0193).
+    </li>
+    <li>
+    A buffer overflow related to a non-JavaScript function call and
+    possibly an embedded JBIG2 image stream has been reported
+    (CVE-2009-0658).
+    </li>
+    <li>
+    Tenable Network Security reported a stack-based buffer overflow that
+    can be triggered via a crafted argument to the getIcon() method of a
+    Collab object (CVE-2009-0927).
+    </li>
+    <li>
+    Sean Larsson of iDefense Labs reported a heap-based buffer overflow
+    when processing a PDF file containing a JBIG2 stream with a size
+    inconsistency related to an unspecified table (CVE-2009-0928).
+    </li>
+    <li>
+    Jonathan Brossard of the iViZ Security Research Team reported an
+    unspecified vulnerability related to JBIG2 and input validation
+    (CVE-2009-1061).
+    </li>
+    <li>
+    Will Dormann of CERT/CC reported a vulnerability lading to memory
+    corruption related to JBIG2 (CVE-2009-1062).
+    </li>
+    </ul> <p>
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    document, possibly leading to the execution of arbitrary code with the
+    privileges of the user running the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0193">CVE-2009-0193</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0658">CVE-2009-0658</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0927">CVE-2009-0927</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0928">CVE-2009-0928</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1061">CVE-2009-1061</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1062">CVE-2009-1062</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Apr 2009 12:25:56 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Apr 2009 22:30:05 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Apr 2009 22:30:15 +0000">
+    rbu
+  </metadata>
+</glsa>

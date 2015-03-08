@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-03">
+  <title>Streamripper: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in Streamripper,
+    allowing for user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">streamripper</product>
+  <announced>September 13, 2007</announced>
+  <revised>September 13, 2007: 01</revised>
+  <bug>188698</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/streamripper" auto="yes" arch="*">
+      <unaffected range="ge">1.62.2</unaffected>
+      <vulnerable range="lt">1.62.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Streamripper is a tool for extracting and recording mp3 files from a
+    Shoutcast stream.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Rohlf discovered several boundary errors in the
+    httplib_parse_sc_header() function when processing HTTP headers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect to a malicious
+    streaming server, resulting in the execution of arbitrary code with the
+    privileges of the user running Streamripper.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Streamripper users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/streamripper-1.62.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4337">CVE-2007-4337</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 24 Aug 2007 09:30:52 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 24 Aug 2007 09:31:49 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 08 Sep 2007 15:35:27 +0000">
+    p-y
+  </metadata>
+</glsa>

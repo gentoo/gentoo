@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200801-01">
+  <title>unp: Arbitrary command execution</title>
+  <synopsis>
+    unp allows execution of arbitrary code via malicious file names.
+  </synopsis>
+  <product type="ebuild">remote</product>
+  <announced>January 09, 2008</announced>
+  <revised>January 09, 2008: 01</revised>
+  <bug>203106</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/unp" auto="yes" arch="*">
+      <unaffected range="ge">1.0.14</unaffected>
+      <vulnerable range="lt">1.0.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    unp is a script for unpacking various file formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Erich Schubert from Debian discovered that unp does not escape file
+    names properly before passing them to calls of the shell.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to unpack a
+    compressed archive with a specially crafted file name, leading to the
+    execution of shell commands from within the filename. That code will be
+    executed with the privileges of the user running unp.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All unp users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/unp-1.0.14&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6610">CVE-2007-6610</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 28 Dec 2007 00:23:45 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Dec 2007 11:27:28 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 28 Dec 2007 22:57:04 +0000">
+    p-y
+  </metadata>
+</glsa>

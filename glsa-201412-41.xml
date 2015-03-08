@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-41">
+  <title>OpenVPN: Denial of Service</title>
+  <synopsis>A vulnerability in OpenVPN could lead to Denial of Service.</synopsis>
+  <product type="ebuild">openvpn</product>
+  <announced>December 26, 2014</announced>
+  <revised>December 26, 2014: 1</revised>
+  <bug>531308</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openvpn" auto="yes" arch="*">
+      <unaffected range="ge">2.3.6</unaffected>
+      <vulnerable range="lt">2.3.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenVPN is a multi-platform, full-featured SSL VPN solution.</p>
+  </background>
+  <description>
+    <p>OpenVPN does not properly handle control channel packets that are too
+      small.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker could send a specially crafted control
+      channel packet, possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenVPN users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openvpn-2.3.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8104">CVE-2014-8104</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 04 Dec 2014 00:38:51 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 17:10:38 +0000">ackle</metadata>
+</glsa>

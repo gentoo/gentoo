@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-35">
+  <title>Subversion: Metadata information leak</title>
+  <synopsis>
+    An information leak in mod_authz_svn could allow sensitive metadata of
+    protected areas to be leaked to unauthorized users.
+  </synopsis>
+  <product type="ebuild">Subversion</product>
+  <announced>September 29, 2004</announced>
+  <revised>September 29, 2004: 01</revised>
+  <bug>65085</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/subversion" auto="yes" arch="*">
+      <unaffected range="ge">1.0.8</unaffected>
+      <vulnerable range="lt">1.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Subversion is a versioning system designed to be a replacement for CVS.
+    mod_authz_svn is an Apache module to do path-based authentication for
+    Subversion repositories.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a bug in mod_authz_svn that causes it to reveal logged metadata
+    regarding commits to protected areas.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Protected files themselves will not be revealed, but an attacker could use
+    the metadata to reveal the existence of protected areas, such as paths,
+    file versions, and the commit logs from those areas.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Rather than using mod_authz_svn, move protected areas into seperate
+    repositories and use native Apache authentication to make these
+    repositories unreadable.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Subversion users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-util/subversion-1.0.8"
+    # emerge ">=dev-util/subversion-1.0.8"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0749">CAN-2004-0749</uri>
+    <uri link="http://subversion.tigris.org/security/CAN-2004-0749-advisory.txt">Subversion Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 27 Sep 2004 08:34:50 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 27 Sep 2004 23:33:38 +0000">
+    dmargoli
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 29 Sep 2004 19:12:44 +0000">
+    koon
+  </metadata>
+</glsa>

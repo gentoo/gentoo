@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-06">
+  <title>Clam AntiVirus: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Clam AntiVirus.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>September 07, 2010</announced>
+  <revised>September 07, 2010: 01</revised>
+  <bug>314087</bug>
+  <bug>321157</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.96.1</unaffected>
+      <vulnerable range="lt">0.96.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus (short: ClamAV) is an anti-virus toolkit for UNIX,
+    designed especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in Clam AntiVirus. For further
+    information, please consult the CVE entries referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly bypass virus detection or cause a
+    Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Clam AntiVirus users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.96.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0098">CVE-2010-0098</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1311">CVE-2010-1311</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1639">CVE-2010-1639</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1640">CVE-2010-1640</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 May 2010 11:19:32 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 May 2010 13:26:38 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 11 Aug 2010 20:31:24 +0000">
+    a3li
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-08">
+  <title>OpenSSL: Denial of Service</title>
+  <synopsis>
+    An error in OpenSSL might allow for a Denial of Service when printing
+    certificate details.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>April 07, 2009</announced>
+  <revised>April 07, 2009: 01</revised>
+  <bug>263751</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.8k</unaffected>
+      <vulnerable range="lt">0.9.8k</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+    (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+    purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>
+    The ASN1_STRING_print_ex() function does not properly check the
+    provided length of a BMPString or UniversalString, leading to an
+    invalid memory access.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to print a
+    specially crafted certificate, possibly leading to a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8k&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0590">CVE-2009-0590</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 04 Apr 2009 13:16:21 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 04 Apr 2009 13:41:11 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 04 Apr 2009 13:41:45 +0000">
+    rbu
+  </metadata>
+</glsa>

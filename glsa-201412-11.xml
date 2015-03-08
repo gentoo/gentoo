@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-11">
+  <title>AMD64 x86 emulation base libraries: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in AMD64 x86 emulation
+    base libraries, the worst of which may allow remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">emul-linux-x86-baselibs</product>
+  <announced>December 12, 2014</announced>
+  <revised>December 12, 2014: 1</revised>
+  <bug>196865</bug>
+  <bug>335508</bug>
+  <bug>483632</bug>
+  <bug>508322</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/emul-linux-x86-baselibs" auto="yes" arch="*">
+      <unaffected range="ge">20140406-r1</unaffected>
+      <vulnerable range="lt">20140406-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>AMD64 x86 emulation base libraries provides pre-compiled 32-bit
+      libraries. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in AMD64 x86 emulation
+      base libraries. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker may be able to execute arbitrary code,
+      cause a Denial of Service condition, or obtain sensitive information. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All users of the AMD64 x86 emulation base libraries should upgrade to
+      the latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/emul-linux-x86-baselibs-20140406-r1"
+    </code>
+    
+    <p>NOTE: One or more of the issues described in this advisory have been
+      fixed in previous updates. They are included in this advisory for the
+      sake of completeness. It is likely that your system is already no longer
+      affected by them.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-0720">CVE-2007-0720</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-1536">CVE-2007-1536</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2026">CVE-2007-2026</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2445">CVE-2007-2445</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2741">CVE-2007-2741</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3108">CVE-2007-3108</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-4995">CVE-2007-4995</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5116">CVE-2007-5116</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5135">CVE-2007-5135</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5266">CVE-2007-5266</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5268">CVE-2007-5268</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5269">CVE-2007-5269</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5849">CVE-2007-5849</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1205">CVE-2010-1205</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0338">CVE-2013-0338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0339">CVE-2013-0339</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1664">CVE-2013-1664</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1969">CVE-2013-1969</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2877">CVE-2013-2877</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0160">CVE-2014-0160</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:06 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 12 Dec 2014 00:46:06 +0000">ackle</metadata>
+</glsa>

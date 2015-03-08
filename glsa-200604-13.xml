@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-13">
+  <title>fbida: Insecure temporary file creation</title>
+  <synopsis>
+    fbida is vulnerable to linking attacks, potentially allowing a local user
+    to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">fbida</product>
+  <announced>April 23, 2006</announced>
+  <revised>April 23, 2006: 01</revised>
+  <bug>129470</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-gfx/fbida" auto="yes" arch="*">
+      <unaffected range="ge">2.03-r3</unaffected>
+      <vulnerable range="lt">2.03-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    fbida is a collection of image viewers and editors for the
+    framebuffer console and X11.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jan Braun has discovered that the "fbgs" script provided by fbida
+    insecurely creates temporary files in the "/var/tmp" directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create links in the temporary file
+    directory, pointing to a valid file somewhere on the filesystem. When
+    an affected script is called, this could result in the file being
+    overwritten with the rights of the user running the script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All fbida users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/fbida-2.03-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1695">CVE-2006-1695</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Apr 2006 15:53:11 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 21 Apr 2006 16:54:39 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Apr 2006 21:26:19 +0000">
+    falco
+  </metadata>
+</glsa>

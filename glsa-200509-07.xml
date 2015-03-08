@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-07">
+  <title>X.Org: Heap overflow in pixmap allocation</title>
+  <synopsis>
+    An integer overflow in pixmap memory allocation potentially allows any
+    X.Org user to execute arbitrary code with elevated privileges.
+  </synopsis>
+  <product type="ebuild">X.Org</product>
+  <announced>September 12, 2005</announced>
+  <revised>September 12, 2005: 01</revised>
+  <bug>105688</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-x11" auto="yes" arch="*">
+      <unaffected range="ge">6.8.2-r3</unaffected>
+      <vulnerable range="lt">6.8.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    X.Org is X.Org Foundation's Public Implementation of the X Window
+    System.
+    </p>
+  </background>
+  <description>
+    <p>
+    X.Org is missing an integer overflow check during pixmap memory
+    allocation.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An X.Org user could exploit this issue to make the X server
+    execute arbitrary code with elevated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X.org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-x11-6.8.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2495">CAN-2005-2495</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 06 Sep 2005 08:58:25 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Sep 2005 15:28:20 +0000">
+    koon
+  </metadata>
+</glsa>

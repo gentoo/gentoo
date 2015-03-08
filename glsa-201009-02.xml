@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-02">
+  <title>Maildrop: privilege escalation</title>
+  <synopsis>
+    Insecure permission handling in maildrop might allow local attackers to
+    elevate their privileges.
+  </synopsis>
+  <product type="ebuild">maildrop</product>
+  <announced>September 06, 2010</announced>
+  <revised>September 06, 2010: 01</revised>
+  <bug>308043</bug>
+  <access>local</access>
+  <affected>
+    <package name="mail-filter/maildrop" auto="yes" arch="*">
+      <unaffected range="ge">2.4.2</unaffected>
+      <vulnerable range="lt">2.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    maildrop is the mail filter/mail delivery agent that is used by the
+    Courier Mail Server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Christoph Anton Mitterer reported that maildrop does not properly drop
+    its privileges when run as root.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could create a specially crafted .mailfilter file,
+    possibly leading to the execution of arbitrary commands with the "root"
+    group privileges. NOTE: Successful exploitation requires that maildrop
+    is run as root with the -d option.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All maildrop users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/maildrop-2.4.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0301">CVE-2010-0301</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Aug 2010 09:32:26 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 03 Sep 2010 21:46:47 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 03 Sep 2010 21:46:57 +0000">
+    p-y
+  </metadata>
+</glsa>

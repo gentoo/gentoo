@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-05">
+  <title>GIMP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GIMP, the worst of
+    which allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gimp</product>
+  <announced>November 10, 2013</announced>
+  <revised>November 10, 2013: 1</revised>
+  <bug>434580</bug>
+  <bug>444280</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gimp" auto="yes" arch="*">
+      <unaffected range="ge">2.8.2-r1</unaffected>
+      <vulnerable range="lt">2.8.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GIMP is the GNU Image Manipulation Program.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GIMP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted KiSS
+      palette, GIF image or XWD file using GIMP, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GIMP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.8.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3403">CVE-2012-3403</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3481">CVE-2012-3481</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5576">CVE-2012-5576</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 30 Sep 2012 02:48:55 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Nov 2013 14:50:48 +0000">ackle</metadata>
+</glsa>

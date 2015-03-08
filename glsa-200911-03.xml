@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200911-03">
+  <title>UW IMAP toolkit: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in the UW IMAP toolkit and the
+    c-client library, the worst of which leading to the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">c-client uw-imap</product>
+  <announced>November 25, 2009</announced>
+  <revised>November 25, 2009: 01</revised>
+  <bug>245425</bug>
+  <bug>252567</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/c-client" auto="yes" arch="*">
+      <unaffected range="ge">2007e</unaffected>
+      <vulnerable range="lt">2007e</vulnerable>
+    </package>
+    <package name="net-mail/uw-imap" auto="yes" arch="*">
+      <unaffected range="ge">2007e</unaffected>
+      <vulnerable range="lt">2007e</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The UW IMAP toolkit is a daemon for the IMAP and POP3 network mail
+    protocols. The c-client library provides an API for IMAP, POP3 and
+    other protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in the UW IMAP toolkit:
+    </p>
+    <ul>
+    <li>Aron Andersson and Jan Sahlin of Bitsec reported boundary errors in
+    the "tmail" and "dmail" utilities when processing overly long mailbox
+    names, leading to stack-based buffer overflows (CVE-2008-5005).</li>
+    <li>An error in smtp.c in the c-client library was found, leading to a
+    NULL pointer dereference vulnerability (CVE-2008-5006).</li>
+    <li>Ludwig
+    Nussel reported an off-by-one error in the rfc822_output_char()
+    function in the RFC822BUFFER routines in the c-client library, as used
+    by the UW IMAP toolkit (CVE-2008-5514).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send an e-mail to a destination mailbox name
+    composed of a username and '+' character followed by a long string,
+    possibly leading to the execution of arbitrary code. A local attacker
+    could gain privileges by specifying a long folder extension argument to
+    the tmail or dmail program. Furthermore, a remote attacker could send a
+    specially crafted mail message to the UW IMAP toolkit or another daemon
+    using the c-client library, leading to a Denial of Service. A remote
+    SMTP server could respond to the QUIT command with a close of the TCP
+    connection instead of the expected 221 response code, possibly leading
+    to a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All c-client library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/c-client-2007e&quot;</code>
+    <p>
+    All UW IMAP toolkit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/uw-imap-2007e&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5005">CVE-2008-5005</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5006">CVE-2008-5006</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5514">CVE-2008-5514</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:17:18 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Jan 2009 17:27:25 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Nov 2009 13:23:47 +0000">
+    rbu
+  </metadata>
+</glsa>

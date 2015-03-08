@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-02">
+  <title>Horde Application Framework: Remote code execution</title>
+  <synopsis>
+    The help viewer of the Horde Framework allows attackers to execute
+    arbitrary remote code.
+  </synopsis>
+  <product type="ebuild">horde</product>
+  <announced>April 04, 2006</announced>
+  <revised>April 04, 2006: 01</revised>
+  <bug>127889</bug>
+  <bug>126435</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde" auto="yes" arch="*">
+      <unaffected range="ge">3.1.1</unaffected>
+      <vulnerable range="lt">3.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Horde Application Framework is a general-purpose web
+    application framework written in PHP, providing classes for handling
+    preferences, compression, browser detection, connection tracking, MIME
+    and more.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jan Schneider of the Horde team discovered a vulnerability in the
+    help viewer of the Horde Application Framework that could allow remote
+    code execution (CVE-2006-1491). Paul Craig reported that
+    "services/go.php" fails to validate the passed URL parameter correctly
+    (CVE-2006-1260).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit the vulnerability in the help viewer to
+    execute arbitrary code with the privileges of the web server user. By
+    embedding a NULL character in the URL parameter, an attacker could
+    exploit the input validation issue in go.php to read arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde Application Framework users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1260">CVE-2006-1260</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1491">CVE-2006-1491</uri>
+    <uri link="http://lists.horde.org/archives/announce/2006/000271.html">Horde Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 31 Mar 2006 23:07:49 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 03 Apr 2006 09:02:34 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 04 Apr 2006 18:34:51 +0000">
+    DerCorny
+  </metadata>
+</glsa>

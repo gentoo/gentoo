@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-13">
+  <title>pdftohtml: Vulnerabilities in included Xpdf</title>
+  <synopsis>
+    pdftohtml includes vulnerable Xpdf code to handle PDF files, making it
+    vulnerable to execution of arbitrary code upon converting a malicious PDF
+    file.
+  </synopsis>
+  <product type="ebuild">pdftohtml</product>
+  <announced>January 10, 2005</announced>
+  <revised>January 10, 2005: 01</revised>
+  <bug>75200</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/pdftohtml" auto="yes" arch="*">
+      <unaffected range="ge">0.36-r2</unaffected>
+      <vulnerable range="lt">0.36-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pdftohtml is a utility to convert PDF files to HTML or XML
+    formats. It makes use of Xpdf code to decode PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Xpdf is vulnerable to integer overflows, as described in GLSA
+    200412-24.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to convert a specially-crafted PDF
+    file, potentially resulting in the execution of arbitrary code with the
+    rights of the user running pdftohtml.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pdftohtml users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/pdftohtml-0.36-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200410-20.xml">GLSA 200412-24</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun,  9 Jan 2005 18:15:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  9 Jan 2005 18:17:10 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-24">
+  <title>OpenJPEG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJPEG, the worst of
+    which may result in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openjpeg</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>484802</bug>
+  <bug>493662</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/openjpeg" auto="yes" arch="*">
+      <unaffected range="ge">1.5.2</unaffected>
+      <vulnerable range="lt">1.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJPEG is an open-source JPEG 2000 library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJPEG. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted JPEG
+      file, possibly resulting in execution of arbitrary code or a Denial of
+      Service condition. Furthermore, a remote attacker may be able to obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJPEG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/openjpeg-1.5.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1447">CVE-2013-1447</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4289">CVE-2013-4289</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4290">CVE-2013-4290</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6045">CVE-2013-6045</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6052">CVE-2013-6052</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6053">CVE-2013-6053</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6054">CVE-2013-6054</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6887">CVE-2013-6887</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 20 Sep 2014 00:46:34 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:55:13 +0000">ackle</metadata>
+</glsa>

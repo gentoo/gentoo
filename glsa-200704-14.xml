@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-14">
+  <title>FreeRADIUS: Denial of Service</title>
+  <synopsis>
+    A memory leak has been discovered in FreeRADIUS, possibly allowing for a
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">FreeRADIUS</product>
+  <announced>April 17, 2007</announced>
+  <revised>April 17, 2007: 01</revised>
+  <bug>174292</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">1.1.6</unaffected>
+      <vulnerable range="lt">1.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeRADIUS is an open source RADIUS authentication server
+    implementation.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Coverity Scan project has discovered a memory leak within the
+    handling of certain malformed Diameter format values inside an EAP-TTLS
+    tunnel.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a large amount of specially crafted
+    packets to a FreeRADIUS server using EAP-TTLS authentication and
+    exhaust all memory, possibly resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeRADIUS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/freeradius-1.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2028">CVE-2007-2028</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 13 Apr 2007 07:08:42 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Apr 2007 11:53:35 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 13 Apr 2007 12:22:49 +0000">
+    p-y
+  </metadata>
+</glsa>

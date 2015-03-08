@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-28">
+  <title>Heimdal: Buffer overflow vulnerabilities</title>
+  <synopsis>
+    Buffer overflow vulnerabilities have been found in the telnet client in
+    Heimdal which could lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Heimdal</product>
+  <announced>April 28, 2005</announced>
+  <revised>April 28, 2005: 01</revised>
+  <bug>89861</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/heimdal" auto="yes" arch="*">
+      <unaffected range="ge">0.6.4</unaffected>
+      <vulnerable range="lt">0.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heimdal is a free implementation of Kerberos 5 that includes a
+    telnet client program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Buffer overflow vulnerabilities in the slc_add_reply() and
+    env_opt_add() functions have been discovered by Gael Delalleau in the
+    telnet client in Heimdal.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would require a vulnerable user to connect
+    to an attacker-controlled host using the telnet client, potentially
+    executing arbitrary code with the permissions of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Heimdal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/heimdal-0.6.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0468">CAN-2005-0468</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 26 Apr 2005 20:42:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 27 Apr 2005 00:18:43 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 28 Apr 2005 08:35:57 +0000">
+    koon
+  </metadata>
+</glsa>

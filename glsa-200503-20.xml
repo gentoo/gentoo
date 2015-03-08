@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-20">
+  <title>curl: NTLM response buffer overflow</title>
+  <synopsis>
+    curl is vulnerable to a buffer overflow which could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>March 16, 2005</announced>
+  <revised>March 16, 2005: 01</revised>
+  <bug>82534</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.13.1</unaffected>
+      <vulnerable range="lt">7.13.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    curl is a command line tool for transferring files via many
+    different protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    curl fails to properly check boundaries when handling NTLM
+    authentication.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    With a malicious server an attacker could send a carefully crafted
+    NTLM response to a connecting client leading to the execution of
+    arbitrary code with the permissions of the user running curl.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable NTLM authentication by not using the --anyauth or --ntlm
+    options.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All curl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.13.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0490">CAN-2005-0490</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 12 Mar 2005 16:36:42 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 12 Mar 2005 17:56:09 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Mar 2005 05:48:14 +0000">
+    jaervosz
+  </metadata>
+</glsa>

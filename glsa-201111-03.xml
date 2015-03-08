@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-03">
+  <title>OpenTTD: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in OpenTTD which could lead to
+    execution of arbitrary code, a Denial of Service, or privilege escalation.
+  </synopsis>
+  <product type="ebuild">ebuild OpenTTD</product>
+  <announced>November 11, 2011</announced>
+  <revised>November 11, 2011: 2</revised>
+  <bug>381799</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="games-simulation/openttd" auto="yes" arch="*">
+      <unaffected range="ge">1.1.3</unaffected>
+      <vulnerable range="lt">1.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenTTD is a clone of Transport Tycoon Deluxe.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenTTD. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the OpenTTD process or cause a Denial of Service. Local users could cause
+      a Denial of Service. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenTTD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=games-simulation/openttd-1.1.3"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since September 27, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4168">CVE-2010-4168</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3341">CVE-2011-3341</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3342">CVE-2011-3342</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3343">CVE-2011-3343</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:12 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Fri, 11 Nov 2011 22:08:46 +0000" tag="submitter">ackle</metadata>
+</glsa>

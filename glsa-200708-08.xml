@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-08">
+  <title>SquirrelMail G/PGP plugin: Arbitrary code execution</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in SquirrelMail, allowing for
+    the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">squirrelmail</product>
+  <announced>August 11, 2007</announced>
+  <revised>August 11, 2007: 01</revised>
+  <bug>185010</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <unaffected range="ge">1.4.10a-r2</unaffected>
+      <vulnerable range="lt">1.4.10a-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SquirrelMail is a webmail package written in PHP. It supports IMAP and
+    SMTP protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    The functions deletekey(), gpg_check_sign_pgp_mime() and gpg_recv_key()
+    used in the SquirrelMail G/PGP encryption plugin do not properly escape
+    user-supplied data.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An authenticated user could use the plugin to execute arbitrary code on
+    the server, or a remote attacker could send a specially crafted e-mail
+    to a SquirrelMail user, possibly leading to the execution of arbitrary
+    code with the privileges of the user running the underlying web server.
+    Note that the G/PGP plugin is disabled by default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Enter the SquirrelMail configuration directory
+    (/usr/share/webapps/squirrelmail/version/htdocs/config), then execute
+    the conf.pl script. Select the plugins menu, then select the gpg plugin
+    item number in the "Installed Plugins" list to disable it. Press S to
+    save your changes, then Q to quit.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SquirrelMail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.10a-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1924">CVE-2005-1924</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4169">CVE-2006-4169</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 20 Jul 2007 20:59:21 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 23 Jul 2007 13:21:57 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 23 Jul 2007 13:22:43 +0000">
+    p-y
+  </metadata>
+</glsa>

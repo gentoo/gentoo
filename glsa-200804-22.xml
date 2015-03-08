@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-22">
+  <title>PowerDNS Recursor: DNS Cache Poisoning</title>
+  <synopsis>
+    Use of insufficient randomness in PowerDNS Recursor might lead to DNS cache
+    poisoning.
+  </synopsis>
+  <product type="ebuild">pdns-recursor</product>
+  <announced>April 18, 2008</announced>
+  <revised>August 21, 2008: 03</revised>
+  <bug>215567</bug>
+  <bug>231335</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdns-recursor" auto="yes" arch="*">
+      <unaffected range="ge">3.1.6</unaffected>
+      <vulnerable range="lt">3.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The PowerDNS Recursor is an advanced recursing nameserver.
+    </p>
+  </background>
+  <description>
+    <p>
+    Amit Klein of Trusteer reported that insufficient randomness is used to
+    calculate the TRXID values and the UDP source port numbers
+    (CVE-2008-1637). Thomas Biege of SUSE pointed out that a prior fix to
+    resolve this issue was incomplete, as it did not always enable the
+    stronger random number generator for source port selection
+    (CVE-2008-3217).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send malicious answers to insert arbitrary DNS
+    data into the cache. These attacks would in turn help an attacker to
+    perform man-in-the-middle and site impersonation attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PowerDNS Recursor users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdns-recursor-3.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1637">CVE-2008-1637</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3217">CVE-2008-3217</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 17 Apr 2008 20:12:08 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 18 Apr 2008 01:27:35 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 18 Apr 2008 01:27:43 +0000">
+    rbu
+  </metadata>
+</glsa>

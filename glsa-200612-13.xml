@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-13">
+  <title>libgsf: Buffer overflow</title>
+  <synopsis>
+    libgsf improperly allocates memory allowing for a heap overflow and
+    possibly the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libgsf</product>
+  <announced>December 12, 2006</announced>
+  <revised>December 12, 2006: 01</revised>
+  <bug>156693</bug>
+  <access>remote</access>
+  <affected>
+    <package name="gnome-extra/libgsf" auto="yes" arch="*">
+      <unaffected range="ge">1.14.2</unaffected>
+      <vulnerable range="lt">1.14.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNOME Structured File Library is an I/O library that can read and
+    write common file types and handle structured formats that provide
+    file-system-in-a-file semantics.
+    </p>
+  </background>
+  <description>
+    <p>
+    "infamous41md" has discovered that the "ole_init_info" function may
+    allocate too little memory for storing the contents of an OLE document,
+    resulting in a heap buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted OLE
+    document, and possibly execute arbitrary code with the rights of the
+    user opening the document.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libgsf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-extra/libgsf-1.14.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4514">CVE-2006-4514</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 10 Dec 2006 19:48:29 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Dec 2006 20:34:33 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 18:08:22 +0000">
+    shellsage
+  </metadata>
+</glsa>

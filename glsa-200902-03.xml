@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200902-03">
+  <title>Valgrind: Untrusted search path</title>
+  <synopsis>
+    An untrusted search path vulnerability in Valgrind might result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">valgrind</product>
+  <announced>February 12, 2009</announced>
+  <revised>February 12, 2009: 01</revised>
+  <bug>245317</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-util/valgrind" auto="yes" arch="*">
+      <unaffected range="ge">3.4.0</unaffected>
+      <vulnerable range="lt">3.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Valgrind is an open-source memory debugger.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy reported that Valgrind loads a .valgrindrc file in the
+    current working directory, executing commands specified there.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could prepare a specially crafted .valgrindrc file and
+    entice a user to run Valgrind from the directory containing that file,
+    resulting in the execution of arbitrary code with the privileges of the
+    user running Valgrind.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "valgrind" from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Valgrind users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/valgrind-3.4.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4865">CVE-2008-4865</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:33:22 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Jan 2009 17:46:15 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 Jan 2009 17:47:39 +0000">
+    rbu
+  </metadata>
+</glsa>

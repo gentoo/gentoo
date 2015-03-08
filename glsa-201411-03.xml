@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-03">
+  <title>TigerVNC: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in TigerVNC could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">tigervnc</product>
+  <announced>November 05, 2014</announced>
+  <revised>November 05, 2014: 1</revised>
+  <bug>505170</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tigervnc" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1</unaffected>
+      <vulnerable range="lt">1.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TigerVNC is a high-performance VNC server/client.</p>
+  </background>
+  <description>
+    <p>Two boundary errors in TigerVNC could lead to a heap-based buffer
+      overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to connect to a malicious VNC
+      server using TigerVNC, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TigerVNC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tigervnc-1.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0011">CVE-2014-0011</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 26 Sep 2014 21:44:21 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Nov 2014 23:50:26 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-39">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, the worst of
+    which could result in Denial of Service or Man-in-the-Middle attacks.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>December 26, 2014</announced>
+  <revised>December 26, 2014: 1</revised>
+  <bug>494816</bug>
+  <bug>519264</bug>
+  <bug>525468</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1j</unaffected>
+      <unaffected range="rge">0.9.8z_p2</unaffected>
+      <vulnerable range="lt">1.0.1j</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition,
+      perform Man-in-the-Middle attacks, obtain sensitive information, or
+      bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL 1.0.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.1j"
+    </code>
+    
+    <p>All OpenSSL 0.9.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8z_p2"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6449">CVE-2013-6449</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6450">CVE-2013-6450</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3505">CVE-2014-3505</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3506">CVE-2014-3506</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3507">CVE-2014-3507</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3509">CVE-2014-3509</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3510">CVE-2014-3510</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3511">CVE-2014-3511</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3512">CVE-2014-3512</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3513">CVE-2014-3513</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3567">CVE-2014-3567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3568">CVE-2014-3568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5139">CVE-2014-5139</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 04 Sep 2014 10:53:11 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 00:40:33 +0000">K_F</metadata>
+</glsa>

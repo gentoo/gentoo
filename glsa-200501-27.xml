@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-27">
+  <title>Ethereal: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities exist in Ethereal, which may allow an attacker to
+    run arbitrary code, crash the program or perform DoS by CPU and disk
+    utilization.
+  </synopsis>
+  <product type="ebuild">ethereal</product>
+  <announced>January 20, 2005</announced>
+  <revised>January 20, 2005: 01</revised>
+  <bug>78559</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.9</unaffected>
+      <vulnerable range="lt">0.10.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a feature rich network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are multiple vulnerabilities in versions of Ethereal earlier
+    than 0.10.9, including:
+    </p>
+    <ul>
+    <li>The COPS dissector could go into
+    an infinite loop (CAN-2005-0006).</li>
+    <li>The DLSw dissector could
+    cause an assertion, making Ethereal exit prematurely
+    (CAN-2005-0007).</li>
+    <li>The DNP dissector could cause memory
+    corruption (CAN-2005-0008).</li>
+    <li>The Gnutella dissector could cause
+    an assertion, making Ethereal exit prematurely (CAN-2005-0009).</li>
+    <li>The MMSE dissector could free statically-allocated memory
+    (CAN-2005-0010).</li>
+    <li>The X11 dissector is vulnerable to a string
+    buffer overflow (CAN-2005-0084).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker might be able to use these vulnerabilities to crash
+    Ethereal, perform DoS by CPU and disk space utilization or even execute
+    arbitrary code with the permissions of the user running Ethereal, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    For a temporary workaround you can disable all affected protocol
+    dissectors by selecting Analyze->Enabled Protocols... and deselecting
+    them from the list. However, it is strongly recommended to upgrade to
+    the latest stable version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ethereal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0006">CAN-2005-0006</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0007">CAN-2005-0007</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0008">CAN-2005-0008</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0009">CAN-2005-0009</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0010">CAN-2005-0010</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0084">CAN-2005-0084</uri>
+    <uri link="http://www.ethereal.com/news/item_20050120_01.html">Ethereal Release Notes</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 18 Jan 2005 21:23:59 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Jan 2005 22:30:28 +0000">
+    lewk
+  </metadata>
+</glsa>

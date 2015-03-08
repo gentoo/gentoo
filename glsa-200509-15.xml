@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-15">
+  <title>util-linux: umount command validation error</title>
+  <synopsis>
+    A command validation error in umount can lead to an escalation of
+    privileges.
+  </synopsis>
+  <product type="ebuild">util-linux</product>
+  <announced>September 20, 2005</announced>
+  <revised>September 20, 2005: 01</revised>
+  <bug>105805</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/util-linux" auto="yes" arch="*">
+      <unaffected range="ge">2.12q-r3</unaffected>
+      <vulnerable range="lt">2.12q-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    util-linux is a suite of useful Linux programs including umount, a
+    program used to unmount filesystems.
+    </p>
+  </background>
+  <description>
+    <p>
+    When a regular user mounts a filesystem, they are subject to
+    restrictions in the /etc/fstab configuration file. David Watson
+    discovered that when unmounting a filesystem with the '-r' option, the
+    read-only bit is set, while other bits, such as nosuid or nodev, are
+    not set, even if they were previously.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An unprivileged user facing nosuid or nodev restrictions can
+    umount -r a filesystem clearing those bits, allowing applications to be
+    executed suid, or have device nodes interpreted. In the case where the
+    user can freely modify the contents of the filesystem, privilege
+    escalation may occur as a custom program may execute with suid
+    permissions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Two workarounds exist, first, the suid bit can be removed from the
+    umount utility, or users can be restricted from mounting and unmounting
+    filesystems in /etc/fstab.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All util-linux users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/util-linux-2.12q-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-2876">CAN-2005-2876</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 17 Sep 2005 16:18:46 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 19 Sep 2005 16:52:19 +0000">
+    r2d2
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 20 Sep 2005 14:09:16 +0000">
+    koon
+  </metadata>
+</glsa>

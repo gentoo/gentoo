@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-02">
+  <title>MySQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in MySQL, some of which may
+    allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">MySQL</product>
+  <announced>January 05, 2012</announced>
+  <revised>January 05, 2012: 1</revised>
+  <bug>220813</bug>
+  <bug>229329</bug>
+  <bug>237166</bug>
+  <bug>238117</bug>
+  <bug>240407</bug>
+  <bug>277717</bug>
+  <bug>294187</bug>
+  <bug>303747</bug>
+  <bug>319489</bug>
+  <bug>321791</bug>
+  <bug>339717</bug>
+  <bug>344987</bug>
+  <bug>351413</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.1.56</unaffected>
+      <vulnerable range="lt">5.1.56</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a popular open-source multi-threaded, multi-user SQL database
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MySQL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An unauthenticated remote attacker may be able to execute arbitrary code
+      with the privileges of the MySQL process, cause a Denial of Service
+      condition, bypass security restrictions, uninstall arbitrary MySQL
+      plugins, or conduct Man-in-the-Middle and Cross-Site Scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.1.56"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since May 14, 2011. It is likely that your system is already no
+      longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-3963">CVE-2008-3963</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4097">CVE-2008-4097</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4098">CVE-2008-4098</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4456">CVE-2008-4456</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7247">CVE-2008-7247</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2446">CVE-2009-2446</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4019">CVE-2009-4019</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4028">CVE-2009-4028</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4484">CVE-2009-4484</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1621">CVE-2010-1621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1626">CVE-2010-1626</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1848">CVE-2010-1848</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1849">CVE-2010-1849</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1850">CVE-2010-1850</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2008">CVE-2010-2008</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3676">CVE-2010-3676</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3677">CVE-2010-3677</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3678">CVE-2010-3678</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3679">CVE-2010-3679</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3680">CVE-2010-3680</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3681">CVE-2010-3681</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3682">CVE-2010-3682</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3683">CVE-2010-3683</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3833">CVE-2010-3833</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3834">CVE-2010-3834</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3835">CVE-2010-3835</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3836">CVE-2010-3836</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3837">CVE-2010-3837</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3838">CVE-2010-3838</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3839">CVE-2010-3839</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3840">CVE-2010-3840</uri>
+  </references>
+  <metadata timestamp="Wed, 26 Oct 2011 21:42:54 +0000" tag="requester">a3li</metadata>
+  <metadata timestamp="Thu, 05 Jan 2012 22:45:51 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

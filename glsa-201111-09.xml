@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-09">
+  <title>Perl Safe module: Arbitrary Perl code injection</title>
+  <synopsis>The Safe module for Perl does not properly restrict code, allowing
+    a remote attacker to execute arbitrary Perl code outside of a restricted
+    compartment.
+  </synopsis>
+  <product type="ebuild">Safe</product>
+  <announced>November 20, 2011</announced>
+  <revised>November 20, 2011: 1</revised>
+  <bug>325563</bug>
+  <access>remote</access>
+  <affected>
+    <package name="perl-core/Safe" auto="yes" arch="*">
+      <unaffected range="ge">2.27</unaffected>
+      <vulnerable range="lt">2.27</vulnerable>
+    </package>
+    <package name="virtual/perl-Safe" auto="yes" arch="*">
+      <unaffected range="ge">2.27</unaffected>
+      <vulnerable range="lt">2.27</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Safe is a Perl module to compile and execute code in restricted
+      compartments.
+    </p>
+  </background>
+  <description>
+    <p>Unsafe code evaluation prevents the Safe module from properly
+      restricting the code of implicitly called methods on implicitly blessed
+      objects.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to load a specially crafted Perl
+      script, resulting in execution arbitrary Perl code outside of a
+      restricted compartment.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All users of the standalone Perl Safe module should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=perl-core/Safe-2.27"
+    </code>
+    
+    <p>All users of the Safe module bundled with Perl should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=virtual/perl-Safe-2.27"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since July 18, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1168">CVE-2010-1168</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:03 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 20 Nov 2011 17:56:51 +0000" tag="submitter">ackle</metadata>
+</glsa>

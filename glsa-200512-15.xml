@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-15">
+  <title>rssh: Privilege escalation</title>
+  <synopsis>
+    Local users could gain root privileges by chrooting into arbitrary
+    directories.
+  </synopsis>
+  <product type="ebuild">rssh</product>
+  <announced>December 27, 2005</announced>
+  <revised>December 27, 2005: 01</revised>
+  <bug>115082</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-shells/rssh" auto="yes" arch="*">
+      <unaffected range="ge">2.3.0</unaffected>
+      <vulnerable range="lt">2.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rssh is a restricted shell, allowing only a few commands like scp
+    or sftp. It is often used as a complement to OpenSSH to provide limited
+    access to users.
+    </p>
+  </background>
+  <description>
+    <p>
+    Max Vozeler discovered that the rssh_chroot_helper command allows
+    local users to chroot into arbitrary directories.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could exploit this vulnerability to gain root
+    privileges by chrooting into arbitrary directories.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All rssh users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-shells/rssh-2.3.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3345">CVE-2005-3345</uri>
+    <uri link="http://www.pizzashack.org/rssh/security.shtml">rssh security announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Dec 2005 10:25:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 25 Dec 2005 13:06:13 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 26 Dec 2005 13:28:20 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-04">
+  <title>Perl: Insecure temporary file creation</title>
+  <synopsis>
+    Perl is vulnerable to symlink attacks, potentially allowing a local user to
+    overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>December 07, 2004</announced>
+  <revised>December 07, 2004: 01</revised>
+  <bug>66360</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="rge">5.8.5-r2</unaffected>
+      <unaffected range="ge">5.8.6-r1</unaffected>
+      <vulnerable range="lt">5.8.5-r2</vulnerable>
+      <vulnerable range="eq">5.8.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Perl is a stable, cross-platform programming language created by
+    Larry Wall.
+    </p>
+  </background>
+  <description>
+    <p>
+    Some Perl modules create temporary files in world-writable
+    directories with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When a Perl script is executed, this would result in the file being
+    overwritten with the rights of the user running the utility, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Perl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=perl-5.8.5-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0976">CAN-2004-0976</uri>
+    <uri link="http://www.trustix.org/errata/2004/0050/">Trustix Advisory #2004-0050</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun,  5 Dec 2004 01:07:23 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  6 Dec 2004 21:18:17 +0000">
+    lewk
+  </metadata>
+</glsa>

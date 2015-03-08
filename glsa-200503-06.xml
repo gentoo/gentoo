@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-06">
+  <title>BidWatcher: Format string vulnerability</title>
+  <synopsis>
+    BidWatcher is vulnerable to a format string vulnerability, potentially
+    allowing arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">bidwatcher</product>
+  <announced>March 03, 2005</announced>
+  <revised>March 03, 2005: 01</revised>
+  <bug>82460</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/bidwatcher" auto="yes" arch="*">
+      <unaffected range="ge">1.3.17</unaffected>
+      <vulnerable range="lt">1.3.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    BidWatcher is a free auction tool for eBay users to keep track of
+    their auctions.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar discovered a format string vulnerability in
+    "netstuff.cpp".
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers can potentially exploit this vulnerability by
+    sending specially crafted responses via an eBay HTTP server or a
+    man-in-the-middle attack to execute arbitrary malicious code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BidWatcher users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/bidwatcher-1.13.17&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0158">CAN-2005-0158</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue,  1 Mar 2005 08:44:34 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  1 Mar 2005 15:30:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  2 Mar 2005 20:11:39 +0000">
+    DerCorny
+  </metadata>
+</glsa>

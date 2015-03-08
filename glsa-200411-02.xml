@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-02">
+  <title>Cherokee: Format string vulnerability</title>
+  <synopsis>
+    Cherokee contains a format string vulnerability that could lead to denial
+    of service or the execution of arbitary code.
+  </synopsis>
+  <product type="ebuild">cherokee</product>
+  <announced>November 01, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>67667</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/cherokee" auto="yes" arch="*">
+      <unaffected range="ge">0.4.17.1</unaffected>
+      <vulnerable range="le">0.4.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cherokee is an extra-light web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Schilhabel from the Gentoo Linux Security Audit Team found a
+    format string vulnerability in the cherokee_logger_ncsa_write_string()
+    function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Using a specially crafted URL when authenticating via auth_pam, a
+    malicious user may be able to crash the server or execute arbitrary
+    code on the target machine with permissions of the user running
+    Cherokee.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cherokee users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/cherokee-0.4.17.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1097">CVE-2004-1097</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  1 Nov 2004 10:17:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  1 Nov 2004 11:49:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  1 Nov 2004 15:51:07 +0000">
+    jaervosz
+  </metadata>
+</glsa>

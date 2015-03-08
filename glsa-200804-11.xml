@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-11">
+  <title>policyd-weight: Insecure temporary file creation</title>
+  <synopsis>
+    policyd-weight uses temporary files in an insecure manner, allowing for a
+    symlink attack.
+  </synopsis>
+  <product type="ebuild">policyd-weight</product>
+  <announced>April 11, 2008</announced>
+  <revised>April 11, 2008: 01</revised>
+  <bug>214403</bug>
+  <access>local</access>
+  <affected>
+    <package name="mail-filter/policyd-weight" auto="yes" arch="*">
+      <unaffected range="ge">0.1.14.17</unaffected>
+      <vulnerable range="lt">0.1.14.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    policyd-weight is a Perl policy daemon for the Postfix MTA intended to
+    eliminate forged envelope senders and HELOs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Howells reported that policyd-weight creates and uses the
+    "/tmp/.policyd-weight/" directory in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to delete arbitrary
+    files or change the ownership to the "polw" user via symlink attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Set "<i>$LOCKPATH = '/var/run/policyd-weight/'</i>" manually in
+    "/etc/policyd-weight.conf".
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All policyd-weight users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/policyd-weight-0.1.14.17&quot;</code>
+    <p>
+    This version changes the default path for sockets to
+    "/var/run/policyd-weight", which is only writable by a privileged user.
+    Users need to restart policyd-weight immediately after the upgrade due
+    to this change.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1569">CVE-2008-1569</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 20:06:42 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Apr 2008 07:47:13 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 07 Apr 2008 07:47:40 +0000">
+    rbu
+  </metadata>
+</glsa>

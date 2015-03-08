@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-04">
+  <title>BIND: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
+    which may allow remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>September 24, 2012</announced>
+  <revised>September 24, 2012: 1</revised>
+  <bug>402661</bug>
+  <bug>419637</bug>
+  <bug>427966</bug>
+  <bug>434876</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.9.1_p3</unaffected>
+      <vulnerable range="lt">9.9.1_p3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND is the Berkeley Internet Name Domain Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND:</p>
+    
+    <ul>
+      <li>Domain names are not properly revoked due to an error in the cache
+        update policy (CVE-2012-1033).
+      </li>
+      <li>BIND accepts records with zero-length RDATA fields (CVE-2012-1667).</li>
+      <li>An assertion failure from the failing-query cache could occur when
+        DNSSEC validation is enabled (CVE-2012-3817).
+      </li>
+      <li>A memory leak may occur under high TCP query loads (CVE-2012-3868).</li>
+      <li>An assertion error can occur when a query is performed for a record
+        with RDATA greater than 65535 bytes (CVE-2012-4244).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition or
+      keep domain names resolvable after it has been deleted from registration.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BIND users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.9.1_p3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1033">CVE-2012-1033</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1667">CVE-2012-1667</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3817">CVE-2012-3817</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3868">CVE-2012-3868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4244">CVE-2012-4244</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 01:12:32 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 00:04:59 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-21">
+  <title>libTIFF: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libTIFF, allowing
+    remote attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>440154</bug>
+  <bug>440944</bug>
+  <bug>468334</bug>
+  <bug>480466</bug>
+  <bug>486590</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">4.0.3-r6</unaffected>
+      <unaffected range="rge">3.9.7-r1</unaffected>
+      <vulnerable range="lt">4.0.3-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libTIFF provides support for reading and manipulating TIFF (Tagged Image
+      File Format) images.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libTIFF. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted TIFF
+      file with an application making use of libTIFF, possibly resulting in
+      execution of arbitrary code with the privileges of the user running the
+      application or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libTIFF 4.* users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/tiff-4.0.3-r6"
+    </code>
+    
+    <p>All libTIFF 3.* users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/tiff-3.9.7-r1:3"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4447">CVE-2012-4447</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4564">CVE-2012-4564</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1960">CVE-2013-1960</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1961">CVE-2013-1961</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4231">CVE-2013-4231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4232">CVE-2013-4232</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4244">CVE-2013-4244</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Sep 2013 10:35:33 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:18:04 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

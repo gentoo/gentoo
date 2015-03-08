@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-12">
+  <title>Mono: Information disclosure</title>
+  <synopsis>
+    Mono does not properly sanitize pathnames allowing unauthorized information
+    disclosure.
+  </synopsis>
+  <product type="ebuild">mono</product>
+  <announced>January 16, 2007</announced>
+  <revised>January 17, 2007: 02</revised>
+  <bug>159886</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/mono" auto="yes" arch="*">
+      <unaffected range="ge">1.2.2.1</unaffected>
+      <vulnerable range="lt">1.2.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mono provides the necessary software to develop and run .NET client and
+    server applications on various platforms.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jose Ramon Palanco has discovered that the System.Web class in the XSP
+    for the ASP.NET server 1.1 through 2.0 in Mono does not properly
+    validate or sanitize local pathnames which could allow server-side file
+    content disclosure.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could append a space character to a URI and obtain
+    unauthorized access to the source code of server-side files. An
+    attacker could also read credentials by requesting Web.Config%20 from a
+    Mono server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mono users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/mono-1.2.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6104">CVE-2006-6104</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 18:42:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:13 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 00:17:42 +0000">
+    shellsage
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-25">
+  <title>X.Org X server: Multiple vulnerabilities</title>
+  <synopsis>
+    Sean Larsson from iDefense Labs has found multiple vulnerabilities in the
+    DBE and Render extensions.
+  </synopsis>
+  <product type="ebuild">X.Org</product>
+  <announced>January 27, 2007</announced>
+  <revised>February 26, 2007: 02</revised>
+  <bug>157421</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1-r4</unaffected>
+      <vulnerable range="lt">1.1.1-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The X Window System is a graphical windowing system based on a
+    client/server model.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple memory corruption vulnerabilities have been found in the
+    ProcDbeGetVisualInfo() and the ProcDbeSwapBuffers() of the DBE
+    extension, and ProcRenderAddGlyphs() in the Render extension.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could execute arbitrary code with the privileges of
+    the user running the X server, typically root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the DBE extension by removing the "Load dbe" directive in the
+    Module section of xorg.conf, and explicitly disable the Render
+    extension with ' Option "RENDER" "disable" ' in the Extensions section.
+    </p>
+    <p>
+    Note: This could affect the functionality of some applications.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X.Org X server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.1.1-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6101">CVE-2006-6101</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6102">CVE-2006-6102</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6103">CVE-2006-6103</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 23 Jan 2007 12:31:17 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 24 Jan 2007 15:54:52 +0000">
+    vorlon
+  </metadata>
+</glsa>

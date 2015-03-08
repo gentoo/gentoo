@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-09">
+  <title>GIMP: Multiple integer overflows</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in GIMP, allowing for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gimp</product>
+  <announced>July 25, 2007</announced>
+  <revised>July 25, 2007: 01</revised>
+  <bug>182047</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gimp" auto="yes" arch="*">
+      <unaffected range="ge">2.2.16</unaffected>
+      <vulnerable range="lt">2.2.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GIMP is the GNU Image Manipulation Program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sean Larsson from iDefense Labs discovered multiple integer overflows
+    in various GIMP plugins (CVE-2006-4519). Stefan Cornelius from Secunia
+    Research discovered an integer overflow in the
+    seek_to_and_unpack_pixeldata() function when processing PSD files
+    (CVE-2007-2949).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted image
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running GIMP.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GIMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/gimp-2.2.16&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4519">CVE-2006-4519</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2949">CVE-2007-2949</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 11 Jul 2007 20:14:16 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Jul 2007 18:21:17 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 15 Jul 2007 18:21:44 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-19">
+  <title>libtar: Arbitraty code execution</title>
+  <synopsis>A buffer overflow in libtar might allow remote attackers to execute
+    arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libtar</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>487420</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libtar" auto="yes" arch="*">
+      <unaffected range="ge">1.2.20-r2</unaffected>
+      <vulnerable range="lt">1.2.20-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libtar is a C library for manipulating POSIX tar files.</p>
+  </background>
+  <description>
+    <p>An integer overflow error within the “th_read()” function when
+      processing long names or link extensions can be exploited to cause a
+      heap-based buffer overflow via a specially crafted archive.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using a program linked against libtar, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libtar users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtar-1.2.20-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4397">CVE-2013-4397</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 28 Oct 2013 17:33:28 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 07:32:05 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

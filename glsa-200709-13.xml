@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-13">
+  <title>rsync: Two buffer overflows</title>
+  <synopsis>
+    Two user-assisted buffer overflow vulnerabilities have been discovered in
+    rsync.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>September 20, 2007</announced>
+  <revised>September 20, 2007: 01</revised>
+  <bug>189132</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">2.6.9-r3</unaffected>
+      <vulnerable range="lt">2.6.9-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rsync is a file transfer program to keep remote directories
+    synchronized.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sebastian Krahmer from the SUSE Security Team discovered two off-by-one
+    errors in the function "f_name()" in file sender.c when processing
+    overly long directory names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to synchronize a repository
+    containing specially crafted directories, leading to the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All rsync users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/rsync-2.6.9-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4091">CVE-2007-4091</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Sep 2007 22:30:02 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 09 Sep 2007 00:00:07 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Sep 2007 16:04:37 +0000">
+    p-y
+  </metadata>
+</glsa>

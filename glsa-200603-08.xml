@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-08">
+  <title>GnuPG: Incorrect signature verification</title>
+  <synopsis>
+    GnuPG may erroneously report a modified or unsigned message has a valid
+    digital signature.
+  </synopsis>
+  <product type="ebuild">gnupg</product>
+  <announced>March 10, 2006</announced>
+  <revised>March 10, 2006: 01</revised>
+  <bug>125217</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.2</unaffected>
+      <vulnerable range="lt">1.4.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU Privacy Guard, GnuPG, is a free replacement for the PGP
+    suite of cryptographic software that may be used without restriction,
+    as it does not rely on any patented algorithms. GnuPG can be used to
+    digitally sign messages, a method of ensuring the authenticity of a
+    message using public key cryptography.
+    </p>
+  </background>
+  <description>
+    <p>
+    OpenPGP is the standard that defines the format of digital
+    signatures supported by GnuPG. OpenPGP signatures consist of multiple
+    sections, in a strictly defined order. Tavis Ormandy of the Gentoo
+    Linux Security Audit Team discovered that certain illegal signature
+    formats could allow signed data to be modified without detection. GnuPG
+    has previously attempted to be lenient when processing malformed or
+    legacy signature formats, but this has now been found to be insecure.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may be able to construct or modify a
+    digitally-signed message, potentially allowing them to bypass
+    authentication systems, or impersonate another user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuPG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/gnupg-1.4.2.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0049">CVE-2006-0049</uri>
+    <uri link="http://lists.gnupg.org/pipermail/gnupg-announce/2006q1/000216.html">GnuPG Announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 08 Mar 2006 22:34:09 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Mar 2006 21:32:19 +0000">
+    koon
+  </metadata>
+</glsa>

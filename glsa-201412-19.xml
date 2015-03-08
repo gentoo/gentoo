@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-19">
+  <title>PPP: Information disclosure</title>
+  <synopsis>An integer overflow in PPP might allow local attackers to obtain
+    sensitive information.
+  </synopsis>
+  <product type="ebuild">ppp</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 2</revised>
+  <bug>519650</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-dialup/ppp" auto="yes" arch="*">
+      <unaffected range="ge">2.4.7 </unaffected>
+      <vulnerable range="lt">2.4.7 </vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PPP is a Unix implementation of the Point-to-Point Protocol</p>
+  </background>
+  <description>
+    <p>Integer overflow is discovered in the getword function in options.c in
+      PPP
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could execute process with extremely long options list,
+      possibly obtaining sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PPP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/ppp-2.4.7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3158">CVE-2014-3158</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 21 Aug 2014 10:14:30 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:01:42 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

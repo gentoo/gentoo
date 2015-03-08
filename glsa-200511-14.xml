@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-14">
+  <title>GTK+ 2, GdkPixbuf: Multiple XPM decoding vulnerabilities</title>
+  <synopsis>
+    The GdkPixbuf library, that is also included in GTK+ 2, contains
+    vulnerabilities that could lead to a Denial of Service or the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">gtk+</product>
+  <announced>November 16, 2005</announced>
+  <revised>November 16, 2005: 01</revised>
+  <bug>112608</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gtk+" auto="yes" arch="*">
+      <unaffected range="ge">2.8.6-r1</unaffected>
+      <unaffected range="rge">2.6.10-r1</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.8.6-r1</vulnerable>
+    </package>
+    <package name="media-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">0.22.0-r5</unaffected>
+      <vulnerable range="lt">0.22.0-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GTK+ (the GIMP Toolkit) is a toolkit for creating graphical user
+    interfaces. The GdkPixbuf library provides facilities for image
+    handling. It is available as a standalone library and also packaged
+    with GTK+ 2.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDEFENSE reported a possible heap overflow in the XPM loader
+    (CVE-2005-3186). Upon further inspection, Ludwig Nussel discovered two
+    additional issues in the XPM processing functions : an integer overflow
+    (CVE-2005-2976) that affects only gdk-pixbuf, and an infinite loop
+    (CVE-2005-2975).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Using a specially crafted XPM image an attacker could cause an
+    affected application to enter an infinite loop or trigger the
+    overflows, potentially allowing the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GTK+ 2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose x11-libs/gtk+</code>
+    <p>
+    All GdkPixbuf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gdk-pixbuf-0.22.0-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2975">CVE-2005-2975</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2976">CVE-2005-2976</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3186">CVE-2005-3186</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=339&amp;type=vulnerabilities">iDefense Security Advisory 11.15.05</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 14 Nov 2005 14:55:40 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 16 Nov 2005 12:54:54 +0000">
+    koon
+  </metadata>
+</glsa>

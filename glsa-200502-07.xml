@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-07">
+  <title>OpenMotif: Multiple vulnerabilities in libXpm</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in libXpm, which is included
+    in OpenMotif, that can potentially lead to remote code execution.
+  </synopsis>
+  <product type="ebuild">openmotif</product>
+  <announced>February 07, 2005</announced>
+  <revised>February 25, 2005: 03</revised>
+  <bug>78111</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/openmotif" auto="yes" arch="*">
+      <unaffected range="ge">2.2.3-r1</unaffected>
+      <unaffected range="rge">2.1.30-r7</unaffected>
+      <vulnerable range="lt">2.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenMotif provides a free version of the Motif toolkit for open source
+    applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities, such as buffer overflows, out of bounds
+    memory access or directory traversals, have been discovered in libXpm
+    that is shipped as a part of the X Window System (see GLSA 200409-34
+    and 200411-28). OpenMotif, an application that includes this library,
+    suffers from the same issues.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A carefully-crafted XPM file could crash applications making use of the
+    OpenMotif toolkit, potentially allowing the execution of arbitrary code
+    with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenMotif users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose x11-libs/openmotif</code>
+    <p>
+    Note: You should run 'revdep-rebuild' to ensure that all applications
+    linked to OpenMotif are properly rebuilt.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0687">CAN-2004-0687</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0688">CAN-2004-0688</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
+    <uri link="/security/en/glsa/glsa-200409-34.xml">GLSA 200409-34</uri>
+    <uri link="/security/en/glsa/glsa-200411-28.xml">GLSA 200411-28</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  2 Feb 2005 18:02:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 19:11:27 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  6 Feb 2005 17:15:42 +0000">
+    koon
+  </metadata>
+</glsa>

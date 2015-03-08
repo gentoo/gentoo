@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-22">
+  <title>Ampache: Insecure temporary file usage</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in Ampache, allowing for
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">ampache</product>
+  <announced>December 23, 2008</announced>
+  <revised>December 23, 2008: 01</revised>
+  <bug>237483</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-apps/ampache" auto="yes" arch="*">
+      <unaffected range="ge">3.4.3</unaffected>
+      <vulnerable range="lt">3.4.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ampache is a PHP based tool for managing, updating and playing audio
+    files via a web interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported an insecure temporary file usage within the
+    gather-messages.sh script.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to overwrite arbitrary
+    files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ampache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/ampache-3.4.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3929">CVE-2008-3929</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:37:47 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Dec 2008 21:03:24 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 21:03:37 +0000">
+    p-y
+  </metadata>
+</glsa>

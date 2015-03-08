@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-08">
+  <title>OpenSSL: Denial of Service</title>
+  <synopsis>
+    Two vulnerabilities might allow for a Denial of Service of daemons using
+    OpenSSL.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>June 23, 2008</announced>
+  <revised>June 23, 2008: 01</revised>
+  <bug>223429</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.8g-r2</unaffected>
+      <unaffected range="lt">0.9.8f</unaffected>
+      <vulnerable range="lt">0.9.8g-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+    (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+    purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ossi Herrala and Jukka Taimisto of Codenomicon discovered two
+    vulnerabilities:
+    </p>
+    <ul>
+    <li>
+    A double free() call in the TLS server name extension (CVE-2008-0891).
+    </li>
+    <li>
+    The OpenSSL client code does not properly handle servers that omit the
+    Server Key Exchange message in the TLS handshake (CVE-2008-1672).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could connect to a vulnerable server, or entice a
+    daemon to connect to a malicious server, causing a Denial of Service of
+    the daemon in both cases.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8g-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0891">CVE-2008-0891</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1672">CVE-2008-1672</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jun 2008 22:48:49 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Jun 2008 23:22:26 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 23:22:36 +0000">
+    rbu
+  </metadata>
+</glsa>

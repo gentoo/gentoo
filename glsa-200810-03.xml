@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200810-03">
+  <title>libspf2: DNS response buffer overflow</title>
+  <synopsis>
+    A memory management error in libspf2 might allow for remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">libspf2</product>
+  <announced>October 30, 2008</announced>
+  <revised>October 30, 2008: 01</revised>
+  <bug>242254</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/libspf2" auto="yes" arch="*">
+      <unaffected range="ge">1.2.8</unaffected>
+      <vulnerable range="lt">1.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libspf2 is a library that implements the Sender Policy Framework,
+    allowing mail transfer agents to make sure that an email is authorized
+    by the domain name that it is coming from. Currently, only the exim MTA
+    uses libspf2 in Gentoo.
+    </p>
+  </background>
+  <description>
+    <p>
+    libspf2 uses a fixed-length buffer to receive DNS responses and does
+    not properly check the length of TXT records, leading to buffer
+    overflows.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could store a specially crafted DNS entry and entice
+    a user or automated system using libspf2 to lookup that SPF entry (e.g.
+    by sending an email to the MTA), possibly allowing for the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libspf2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/libspf2-1.2.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2469">CVE-2008-2469</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 18 Oct 2008 16:51:58 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Oct 2008 19:27:11 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 23 Oct 2008 13:43:28 +0000">
+    rbu
+  </metadata>
+</glsa>

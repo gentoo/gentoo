@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-07">
+  <title>Lighttpd: Two Denials of Service</title>
+  <synopsis>
+    Two vulnerabilities have been discovered in Lighttpd, each allowing for a
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>May 07, 2007</announced>
+  <revised>May 07, 2007: 01</revised>
+  <bug>174043</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.14</unaffected>
+      <vulnerable range="lt">1.4.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Lighttpd is a lightweight HTTP web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Robert Jakabosky discovered an infinite loop triggered by a connection
+    abort when Lighttpd processes carriage return and line feed sequences.
+    Marcus Rueckert discovered a NULL pointer dereference when a server
+    running Lighttpd tries to access a file with a mtime of 0.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could upload a specially crafted file to the server
+    or send a specially crafted request and then abort the connection,
+    possibly resulting in a crash or a Denial of Service by CPU
+    consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.14&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1869">CVE-2007-1869</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1870">CVE-2007-1870</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 30 Apr 2007 09:09:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 01 May 2007 19:04:44 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 May 2007 21:36:16 +0000">
+    p-y
+  </metadata>
+</glsa>

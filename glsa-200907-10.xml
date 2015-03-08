@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-10">
+  <title>Syslog-ng: Chroot escape</title>
+  <synopsis>
+    Syslog-ng does not properly initialize its chroot jail allowing for an
+    escape if a separate vulnerability in Syslog-ng is exploited.
+  </synopsis>
+  <product type="ebuild">syslog-ng</product>
+  <announced>July 12, 2009</announced>
+  <revised>July 12, 2009: 01</revised>
+  <bug>247278</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/syslog-ng" auto="yes" arch="*">
+      <unaffected range="rge">2.0.10</unaffected>
+      <unaffected range="ge">2.1.3</unaffected>
+      <vulnerable range="lt">2.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Syslog-ng is a flexible and scalable system logger.
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Grandel reported that Syslog-ng does not call chdir() before
+    chroot() which leads to an inherited file descriptor to the current
+    working directory.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A local attacker might exploit a separate vulnerability in Syslog-ng
+    and use this vulnerability to escape the chroot jail.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Syslog-ng 2.0 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/syslog-ng-2.0.10&quot;</code>
+    <p>
+    All Syslog-ng 2.1 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/syslog-ng-2.1.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5110">CVE-2008-5110</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 11:11:22 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2009 11:21:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Jul 2009 11:21:44 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201204-05">
+  <title>SWFTools: User-assisted execution of arbitrary code</title>
+  <synopsis>A heap-based buffer overflow in SWFTools could result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">SWFTools</product>
+  <announced>April 17, 2012</announced>
+  <revised>April 18, 2012: 2</revised>
+  <bug>332649</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/swftools" auto="yes" arch="*">
+      <vulnerable range="le">0.9.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SWFTools is a collection of SWF manipulation and generation utilities
+      written by Rainer Böhme and Matthias Kramm.
+    </p>
+  </background>
+  <description>
+    <p>Integer overflow errors in the "getPNG()" function in png.c and the
+      "jpeg_load()" function in jpeg.c could cause a heap-based buffer
+      overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PNG or
+      JPEG file, possibly resulting in execution of arbitrary code with the
+      privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo discontinued support for SWFTools. We recommend that users
+      unmerge swftools:
+    </p>
+    
+    <code>
+      # emerge --unmerge "media-gfx/swftools"
+    </code>
+    
+    <p>NOTE: Users could upgrade to "&gt;=media-gfx/swftools-0.9.1", however
+      these packages are not currently stable.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1516">CVE-2010-1516</uri>
+  </references>
+  <metadata timestamp="Fri, 06 Apr 2012 20:23:27 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Wed, 18 Apr 2012 22:59:36 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-16">
+  <title>Warzone 2100 Resurrection: Multiple buffer overflows</title>
+  <synopsis>
+    Warzone 2100 Resurrection server and client are vulnerable to separate
+    buffer overflows, potentially allowing remote code execution.
+  </synopsis>
+  <product type="ebuild">warzone2100</product>
+  <announced>August 10, 2006</announced>
+  <revised>September 04, 2006: 02</revised>
+  <bug>142389</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-strategy/warzone2100" auto="yes" arch="*">
+      <unaffected range="ge">2.0.4</unaffected>
+      <vulnerable range="le">2.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Warzone 2100 Resurrection is a real-time strategy game, developed by
+    Pumpkin Studios and published by Eidos Interactive.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma discovered two buffer overflow vulnerabilities in
+    Warzone 2100 Resurrection. The recvTextMessage function of the Warzone
+    2100 Resurrection server and the NETrecvFile function of the client use
+    insufficiently sized buffers.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities by sending
+    specially crafted input to the server, or enticing a user to load a
+    specially crafted file from a malicious server. This may result in the
+    execution of arbitrary code with the permissions of the user running
+    Warzone 2100 Resurrection.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround for this issue.
+    </p>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Warzone 2100 Resurrection users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-strategy/warzone2100-2.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3849">CVE-2006-3849</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 07 Aug 2006 07:47:59 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 07 Aug 2006 07:48:19 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Aug 2006 12:17:00 +0000">
+    dizzutch
+  </metadata>
+</glsa>

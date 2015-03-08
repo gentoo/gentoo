@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-38">
+  <title>Squid: Multiple Denial of Service vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in Squid which allow for remote
+    Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">Squid</product>
+  <announced>March 24, 2009</announced>
+  <revised>March 24, 2009: 01</revised>
+  <bug>216319</bug>
+  <bug>257585</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.7.6</unaffected>
+      <vulnerable range="lt">2.7.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured web proxy cache.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>The arrayShrink function in lib/Array.c can cause an array to
+    shrink to 0 entries, which triggers an assert error. NOTE: this issue
+    is due to an incorrect fix for CVE-2007-6239 (CVE-2008-1612).</li>
+    <li>An invalid version number in a HTTP request may trigger an
+    assertion in HttpMsg.c and HttpStatusLine.c (CVE-2009-0478).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    The issues allows for Denial of Service attacks against the service via
+    an HTTP request with an invalid version number and other specially
+    crafted requests.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.7.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6239">CVE-2007-6239</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1612">CVE-2008-1612</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0478">CVE-2009-0478</uri>
+    <uri link="/security/en/glsa/glsa-200801-05.xml">GLSA-200801-05</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Mar 2009 14:14:34 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Mar 2009 14:25:11 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Mar 2009 16:45:49 +0000">
+    p-y
+  </metadata>
+</glsa>

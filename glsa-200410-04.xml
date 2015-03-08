@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-04">
+  <title>PHP: Memory disclosure and arbitrary location file upload</title>
+  <synopsis>
+    Two bugs in PHP may allow the disclosure of portions of memory and allow
+    remote attackers to upload files to arbitrary locations.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>October 06, 2004</announced>
+  <revised>October 06, 2004: 01</revised>
+  <bug>64223</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.9 </unaffected>
+      <vulnerable range="lt">4.3.9</vulnerable>
+    </package>
+    <package name="dev-php/mod_php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.9</unaffected>
+      <vulnerable range="lt">4.3.9</vulnerable>
+    </package>
+    <package name="dev-php/php-cgi" auto="yes" arch="*">
+      <unaffected range="ge">4.3.9</unaffected>
+      <vulnerable range="lt">4.3.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a general-purpose scripting language widely used to develop
+    web-based applications. It can run inside a web server using the mod_php
+    module or the CGI version of PHP, or can run stand-alone in a CLI.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefano Di Paola discovered two bugs in PHP. The first is a parse error in
+    php_variables.c that could allow a remote attacker to view the contents of
+    the target machine's memory. Additionally, an array processing error in the
+    SAPI_POST_HANDLER_FUNC() function inside rfc1867.c could lead to the
+    $_FILES array being overwritten.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit the first vulnerability to view memory
+    contents. On a server with a script that provides file uploads, an attacker
+    could exploit the second vulnerability to upload files to an arbitrary
+    location. On systems where the HTTP server is allowed to write in a
+    HTTP-accessible location, this could lead to remote execution of arbitrary
+    commands with the rights of the HTTP server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP, mod_php and php-cgi users should upgrade to the latest stable
+    version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-php/php-4.3.9"
+    # emerge ">=dev-php/php-4.3.9"
+
+    # emerge -pv ">=dev-php/mod_php-4.3.9"
+    # emerge ">=dev-php/mod_php-4.3.9"
+
+    # emerge -pv ">=dev-php/php-cgi-4.3.9"
+    # emerge ">=dev-php/php-cgi-4.3.9"</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/12560/">Secunia Advisory</uri>
+    <uri link="http://www.securityfocus.com/archive/1/375294">BugTraq post regarding the php_variables.c issue</uri>
+    <uri link="http://www.securityfocus.com/archive/1/375370">BugTraq post regarding the rfc1867.c issue</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 29 Sep 2004 20:40:17 +0000">
+    dmargoli
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 30 Sep 2004 20:25:12 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun,  3 Oct 2004 18:04:56 +0000">
+    dmargoli
+  </metadata>
+</glsa>

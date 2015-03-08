@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-04">
+  <title>Apache mod_perl: Denial of Service</title>
+  <synopsis>
+    The mod_perl Apache module is vulnerable to a Denial of Service when
+    processing regular expressions.
+  </synopsis>
+  <product type="ebuild">mod_perl</product>
+  <announced>May 02, 2007</announced>
+  <revised>May 02, 2007: 02</revised>
+  <bug>172676</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_perl" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3-r1</unaffected>
+      <unaffected range="rge">1.30</unaffected>
+      <vulnerable range="lt">2.0.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mod_perl is an Apache module that embeds the Perl interpreter within
+    the server, allowing Perl-based web-applications to be created.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alex Solvey discovered that the "path_info" variable used in file
+    RegistryCooker.pm (mod_perl 2.x) or file PerlRun.pm (mod_perl 1.x), is
+    not properly escaped before being processed.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted URL to the vulnerable
+    server, possibly resulting in a massive resource consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mod_perl 1.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_perl-1.30&quot;</code>
+    <p>
+    All mod_perl 2.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_perl-2.0.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1349">CVE-2007-1349</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 23 Apr 2007 19:53:36 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Apr 2007 15:28:21 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Apr 2007 21:05:17 +0000">
+    p-y
+  </metadata>
+</glsa>

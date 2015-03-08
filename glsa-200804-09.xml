@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-09">
+  <title>am-utils: Insecure temporary file creation</title>
+  <synopsis>
+    am-utils creates temporary files insecurely allowing local users to
+    overwrite arbitrary files via a symlink attack.
+  </synopsis>
+  <product type="ebuild">am-utils</product>
+  <announced>April 10, 2008</announced>
+  <revised>April 10, 2008: 01</revised>
+  <bug>210158</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-fs/am-utils" auto="yes" arch="*">
+      <unaffected range="ge">6.1.5</unaffected>
+      <vulnerable range="lt">6.1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    am-utils is a collection of utilities for use with the Berkeley
+    Automounter.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy discovered that, when creating temporary files, the
+    'expn' utility does not check whether the file already exists.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit the vulnerability via a symlink attack
+    to overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All am-utils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/am-utils-6.1.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1078">CVE-2008-1078</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 08 Apr 2008 21:38:37 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 10 Apr 2008 09:22:28 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Apr 2008 13:21:27 +0000">
+    vorlon
+  </metadata>
+</glsa>

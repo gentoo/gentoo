@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-07">
+  <title>Openswan: Denial of Service</title>
+  <synopsis>A NULL pointer dereference in Openswan may allow remote attackers
+    to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">openswan</product>
+  <announced>November 23, 2014</announced>
+  <revised>November 23, 2014: 1</revised>
+  <bug>499870</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openswan" auto="yes" arch="*">
+      <vulnerable range="le">2.6.39-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Openswan is an implementation of IPsec for Linux.</p>
+  </background>
+  <description>
+    <p>A NULL pointer dereference has been found in Openswan.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could create a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Openswan. We recommend that users
+      unmerge Openswan:
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-misc/openswan"
+    </code>
+    
+    <p>NOTE: The Gentoo developer(s) maintaining Openswan have discontinued
+      support at this time. It may be possible that a new Gentoo developer will
+      update Openswan at a later date. Alternatives packages such as Libreswan
+      and strongSwan are currently available in Gentoo Portage.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6466">CVE-2013-6466</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 01:21:40 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Nov 2014 17:45:46 +0000">ackle</metadata>
+</glsa>

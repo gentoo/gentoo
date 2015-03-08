@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-09">
+  <title>cURL: Off-by-one errors in URL handling</title>
+  <synopsis>
+    cURL is vulnerable to local arbitrary code execution via buffer overflow
+    due to the insecure parsing of URLs.
+  </synopsis>
+  <product type="ebuild">cURL</product>
+  <announced>December 16, 2005</announced>
+  <revised>December 16, 2005: 01</revised>
+  <bug>114710</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.15.1</unaffected>
+      <vulnerable range="lt">7.15.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cURL is a command line tool for transferring files with URL
+    syntax, supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser from the Hardened-PHP Project has reported a
+    vulnerability in cURL that allows for a local buffer overflow when cURL
+    attempts to parse specially crafted URLs. The URL can be specially
+    crafted in one of two ways: the URL could be malformed in a way that
+    prevents a terminating null byte from being added to either a hostname
+    or path buffer; or the URL could contain a "?" separator in the
+    hostname portion, which causes a "/" to be prepended to the resulting
+    string.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker capable of getting cURL to parse a maliciously crafted
+    URL could cause a denial of service or execute arbitrary code with the
+    privileges of the user making the call to cURL. An attacker could also
+    escape open_basedir or safe_mode pseudo-restrictions when exploiting
+    this problem from within a PHP program when PHP is compiled with
+    libcurl.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cURL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.15.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4077">CVE-2005-4077</uri>
+    <uri link="http://www.hardened-php.net/advisory_242005.109.html">Hardened-PHP Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 Dec 2005 13:39:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Dec 2005 17:20:45 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 15 Dec 2005 11:37:18 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-14">
+  <title>TORQUE: Insecure temporary file creation</title>
+  <synopsis>
+    TORQUE creates temporary files in an insecure manner which could lead to
+    the execution of arbitrary code with elevated privileges.
+  </synopsis>
+  <product type="ebuild">torque</product>
+  <announced>November 20, 2006</announced>
+  <revised>November 24, 2006: 03</revised>
+  <bug>152104</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-cluster/torque" auto="yes" arch="*">
+      <unaffected range="ge">2.1.6</unaffected>
+      <vulnerable range="lt">2.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TORQUE is a resource manager providing control over batch jobs and
+    distributed compute nodes.
+    </p>
+  </background>
+  <description>
+    <p>
+    TORQUE creates temporary files with predictable names. Please note that
+    the TORQUE package shipped in Gentoo Portage is not vulnerable in the
+    default configuration. Only systems with more permissive access rights
+    to the spool directory are vulnerable.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could create links in the temporary file directory,
+    pointing to a valid file somewhere on the filesystem. This could lead
+    to the execution of arbitrary code with elevated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Ensure that untrusted users don't have write access to the spool
+    directory.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TORQUE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/torque-2.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5677">CVE-2006-5677</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Nov 2006 20:45:04 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Nov 2006 11:48:29 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Nov 2006 08:31:55 +0000">
+    jaervosz
+  </metadata>
+</glsa>

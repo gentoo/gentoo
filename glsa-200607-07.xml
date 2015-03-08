@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-07">
+  <title>xine-lib: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow has been found in the libmms library shipped with
+    xine-lib, potentially resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>July 20, 2006</announced>
+  <revised>July 20, 2006: 01</revised>
+  <bug>139319</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2-r2</unaffected>
+      <vulnerable range="lt">1.1.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is the core library of xine, a multimedia player.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a stack based overflow in the libmms library included with
+    xine-lib which can be triggered by malicious use of the send_command,
+    string_utf16, get_data and get_media_packet functions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could design a malicious media file that would
+    trigger the overflow, potentially resulting in the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.2-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2200">CVE-2006-2200</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 12 Jul 2006 17:17:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 12 Jul 2006 20:18:19 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Jul 2006 16:55:34 +0000">
+    koon
+  </metadata>
+</glsa>

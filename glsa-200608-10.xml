@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-10">
+  <title>pike: SQL injection vulnerability</title>
+  <synopsis>
+    A flaw in the input handling could lead to the execution of arbitrary SQL
+    statements in the underlying PostgreSQL database.
+  </synopsis>
+  <product type="ebuild">pike</product>
+  <announced>August 06, 2006</announced>
+  <revised>December 13, 2006: 02</revised>
+  <bug>136065</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/pike" auto="yes" arch="*">
+      <unaffected range="ge">7.6.86</unaffected>
+      <vulnerable range="lt">7.6.86</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pike is a general purpose programming language, able to be used for
+    multiple tasks.
+    </p>
+  </background>
+  <description>
+    <p>
+    Some input is not properly sanitised before being used in a SQL
+    statement in the underlying PostgreSQL database.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could provide malicious input to a pike program,
+    which might result in the execution of arbitrary SQL statements.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pike users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/pike-7.6.86&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/20494/">Secunia Advisory SA20494</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4041">CVE-2006-4041</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 05 Aug 2006 16:54:41 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 05 Aug 2006 16:55:04 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 05 Aug 2006 17:42:54 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-24">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mozilla Thunderbird, which
+    may allow user-assisted arbitrary remote code execution.
+  </synopsis>
+  <product type="ebuild">mozilla-thunderbird mozilla-thunderbird-bin</product>
+  <announced>November 18, 2007</announced>
+  <revised>November 18, 2007: 01</revised>
+  <bug>196481</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.9</unaffected>
+      <vulnerable range="lt">2.0.0.9</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.9</unaffected>
+      <vulnerable range="lt">2.0.0.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Thunderbird is a popular open-source email client from the
+    Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Mozilla Thunderbird's
+    HTML browser engine (CVE-2007-5339) and JavaScript engine
+    (CVE-2007-5340) that can be exploited to cause a memory corruption.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to read a specially crafted email
+    that could trigger one of the vulnerabilities, possibly leading to the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all of these issues, but
+    some of them can be avoided by disabling JavaScript.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-2.0.0.9&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-2.0.0.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5339">CVE-2007-5339</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5340">CVE-2007-5340</uri>
+    <uri link="/security/en/glsa/glsa-200711-14.xml">GLSA 200711-14</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 13:53:08 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 Nov 2007 19:54:39 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 19:58:25 +0000">
+    rbu
+  </metadata>
+</glsa>

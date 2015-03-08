@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-04">
+  <title>X.Org X Server: Privilege escalation</title>
+  <synopsis>A format string vulnerability in X.Org X Server may allow local
+    privilege escalation or Denial of Service.
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>412609</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.11.4-r1</unaffected>
+      <unaffected range="rge">1.10.6-r1</unaffected>
+      <unaffected range="rle">1.9.5-r1</unaffected>
+      <vulnerable range="lt">1.11.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model.
+    </p>
+  </background>
+  <description>
+    <p>The "LogVHdrMessageVerb()" function in log.c contains a format string
+      vulnerability.
+    </p>
+    
+    <p>NOTE: Exposure to this vulnerability is reduced in Gentoo due to X.Org X
+      Server being built with "-D_FORTIFY_SOURCE=2" by default.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X Server 1.11.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.11.4-r1"
+    </code>
+    
+    <p>All X.Org X Server 1.10.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.10.6-r1"
+    </code>
+    
+    <p>X.Org X Server 1.9.x is not affected.</p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2118">CVE-2012-2118</uri>
+  </references>
+  <metadata timestamp="Sat, 02 Jun 2012 13:03:57 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 22:21:08 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200402-05">
+  <title>phpMyAdmin &lt; 2.5.6-rc1: possible attack against export.php</title>
+  <synopsis>
+    A vulnerability in phpMyAdmin which was not properly verifying user
+    generated input could lead to a directory traversal attack.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>February 17, 2004</announced>
+  <revised>February 17, 2004: 01</revised>
+  <bug>40268</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.5.6_rc1</unaffected>
+      <vulnerable range="le">2.5.5_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the administration
+    of MySQL databased over the Web.
+    </p>
+  </background>
+  <description>
+    <p>
+    One component of the phpMyAdmin software package (export.php) does not
+    properly verify input that is passed to it from a remote user.  Since the
+    input is used to include other files, it is possible to launch a directory
+    traversal attack.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Private information could be gleaned from the remote server if an attacker
+    uses a malformed URL such as http://phpmyadmin.example.com/export.php?what=../../../[existing_file] 
+    </p>
+    <p>
+    In this scenario, the script does not sanitize the "what" argument passed
+    to it, allowing directory traversal attacks to take place, disclosing
+    the contents of files if the file is readable as the web-server user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The workaround is to either patch the export.php file using the 
+    referenced CVS patch or upgrade the software via Portage.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to upgrade to phpMyAdmin-2.5.6_rc1:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv ">=dev-db/phpmyadmin-2.5.6_rc1"
+    # emerge ">=dev-db/phpmyadmin-2.5.6_rc1"
+    # emerge clean</code>
+  </resolution>
+  <references>
+    <uri link="http://cvs.sourceforge.net/viewcvs.py/phpmyadmin/phpMyAdmin/export.php?r1=2.3&amp;r2=2.3.2.1">CVS Patch</uri>
+  </references>
+</glsa>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-19">
+  <title>MCrypt: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities have been found in MCrypt, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">mcrypt</product>
+  <announced>May 18, 2014</announced>
+  <revised>May 18, 2014: 1</revised>
+  <bug>434112</bug>
+  <bug>440778</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mcrypt" auto="yes" arch="*">
+      <unaffected range="ge">2.6.8-r2</unaffected>
+      <vulnerable range="lt">2.6.8-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MCrypt is a replacement of the old unix crypt(1) utility.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MCrypt:</p>
+    
+    <ul>
+      <li>A boundary error in MCrypt could cause a stack-based buffer overflow
+        (CVE-2012-4409).
+      </li>
+      <li>MCrypt contains multiple format string errors (CVE-2012-4426).</li>
+      <li>MCrypt does not properly handle long file names, which could cause a
+        stack-based buffer overflow (CVE-2012-4527). 
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using MCrypt, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MCrypt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/mcrypt-2.6.8-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4409">CVE-2012-4409</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4426">CVE-2012-4426</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4527">CVE-2012-4527</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 01 Jan 2013 21:30:40 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:39:31 +0000">ackle</metadata>
+</glsa>

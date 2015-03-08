@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-23">
+  <title>Kopete: Vulnerability in included Gadu library</title>
+  <synopsis>
+    Kopete is vulnerable to several input validation vulnerabilities which may
+    lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">kopete</product>
+  <announced>July 25, 2005</announced>
+  <revised>July 25, 2005: 01</revised>
+  <bug>99754</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdenetwork" auto="yes" arch="*">
+      <unaffected range="ge">3.4.1-r1</unaffected>
+      <unaffected range="rge">3.3.2-r2</unaffected>
+      <vulnerable range="lt">3.4.1-r1</vulnerable>
+    </package>
+    <package name="kde-base/kopete" auto="yes" arch="*">
+      <unaffected range="ge">3.4.1-r1</unaffected>
+      <vulnerable range="lt">3.4.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. Kopete (also part of kdenetwork) is the
+    KDE Instant Messenger.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kopete contains an internal copy of libgadu and is therefore
+    subject to several input validation vulnerabilities in libgadu.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to execute
+    arbitrary code or crash Kopete.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Delete all Gadu Gadu contacts.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Kopete users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/kdenetwork</code>
+    <p>
+    All KDE Split Ebuild Kopete users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kopete-3.4.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kde.org/info/security/advisory-20050721-1.txt">KDE Security Advisory: libgadu vulnerabilities</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1852">CAN-2005-1852</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 21 Jul 2005 09:34:55 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Jul 2005 17:39:48 +0000">
+    jaervosz
+  </metadata>
+</glsa>

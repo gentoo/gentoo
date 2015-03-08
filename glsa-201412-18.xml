@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-18">
+  <title>FreeRDP: User-assisted execution of arbitrary code</title>
+  <synopsis>An integer overflow in FreeRDP couuld result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">freerdp</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>511688</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/freerdp" auto="yes" arch="*">
+      <unaffected range="ge">1.1.0_beta1_p20130710-r1</unaffected>
+      <vulnerable range="lt">1.1.0_beta1_p20130710-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeRDP is a free implementation of the remote desktop protocol.</p>
+  </background>
+  <description>
+    <p>FreeRDP does not properly validate user-supplied input, which could lead
+      to an integer overflow in the xf_Pointer_New() function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process or cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeRDP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-misc/freerdp-1.1.0_beta1_p20130710-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0250">CVE-2014-0250</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 05 Jul 2014 13:32:41 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 17:06:45 +0000">ackle</metadata>
+</glsa>

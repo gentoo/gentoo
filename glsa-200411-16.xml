@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-16">
+  <title>zip: Path name buffer overflow</title>
+  <synopsis>
+    zip contains a buffer overflow when creating a ZIP archive of files with
+    very long path names. This could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">zip</product>
+  <announced>November 09, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>70227</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/zip" auto="yes" arch="*">
+      <unaffected range="ge">2.3-r4</unaffected>
+      <vulnerable range="le">2.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    zip is a compression and file packaging utility.
+    </p>
+  </background>
+  <description>
+    <p>
+    zip does not check the resulting path length when doing recursive
+    folder compression.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this by enticing another user or web
+    application to create an archive including a specially-crafted path
+    name, potentially resulting in the execution of arbitrary code with the
+    permissions of the user running zip.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zip users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/zip-2.3-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.hexview.com/docs/20041103-1.txt">HexView zip Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1010">CVE-2004-1010</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun,  7 Nov 2004 18:59:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  8 Nov 2004 15:14:42 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  8 Nov 2004 20:46:08 +0000">
+    jaervosz
+  </metadata>
+</glsa>

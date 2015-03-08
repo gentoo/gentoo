@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-14">
+  <title>BIND: Incorrect signature verification</title>
+  <synopsis>
+    Incomplete verification of RSA and DSA certificates might lead to spoofed
+    records authenticated using DNSSEC.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>254134</bug>
+  <bug>257949</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.4.3_p1</unaffected>
+      <vulnerable range="lt">9.4.3_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC BIND is the Internet Systems Consortium implementation of the
+    Domain Name System (DNS) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    BIND does not properly check the return value from the OpenSSL
+    functions to verify DSA (CVE-2009-0025) and RSA (CVE-2009-0265)
+    certificates.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could bypass validation of the certificate chain to
+    spoof DNSSEC-authenticated records.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BIND users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.3_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0025">CVE-2009-0025</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0265">CVE-2009-0265</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 17:55:00 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 09 Mar 2009 10:41:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 09 Mar 2009 10:41:40 +0000">
+    rbu
+  </metadata>
+</glsa>

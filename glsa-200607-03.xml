@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-03">
+  <title>libTIFF: Multiple buffer overflows</title>
+  <synopsis>
+    libTIFF contains buffer overflows that could result in arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>July 09, 2006</announced>
+  <revised>July 09, 2006: 01</revised>
+  <bug>135881</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">3.8.2-r1</unaffected>
+      <vulnerable range="lt">3.8.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libTIFF provides support for reading and manipulating TIFF images.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been found in the t2p_write_pdf_string function
+    in tiff2pdf, which can been triggered with a TIFF file containing a
+    DocumentName tag with UTF-8 characters. An additional buffer overflow
+    has been found in the handling of the parameters in tiffsplit.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to load a specially crafted TIFF
+    file, resulting in the possible execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libTIFF users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.8.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2193">CVE-2006-2193</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2656">CVE-2006-2656</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 05 Jul 2006 16:38:15 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Jul 2006 16:38:38 +0000">
+    falco
+  </metadata>
+</glsa>

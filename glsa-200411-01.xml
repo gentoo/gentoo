@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-01">
+  <title>ppp: No denial of service vulnerability</title>
+  <synopsis>
+    pppd contains a bug that allows an attacker to crash his own connection,
+    but it cannot be used to deny service to other users.
+  </synopsis>
+  <product type="ebuild">ppp</product>
+  <announced>November 01, 2004</announced>
+  <revised>November 02, 2004: 02</revised>
+  <bug>69152</bug>
+  <access>remote</access>
+  <affected>
+  </affected>
+  <background>
+    <p>
+    ppp is a Unix implementation of the Point-to-Point Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    The pppd server improperly verifies header fields, potentially leading to a
+    crash of the pppd process handling the connection. However, since a
+    separate pppd process handles each ppp connection, this would not affect
+    any other connection, or prevent new connections from being established.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    We incorrectly thought that this bug could be exploited to deny service to
+    all ppp users. It is not the case, this bug has no security impact
+    whatsoever. Many thanks to Paul Mackerras from the Samba team for
+    correcting our mistake.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no need for a workaround.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    ppp users can keep their current versions.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/379450">Incorrect BugTraq Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  1 Nov 2004 10:32:16 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  1 Nov 2004 10:32:28 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  1 Nov 2004 16:53:20 +0000">
+    lewk
+  </metadata>
+</glsa>

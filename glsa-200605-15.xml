@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-15">
+  <title>Quagga Routing Suite: Multiple vulnerabilities</title>
+  <synopsis>
+    Quagga's RIP daemon allows the injection of routes and the disclosure of
+    routing information. The BGP daemon is vulnerable to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">quagga</product>
+  <announced>May 21, 2006</announced>
+  <revised>May 21, 2006: 01</revised>
+  <bug>132353</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/quagga" auto="yes" arch="*">
+      <unaffected range="ge">0.98.6-r1</unaffected>
+      <vulnerable range="lt">0.98.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Quagga Routing Suite implements three major routing protocols:
+    RIP (v1/v2/v3), OSPF (v2/v3) and BGP4.
+    </p>
+  </background>
+  <description>
+    <p>
+    Konstantin V. Gavrilenko discovered two flaws in the Routing
+    Information Protocol (RIP) daemon that allow the processing of RIP v1
+    packets (carrying no authentication) even when the daemon is configured
+    to use MD5 authentication or, in another case, even if RIP v1 is
+    completely disabled. Additionally, Fredrik Widell reported that the
+    Border Gateway Protocol (BGP) daemon contains a flaw that makes it lock
+    up and use all available CPU when a specific command is issued from the
+    telnet interface.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending RIP v1 response packets, an unauthenticated attacker
+    can alter the routing table of a router running Quagga's RIP daemon and
+    disclose routing information. Additionally, it is possible to lock up
+    the BGP daemon from the telnet interface.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Quagga users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/quagga-0.98.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2223">CVE-2006-2223</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2224">CVE-2006-2224</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2276">CVE-2006-2276</uri>
+    <uri link="http://www.quagga.net/news2.php?y=2006&amp;m=5&amp;d=8#id1147115280">Official release information</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 15 May 2006 05:35:52 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 15 May 2006 16:38:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 16 May 2006 05:49:19 +0000">
+    frilled
+  </metadata>
+</glsa>

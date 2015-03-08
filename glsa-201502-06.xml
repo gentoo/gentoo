@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-06">
+  <title>nginx: Information disclosure</title>
+  <synopsis>An SSL session fixation vulnerability in nginx may allow remote
+    attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">nginx</product>
+  <announced>February 07, 2015</announced>
+  <revised>February 07, 2015: 1</revised>
+  <bug>522994</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/nginx" auto="yes" arch="*">
+      <unaffected range="ge">1.7.6</unaffected>
+      <vulnerable range="lt">1.7.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nginx is a robust, small, and high performance HTTP and reverse proxy
+      server.
+    </p>
+  </background>
+  <description>
+    <p>An SSL session fixation vulnerability has been found in nginx when
+      multiple servers use the same shared ssl_session_cache or
+      ssl_session_ticket_key.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to obtain sensitive information.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nginx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-1.7.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3616">CVE-2014-3616</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 05 Jan 2015 00:39:58 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 20:30:19 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-05">
+  <title>mirrorselect: Insecure temporary file creation</title>
+  <synopsis>
+    mirrorselect is vulnerable to symlink attacks, potentially allowing a local
+    user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">mirrorselect</product>
+  <announced>December 07, 2004</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>73545</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-portage/mirrorselect" auto="yes" arch="*">
+      <unaffected range="ge">0.89</unaffected>
+      <vulnerable range="lt">0.89</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mirrorselect is a tool to help select distfiles mirrors for Gentoo.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ervin Nemeth discovered that mirrorselect creates temporary files in
+    world-writable directories with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When
+    mirrorselect is executed, this would result in the file being
+    overwritten with the rights of the user running the utility, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mirrorselect users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-portage/mirrorselect-0.89&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1167">CVE-2004-1167</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon,  6 Dec 2004 21:43:32 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  6 Dec 2004 21:51:32 +0000">
+    lewk
+  </metadata>
+</glsa>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-24">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in VLC may lead to the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>December 24, 2008</announced>
+  <revised>December 24, 2008: 01</revised>
+  <bug>245774</bug>
+  <bug>249391</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">0.9.8a</unaffected>
+      <vulnerable range="lt">0.9.8a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VLC is a cross-platform media player and streaming server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tobias Klein reported the following vulnerabilities:
+    </p>
+    <ul>
+    <li>A
+    stack-based buffer overflow when processing CUE image files in
+    modules/access/vcd/cdrom.c (CVE-2008-5032).</li>
+    <li>A stack-based
+    buffer overflow when processing RealText (.rt) subtitle files in the
+    ParseRealText() function in modules/demux/subtitle.c
+    (CVE-2008-5036).</li>
+    <li>An integer overflow when processing RealMedia
+    (.rm) files in the ReadRealIndex() function in real.c in the Real
+    demuxer plugin, leading to a heap-based buffer overflow
+    (CVE-2008-5276).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted CUE
+    image file, RealMedia file or RealText subtitle file, possibly
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VLC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.9.8a&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5032">CVE-2008-5032</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5036">CVE-2008-5036</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5276">CVE-2008-5276</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 15 Dec 2008 14:05:23 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 21 Dec 2008 19:55:55 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 21 Dec 2008 20:12:40 +0000">
+    p-y
+  </metadata>
+</glsa>

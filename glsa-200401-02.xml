@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200401-02">
+  <title>Honeyd remote detection vulnerability via a probe packet</title>
+  <synopsis>
+    Identification of Honeyd installations allows an adversary to launch
+    attacks specifically against Honeyd.  No remote root exploit is currently
+    known.
+  </synopsis>
+  <product type="ebuild">honeyd</product>
+  <announced>January 21, 2004</announced>
+  <revised>January 21, 2004: 01</revised>
+  <bug>38934</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/honeyd" auto="yes" arch="*">
+      <unaffected range="ge">0.8</unaffected>
+      <vulnerable range="lt">0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Honeyd is a virtual honeypot daemon that can simulate virtual hosts on
+    unallocated IP addresses.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in handling NMAP fingerprints caused Honeyd to reply to TCP
+    packets with both the SYN and RST flags set.  Watching for replies, it is
+    possible to detect IP addresses simulated by Honeyd.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Although there are no public exploits known for Honeyd, the detection
+    of Honeyd IP addresses may in some cases be undesirable.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Honeyd 0.8 has been released along with an advisory to address this 
+    issue. In addition, Honeyd 0.8 drops privileges if permitted by the 
+    configuration file and contains command line flags to force dropping 
+    of privileges.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are recommended to update to honeyd version 0.8:
+    </p>
+    <code>
+    $> emerge sync
+    $> emerge -pv ">=net-analyzer/honeyd-0.8"
+    $> emerge ">=net-analyzer/honeyd-0.8"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.honeyd.org/adv.2004-01.asc">Honeyd Security Advisory 2004-001</uri>
+  </references>
+</glsa>

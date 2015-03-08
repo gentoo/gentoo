@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201208-01">
+  <title>socat: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in socat might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">socat</product>
+  <announced>August 14, 2012</announced>
+  <revised>August 14, 2012: 1</revised>
+  <bug>415977</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/socat" auto="yes" arch="*">
+      <unaffected range="ge">1.7.2.1</unaffected>
+      <vulnerable range="lt">1.7.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>socat is a multipurpose bidirectional relay, similar to netcat.</p>
+  </background>
+  <description>
+    <p>A vulnerability in the "xioscan_readline()" function in xio-readline.c
+      could cause a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the socat process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All socat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/socat-1.7.2.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0219">CVE-2012-0219</uri>
+    <uri link="http://www.dest-unreach.org/socat/contrib/socat-secadv3.html">
+      Socat security advisory 3
+    </uri>
+  </references>
+  <metadata timestamp="Wed, 11 Jul 2012 21:57:34 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 14 Aug 2012 20:30:08 +0000" tag="submitter">ackle</metadata>
+</glsa>

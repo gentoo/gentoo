@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-17">
+  <title>Xpdf: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities in Xpdf could result in execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">xpdf</product>
+  <announced>February 17, 2014</announced>
+  <revised>February 17, 2014: 1</revised>
+  <bug>386271</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <vulnerable range="le">3.02-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xpdf is an X viewer for PDF files.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xpdf. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could execute arbitrary code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Xpdf. We recommend that users
+      unmerge Xpdf:
+    </p>
+    
+    <code>
+      # emerge --unmerge "app-text/xpdf"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4035">CVE-2009-4035</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3702">CVE-2010-3702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3704">CVE-2010-3704</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 29 Feb 2012 22:01:40 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 17 Feb 2014 19:53:35 +0000">ackle</metadata>
+</glsa>

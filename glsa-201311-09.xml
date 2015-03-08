@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-09">
+  <title>FreeRADIUS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FreeRADIUS, the worst
+    of which allow execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">freeradius</product>
+  <announced>November 13, 2013</announced>
+  <revised>November 13, 2013: 1</revised>
+  <bug>339389</bug>
+  <bug>386183</bug>
+  <bug>434802</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">2.2.0</unaffected>
+      <vulnerable range="lt">2.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeRADIUS is an open source RADIUS authentication server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FreeRADIUS. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeRADIUS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/freeradius-2.2.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3696">CVE-2010-3696</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3697">CVE-2010-3697</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2701">CVE-2011-2701</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3547">CVE-2012-3547</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 00:59:15 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Nov 2013 11:43:33 +0000">ackle</metadata>
+</glsa>

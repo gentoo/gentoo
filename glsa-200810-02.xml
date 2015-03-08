@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200810-02">
+  <title>Portage: Untrusted search path local root vulnerability</title>
+  <synopsis>
+    A search path vulnerability in Portage allows local attackers to execute
+    commands with root privileges if emerge is called from untrusted
+    directories.
+  </synopsis>
+  <product type="ebuild">portage</product>
+  <announced>October 09, 2008</announced>
+  <revised>October 09, 2008: 01</revised>
+  <bug>239560</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/portage" auto="yes" arch="*">
+      <unaffected range="ge">2.1.4.5</unaffected>
+      <vulnerable range="lt">2.1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Portage is Gentoo's package manager which is responsible for
+    installing, compiling and updating all packages on the system through
+    the Gentoo rsync tree.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Gentoo Security Team discovered that several ebuilds, such as
+    sys-apps/portage, net-mail/fetchmail or app-editors/leo execute Python
+    code using "python -c", which includes the current working directory in
+    Python's module search path. For several ebuild functions, Portage did
+    not change the working directory from emerge's working directory.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could place a specially crafted Python module in a
+    directory (such as /tmp) and entice the root user to run commands such
+    as "emerge sys-apps/portage" from that directory, resulting in the
+    execution of arbitrary Python code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "emerge" from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Portage users should upgrade to the latest version:
+    </p>
+    <code>
+    # cd /root
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/portage-2.1.4.5&quot;</code>
+    <p>
+    NOTE: To upgrade to Portage 2.1.4.5 using 2.1.4.4 or prior, you must
+    run emerge from a trusted working directory, such as "/root".
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4394">CVE-2008-4394</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 08 Oct 2008 16:50:57 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 08 Oct 2008 16:58:04 +0000">
+    rbu
+  </metadata>
+</glsa>

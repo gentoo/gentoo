@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-46">
+  <title>LittleCMS: Denial of Service</title>
+  <synopsis>Multiple buffer overflow flaws and a parser error in LittleCMS
+    could cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">lcms</product>
+  <announced>December 26, 2014</announced>
+  <revised>December 26, 2014: 1</revised>
+  <bug>479874</bug>
+  <bug>507788</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/lcms" auto="yes" arch="*">
+      <unaffected range="ge">2.6-r1</unaffected>
+      <vulnerable range="lt">2.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LittleCMS, or short lcms, is a color management system for working with
+      ICC profiles. It is used by many applications including GIMP and Firefox.
+    </p>
+  </background>
+  <description>
+    <p>Multiple stack-based buffer overflows and a profile parser error have
+      been found in LittleCMS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to open a
+      specially crafted file containing a malicious ICC profile, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LittleCMS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/lcms-2.6-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+    
+    <p>NOTE: Gentoo has discontinued support for the LittleCMS 1.9 branch. </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4276">CVE-2013-4276</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0459">CVE-2014-0459</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Nov 2014 21:58:45 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 19:04:58 +0000">ackle</metadata>
+</glsa>

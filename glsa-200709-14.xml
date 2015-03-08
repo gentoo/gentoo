@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-14">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    Vulnerabilities have been discovered in ClamAV allowing remote execution of
+    arbitrary code and Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>September 20, 2007</announced>
+  <revised>September 20, 2007: 01</revised>
+  <bug>189912</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.91.2</unaffected>
+      <vulnerable range="lt">0.91.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is an open source (GPL) anti-virus toolkit for UNIX,
+    designed especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>
+    Nikolaos Rangos discovered a vulnerability in ClamAV which exists
+    because the recipient address extracted from email messages is not
+    properly sanitized before being used in a call to "popen()" when
+    executing sendmail (CVE-2007-4560). Also, NULL-pointer dereference
+    errors exist within the "cli_scanrtf()" function in libclamav/rtf.c and
+    Stefanos Stamatis discovered a NULL-pointer dereference vulnerability
+    within the "cli_html_normalise()" function in libclamav/htmlnorm.c
+    (CVE-2007-4510).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The unsanitized recipient address can be exploited to execute arbitrary
+    code with the privileges of the clamav-milter process by sending an
+    email with a specially crafted recipient address to the affected
+    system. Also, the NULL-pointer dereference errors can be exploited to
+    crash ClamAV. Successful exploitation of the latter vulnerability
+    requires that clamav-milter is started with the "black hole" mode
+    activated, which is not enabled by default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.91.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4510">CVE-2007-4510</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4560">CVE-2007-4560</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 14 Sep 2007 22:57:24 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 15 Sep 2007 12:07:22 +0000">
+    p-y
+  </metadata>
+</glsa>

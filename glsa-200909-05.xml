@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-05">
+  <title>Openswan: Denial of Service</title>
+  <synopsis>
+    Multiple vulnerabilities in the pluto IKE daemon of Openswan might allow
+    remote attackers to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">openswan</product>
+  <announced>September 09, 2009</announced>
+  <revised>September 09, 2009: 01</revised>
+  <bug>264346</bug>
+  <bug>275233</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openswan" auto="yes" arch="*">
+      <unaffected range="ge">2.4.15</unaffected>
+      <vulnerable range="lt">2.4.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Openswan is an implementation of IPsec for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Openswan:
+    </p>
+    <ul>
+    <li>Gerd v. Egidy reported a NULL pointer dereference in the Dead Peer
+    Detection of the pluto IKE daemon as included in Openswan
+    (CVE-2009-0790).</li>
+    <li>The Orange Labs vulnerability research team
+    discovered multiple vulnerabilities in the ASN.1 parser
+    (CVE-2009-2185).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by sending
+    specially crafted R_U_THERE or R_U_THERE_ACK packets, or a specially
+    crafted X.509 certificate containing a malicious Relative Distinguished
+    Name (RDN), UTCTIME string or GENERALIZEDTIME string to cause a Denial
+    of Service of the pluto IKE daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Openswan users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openswan-2.4.15&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0790">CVE-2009-0790</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2185">CVE-2009-2185</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Jun 2009 22:25:11 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 16:52:25 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:39:02 +0000">
+    a3li
+  </metadata>
+</glsa>

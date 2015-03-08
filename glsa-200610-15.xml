@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-15">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>
+    Asterisk is vulnerable to the remote execution of arbitrary code or a
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>October 30, 2006</announced>
+  <revised>January 30, 2007: 02</revised>
+  <bug>144941</bug>
+  <bug>151881</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.13</unaffected>
+      <unaffected range="rge">1.0.12</unaffected>
+      <vulnerable range="lt">1.2.13</vulnerable>
+      <vulnerable range="lt">1.0.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source implementation of a telephone private branch
+    exchange (PBX).
+    </p>
+  </background>
+  <description>
+    <p>
+    Asterisk contains buffer overflows in channels/chan_mgcp.c from the
+    MGCP driver and in channels/chan_skinny.c from the Skinny channel
+    driver for Cisco SCCP phones. It also dangerously handles
+    client-controlled variables to determine filenames in the Record()
+    function. Finally, the SIP channel driver in channels/chan_sip.c could
+    use more resources than necessary under unspecified circumstances.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could execute arbitrary code by sending a crafted
+    audit endpoint (AUEP) response, by sending an overly large Skinny
+    packet even before authentication, or by making use of format strings
+    specifiers through the client-controlled variables. An attacker could
+    also cause a Denial of Service by resource consumption through the SIP
+    channel driver.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround for the format strings vulnerability at
+    this time. You can comment the lines in /etc/asterisk/mgcp.conf,
+    /etc/asterisk/skinny.conf and /etc/asterisk/sip.conf to deactivate the
+    three vulnerable channel drivers. Please note that the MGCP channel
+    driver is disabled by default.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.13&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4345">CVE-2006-4345</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4346">CVE-2006-4346</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5444">CVE-2006-5444</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5445">CVE-2006-5445</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 18 Oct 2006 20:57:57 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 21 Oct 2006 20:37:32 +0000">
+    falco
+  </metadata>
+</glsa>

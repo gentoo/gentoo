@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-19">
+  <title>ImageMagick: PALM and DCM buffer overflows</title>
+  <synopsis>
+    ImageMagick improperly handles PALM and DCM images, potentially resulting
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>November 24, 2006</announced>
+  <revised>November 24, 2006: 01</revised>
+  <bug>152672</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.3.0.5</unaffected>
+      <vulnerable range="lt">6.3.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is a software suite to create, edit, and compose bitmap
+    images, that can also read, write, and convert images in many other
+    formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    M. Joonas Pihlaja has reported that a boundary error exists within the
+    ReadDCMImage() function of coders/dcm.c, causing the improper handling
+    of DCM images. Pihlaja also reported that there are several boundary
+    errors in the ReadPALMImage() function of coders/palm.c, similarly
+    causing the improper handling of PALM images.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted DCM or PALM
+    image with ImageMagick, and possibly execute arbitrary code with the
+    privileges of the user running ImageMagick.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.3.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5456">CVE-2006-5456</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 07:20:25 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 22 Nov 2006 15:07:36 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 19:28:35 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-11">
+  <title>Squid: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Squid, allowing remote
+    attackers to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>November 27, 2014</announced>
+  <revised>November 27, 2014: 1</revised>
+  <bug>504176</bug>
+  <bug>522498</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">3.3.13-r1</unaffected>
+      <vulnerable range="lt">3.3.13-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and
+      more. 
+    </p>
+  </background>
+  <description>
+    <p>An assertion failure in processing of SSL-Bump has been found in Squid. 
+      Heap based overflow is discovered when processing SNMP requests.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request, possibly
+      resulting in a executing of arbitrary code or Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Squid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-3.3.13-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0128">CVE-2014-0128</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7141">CVE-2014-7141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7142">CVE-2014-7142</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:12:15 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Nov 2014 14:39:02 +0000">Zlogene</metadata>
+</glsa>

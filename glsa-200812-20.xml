@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-20">
+  <title>phpCollab: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in phpCollab allowing for
+    remote injection of shell commands, PHP code and SQL statements.
+  </synopsis>
+  <product type="ebuild">phpcollab</product>
+  <announced>December 21, 2008</announced>
+  <revised>December 21, 2008: 01</revised>
+  <bug>235052</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpcollab" auto="yes" arch="*">
+      <vulnerable range="le">2.5_rc3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpCollab is a web-enabled groupware and project management software
+    written in PHP. It uses SQL-based database backends.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found in phpCollab:
+    </p>
+    <ul>
+    <li>rgod reported that data sent to general/sendpassword.php via the
+    loginForm parameter is not properly sanitized before being used in an
+    SQL statement (CVE-2006-1495).</li>
+    <li>Christian Hoffmann of Gentoo
+    Security discovered multiple vulnerabilities where input is
+    insufficiently sanitized before being used in an SQL statement, for
+    instance in general/login.php via the loginForm parameter.
+    (CVE-2008-4303).</li>
+    <li>Christian Hoffmann also found out that the
+    variable $SSL_CLIENT_CERT in general/login.php is not properly
+    sanitized before being used in a shell command. (CVE-2008-4304).</li>
+    <li>User-supplied data to installation/setup.php is not checked before
+    being written to include/settings.php which is executed later. This
+    issue was reported by Christian Hoffmann as well (CVE-2008-4305).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    These vulnerabilities enable remote attackers to execute arbitrary SQL
+    statements and PHP code. NOTE: Some of the SQL injection
+    vulnerabilities require the php.ini option "magic_quotes_gpc" to be
+    disabled. Furthermore, an attacker might be able to execute arbitrary
+    shell commands if "register_globals" is enabled, "magic_quotes_gpc" is
+    disabled, the PHP OpenSSL extension is not installed or loaded and the
+    file "installation/setup.php" has not been deleted after installation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    phpCollab has been removed from the Portage tree. We recommend that
+    users unmerge phpCollab:
+    </p>
+    <code>
+    # emerge --unmerge &quot;www-apps/phpcollab&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1495">CVE-2006-1495</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4303">CVE-2008-4303</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4304">CVE-2008-4304</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4305">CVE-2008-4305</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 19 Oct 2008 20:05:40 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Dec 2008 13:16:45 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 10 Dec 2008 16:51:12 +0000">
+    a3li
+  </metadata>
+</glsa>

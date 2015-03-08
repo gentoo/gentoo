@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-22">
+  <title>KDE kimgio: PCX handling buffer overflow</title>
+  <synopsis>
+    KDE fails to properly validate input when handling PCX images, potentially
+    resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">KDE</product>
+  <announced>April 22, 2005</announced>
+  <revised>April 22, 2005: 01</revised>
+  <bug>88862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="rge">3.2.3-r9</unaffected>
+      <unaffected range="ge">3.3.2-r8</unaffected>
+      <vulnerable range="lt">3.3.2-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. kimgio is the KDE image handler provided
+    by kdelibs.
+    </p>
+  </background>
+  <description>
+    <p>
+    kimgio fails to properly validate input when handling PCX files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to load a specially-crafted PCX image in a KDE
+    application, an attacker could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/kdelibs</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1046">CAN-2005-1046</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20050421-1.txt">KDE Security Advisory: kimgio input validation errors</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 22 Apr 2005 06:44:43 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 22 Apr 2005 11:51:44 +0000">
+    jaervosz
+  </metadata>
+</glsa>

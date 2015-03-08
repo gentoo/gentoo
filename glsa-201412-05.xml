@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-05">
+  <title>Clam AntiVirus: Denial of service</title>
+  <synopsis>A vulnerability in Clam AntiVirus can lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>December 09, 2014</announced>
+  <revised>December 09, 2014: 2</revised>
+  <bug>529728</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.98.5</unaffected>
+      <vulnerable range="lt">0.98.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Clam AntiVirus is an open source (GPL) anti-virus toolkit for UNIX,
+      designed especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow exists in the cli_scanpe function in
+      libclamav/pe.c in ClamAV.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition via
+      a specially crafted file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Clam AntiVirus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.98.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9050">CVE-2014-9050</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 07 Dec 2014 19:55:16 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 09 Dec 2014 12:58:59 +0000">Zlogene</metadata>
+</glsa>

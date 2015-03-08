@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-27">
+  <title>PHProjekt: Remote code execution vulnerability</title>
+  <synopsis>
+    PHProjekt contains a vulnerability that allows a remote attacker to execute
+    arbitrary PHP code.
+  </synopsis>
+  <product type="ebuild">PHProjekt</product>
+  <announced>December 30, 2004</announced>
+  <revised>December 30, 2004: 01</revised>
+  <bug>75858</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phprojekt" auto="yes" arch="*">
+      <unaffected range="ge">4.2-r2</unaffected>
+      <vulnerable range="lt">4.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHProjekt is a modular groupware web application used to
+    coordinate group activities and share files.
+    </p>
+  </background>
+  <description>
+    <p>
+    cYon discovered that the authform.inc.php script allows a remote
+    user to define the global variable $path_pre.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can exploit this vulnerability to force
+    authform.inc.php to download and execute arbitrary PHP code with the
+    privileges of the web server user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHProjekt users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phprojekt-4.2-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.phprojekt.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=193&amp;mode=thread&amp;order=0">PHProjekt Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 29 Dec 2004 16:45:27 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 29 Dec 2004 16:45:35 +0000">
+    koon
+  </metadata>
+</glsa>

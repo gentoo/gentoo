@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-04">
+  <title>Evolution: User-assisted remote execution of arbitrary code</title>
+  <synopsis>
+    The IMAP client of Evolution contains a vulnerability potentially leading
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">evolution-data-server</product>
+  <announced>November 06, 2007</announced>
+  <revised>November 06, 2007: 01</revised>
+  <bug>190861</bug>
+  <access>remote</access>
+  <affected>
+    <package name="gnome-extra/evolution-data-server" auto="yes" arch="*">
+      <unaffected range="ge">1.10.3.1</unaffected>
+      <vulnerable range="lt">1.10.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evolution is the mail client of the GNOME desktop environment. Camel is
+    the Evolution Data Server module that handles mail functions.
+    </p>
+  </background>
+  <description>
+    <p>
+    The imap_rescan() function of the file camel-imap-folder.c does not
+    properly sanitize the "SEQUENCE" response sent by an IMAP server before
+    being used to index arrays.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious or compromised IMAP server could trigger the vulnerability
+    and execute arbitrary code with the permissions of the user running
+    Evolution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Note that this GLSA addresses the same issue as GLSA 200707-03, but for
+    the 1.10 branch of Evolution Data Server.
+    </p>
+    <p>
+    All Evolution users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-extra/evolution-data-server-1.10.3.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200707-03.xml">GLSA 200707-03</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3257">CVE-2007-3257</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 17 Sep 2007 21:12:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Sep 2007 21:13:37 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 19:29:33 +0000">
+    aetius
+  </metadata>
+</glsa>

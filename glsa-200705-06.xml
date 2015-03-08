@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-06">
+  <title>X.Org X11 library: Multiple integer overflows</title>
+  <synopsis>
+    The X.Org X11 library contains multiple integer overflows, which could lead
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libx11</product>
+  <announced>May 05, 2007</announced>
+  <revised>May 05, 2007: 01</revised>
+  <bug>172752</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/libX11" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3-r2</unaffected>
+      <vulnerable range="lt">1.0.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    X.Org is an implementation of the X Window System. The X.Org X11
+    library provides the X11 protocol library files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple integer overflows have been reported in the XGetPixel()
+    function of the X.Org X11 library.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By enticing a user to open a specially crafted image, an attacker could
+    cause a Denial of Service or an integer overflow, potentially resulting
+    in the execution of arbitrary code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X.Org X11 library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libX11-1.0.3-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1667">CVE-2007-1667</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Apr 2007 14:52:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 20 Apr 2007 16:53:31 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 23 Apr 2007 12:10:37 +0000">
+    vorlon
+  </metadata>
+</glsa>

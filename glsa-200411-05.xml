@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-05">
+  <title>libxml2: Remotely exploitable buffer overflow</title>
+  <synopsis>
+    libxml2 contains multiple buffer overflows which could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>November 02, 2004</announced>
+  <revised>November 02, 2004: 01</revised>
+  <bug>69154</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.6.15</unaffected>
+      <vulnerable range="lt">2.6.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libxml2 is an XML parsing library written in C.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple buffer overflows have been detected in the nanoftp and nanohttp
+    modules. These modules are responsible for parsing URLs with ftp
+    information, and resolving names via DNS.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit an application that uses libxml2 by forcing it to
+    parse a specially-crafted XML file, potentially causing remote execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libxml2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=dev-libs/libxml2-2.6.15"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/379383">BugTraq Advisory</uri>
+    <uri link="http://www.xmlsoft.org/ChangeLog.html">libxml2 ChangeLog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0989">CAN-2004-0989</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 30 Oct 2004 16:39:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 31 Oct 2004 21:35:49 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  1 Nov 2004 23:01:51 +0000">
+    lewk
+  </metadata>
+</glsa>

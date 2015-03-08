@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-22">
+  <title>wpa_supplicant: Buffer overflow vulnerability</title>
+  <synopsis>
+    wpa_supplicant contains a buffer overflow that could lead to a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">wpa_supplicant</product>
+  <announced>February 16, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>81993</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/wpa_supplicant" auto="yes" arch="*">
+      <unaffected range="ge">0.2.7</unaffected>
+      <vulnerable range="lt">0.2.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    wpa_supplicant is a WPA Supplicant with support for WPA and WPA2 (IEEE
+    802.11i / RSN).
+    </p>
+  </background>
+  <description>
+    <p>
+    wpa_supplicant contains a possible buffer overflow due to the lacking
+    validation of received EAPOL-Key frames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause the crash of wpa_supplicant using a specially
+    crafted packet.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All wpa_supplicant users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/wpa_supplicant-0.2.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://lists.shmoo.com/pipermail/hostap/2005-February/009465.html">wpa_supplicant Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0470">CVE-2005-0470</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 14 Feb 2005 18:34:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Feb 2005 20:11:49 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Feb 2005 21:06:18 +0000">
+    vorlon078
+  </metadata>
+</glsa>

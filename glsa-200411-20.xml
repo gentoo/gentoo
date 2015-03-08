@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-20">
+  <title>ez-ipupdate: Format string vulnerability</title>
+  <synopsis>
+    ez-ipupdate contains a format string vulnerability that could lead to
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ez-ipupdate</product>
+  <announced>November 11, 2004</announced>
+  <revised>November 11, 2004: 01</revised>
+  <bug>69658</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/ez-ipupdate" auto="yes" arch="*">
+      <unaffected range="ge">3.0.11_beta8-r1</unaffected>
+      <vulnerable range="le">3.0.11_beta8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ez-ipupdate is a utility for updating host name information for a large number of dynamic DNS services.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar from the Debian Security Audit Project discovered a format string vulnerability in ez-ipupdate.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this to execute arbitrary code with the permissions of the user running ez-ipupdate, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ez-ipupdate users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-dns/ez-ipupdate-3.0.11_beta8-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0980">CAN-2004-0980</uri>
+    <uri link="http://lists.netsys.com/pipermail/full-disclosure/2004-November/028590.html">Full Disclosure Announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue,  9 Nov 2004 20:12:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Nov 2004 14:43:17 +0000">
+    jaervosz
+  </metadata>
+</glsa>

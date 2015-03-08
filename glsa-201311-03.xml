@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-03">
+  <title>Quassel: Multiple Vulnerabilities</title>
+  <synopsis>Two vulnerabilities in Quassel may result in Denial of Service or
+    SQL injection.
+  </synopsis>
+  <product type="ebuild">quassel</product>
+  <announced>November 07, 2013</announced>
+  <revised>November 07, 2013: 1</revised>
+  <bug>338879</bug>
+  <bug>487632</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/quassel" auto="yes" arch="*">
+      <unaffected range="ge">0.9.1</unaffected>
+      <vulnerable range="lt">0.9.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Quassel is a Qt4/KDE4 IRC client suppporting a remote daemon for 24/7
+      connectivity.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in Quassel:</p>
+    
+    <ul>
+      <li>Quassel does not properly handle multiple CTCP requests
+        (CVE-2010-3443).
+      </li>
+      <li>Quassel, when used with certain versions of Qt and PostgreSQL, does
+        not sanitize user input (CVE-2013-4422).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send multiple CTCP requests in single private
+      message, possibly resulting in a Denial of Service condition. Futhermore,
+      a remote attacker may be able to execute arbitrary SQL statements.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Quassel users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/quassel-0.9.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3443">CVE-2010-3443</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4422">CVE-2013-4422</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:21 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 Nov 2013 01:26:59 +0000">ackle</metadata>
+</glsa>

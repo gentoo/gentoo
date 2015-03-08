@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-08">
+  <title>Ruby: CGI::Session creates files insecurely</title>
+  <synopsis>
+    When used for CGI scripting, Ruby creates session files in /tmp with the
+    permissions of the default umask. Depending on that umask, local users may
+    be able to read sensitive data stored in session files.
+  </synopsis>
+  <product type="ebuild">dev-lang/ruby</product>
+  <announced>September 03, 2004</announced>
+  <revised>September 03, 2004: 01</revised>
+  <bug>60525</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="rge">1.6.8-r11</unaffected>
+      <unaffected range="rge">1.8.0-r7</unaffected>
+      <unaffected range="ge">1.8.2_pre2</unaffected>
+      <vulnerable range="lt">1.8.2_pre2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an Object Oriented, interpreted scripting language used for many
+    system scripting tasks. It can also be used for CGI web applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    The CGI::Session::FileStore implementation (and presumably
+    CGI::Session::PStore), which allow data associated with a particular
+    Session instance to be written to a file, writes to a file in /tmp with no
+    regard for secure permissions. As a result, the file is left with whatever
+    the default umask permissions are, which commonly would allow other local
+    users to read the data from that session file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Depending on the default umask, any data stored using these methods could
+    be read by other users on the system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    By changing the default umask on the system to not permit read access to
+    other users (e.g. 0700), one can prevent these files from being readable by
+    other users.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-lang/ruby-your_version"
+    # emerge ">=dev-lang/ruby-your_version"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0755">CAN-2004-0755</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 28 Aug 2004 23:01:05 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  1 Sep 2004 04:27:07 +0000">
+    dmargoli
+  </metadata>
+</glsa>

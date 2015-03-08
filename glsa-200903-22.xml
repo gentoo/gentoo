@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-22">
+  <title>Ganglia: Execution of arbitrary code</title>
+  <synopsis>
+    A buffer-overflow in Ganglia's gmetad might lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">ganglia</product>
+  <announced>March 10, 2009</announced>
+  <revised>March 10, 2009: 01</revised>
+  <bug>255366</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-cluster/ganglia" auto="yes" arch="*">
+      <unaffected range="ge">3.1.1-r2</unaffected>
+      <vulnerable range="lt">3.1.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ganglia is a scalable distributed monitoring system for clusters and
+    grids.
+    </p>
+  </background>
+  <description>
+    <p>
+    Spike Spiegel reported a stack-based buffer overflow in the
+    process_path() function when processing overly long pathnames in
+    gmetad/server.c.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted request to the gmetad
+    service leading to the execution of arbitrary code or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ganglia users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/ganglia-3.1.1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0241">CVE-2009-0241</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 03 Feb 2009 00:12:46 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 16:26:05 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 16:27:02 +0000">
+    rbu
+  </metadata>
+</glsa>

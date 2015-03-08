@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-06">
+  <title>SpamAssassin: Denial of Service vulnerability</title>
+  <synopsis>
+    SpamAssassin is vulnerable to a Denial of Service attack when handling
+    certain malformed messages.
+  </synopsis>
+  <product type="ebuild">SpamAssassin</product>
+  <announced>August 09, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>59483</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/spamassassin" auto="yes" arch="*">
+      <unaffected range="ge">2.64</unaffected>
+      <vulnerable range="le">2.63-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SpamAssassin is an extensible email filter which is used to identify
+    spam.
+    </p>
+  </background>
+  <description>
+    <p>
+    SpamAssassin contains an unspecified Denial of Service vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted message an attacker could cause a Denial
+    of Service attack against the SpamAssassin service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of SpamAssassin.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SpamAssassin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=mail-filter/spamassassin-2.64&quot;
+    # emerge &quot;&gt;=mail-filter/spamassassin-2.64&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://marc.theaimsgroup.com/?l=spamassassin-announce&amp;m=109168121628767&amp;w=2">SpamAssassin Release Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0796">CVE-2004-0796</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu,  5 Aug 2004 09:14:09 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 11:01:34 +0000">
+    jaervosz
+  </metadata>
+</glsa>

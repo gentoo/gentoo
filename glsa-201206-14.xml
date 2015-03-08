@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-14">
+  <title>Adobe Reader: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Adobe Reader might allow remote
+    attackers to execute arbitrary code or conduct various other attacks.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>June 22, 2012</announced>
+  <revised>June 22, 2012: 1</revised>
+  <bug>405949</bug>
+  <bug>411499</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">9.5.1</unaffected>
+      <vulnerable range="lt">9.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Adobe Reader is a closed-source PDF reader.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Adobe Reader, including an
+      integer overflow in TrueType Font handling (CVE-2012-0774) and multiple
+      unspecified errors which could cause memory corruption. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF
+      file, possibly resulting in  execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Reader users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-9.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4370">CVE-2011-4370</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4371">CVE-2011-4371</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4372">CVE-2011-4372</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4373">CVE-2011-4373</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0774">CVE-2012-0774</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0775">CVE-2012-0775</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0776">CVE-2012-0776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0777">CVE-2012-0777</uri>
+  </references>
+  <metadata timestamp="Thu, 12 Apr 2012 01:22:21 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Fri, 22 Jun 2012 10:12:35 +0000" tag="submitter">ackle</metadata>
+</glsa>

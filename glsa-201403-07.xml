@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-07">
+  <title>grep: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in grep could result in execution of arbitrary code
+    or Denial of Service.
+  </synopsis>
+  <product type="ebuild">grep</product>
+  <announced>March 26, 2014</announced>
+  <revised>March 26, 2014: 1</revised>
+  <bug>448246</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/grep" auto="yes" arch="*">
+      <unaffected range="ge">2.12</unaffected>
+      <vulnerable range="lt">2.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>grep is the GNU regular expression matcher.</p>
+  </background>
+  <description>
+    <p>An integer overflow flaw has been discovered in grep.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could entice a user to run grep on a specially crafted file,
+      possibly resulting in  execution of arbitrary code with the privileges of
+      the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All grep users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/grep-2.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5667">CVE-2012-5667</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Dec 2012 16:52:28 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Mar 2014 15:39:34 +0000">ackle</metadata>
+</glsa>

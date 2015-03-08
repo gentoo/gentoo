@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201410-01">
+  <title>Bash: Multiple vulnerabilities</title>
+  <synopsis>Multiple parsing flaws in Bash could allow remote attackers to
+    inject code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">bash</product>
+  <announced>October 04, 2014</announced>
+  <revised>October 04, 2014: 1</revised>
+  <bug>523742</bug>
+  <bug>524256</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-shells/bash" auto="yes" arch="*">
+      <unaffected range="rge">3.1_p22</unaffected>
+      <unaffected range="rge">3.2_p56</unaffected>
+      <unaffected range="rge">4.0_p43</unaffected>
+      <unaffected range="rge">4.1_p16</unaffected>
+      <unaffected range="ge">4.2_p52</unaffected>
+      <vulnerable range="lt">4.2_p52</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bash is the standard GNU Bourne Again SHell.</p>
+  </background>
+  <description>
+    <p>Florian Weimer, Todd Sabin, Michal Zalewski et al. discovered further
+      parsing flaws in Bash. The unaffected Gentoo packages listed in this GLSA
+      contain the official patches to fix the issues tracked as CVE-2014-6277,
+      CVE-2014-7186, and CVE-2014-7187. Furthermore, the official patch known
+      as “function prefix patch” is included which prevents the
+      exploitation of CVE-2014-6278.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could exploit these vulnerabilities to execute
+      arbitrary commands or cause a Denial of Service condition via various
+      vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bash 3.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-3.1_p22:3.1"
+    </code>
+    
+    <p>All Bash 3.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-3.2_p56:3.2"
+    </code>
+    
+    <p>All Bash 4.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.0_p43:4.0"
+    </code>
+    
+    <p>All Bash 4.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.1_p16:4.1"
+    </code>
+    
+    <p>All Bash 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.2_p52"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6277">CVE-2014-6277</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6278">CVE-2014-6278</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7186">CVE-2014-7186</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7187">CVE-2014-7187</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 04 Oct 2014 17:29:28 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 04 Oct 2014 22:13:43 +0000">
+    keytoaster
+  </metadata>
+</glsa>

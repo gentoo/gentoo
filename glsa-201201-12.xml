@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-12">
+  <title>Tor: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Tor, the most severe of
+    which may allow a remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">Tor</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>388769</bug>
+  <bug>394969</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tor" auto="yes" arch="*">
+      <unaffected range="ge">0.2.2.35</unaffected>
+      <vulnerable range="lt">0.2.2.35</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Tor is an implementation of second generation Onion Routing, a
+      connection-oriented anonymizing communication service.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Tor:</p>
+    
+    <ul>
+      <li>When configured as client or bridge, Tor uses the same TLS
+        certificate chain for all outgoing connections (CVE-2011-2768).
+      </li>
+      <li>When configured as a bridge, Tor relays can distinguish incoming
+        bridge connections from client connections (CVE-2011-2769). 
+      </li>
+      <li>An error in or/buffers.c could result in a heap-based buffer overflow
+        (CVE-2011-2778).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code or cause a
+      Denial of Service. Furthermore, a remote relay the user is directly
+      connected to may be able to disclose anonymous information about that
+      user or enumerate bridges in the user's connection. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tor users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tor-0.2.2.35"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2768">CVE-2011-2768</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2769">CVE-2011-2769</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2778">CVE-2011-2778</uri>
+  </references>
+  <metadata timestamp="Sun, 01 Jan 2012 17:49:33 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 19:55:45 +0000" tag="submitter">ackle</metadata>
+</glsa>

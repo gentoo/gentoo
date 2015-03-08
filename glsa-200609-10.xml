@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-10">
+  <title>DokuWiki: Arbitrary command execution</title>
+  <synopsis>
+    Vulnerabilities in some accessory scripts of DokuWiki allow remote code
+    execution.
+  </synopsis>
+  <product type="ebuild">dokuwiki</product>
+  <announced>September 14, 2006</announced>
+  <revised>September 14, 2006: 01</revised>
+  <bug>146800</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/dokuwiki" auto="yes" arch="*">
+      <unaffected range="ge">20060309d</unaffected>
+      <vulnerable range="lt">20060309d</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DokuWiki is a wiki targeted at developer teams, workgroups and small
+    companies. It does not use a database backend.
+    </p>
+  </background>
+  <description>
+    <p>
+    "rgod" discovered that DokuWiki doesn't sanitize the X-FORWARDED-FOR
+    HTTP header, allowing the injection of arbitrary contents - such as PHP
+    commands - into a file. Additionally, the accessory scripts installed
+    in the "bin" DokuWiki directory are vulnerable to directory traversal
+    attacks, allowing to copy and execute the previously injected code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker may execute arbitrary PHP (and thus probably system)
+    commands with the permissions of the user running the process serving
+    DokuWiki pages.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable remote access to the "bin" subdirectory of the DokuWiki
+    installation. Remove the directory if you don't use the scripts in
+    there.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DokuWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/dokuwiki-20060309d&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4674">CVE-2006-4674</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4675">CVE-2006-4675</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4679">CVE-2006-4679</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 14 Sep 2006 07:55:18 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 14 Sep 2006 15:09:04 +0000">
+    frilled
+  </metadata>
+</glsa>

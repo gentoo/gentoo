@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-03">
+  <title>giflib: Multiple vulnerabilities</title>
+  <synopsis>
+    giflib may dereference NULL or write out of bounds when processing
+    malformed images, potentially resulting in Denial of Service or arbitrary
+    code execution.
+  </synopsis>
+  <product type="ebuild">giflib</product>
+  <announced>November 04, 2005</announced>
+  <revised>November 04, 2005: 01</revised>
+  <bug>109997</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/giflib" auto="yes" arch="*">
+      <unaffected range="ge">4.1.4</unaffected>
+      <vulnerable range="lt">4.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    giflib is a library for reading and writing GIF images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans and Daniel Eisenbud independently discovered two
+    out-of-bounds memory write operations and a NULL pointer dereference in
+    giflib.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious GIF image and entice users to
+    load it using an application making use of the giflib library,
+    resulting in an application crash or potentially the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All giflib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/giflib-4.1.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2974">CVE-2005-2974</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3350">CVE-2005-3350</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Oct 2005 09:30:14 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 02 Nov 2005 12:50:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 04 Nov 2005 08:45:23 +0000">
+    koon
+  </metadata>
+</glsa>

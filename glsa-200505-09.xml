@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-09">
+  <title>Gaim: Denial of Service and buffer overflow vulnerabilties</title>
+  <synopsis>
+    Gaim contains two vulnerabilities, potentially resulting in the execution
+    of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">gaim</product>
+  <announced>May 12, 2005</announced>
+  <revised>May 12, 2005: 01</revised>
+  <bug>91862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0</unaffected>
+      <vulnerable range="lt">1.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a full featured instant messaging client which handles a
+    variety of instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stu Tomlinson discovered that Gaim is vulnerable to a remote stack
+    based buffer overflow when receiving messages in certain protocols,
+    like Jabber and SILC, with a very long URL (CAN-2005-1261). Siebe
+    Tolsma discovered that Gaim is also vulnerable to a remote Denial of
+    Service attack when receiving a specially crafted MSN message
+    (CAN-2005-1262).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could cause a buffer overflow by sending an
+    instant message with a very long URL, potentially leading to the
+    execution of malicious code. By sending a SLP message with an empty
+    body, a remote attacker could cause a Denial of Service or crash of the
+    Gaim client.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/gaim-1.3.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1261">CAN-2005-1261</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1262">CAN-2005-1262</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 11 May 2005 11:51:15 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 May 2005 04:18:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

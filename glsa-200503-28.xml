@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-28">
+  <title>Sun Java: Web Start argument injection vulnerability</title>
+  <synopsis>
+    Java Web Start JNLP files can be abused to evade sandbox restriction and
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">Java</product>
+  <announced>March 24, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>85804</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.07</unaffected>
+      <unaffected range="lt">1.4.2</unaffected>
+      <vulnerable range="lt">1.4.2.07</vulnerable>
+    </package>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.07</unaffected>
+      <unaffected range="lt">1.4.2</unaffected>
+      <vulnerable range="lt">1.4.2.07</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sun provides implementations of Java Development Kits (JDK) and Java
+    Runtime Environments (JRE). These implementations provide the Java Web
+    Start technology that can be used for easy client-side deployment of
+    Java applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jouko Pynnonen discovered that Java Web Start contains a vulnerability
+    in the way it handles property tags in JNLP files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a malicious JNLP file, a remote attacker
+    could pass command line arguments to the Java Virtual machine, which
+    can be used to bypass the Java "sandbox" and to execute arbitrary code
+    with the permissions of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.07&quot;</code>
+    <p>
+    All Sun JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.07&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://jouko.iki.fi/adv/ws.html">Jouko Pynnonen advisory</uri>
+    <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-57740-1">Sun Microsystems Alert Notification</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0836">CVE-2005-0836</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 Mar 2005 21:40:30 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 Mar 2005 21:41:41 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 23 Mar 2005 15:33:09 +0000">
+    formula7
+  </metadata>
+</glsa>

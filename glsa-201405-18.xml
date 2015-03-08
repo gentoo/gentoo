@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-18">
+  <title>OpenConnect: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in OpenConnect could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">openconnect</product>
+  <announced>May 18, 2014</announced>
+  <revised>May 18, 2014: 1</revised>
+  <bug>457068</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openconnect" auto="yes" arch="*">
+      <unaffected range="ge">4.08</unaffected>
+      <vulnerable range="lt">4.08</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenConnect is a free client for Cisco AnyConnect SSL VPN software.</p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow error has been discovered in OpenConnect.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to connect to a malicious VPN
+      server, possibly resulting in  execution of arbitrary code with the
+      privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenConnect users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openconnect-4.08"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6128">CVE-2012-6128</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Apr 2013 22:03:55 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:36:30 +0000">ackle</metadata>
+</glsa>

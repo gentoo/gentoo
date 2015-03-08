@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-24">
+  <title>libpng: Denial of Service</title>
+  <synopsis>
+    A vulnerability in libpng may allow a remote attacker to crash applications
+    that handle untrusted images.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>May 31, 2007</announced>
+  <revised>May 31, 2007: 01</revised>
+  <bug>178004</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.2.17</unaffected>
+      <vulnerable range="lt">1.2.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpng is a free ANSI C library used to process and manipulate PNG
+    images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mats Palmgren fixed an error in file pngrutil.c in which the trans[]
+    array might be not allocated because of images with a bad tRNS chunk
+    CRC value.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft an image that when processed or viewed by
+    an application using libpng causes the application to terminate
+    abnormally.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Please note that due to separate bugs in libpng 1.2.17, Gentoo does not
+    provide libpng-1.2.17 but libpng-1.2.18. All libpng users should
+    upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.18&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2445">CVE-2007-2445</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 27 May 2007 07:35:26 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 27 May 2007 13:49:05 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 31 May 2007 08:41:58 +0000">
+    p-y
+  </metadata>
+</glsa>

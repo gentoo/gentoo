@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-28">
+  <title>AMD64 x86 emulation base libraries: Buffer overflow</title>
+  <synopsis>
+    The x86 emulation base libraries for AMD64 contain a vulnerable version of
+    zlib which could potentially lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">emul-linux-x86-baselibs</product>
+  <announced>July 30, 2005</announced>
+  <revised>August 02, 2005: 02</revised>
+  <bug>100686</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/emul-linux-x86-baselibs" auto="yes" arch="AMD64">
+      <unaffected range="ge">2.1.2</unaffected>
+      <vulnerable range="lt">2.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The x86 emulation base libraries for AMD64 emulate the x86 (32-bit)
+    architecture on the AMD64 (64-bit) architecture.
+    </p>
+  </background>
+  <description>
+    <p>
+    Earlier versions of emul-linux-x86-baselibs contain a vulnerable
+    version of zlib, which may lead to a buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By creating a specially crafted compressed data stream, attackers can
+    overwrite data structures for applications that use the x86 emulation
+    base libraries for AMD64, resulting in a Denial of Service and
+    potentially arbitrary code execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AMD64 x86 emulation base libraries users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-emulation/emul-linux-x86-baselibs</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200507-05.xml">GLSA 200507-05</uri>
+    <uri link="/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1849">CAN-2005-1849</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 30 Jul 2005 08:48:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 30 Jul 2005 08:50:21 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Jul 2005 09:53:12 +0000">
+    adir
+  </metadata>
+</glsa>

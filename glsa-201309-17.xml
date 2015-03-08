@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-17">
+  <title>Monkey HTTP Daemon: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in Monkey HTTP
+    Daemon, the worst of which could result in arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">monkeyd</product>
+  <announced>September 25, 2013</announced>
+  <revised>September 25, 2013: 1</revised>
+  <bug>471906</bug>
+  <bug>472400</bug>
+  <bug>472644</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/monkeyd" auto="yes" arch="*">
+      <unaffected range="ge">1.2.2</unaffected>
+      <vulnerable range="lt">1.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Monkey HTTP Daemon is a lightweight and powerful web server for
+      GNU/Linux.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Monkey HTTP Daemon.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted request, resulting in
+      possible arbitrary code execution or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Monkey HTTP Daemon users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/monkeyd-1.2.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2163">CVE-2013-2163</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3724">CVE-2013-3724</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3843">CVE-2013-3843</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 09:57:28 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Sep 2013 16:51:51 +0000">
+    creffett
+  </metadata>
+</glsa>

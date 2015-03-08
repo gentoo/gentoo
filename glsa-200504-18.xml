@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-18">
+  <title>Mozilla Firefox, Mozilla Suite: Multiple vulnerabilities</title>
+  <synopsis>
+    New Mozilla Firefox and Mozilla Suite releases fix new security
+    vulnerabilities, including memory disclosure and various ways of executing
+    JavaScript code with elevated privileges.
+  </synopsis>
+  <product type="ebuild">Mozilla</product>
+  <announced>April 19, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>89303</bug>
+  <bug>89305</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3</unaffected>
+      <vulnerable range="lt">1.0.3</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3</unaffected>
+      <vulnerable range="lt">1.0.3</vulnerable>
+    </package>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.7</unaffected>
+      <vulnerable range="lt">1.7.7</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.7</unaffected>
+      <vulnerable range="lt">1.7.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Suite is a popular all-in-one web browser that includes a
+    mail and news reader. Mozilla Firefox is the next-generation browser
+    from the Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found and fixed in the Mozilla Suite
+    and Mozilla Firefox:
+    </p>
+    <ul>
+    <li>Vladimir V. Perepelitsa reported a memory disclosure bug in
+    JavaScript's regular expression string replacement when using an
+    anonymous function as the replacement argument (CAN-2005-0989).</li>
+    <li>moz_bug_r_a4 discovered that Chrome UI code was overly trusting DOM
+    nodes from the content window, allowing privilege escalation via DOM
+    property overrides.</li>
+    <li>Michael Krax reported a possibility to run JavaScript code with
+    elevated privileges through the use of javascript: favicons.</li>
+    <li>Michael Krax also discovered that malicious Search plugins could
+    run JavaScript in the context of the displayed page or stealthily
+    replace existing search plugins.</li>
+    <li>shutdown discovered a technique to pollute the global scope of a
+    window in a way that persists from page to page.</li>
+    <li>Doron Rosenberg discovered a possibility to run JavaScript with
+    elevated privileges when the user asks to "Show" a blocked popup that
+    contains a JavaScript URL.</li>
+    <li>Finally, Georgi Guninski reported missing Install object instance
+    checks in the native implementations of XPInstall-related JavaScript
+    objects.</li>
+    </ul>
+    <p>
+    The following Firefox-specific vulnerabilities have also been
+    discovered:
+    </p>
+    <ul>
+    <li>Kohei Yoshino discovered a new way to abuse the sidebar panel to
+    execute JavaScript with elevated privileges.</li>
+    <li>Omar Khan reported that the Plugin Finder Service can be tricked to
+    open javascript: URLs with elevated privileges.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    The various JavaScript execution with elevated privileges issues can be
+    exploited by a remote attacker to install malicious code or steal data.
+    The memory disclosure issue can be used to reveal potentially sensitive
+    information. Finally, the cache pollution issue and search plugin abuse
+    can be leveraged in cross-site-scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.3&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.3&quot;</code>
+    <p>
+    All Mozilla Suite users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.7&quot;</code>
+    <p>
+    All Mozilla Suite binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Security Advisories</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0989">CAN-2005-0989</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1153">CVE-2005-1153</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1154">CVE-2005-1154</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1155">CVE-2005-1155</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1156">CVE-2005-1156</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1159">CVE-2005-1159</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1160">CVE-2005-1160</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 18 Apr 2005 08:55:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Apr 2005 05:17:09 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-03">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple flaws in phpMyAdmin may lead to several XSS issues and local and
+    remote file inclusion vulnerabilities.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>December 11, 2005</announced>
+  <revised>December 11, 2005: 01</revised>
+  <bug>114662</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.7.0_p1</unaffected>
+      <vulnerable range="lt">2.7.0_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the
+    administration of MySQL over the web.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser from Hardened-PHP reported about multiple
+    vulnerabilties found in phpMyAdmin. The $GLOBALS variable allows
+    modifying the global variable import_blacklist to open phpMyAdmin to
+    local and remote file inclusion, depending on your PHP version
+    (CVE-2005-4079, PMASA-2005-9). Furthermore, it is also possible to
+    conduct an XSS attack via the $HTTP_HOST variable and a local and
+    remote file inclusion because the contents of the variable are under
+    total control of the attacker (CVE-2005-3665, PMASA-2005-8).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may exploit these vulnerabilities by sending
+    malicious requests, causing the execution of arbitrary code with the
+    rights of the user running the web server. The cross-site scripting
+    issues allow a remote attacker to inject and execute malicious script
+    code or to steal cookie-based authentication credentials, potentially
+    allowing unauthorized access to phpMyAdmin.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.7.0_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3665">CVE-2005-3665</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4079">CVE-2005-4079</uri>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-8">PMASA-2005-8</uri>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-9">PMASA-2005-9</uri>
+    <uri link="http://www.hardened-php.net/advisory_252005.110.html">Hardened-PHP Advisory 25/2005</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Dec 2005 12:42:53 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2005 11:27:37 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 11 Dec 2005 17:53:22 +0000">
+    koon
+  </metadata>
+</glsa>

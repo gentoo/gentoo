@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-23">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>Multiple vulnerabilities have been found in sudo which could result
+    in privilege escalation.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>459722</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.6_p7</unaffected>
+      <vulnerable range="lt">1.8.6_p7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo allows a system administrator to give users the ability to run
+      commands as other users. Access to commands may also be granted on a
+      range to hosts.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in sudo:</p>
+    
+    <ul>
+      <li>sudo does not correctly validate the controlling terminal on a system
+        without /proc or when the tty_tickets option is enabled.
+      </li>
+      <li>sudo does not properly handle the clock when it is set to the epoch.</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker with sudo privileges could connect to the stdin,
+      stdout, and stderr of the terminal of a user who has authenticated with
+      sudo, allowing the attacker to hijack the authorization of the other
+      user. Additionally, a local or physically proximate attacker could set
+      the system clock to the epoch, bypassing time restrictions on sudo
+      authentication.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.6_p7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1775">CVE-2013-1775</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1776">CVE-2013-1776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2776">CVE-2013-2776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2777">CVE-2013-2777</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 03 Jan 2014 14:24:36 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 20:25:34 +0000">
+    creffett
+  </metadata>
+</glsa>

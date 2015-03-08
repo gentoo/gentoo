@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-10">
+  <title>Cscope: Many buffer overflows</title>
+  <synopsis>
+    Cscope is vulnerable to multiple buffer overflows that could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Cscope</product>
+  <announced>June 11, 2006</announced>
+  <revised>June 11, 2006: 01</revised>
+  <bug>133829</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/cscope" auto="yes" arch="*">
+      <unaffected range="ge">15.5-r6</unaffected>
+      <vulnerable range="lt">15.5-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cscope is a developer's tool for browsing source code.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cscope does not verify the length of file names sourced in
+    #include statements.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A user could be enticed to source a carefully crafted file which
+    will allow the attacker to execute arbitrary code with the permissions
+    of the user running Cscope.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cscope users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/cscope-15.5-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2541">CVE-2004-2541</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:07:22 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:21:43 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Jun 2006 18:50:34 +0000">
+    dizzutch
+  </metadata>
+</glsa>

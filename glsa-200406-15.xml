@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-15">
+  <title>Usermin: Multiple vulnerabilities</title>
+  <synopsis>
+    Usermin contains two security vulnerabilities which could lead to a Denial
+    of Service attack and information disclosure.
+  </synopsis>
+  <product type="ebuild">Usermin</product>
+  <announced>June 18, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>54030</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/usermin" auto="yes" arch="*">
+      <unaffected range="ge">1.080</unaffected>
+      <vulnerable range="le">1.070-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Usermin is a web-based administration tool for Unix. It supports a wide
+    range of user applications including configuring mail forwarding,
+    setting up SSH or reading mail.
+    </p>
+  </background>
+  <description>
+    <p>
+    Usermin contains two security vulnerabilities. One fails to properly
+    sanitize email messages that contain malicious HTML or script code and
+    the other could allow an attacker to lock out a valid user by sending
+    an invalid username and password.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted e-mail, an attacker can execute
+    arbitrary scripts running in the context of the victim's browser. This
+    can be lead to cookie theft and potentially to compromise of user
+    accounts. Furthermore, an attacker could lock out legitimate users by
+    sending invalid login information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Usermin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-admin/usermin-1.080&quot;
+    # emerge &quot;&gt;=app-admin/usermin-1.080&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/10521">Bugtraq Announcement</uri>
+    <uri link="http://www.lac.co.jp/security/csl/intelligence/SNSadvisory_e/75_e.html">SNS Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0583">CVE-2004-0583</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0588">CVE-2004-0588</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

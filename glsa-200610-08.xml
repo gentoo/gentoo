@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-08">
+  <title>Cscope: Multiple buffer overflows</title>
+  <synopsis>
+    Cscope is vulnerable to multiple buffer overflows that could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">cscope</product>
+  <announced>October 20, 2006</announced>
+  <revised>October 20, 2006: 01</revised>
+  <bug>144869</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/cscope" auto="yes" arch="*">
+      <unaffected range="ge">15.5.20060927</unaffected>
+      <vulnerable range="lt">15.5.20060927</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cscope is a developer's tool for browsing source code.
+    </p>
+  </background>
+  <description>
+    <p>
+    Unchecked use of strcpy() and *scanf() leads to several buffer
+    overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A user could be enticed to open a carefully crafted file which would
+    allow the attacker to execute arbitrary code with the permissions of
+    the user running Cscope.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cscope users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/cscope-15.5.20060927&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4262">CVE-2006-4262</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 18 Oct 2006 20:32:19 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 18 Oct 2006 20:33:33 +0000">
+    falco
+  </metadata>
+</glsa>

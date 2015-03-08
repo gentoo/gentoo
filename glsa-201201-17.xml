@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-17">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium, some of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>January 28, 2012</announced>
+  <revised>January 28, 2012: 1</revised>
+  <bug>400551</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">16.0.912.77</unaffected>
+      <vulnerable range="lt">16.0.912.77</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers and release notes referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted web
+      site using Chromium, possibly resulting in the execution of arbitrary
+      code with the privileges of the process, or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/chromium-16.0.912.77"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3924">
+      CVE-2011-3924
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3925">
+      CVE-2011-3925
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3926">
+      CVE-2011-3926
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3927">
+      CVE-2011-3927
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3928">
+      CVE-2011-3928
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/01/stable-channel-update_23.html">
+      Release Notes 16.0.912.77
+    </uri>
+  </references>
+  <metadata timestamp="Tue, 24 Jan 2012 07:47:36 +0000" tag="requester">
+    phajdan.jr
+  </metadata>
+  <metadata timestamp="Sat, 28 Jan 2012 03:36:47 +0000" tag="submitter">
+    phajdan.jr
+  </metadata>
+</glsa>

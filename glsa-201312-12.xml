@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-12">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in MIT Kerberos 5,
+    allowing execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>December 16, 2013</announced>
+  <revised>December 16, 2013: 1</revised>
+  <bug>429324</bug>
+  <bug>466268</bug>
+  <bug>469752</bug>
+  <bug>490668</bug>
+  <bug>494062</bug>
+  <bug>494064</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.11.4</unaffected>
+      <vulnerable range="lt">1.11.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MIT Kerberos 5 is a suite of applications that implement the Kerberos
+      network protocol.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the Key Distribution
+      Center in MIT Kerberos 5. Please review the CVE identifiers referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition. Additionally, a remote attacker
+      could impersonate a kadmind server and send a specially crafted packet to
+      the password change port, which can result in a ping-pong condition and a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MIT Kerberos 5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.11.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2002-2443">CVE-2002-2443</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1014">CVE-2012-1014</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1015">CVE-2012-1015</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1416">CVE-2013-1416</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1417">CVE-2013-1417</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1418">CVE-2013-1418</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6800">CVE-2013-6800</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Sep 2012 15:10:58 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Dec 2013 17:33:09 +0000">ackle</metadata>
+</glsa>

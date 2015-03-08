@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-13">
+  <title>mlterm: Integer overflow vulnerability</title>
+  <synopsis>
+    mlterm is vulnerable to an integer overflow, which could potentially allow
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mlterm</product>
+  <announced>March 07, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>84174</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-terms/mlterm" auto="yes" arch="*">
+      <unaffected range="ge">2.9.2</unaffected>
+      <vulnerable range="lt">2.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mlterm is a multi-lingual terminal emulator.
+    </p>
+  </background>
+  <description>
+    <p>
+    mlterm is vulnerable to an integer overflow that can be triggered by
+    specifying a large image file as a background. This only effects users
+    that have compiled mlterm with the 'gtk' USE flag, which enables
+    gdk-pixbuf support.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can create a specially-crafted image file which, when used
+    as a background by the victim, can lead to the execution of arbitrary
+    code with the privileges of the user running mlterm.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Re-compile mlterm without the 'gtk' USE flag.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mlterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/mlterm-2.9.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="https://sourceforge.net/project/shownotes.php?release_id=310416">mlterm ChangeLog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0686">CVE-2005-0686</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat,  5 Mar 2005 16:23:09 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  6 Mar 2005 10:05:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  7 Mar 2005 01:52:03 +0000">
+    lewk
+  </metadata>
+</glsa>

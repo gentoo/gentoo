@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-11">
+  <title>Links: Denial of Service</title>
+  <synopsis>An integer overflow in Links might allow remote attackers to cause
+    a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">links</product>
+  <announced>February 07, 2014</announced>
+  <revised>February 07, 2014: 1</revised>
+  <bug>493138</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/links" auto="yes" arch="*">
+      <unaffected range="ge">2.8-r1</unaffected>
+      <vulnerable range="lt">2.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Links is a web browser which runs in both graphics and text modes.</p>
+  </background>
+  <description>
+    <p>An integer overflow vulnerability was found in the parsing of HTML
+      tables in the Links web browser when running in graphical mode.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Links users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/links-2.8-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6050">CVE-2013-6050</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 20 Jan 2014 10:12:18 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Feb 2014 21:23:11 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

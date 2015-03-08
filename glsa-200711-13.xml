@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-13">
+  <title>3proxy: Denial of Service</title>
+  <synopsis>
+    A vulnerability has been discovered in 3proxy, possibly resulting in a
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">3proxy</product>
+  <announced>November 08, 2007</announced>
+  <revised>November 08, 2007: 01</revised>
+  <bug>196772</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/3proxy" auto="yes" arch="*">
+      <unaffected range="ge">0.5.3j</unaffected>
+      <vulnerable range="lt">0.5.3j</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    3proxy is a really tiny cross-platform proxy servers set, including
+    HTTP, HTTPS, FTP, SOCKS and POP3 support.
+    </p>
+  </background>
+  <description>
+    <p>
+    3proxy contains a double free vulnerability in the ftpprchild()
+    function, which frees param->hostname and calls the parsehostname()
+    function, which in turn attempts to free param->hostname again.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted request to the proxy,
+    possibly resulting in a Denial of Service. Under typical configuration,
+    the scope of this vulnerability is limited to the local network.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All 3proxy users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/3proxy-0.5.3j&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5622">CVE-2007-5622</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 02 Nov 2007 23:15:07 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 03 Nov 2007 12:02:00 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 04 Nov 2007 14:26:02 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-15">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>
+    PostgreSQL contains two vulnerabilities that could result in a Denial of
+    Service or unauthorized access to certain information.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>March 16, 2007</announced>
+  <revised>May 28, 2009: 04</revised>
+  <bug>165482</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge">8.0.11</unaffected>
+      <unaffected range="rge">7.4.17</unaffected>
+      <unaffected range="rge">7.4.16</unaffected>
+      <unaffected range="rge">7.3.19</unaffected>
+      <unaffected range="rge">7.3.13</unaffected>
+      <unaffected range="rge">7.3.21</unaffected>
+      <unaffected range="rge">7.4.19</unaffected>
+      <vulnerable range="lt">8.0.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PostgreSQL is an open source object-relational database management
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    PostgreSQL does not correctly check the data types of the SQL function
+    arguments under unspecified circumstances nor the format of the
+    provided tables in the query planner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote authenticated attacker could send specially crafted queries to
+    the server that could result in a server crash and possibly the
+    unauthorized reading of some database content or arbitrary memory.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PostgreSQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;dev-db/postgresql&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0555">CVE-2007-0555</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0556">CVE-2007-0556</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 09 Mar 2007 22:33:46 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Mar 2007 16:09:31 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Mar 2007 19:55:02 +0000">
+    falco
+  </metadata>
+</glsa>

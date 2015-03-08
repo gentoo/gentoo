@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-01">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VLC, the worst of which
+    could lead to user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">VLC</product>
+  <announced>November 05, 2014</announced>
+  <revised>November 05, 2014: 1</revised>
+  <bug>279340</bug>
+  <bug>285370</bug>
+  <bug>316709</bug>
+  <bug>332361</bug>
+  <bug>350933</bug>
+  <bug>352206</bug>
+  <bug>352776</bug>
+  <bug>353326</bug>
+  <bug>360189</bug>
+  <bug>363359</bug>
+  <bug>370321</bug>
+  <bug>375167</bug>
+  <bug>385953</bug>
+  <bug>395543</bug>
+  <bug>408881</bug>
+  <bug>414409</bug>
+  <bug>424435</bug>
+  <bug>442758</bug>
+  <bug>450438</bug>
+  <bug>454650</bug>
+  <bug>476436</bug>
+  <bug>486902</bug>
+  <bug>493710</bug>
+  <bug>499806</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">2.1.2</unaffected>
+      <vulnerable range="lt">2.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VLC. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file using VLC, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-2.1.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1441">CVE-2010-1441</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1442">CVE-2010-1442</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1443">CVE-2010-1443</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1444">CVE-2010-1444</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1445">CVE-2010-1445</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2062">CVE-2010-2062</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2937">CVE-2010-2937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3124">CVE-2010-3124</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3275">CVE-2010-3275</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3276">CVE-2010-3276</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3907">CVE-2010-3907</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0021">CVE-2011-0021</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0522">CVE-2011-0522</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0531">CVE-2011-0531</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1087">CVE-2011-1087</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1684">CVE-2011-1684</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2194">CVE-2011-2194</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2587">CVE-2011-2587</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2588">CVE-2011-2588</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3623">CVE-2011-3623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0023">CVE-2012-0023</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1775">CVE-2012-1775</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1776">CVE-2012-1776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2396">CVE-2012-2396</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3377">CVE-2012-3377</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5470">CVE-2012-5470</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5855">CVE-2012-5855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1868">CVE-2013-1868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1954">CVE-2013-1954</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3245">CVE-2013-3245</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4388">CVE-2013-4388</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6283">CVE-2013-6283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6934">CVE-2013-6934</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:33 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Nov 2014 21:31:51 +0000">
+    underling
+  </metadata>
+</glsa>

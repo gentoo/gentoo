@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-17">
+  <title>Multiple vulnerabilities in metamail</title>
+  <synopsis>
+    Several format string bugs and buffer overflows were discovered in
+    metamail, potentially allowing execution of arbitrary code remotely.
+  </synopsis>
+  <product type="ebuild">metamail</product>
+  <announced>May 21, 2004</announced>
+  <revised>May 21, 2004: 01</revised>
+  <bug>42133</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-mail/metamail" auto="yes" arch="*">
+      <unaffected range="ge">2.7.45.3</unaffected>
+      <vulnerable range="lt">2.7.45.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Metamail is a program that decodes MIME encoded mail. It is therefore often
+    automatically called when an email is received or read.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar found two format string bugs and two buffer overflow bugs in
+    Metamail.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a malicious email message and execute
+    arbitrary code with the rights of the process calling the Metamail program.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of Metamail should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-mail/metamail-2.7.45.3"
+    # emerge ">=net-mail/metamail-2.7.45.3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0104">CAN-2004-0104</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0105">CAN-2004-0105</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

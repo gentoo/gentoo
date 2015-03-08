@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-01">
+  <title>Perl Module-Signature module: Arbitrary code execution</title>
+  <synopsis>The Module-Signature module for Perl has insufficient path checks,
+    allowing a remote attacker to execute arbitrary Perl code.
+  </synopsis>
+  <product type="ebuild">Module-Signature</product>
+  <announced>October 04, 2013</announced>
+  <revised>October 04, 2013: 1</revised>
+  <bug>472428</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/Module-Signature" auto="yes" arch="*">
+      <unaffected range="ge">0.720.0</unaffected>
+      <vulnerable range="lt">0.720.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Perl Module::Signature module adds signing capabilities to CPAN
+      modules.
+    </p>
+  </background>
+  <description>
+    <p>The ‘cpansign verify’ command will automatically download keys and
+      use them to check the signature of CPAN packages via the SIGNATURE file.
+      If an attacker were to replace this (SHA1) with a special unknown cipher
+      (e.g. ‘Special’) and were to include in the distribution a
+      ‘Digest/Special.pm’, the code in this Perl module would be executed
+      when ‘cpansign -verify’ is run.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All users of the Module-Signature Perl module should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-perl/Module-Signature-0.720.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2145">CVE-2013-2145</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 Aug 2013 11:15:28 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 04 Oct 2013 06:56:47 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

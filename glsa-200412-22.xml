@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-22">
+  <title>mpg123: Playlist buffer overflow</title>
+  <synopsis>
+    mpg123 is vulnerable to a buffer overflow that allows an attacker to
+    execute arbitrary code through the use of a malicious playlist.
+  </synopsis>
+  <product type="ebuild">mpg123</product>
+  <announced>December 21, 2004</announced>
+  <revised>December 21, 2004: 01</revised>
+  <bug>74692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/mpg123" auto="yes" arch="*">
+      <unaffected range="ge">0.59s-r8</unaffected>
+      <vulnerable range="lt">0.59s-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mpg123 is a MPEG Audio Player.
+    </p>
+  </background>
+  <description>
+    <p>
+    Bartlomiej Sieka discovered that mpg123 contains an unsafe
+    strcat() to an array in playlist.c. This code vulnerability may lead to
+    a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malicious playlist which, when
+    used, would result in the execution of arbitrary code with the rights
+    of the user running mpg123.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mpg123 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/mpg123-0.59s-r8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/mpg123.txt">Original Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1284">CAN-2004-1284</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 20 Dec 2004 14:15:47 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Dec 2004 21:20:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Dec 2004 09:35:46 +0000">
+    SeJo
+  </metadata>
+</glsa>

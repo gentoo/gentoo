@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-07">
+  <title>libxml2: Denial of Service</title>
+  <synopsis>
+    Multiple Denial of Services vulnerabilities were found in libxml2.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>September 21, 2010</announced>
+  <revised>September 21, 2010: 01</revised>
+  <bug>280617</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.7.3-r2</unaffected>
+      <vulnerable range="lt">2.7.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libxml2 is a library to manipulate XML files.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were reported after a test with the
+    Codenomicon XML fuzzing framework:
+    </p>
+    <ul>
+    <li>
+    Two use-after-free vulnerabilities are possible when parsing a XML file
+    with Notation or Enumeration attribute types (CVE-2009-2416).
+    </li>
+    <li>
+    A stack consumption vulnerability can be triggered via a large depth of
+    element declarations in a DTD, related to a function recursion
+    (CVE-2009-2414).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to open a
+    specially crafted XML document with an application using libxml2
+    resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libxml2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libxml2-2.7.3-r2&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since August 30, 2009. It is likely that your system is
+    already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2414">CVE-2009-2414</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2416">CVE-2009-2416</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 31 Aug 2009 02:15:14 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Apr 2010 13:13:48 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 18:03:32 +0000">
+    vorlon
+  </metadata>
+</glsa>

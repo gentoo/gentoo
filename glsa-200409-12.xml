@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-12">
+  <title>ImageMagick, imlib, imlib2: BMP decoding buffer overflows</title>
+  <synopsis>
+    ImageMagick, imlib and imlib2 contain exploitable buffer overflow
+    vulnerabilities in the BMP image processing code.
+  </synopsis>
+  <product type="ebuild">imagemagick imlib</product>
+  <announced>September 08, 2004</announced>
+  <revised>September 08, 2004: 01</revised>
+  <bug>62309</bug>
+  <bug>62487</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.0.7.1</unaffected>
+      <vulnerable range="lt">6.0.7.1</vulnerable>
+    </package>
+    <package name="media-libs/imlib" auto="yes" arch="*">
+      <unaffected range="ge">1.9.14-r2</unaffected>
+      <vulnerable range="lt">1.9.14-r2</vulnerable>
+    </package>
+    <package name="media-libs/imlib2" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2</unaffected>
+      <vulnerable range="lt">1.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is a suite of image manipulation utilities and libraries used
+    for a wide variety of image formats. imlib is a general image loading and
+    rendering library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Due to improper bounds checking, ImageMagick and imlib are vulnerable to a
+    buffer overflow when decoding runlength-encoded bitmaps. This bug can be
+    exploited using a specially-crafted BMP image and could potentially allow
+    remote code execution when this image is decoded by the user.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A specially-crafted runlength-encoded BMP could lead ImageMagick and imlib
+    to crash or potentially execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-gfx/imagemagick-6.0.7.1"
+    # emerge ">=media-gfx/imagemagick-6.0.7.1"</code>
+    <p>
+    All imlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-libs/imlib-1.9.14-r2"
+    # emerge ">=media-libs/imlib-1.9.14-r2"</code>
+    <p>
+    All imlib2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-libs/imlib2-1.1.2"
+    # emerge ">=media-libs/imlib2-1.1.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0817">CAN-2004-0817</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0802">CAN-2004-0802</uri>
+    <uri link="http://studio.imagemagick.org/pipermail/magick-developers/2004-August/002011.html">ImageMagick Mailing List</uri>
+    <uri link="http://securitytracker.com/alerts/2004/Aug/1011104.html">SecurityTracker #1011104</uri>
+    <uri link="http://securitytracker.com/alerts/2004/Aug/1011105.html">SecurityTracker #1011105</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  6 Sep 2004 16:14:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  6 Sep 2004 23:42:01 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  8 Sep 2004 07:22:02 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-21">
+  <title>mod_wsgi: Privilege escalation</title>
+  <synopsis>Two vulnerabilities have been found in mod_wsgi, the worst of which
+    could result in local privilege escalation.
+  </synopsis>
+  <product type="ebuild">mod_wsgi</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>510938</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-apache/mod_wsgi" auto="yes" arch="*">
+      <unaffected range="ge">3.5</unaffected>
+      <vulnerable range="lt">3.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mod_wsgi is an Apache2 module for running Python WSGI applications.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in mod_wsgi:</p>
+    
+    <ul>
+      <li>Error codes returned by setuid are not properly handled
+        (CVE-2014-0240)
+      </li>
+      <li>A memory leak exists via the “Content-Type” header
+        (CVE-2014-0242)
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to gain escalated privileges. Furthermore,
+      a remote attacker may be able to obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mod_wsgi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_wsgi-3.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0240">CVE-2014-0240</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0242">CVE-2014-0242</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Jun 2014 02:20:25 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:03:56 +0000">ackle</metadata>
+</glsa>

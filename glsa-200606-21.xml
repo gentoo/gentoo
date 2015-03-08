@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-21">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities in Mozilla Thunderbird allow cross site scripting,
+    JavaScript privilege escalation and possibly execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mozilla-thunderbird</product>
+  <announced>June 19, 2006</announced>
+  <revised>June 19, 2006: 01</revised>
+  <bug>135256</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.4</unaffected>
+      <vulnerable range="lt">1.5.0.4</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.4</unaffected>
+      <vulnerable range="lt">1.5.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Thunderbird is the next-generation mail client from the Mozilla
+    project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were found and fixed in Mozilla Thunderbird.
+    For details, please consult the references below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft malicious emails that would leverage
+    these issues to inject and execute arbitrary script code with elevated
+    privileges, spoof content, and possibly execute arbitrary code with the
+    rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds for all the issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.5.0.4&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.5.0.4&quot;</code>
+    <p>
+    Note: There is no stable fixed version for the Alpha architecture yet.
+    Users of Mozilla Thunderbird on Alpha should consider unmerging it
+    until such a version is available.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2775">CVE-2006-2775</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2776">CVE-2006-2776</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2778">CVE-2006-2778</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2779">CVE-2006-2779</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2780">CVE-2006-2780</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2781">CVE-2006-2781</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2783">CVE-2006-2783</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2786">CVE-2006-2786</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2787">CVE-2006-2787</uri>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Thunderbird">Mozilla Foundation Security Advisories</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 17:49:37 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Jun 2006 10:01:22 +0000">
+    falco
+  </metadata>
+</glsa>

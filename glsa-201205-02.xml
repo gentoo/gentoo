@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201205-02">
+  <title>ConnMan: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ConnMan, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">ConnMan</product>
+  <announced>May 15, 2012</announced>
+  <revised>May 15, 2012: 1</revised>
+  <bug>415415</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/connman" auto="yes" arch="*">
+      <unaffected range="ge">1.0-r1</unaffected>
+      <vulnerable range="lt">1.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ConnMan provides a daemon for managing Internet connections.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in ConnMan:</p>
+    
+    <ul>
+      <li>Errors in inet.c and rtnl.c prevent ConnMan from checking the origin
+        of netlink messages (CVE-2012-2320).
+      </li>
+      <li>ConnMan does not properly check for shell escapes when requesting a
+        hostname via DHCP (CVE-2012-2321).
+      </li>
+      <li>An infinite loop error exists in client.c (CVE-2012-2322).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ConnMan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/connman-1.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2320">CVE-2012-2320</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2321">CVE-2012-2321</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2322">CVE-2012-2322</uri>
+  </references>
+  <metadata timestamp="Fri, 11 May 2012 12:11:41 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 15 May 2012 21:51:20 +0000" tag="submitter">ackle</metadata>
+</glsa>

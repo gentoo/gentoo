@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-19">
+  <title>Blender: User-assisted remote execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability has been discovered in Blender allowing for user-assisted
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">Blender</product>
+  <announced>April 23, 2007</announced>
+  <revised>April 23, 2007: 01</revised>
+  <bug>168907</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/blender" auto="yes" arch="*">
+      <unaffected range="ge">2.43</unaffected>
+      <vulnerable range="lt">2.43</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Blender is a 3D creation, animation and publishing program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Cornelius of Secunia Research discovered an insecure use of the
+    "eval()" function in kmz_ImportWithMesh.py.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    Blender file (.kmz or .kml), resulting in the execution of arbitrary
+    Python code with the privileges of the user running Blender.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Blender users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/blender-2.43&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1253">CVE-2007-1253</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Apr 2007 18:07:32 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 18 Apr 2007 09:36:27 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 18 Apr 2007 20:46:11 +0000">
+    p-y
+  </metadata>
+</glsa>

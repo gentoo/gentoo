@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-07">
+  <title>xine-lib: Multiple overflows</title>
+  <synopsis>
+    xine-lib contains multiple overflows potentially allowing execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>January 06, 2005</announced>
+  <revised>January 06, 2005: 01</revised>
+  <bug>74475</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1_rc8-r1</unaffected>
+      <unaffected range="rge">1_rc6-r1</unaffected>
+      <vulnerable range="lt">1_rc8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is a multimedia library which can be utilized to create
+    multimedia frontends.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ariel Berkman discovered that xine-lib reads specific input data
+    into an array without checking the input size in demux_aiff.c, making
+    it vulnerable to a buffer overflow (CAN-2004-1300) . iDefense
+    discovered that the PNA_TAG handling code in pnm_get_chunk() does not
+    check if the input size is larger than the buffer size (CAN-2004-1187).
+    iDefense also discovered that in this same function, a negative value
+    could be given to an unsigned variable that specifies the read length
+    of input data (CAN-2004-1188).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malicious movie or convince a
+    targeted user to connect to a malicious PNM server, which could result
+    in the execution of arbitrary code with the rights of the user running
+    any xine-lib frontend.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose media-libs/xine-lib</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1187">CAN-2004-1187</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1188">CAN-2004-1188</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1300">CAN-2004-1300</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=176&amp;type=vulnerabilities">iDefense Advisory</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=177&amp;type=vulnerabilities">iDefense Advisory</uri>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/xine-lib.txt">Ariel Berkman Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Dec 2004 14:06:44 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Dec 2004 16:57:50 +0000">
+    SeJo
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu,  6 Jan 2005 08:50:09 +0000">
+    koon
+  </metadata>
+</glsa>

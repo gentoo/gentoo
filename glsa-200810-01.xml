@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200810-01">
+  <title>WordNet: Execution of arbitrary code</title>
+  <synopsis>
+    Multiple vulnerabilities were found in WordNet, possibly allowing for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">wordnet</product>
+  <announced>October 07, 2008</announced>
+  <revised>October 07, 2008: 01</revised>
+  <bug>211491</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-dicts/wordnet" auto="yes" arch="*">
+      <unaffected range="ge">3.0-r2</unaffected>
+      <vulnerable range="lt">3.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordNet is a large lexical database of English.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jukka Ruohonen initially reported a boundary error within the
+    searchwn() function in src/wn.c. A thorough investigation by the oCERT
+    team revealed several other vulnerabilities in WordNet:
+    </p>
+    <ul>
+    <li>Jukka Ruohonen and Rob Holland (oCERT) reported multiple boundary
+    errors within the searchwn() function in src/wn.c, the wngrep()
+    function in lib/search.c, the morphstr() and morphword() functions in
+    lib/morph.c, and the getindex() in lib/search.c, which lead to
+    stack-based buffer overflows.</li>
+    <li>Rob Holland (oCERT) reported two
+    boundary errors within the do_init() function in lib/morph.c, which
+    lead to stack-based buffer overflows via specially crafted
+    "WNSEARCHDIR" or "WNHOME" environment variables.</li>
+    <li>Rob Holland
+    (oCERT) reported multiple boundary errors in the bin_search() and
+    bin_search_key() functions in binsrch.c, which lead to stack-based
+    buffer overflows via specially crafted data files.</li>
+    <li>Rob Holland
+    (oCERT) reported a boundary error within the parse_index() function in
+    lib/search.c, which leads to a heap-based buffer overflow via specially
+    crafted data files.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <ul>
+    <li>In case the application is accessible e.g. via a web server,
+    a remote attacker could pass overly long strings as arguments to the
+    "wm" binary, possibly leading to the execution of arbitrary code.</li>
+    <li>A local attacker could exploit the second vulnerability via
+    specially crafted "WNSEARCHDIR" or "WNHOME" environment variables,
+    possibly leading to the execution of arbitrary code with escalated
+    privileges.</li>
+    <li>A local attacker could exploit the third and
+    fourth vulnerability by making the application use specially crafted
+    data files, possibly leading to the execution of arbitrary code.</li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordNet users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-dicts/wordnet-3.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2149">CVE-2008-2149</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3908">CVE-2008-3908</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Sep 2008 11:08:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 21 Sep 2008 11:09:31 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Sep 2008 09:37:40 +0000">
+    keytoaster
+  </metadata>
+</glsa>

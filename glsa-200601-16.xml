@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-16">
+  <title>MyDNS: Denial of Service</title>
+  <synopsis>
+    MyDNS contains a vulnerability that may lead to a Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">MyDNS</product>
+  <announced>January 30, 2006</announced>
+  <revised>January 30, 2006: 01</revised>
+  <bug>119548</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/mydns" auto="yes" arch="*">
+      <unaffected range="ge">1.1.0</unaffected>
+      <vulnerable range="lt">1.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MyDNS is a DNS server using a MySQL database as a backend. It is
+    designed to allow for fast updates and small resource usage.
+    </p>
+  </background>
+  <description>
+    <p>
+    MyDNS contains an unspecified flaw that may allow a remote Denial
+    of Service.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause a Denial of Service by sending malformed
+    DNS queries to the MyDNS server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MyDNS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/mydns-1.1.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0351">CVE-2006-0351</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 25 Jan 2006 19:31:44 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 27 Jan 2006 05:37:45 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 27 Jan 2006 21:29:58 +0000">
+    adir
+  </metadata>
+</glsa>

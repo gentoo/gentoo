@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-04">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mozilla Firefox, some of
+    which may allow user-assisted arbitrary remote code execution.
+  </synopsis>
+  <product type="ebuild">mozilla-firefox</product>
+  <announced>March 02, 2007</announced>
+  <revised>March 02, 2007: 01</revised>
+  <bug>165555</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="rge">1.5.0.10</unaffected>
+      <unaffected range="ge">2.0.0.2</unaffected>
+      <vulnerable range="lt">2.0.0.2</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="rge">1.5.0.10</unaffected>
+      <unaffected range="ge">2.0.0.2</unaffected>
+      <vulnerable range="lt">2.0.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is a popular open-source web browser from the Mozilla
+    Project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tom Ferris reported a heap-based buffer overflow involving wide SVG
+    stroke widths that affects Mozilla Firefox 2 only. Various researchers
+    reported some errors in the JavaScript engine potentially leading to
+    memory corruption. Mozilla Firefox also contains minor vulnerabilities
+    involving cache collision and unsafe pop-up restrictions, filtering or
+    CSS rendering under certain conditions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to view a specially crafted web page
+    that will trigger one of the vulnerabilities, possibly leading to the
+    execution of arbitrary code. It is also possible for an attacker to
+    spoof the address bar, steal information through cache collision,
+    bypass the local files protection mechanism with pop-ups, or perform
+    cross-site scripting attacks, leading to the exposure of sensitive
+    information, like user credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all of these issues, but
+    most of them can be avoided by disabling JavaScript.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users upgrading to the following releases of Mozilla Firefox should
+    note that this upgrade has been found to lose the saved passwords file
+    in some cases. The saved passwords are encrypted and stored in the
+    'signons.txt' file of ~/.mozilla/ and we advise our users to save that
+    file before performing the upgrade.
+    </p>
+    <p>
+    All Mozilla Firefox 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.10&quot;</code>
+    <p>
+    All Mozilla Firefox 1.5 binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.10&quot;</code>
+    <p>
+    All Mozilla Firefox 2.0 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.2&quot;</code>
+    <p>
+    All Mozilla Firefox 2.0 binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6077">CVE-2006-6077</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0775">CVE-2007-0775</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0776">CVE-2007-0776</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0777">CVE-2007-0777</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0778">CVE-2007-0778</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0779">CVE-2007-0779</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0780">CVE-2007-0780</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0800">CVE-2007-0800</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0801">CVE-2007-0801</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0981">CVE-2007-0981</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0995">CVE-2007-0995</uri>
+    <uri link="https://bugzilla.mozilla.org/show_bug.cgi?id=360493#c366">Mozilla password loss bug</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 27 Feb 2007 18:38:44 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 01 Mar 2007 15:14:03 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 01 Mar 2007 15:15:57 +0000">
+    falco
+  </metadata>
+</glsa>

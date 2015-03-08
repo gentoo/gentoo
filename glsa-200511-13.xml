@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-13">
+  <title>Sylpheed, Sylpheed-Claws: Buffer overflow in LDIF importer</title>
+  <synopsis>
+    Sylpheed and Sylpheed-Claws contain a buffer overflow vulnerability which
+    may lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">sylpheed sylpheed-claws</product>
+  <announced>November 15, 2005</announced>
+  <revised>November 15, 2005: 01</revised>
+  <bug>111853</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/sylpheed" auto="yes" arch="*">
+      <unaffected range="ge">2.0.4</unaffected>
+      <vulnerable range="lt">2.0.4</vulnerable>
+    </package>
+    <package name="mail-client/sylpheed-claws" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5-r1</unaffected>
+      <vulnerable range="lt">1.0.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sylpheed is a lightweight email client and newsreader.
+    Sylpheed-Claws is a 'bleeding edge' version of Sylpheed. They both
+    support the import of address books in LDIF (Lightweight Directory
+    Interchange Format).
+    </p>
+  </background>
+  <description>
+    <p>
+    Colin Leroy reported buffer overflow vulnerabilities in Sylpheed
+    and Sylpheed-Claws. The LDIF importer uses a fixed length buffer to
+    store data of variable length. Two similar problems exist also in the
+    Mutt and Pine addressbook importers of Sylpheed-Claws.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By convincing a user to import a specially-crafted LDIF file into
+    the address book, a remote attacker could cause the program to crash,
+    potentially allowing the execution of arbitrary code with the
+    privileges of the user running the software.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sylpheed users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-2.0.4&quot;</code>
+    <p>
+    All Sylpheed-Claws users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-claws-1.0.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3354">CVE-2005-3354</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 13 Nov 2005 17:42:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 13 Nov 2005 18:10:25 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Nov 2005 08:35:12 +0000">
+    koon
+  </metadata>
+</glsa>

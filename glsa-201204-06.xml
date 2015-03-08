@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201204-06">
+  <title>PolicyKit: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PolicyKit, the worst of
+    which may allow a local attacker to gain root privileges.
+  </synopsis>
+  <product type="ebuild">polkit</product>
+  <announced>April 17, 2012</announced>
+  <revised>April 17, 2012: 1</revised>
+  <bug>314535</bug>
+  <bug>364973</bug>
+  <bug>401513</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-auth/polkit" auto="yes" arch="*">
+      <unaffected range="ge">0.104-r1</unaffected>
+      <vulnerable range="lt">0.104-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PolicyKit is a toolkit for controlling privileges for system-wide
+      services.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in PolicyKit:</p>
+    
+    <ul>
+      <li>Error messages in the pkexec utility disclose the existence of local
+        files (CVE-2010-0750).
+      </li>
+      <li>The pkexec utility initially checks the effective user ID of its
+        parent process for authorization, instead of checking the real user ID
+        (CVE-2011-1485).
+      </li>
+      <li>Members of the "wheel" group are able to execute commands as an
+        administrator without a password (CVE-2011-4945).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain elevated privileges or sensitive
+      information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PolicyKit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-auth/polkit-0.104-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0750">CVE-2010-0750</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1485">CVE-2011-1485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4945">CVE-2011-4945</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:57 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Tue, 17 Apr 2012 22:43:48 +0000" tag="submitter">ackle</metadata>
+</glsa>

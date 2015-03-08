@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-02">
+  <title>PDFlib: Multiple overflows in the included TIFF library</title>
+  <synopsis>
+    PDFlib is vulnerable to multiple overflows, which can potentially lead to
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">PDFlib</product>
+  <announced>December 05, 2004</announced>
+  <revised>December 05, 2004: 01</revised>
+  <bug>69043</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/pdflib" auto="yes" arch="*">
+      <unaffected range="ge">5.0.4_p1</unaffected>
+      <vulnerable range="lt">5.0.4_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PDFlib is a library providing functions to handle PDF files. It
+    includes a modified TIFF library used to process TIFF images.
+    </p>
+  </background>
+  <description>
+    <p>
+    The TIFF library is subject to several known vulnerabilities (see
+    GLSA 200410-11). Most of these overflows also apply to PDFlib.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or web application to
+    process a carefully crafted PDF file or TIFF image using a
+    PDFlib-powered program. This can potentially lead to the execution of
+    arbitrary code with the rights of the program processing the file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PDFlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/pdflib-5.0.4_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.pdflib.com/products/pdflib/info/PDFlib-5.0.4p1-changes.txt">PDFlib ChangeLog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0803">CAN-2004-0803</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0804">CAN-2004-0804</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0886">CAN-2004-0886</uri>
+    <uri link="/security/en/glsa/glsa-200410-11.xml">GLSA 200410-11</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed,  1 Dec 2004 14:14:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  5 Dec 2004 14:12:37 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-05">
+  <title>KOffice shared libraries: Heap corruption</title>
+  <synopsis>
+    An integer overflow in koffice-libs allows for a Denial of Service and
+    possibly the execution of arbitrary code when viewing malicious PowerPoint
+    files.
+  </synopsis>
+  <product type="ebuild">koffice-libs</product>
+  <announced>December 10, 2006</announced>
+  <revised>December 10, 2006: 01</revised>
+  <bug>155914</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/koffice-libs" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0</unaffected>
+      <vulnerable range="lt">1.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KOffice is an integrated office suite for KDE. koffice-libs is a
+    package containing shared librares used by KOffice programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kees Cook of Ubuntu discovered that 'KLaola::readBigBlockDepot()' in
+    klaola.cc fills 'num_of_bbd_blocks' while reading a .ppt (PowerPoint)
+    file without proper sanitizing, resulting in an integer overflow
+    subsequently overwriting the heap with parts of the file being read.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted PowerPoint file, an
+    attacker could crash the application and possibly execute arbitrary
+    code with the rights of the user running KOffice.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All koffice-libs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/koffice-libs-1.5.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6120">CVE-2006-6120</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 01 Dec 2006 20:55:38 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 01 Dec 2006 21:30:45 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Dec 2006 13:39:48 +0000">
+    jaervosz
+  </metadata>
+</glsa>

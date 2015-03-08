@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-40">
+  <title>ngIRCd: Buffer overflow</title>
+  <synopsis>
+    ngIRCd is vulnerable to a buffer overflow that can be used to crash the
+    daemon and possibly execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ngIRCd</product>
+  <announced>January 28, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>79705</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/ngircd" auto="yes" arch="*">
+      <unaffected range="ge">0.8.2</unaffected>
+      <vulnerable range="lt">0.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ngIRCd is a free open source daemon for Internet Relay Chat (IRC).
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Westphal discovered a buffer overflow caused by an integer
+    underflow in the Lists_MakeMask() function of lists.c.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can exploit this buffer overflow to crash the ngIRCd
+    daemon and possibly execute arbitrary code with the rights of the
+    ngIRCd daemon process.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ngIRCd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/ngIRCd-0.8.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://arthur.ath.cx/pipermail/ngircd-ml/2005-January/000228.html">ngIRCd Release Annoucement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0199">CVE-2005-0199</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 27 Jan 2005 15:18:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Jan 2005 16:04:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Jan 2005 16:45:18 +0000">
+    koon
+  </metadata>
+</glsa>

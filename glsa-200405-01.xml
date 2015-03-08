@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-01">
+  <title>Multiple format string vulnerabilities in neon 0.24.4 and earlier</title>
+  <synopsis>
+    There are multiple format string vulnerabilities in libneon which may allow
+    a malicious WebDAV server to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">neon</product>
+  <announced>May 09, 2004</announced>
+  <revised>May 09, 2004: 01</revised>
+  <bug>48448</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-misc/neon" auto="yes" arch="*">
+      <unaffected range="ge">0.24.5</unaffected>
+      <vulnerable range="le">0.24.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    neon provides an HTTP and WebDAV client library.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are multiple format string vulnerabilities in libneon which may allow
+    a malicious WebDAV server to execute arbitrary code under the context of
+    the process using libneon.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may be able to execute arbitrary code under the context of the
+    process using libneon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Neon users should upgrade to version 0.24.5 or later:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/neon-0.24.5"
+    # emerge ">=net-misc/neon-0.24.5"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CVE</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

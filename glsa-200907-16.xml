@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-16">
+  <title>Python: Integer overflows</title>
+  <synopsis>
+    Multiple integer overflows in Python have an unspecified impact.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>July 19, 2009</announced>
+  <revised>July 19, 2009: 01</revised>
+  <bug>246991</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">2.5.4-r2</unaffected>
+      <unaffected range="rge">2.4.6</unaffected>
+      <vulnerable range="lt">2.5.4-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Python is an interpreted, interactive, object-oriented programming
+    language.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans reported multiple integer overflows in the expandtabs
+    method, as implemented by (1) the string_expandtabs function in
+    Objects/stringobject.c and (2) the unicode_expandtabs function in
+    Objects/unicodeobject.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities in Python
+    applications or daemons that pass user-controlled input to vulnerable
+    functions. The security impact is currently unknown but may include the
+    execution of arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Python 2.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.5.4-r2&quot;</code>
+    <p>
+    All Python 2.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.4.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5031">CVE-2008-5031</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 13:26:22 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Jul 2009 15:28:36 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Jul 2009 15:28:41 +0000">
+    rbu
+  </metadata>
+</glsa>

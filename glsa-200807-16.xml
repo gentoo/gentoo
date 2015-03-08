@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-16">
+  <title>Python: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Python may allow for the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>July 31, 2008</announced>
+  <revised>July 19, 2009: 02</revised>
+  <bug>230640</bug>
+  <bug>232137</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="rge">2.4.4-r14</unaffected>
+      <unaffected range="ge">2.5.2-r6</unaffected>
+      <unaffected range="rge">2.4.6</unaffected>
+      <vulnerable range="lt">2.5.2-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Python is an interpreted, interactive, object-oriented programming
+    language.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in Python:
+    </p>
+    <ul>
+    <li>
+    David Remahl of Apple Product Security reported several integer
+    overflows in core modules such as stringobject, unicodeobject,
+    bufferobject, longobject, tupleobject, stropmodule, gcmodule,
+    mmapmodule (CVE-2008-2315).
+    </li>
+    <li>
+    David Remahl of Apple Product Security also reported an integer
+    overflow in the hashlib module, leading to unreliable cryptographic
+    digest results (CVE-2008-2316).
+    </li>
+    <li>
+    Justin Ferguson reported multiple buffer overflows in unicode string
+    processing that only affect 32bit systems (CVE-2008-3142).
+    </li>
+    <li>
+    The Google Security Team reported multiple integer overflows
+    (CVE-2008-3143).
+    </li>
+    <li>
+    Justin Ferguson reported multiple integer underflows and overflows in
+    the PyOS_vsnprintf() function, and an off-by-one error when passing
+    zero-length strings, leading to memory corruption (CVE-2008-3144).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities in Python
+    applications or daemons that pass user-controlled input to vulnerable
+    functions. Exploitation might lead to the execution of arbitrary code
+    or a Denial of Service. Vulnerabilities within the hashlib might lead
+    to weakened cryptographic protection of data integrity or authenticity.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Python 2.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.4.4-r14&quot;</code>
+    <p>
+    All Python 2.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.5.2-r6&quot;</code>
+    <p>
+    Please note that Python 2.3 is masked since June 24, and we will not be
+    releasing updates to it. It will be removed from the tree in the near
+    future.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2315">CVE-2008-2315</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2316">CVE-2008-2316</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3142">CVE-2008-3142</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3143">CVE-2008-3143</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3144">CVE-2008-3144</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 31 Jul 2008 15:42:37 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 31 Jul 2008 15:45:02 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-09">
+  <title>Conky: Privilege escalation</title>
+  <synopsis>A privilege escalation vulnerability was found in Conky.</synopsis>
+  <product type="ebuild">Conky</product>
+  <announced>October 13, 2011</announced>
+  <revised>October 13, 2011: 1</revised>
+  <bug>354061</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/conky" auto="yes" arch="*">
+      <unaffected range="ge">1.8.1-r2</unaffected>
+      <vulnerable range="lt">1.8.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Conky is an advanced, highly configurable system monitor for X.</p>
+  </background>
+  <description>
+    <p>A privilege escalation vulnerability due to an insecure temporary file
+      was found in Conky.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly overwrite arbitrary files with the
+      privileges of the user running Conky.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Conky users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/conky-1.8.1-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3616">CVE-2011-3616</uri>
+  </references>
+  <metadata timestamp="Sat, 08 Oct 2011 22:34:39 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Thu, 13 Oct 2011 21:46:29 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

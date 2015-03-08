@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-11">
+  <title>Bacula: Information disclosure</title>
+  <synopsis>A vulnerability in Bacula may allow remote attackers to obtain
+    sensitive information.
+  </synopsis>
+  <product type="ebuild">bacula</product>
+  <announced>May 17, 2014</announced>
+  <revised>May 17, 2014: 1</revised>
+  <bug>434878</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-backup/bacula" auto="yes" arch="*">
+      <unaffected range="ge">5.2.12</unaffected>
+      <vulnerable range="lt">5.2.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bacula is a network based backup suite.</p>
+  </background>
+  <description>
+    <p>Bacula does not properly enforce console access control lists. </p>
+  </description>
+  <impact type="low">
+    <p>A remote authenticated attacker may be able to bypass restrictions to
+      obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bacula users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-backup/bacula-5.2.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4430">CVE-2012-4430</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:54:47 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:45:37 +0000">ackle</metadata>
+</glsa>

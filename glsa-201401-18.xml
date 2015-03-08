@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-18">
+  <title>OpenSC: Arbitrary code execution</title>
+  <synopsis>Multiple stack-based buffer overflows have been found in OpenSC,
+    allowing attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">opensc</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>349567</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-libs/opensc" auto="yes" arch="*">
+      <unaffected range="ge">0.11.13-r2</unaffected>
+      <vulnerable range="lt">0.11.13-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSC is a tools and libraries for smart cards.</p>
+  </background>
+  <description>
+    <p>Multiple stack-based buffer overflow errors have been discovered in
+      OpenSC.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A physically proximate attacker could possibly execute arbitrary code
+      using a specially crafted smart card.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/opensc-0.11.13-r2"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4523">CVE-2010-4523</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:47 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 18:48:55 +0000">Zlogene</metadata>
+</glsa>

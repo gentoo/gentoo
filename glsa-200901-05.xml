@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-05">
+  <title>Streamripper: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple buffer overflows have been discovered in Streamripper, allowing
+    for user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">streamripper</product>
+  <announced>January 11, 2009</announced>
+  <revised>January 11, 2009: 01</revised>
+  <bug>249039</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/streamripper" auto="yes" arch="*">
+      <unaffected range="ge">1.64.0</unaffected>
+      <vulnerable range="lt">1.64.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Streamripper is a tool for extracting and recording mp3 files from a
+    Shoutcast stream.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Cornelius from Secunia Research reported multiple buffer
+    overflows in the http_parse_sc_header(), http_get_pls() and
+    http_get_m3u() functions in lib/http.c when parsing overly long HTTP
+    headers, or pls and m3u playlists with overly long entries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect to a malicious server,
+    possibly resulting in the remote execution of arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Streamripper users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/streamripper-1.64.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4829">CVE-2008-4829</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 07 Dec 2008 20:23:24 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 21 Dec 2008 20:28:31 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 21 Dec 2008 20:29:17 +0000">
+    p-y
+  </metadata>
+</glsa>

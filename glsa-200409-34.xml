@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-34">
+  <title>X.org, XFree86: Integer and stack overflows in libXpm</title>
+  <synopsis>
+    libXpm, the X Pixmap library that is a part of the X Window System,
+    contains multiple stack and integer overflows that may allow a
+    carefully-crafted XPM file to crash applications linked against libXpm,
+    potentially allowing the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">X</product>
+  <announced>September 27, 2004</announced>
+  <revised>May 27, 2006: 02</revised>
+  <bug>64152</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-base/xorg-x11" auto="yes" arch="*">
+      <unaffected range="rge">6.7.0-r2</unaffected>
+      <unaffected range="ge">6.8.0-r1</unaffected>
+      <vulnerable range="lt">6.7.0-r2</vulnerable>
+      <vulnerable range="eq">6.8.0</vulnerable>
+    </package>
+    <package name="x11-base/xfree" auto="yes" arch="alpha x86">
+      <unaffected range="ge">4.3.0-r7</unaffected>
+      <vulnerable range="lt">4.3.0-r7</vulnerable>
+    </package>
+    <package name="x11-base/xfree" auto="yes" arch="amd64 hppa ia64 mips ppc sparc">
+      <vulnerable range="lt">4.3.0-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XFree86 and X.org are both implementations of the X Window System.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans has discovered multiple integer and stack overflow
+    vulnerabilities in the X Pixmap library, libXpm, which is a part of the
+    X Window System. These overflows can be exploited by the execution of a
+    malicious XPM file, which can crash applications that are dependent on
+    libXpm.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A carefully-crafted XPM file could crash applications that are linked
+    against libXpm, potentially allowing the execution of arbitrary code
+    with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X.org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=x11-base/xorg-x11-6.7.0-r2&quot;
+    # emerge &quot;&gt;=x11-base/xorg-x11-6.7.0-r2&quot;</code>
+    <p>
+    All XFree86 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=x11-base/xfree-4.3.0-r7&quot;
+    # emerge &quot;&gt;=x11-base/xfree-4.3.0-r7&quot;</code>
+    <p>
+    Note: Usage of XFree86 is deprecated on the AMD64, HPPA, IA64, MIPS,
+    PPC and SPARC architectures: XFree86 users on those architectures
+    should switch to X.org rather than upgrading XFree86.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://freedesktop.org/pipermail/xorg/2004-September/003196.html">X.org Security Advisory</uri>
+    <uri link="http://freedesktop.org/pipermail/xorg/2004-September/003172.html">X11R6.8.1 Release Notes</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0687">CAN-2004-0687</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0688">CAN-2004-0688</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 18 Sep 2004 17:10:48 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Sep 2004 05:29:54 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 26 Sep 2004 20:54:15 +0000">
+    koon
+  </metadata>
+</glsa>

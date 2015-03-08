@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-01">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in Asterisk allowing for Denial of
+    Service and username disclosure.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>May 02, 2009</announced>
+  <revised>May 02, 2009: 01</revised>
+  <bug>218966</bug>
+  <bug>224835</bug>
+  <bug>232696</bug>
+  <bug>232698</bug>
+  <bug>237476</bug>
+  <bug>250748</bug>
+  <bug>254304</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.32</unaffected>
+      <vulnerable range="lt">1.2.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source telephony engine and toolkit.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in the IAX2 channel
+    driver when performing the 3-way handshake (CVE-2008-1897), when
+    handling a large number of POKE requests (CVE-2008-3263), when handling
+    authentication attempts (CVE-2008-5558) and when handling firmware
+    download (FWDOWNL) requests (CVE-2008-3264). Asterisk does also not
+    correctly handle SIP INVITE messages that lack a "From" header
+    (CVE-2008-2119), and responds differently to a failed login attempt
+    depending on whether the user account exists (CVE-2008-3903,
+    CVE-2009-0041).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote unauthenticated attackers could send specially crafted data to
+    Asterisk, possibly resulting in a Denial of Service via a daemon crash,
+    call-number exhaustion, CPU or traffic consumption. Remote
+    unauthenticated attackers could furthermore enumerate valid usernames
+    to facilitate brute force login attempts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.32&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1897">CVE-2008-1897</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2119">CVE-2008-2119</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3263">CVE-2008-3263</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3264">CVE-2008-3264</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3903">CVE-2008-3903</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5558">CVE-2008-5558</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0041">CVE-2009-0041</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 02 Apr 2009 12:17:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 02 Apr 2009 12:31:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 02 Apr 2009 12:32:59 +0000">
+    rbu
+  </metadata>
+</glsa>

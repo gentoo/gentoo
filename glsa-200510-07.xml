@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-07">
+  <title>RealPlayer, Helix Player: Format string vulnerability</title>
+  <synopsis>
+    RealPlayer and Helix Player are vulnerable to a format string vulnerability
+    resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">realplayer helixplayer</product>
+  <announced>October 07, 2005</announced>
+  <revised>November 22, 2005: 02</revised>
+  <bug>107309</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/realplayer" auto="yes" arch="*">
+      <unaffected range="ge">10.0.6</unaffected>
+      <vulnerable range="lt">10.0.6</vulnerable>
+    </package>
+    <package name="media-video/helixplayer" auto="yes" arch="*">
+      <vulnerable range="lt">1.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    RealPlayer is a multimedia player capable of handling multiple
+    multimedia file formats. Helix Player is an open source media player
+    for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    "c0ntex" reported that RealPlayer and Helix Player suffer from a heap
+    overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to play a specially crafted realpix (.rp) or
+    realtext (.rt) file, an attacker could execute arbitrary code with the
+    permissions of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All RealPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.6&quot;</code>
+    <p>
+    Note to Helix Player users: There is currently no stable secure Helix
+    Player package. Affected users should remove the package until an
+    updated Helix Player package is released.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2710">CAN-2005-2710</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 01 Oct 2005 10:35:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Oct 2005 19:39:34 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Oct 2005 14:20:23 +0000">
+    koon
+  </metadata>
+</glsa>

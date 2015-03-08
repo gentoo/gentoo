@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-11">
+  <title>linux-ftpd-ssl: Remote buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability has been found, allowing a remote attacker
+    to execute arbitrary code with escalated privileges on the local system.
+  </synopsis>
+  <product type="ebuild">linux-ftpd-ssl</product>
+  <announced>November 13, 2005</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>111573</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/netkit-ftpd" auto="yes" arch="*">
+      <unaffected range="ge">0.17-r3</unaffected>
+      <vulnerable range="lt">0.17-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    linux-ftpd-ssl is the netkit FTP server with encryption support.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow vulnerability has been found in the
+    linux-ftpd-ssl package. A command that generates an excessively long
+    response from the server may overrun a stack buffer.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker that has permission to create directories that are
+    accessible via the FTP server could exploit this vulnerability.
+    Successful exploitation would execute arbitrary code on the local
+    machine with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ftpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/netkit-ftpd-0.17-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3524">CVE-2005-3524</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Nov 2005 18:51:48 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Nov 2005 21:31:18 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 12 Nov 2005 21:51:01 +0000">
+    adir
+  </metadata>
+</glsa>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-27">
+  <title>Ethereal: Multiple vulnerabilities</title>
+  <synopsis>
+    Ethereal is vulnerable to numerous vulnerabilities potentially resulting in
+    the execution of arbitrary code or abnormal termination.
+  </synopsis>
+  <product type="ebuild">Ethereal</product>
+  <announced>July 28, 2005</announced>
+  <revised>July 28, 2005: 01</revised>
+  <bug>100316</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.12</unaffected>
+      <vulnerable range="lt">0.10.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a feature-rich network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are numerous vulnerabilities in versions of Ethereal prior
+    to 0.10.12, including:
+    </p>
+    <ul>
+    <li>The SMB dissector could overflow a
+    buffer or exhaust memory (CAN-2005-2365).</li>
+    <li>iDEFENSE discovered
+    that several dissectors are vulnerable to format string overflows
+    (CAN-2005-2367).</li>
+    <li>Additionally multiple potential crashes in
+    many dissectors have been fixed, see References for further
+    details.</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker might be able to use these vulnerabilities to crash
+    Ethereal or execute arbitrary code with the permissions of the user
+    running Ethereal, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ethereal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ethereal.com/appnotes/enpa-sa-00020.html">Ethereal enpa-sa-00020</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2360">CAN-2005-2360</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2361">CAN-2005-2361</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2362">CAN-2005-2362</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2363">CAN-2005-2363</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2364">CAN-2005-2364</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2365">CAN-2005-2365</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2366">CAN-2005-2366</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2367">CAN-2005-2367</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 26 Jul 2005 19:41:31 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 28 Jul 2005 05:33:45 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-20">
+  <title>Zope: File inclusion through RestructuredText</title>
+  <synopsis>
+    Zope is vulnerable to a file inclusion vulnerability when exposing
+    RestructuredText functionalities to untrusted users.
+  </synopsis>
+  <product type="ebuild">Zope</product>
+  <announced>October 25, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>109087</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-zope/zope" auto="yes" arch="*">
+      <unaffected range="ge">2.7.8</unaffected>
+      <vulnerable range="lt">2.7.8</vulnerable>
+      <vulnerable range="eq">2.8.0</vulnerable>
+      <vulnerable range="eq">2.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Zope is an application server that can be used to build content
+    management systems, intranets, portals or other custom applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Zope honors file inclusion directives in RestructuredText objects by
+    default.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit the vulnerability by sending malicious input
+    that would be interpreted in a RestructuredText Zope object,
+    potentially resulting in the execution of arbitrary Zope code with the
+    rights of the Zope server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Zope users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-zope/zope</code>
+  </resolution>
+  <references>
+    <uri link="http://www.zope.org/Products/Zope/Hotfix_2005-10-09/security_alert">Zope Hotfix 2005-10-09 Alert</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3323">CVE-2005-3323</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Oct 2005 15:36:29 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Oct 2005 15:31:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Oct 2005 16:31:59 +0000">
+    koon
+  </metadata>
+</glsa>

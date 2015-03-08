@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-02">
+  <title>Netpbm: Multiple temporary file issues</title>
+  <synopsis>
+    Utilities included in old Netpbm versions are vulnerable to multiple
+    temporary files issues, potentially allowing a local attacker to overwrite
+    files with the rights of the user running the utility.
+  </synopsis>
+  <product type="ebuild">Netpbm</product>
+  <announced>October 04, 2004</announced>
+  <revised>October 04, 2004: 01</revised>
+  <bug>65647</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-libs/netpbm" auto="yes" arch="*">
+      <unaffected range="ge">10.0</unaffected>
+      <vulnerable range="le">9.12-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Netpbm is a toolkit containing more than 200 separate utilities for
+    manipulation and conversion of graphic images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Utilities contained in the Netpbm package prior to the 9.25 version contain
+    defects in temporary file handling. They create temporary files with
+    predictable names without checking first that the target file doesn't
+    already exist.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When a
+    user or a tool calls one of the affected utilities, this would result in
+    file overwriting with the rights of the user running the utility.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Netpbm users should upgrade to an unaffected version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-libs/netpbm-10.0"
+    # emerge ">=media-libs/netpbm-10.0"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0924">CVE-2003-0924</uri>
+    <uri link="http://www.kb.cert.org/vuls/id/487102">US-CERT VU#487102</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat,  2 Oct 2004 00:18:31 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  3 Oct 2004 10:07:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun,  3 Oct 2004 13:46:27 +0000">
+    koon
+  </metadata>
+</glsa>

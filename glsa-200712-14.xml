@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-14">
+  <title>CUPS: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in CUPS, allowing for the
+    remote execution of arbitrary code and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>December 18, 2007</announced>
+  <revised>December 18, 2007: 01</revised>
+  <bug>199195</bug>
+  <bug>201042</bug>
+  <bug>201570</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="rge">1.2.12-r4</unaffected>
+      <unaffected range="ge">1.3.5</unaffected>
+      <vulnerable range="lt">1.3.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CUPS provides a portable printing layer for UNIX-based operating
+    systems. The alternate pdftops filter is a CUPS filter used to convert
+    PDF files to the Postscript format via Poppler; the filter is installed
+    by default in Gentoo Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Wei Wang (McAfee AVERT Research) discovered an integer underflow in the
+    asn1_get_string() function of the SNMP backend, leading to a
+    stack-based buffer overflow when handling SNMP responses
+    (CVE-2007-5849). Elias Pipping (Gentoo) discovered that the alternate
+    pdftops filter creates temporary files with predictable file names when
+    reading from standard input (CVE-2007-6358). Furthermore, the
+    resolution of a Denial of Service vulnerability covered in GLSA
+    200703-28 introduced another Denial of Service vulnerability within SSL
+    handling (CVE-2007-4045).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker on the local network could exploit the first
+    vulnerability to execute arbitrary code with elevated privileges by
+    sending specially crafted SNMP messages as a response to an SNMP
+    broadcast request. A local attacker could exploit the second
+    vulnerability to overwrite arbitrary files with the privileges of the
+    user running the CUPS spooler (usually lp) by using symlink attacks. A
+    remote attacker could cause a Denial of Service condition via the third
+    vulnerability when SSL is enabled in CUPS.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    To disable SNMP support in CUPS, you have have to manually delete the
+    file "/usr/libexec/cups/backend/snmp". Please note that the file is
+    reinstalled if you merge CUPS again later. To disable the pdftops
+    filter, delete all lines referencing "pdftops" in CUPS' "mime.convs"
+    configuration file. To work around the third vulnerability, disable SSL
+    support via the corresponding USE flag.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.2.12-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4045">CVE-2007-4045</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5849">CVE-2007-5849</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6358">CVE-2007-6358</uri>
+    <uri link="/security/en/glsa/glsa-200703-28.xml">GLSA 200703-28</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 14 Dec 2007 15:44:48 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 14 Dec 2007 15:45:00 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Dec 2007 13:31:00 +0000">
+    rbu
+  </metadata>
+</glsa>

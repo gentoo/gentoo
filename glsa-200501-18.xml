@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-18">
+  <title>KDE FTP KIOslave: Command injection</title>
+  <synopsis>
+    The FTP KIOslave contains a bug allowing users to execute arbitrary FTP
+    commands.
+  </synopsis>
+  <product type="ebuild">konqueror</product>
+  <announced>January 11, 2005</announced>
+  <revised>January 12, 2005: 02</revised>
+  <bug>73759</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.3.2-r2</unaffected>
+      <unaffected range="rge">3.2.3-r5</unaffected>
+      <vulnerable range="lt">3.3.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. KDE provided KIOslaves for many protocols
+    in the kdelibs package, one of them being FTP. These are used by KDE
+    applications such as Konqueror.
+    </p>
+  </background>
+  <description>
+    <p>
+    The FTP KIOslave fails to properly parse URL-encoded newline
+    characters.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this to execute arbitrary FTP commands on the
+    server and due to similiarities between the FTP and the SMTP protocol,
+    this vulnerability also allows an attacker to connect to a SMTP server
+    and issue arbitrary commands, for example sending an email.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/kdelibs</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kde.org/info/security/advisory-20050101-1.txt">KDE Security Advisory: ftp kioslave command injection</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1165">CAN-2004-1165</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed,  5 Jan 2005 16:56:23 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 12:39:06 +0000">
+    jaervosz
+  </metadata>
+</glsa>

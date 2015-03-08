@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-12">
+  <title>Scorched 3D: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Scorched 3D allow a remote attacker to deny
+    service or execute arbitrary code on game servers.
+  </synopsis>
+  <product type="ebuild">scorched3d</product>
+  <announced>November 15, 2005</announced>
+  <revised>August 10, 2006: 03</revised>
+  <bug>111421</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-strategy/scorched3d" auto="yes" arch="*">
+      <unaffected range="ge">40</unaffected>
+      <vulnerable range="le">39.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Scorched 3D is a clone of the classic "Scorched Earth" DOS game, adding
+    features like a 3D island environment and Internet multiplayer
+    capabilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma discovered multiple flaws in the Scorched 3D game
+    server, including a format string vulnerability and several buffer
+    overflows.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can exploit these vulnerabilities to crash a game
+    server or execute arbitrary code with the rights of the game server
+    user. Users not running a Scorched 3D game server are not affected by
+    these flaws.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Scorched 3D users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-strategy/scorched3d-40&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://seclists.org/lists/fulldisclosure/2005/Nov/0079.html">Original advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3486">CVE-2005-3486</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3487">CVE-2005-3487</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3488">CVE-2005-3488</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 14 Nov 2005 13:02:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Nov 2005 13:04:09 +0000">
+    koon
+  </metadata>
+</glsa>

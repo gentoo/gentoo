@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-23">
+  <title>Cacti: Command execution and SQL injection</title>
+  <synopsis>
+    Cacti has three vulnerabilities that could allow shell command execution or
+    SQL injection.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>January 26, 2007</announced>
+  <revised>January 26, 2007: 01</revised>
+  <bug>159278</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6i-r1</unaffected>
+      <vulnerable range="lt">0.8.6i-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cacti is a web-based network graphing and reporting tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    rgod discovered that the Cacti cmd.php and copy_cacti_user.php scripts
+    do not properly control access to the command shell, and are remotely
+    accessible by unauthenticated users. This allows SQL injection via
+    cmd.php and copy_cacti_user.php URLs. Further, the results from the
+    injected SQL query are not properly sanitized before being passed to a
+    command shell. The vulnerabilities require that the
+    "register_argc_argv" option is enabled, which is the Gentoo default.
+    Also, a number of similar problems in other scripts were reported.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    These vulnerabilties can result in the execution of arbitrary shell
+    commands or information disclosure via crafted SQL queries.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cacti users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.6i-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6799">CVE-2006-6799</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Jan 2007 22:58:24 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 16 Jan 2007 02:39:11 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 17 Jan 2007 22:17:59 +0000">
+    falco
+  </metadata>
+</glsa>

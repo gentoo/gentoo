@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-05">
+  <title>ntp: Certificate validation error</title>
+  <synopsis>
+    An error in the OpenSSL certificate chain validation in ntp might allow for
+    spoofing attacks.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>April 05, 2009</announced>
+  <revised>April 05, 2009: 01</revised>
+  <bug>254098</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4_p6</unaffected>
+      <vulnerable range="lt">4.2.4_p6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ntp contains the client and daemon implementations for the Network Time
+    Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    It has been reported that ntp incorrectly checks the return value of
+    the EVP_VerifyFinal(), a vulnerability related to CVE-2008-5077 (GLSA
+    200902-02).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability to spoof arbitrary
+    names to conduct Man-In-The-Middle attacks and intercept sensitive
+    information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ntp users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/ntp-4.2.4_p6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5077">CVE-2008-5077</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0021">CVE-2009-0021</uri>
+    <uri link="/security/en/glsa/glsa-200902-02.xml">GLSA 200902-02</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 31 Mar 2009 11:41:38 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 31 Mar 2009 11:41:46 +0000">
+    p-y
+  </metadata>
+</glsa>

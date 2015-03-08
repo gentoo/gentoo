@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201409-04">
+  <title>MySQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MySQL, worst of which
+    allows local attackers to escalate their privileges.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>September 04, 2014</announced>
+  <revised>September 04, 2014: 1</revised>
+  <bug>460748</bug>
+  <bug>488212</bug>
+  <bug>498164</bug>
+  <bug>500260</bug>
+  <bug>507802</bug>
+  <bug>518718</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.5.39</unaffected>
+      <vulnerable range="lt">5.5.39</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a popular multi-threaded, multi-user SQL server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MySQL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly gain escalated privileges. A remote
+      attacker could send a specially crafted SQL query, possibly resulting in
+      a Denial of Service condition. A remote attacker could entice a user to
+      connect to specially crafted MySQL server, possibly resulting in
+      execution of arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.5.39"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1861">CVE-2013-1861</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2134">CVE-2013-2134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3839">CVE-2013-3839</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5767">CVE-2013-5767</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5770">CVE-2013-5770</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5786">CVE-2013-5786</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5793">CVE-2013-5793</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5807">CVE-2013-5807</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5860">CVE-2013-5860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5881">CVE-2013-5881</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5882">CVE-2013-5882</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5891">CVE-2013-5891</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5894">CVE-2013-5894</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5908">CVE-2013-5908</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0001">CVE-2014-0001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0384">CVE-2014-0384</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0386">CVE-2014-0386</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0393">CVE-2014-0393</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0401">CVE-2014-0401</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0402">CVE-2014-0402</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0412">CVE-2014-0412</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0420">CVE-2014-0420</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0427">CVE-2014-0427</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0430">CVE-2014-0430</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0431">CVE-2014-0431</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0433">CVE-2014-0433</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0437">CVE-2014-0437</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2419">CVE-2014-2419</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2430">CVE-2014-2430</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2431">CVE-2014-2431</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2432">CVE-2014-2432</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2434">CVE-2014-2434</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2435">CVE-2014-2435</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2436">CVE-2014-2436</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2438">CVE-2014-2438</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2440">CVE-2014-2440</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 27 Feb 2014 14:34:22 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 04 Sep 2014 08:34:34 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201407-01">
+  <title>OpenTTD: Denial of Service</title>
+  <synopsis>A vulnerability in OpenTTD could allow a remote attacker to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openttd</product>
+  <announced>July 07, 2014</announced>
+  <revised>July 07, 2014: 1</revised>
+  <bug>492876</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-simulation/openttd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.3</unaffected>
+      <vulnerable range="lt">1.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenTTD is a clone of Transport Tycoon Deluxe.</p>
+  </background>
+  <description>
+    <p>The vulnerability is caused due to missing out-of-bound check within the
+      “HandleCrashedAircraft()” function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenTTD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=games-simulation/openttd-1.3.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6411">CVE-2013-6411</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 01:41:36 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Jul 2014 16:03:44 +0000">Zlogene</metadata>
+</glsa>

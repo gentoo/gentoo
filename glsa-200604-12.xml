@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-12">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities in Mozilla Firefox allow attacks ranging from
+    execution of script code with elevated privileges to information leaks.
+  </synopsis>
+  <product type="ebuild">mozilla-firefox</product>
+  <announced>April 23, 2006</announced>
+  <revised>April 23, 2006: 01</revised>
+  <bug>129924</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.0.8</unaffected>
+      <vulnerable range="lt">1.0.8</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0.8</unaffected>
+      <vulnerable range="lt">1.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is the next-generation web browser from the
+    Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were found in Mozilla Firefox. Versions
+    1.0.8 and 1.5.0.2 were released to fix them.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft malicious web pages that would
+    leverage these issues to inject and execute arbitrary script code with
+    elevated privileges, steal local files, cookies or other information
+    from web pages, and spoof content. Some of these vulnerabilities might
+    even be exploited to execute arbitrary code with the rights of the
+    browser user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds for all the issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.8&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4134">CVE-2005-4134</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0292">CVE-2006-0292</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0296">CVE-2006-0296</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0748">CVE-2006-0748</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0749">CVE-2006-0749</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1727">CVE-2006-1727</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1728">CVE-2006-1728</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1729">CVE-2006-1729</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1730">CVE-2006-1730</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1731">CVE-2006-1731</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1732">CVE-2006-1732</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1733">CVE-2006-1733</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1734">CVE-2006-1734</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1735">CVE-2006-1735</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1736">CVE-2006-1736</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1737">CVE-2006-1737</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1738">CVE-2006-1738</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1739">CVE-2006-1739</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1740">CVE-2006-1740</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1741">CVE-2006-1741</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1742">CVE-2006-1742</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1790">CVE-2006-1790</uri>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Firefox">Mozilla Foundation Security Advisories</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 22 Apr 2006 20:40:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 22 Apr 2006 20:48:17 +0000">
+    koon
+  </metadata>
+</glsa>

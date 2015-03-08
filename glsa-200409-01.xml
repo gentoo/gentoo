@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-01">
+  <title>vpopmail: Multiple vulnerabilities</title>
+  <synopsis>
+    vpopmail contains several bugs making it vulnerable to several SQL
+    injection exploits as well as one buffer overflow and one format string
+    exploit when using Sybase. This could lead to the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">vpopmail</product>
+  <announced>September 01, 2004</announced>
+  <revised>September 01, 2004: 01</revised>
+  <bug>60844</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/vpopmail" auto="yes" arch="*">
+      <unaffected range="ge">5.4.6</unaffected>
+      <vulnerable range="lt">5.4.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    vpopmail handles virtual mail domains for qmail and Postfix.
+    </p>
+  </background>
+  <description>
+    <p>
+    vpopmail is vulnerable to several unspecified SQL injection exploits.
+    Furthermore when using Sybase as the backend database vpopmail is
+    vulnerable to a buffer overflow and format string exploit.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    These vulnerabilities could allow an attacker to execute code with the
+    permissions of the user running vpopmail.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of vpopmail.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All vpopmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-mail/vpopmail-5.4.6"
+    # emerge ">=net-mail/vpopmail-5.4.6"</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/forum/forum.php?forum_id=400873">vpopmail Announcement</uri>
+    <uri link="http://www.securityfocus.com/archive/1/371913/2004-08-15/2004-08-21/0">Bugtraq Announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 26 Aug 2004 17:42:34 +0000">
+    jaervosz
+  </metadata>
+</glsa>

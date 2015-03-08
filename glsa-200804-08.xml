@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-08">
+  <title>lighttpd: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in lighttpd may lead to information disclosure or
+    a Denial of Service.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>April 10, 2008</announced>
+  <revised>April 10, 2008: 01</revised>
+  <bug>212930</bug>
+  <bug>214892</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.19-r2</unaffected>
+      <vulnerable range="lt">1.4.19-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    lighttpd is a lightweight high-performance web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Julien Cayzax discovered that an insecure default setting exists in
+    mod_userdir in lighttpd. When userdir.path is not set the default value
+    used is $HOME. It should be noted that the "nobody" user's $HOME is "/"
+    (CVE-2008-1270). An error also exists in the SSL connection code which
+    can be triggered when a user prematurely terminates his connection
+    (CVE-2008-1531).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit the first vulnerability to read
+    arbitrary files. The second vulnerability can be exploited by a remote
+    attacker to cause a Denial of Service by terminating a victim's SSL
+    connection.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    As a workaround for CVE-2008-1270 you can set userdir.path to a
+    sensible value, e.g. <i>"public_html"</i>.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.19-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1270">CVE-2008-1270</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1531">CVE-2008-1531</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 20:15:35 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 22:44:24 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Apr 2008 21:43:05 +0000">
+    mfleming
+  </metadata>
+</glsa>

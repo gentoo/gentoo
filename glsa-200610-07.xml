@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-07">
+  <title>Python: Buffer Overflow</title>
+  <synopsis>
+    A buffer overflow in Python's "repr()" function can be exploited to cause a
+    Denial of Service and potentially allows the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>October 17, 2006</announced>
+  <revised>February 26, 2007: 03</revised>
+  <bug>149065</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">2.4.3-r4</unaffected>
+      <unaffected range="rge">2.3.5-r3</unaffected>
+      <unaffected range="rge">2.3.6</unaffected>
+      <vulnerable range="lt">2.4.3-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Python is an interpreted, interactive, object-oriented, cross-platform
+    programming language.
+    </p>
+  </background>
+  <description>
+    <p>
+    Benjamin C. Wiley Sittler discovered a buffer overflow in Python's
+    "repr()" function when handling UTF-32/UCS-4 encoded strings.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If a Python application processes attacker-supplied data with the
+    "repr()" function, this could potentially lead to the execution of
+    arbitrary code with the privileges of the affected application or a
+    Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Python users should update to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.4.3-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4980">CVE-2006-4980</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 27 Sep 2006 19:59:22 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Oct 2006 14:44:47 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Oct 2006 09:21:34 +0000">
+    falco
+  </metadata>
+</glsa>

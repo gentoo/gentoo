@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-14">
+  <title>aview: Insecure temporary file usage</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in aview, leading to
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">aview</product>
+  <announced>December 14, 2008</announced>
+  <revised>December 14, 2008: 01</revised>
+  <bug>235808</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-gfx/aview" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0_rc1-r1</unaffected>
+      <vulnerable range="lt">1.3.0_rc1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    aview is an ASCII image viewer and animation player.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that aview uses the "/tmp/aview$$.pgm" file
+    in an insecure manner when processing files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to overwrite arbitrary
+    files on the system with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All aview users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/aview-1.3.0_rc1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4935">CVE-2008-4935</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:39:57 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Oct 2008 20:48:01 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 20:00:09 +0000">
+    p-y
+  </metadata>
+</glsa>

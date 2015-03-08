@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201208-05">
+  <title>Perl Config-IniFiles Module: Insecure temporary file usage</title>
+  <synopsis>An insecure temporary file usage has been reported in the Perl
+    Config-IniFiles module, possibly allowing symlink attacks.
+  </synopsis>
+  <product type="ebuild">Config-IniFiles</product>
+  <announced>August 14, 2012</announced>
+  <revised>August 14, 2012: 1</revised>
+  <bug>414485</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-perl/Config-IniFiles" auto="yes" arch="*">
+      <unaffected range="ge">2.710.0</unaffected>
+      <vulnerable range="lt">2.710.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Config-IniFiles is a Perl module for reading .ini-style configuration
+      files.
+    </p>
+  </background>
+  <description>
+    <p>The Perl Config-IniFiles module uses predicatable temporary file names.</p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All users of the Perl Config-IniFiles module should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-perl/Config-IniFiles-2.710.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2451">CVE-2012-2451</uri>
+  </references>
+  <metadata timestamp="Wed, 23 May 2012 02:55:46 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Tue, 14 Aug 2012 20:31:06 +0000" tag="submitter">ackle</metadata>
+</glsa>

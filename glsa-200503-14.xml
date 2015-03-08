@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-14">
+  <title>KDE dcopidlng: Insecure temporary file creation</title>
+  <synopsis>
+    The dcopidlng script is vulnerable to symlink attacks, potentially allowing
+    a local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">dcopidlng</product>
+  <announced>March 07, 2005</announced>
+  <revised>March 07, 2005: 01</revised>
+  <bug>81652</bug>
+  <access>local</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.3.2-r5</unaffected>
+      <unaffected range="rge">3.2.3-r7</unaffected>
+      <vulnerable range="lt">3.3.2-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. DCOP is KDE's simple IPC/RPC mechanism.
+    dcopidlng is a DCOP helper script.
+    </p>
+  </background>
+  <description>
+    <p>
+    Davide Madrisan has discovered that the dcopidlng script creates
+    temporary files in a world-writable directory with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When dcopidlng is executed, this would result in the file being
+    overwritten with the rights of the user running the utility, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/kdelibs</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0365">CAN-2005-0365</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  3 Mar 2005 21:01:57 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  6 Mar 2005 09:59:12 +0000">
+    koon
+  </metadata>
+</glsa>

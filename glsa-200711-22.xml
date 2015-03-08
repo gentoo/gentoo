@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-22">
+  <title>Poppler, KDE: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Poppler and various KDE components are vulnerable to multiple memory
+    management issues possibly resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">poppler koffice kword kdegraphics kpdf</product>
+  <announced>November 18, 2007</announced>
+  <revised>November 18, 2007: 01</revised>
+  <bug>196735</bug>
+  <bug>198409</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.6.1-r1</unaffected>
+      <vulnerable range="lt">0.6.1-r1</vulnerable>
+    </package>
+    <package name="kde-base/kpdf" auto="yes" arch="*">
+      <unaffected range="rge">3.5.7-r3</unaffected>
+      <unaffected range="ge">3.5.8-r1</unaffected>
+      <vulnerable range="lt">3.5.8-r1</vulnerable>
+    </package>
+    <package name="kde-base/kdegraphics" auto="yes" arch="*">
+      <unaffected range="rge">3.5.7-r3</unaffected>
+      <unaffected range="ge">3.5.8-r1</unaffected>
+      <vulnerable range="lt">3.5.8-r1</vulnerable>
+    </package>
+    <package name="app-office/kword" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r2</unaffected>
+      <vulnerable range="lt">1.6.3-r2</vulnerable>
+    </package>
+    <package name="app-office/koffice" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r2</unaffected>
+      <vulnerable range="lt">1.6.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Poppler is a cross-platform PDF rendering library originally based on
+    Xpdf. KOffice is an integrated office suite for KDE. KWord is the
+    KOffice word processor. KPDF is a KDE-based PDF viewer included in the
+    kdegraphics package.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alin Rad Pop (Secunia Research) discovered several vulnerabilities in
+    the "Stream.cc" file of Xpdf: An integer overflow in the
+    DCTStream::reset() method and a boundary error in the
+    CCITTFaxStream::lookChar() method, both leading to heap-based buffer
+    overflows (CVE-2007-5392, CVE-2007-5393). He also discovered a boundary
+    checking error in the DCTStream::readProgressiveDataUnit() method
+    causing memory corruption (CVE-2007-4352). Note: Gentoo's version of
+    Xpdf is patched to use the Poppler library, so the update to Poppler
+    will also fix Xpdf.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to view or process a specially crafted PDF file with
+    KWord or KPDF or a Poppler-based program such as Gentoo's viewers Xpdf,
+    ePDFView, and Evince or the CUPS printing system, a remote attacker
+    could cause an overflow, potentially resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Poppler users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.6.1-r1&quot;</code>
+    <p>
+    All KPDF users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kpdf-3.5.7-r3&quot;</code>
+    <p>
+    All KDE Graphics Libraries users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.5.7-r3&quot;</code>
+    <p>
+    All KWord users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/kword-1.6.3-r2&quot;</code>
+    <p>
+    All KOffice users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/koffice-1.6.3-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4352">CVE-2007-4352</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5392">CVE-2007-5392</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5393">CVE-2007-5393</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 00:47:07 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 00:30:13 +0000">
+    p-y
+  </metadata>
+</glsa>

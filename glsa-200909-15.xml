@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-15">
+  <title>Lynx: Arbitrary command execution</title>
+  <synopsis>
+    An incomplete fix for an issue related to the Lynx URL handler might allow
+    for the remote execution of arbitrary commands.
+  </synopsis>
+  <product type="ebuild">lynx</product>
+  <announced>September 12, 2009</announced>
+  <revised>September 12, 2009: 01</revised>
+  <bug>243058</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/lynx" auto="yes" arch="*">
+      <unaffected range="ge">2.8.6-r4</unaffected>
+      <vulnerable range="lt">2.8.6-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Lynx is a fully-featured WWW client for users running
+    cursor-addressable, character-cell display devices such as vt100
+    terminals and terminal emulators.
+    </p>
+  </background>
+  <description>
+    <p>
+    Clint Ruoho reported that the fix for CVE-2005-2929 (GLSA 200511-09)
+    only disabled the lynxcgi:// handler when not using the advanced mode.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can entice a user to access a malicious HTTP server,
+    causing Lynx to execute arbitrary commands. NOTE: The advanced mode is
+    not enabled by default. Successful exploitation requires the
+    "lynxcgi://" protocol to be registered with lynx on the victim's
+    system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Lynx users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/lynx-2.8.6-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2929">CVE-2005-2929</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4690">CVE-2008-4690</uri>
+    <uri link="/security/en/glsa/glsa-200511-09.xml">GLSA 200511-09</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Aug 2009 11:47:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 08:16:43 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:37:19 +0000">
+    a3li
+  </metadata>
+</glsa>

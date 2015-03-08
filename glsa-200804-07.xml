@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-07">
+  <title>PECL APC: Buffer Overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability in PECL APC might allow for the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pecl-apc</product>
+  <announced>April 09, 2008</announced>
+  <revised>April 09, 2008: 01</revised>
+  <bug>214576</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php5/pecl-apc" auto="yes" arch="*">
+      <unaffected range="ge">3.0.16-r1</unaffected>
+      <vulnerable range="lt">3.0.16-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PECL Alternative PHP Cache (PECL APC) is a free, open, and robust
+    framework for caching and optimizing PHP intermediate code.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel Papasian discovered a stack-based buffer overflow in the
+    apc_search_paths() function in the file apc.c when processing long
+    filenames.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to execute arbitrary
+    code in PHP applications that pass user-controlled input to the
+    include() function.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PECL APC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php5/pecl-apc-3.0.16-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1488">CVE-2008-1488</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 Apr 2008 14:46:37 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:16 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 23:31:29 +0000">
+    rbu
+  </metadata>
+</glsa>

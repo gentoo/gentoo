@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-05">
+  <title>Mozilla Suite: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities exist in the Mozilla Suite, which is no longer
+    supported by the Mozilla project.
+  </synopsis>
+  <product type="ebuild">mozilla</product>
+  <announced>March 03, 2007</announced>
+  <revised>March 03, 2007: 01</revised>
+  <bug>135257</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <vulnerable range="le">1.7.13</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <vulnerable range="le">1.7.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Suite is a popular all-in-one web browser that includes a
+    mail and news reader.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities ranging from code execution with elevated
+    privileges to information leaks affect the Mozilla Suite.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to browse to a specially crafted
+    website or open a specially crafted mail that could trigger some of the
+    vulnerabilities, potentially allowing execution of arbitrary code,
+    denials of service, information leaks, or cross-site scripting attacks
+    leading to the robbery of cookies of authentication credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Most of the issues, but not all of them, can be prevented by disabling
+    the HTML rendering in the mail client and JavaScript on every
+    application.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    The Mozilla Suite is no longer supported and has been masked after some
+    necessary changes on all the other ebuilds which used to depend on it.
+    Mozilla Suite users should unmerge www-client/mozilla or
+    www-client/mozilla-bin, and switch to a supported product, like
+    SeaMonkey, Thunderbird or Firefox.
+    </p>
+    <code>
+    
+    # emerge --unmerge &quot;www-client/mozilla&quot;
+    
+    # emerge --unmerge &quot;www-client/mozilla-bin&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Mozilla">Official Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Feb 2007 17:38:03 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 15:55:16 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 27 Feb 2007 15:58:20 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-04">
+  <title>Squid: Multiple vulnerabilities</title>
+  <synopsis>
+    Squid contains vulnerabilities in the code handling WCCP, HTTP and LDAP
+    which could lead to Denial of Service, access control bypass, web cache and
+    log poisoning.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>February 02, 2005</announced>
+  <revised>February 02, 2005: 02</revised>
+  <bug>79495</bug>
+  <bug>78776</bug>
+  <bug>80201</bug>
+  <bug>80341</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.7-r5</unaffected>
+      <vulnerable range="lt">2.5.7-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured Web proxy cache designed to run on Unix
+    systems. It supports proxying and caching of HTTP, FTP, and other
+    protocols, as well as SSL support, cache hierarchies, transparent
+    caching, access control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>
+    Squid contains several vulnerabilities:
+    </p>
+    <ul>
+    <li>Buffer overflow when handling WCCP recvfrom()
+    (CAN-2005-0211).</li>
+    <li>Loose checking of HTTP headers (CAN-2005-0173 and
+    CAN-2005-0174).</li>
+    <li>Incorrect handling of LDAP login names with spaces
+    (CAN-2005-0175).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit:
+    </p>
+    <ul>
+    <li>the WCCP buffer overflow to cause Denial of Service.</li>
+    <li>the HTTP header parsing vulnerabilities to inject arbitrary
+    response data, potentially leading to content spoofing, web cache
+    poisoning and other cross-site scripting or HTTP response splitting
+    attacks.</li>
+    <li>the LDAP issue to login with several variations of the same login
+    name, leading to log poisoning.</li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.5.7-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0173">CAN-2005-0173</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0174">CAN-2005-0174</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0175">CAN-2005-0175</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0211">CAN-2005-0211</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 30 Jan 2005 20:28:30 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  2 Feb 2005 12:30:09 +0000">
+    jaervosz
+  </metadata>
+</glsa>

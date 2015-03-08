@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-15">
+  <title>KDM: Local privilege escalation</title>
+  <synopsis>
+    KDM allows logins without password under certain circumstances allowing a
+    local user to gain elevated privileges.
+  </synopsis>
+  <product type="ebuild">KDM</product>
+  <announced>October 14, 2007</announced>
+  <revised>October 14, 2007: 01</revised>
+  <bug>192373</bug>
+  <access>local</access>
+  <affected>
+    <package name="kde-base/kdm" auto="yes" arch="*">
+      <unaffected range="ge">3.5.7-r2</unaffected>
+      <vulnerable range="lt">3.5.7-r2</vulnerable>
+    </package>
+    <package name="kde-base/kdebase" auto="yes" arch="*">
+      <unaffected range="ge">3.5.7-r4</unaffected>
+      <vulnerable range="lt">3.5.7-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDM is the Display Manager for the graphical desktop environment KDE.
+    It is part of the kdebase package.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kees Huijgen discovered an error when checking the credentials which
+    can lead to a login without specifying a password. This only occurs
+    when auto login is configured for at least one user and a password is
+    required to shut down the machine.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could gain root privileges and execute arbitrary
+    commands by logging in as root without specifying root's password.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KDM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdm-3.5.7-r2&quot;</code>
+    <p>
+    All kdebase users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdebase-3.5.7-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4569">CVE-2007-4569</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Oct 2007 00:34:30 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Oct 2007 00:49:35 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 08 Oct 2007 02:58:05 +0000">
+    rbu
+  </metadata>
+</glsa>

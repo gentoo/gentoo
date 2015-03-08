@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-17">
+  <title>ipsec-tools and iputils contain a remote DoS vulnerability</title>
+  <synopsis>
+    racoon, which is included in the ipsec-tools and iputils packages in
+    Portage, does not check the length of ISAKMP headers. Attackers may be able
+    to craft an ISAKMP header of sufficient length to consume all available
+    system resoources, causing a Denial of Service.
+  </synopsis>
+  <product type="ebuild">ipsec-utils</product>
+  <announced>April 24, 2004</announced>
+  <revised>April 24, 2004: 01</revised>
+  <bug>48847</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-firewall/ipsec-tools" auto="yes" arch="amd64">
+      <unaffected range="ge">0.3.1</unaffected>
+      <vulnerable range="lt">0.3.1</vulnerable>
+    </package>
+    <package name="net-misc/iputils" auto="yes" arch="ppc amd64 ppc64 s390">
+      <unaffected range="eq">021109-r3</unaffected>
+      <vulnerable range="eq">021109-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    From <uri link="http://ipsec-tools.sourceforge.net/">http://ipsec-tools.sourceforge.n
+    et/</uri>
+    </p>
+    <p>
+    "IPsec-Tools is a port of KAME's IPsec utilities to the Linux-2.6 IPsec
+    implementation."
+    </p>
+    <p>
+    iputils is a collection of network monitoring tools, including racoon, ping
+    and ping6.
+    </p>
+  </background>
+  <description>
+    <p>
+    When racoon receives an ISAKMP header, it allocates memory based on the
+    length of the header field. Thus, an attacker may be able to cause a Denial
+    of Services by creating a header that is large enough to consume all
+    available system resources.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This vulnerability may allow an attacker to remotely cause a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    ipsec-tools users should upgrade to version 0.2.5 or later:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-firewall/ipsec-tools-0.3.1"
+    # emerge ">=net-firewall/ipsec-tools-0.3.1"</code>
+    <p>
+    iputils users should upgrade to version 021109-r3 or later:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/iputils-021109-r3"
+    # emerge ">=net-misc/iputils-021109-r3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0403">CVE</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

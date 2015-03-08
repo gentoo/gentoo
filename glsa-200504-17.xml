@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-17">
+  <title>XV: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in XV, potentially resulting
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xv</product>
+  <announced>April 19, 2005</announced>
+  <revised>April 19, 2005: 01</revised>
+  <bug>88742</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xv" auto="yes" arch="*">
+      <unaffected range="ge">3.10a-r11</unaffected>
+      <vulnerable range="lt">3.10a-r11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XV is an interactive image manipulation program for the X Window
+    System.
+    </p>
+  </background>
+  <description>
+    <p>
+    Greg Roelofs has reported multiple input validation errors in XV
+    image decoders. Tavis Ormandy of the Gentoo Linux Security Audit Team
+    has reported insufficient validation in the PDS (Planetary Data System)
+    image decoder, format string vulnerabilities in the TIFF and PDS
+    decoders, and insufficient protection from shell meta-characters in
+    malformed filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would require a victim to view a specially
+    created image file using XV, potentially resulting in the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All XV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xv-3.10a-r11&quot;</code>
+  </resolution>
+  <references/>
+  <metadata tag="requester" timestamp="Fri, 15 Apr 2005 12:13:29 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 15 Apr 2005 13:15:45 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Apr 2005 04:58:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

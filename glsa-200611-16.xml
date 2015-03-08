@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-16">
+  <title>Texinfo: Buffer overflow</title>
+  <synopsis>
+    Texinfo is vulnerable to a buffer overflow that could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">texinfo</product>
+  <announced>November 21, 2006</announced>
+  <revised>November 21, 2006: 01</revised>
+  <bug>154316</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/texinfo" auto="yes" arch="*">
+      <unaffected range="ge">4.8-r5</unaffected>
+      <vulnerable range="lt">4.8-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Texinfo is the official documentation system of the GNU project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Miloslav Trmac from Red Hat discovered a buffer overflow in the
+    "readline()" function of texindex.c. The "readline()" function is
+    called by the texi2dvi and texindex commands.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted Texinfo file, an
+    attacker could execute arbitrary code with the rights of the user
+    running Texinfo.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Texinfo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/texinfo-4.8-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4810">CVE-2006-4810</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Nov 2006 21:23:53 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Nov 2006 21:39:27 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Nov 2006 14:40:00 +0000">
+    jaervosz
+  </metadata>
+</glsa>

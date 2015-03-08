@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-34">
+  <title>NTP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NTP, the worst of which
+    could result in remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>December 24, 2014</announced>
+  <revised>December 24, 2014: 2</revised>
+  <bug>533076</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.8</unaffected>
+      <vulnerable range="lt">4.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTP is a protocol designed to synchronize the clocks of computers over a
+      network. The net-misc/ntp package contains the official reference
+      implementation by the NTP Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NTP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote unauthenticated attacker may be able to execute arbitrary code
+      with the privileges of the process, cause a Denial of Service condition,
+      and obtain sensitive information that could assist in other attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/ntp-4.2.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9293">CVE-2014-9293</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9294">CVE-2014-9294</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9295">CVE-2014-9295</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9296">CVE-2014-9296</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 23 Dec 2014 23:07:31 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 19:20:24 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-13">
+  <title>PEAR-Auth: Potential authentication bypass</title>
+  <synopsis>
+    PEAR-Auth did not correctly verify data passed to the DB and LDAP
+    containers, thus allowing to inject false credentials to bypass the
+    authentication.
+  </synopsis>
+  <product type="ebuild">pear-auth</product>
+  <announced>March 17, 2006</announced>
+  <revised>March 17, 2006: 01</revised>
+  <bug>123832</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/PEAR-Auth" auto="yes" arch="*">
+      <unaffected range="ge">1.2.4</unaffected>
+      <vulnerable range="lt">1.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PEAR-Auth is a PEAR package that provides methods to create a PHP
+    based authentication system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Matt Van Gundy discovered that PEAR-Auth did not correctly
+    validate data passed to the DB and LDAP containers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly exploit this vulnerability to
+    bypass the authentication mechanism by injecting specially crafted
+    input to the underlying storage containers.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PEAR-Auth users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-Auth-1.2.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0868">CVE-2006-0868</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Mar 2006 21:29:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Mar 2006 21:29:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 14 Mar 2006 23:22:04 +0000">
+    DerCorny
+  </metadata>
+</glsa>

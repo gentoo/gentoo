@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201012-01">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Chromium, some of which may
+    allow user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>December 17, 2010</announced>
+  <revised>December 17, 2010: 01</revised>
+  <bug>325451</bug>
+  <bug>326717</bug>
+  <bug>330003</bug>
+  <bug>333559</bug>
+  <bug>335750</bug>
+  <bug>338204</bug>
+  <bug>341797</bug>
+  <bug>344201</bug>
+  <bug>347625</bug>
+  <bug>348651</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">8.0.552.224</unaffected>
+      <vulnerable range="lt">8.0.552.224</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Chromium is an open-source web browser project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in Chromium. For further
+    information please consult the release notes referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could trick a user to perform a set of UI actions
+    that trigger a possibly exploitable crash, leading to execution of
+    arbitrary code or a Denial of Service.
+    </p>
+    <p>
+    It was also possible for an attacker to entice a user to visit a
+    specially-crafted web page that would trigger one of the
+    vulnerabilities, leading to execution of arbitrary code within the
+    confines of the sandbox, successful Cross-Site Scripting attacks,
+    violation of the same-origin policy, successful website spoofing
+    attacks, information leak, or a Denial of Service. An attacker could
+    also trick a user to perform a set of UI actions that might result in a
+    successful website spoofing attack.
+    </p>
+    <p>
+    Multiple bugs in the sandbox could result in a sandbox escape.
+    </p>
+    <p>
+    Multiple UI bugs could lead to information leak and successful website
+    spoofing attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Chromium users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/chromium-8.0.552.224&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://googlechromereleases.blogspot.com/2010/06/stable-channel-update_24.html">Release Notes 5.0.375.86</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/07/stable-channel-update.html">Release Notes 5.0.375.99</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/07/stable-channel-update_26.html">Release Notes 5.0.375.125</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/08/stable-channel-update_19.html">Release Notes 5.0.375.127</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/09/stable-beta-channel-updates_14.html">Release Notes 6.0.472.59</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/09/stable-beta-channel-updates_17.html">Release Notes 6.0.472.62</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/10/stable-channel-update.html">Release Notes 7.0.517.41</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/11/stable-channel-update.html">Release Notes 7.0.517.44</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/12/stable-beta-channel-updates.html">Release Notes 8.0.552.215</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2010/12/stable-beta-channel-updates_13.html">Release Notes 8.0.552.224</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Jul 2010 21:33:07 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 20 Nov 2010 20:16:17 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 17 Dec 2010 14:59:00 +0000">
+    keytoaster
+  </metadata>
+</glsa>

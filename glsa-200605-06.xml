@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-06">
+  <title>Mozilla Firefox: Potential remote code execution</title>
+  <synopsis>
+    The Mozilla Firefox 1.5 line is vulnerable to a buffer overflow in the
+    JavaScript extension which may in theory lead to remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">mozilla-firefox</product>
+  <announced>May 06, 2006</announced>
+  <revised>May 06, 2006: 01</revised>
+  <bug>131138</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.3</unaffected>
+      <unaffected range="lt">1.5</unaffected>
+      <vulnerable range="lt">1.5.0.3</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.3</unaffected>
+      <unaffected range="lt">1.5</unaffected>
+      <vulnerable range="lt">1.5.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is the next-generation web browser from the
+    Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Martijn Wargers and Nick Mott discovered a vulnerability when
+    rendering malformed JavaScript content. The Mozilla Firefox 1.0 line is
+    not affected.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If JavaScript is enabled, by tricking a user into visiting a
+    malicious web page which would send a specially crafted HTML script
+    that contains references to deleted objects with the "designMode"
+    property enabled, an attacker can crash the web browser and in theory
+    manage to execute arbitrary code with the rights of the user running
+    the browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox 1.5 users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.3&quot;</code>
+    <p>
+    All Mozilla Firefox 1.5 binary users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1993">CVE-2006-1993</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 04 May 2006 16:54:02 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 05 May 2006 18:30:27 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 06 May 2006 13:15:08 +0000">
+    falco
+  </metadata>
+</glsa>

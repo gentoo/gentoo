@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-14">
+  <title>Trac: Cross-site request forgery</title>
+  <synopsis>
+    Trac allows remote attackers to execute unauthorized actions as other
+    users.
+  </synopsis>
+  <product type="ebuild">trac</product>
+  <announced>December 12, 2006</announced>
+  <revised>December 12, 2006: 01</revised>
+  <bug>154574</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/trac" auto="yes" arch="*">
+      <unaffected range="ge">0.10.1</unaffected>
+      <vulnerable range="lt">0.10.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Trac is a wiki and issue tracking system for software development
+    projects.
+    </p>
+  </background>
+  <description>
+    <p>
+    Trac allows users to perform certain tasks via HTTP requests without
+    performing correct validation on those requests.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could entice an authenticated user to browse to a specially
+    crafted URL, allowing the attacker to execute actions in the Trac
+    instance as if they were the user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Trac users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/trac-0.10.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5848">CVE-2006-5848</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5878">CVE-2006-5878</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 Dec 2006 06:01:31 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 07 Dec 2006 10:06:43 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 18:17:55 +0000">
+    shellsage
+  </metadata>
+</glsa>

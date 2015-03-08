@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-19">
+  <title>courier-imap: Remote Format String Vulnerability</title>
+  <synopsis>
+    There is a format string vulnerability in non-standard configurations of
+    courier-imapd which may be exploited remotely. An attacker may be able to
+    execute arbitrary code as the user running courier-imapd (oftentimes root).
+  </synopsis>
+  <product type="ebuild">courier-imap</product>
+  <announced>August 19, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>60865</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/courier-imap" auto="yes" arch="*">
+      <unaffected range="ge">3.0.5</unaffected>
+      <vulnerable range="le">3.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Courier-IMAP is an IMAP server which is part of the Courier mail
+    system. It provides access only to maildirs.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a format string vulnerability in the auth_debug() function
+    which can be exploited remotely, potentially leading to arbitrary code
+    execution as the user running the IMAP daemon (oftentimes root). A
+    remote attacker may send username or password information containing
+    printf() format tokens (such as "%s"), which will crash the server or
+    cause it to execute arbitrary code.
+    </p>
+    <p>
+    This vulnerability can only be exploited if DEBUG_LOGIN is set to
+    something other than 0 in the imapd config file.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    If DEBUG_LOGIN is enabled in the imapd configuration, a remote attacker
+    may execute arbitrary code as the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Set the DEBUG_LOGIN option in /etc/courier-imap/imapd to 0. (This is
+    the default value.)
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All courier-imap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-mail/courier-imap-3.0.5&quot;
+    # emerge &quot;&gt;=net-mail/courier-imap-3.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=131&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0777">CVE-2004-0777</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 19 Aug 2004 18:47:27 +0000">
+    condordes
+  </metadata>
+</glsa>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201409-01">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark which could
+    allow remote attackers to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>September 01, 2014</announced>
+  <revised>September 01, 2014: 1</revised>
+  <bug>519014</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.10.9</unaffected>
+      <vulnerable range="lt">1.10.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause a Denial of Service condition via specially
+      crafted packets. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.10.9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5161">CVE-2014-5161</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5162">CVE-2014-5162</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5163">CVE-2014-5163</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5164">CVE-2014-5164</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5165">CVE-2014-5165</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 25 Aug 2014 20:18:05 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Mon, 01 Sep 2014 15:52:10 +0000">K_F</metadata>
+</glsa>

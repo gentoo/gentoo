@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-08">
+  <title>Netpbm: User-assisted arbitrary code execution</title>
+  <synopsis>A vulnerability in Netpbm could result in execution of arbitrary
+    code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">Netpbm</product>
+  <announced>November 13, 2013</announced>
+  <revised>November 13, 2013: 1</revised>
+  <bug>308025</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/netpbm" auto="yes" arch="*">
+      <unaffected range="ge">10.49.00</unaffected>
+      <vulnerable range="lt">10.49.00</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Netpbm is a toolkit for manipulation of graphic images, including
+      conversion of images between a variety of different formats.
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow exists in converter/ppm/xpmtoppm.c in
+      Netpbm.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted XMP
+      file using Netpbm, possibly resulting in  execution of arbitrary code
+      with the privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Netpbm users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/netpbm-10.49.00"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4274">
+      CVE-2009-4274
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:16 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Nov 2013 11:13:34 +0000">Zlogene</metadata>
+</glsa>

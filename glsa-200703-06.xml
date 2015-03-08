@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-06">
+  <title>AMD64 x86 emulation Qt library: Integer overflow</title>
+  <synopsis>
+    The AMD64 x86 emulation Qt library makes use of an insecure version of the
+    Qt library, potentially allowing for the remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">emul-linux-x86-qtlibs</product>
+  <announced>March 04, 2007</announced>
+  <revised>March 04, 2007: 01</revised>
+  <bug>153704</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/emul-linux-x86-qtlibs" auto="yes" arch="*">
+      <unaffected range="ge">10.0</unaffected>
+      <vulnerable range="lt">10.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The AMD64 x86 emulation Qt library for AMD64 emulates the x86 (32-bit)
+    Qt library on the AMD64 (64-bit) architecture.
+    </p>
+  </background>
+  <description>
+    <p>
+    An integer overflow flaw has been found in the pixmap handling of Qt,
+    making the AMD64 x86 emulation Qt library vulnerable as well.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted pixmap image in an
+    application using the AMD64 x86 emulation Qt library, a remote attacker
+    could cause an application crash or the remote execution of arbitrary
+    code with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AMD64 x86 emulation Qt library users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-qtlibs-10.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200611-02.xml">GLSA 200611-02</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4811">CVE-2006-4811</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 17 Feb 2007 23:37:01 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Feb 2007 00:18:57 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 16:14:33 +0000">
+    shellsage
+  </metadata>
+</glsa>

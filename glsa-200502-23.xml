@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-23">
+  <title>KStars: Buffer overflow in fliccd</title>
+  <synopsis>
+    KStars is vulnerable to a buffer overflow that could lead to arbitrary code
+    execution with elevated privileges.
+  </synopsis>
+  <product type="ebuild">kstars</product>
+  <announced>February 16, 2005</announced>
+  <revised>February 16, 2005: 01</revised>
+  <bug>79585</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="kde-base/kdeedu" auto="yes" arch="*">
+      <unaffected range="ge">3.3.2-r1</unaffected>
+      <vulnerable range="lt">3.3.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. KStars is a desktop planetarium for KDE.
+    It includes support for the Instrument Neutral Distributed Interface
+    (INDI).
+    </p>
+  </background>
+  <description>
+    <p>
+    Erik Sjolund discovered a buffer overflow in fliccd which is part
+    of the INDI support in KStars.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability to execute code with
+    elevated privileges. If fliccd does not run as daemon remote
+    exploitation of this vulnerability is not possible. KDE as shipped by
+    Gentoo does not start the daemon in the default installation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KStars users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdeedu-3.3.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0011">CAN-2005-0011</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 15 Feb 2005 06:01:05 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 16 Feb 2005 20:27:57 +0000">
+    jaervosz
+  </metadata>
+</glsa>

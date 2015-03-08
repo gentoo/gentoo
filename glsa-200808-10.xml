@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-10">
+  <title>Adobe Reader: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Adobe Reader is vulnerable to execution of arbitrary code via a crafted
+    PDF.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>August 09, 2008</announced>
+  <revised>August 09, 2008: 01</revised>
+  <bug>233383</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">8.1.2-r3</unaffected>
+      <vulnerable range="lt">8.1.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Reader (formerly Adobe Acrobat Reader) is a closed-source PDF
+    reader.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Johns Hopkins University Applied Physics Laboratory reported that
+    input to an unspecified JavaScript method is not properly validated.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    document, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2641">CVE-2008-2641</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 06 Aug 2008 23:14:17 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 06 Aug 2008 23:14:50 +0000">
+    rbu
+  </metadata>
+</glsa>

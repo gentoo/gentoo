@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-21">
+  <title>mit-krb5: Multiple buffer overflows in krb5_aname_to_localname</title>
+  <synopsis>
+    mit-krb5 contains multiple buffer overflows in the function
+    krb5_aname_to_localname(). This could potentially lead to a complete remote
+    system compromise.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>June 29, 2004</announced>
+  <revised>June 29, 2004: 01</revised>
+  <bug>52744</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.3.3-r1</unaffected>
+      <vulnerable range="le">1.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mit-krb5 is the free implementation of the Kerberos network authentication
+    protocol by the Massachusetts Institute of Technology.
+    </p>
+  </background>
+  <description>
+    <p>
+    The library function krb5_aname_to_localname() contains multiple buffer
+    overflows. This is only exploitable if explicit mapping or rules-based
+    mapping is enabled. These are not enabled as default.
+    </p>
+    <p>
+    With explicit mapping enabled, an attacker must authenticate using a
+    principal name listed in the explicit mapping list.
+    </p>
+    <p>
+    With rules-based mapping enabled, an attacker must first be able to create
+    arbitrary principal names either in the local realm Kerberos realm or in a
+    remote realm from which the local realm's service are reachable by
+    cross-realm authentication.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could use these vulnerabilities to execute arbitrary code with
+    the permissions of the user running mit-krb5, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    mit-krb5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-crypt/mit-krb5-1.3.3-r1"
+    # emerge ">=app-crypt/mit-krb5-1.3.3-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0523">CAN-2004-0523</uri>
+    <uri link="http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2004-001-an_to_ln.txt">MIT krb5 Security Advisory</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

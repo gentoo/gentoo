@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-14">
+  <title>libsndfile: Arbitrary code execution</title>
+  <synopsis>An integer overflow in libsndfile might allow remote attackers to
+    execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libsndfile</product>
+  <announced>December 17, 2013</announced>
+  <revised>December 17, 2013: 1</revised>
+  <bug>375125</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libsndfile" auto="yes" arch="*">
+      <unaffected range="ge">1.0.25</unaffected>
+      <vulnerable range="lt">1.0.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libsndfile is a C library for reading and writing files containing
+      sampled sound through one standard library interface.
+    </p>
+  </background>
+  <description>
+    <p>An integer overflow flaw has been discovered in Libsndfile.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PAF
+      file using libsndfile, possibly resulting in execution of arbitrary code
+      with the privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libsndfile users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libsndfile-1.0.25"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since September 12, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2696">CVE-2011-2696</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:34 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Dec 2013 11:38:44 +0000">Zlogene</metadata>
+</glsa>

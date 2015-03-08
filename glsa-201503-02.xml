@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-02">
+  <title>D-Bus: Denial of Service</title>
+  <synopsis>A vulnerability has been found in D-Bus, possibly resulting in
+    local Denial of Service.
+  </synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>March 07, 2015</announced>
+  <revised>March 07, 2015: 1</revised>
+  <bug>539482</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.8.16</unaffected>
+      <vulnerable range="lt">1.8.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system, a simple way for applications to talk to
+      one another.
+    </p>
+  </background>
+  <description>
+    <p>D-Bus doesn’t validate the source of ActivationFailure signals.</p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.8.16"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0245">CVE-2015-0245</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 25 Feb 2015 04:08:15 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Mar 2015 08:59:46 +0000">Zlogene</metadata>
+</glsa>

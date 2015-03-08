@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-05">
+  <title>Pound: HTTP request smuggling</title>
+  <synopsis>
+    Pound is vulnerable to HTTP request smuggling, which could be exploited to
+    bypass security restrictions or poison web caches.
+  </synopsis>
+  <product type="ebuild">pound</product>
+  <announced>June 07, 2006</announced>
+  <revised>November 24, 2006: 03</revised>
+  <bug>118541</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/pound" auto="yes" arch="*">
+      <unaffected range="ge">2.0.5</unaffected>
+      <unaffected range="rge">1.10</unaffected>
+      <unaffected range="rge">1.9.4</unaffected>
+      <vulnerable range="lt">2.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pound is a reverse proxy, load balancer and HTTPS front-end. It allows
+    to distribute the load on several web servers and offers a SSL wrapper
+    for web servers that do not support SSL directly.
+    </p>
+  </background>
+  <description>
+    <p>
+    Pound fails to handle HTTP requests with conflicting "Content-Length"
+    and "Transfer-Encoding" headers correctly.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could exploit this vulnerability by sending HTTP requests
+    with specially crafted "Content-Length" and "Transfer-Encoding" headers
+    to bypass certain security restrictions or to poison the web proxy
+    cache.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pound users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose www-servers/pound</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3751">CVE-2005-3751</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 May 2006 15:47:49 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 25 May 2006 18:03:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 29 May 2006 16:09:23 +0000">
+    DerCorny
+  </metadata>
+</glsa>

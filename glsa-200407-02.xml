@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-02">
+  <title>Linux Kernel: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in the Linux kernel used by
+    GNU/Linux systems. Patched, or updated versions of these kernels have been
+    released and details are included in this advisory.
+  </synopsis>
+  <product type="ebuild">Kernel</product>
+  <announced>July 03, 2004</announced>
+  <revised>March 27, 2011: 04</revised>
+  <bug>47881</bug>
+  <bug>49637</bug>
+  <bug>53804</bug>
+  <bug>54976</bug>
+  <bug>55698</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-kernel/aa-sources" auto="no" arch="*">
+      <unaffected range="eq">2.4.23-r2</unaffected>
+      <vulnerable range="lt">2.4.23-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/alpha-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.21-r8</unaffected>
+      <vulnerable range="lt">2.4.21-r8</vulnerable>
+    </package>
+    <package name="sys-kernel/ck-sources" auto="no" arch="*">
+      <unaffected range="eq">2.4.26-r1</unaffected>
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/compaq-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.9.32.7-r7</unaffected>
+      <vulnerable range="lt">2.4.9.32.7-r7</vulnerable>
+    </package>
+    <package name="sys-kernel/development-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/gaming-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.20-r14</unaffected>
+      <vulnerable range="lt">2.4.20-r14</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.19-r17</unaffected>
+      <unaffected range="rge">2.4.20-r20</unaffected>
+      <unaffected range="rge">2.4.22-r12</unaffected>
+      <unaffected range="rge">2.4.25-r5</unaffected>
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/grsec-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26.2.0-r5</unaffected>
+      <vulnerable range="lt">2.4.26.2.0-r5</vulnerable>
+    </package>
+    <package name="sys-kernel/gs-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.25_pre7-r7</unaffected>
+      <vulnerable range="lt">2.4.25_pre7-r7</vulnerable>
+    </package>
+    <package name="sys-kernel/hardened-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/hardened-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/hppa-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/hppa-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26_p6</unaffected>
+      <vulnerable range="lt">2.4.26_p6</vulnerable>
+    </package>
+    <package name="sys-kernel/ia64-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24-r5</unaffected>
+      <vulnerable range="lt">2.4.24-r5</vulnerable>
+    </package>
+    <package name="sys-kernel/mips-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/mm-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/openmosix-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.22-r10</unaffected>
+      <vulnerable range="lt">2.4.22-r10</vulnerable>
+    </package>
+    <package name="sys-kernel/pac-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r8</unaffected>
+      <vulnerable range="lt">2.4.23-r8</vulnerable>
+    </package>
+    <package name="sys-kernel/pegasos-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/pegasos-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/planet-ccrma-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.21-r10</unaffected>
+      <vulnerable range="lt">2.4.21-r10</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc64-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/rsbac-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/rsbac-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/selinux-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/sparc-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/uclinux-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26_p0-r2</unaffected>
+      <vulnerable range="lt">2.4.26_p0-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/usermode-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.24-r5</unaffected>
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/vserver-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.0</unaffected>
+      <vulnerable range="lt">2.0</vulnerable>
+      <vulnerable range="ge">2.4</vulnerable>
+      <vulnerable range="lt">2.4.26.1.3.9-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/win4lin-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/wolk-sources" auto="yes" arch="*">
+      <unaffected range="rge">4.9-r9</unaffected>
+      <unaffected range="rge">4.11-r6</unaffected>
+      <unaffected range="ge">4.14-r3</unaffected>
+      <vulnerable range="lt">4.14-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/xbox-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+    <package name="sys-kernel/xfs-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24-r8</unaffected>
+      <vulnerable range="lt">2.4.24-r8</vulnerable>
+    </package>
+    <package name="sys-kernel/vanilla-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.27</unaffected>
+      <vulnerable range="le">2.4.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Linux kernel is responsible for managing the core aspects of a
+    GNU/Linux system, providing an interface for core system applications
+    as well as providing the essential structure and capability to access
+    hardware that is needed for a running system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple flaws have been discovered in the Linux kernel. This advisory
+    corrects the following issues:
+    </p>
+    <ul>
+    <li>
+    CAN-2004-0109: This vulnerability allows privilege escalation using
+    ISO9660 file systems through a buffer overflow via a malformed file
+    system containing a long symbolic link entry. This can allow arbitrary
+    code execution at kernel level.
+    </li>
+    <li>
+    CAN-2004-0133: The XFS file system in 2.4 series kernels has an
+    information leak by which data in the memory can be written to the
+    device hosting the file system, allowing users to obtain portions of
+    kernel memory by reading the raw block device.
+    </li>
+    <li>
+    CAN-2004-0177: The ext3 file system in 2.4 series kernels does not
+    properly initialize journal descriptor blocks, causing an information
+    leak by which data in the memory can be written to the device hosting
+    the file system, allowing users to obtain portions of kernel memory by
+    reading the raw device.
+    </li>
+    <li>
+    CAN-2004-0181: The JFS file system in 2.4 series kernels has an
+    information leak by which data in the memory can be written to the
+    device hosting the file system, allowing users to obtain portions of
+    kernel memory by reading the raw device.
+    </li>
+    <li>
+    CAN-2004-0178: The OSS Sound Blaster [R] Driver has a Denial of Service
+    vulnerability since it does not handle certain sample sizes properly.
+    This allows local users to hang the kernel.
+    </li>
+    <li>
+    CAN-2004-0228: Due to an integer signedness error in the CPUFreq /proc
+    handler code in 2.6 series Linux kernels, local users can escalate
+    their privileges.
+    </li>
+    <li>
+    CAN-2004-0229: The framebuffer driver in 2.6 series kernel drivers does
+    not use the fb_copy_cmap method of copying structures. The impact of
+    this issue is unknown, however.
+    </li>
+    <li>
+    CAN-2004-0394: A buffer overflow in the panic() function of 2.4 series
+    Linux kernels exists, but it may not be exploitable under normal
+    circumstances due to its functionality.
+    </li>
+    <li>
+    CAN-2004-0427: The do_fork() function in both 2.4 and 2.6 series Linux
+    kernels does not properly decrement the mm_count counter when an error
+    occurs, triggering a memory leak that allows local users to cause a
+    Denial of Service by exhausting other applications of memory; causing
+    the kernel to panic or to kill services.
+    </li>
+    <li>
+    CAN-2004-0495: Multiple vulnerabilities found by the Sparse source
+    checker in the kernel allow local users to escalate their privileges or
+    gain access to kernel memory.
+    </li>
+    <li>
+    CAN-2004-0535: The e1000 NIC driver does not properly initialize memory
+    structures before using them, allowing users to read kernel memory.
+    </li>
+    <li>
+    CAN-2004-0554: 2.4 and 2.6 series kernels running on an x86 or an AMD64
+    architecture allow local users to cause a Denial of Service by a total
+    system hang, due to an infinite loop that triggers a signal handler
+    with a certain sequence of fsave and frstor instructions.
+    </li>
+    <li>
+    Local DoS in PaX: If ASLR is enabled as a GRSecurity PaX feature, a
+    Denial of Service can be achieved by putting the kernel into an
+    infinite loop. Only 2.6 series GRSecurity kernels are affected by this
+    issue.
+    </li>
+    <li>
+    RSBAC 1.2.3 JAIL issues: A flaw in the RSBAC JAIL implementation allows
+    suid/sgid files to be created inside the jail since the relevant module
+    does not check the corresponding mode values. This can allow privilege
+    escalation inside the jail. Only rsbac-(dev-)sources are affected by
+    this issue.
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    Arbitrary code with normal non-super-user privileges may be able to
+    exploit any of these vulnerabilities; gaining kernel level access to
+    memory structures and hardware devices. This may be used for further
+    exploitation of the system, to leak sensitive data or to cause a Denial
+    of Service on the affected kernel.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Although users may not be affected by certain vulnerabilities, all
+    kernels are affected by the CAN-2004-0394, CAN-2004-0427 and
+    CAN-2004-0554 issues which have no workaround. As a result, all users
+    are urged to upgrade their kernels to patched versions.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to upgrade to the latest available sources for
+    their system:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv your-favorite-sources
+    # emerge your-favorite-sources
+    
+    # # Follow usual procedure for compiling and installing a kernel.
+    # # If you use genkernel, run genkernel as you would do normally.</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0109">CVE-2004-0109</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0133">CVE-2004-0133</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0177">CVE-2004-0177</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0178">CVE-2004-0178</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0181">CVE-2004-0181</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0228">CVE-2004-0228</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0229">CVE-2004-0229</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0394">CVE-2004-0394</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0427">CVE-2004-0427</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0495">CVE-2004-0495</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0535">CVE-2004-0535</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0554">CVE-2004-0554</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1983">CVE-2004-1983</uri>
+  </references>
+  <metadata tag="submitter">
+    plasmaroo
+  </metadata>
+</glsa>

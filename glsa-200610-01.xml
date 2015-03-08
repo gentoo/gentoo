@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-01">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>
+    The Mozilla Foundation has reported multiple security vulnerabilities
+    related to Mozilla Thunderbird.
+  </synopsis>
+  <product type="ebuild">thunderbird</product>
+  <announced>October 04, 2006</announced>
+  <revised>October 04, 2006: 01</revised>
+  <bug>147653</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.7</unaffected>
+      <vulnerable range="lt">1.5.0.7</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.7</unaffected>
+      <vulnerable range="lt">1.5.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Thunderbird mail client is a redesign of the Mozilla Mail
+    component.
+    </p>
+  </background>
+  <description>
+    <p>
+    A number of vulnerabilities have been found and fixed in Mozilla
+    Thunderbird. For details please consult the references below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    The most severe vulnerabilities might lead to the execution of
+    arbitrary code with the rights of the user running the application.
+    Other vulnerabilities include program crashes and the acceptance of
+    forged certificates.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.5.0.7&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.5.0.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4253">CVE-2006-4253</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4340">CVE-2006-4340</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4565">CVE-2006-4565</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4566">CVE-2006-4566</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4567">CVE-2006-4567</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4570">CVE-2006-4570</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4571">CVE-2006-4571</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 28 Sep 2006 19:46:25 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 29 Sep 2006 21:05:25 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Sep 2006 21:18:44 +0000">
+    vorlon078
+  </metadata>
+</glsa>

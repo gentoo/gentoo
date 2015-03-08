@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-11">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>
+    MIT Kerberos 5 is vulnerable to a Denial of Service attack and remote
+    execution of arbitrary code, possibly leading to the compromise of the
+    entire Kerberos realm.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>July 12, 2005</announced>
+  <revised>July 12, 2005: 01</revised>
+  <bug>98799</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.4.1-r1</unaffected>
+      <vulnerable range="lt">1.4.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is the free implementation of the Kerberos network
+    authentication protocol by the Massachusetts Institute of Technology.
+    </p>
+  </background>
+  <description>
+    <p>
+    Daniel Wachdorf discovered that MIT Kerberos 5 could corrupt the
+    heap by freeing unallocated memory when receiving a special TCP request
+    (CAN-2005-1174). He also discovered that the same request could lead to
+    a single-byte heap overflow (CAN-2005-1175). Magnus Hagander discovered
+    that krb5_recvauth() function of MIT Kerberos 5 might try to
+    double-free memory (CAN-2005-1689).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Although exploitation is considered difficult, a remote attacker
+    could exploit the single-byte heap overflow and the double-free
+    vulnerability to execute arbitrary code, which could lead to the
+    compromise of the whole Kerberos realm. A remote attacker could also
+    use the heap corruption to cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.4.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1174">CAN-2005-1174</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1175">CAN-2005-1175</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1689">CAN-2005-1689</uri>
+    <uri link="http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2005-002-kdc.txt">MITKRB5-SA-2005-002</uri>
+    <uri link="http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2005-003-recvauth.txt">MITKRB5-SA-2005-003</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 08 Jul 2005 08:49:39 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 08 Jul 2005 14:57:37 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 12 Jul 2005 19:05:46 +0000">
+    jaervosz
+  </metadata>
+</glsa>

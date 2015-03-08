@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-18">
+  <title>cdrtools: Local root vulnerability in cdrecord if set SUID root</title>
+  <synopsis>
+    cdrecord, if manually set SUID root, is vulnerable to a local root exploit
+    allowing users to escalate privileges.
+  </synopsis>
+  <product type="ebuild">cdrtools</product>
+  <announced>September 14, 2004</announced>
+  <revised>September 14, 2004: 01</revised>
+  <bug>63187</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-cdr/cdrtools" auto="yes" arch="*">
+      <unaffected range="ge">2.01_alpha37-r1</unaffected>
+      <unaffected range="rge">2.01_alpha28-r2</unaffected>
+      <vulnerable range="le">2.01_alpha37</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The cdrtools package is a set of tools for CD recording, including the
+    popular cdrecord command-line utility.
+    </p>
+  </background>
+  <description>
+    <p>
+    Max Vozeler discovered that the cdrecord utility, when set to SUID root,
+    fails to drop root privileges before executing a user-supplied RSH program.
+    By default, Gentoo does not ship the cdrecord utility as SUID root and
+    therefore is not vulnerable. However, many users (and CD-burning
+    front-ends) set this manually after installation.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could specify a malicious program using the $RSH
+    environment variable and have it executed by the SUID cdrecord, resulting
+    in root privileges escalation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    As a workaround, you could remove the SUID rights from your cdrecord
+    utility :
+    </p>
+    <code>
+    # chmod a-s /usr/bin/cdrecord</code>
+  </workaround>
+  <resolution>
+    <p>
+    All cdrtools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-cdr/cdrtools-2.01_alpha37-r1"
+    # emerge ">=app-cdr/cdrtools-2.01_alpha37-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0806">CAN-2004-0806</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Sep 2004 07:01:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 14 Sep 2004 15:13:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Sep 2004 20:25:30 +0000">
+    jaervosz
+  </metadata>
+</glsa>

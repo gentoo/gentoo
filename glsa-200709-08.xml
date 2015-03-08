@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-08">
+  <title>id3lib: Insecure temporary file creation</title>
+  <synopsis>
+    A vulnerability has been discovered in id3lib allowing local users to
+    overwrite arbitrary files via a symlink attack.
+  </synopsis>
+  <product type="ebuild">id3lib</product>
+  <announced>September 15, 2007</announced>
+  <revised>September 15, 2007: 01</revised>
+  <bug>189610</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-libs/id3lib" auto="yes" arch="*">
+      <unaffected range="ge">3.8.3-r6</unaffected>
+      <vulnerable range="lt">3.8.3-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    id3lib is an open-source, cross-platform software development library
+    for reading, writing, and manipulating ID3v1 and ID3v2 tags.
+    </p>
+  </background>
+  <description>
+    <p>
+    Nikolaus Schulz discovered that the function RenderV2ToFile() in file
+    src/tag_file.cpp creates temporary files in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability via a symlink attack
+    to overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All id3lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/id3lib-3.8.3-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4460">CVE-2007-4460</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 13 Sep 2007 20:50:09 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 14 Sep 2007 08:35:20 +0000">
+    falco
+  </metadata>
+</glsa>

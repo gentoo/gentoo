@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-05">
+  <title>pidgin-otr: Arbitrary code execution</title>
+  <synopsis>A format string vulnerability in pidgin-otr may allow execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">pidgin-otr</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>416263</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-plugins/pidgin-otr" auto="yes" arch="*">
+      <unaffected range="ge">3.2.1</unaffected>
+      <vulnerable range="lt">3.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>pidgin-otr messaging allows you to have private conversations over
+      instant messaging.
+    </p>
+  </background>
+  <description>
+    <p>A format string vulnerability has been found in the "log_message_cb()"
+      function in otr-plugin.c.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All pidgin-otr users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-plugins/pidgin-otr-3.2.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2369">CVE-2012-2369</uri>
+  </references>
+  <metadata timestamp="Sun, 10 Jun 2012 15:39:18 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 22:35:33 +0000" tag="submitter">ackle</metadata>
+</glsa>

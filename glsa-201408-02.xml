@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-02">
+  <title>FreeType: Arbitrary code execution</title>
+  <synopsis>A vulnerability in FreeType could result in execution of arbitrary
+    code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">freetype</product>
+  <announced>August 09, 2014</announced>
+  <revised>August 09, 2014: 1</revised>
+  <bug>504088</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.5.3-r1</unaffected>
+      <vulnerable range="lt">2.5.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeType is a high-quality and portable font engine.</p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow exists in Freetype’s cf2_hintmap_build
+      function in cff/cf2hints.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code or cause a
+      Denial of Service condition via specially crafted font file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeType users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/freetype-2.5.3-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2240">CVE-2014-2240</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Jul 2014 20:29:39 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 09 Aug 2014 19:09:10 +0000">Zlogene</metadata>
+</glsa>

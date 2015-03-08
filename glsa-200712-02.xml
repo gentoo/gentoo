@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-02">
+  <title>Cacti: SQL injection</title>
+  <synopsis>
+    An SQL injection vulnerability has been discovered in Cacti.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>December 05, 2007</announced>
+  <revised>December 05, 2007: 02</revised>
+  <bug>199509</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="rge">0.8.6j-r7</unaffected>
+      <unaffected range="ge">0.8.7a</unaffected>
+      <vulnerable range="lt">0.8.7a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cacti is a complete web-based frontend to rrdtool.
+    </p>
+  </background>
+  <description>
+    <p>
+    It has been reported that the "local_graph_id" variable used in the
+    file graph.php is not properly sanitized before being processed in an
+    SQL statement.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted request to the
+    vulnerable host, possibly resulting in the execution of arbitrary SQL
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cacti users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.6j-r7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6035">CVE-2007-6035</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Dec 2007 22:34:20 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 02 Dec 2007 22:34:29 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Dec 2007 22:01:32 +0000">
+    p-y
+  </metadata>
+</glsa>

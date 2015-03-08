@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-22">
+  <title>Davfs2, lvm-user: Insecure tempfile handling</title>
+  <synopsis>
+    Davfs2 and the lvmcreate_initrd script (included in the lvm-user package)
+    are both vulnerable to symlink attacks, potentially allowing a local user
+    to overwrite arbitrary files with the rights of the user running them.
+  </synopsis>
+  <product type="ebuild">davfs2</product>
+  <announced>November 11, 2004</announced>
+  <revised>November 11, 2004: 01</revised>
+  <bug>68406</bug>
+  <bug>69149</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-fs/davfs2" auto="yes" arch="*">
+      <unaffected range="ge">0.2.2-r1</unaffected>
+      <vulnerable range="lt">0.2.2-r1</vulnerable>
+    </package>
+    <package name="sys-fs/lvm-user" auto="yes" arch="*">
+      <unaffected range="ge">1.0.7-r2</unaffected>
+      <vulnerable range="lt">1.0.7-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Davfs2 is a file system driver that allows you to mount a WebDAV
+    server as a local disk drive. lvm-user is a package providing userland
+    utilities for LVM (Logical Volume Management) 1.x features.
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Schilhabel from the Gentoo Linux Security Audit Team found
+    that Davfs2 insecurely created .pid files in /tmp. Furthermore, Trustix
+    Secure Linux found that the lvmcreate_initrd script, included in the
+    lvm-user Gentoo package, also creates temporary files in
+    world-writeable directories with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When Davfs2 or lvmcreate_initrd is called, this would result in the
+    file being overwritten with the rights of the user running the
+    software, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Davfs2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-fs/davfs2-0.2.2-r1"</code>
+    <p>
+    All lvm-user users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=sys-fs/lvm-user-1.0.7-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0972">CAN-2004-0972</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 10 Nov 2004 09:15:59 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Nov 2004 20:29:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

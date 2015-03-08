@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-11">
+  <title>Mozilla Suite, Mozilla Firefox: Remote compromise</title>
+  <synopsis>
+    Several vulnerabilities in the Mozilla Suite and Firefox allow an attacker
+    to conduct cross-site scripting attacks or to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">mozilla</product>
+  <announced>May 15, 2005</announced>
+  <revised>May 15, 2005: 01</revised>
+  <bug>91859</bug>
+  <bug>92393</bug>
+  <bug>92394</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4</unaffected>
+      <vulnerable range="lt">1.0.4</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4</unaffected>
+      <vulnerable range="lt">1.0.4</vulnerable>
+    </package>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.8</unaffected>
+      <vulnerable range="lt">1.7.8</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.8</unaffected>
+      <vulnerable range="lt">1.7.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Suite is a popular all-in-one web browser that
+    includes a mail and news reader. Mozilla Firefox is the next-generation
+    browser from the Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Mozilla Suite and Firefox do not properly protect "IFRAME"
+    JavaScript URLs from being executed in context of another URL in the
+    history list (CAN-2005-1476). The Mozilla Suite and Firefox also fail
+    to verify the "IconURL" parameter of the "InstallTrigger.install()"
+    function (CAN-2005-1477). Michael Krax and Georgi Guninski discovered
+    that it is possible to bypass JavaScript-injection security checks by
+    wrapping the javascript: URL within the view-source: or jar:
+    pseudo-protocols (MFSA2005-43).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious remote attacker could use the "IFRAME" issue to
+    execute arbitrary JavaScript code within the context of another
+    website, allowing to steal cookies or other sensitive data. By
+    supplying a javascript: URL as the "IconURL" parameter of the
+    "InstallTrigger.Install()" function, a remote attacker could also
+    execute arbitrary JavaScript code. Combining both vulnerabilities with
+    a website which is allowed to install software or wrapping javascript:
+    URLs within the view-source: or jar: pseudo-protocols could possibly
+    lead to the execution of arbitrary code with user privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Affected systems can be protected by disabling JavaScript.
+    However, we encourage Mozilla Suite or Mozilla Firefox users to upgrade
+    to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.4&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.4&quot;</code>
+    <p>
+    All Mozilla Suite users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.8&quot;</code>
+    <p>
+    All Mozilla Suite binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1476">CAN-2005-1476</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1477">CAN-2005-1477</uri>
+    <uri link="http://www.mozilla.org/security/announce/mfsa2005-43.html">Mozilla Foundation Security Advisory 2005-43</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 12 May 2005 04:49:53 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 May 2005 08:27:49 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 15 May 2005 08:10:06 +0000">
+    koon
+  </metadata>
+</glsa>

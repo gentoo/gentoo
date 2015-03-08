@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-19">
+  <title>rssh: Access restriction bypass</title>
+  <synopsis>Multiple vulnerabilities have been found in rssh, allowing local
+    attackers to bypass access restrictions.
+  </synopsis>
+  <product type="ebuild">rssh</product>
+  <announced>November 28, 2013</announced>
+  <revised>November 28, 2013: 1</revised>
+  <bug>415255</bug>
+  <bug>445166</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-shells/rssh" auto="yes" arch="*">
+      <unaffected range="ge">2.3.4</unaffected>
+      <vulnerable range="lt">2.3.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>rssh is a restricted shell, allowing only a few commands like scp or
+      sftp. It is often used as a complement to OpenSSH to provide limited
+      access to users.
+    </p>
+  </background>
+  <description>
+    <p>Multiple command line parsing and validation vulnerabilities have been
+      discovered in rssh. Please review the CVE identifiers referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Multiple parsing and validation vulnerabilities can cause the
+      restrictions set up by rssh to be bypassed. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rssh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/rssh-2.3.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2252">
+      CVE-2012-2252
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3478">
+      CVE-2012-3478
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 24 Aug 2012 14:16:31 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:18:46 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-04">
+  <title>PostgreSQL: SQL injection</title>
+  <synopsis>
+    A flaw in the multibyte character handling allows execution of arbitrary
+    SQL statements.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>July 09, 2006</announced>
+  <revised>June 26, 2007: 03</revised>
+  <bug>134168</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge">8.0.8</unaffected>
+      <unaffected range="eq">7.4*</unaffected>
+      <vulnerable range="lt">8.0.8</vulnerable>
+      <vulnerable range="lt">7.4.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PostgreSQL is an open source object-relational database management
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    PostgreSQL contains a flaw in the string parsing routines that allows
+    certain backslash-escaped characters to be bypassed with some multibyte
+    character encodings. This vulnerability was discovered by Akio Ishida
+    and Yasuo Ohgaki.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could execute arbitrary SQL statements on the PostgreSQL
+    server. Be aware that web applications using PostgreSQL as a database
+    back-end might be used to exploit this vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PostgreSQL users should upgrade to the latest version in the
+    respective branch they are using:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-db/postgresql</code>
+    <p>
+    Note: While a fix exists for the 7.3 branch it doesn't currently work
+    on Gentoo. All 7.3.x users of PostgreSQL should consider updating their
+    installations to the 7.4 (or higher) branch as soon as possible!
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.postgresql.org/docs/techdocs.50">PostgreSQL technical information</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2313">CVE-2006-2313</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2314">CVE-2006-2314</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:08:33 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 19:43:38 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 09 Jul 2006 16:30:11 +0000">
+    jaervosz
+  </metadata>
+</glsa>

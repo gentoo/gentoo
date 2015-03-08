@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-13">
+  <title>Mono: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Mono, the worst of which
+    allowing for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mono mono-debugger</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>277878</bug>
+  <bug>342133</bug>
+  <bug>345561</bug>
+  <bug>346401</bug>
+  <bug>351087</bug>
+  <bug>372983</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-util/mono-debugger" auto="yes" arch="*">
+      <unaffected range="ge">2.8.1-r1</unaffected>
+      <vulnerable range="lt">2.8.1-r1</vulnerable>
+    </package>
+    <package name="dev-lang/mono" auto="yes" arch="*">
+      <unaffected range="ge">2.10.2-r1</unaffected>
+      <vulnerable range="lt">2.10.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mono is an open source implementation of Microsoft's .NET Framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mono and Mono debugger.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code, bypass general
+      constraints, obtain the source code for .aspx applications, obtain other
+      sensitive information, cause a Denial of Service, modify internal data
+      structures, or corrupt the internal state of the security manager.
+    </p>
+    
+    <p>A local attacker could entice a user into running Mono debugger in a
+      directory containing a specially crafted library file to execute
+      arbitrary code with the privileges of the user running Mono debugger.
+    </p>
+    
+    <p>A context-dependant attacker could bypass the authentication mechanism
+      provided by the XML Signature specification.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mono debugger users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/mono-debugger-2.8.1-r1"
+    </code>
+    
+    <p>All Mono users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/mono-2.10.2-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0217">CVE-2009-0217</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3332">CVE-2010-3332</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3369">CVE-2010-3369</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4159">CVE-2010-4159</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4225">CVE-2010-4225</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4254">CVE-2010-4254</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0989">CVE-2011-0989</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0990">CVE-2011-0990</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0991">CVE-2011-0991</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0992">CVE-2011-0992</uri>
+  </references>
+  <metadata timestamp="Sat, 08 Oct 2011 22:43:20 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 20:40:21 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

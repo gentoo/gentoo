@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-05">
+  <title>zoo: Stack-based buffer overflow</title>
+  <synopsis>
+    A stack-based buffer overflow in zoo may be exploited to execute arbitrary
+    code through malicious ZOO archives.
+  </synopsis>
+  <product type="ebuild">zoo</product>
+  <announced>March 06, 2006</announced>
+  <revised>March 06, 2006: 01</revised>
+  <bug>123782</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/zoo" auto="yes" arch="*">
+      <unaffected range="ge">2.10-r1</unaffected>
+      <vulnerable range="lt">2.10-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    zoo is a file archiving utility for maintaining collections of
+    files, written by Rahul Dhesi.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jean-Sebastien Guay-Leroux discovered a boundary error in the
+    fullpath() function in misc.c when processing overly long file and
+    directory names in ZOO archives.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious ZOO archive and entice someone
+    to open it using zoo. This would trigger a stack-based buffer overflow
+    and potentially allow execution of arbitrary code with the rights of
+    the victim user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zoo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/zoo-2.10-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0855">CVE-2006-0855</uri>
+    <uri link="http://www.guay-leroux.com/projects/zoo-advisory.txt">Original Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 26 Feb 2006 17:26:29 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 03 Mar 2006 17:54:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 04 Mar 2006 16:06:52 +0000">
+    koon
+  </metadata>
+</glsa>

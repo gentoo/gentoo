@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-03">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in PHP, the worst of
+    which could lead to remote execution of arbitrary code. 
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 08, 2015</announced>
+  <revised>March 08, 2015: 1</revised>
+  <bug>530820</bug>
+  <bug>532914</bug>
+  <bug>533998</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.5.21</unaffected>
+      <unaffected range="rge">5.4.37</unaffected>
+      <unaffected range="rge">5.4.38</unaffected>
+      <unaffected range="rge">5.4.39</unaffected>
+      <vulnerable range="lt">5.5.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is a widely-used general-purpose scripting language that is
+      especially suited for Web development and can be embedded into HTML. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can leverage these vulnerabilities to execute
+      arbitrary code or cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP 5.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.5.21"
+    </code>
+    
+    <p>All PHP 5.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.4.37"
+    </code>
+    
+    <p>All PHP 5.3 users should upgrade to the latest version. This branch is
+      currently past the end of life and it will no longer receive security
+      fixes. All PHP 5.3 users are strongly recommended to upgrade to the
+      current stable version of PHP 5.5 or previous stable version of PHP 5.4,
+      which are supported till at least 2016 and 2015 respectively. 
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3710">CVE-2014-3710</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8142">CVE-2014-8142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9425">CVE-2014-9425</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9427">CVE-2014-9427</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0231">CVE-2015-0231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0232">CVE-2015-0232</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 29 Dec 2014 01:51:48 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 08 Mar 2015 14:18:17 +0000">K_F</metadata>
+</glsa>

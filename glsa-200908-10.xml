@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-10">
+  <title>Dillo: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    An integer overflow in the PNG handling of Dillo might result in the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">dillo</product>
+  <announced>August 18, 2009</announced>
+  <revised>August 18, 2009: 01</revised>
+  <bug>276432</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/dillo" auto="yes" arch="*">
+      <unaffected range="ge">2.1.1</unaffected>
+      <vulnerable range="lt">2.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dillo is a graphical web browser known for its speed and small
+    footprint.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tilei Wang reported an integer overflow in the Png_datainfo_callback()
+    function, possibly leading to a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open an HTML document
+    containing a specially crafted, large PNG image, possibly resulting in
+    the execution of arbitrary code with the privileges of the user running
+    the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dillo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/dillo-2.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2294">CVE-2009-2294</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Jul 2009 16:58:47 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Aug 2009 19:13:24 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Aug 2009 13:32:35 +0000">
+    a3li
+  </metadata>
+</glsa>

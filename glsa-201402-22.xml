@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-22">
+  <title>TCPTrack: Arbitrary code execution</title>
+  <synopsis>A heap-based buffer overflow in TCPTrack might allow a remote
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">tcptrack</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>377917</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/tcptrack" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2</unaffected>
+      <vulnerable range="lt">1.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TCPTrack is a simple libpcap based program for live TCP connection
+      monitoring.
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow vulnerability exists in TCPTrack’s
+      parsing of command line arguments. This is only a vulnerability in
+      limited scenarios in which TCPTrack is “configured as a handler for
+      other applications.”
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition with a
+      specially crafted command-line argument.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TCPTrack users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/tcptrack-1.4.2"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 06, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2903">CVE-2011-2903</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:14 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:21:47 +0000">
+    creffett
+  </metadata>
+</glsa>

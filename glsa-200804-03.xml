@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-03">
+  <title>OpenSSH: Privilege escalation</title>
+  <synopsis>
+    Two flaws have been discovered in OpenSSH which could allow local attackers
+    to escalate their privileges.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>April 05, 2008</announced>
+  <revised>April 05, 2008: 01</revised>
+  <bug>214985</bug>
+  <bug>215702</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">4.7_p1-r6</unaffected>
+      <vulnerable range="lt">4.7_p1-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSH is a complete SSH protocol implementation that includes an SFTP
+    client and server support.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two issues have been discovered in OpenSSH:
+    </p>
+    <ul>
+    <li>Timo Juhani
+    Lindfors discovered that OpenSSH sets the DISPLAY variable in SSH
+    sessions using X11 forwarding even when it cannot bind the X11 server
+    to a local port in all address families (CVE-2008-1483).</li>
+    <li>OpenSSH will execute the contents of the ".ssh/rc" file even when
+    the "ForceCommand" directive is enabled in the global sshd_config
+    (CVE-2008-1657).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit the first vulnerability to hijack
+    forwarded X11 sessions of other users and possibly execute code with
+    their privileges, disclose sensitive data or cause a Denial of Service,
+    by binding a local X11 server to a port using only one address family.
+    The second vulnerability might allow local attackers to bypass intended
+    security restrictions and execute commands other than those specified
+    by "ForceCommand" if they are able to write to their home directory.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSH users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.7_p1-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1483">CVE-2008-1483</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1657">CVE-2008-1657</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 31 Mar 2008 15:53:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 21:55:34 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 22:39:55 +0000">
+    rbu
+  </metadata>
+</glsa>

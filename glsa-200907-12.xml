@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-12">
+  <title>ISC DHCP: dhcpclient Remote execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow in dhclient as included in the ISC DHCP implementation
+    allows for the remote execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">dhcp</product>
+  <announced>July 14, 2009</announced>
+  <revised>July 14, 2009: 01</revised>
+  <bug>277729</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcp" auto="yes" arch="*">
+      <unaffected range="ge">3.1.1-r1</unaffected>
+      <vulnerable range="lt">3.1.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC DHCP is the reference implementation of the Dynamic Host
+    Configuration Protocol as specified in RFC 2131.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Mandriva Linux Engineering Team has reported a stack-based buffer
+    overflow in the subnet-mask handling of dhclient.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker might set up a rogue DHCP server in a victim's local
+    network, possibly leading to the execution of arbitrary code with root
+    privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ISC DHCP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dhcp-3.1.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0692">CVE-2009-0692</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 12 Jul 2009 14:21:43 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 12 Jul 2009 14:58:48 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Jul 2009 17:38:51 +0000">
+    a3li
+  </metadata>
+</glsa>

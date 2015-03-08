@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-21">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in cURL, the worst of
+    which could lead to man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>June 22, 2014</announced>
+  <revised>June 22, 2014: 1</revised>
+  <bug>505864</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.36.0</unaffected>
+      <vulnerable range="lt">7.36.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a command line tool for transferring files with URL syntax,
+      supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a man-in-the-middle attack via a crafted
+      certificate issued by a legitimate certification authority. Furthermore,
+      a context-dependent attacker may be able to bypass security restrictions
+      by connecting as other users.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.36.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0138">CVE-2014-0138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0139">CVE-2014-0139</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 Jun 2014 01:49:53 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 Jun 2014 13:14:51 +0000">K_F</metadata>
+</glsa>

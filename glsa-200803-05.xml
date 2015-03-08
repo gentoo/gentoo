@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-05">
+  <title>SplitVT: Privilege escalation</title>
+  <synopsis>
+    A vulnerability in SplitVT may allow local users to gain escalated
+    privileges.
+  </synopsis>
+  <product type="ebuild">splitvt</product>
+  <announced>March 03, 2008</announced>
+  <revised>March 03, 2008: 01</revised>
+  <bug>211240</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-misc/splitvt" auto="yes" arch="*">
+      <unaffected range="ge">1.6.6-r1</unaffected>
+      <vulnerable range="lt">1.6.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SplitVT is a program for splitting terminals into two shells.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mike Ashton reported that SplitVT does not drop group privileges before
+    executing the xprop utility.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could exploit this vulnerability to gain the "utmp"
+    group privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SplitVT users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc/splitvt-1.6.6-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0162">CVE-2008-0162</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 26 Feb 2008 20:35:01 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 20:35:10 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Feb 2008 11:02:58 +0000">
+    p-y
+  </metadata>
+</glsa>

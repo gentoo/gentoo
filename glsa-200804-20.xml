@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-20">
+  <title>Sun JDK/JRE: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified in Sun Java Development Kit
+    (JDK) and Java Runtime Environment (JRE).
+  </synopsis>
+  <product type="ebuild">sun-jdk, sun-jre-bin, emul-linux-x86-java</product>
+  <announced>April 17, 2008</announced>
+  <revised>March 05, 2010: 06</revised>
+  <bug>178851</bug>
+  <bug>178962</bug>
+  <bug>183580</bug>
+  <bug>185256</bug>
+  <bug>194711</bug>
+  <bug>212425</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0.05</unaffected>
+      <unaffected range="rge">1.5.0.21</unaffected>
+      <unaffected range="rge">1.5.0.20</unaffected>
+      <unaffected range="rge">1.5.0.19</unaffected>
+      <unaffected range="rge">1.5.0.18</unaffected>
+      <unaffected range="rge">1.5.0.17</unaffected>
+      <unaffected range="rge">1.5.0.16</unaffected>
+      <unaffected range="rge">1.5.0.15</unaffected>
+      <unaffected range="rge">1.4.2.17</unaffected>
+      <unaffected range="rge">1.5.0.22</unaffected>
+      <vulnerable range="lt">1.6.0.05</vulnerable>
+    </package>
+    <package name="dev-java/sun-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0.05</unaffected>
+      <unaffected range="rge">1.5.0.21</unaffected>
+      <unaffected range="rge">1.5.0.20</unaffected>
+      <unaffected range="rge">1.5.0.19</unaffected>
+      <unaffected range="rge">1.5.0.18</unaffected>
+      <unaffected range="rge">1.5.0.17</unaffected>
+      <unaffected range="rge">1.5.0.16</unaffected>
+      <unaffected range="rge">1.5.0.15</unaffected>
+      <unaffected range="rge">1.4.2.17</unaffected>
+      <unaffected range="rge">1.5.0.22</unaffected>
+      <vulnerable range="lt">1.6.0.05</vulnerable>
+    </package>
+    <package name="app-emulation/emul-linux-x86-java" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0.05</unaffected>
+      <unaffected range="rge">1.5.0.21</unaffected>
+      <unaffected range="rge">1.5.0.20</unaffected>
+      <unaffected range="rge">1.5.0.19</unaffected>
+      <unaffected range="rge">1.5.0.18</unaffected>
+      <unaffected range="rge">1.5.0.17</unaffected>
+      <unaffected range="rge">1.5.0.16</unaffected>
+      <unaffected range="rge">1.5.0.15</unaffected>
+      <unaffected range="rge">1.4.2.17</unaffected>
+      <unaffected range="rge">1.5.0.22</unaffected>
+      <vulnerable range="lt">1.6.0.05</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Sun Java Development Kit (JDK) and the Sun Java Runtime Environment
+    (JRE) provide the Sun Java platform.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Sun Java:
+    </p>
+    <ul>
+    <li>Daniel Soeder discovered that a long codebase attribute string in a
+    JNLP file will overflow a stack variable when launched by Java WebStart
+    (CVE-2007-3655).</li>
+    <li>Multiple vulnerabilities (CVE-2007-2435, CVE-2007-2788,
+    CVE-2007-2789) that were previously reported as GLSA 200705-23 and GLSA
+    200706-08 also affect 1.4 and 1.6 SLOTs, which was not mentioned in the
+    initial revision of said GLSAs.</li>
+    <li>The Zero Day Initiative, TippingPoint and John Heasman reported
+    multiple buffer overflows and unspecified vulnerabilities in Java Web
+    Start (CVE-2008-1188, CVE-2008-1189, CVE-2008-1190,
+    CVE-2008-1191).</li>
+    <li>Hisashi Kojima of Fujitsu and JPCERT/CC reported a security issue
+    when performing XSLT transformations (CVE-2008-1187).</li>
+    <li>CERT/CC reported a Stack-based buffer overflow in Java Web Start
+    when using JNLP files (CVE-2008-1196).</li>
+    <li>Azul Systems reported an unspecified vulnerability that allows
+    applets to escalate their privileges (CVE-2007-5689).</li>
+    <li>Billy Rios, Dan Boneh, Collin Jackson, Adam Barth, Andrew Bortz,
+    Weidong Shao, and David Byrne discovered multiple instances where Java
+    applets or JavaScript programs run within browsers do not pin DNS
+    hostnames to a single IP address, allowing for DNS rebinding attacks
+    (CVE-2007-5232, CVE-2007-5273, CVE-2007-5274).</li>
+    <li>Peter Csepely reported that Java Web Start does not properly
+    enforce access restrictions for untrusted applications (CVE-2007-5237,
+    CVE-2007-5238).</li>
+    <li>Java Web Start does not properly enforce access restrictions for
+    untrusted Java applications and applets, when handling drag-and-drop
+    operations (CVE-2007-5239).</li>
+    <li>Giorgio Maone discovered that warnings for untrusted code can be
+    hidden under applications' windows (CVE-2007-5240).</li>
+    <li>Fujitsu reported two security issues where security restrictions of
+    web applets and applications were not properly enforced (CVE-2008-1185,
+    CVE-2008-1186).</li>
+    <li>John Heasman of NGSSoftware discovered that the Java Plug-in does
+    not properly enforce the same origin policy (CVE-2008-1192).</li>
+    <li>Chris Evans of the Google Security Team discovered multiple
+    unspecified vulnerabilities within the Java Runtime Environment Image
+    Parsing Library (CVE-2008-1193, CVE-2008-1194).</li>
+    <li>Gregory Fleischer reported that web content fetched via the "jar:"
+    protocol was not subject to network access restrictions
+    (CVE-2008-1195).</li>
+    <li>Chris Evans and Johannes Henkel of the Google Security Team
+    reported that the XML parsing code retrieves external entities even
+    when that feature is disabled (CVE-2008-0628).</li>
+    <li>Multiple unspecified vulnerabilities might allow for escalation of
+    privileges (CVE-2008-0657).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run a specially crafted applet
+    on a website or start an application in Java Web Start to execute
+    arbitrary code outside of the Java sandbox and of the Java security
+    restrictions with the privileges of the user running Java. The attacker
+    could also obtain sensitive information, create, modify, rename and
+    read local files, execute local applications, establish connections in
+    the local network, bypass the same origin policy, and cause a Denial of
+    Service via multiple vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun JRE 1.6 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.6.0.05&quot;</code>
+    <p>
+    All Sun JRE 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.5.0.15&quot;</code>
+    <p>
+    All Sun JRE 1.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.17&quot;</code>
+    <p>
+    All Sun JDK 1.6 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.6.0.05&quot;</code>
+    <p>
+    All Sun JDK 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.5.0.15&quot;</code>
+    <p>
+    All Sun JDK 1.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.17&quot;</code>
+    <p>
+    All emul-linux-x86-java 1.6 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.6.0.05&quot;</code>
+    <p>
+    All emul-linux-x86-java 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.5.0.15&quot;</code>
+    <p>
+    All emul-linux-x86-java 1.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.4.2.17&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3655">CVE-2007-3655</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5232">CVE-2007-5232</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5237">CVE-2007-5237</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5238">CVE-2007-5238</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5239">CVE-2007-5239</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5240">CVE-2007-5240</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5273">CVE-2007-5273</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5274">CVE-2007-5274</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5689">CVE-2007-5689</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0628">CVE-2008-0628</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0657">CVE-2008-0657</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1185">CVE-2008-1185</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1186">CVE-2008-1186</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1187">CVE-2008-1187</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1188">CVE-2008-1188</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1189">CVE-2008-1189</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1190">CVE-2008-1190</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1191">CVE-2008-1191</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1192">CVE-2008-1192</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1193">CVE-2008-1193</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1194">CVE-2008-1194</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1195">CVE-2008-1195</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1196">CVE-2008-1196</uri>
+    <uri link="/security/en/glsa/glsa-200705-23.xml">GLSA 200705-23</uri>
+    <uri link="/security/en/glsa/glsa-200706-08.xml">GLSA 200706-08</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 07:23:49 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Jul 2007 05:33:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 09 Sep 2007 23:51:30 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-05">
+  <title>Apache: Buffer overflow in mod_ssl</title>
+  <synopsis>
+    A bug in mod_ssl may allow a remote attacker to execute remote code when
+    Apache is configured a certain way.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>June 09, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>51368</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-www/mod_ssl" auto="yes" arch="*">
+      <unaffected range="ge">2.8.18</unaffected>
+      <vulnerable range="lt">2.8.18</vulnerable>
+    </package>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="lt">2.0</unaffected>
+      <unaffected range="ge">2.0.49-r3</unaffected>
+      <vulnerable range="le">2.0.49-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Apache is the most popular Web server on the Internet. mod_ssl provides
+    Secure Sockets Layer encryption and authentication to Apache 1.3. Apache 2
+    contains the functionality of mod_ssl.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in the function ssl_util_uuencode_binary in ssl_util.c may lead to a
+    remote buffer overflow on a server configured to use FakeBasicAuth that
+    will trust a client certificate with an issuing CA with a subject DN longer
+    than 6k.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Given the right server configuration, an attacker could cause a Denial of
+    Service or execute code as the user running Apache, usually
+    &quot;apache&quot;. It is thought to be impossible to exploit this to
+    execute code on the x86 platform, but the possibility for other platforms
+    is unknown. This does not preclude a DoS on x86 systems.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A server should not be vulnerable if it is not configured to use
+    FakeBasicAuth and to trust a client CA with a long subject DN.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Apache 1.x users should upgrade to the latest version of mod_ssl:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-www/mod_ssl-2.8.18"
+    # emerge ">=net-www/mod_ssl-2.8.18"</code>
+    <p>
+    Apache 2.x users should upgrade to the latest version of Apache:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=www-servers/apache-2.0.49-r3"
+    # emerge ">=www-servers/apache-2.0.49-r3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0488">CAN-2004-0488</uri>
+  </references>
+  <metadata tag="submitter">
+    dmargoli
+  </metadata>
+</glsa>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-20">
+  <title>Horde Application Framework: XSS vulnerability</title>
+  <synopsis>
+    The Horde Application Framework is vulnerable to a cross-site scripting
+    vulnerability which could lead to the compromise of the victim's browser
+    content.
+  </synopsis>
+  <product type="ebuild">horde</product>
+  <announced>November 22, 2005</announced>
+  <revised>November 22, 2005: 01</revised>
+  <bug>112491</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde" auto="yes" arch="*">
+      <unaffected range="ge">2.2.9</unaffected>
+      <vulnerable range="lt">2.2.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Horde Application Framework is a general-purpose web
+    application framework written in PHP, providing classes for handling
+    preferences, compression, browser detection, connection tracking, MIME,
+    and more.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Horde Team reported a potential XSS vulnerability. Horde fails
+    to properly escape error messages which may lead to displaying
+    unsanitized error messages via Notification_Listener::getMessage()
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By enticing a user to read a specially-crafted e-mail or using a
+    manipulated URL, an attacker can execute arbitrary scripts running in
+    the context of the victim's browser. This could lead to a compromise of
+    the user's browser content.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde Application Framework users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-2.2.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3570">CVE-2005-3570</uri>
+    <uri link="http://lists.horde.org/archives/announce/2005/000231.html">Horde Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 Nov 2005 18:32:42 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Nov 2005 19:23:12 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 21 Nov 2005 09:22:48 +0000">
+    koon
+  </metadata>
+</glsa>

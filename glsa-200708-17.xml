@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-17">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Opera contain several vulnerabilities, some of which may allow the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>August 22, 2007</announced>
+  <revised>August 22, 2007: 01</revised>
+  <bug>185497</bug>
+  <bug>188987</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.23</unaffected>
+      <vulnerable range="lt">9.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    An error known as "a virtual function call on an invalid pointer" has
+    been discovered in the JavaScript engine (CVE-2007-4367). Furthermore,
+    iDefense Labs reported that an already-freed pointer may be still used
+    under unspecified circumstances in the BitTorrent support
+    (CVE-2007-3929). At last, minor other errors have been discovered,
+    relative to memory read protection (Opera Advisory 861) and URI
+    displays (CVE-2007-3142, CVE-2007-3819).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could trigger the BitTorrent vulnerability by
+    enticing a user into starting a malicious BitTorrent download, and
+    execute arbitrary code through unspecified vectors. Additionally, a
+    specially crafted JavaScript may trigger the "virtual function"
+    vulnerability. The JavaScript engine can also access previously freed
+    but uncleaned memory. Finally, a user can be fooled with a too long
+    HTTP server name that does not fit the dialog box, or a URI containing
+    whitespaces.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for all these
+    vulnerabilities.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.23&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3142">CVE-2007-3142</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3819">CVE-2007-3819</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3929">CVE-2007-3929</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4367">CVE-2007-4367</uri>
+    <uri link="http://www.opera.com/support/search/view/861/">Opera Advisory 861</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Jul 2007 20:48:46 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 29 Jul 2007 20:48:57 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Aug 2007 09:59:22 +0000">
+    falco
+  </metadata>
+</glsa>

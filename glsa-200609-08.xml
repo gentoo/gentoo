@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-08">
+  <title>xine-lib: Buffer overflows</title>
+  <synopsis>
+    xine-lib is vulnerable to multiple buffer overflows that could be exploited
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>September 13, 2006</announced>
+  <revised>September 13, 2006: 01</revised>
+  <bug>133520</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2-r2</unaffected>
+      <vulnerable range="lt">1.1.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine is a high performance, portable and reusable multimedia playback
+    engine. xine-lib is xine's core engine.
+    </p>
+  </background>
+  <description>
+    <p>
+    xine-lib contains buffer overflows in the processing of AVI.
+    Additionally, xine-lib is vulnerable to a buffer overflow in the HTTP
+    plugin (xineplug_inp_http.so) via a long reply from an HTTP server.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could trigger the buffer overflow vulnerabilities by
+    enticing a user to load a specially crafted AVI file in xine. This
+    might result in the execution of arbitrary code with the rights of the
+    user running xine. Additionally, a remote HTTP server serving a xine
+    client a specially crafted reply could crash xine and possibly execute
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.2-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2802">CVE-2006-2802</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Aug 2006 17:11:30 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 Sep 2006 12:33:52 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 12 Sep 2006 15:13:19 +0000">
+    falco
+  </metadata>
+</glsa>

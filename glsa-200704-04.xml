@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-04">
+  <title>OpenPBS: Multiple vulnerabilities</title>
+  <synopsis>
+    OpenPBS contains unspecified vulnerabilities which may allow for the remote
+    execution of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">openpbs</product>
+  <announced>April 03, 2007</announced>
+  <revised>April 03, 2007: 01</revised>
+  <bug>153495</bug>
+  <access>remote, local</access>
+  <affected>
+    <package name="sys-cluster/openpbs" auto="yes" arch="*">
+      <vulnerable range="le">2.3.16-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenPBS is the original version of the Portable Batch System. It is a
+    flexible batch queueing system developed for NASA in the early to
+    mid-1990s.
+    </p>
+  </background>
+  <description>
+    <p>
+    SUSE reported vulnerabilities due to unspecified errors in OpenPBS.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By unspecified attack vectors an attacker might be able execute
+    arbitrary code with the privileges of the user running openpbs, which
+    might be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    OpenPBS has been masked in the Portage tree for replacement by Torque.
+    All OpenPBS users should unmerge OpenPBS and switch to Torque.
+    </p>
+    <code>
+    
+    # emerge --ask --unmerge sys-cluster/openpbs
+    # emerge --sync
+    # emerge --ask --verbose sys-cluster/torque</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5616">CVE-2006-5616</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 26 Mar 2007 23:17:18 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Mar 2007 16:50:56 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 21:14:48 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200310-04">
+  <title>Apache: buffer overflows and a possible information disclosure</title>
+  <synopsis>
+    Multiple stack-based buffer overflows in mod_alias and mod_rewrite can allow
+    execution of arbitrary code and cause a denial of service, and a bug in the
+    way mod_cgid handles CGI redirect paths could result in CGI output going to
+    the wrong client.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>2003-10-31</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>32271</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.0.48</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.0.48</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP Server is one of the most popular web servers on the
+    Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple stack-based buffer overflows in mod_alias and mod_rewrite allow
+    attackers who can create or edit configuration files including .htaccess
+    files, to cause a denial of service and execute arbitrary code via a regular
+    expression containing more than 9 captures, and a bug in the way mod_cgid
+    handles CGI redirect paths could result in CGI output going to the wrong
+    client when a threaded MPM is used, resulting in an information disclosure.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may cause a denial of service or execute arbitrary code with the
+    privileges of the user that is running apache.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    It is recommended that all Gentoo Linux users who are running
+    net-misc/apache 2.x upgrade:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=www-servers/apache-2.0.48'
+    # emerge '&gt;=www-servers/apache-2.0.48'
+    # emerge clean
+    # /etc/init.d/apache2 restart</code>
+    <p>
+    Please remember to update your config files in /etc/apache2 as --datadir has
+    been changed to /var/www/localhost.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0789">CAN-2003-0789</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0542">CAN-2003-0542</uri>
+  </references>
+</glsa>

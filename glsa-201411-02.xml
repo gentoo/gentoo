@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-02">
+  <title>MySQL, MariaDB: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the MySQL and MariaDB,
+    possibly allowing attackers to cause unspecified impact.
+  </synopsis>
+  <product type="ebuild">mysql mariadb</product>
+  <announced>November 05, 2014</announced>
+  <revised>November 05, 2014: 1</revised>
+  <bug>525504</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.5.40</unaffected>
+      <vulnerable range="lt">5.5.40</vulnerable>
+    </package>
+    <package name="dev-db/mariadb" auto="yes" arch="*">
+      <unaffected range="ge">5.5.40-r1</unaffected>
+      <vulnerable range="lt">5.5.40-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a popular multi-threaded, multi-user SQL server. MariaDB is an
+      enhanced, drop-in replacement for MySQL.
+    </p>
+  </background>
+  <description>
+    <p>Multiple unspecified vulnerabilities have been discovered in MySQL.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit these vulnerabilities to cause
+      unspecified impact, possibly including remote execution of arbitrary
+      code, Denial of Service, or disclosure of sensitive information. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.5.40"
+    </code>
+    
+    <p>All MariaDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-5.5.40-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6464">CVE-2014-6464</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6469">CVE-2014-6469</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6491">CVE-2014-6491</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6494">CVE-2014-6494</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6496">CVE-2014-6496</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6500">CVE-2014-6500</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6507">CVE-2014-6507</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6555">CVE-2014-6555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6559">CVE-2014-6559</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Oct 2014 22:45:02 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Nov 2014 23:49:01 +0000">ackle</metadata>
+</glsa>

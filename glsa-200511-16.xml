@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-16">
+  <title>GNUMP3d: Directory traversal and insecure temporary file creation</title>
+  <synopsis>
+    Two vulnerabilities have been identified in GNUMP3d allowing for limited
+    directory traversal and insecure temporary file creation.
+  </synopsis>
+  <product type="ebuild">GNUMP3d</product>
+  <announced>November 21, 2005</announced>
+  <revised>August 21, 2007: 02</revised>
+  <bug>111990</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/gnump3d" auto="yes" arch="*">
+      <unaffected range="ge">2.9_pre7</unaffected>
+      <vulnerable range="lt">2.9_pre7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNUMP3d is a streaming server for MP3s, OGG vorbis files, movies and
+    other media formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ludwig Nussel from SUSE Linux has identified two vulnerabilities in
+    GNUMP3d. GNUMP3d fails to properly check for the existence of
+    /tmp/index.lok before writing to the file, allowing for local
+    unauthorized access to files owned by the user running GNUMP3d. GNUMP3d
+    also fails to properly validate the "theme" GET variable from CGI
+    input, allowing for unauthorized file inclusion.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could overwrite files owned by the user running GNUMP3d by
+    symlinking /tmp/index.lok to the file targeted for overwrite. An
+    attacker could also include arbitrary files by traversing up the
+    directory tree (at most two times, i.e. "../..") with the "theme" GET
+    variable.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNUMP3d users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/gnump3d-2.9_pre7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3349">CVE-2005-3349</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3355">CVE-2005-3355</uri>
+    <uri link="http://www.gnu.org/software/gnump3d/ChangeLog">GNUMP3d Changelog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 18 Nov 2005 12:35:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 18 Nov 2005 12:35:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 18 Nov 2005 22:47:09 +0000">
+    shellsage
+  </metadata>
+</glsa>

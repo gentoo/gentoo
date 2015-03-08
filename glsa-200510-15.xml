@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-15">
+  <title>Lynx: Buffer overflow in NNTP processing</title>
+  <synopsis>
+    Lynx contains a buffer overflow that may be exploited to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">Lynx</product>
+  <announced>October 17, 2005</announced>
+  <revised>October 17, 2005: 01</revised>
+  <bug>108451</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/lynx" auto="yes" arch="*">
+      <unaffected range="ge">2.8.5-r1</unaffected>
+      <vulnerable range="lt">2.8.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Lynx is a text-mode browser for the World Wide Web. It supports
+    multiple URL types, including HTTP and NNTP URLs.
+    </p>
+  </background>
+  <description>
+    <p>
+    When accessing a NNTP URL, Lynx connects to a NNTP server and
+    retrieves information about the available articles in the target
+    newsgroup. Ulf Harnhammar discovered a buffer overflow in a function
+    that handles the escaping of special characters.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could setup a malicious NNTP server and entice a user
+    to access it using Lynx (either by creating NNTP links on a web page or
+    by forcing a redirect for Lynx users). The data returned by the NNTP
+    server would trigger the buffer overflow and execute arbitrary code
+    with the rights of the user running Lynx.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Lynx users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/lynx-2.8.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3120">CAN-2005-3120</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 15 Oct 2005 09:30:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Oct 2005 12:46:58 +0000">
+    koon
+  </metadata>
+</glsa>

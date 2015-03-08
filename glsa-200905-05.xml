@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-05">
+  <title>FreeType: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple integer overflows in FreeType might allow for the remote execution
+    of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">freetype</product>
+  <announced>May 24, 2009</announced>
+  <revised>May 25, 2009: 02</revised>
+  <bug>263032</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.3.9-r1</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.3.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeType is a high-quality and portable font engine.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy reported multiple integer overflows in the
+    cff_charset_compute_cids() function in cff/cffload.c, sfnt/tccmap.c and
+    the ft_smooth_render_generic() function in smooth/ftsmooth.c, possibly
+    leading to heap or stack-based buffer overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to open a
+    specially crafted font file, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application,
+    or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeType users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/freetype-2.3.9-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0946">CVE-2009-0946</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 May 2009 18:49:58 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 May 2009 11:07:09 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 24 May 2009 13:55:28 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-45">
+  <title>Gallery: Cross-site scripting vulnerability</title>
+  <synopsis>
+    Gallery is vulnerable to cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">gallery</product>
+  <announced>January 30, 2005</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>78522</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/gallery" auto="yes" arch="*">
+      <unaffected range="ge">1.4.4_p6</unaffected>
+      <vulnerable range="lt">1.4.4_p6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gallery is a web application written in PHP which is used to organize
+    and publish photo albums. It allows multiple users to build and
+    maintain their own albums. It also supports the mirroring of images on
+    other servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Rafel Ivgi has discovered a cross-site scripting vulnerability where
+    the 'username' parameter is not properly sanitized in 'login.php'.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By sending a carefully crafted URL, an attacker can inject and execute
+    script code in the victim's browser window, and potentially compromise
+    the user's gallery.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gallery users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/gallery-1.4.4_p6&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://gallery.menalto.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=149">Gallery Announcement</uri>
+    <uri link="http://secunia.com/advisories/13887/">Secunia Advisory SA13887</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0220">CVE-2005-0220</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 22 Jan 2005 13:17:09 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 30 Jan 2005 18:58:59 +0000">
+    koon
+  </metadata>
+</glsa>

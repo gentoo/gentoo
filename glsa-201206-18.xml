@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-18">
+  <title>GnuTLS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GnuTLS, allowing a
+    remote attacker to perform man-in-the-middle or Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">GnuTLS</product>
+  <announced>June 23, 2012</announced>
+  <revised>June 23, 2012: 1</revised>
+  <bug>281224</bug>
+  <bug>292025</bug>
+  <bug>389947</bug>
+  <bug>409287</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">2.12.18</unaffected>
+      <vulnerable range="lt">2.12.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is an Open Source implementation of the TLS 1.2 and SSL 3.0
+      protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in GnuTLS:</p>
+    
+    <ul>
+      <li>An error in libgnutls does not properly sanitize "\0" characters from
+        certificate fields (CVE-2009-2730).
+      </li>
+      <li>An error in the TLS and SSL protocols mistreats renegotiation
+        handshakes (CVE-2009-3555).
+      </li>
+      <li>A boundary error in the "gnutls_session_get_data()" function in
+        gnutls_session.c could cause a buffer overflow (CVE-2011-4128).
+      </li>
+      <li>An error in the "_gnutls_ciphertext2compressed()" function in
+        gnutls_cipher.c could cause memory corruption (CVE-2012-1573).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could perform man-in-the-middle attacks to spoof
+      arbitrary SSL servers or cause a Denial of Service condition in
+      applications linked against GnuTLS.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-2.12.18"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2730">CVE-2009-2730</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4128">CVE-2011-4128</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1573">CVE-2012-1573</uri>
+  </references>
+  <metadata timestamp="Tue, 17 Apr 2012 00:40:28 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Sat, 23 Jun 2012 14:21:06 +0000" tag="submitter">ackle</metadata>
+</glsa>

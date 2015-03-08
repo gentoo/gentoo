@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-02">
+  <title>tripwire: Format string vulnerability</title>
+  <synopsis>
+    A vulnerability allowing arbitrary code execution under certain
+    circumstances has been found.
+  </synopsis>
+  <product type="ebuild">tripwire</product>
+  <announced>June 04, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>52945</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/tripwire" auto="yes" arch="*">
+      <unaffected range="ge">2.3.1.2-r1</unaffected>
+      <vulnerable range="le">2.3.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    tripwire is an open source file integrity checker.
+    </p>
+  </background>
+  <description>
+    <p>
+    The code that generates email reports contains a format string
+    vulnerability in pipedmailmessage.cpp.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    With a carefully crafted filename on a local filesystem an attacker
+    could cause execution of arbitrary code with permissions of the user
+    running tripwire, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All tripwire users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-admin/tripwire-2.3.1.2-r1&quot;
+    # emerge &quot;&gt;=app-admin/tripwire-2.3.1.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/365036/2004-05-31/2004-06-06/0">Bugtraq Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0536">CVE-2004-0536</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

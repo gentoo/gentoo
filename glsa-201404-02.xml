@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201404-02">
+  <title>libproxy: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in libproxy might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libproxy</product>
+  <announced>April 07, 2014</announced>
+  <revised>April 07, 2014: 1</revised>
+  <bug>438146</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libproxy" auto="yes" arch="*">
+      <unaffected range="ge">0.4.10</unaffected>
+      <vulnerable range="lt">0.4.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libproxy is a library for automatic proxy configuration management.</p>
+  </background>
+  <description>
+    <p>A boundary error when processing the proxy.pac file could cause a
+      stack-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A man-in-the-middle attacker could provide a specially crafted proxy.pac
+      file on a remote server, possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libproxy users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libproxy-0.4.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4504">CVE-2012-4504</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 26 Nov 2012 01:36:57 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Apr 2014 18:48:48 +0000">ackle</metadata>
+</glsa>

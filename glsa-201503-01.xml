@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-01">
+  <title>JasPer: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in JasPer, the worst of
+    which could could allow an attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">jasper</product>
+  <announced>March 06, 2015</announced>
+  <revised>March 06, 2015: 1</revised>
+  <bug>531688</bug>
+  <bug>533744</bug>
+  <bug>537530</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jasper" auto="yes" arch="*">
+      <unaffected range="ge">1.900.1-r9</unaffected>
+      <vulnerable range="lt">1.900.1-r9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>JasPer is a software-based implementation of the codec specified in the
+      JPEG-2000 Part-1 standard.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in JasPer. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using JasPer, possibly resulting in execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All jasper users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/jasper-1.900.1-r9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8137">CVE-2014-8137</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8138">CVE-2014-8138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8157">CVE-2014-8157</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8158">CVE-2014-8158</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9029">CVE-2014-9029</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Jan 2015 23:22:20 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Fri, 06 Mar 2015 15:11:02 +0000">Zlogene</metadata>
+</glsa>

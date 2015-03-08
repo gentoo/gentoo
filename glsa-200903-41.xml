@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-41">
+  <title>gedit: Untrusted search path</title>
+  <synopsis>
+    A vulnerability in gedit might allow local attackers to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">gedit</product>
+  <announced>March 30, 2009</announced>
+  <revised>March 30, 2009: 01</revised>
+  <bug>257004</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-editors/gedit" auto="yes" arch="*">
+      <unaffected range="rge">2.22.3-r1</unaffected>
+      <unaffected range="ge">2.24.3</unaffected>
+      <vulnerable range="lt">2.24.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gedit is a text editor for the GNOME desktop.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Vega reported that gedit uses the current working directory when
+    searching for python modules, a vulnerability related to CVE-2008-5983.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user to open gedit from a specially
+    crafted environment, possibly resulting in the execution of arbitrary
+    code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run gedit from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gedit 2.22.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gedit-2.22.3-r1&quot;</code>
+    <p>
+    All gedit 2.24.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gedit-2.24.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5983">CVE-2008-5983</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0314">CVE-2009-0314</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 23 Mar 2009 09:17:57 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 30 Mar 2009 11:46:10 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 30 Mar 2009 11:46:20 +0000">
+    p-y
+  </metadata>
+</glsa>

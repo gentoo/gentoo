@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-02">
+  <title>Qt: Integer overflow</title>
+  <synopsis>
+    An integer overflow flaw in the Qt pixmap handling could possibly lead to a
+    Denial of Service or the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">qt</product>
+  <announced>November 06, 2006</announced>
+  <revised>January 09, 2009: 03</revised>
+  <bug>151838</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/qt" auto="yes" arch="*">
+      <unaffected range="ge">4.1.4-r2</unaffected>
+      <unaffected range="rge">3.3.6-r4</unaffected>
+      <unaffected range="rge">3.3.8</unaffected>
+      <unaffected range="rge">3.3.8b</unaffected>
+      <vulnerable range="lt">4.1.4-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Qt is a cross-platform GUI toolkit, which is used e.g. by KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    An integer overflow flaw has been found in the pixmap handling of Qt.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a specially crafted pixmap image in an
+    application using Qt, e.g. Konqueror, a remote attacker could be able
+    to cause an application crash or the execution of arbitrary code with
+    the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Qt 3.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/qt-3.3.6-r4&quot;</code>
+    <p>
+    All Qt 4.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/qt-4.1.4-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4811">CVE-2006-4811</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 01 Nov 2006 16:27:07 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 02 Nov 2006 14:09:09 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 06 Nov 2006 11:05:20 +0000">
+    vorlon078
+  </metadata>
+</glsa>

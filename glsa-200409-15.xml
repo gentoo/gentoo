@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-15">
+  <title>Webmin, Usermin: Multiple vulnerabilities in Usermin</title>
+  <synopsis>
+    A vulnerability in the webmail function of Usermin could be used by an
+    attacker to execute shell code via a specially-crafted e-mail. A bug in the
+    installation script of Webmin and Usermin also allows a local user to
+    execute a symlink attack at installation time.
+  </synopsis>
+  <product type="ebuild">Usermin</product>
+  <announced>September 12, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>63167</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/usermin" auto="yes" arch="*">
+      <unaffected range="ge">1.090</unaffected>
+      <vulnerable range="lt">1.090</vulnerable>
+    </package>
+    <package name="app-admin/webmin" auto="yes" arch="*">
+      <unaffected range="ge">1.160</unaffected>
+      <vulnerable range="lt">1.160</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Webmin and Usermin are web-based system administration consoles. Webmin
+    allows an administrator to easily configure servers and other features.
+    Usermin allows users to configure their own accounts, execute commands,
+    and read e-mail. The Usermin functionality, including webmail, is also
+    included in Webmin.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is an input validation bug in the webmail feature of Usermin.
+    </p>
+    <p>
+    Additionally, the Webmin and Usermin installation scripts write to
+    /tmp/.webmin without properly checking if it exists first.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    The first vulnerability allows a remote attacker to inject arbitrary
+    shell code in a specially-crafted e-mail. This could lead to remote
+    code execution with the privileges of the user running Webmin or
+    Usermin.
+    </p>
+    <p>
+    The second could allow local users who know Webmin or Usermin is going
+    to be installed to have arbitrary files be overwritten by creating a
+    symlink by the name /tmp/.webmin that points to some target file, e.g.
+    /etc/passwd.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Usermin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-admin/usermin-1.090&quot;
+    # emerge &quot;&gt;=app-admin/usermin-1.090&quot;</code>
+    <p>
+    All Webmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-admin/webmin-1.160&quot;
+    # emerge &quot;&gt;=app-admin/webmin-1.160&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/12488/">Secunia Advisory SA12488</uri>
+    <uri link="http://www.webmin.com/uchanges.html">Usermin Changelog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0559">CVE-2004-0559</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1468">CVE-2004-1468</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Sep 2004 12:32:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Sep 2004 10:07:56 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Sep 2004 16:34:02 +0000">
+    dmargoli
+  </metadata>
+</glsa>

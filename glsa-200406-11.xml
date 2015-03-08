@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-11">
+  <title>Horde-IMP: Input validation vulnerability</title>
+  <synopsis>
+    An input validation vulnerability has been discovered in Horde-IMP.
+  </synopsis>
+  <product type="ebuild">horde-imp</product>
+  <announced>June 16, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>53862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde-imp" auto="yes" arch="*">
+      <unaffected range="ge">3.2.4</unaffected>
+      <vulnerable range="le">3.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Horde-IMP is the Internet Messaging Program. It is written in PHP and
+    provides webmail access to IMAP and POP3 accounts.
+    </p>
+  </background>
+  <description>
+    <p>
+    Horde-IMP fails to properly sanitize email messages that contain
+    malicious HTML or script code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to read a specially crafted e-mail, an attacker can
+    execute arbitrary scripts running in the context of the victim's
+    browser. This could lead to a compromise of the user's webmail account,
+    cookie theft, etc.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde-IMP users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-apps/horde-imp-3.2.4&quot;
+    # emerge &quot;&gt;=www-apps/horde-imp-3.2.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/10501">Bugtraq Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0584">CVE-2004-0584</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

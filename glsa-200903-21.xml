@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-21">
+  <title>cURL: Arbitrary file access</title>
+  <synopsis>
+    A vulnerability in cURL may allow for arbitrary file access.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>260361</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.19.4</unaffected>
+      <vulnerable range="lt">7.19.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cURL is a command line tool for transferring files with URL syntax,
+    supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    David Kierznowski reported that the redirect implementation accepts
+    arbitrary Location values when CURLOPT_FOLLOWLOCATION is enabled.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly exploit this vulnerability to make
+    remote HTTP servers trigger arbitrary requests to intranet servers and
+    read or overwrite arbitrary files via a redirect to a file: URL, or, if
+    the libssh2 USE flag is enabled, execute arbitrary commands via a
+    redirect to an scp: URL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cURL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.19.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0037">CVE-2009-0037</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:06:34 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 05 Mar 2009 23:20:10 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 Mar 2009 22:09:58 +0000">
+    p-y
+  </metadata>
+</glsa>

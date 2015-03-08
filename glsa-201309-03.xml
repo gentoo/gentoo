@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-03">
+  <title>Xlockmore: Denial of Service</title>
+  <synopsis>A buffer overflow in Xlockmore might allow remote attackers to
+    cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">Xlockmore</product>
+  <announced>September 02, 2013</announced>
+  <revised>September 02, 2013: 1</revised>
+  <bug>255229</bug>
+  <bug>440776</bug>
+  <bug>477328</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-misc/xlockmore" auto="yes" arch="*">
+      <unaffected range="ge">5.43</unaffected>
+      <vulnerable range="lt">5.43</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xlockmore is just another screensaver application for X.</p>
+  </background>
+  <description>
+    <p>A Denial of Service flaw was found in the way Xlockmore performed 
+      the passing of arguments to the underlying localtime() call, when the
+      ‘dlock’ mode was used.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly cause a Denial of Service condition and
+      potentially obtain unauthorized access to the graphical session,
+      previously locked by another user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xlockmore users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-misc/xlockmore-5.43"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4524">CVE-2012-4524</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4143">CVE-2013-4143</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 22:04:18 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Sep 2013 09:00:54 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

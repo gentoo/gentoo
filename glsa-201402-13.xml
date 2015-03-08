@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-13">
+  <title>DjVu: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in DjVu could result in execution of arbitrary code
+    or Denial of Service.
+  </synopsis>
+  <product type="ebuild">djvu</product>
+  <announced>February 09, 2014</announced>
+  <revised>February 09, 2014: 1</revised>
+  <bug>497088</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/djvu" auto="yes" arch="*">
+      <unaffected range="ge">3.5.25.3</unaffected>
+      <vulnerable range="lt">3.5.25.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>DjVu is a web-centric format and software platform for distributing
+      documents and images.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in DjVu. Please review the CVE
+      identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted DjVu
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All DjVu users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/djvu-3.5.25.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6535">CVE-2012-6535</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Feb 2014 22:03:24 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 09 Feb 2014 12:15:30 +0000">Zlogene</metadata>
+</glsa>

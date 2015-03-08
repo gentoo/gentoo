@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-11">
+  <title>Freeciv: Denial of Service</title>
+  <synopsis>
+    A memory allocation bug in Freeciv allows a remote attacker to perform a
+    Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">freeciv</product>
+  <announced>March 16, 2006</announced>
+  <revised>March 16, 2006: 01</revised>
+  <bug>125304</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-strategy/freeciv" auto="yes" arch="*">
+      <unaffected range="ge">2.0.8</unaffected>
+      <vulnerable range="lt">2.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Freeciv is an open source turn-based multiplayer strategy game,
+    similar to the famous Civilization series.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma discovered that Freeciv could be tricked into the
+    allocation of enormous chunks of memory when trying to uncompress
+    malformed data packages, possibly leading to an out of memory condition
+    which causes Freeciv to crash or freeze.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this issue to cause a Denial of
+    Service by sending specially crafted data packages to the Freeciv game
+    server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Play solo games or restrict your multiplayer games to trusted
+    parties.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Freeciv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-strategy/freeciv-2.0.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0047">CVE-2006-0047</uri>
+    <uri link="http://aluigi.altervista.org/adv/freecivdos-adv.txt">Original advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 12 Mar 2006 20:13:19 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Mar 2006 20:29:12 +0000">
+    DerCorny
+  </metadata>
+</glsa>

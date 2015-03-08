@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-03">
+  <title>Tcpdump Vulnerabilities in ISAKMP Parsing</title>
+  <synopsis>
+    There are multiple vulnerabilities in tcpdump and libpcap related to
+    parsing of ISAKMP packets.
+  </synopsis>
+  <product type="ebuild">tcpdump</product>
+  <announced>March 31, 2004</announced>
+  <revised>March 31, 2004: 01</revised>
+  <bug>38206</bug>
+  <bug>46258</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/tcpdump" auto="yes" arch="*">
+      <unaffected range="ge">3.8.3-r1</unaffected>
+      <vulnerable range="le">3.8.1</vulnerable>
+    </package>
+    <package name="net-libs/libpcap" auto="yes" arch="*">
+      <unaffected range="ge">0.8.3-r1</unaffected>
+      <vulnerable range="le">0.8.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tcpdump is a program for monitoring IP network traffic. Libpcap is a
+    supporting library which is responsibile for capturing packets off a network
+    interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are two specific vulnerabilities in tcpdump, outlined in [ reference
+    1 ]. In the first scenario, an attacker may send a specially-crafted ISAKMP
+    Delete packet which causes tcpdump to read past the end of its buffer. In
+    the second scenario, an attacker may send an ISAKMP packet with the wrong
+    payload length, again causing tcpdump to read past the end of a buffer.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Remote attackers could potentially cause tcpdump to crash or execute
+    arbitrary code as the 'pcap' user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All tcpdump users are encouraged
+    to upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All tcpdump users should upgrade to the latest available version.
+    ADDITIONALLY, the net-libs/libpcap package should be upgraded.
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-libs/libpcap-0.8.3-r1" ">=net-analyzer/tcpdump-3.8.3-r1"
+    # emerge ">=net-libs/libpcap-0.8.3-r1" ">=net-analyzer/tcpdump-3.8.3-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.rapid7.com/advisories/R7-0017.html">Rapid7 Advisory</uri>
+    <uri link="http://rhn.redhat.com/errata/RHSA-2004-008.html">Red Hat Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0989">CVE Advisory</uri>
+  </references>
+</glsa>

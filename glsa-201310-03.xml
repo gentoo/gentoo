@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-03">
+  <title>Poppler: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Poppler, some of which
+    may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>October 06, 2013</announced>
+  <revised>October 06, 2013: 1</revised>
+  <bug>263028</bug>
+  <bug>290430</bug>
+  <bug>290464</bug>
+  <bug>308017</bug>
+  <bug>338878</bug>
+  <bug>352581</bug>
+  <bug>459866</bug>
+  <bug>480366</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.22.2-r1</unaffected>
+      <vulnerable range="lt">0.22.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Poppler is a cross-platform PDF rendering library originally based on
+      Xpdf.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Poppler. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Poppler users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.22.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0146">CVE-2009-0146</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0147">CVE-2009-0147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0165">CVE-2009-0165</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0166">CVE-2009-0166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0195">CVE-2009-0195</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0799">CVE-2009-0799</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0800">CVE-2009-0800</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1179">CVE-2009-1179</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1180">CVE-2009-1180</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1181">CVE-2009-1181</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1182">CVE-2009-1182</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1183">CVE-2009-1183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1187">CVE-2009-1187</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1188">CVE-2009-1188</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3603">CVE-2009-3603</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3604">CVE-2009-3604</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3605">CVE-2009-3605</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3606">CVE-2009-3606</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3607">CVE-2009-3607</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3608">CVE-2009-3608</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3609">CVE-2009-3609</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3938">CVE-2009-3938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3702">CVE-2010-3702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3703">CVE-2010-3703</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3704">CVE-2010-3704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4653">CVE-2010-4653</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4654">CVE-2010-4654</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2142">CVE-2012-2142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1788">CVE-2013-1788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1789">CVE-2013-1789</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1790">CVE-2013-1790</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:55 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Oct 2013 15:45:26 +0000">ackle</metadata>
+</glsa>

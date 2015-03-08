@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200911-06">
+  <title>PEAR Net_Traceroute: Command injection</title>
+  <synopsis>
+    An input sanitation error in PEAR Net_Traceroute might allow remote
+    attackers to execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">PEAR-Net_Traceroute</product>
+  <announced>November 26, 2009</announced>
+  <revised>November 26, 2009: 01</revised>
+  <bug>294264</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/PEAR-Net_Traceroute" auto="yes" arch="*">
+      <unaffected range="ge">0.21.2</unaffected>
+      <vulnerable range="lt">0.21.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PEAR Net_Traceroute is an OS independent wrapper class for executing
+    traceroute calls from PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Pasquale Imperato reported that the $host parameter to the traceroute()
+    function in Traceroute.php is not properly sanitized before being
+    passed to exec().
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability when user input is
+    passed directly to PEAR Net_Traceroute in a PHP script, possibly
+    resulting in the remote execution of arbitrary shell commands with the
+    privileges of the user running the affected PHP script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Ensure that all data that is passed to the traceroute() function is
+    properly shell escaped (for instance using the escapeshellcmd()
+    function).
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PEAR Net_Traceroute users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-Net_Traceroute-0.21.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4025">CVE-2009-4025</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 26 Nov 2009 07:38:17 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Nov 2009 07:53:00 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 26 Nov 2009 19:14:35 +0000">
+    a3li
+  </metadata>
+</glsa>

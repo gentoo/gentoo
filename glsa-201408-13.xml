@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-13">
+  <title>Jinja2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Jinja2, allowing local
+    attackers to escalate their privileges.
+  </synopsis>
+  <product type="ebuild">jinja</product>
+  <announced>August 29, 2014</announced>
+  <revised>August 29, 2014: 1</revised>
+  <bug>497690</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-python/jinja" auto="yes" arch="*">
+      <unaffected range="ge">2.7.3</unaffected>
+      <vulnerable range="lt">2.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Jinja2 is a template engine written in pure Python.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Jinja2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain escalated privileges via a specially crafted
+      cache file or  pre-created temporary directory.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Jinja2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/jinja-2.7.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0012">CVE-2014-0012</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1402">CVE-2014-1402</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Aug 2014 05:23:15 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 18:36:00 +0000">Zlogene</metadata>
+</glsa>

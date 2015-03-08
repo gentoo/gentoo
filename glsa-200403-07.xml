@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-07">
+  <title>Multiple remote overflows and vulnerabilities in Ethereal</title>
+  <synopsis>
+    Mulitple overflows and vulnerabilities exist in Ethereal which may allow an
+    attacker to crash the program or run arbitrary code.
+  </synopsis>
+  <product type="ebuild">ethereal</product>
+  <announced>March 28, 2004</announced>
+  <revised>March 28, 2004: 01</revised>
+  <bug>45543</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.3</unaffected>
+      <vulnerable range="le">0.10.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Quote from http://www.ethereal.com
+    </p>
+    <p>
+    &quot;Ethereal is used by network professionals around the world for
+    troubleshooting, analysis, software and protocol development, and
+    education. It has all of the standard features you would expect in a
+    protocol analyzer, and several features not seen in any other product. Its
+    open source license allows talented experts in the networking community to
+    add enhancements. It runs on all popular computing platforms, including
+    Unix, Linux, and Windows.&quot;
+    </p>
+  </background>
+  <description>
+    <p>There are multiple vulnerabilities in versions of Ethereal earlier than 0.10.3, including:</p>
+    <ul>
+	<li>Thirteen buffer overflows in the following protocol dissectors: NetFlow, IGAP, EIGRP, PGM, IrDA, BGP, ISUP, and TCAP.</li>
+      	<li>A zero-length Presentation protocol selector could make Ethereal crash.</li>
+     	<li>A vulnerability in the RADIUS packet dissector which may crash ethereal.</li>
+      	<li>A corrupt color filter file could cause a segmentation fault.</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    These vulnerabilities may cause Ethereal to crash or may allow an attacker
+    to run arbitrary code on the user's computer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    While a workaround is not currently known for this issue, all users are
+    advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the current version of the affected package:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv ">=net-analyzer/ethereal-0.10.3"
+    # emerge ">=net-analyzer/ethereal-0.10.3"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ethereal.com/appnotes/enpa-sa-00013.html">Multiple security problems in Ethereal 0.10.2</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0176">CAN-2004-0176</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0365">CAN-2004-0365</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0367">CAN-2004-0367</uri>
+  </references>
+</glsa>

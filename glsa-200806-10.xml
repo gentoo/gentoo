@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-10">
+  <title>FreeType: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Font parsing vulnerabilities in FreeType might lead to user-assisted
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">freetype</product>
+  <announced>June 23, 2008</announced>
+  <revised>May 28, 2009: 03</revised>
+  <bug>225851</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.3.6</unaffected>
+      <unaffected range="rge">1.4_pre20080316-r1</unaffected>
+      <vulnerable range="lt">2.3.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeType is a font rendering library for TrueType Font (TTF) and
+    Printer Font Binary (PFB).
+    </p>
+  </background>
+  <description>
+    <p>
+    Regenrecht reported multiple vulnerabilities in FreeType via iDefense:
+    </p>
+    <ul>
+    <li>
+    An integer overflow when parsing values in the Private dictionary table
+    in a PFB file, leading to a heap-based buffer overflow
+    (CVE-2008-1806).
+    </li>
+    <li>
+    An invalid free() call related to parsing an invalid "number of axes"
+    field in a PFB file (CVE-2008-1807).
+    </li>
+    <li>
+    Multiple off-by-one errors when parsing PBF and TTF files, leading to
+    heap-based buffer overflows (CVE-2008-1808).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted TTF
+    or PBF file, possibly resulting in the execution of arbitrary code with
+    the privileges of the user running an application linked against
+    FreeType (such as the X.org X server, running as root).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeType users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/freetype-2.3.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1806">CVE-2008-1806</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1807">CVE-2008-1807</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1808">CVE-2008-1808</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 12 Jun 2008 09:20:25 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Jun 2008 00:04:48 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 Jun 2008 00:04:59 +0000">
+    rbu
+  </metadata>
+</glsa>

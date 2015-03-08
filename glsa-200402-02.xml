@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200402-02">
+  <title>XFree86 Font Information File Buffer Overflow</title>
+  <synopsis>
+    Exploitation of a buffer overflow in the XFree86 Project Inc.'s XFree86 X
+    Window System allows local attackers to gain root privileges.
+  </synopsis>
+  <product type="ebuild">200402-02</product>
+  <announced>February 11, 2004</announced>
+  <revised>February 11, 2004: 01</revised>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xfree" auto="yes" arch="*">
+      <vulnerable range="lt">4.3.99.902-r1</vulnerable>
+      <unaffected range="eq">4.2.1-r3</unaffected>
+      <unaffected range="eq">4.3.0-r4</unaffected>
+      <unaffected range="ge">4.3.99.902-r1</unaffected>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XFree86, provides a client/server interface between display
+    hardware and the desktop environment while also providing both the
+    windowing infrastructure and a standardized API. XFree86 is
+    platform independent, network-transparent and extensible.
+    </p>
+  </background>
+  <description>
+    <p>
+    Exploitation of a buffer overflow in The XFree86 Window System
+    discovered by iDefence allows local attackers to gain root
+    privileges.
+    </p>
+    <p>
+    The problem exists in the parsing of the 'font.alias' file. The X
+    server (running as root) fails to check the length of the user
+    provided input, so a malicious user may craft a malformed
+    'font.alias' file causing a buffer overflow upon parsing,
+    eventually leading to the execution of arbitrary code.
+    </p>
+    <p>
+    To reproduce the overflow on the command line one can run:
+    </p>
+    <code>
+    # cat > fonts.dir &lt;&lt;EOF 
+    1
+    word.bdf -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
+    EOF
+    # perl -e 'print "0" x 1024 . "A" x 96 . "\n"' > fonts.alias
+    # X :0 -fp $PWD</code>
+    <p>
+    {Some output removed}... Server aborting... Segmentation fault (core dumped)
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Successful exploitation can lead to a root compromise provided
+    that the attacker is able to execute commands in the X11
+    subsystem. This can be done either by having console access to the
+    target or through a remote exploit against any X client program
+    such as a web-browser, mail-reader or game.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    No immediate workaround is available; a software upgrade is required.
+    </p>
+    <p>
+    Gentoo has released XFree 4.2.1-r3, 4.3.0-r4 and 4.3.99.902-r1 and
+    encourages all users to upgrade their XFree86
+    installations. Vulnerable versions are no longer available in
+    Portage.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are recommended to upgrade their XFree86 installation:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv x11-base/xfree
+    # emerge x11-base/xfree</code>
+  </resolution>
+  <references>
+    <uri
+    link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0083">CVE: CAN-2004-0083</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=72&amp;type=vulnerabilities">Vulnerability:
+    XFree86 Font Information File Buffer Overflow</uri>
+  </references>
+</glsa>

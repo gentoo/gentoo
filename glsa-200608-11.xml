@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-11">
+  <title>Webmin, Usermin: File Disclosure</title>
+  <synopsis>
+    Webmin and Usermin are vulnerable to an arbitrary file disclosure through a
+    specially crafted URL.
+  </synopsis>
+  <product type="ebuild">webmin/usermin</product>
+  <announced>August 06, 2006</announced>
+  <revised>August 06, 2006: 01</revised>
+  <bug>138552</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/webmin" auto="yes" arch="*">
+      <unaffected range="ge">1.290</unaffected>
+      <vulnerable range="lt">1.290</vulnerable>
+    </package>
+    <package name="app-admin/usermin" auto="yes" arch="*">
+      <unaffected range="ge">1.220</unaffected>
+      <vulnerable range="lt">1.220</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Webmin is a web-based interface for Unix-like systems. Usermin is a
+    simplified version of Webmin designed for use by normal users rather
+    than system administrators.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability in both Webmin and Usermin has been discovered by Kenny
+    Chen, wherein simplify_path is called before the HTML is decoded.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A non-authenticated user can read any file on the server using a
+    specially crafted URL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    For a temporary workaround, IP Access Control can be setup on Webmin
+    and Usermin.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Webmin users should update to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --verbose --oneshot &quot;&gt;=app-admin/webmin-1.290&quot;</code>
+    <p>
+    All Usermin users should update to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --verbose --oneshot &quot;&gt;=app-admin/usermin-1.220&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3392">CVE-2006-3392</uri>
+  </references>
+  <metadata tag="">
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 Aug 2006 17:23:21 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Aug 2006 18:24:45 +0000">
+    hlieberman
+  </metadata>
+</glsa>

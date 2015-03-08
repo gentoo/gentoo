@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201202-04">
+  <title>PowerDNS: Denial of Service</title>
+  <synopsis>A vulnerability in PowerDNS could allow a remote attacker to create
+    a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">pdns</product>
+  <announced>February 22, 2012</announced>
+  <revised>February 22, 2012: 1</revised>
+  <bug>398403</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdns" auto="yes" arch="*">
+      <unaffected range="ge">3.0.1</unaffected>
+      <vulnerable range="lt">3.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The PowerDNS nameserver is an authoritative-only nameserver which uses a
+      flexible backend architecture.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability has been found in PowerDNS which could cause a packet
+      loop of DNS responses. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send specially crafted DNS response packets,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>PowerDNS users can set "cache-ttl=0" in /etc/powerdns/pdns.conf and then
+      restart the PowerDNS daemon:
+    </p>
+    
+    <code>
+      # /etc/init.d/pdns restart
+    </code>
+    
+    <p>Please review the PowerDNS Security Advisory below for more workaround
+      details.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All PowerDNS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/pdns-3.0.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0206">CVE-2012-0206</uri>
+    <uri link="http://doc.powerdns.com/powerdns-advisory-2012-01.html">PowerDNS
+      Security Advisory 2012-01
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 27 Jan 2012 14:47:52 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Wed, 22 Feb 2012 19:50:34 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-06">
+  <title>PHProjekt: setup.php vulnerability</title>
+  <synopsis>
+    PHProjekt contains a vulnerability in the setup procedure allowing remote
+    users without admin rights to change the configuration.
+  </synopsis>
+  <product type="ebuild">PHProjekt</product>
+  <announced>December 10, 2004</announced>
+  <revised>December 10, 2004: 01</revised>
+  <bug>73021</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phprojekt" auto="yes" arch="*">
+      <unaffected range="ge">4.2-r1</unaffected>
+      <vulnerable range="lt">4.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHProjekt is a modular groupware web application used to
+    coordinate group activities and share files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Martin Muench, from it.sec, found a flaw in the setup.php file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation of the flaw allows a remote attacker
+    without admin rights to make unauthorized changes to PHProjekt
+    configuration.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    As a workaround, you could replace the existing setup.php file in
+    PHProjekt root directory by the one provided on the PHProjekt Advisory
+    (see References).
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHProjekt users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phprojekt-4.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.phprojekt.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=189&amp;mode=thread&amp;order=0">PHProjekt Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu,  9 Dec 2004 14:30:29 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  9 Dec 2004 16:24:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Dec 2004 17:26:05 +0000">
+    vorlon078
+  </metadata>
+</glsa>

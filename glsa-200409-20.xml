@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-20">
+  <title>mpg123: Buffer overflow vulnerability</title>
+  <synopsis>
+    mpg123 decoding routines contain a buffer overflow bug that might
+    lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">mpg123</product>
+  <announced>September 16, 2004</announced>
+  <revised>September 16, 2004: 01</revised>
+  <bug>63079</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/mpg123" auto="yes" arch="*">
+      <unaffected range="ge">0.59s-r4</unaffected>
+      <vulnerable range="le">0.59s-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mpg123 is a MPEG Audio Player.
+    </p>
+  </background>
+  <description>
+    <p>
+    mpg123 contains a buffer overflow in the code that handles layer2
+    decoding of media files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can possibly exploit this bug with a specially-crafted mp3 or mp2 file
+    to execute arbitrary code with the permissions of the user running mpg123.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mpg123 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-sound/mpg123-0.59s-r4"
+    # emerge ">=media-sound/mpg123-0.59s-r4"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/374433/2004-09-05/2004-09-11/0">BugTraq Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0805">CAN-2004-0805</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Sep 2004 21:37:49 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 15 Sep 2004 15:59:24 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Sep 2004 18:43:15 +0000">
+    koon
+  </metadata>
+</glsa>

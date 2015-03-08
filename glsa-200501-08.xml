@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-08">
+  <title>phpGroupWare: Various vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in phpGroupWare that could
+    lead to information disclosure or remote compromise.
+  </synopsis>
+  <product type="ebuild">phpgroupware</product>
+  <announced>January 06, 2005</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>74487</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpgroupware" auto="yes" arch="*">
+      <unaffected range="ge">0.9.16.004</unaffected>
+      <vulnerable range="lt">0.9.16.004</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpGroupWare is a web-based suite of group applications including a
+    calendar, todo-list, addressbook, email, wiki, news headlines, and a
+    file manager.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several flaws were discovered in phpGroupWare making it vulnerable to
+    cross-site scripting attacks, SQL injection, and full path disclosure.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities could allow an attacker to perform cross-site
+    scripting attacks, execute SQL queries, and disclose the full path of
+    the web directory.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpGroupWare users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpgroupware-0.9.16.004&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/384492">BugTraq Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1383">CVE-2004-1383</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1384">CVE-2004-1384</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1385">CVE-2004-1385</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu,  6 Jan 2005 08:52:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu,  6 Jan 2005 08:52:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  6 Jan 2005 13:44:43 +0000">
+    lewk
+  </metadata>
+</glsa>

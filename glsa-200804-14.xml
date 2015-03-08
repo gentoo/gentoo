@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-14">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Opera, allowing for
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>April 14, 2008</announced>
+  <revised>April 14, 2008: 01</revised>
+  <bug>216022</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.27</unaffected>
+      <vulnerable range="lt">9.27</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a fast web browser that is available free of charge.
+    </p>
+  </background>
+  <description>
+    <p>
+    Michal Zalewski reported two vulnerabilities, memory corruption when
+    adding news feed sources from a website (CVE-2008-1761) as well as when
+    processing HTML CANVAS elements to use scaled images (CVE-2008-1762).
+    Additionally, an unspecified weakness related to keyboard handling of
+    password inputs has been reported (CVE-2008-1764).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to visit a specially crafted web
+    site or news feed and possibly execute arbitrary code with the
+    privileges of the user running Opera.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.27&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1761">CVE-2008-1761</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1762">CVE-2008-1762</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1764">CVE-2008-1764</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 13 Apr 2008 00:02:37 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 Apr 2008 00:02:49 +0000">
+    rbu
+  </metadata>
+</glsa>

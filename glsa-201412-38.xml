@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-38">
+  <title>Icecast: Multiple Vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been found in Icecast, possibly resulting
+    in privilege escalation or disclosure of information.
+  </synopsis>
+  <product type="ebuild">icecast</product>
+  <announced>December 26, 2014</announced>
+  <revised>December 26, 2014: 1</revised>
+  <bug>529956</bug>
+  <bug>530784</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/icecast" auto="yes" arch="*">
+      <unaffected range="ge">2.4.1</unaffected>
+      <vulnerable range="lt">2.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Icecast is an open source alternative to SHOUTcast that supports MP3,
+      OGG (Vorbis/Theora) and AAC streaming.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been discovered in Icecast:</p>
+    
+    <ul>
+      <li>Icecast does not properly handle shared file descriptors
+        (CVE-2014-9018)
+      </li>
+      <li>Supplementary group privileges are not changed (CVE-2014-9091)</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker can possibly gain escalated privileges or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Icecast users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/icecast-2.4.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9018">CVE-2014-9018</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9091">CVE-2014-9091</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Dec 2014 05:16:19 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 00:40:23 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-18">
+  <title>Pngcrush: Buffer overflow</title>
+  <synopsis>
+    Pngcrush is vulnerable to a buffer overflow which could potentially lead to
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pngcrush</product>
+  <announced>March 21, 2006</announced>
+  <revised>March 21, 2006: 01</revised>
+  <bug>123286</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/pngcrush" auto="yes" arch="*">
+      <unaffected range="ge">1.6.2</unaffected>
+      <vulnerable range="lt">1.6.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pngcrush is an optimizer for PNG files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Carsten Lohrke of Gentoo Linux reported that Pngcrush contains a
+    vulnerable version of zlib (GLSA 200507-19).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By creating a specially crafted data stream, attackers can
+    overwrite data structures for applications that use Pngcrush, resulting
+    in a Denial of Service and potentially arbitrary code execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pngcrush users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/pngcrush-1.6.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1849">CVE-2005-1849</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Feb 2006 18:06:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 03 Mar 2006 17:03:15 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Mar 2006 02:00:13 +0000">
+    adir
+  </metadata>
+</glsa>

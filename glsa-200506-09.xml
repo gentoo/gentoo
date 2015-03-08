@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-09">
+  <title>gedit: Format string vulnerability</title>
+  <synopsis>
+    gedit suffers from a format string vulnerability that could allow arbitrary
+    code execution.
+  </synopsis>
+  <product type="ebuild">gedit</product>
+  <announced>June 11, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>93352</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-editors/gedit" auto="yes" arch="*">
+      <unaffected range="ge">2.10.3</unaffected>
+      <vulnerable range="lt">2.10.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gedit is the official text editor of the GNOME desktop environement.
+    </p>
+  </background>
+  <description>
+    <p>
+    A format string vulnerability exists when opening files with names
+    containing format specifiers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A specially crafted file with format specifiers in the filename can
+    cause arbitrary code execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gedit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gedit-2.10.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/13699">BugTraq ID 13699</uri>
+    <uri link="http://mail.gnome.org/archives/gnome-announce-list/2005-June/msg00006.html">gedit 10.3 Release Notes</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1686">CVE-2005-1686</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jun 2005 14:36:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jun 2005 17:36:40 +0000">
+    r2d2
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Jun 2005 11:59:18 +0000">
+    koon
+  </metadata>
+</glsa>

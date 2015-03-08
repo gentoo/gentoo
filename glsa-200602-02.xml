@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-02">
+  <title>ADOdb: PostgresSQL command injection</title>
+  <synopsis>
+    ADOdb is vulnerable to SQL injections if used in conjunction with a
+    PostgreSQL database.
+  </synopsis>
+  <product type="ebuild">ADOdb</product>
+  <announced>February 06, 2006</announced>
+  <revised>February 06, 2006: 01</revised>
+  <bug>120215</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/adodb" auto="yes" arch="*">
+      <unaffected range="ge">4.71</unaffected>
+      <vulnerable range="lt">4.71</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ADOdb is an abstraction library for PHP creating a common API for
+    a wide range of database backends.
+    </p>
+  </background>
+  <description>
+    <p>
+    Andy Staudacher discovered that ADOdb does not properly sanitize
+    all parameters.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending specifically crafted requests to an application that
+    uses ADOdb and a PostgreSQL backend, an attacker might exploit the flaw
+    to execute arbitrary SQL queries on the host.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ADOdb users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/adodb-4.71&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0410">CVE-2006-0410</uri>
+  </references>
+  <metadata tag="bugReady" timestamp="Sat, 04 Feb 2006 17:34:56 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Feb 2006 08:23:05 +0000">
+    frilled
+  </metadata>
+</glsa>

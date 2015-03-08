@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-14">
+  <title>GDM: Privilege escalation</title>
+  <synopsis>
+    An authentication error in GDM could allow users to gain elevated
+    privileges.
+  </synopsis>
+  <product type="ebuild">gdm</product>
+  <announced>June 12, 2006</announced>
+  <revised>June 19, 2006: 02</revised>
+  <bug>135027</bug>
+  <access>local</access>
+  <affected>
+    <package name="gnome-base/gdm" auto="yes" arch="*">
+      <unaffected range="ge">2.8.0.8</unaffected>
+      <vulnerable range="lt">2.8.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GDM is the GNOME display manager.
+    </p>
+  </background>
+  <description>
+    <p>
+    GDM allows a normal user to access the configuration manager.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    When the "face browser" in GDM is enabled, a normal user can use the
+    "configure login manager" with his/her own password instead of the root
+    password, and thus gain additional privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GDM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-base/gdm-2.8.0.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://bugzilla.gnome.org/show_bug.cgi?id=343476">Gnome Bugzilla entry</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2452">CVE-2006-2452</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 08 Jun 2006 10:45:03 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 09 Jun 2006 08:32:35 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Jun 2006 04:30:05 +0000">
+    jaervosz
+  </metadata>
+</glsa>

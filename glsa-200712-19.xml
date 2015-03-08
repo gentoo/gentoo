@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-19">
+  <title>Syslog-ng: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability has been discovered in Syslog-ng.
+  </synopsis>
+  <product type="ebuild">syslog-ng</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>202718</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/syslog-ng" auto="yes" arch="*">
+      <unaffected range="ge">2.0.6</unaffected>
+      <vulnerable range="lt">2.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Syslog-ng is a flexible and scalable system logger.
+    </p>
+  </background>
+  <description>
+    <p>
+    Oriol Carreras reported a NULL pointer dereference in the
+    log_msg_parse() function when processing timestamps without a
+    terminating whitespace character.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted event to a vulnerable
+    Syslog-ng server, resulting in a crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Syslog-ng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/syslog-ng-2.0.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6437">CVE-2007-6437</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Dec 2007 13:17:29 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Dec 2007 23:09:28 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 28 Dec 2007 23:09:43 +0000">
+    p-y
+  </metadata>
+</glsa>

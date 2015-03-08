@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-11">
+  <title>usbmuxd: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow vulnerability in usbmuxd could result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">usbmuxd</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>399409</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-pda/usbmuxd" auto="yes" arch="*">
+      <unaffected range="ge">1.0.7-r1</unaffected>
+      <vulnerable range="lt">1.0.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>usbmuxd is a USB multiplex daemon for use with Apple iPhone and iPod
+      Touch devices.
+    </p>
+  </background>
+  <description>
+    <p>The "receive_packet()" function in libusbmuxd.c contains a boundary
+      error when parsing the "SerialNumber" field of a USB device, which could
+      cause a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could gain physical access or entice a user to connect to a
+      malicious USB device, possibly resulting in execution of arbitrary code
+      with the privileges of the "usbmux" user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All usbmuxd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-pda/usbmuxd-1.0.7-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0065">CVE-2012-0065</uri>
+  </references>
+  <metadata timestamp="Mon, 23 Jan 2012 14:30:43 +0000" tag="requester">ago</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:43:19 +0000" tag="submitter">ackle</metadata>
+</glsa>

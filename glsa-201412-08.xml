@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-08">
+  <title>Multiple packages, Multiple vulnerabilities fixed in 2010</title>
+  <synopsis>This GLSA contains notification of vulnerabilities found in several
+    Gentoo packages which have been fixed prior to January 1, 2011. The worst
+    of these vulnerabilities could lead to local privilege escalation and
+    remote code execution. Please see the package list and CVE identifiers
+    below for more information.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>December 11, 2014</announced>
+  <revised>December 11, 2014: 1</revised>
+  <bug>159556</bug>
+  <bug>208464</bug>
+  <bug>253822</bug>
+  <bug>259968</bug>
+  <bug>298067</bug>
+  <bug>300375</bug>
+  <bug>300943</bug>
+  <bug>302478</bug>
+  <bug>307525</bug>
+  <bug>307633</bug>
+  <bug>315235</bug>
+  <bug>316697</bug>
+  <bug>319719</bug>
+  <bug>320961</bug>
+  <bug>322457</bug>
+  <bug>325507</bug>
+  <bug>326759</bug>
+  <bug>326953</bug>
+  <bug>329125</bug>
+  <bug>329939</bug>
+  <bug>331421</bug>
+  <bug>332527</bug>
+  <bug>333661</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-util/insight" auto="yes" arch="*">
+      <unaffected range="ge">6.7.1-r1</unaffected>
+      <vulnerable range="lt">6.7.1-r1</vulnerable>
+    </package>
+    <package name="dev-perl/perl-tk" auto="yes" arch="*">
+      <unaffected range="ge">804.028-r2</unaffected>
+      <vulnerable range="lt">804.028-r2</vulnerable>
+    </package>
+    <package name="dev-util/sourcenav" auto="yes" arch="*">
+      <unaffected range="ge">5.1.4</unaffected>
+      <vulnerable range="lt">5.1.4</vulnerable>
+    </package>
+    <package name="dev-lang/tk" auto="yes" arch="*">
+      <unaffected range="ge">8.4.18-r1</unaffected>
+      <vulnerable range="lt">8.4.18-r1</vulnerable>
+    </package>
+    <package name="sys-block/partimage" auto="yes" arch="*">
+      <unaffected range="ge">0.6.8</unaffected>
+      <vulnerable range="lt">0.6.8</vulnerable>
+    </package>
+    <package name="app-antivirus/bitdefender-console" auto="yes" arch="*">
+      <vulnerable range="le">7.1</vulnerable>
+    </package>
+    <package name="net-mail/mlmmj" auto="yes" arch="*">
+      <unaffected range="ge">1.2.17.1</unaffected>
+      <vulnerable range="lt">1.2.17.1</vulnerable>
+    </package>
+    <package name="sys-apps/acl" auto="yes" arch="*">
+      <unaffected range="ge">2.2.49</unaffected>
+      <vulnerable range="lt">2.2.49</vulnerable>
+    </package>
+    <package name="x11-apps/xinit" auto="yes" arch="*">
+      <unaffected range="ge">1.2.0-r4</unaffected>
+      <vulnerable range="lt">1.2.0-r4</vulnerable>
+    </package>
+    <package name="app-arch/gzip" auto="yes" arch="*">
+      <unaffected range="ge">1.4</unaffected>
+      <vulnerable range="lt">1.4</vulnerable>
+    </package>
+    <package name="app-arch/ncompress" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4.3</unaffected>
+      <vulnerable range="lt">4.2.4.3</vulnerable>
+    </package>
+    <package name="dev-libs/liblzw" auto="yes" arch="*">
+      <unaffected range="ge">0.2</unaffected>
+      <vulnerable range="lt">0.2</vulnerable>
+    </package>
+    <package name="media-gfx/splashutils" auto="yes" arch="*">
+      <unaffected range="ge">1.5.4.3-r3</unaffected>
+      <vulnerable range="lt">1.5.4.3-r3</vulnerable>
+    </package>
+    <package name="sys-devel/m4" auto="yes" arch="*">
+      <unaffected range="ge">1.4.14-r1</unaffected>
+      <vulnerable range="lt">1.4.14-r1</vulnerable>
+    </package>
+    <package name="kde-base/kdm" auto="yes" arch="*">
+      <unaffected range="ge">4.3.5-r1</unaffected>
+      <vulnerable range="lt">4.3.5-r1</vulnerable>
+    </package>
+    <package name="x11-libs/gtk+" auto="yes" arch="*">
+      <unaffected range="ge">2.18.7</unaffected>
+      <vulnerable range="lt">2.18.7</vulnerable>
+    </package>
+    <package name="kde-base/kget" auto="yes" arch="*">
+      <unaffected range="ge">4.3.5-r1</unaffected>
+      <vulnerable range="lt">4.3.5-r1</vulnerable>
+    </package>
+    <package name="app-text/dvipng" auto="yes" arch="*">
+      <unaffected range="ge">1.13</unaffected>
+      <vulnerable range="lt">1.13</vulnerable>
+    </package>
+    <package name="app-misc/beanstalkd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.6</unaffected>
+      <vulnerable range="lt">1.4.6</vulnerable>
+    </package>
+    <package name="sys-apps/pmount" auto="yes" arch="*">
+      <unaffected range="ge">0.9.23</unaffected>
+      <vulnerable range="lt">0.9.23</vulnerable>
+    </package>
+    <package name="sys-auth/pam_krb5" auto="yes" arch="*">
+      <unaffected range="ge">4.3</unaffected>
+      <vulnerable range="lt">4.3</vulnerable>
+    </package>
+    <package name="app-text/gv" auto="yes" arch="*">
+      <unaffected range="ge">3.7.1</unaffected>
+      <vulnerable range="lt">3.7.1</vulnerable>
+    </package>
+    <package name="net-ftp/lftp" auto="yes" arch="*">
+      <unaffected range="ge">4.0.6</unaffected>
+      <vulnerable range="lt">4.0.6</vulnerable>
+    </package>
+    <package name="www-client/uzbl" auto="yes" arch="*">
+      <unaffected range="ge">2010.08.05</unaffected>
+      <vulnerable range="lt">2010.08.05</vulnerable>
+    </package>
+    <package name="x11-misc/slim" auto="yes" arch="*">
+      <unaffected range="ge">1.3.2</unaffected>
+      <vulnerable range="lt">1.3.2</vulnerable>
+    </package>
+    <package name="net-misc/iputils" auto="yes" arch="*">
+      <unaffected range="ge">20100418</unaffected>
+      <vulnerable range="lt">20100418</vulnerable>
+    </package>
+    <package name="media-tv/dvbstreamer" auto="yes" arch="*">
+      <unaffected range="ge">1.1-r1</unaffected>
+      <vulnerable range="lt">1.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>For more information on the packages listed in this GLSA, please see
+      their homepage referenced in the ebuild. 
+    </p>
+  </background>
+  <description>
+    <p>Vulnerabilities have been discovered in the packages listed below.
+      Please review the CVE identifiers in the Reference section for details.
+    </p>
+    
+    <ul>
+      <li>Insight</li>
+      <li>Perl Tk Module</li>
+      <li>Source-Navigator</li>
+      <li>Tk</li>
+      <li>Partimage</li>
+      <li>Mlmmj</li>
+      <li>acl</li>
+      <li>Xinit</li>
+      <li>gzip</li>
+      <li>ncompress</li>
+      <li>liblzw</li>
+      <li>splashutils</li>
+      <li>GNU M4</li>
+      <li>KDE Display Manager</li>
+      <li>GTK+</li>
+      <li>KGet</li>
+      <li>dvipng</li>
+      <li>Beanstalk</li>
+      <li>Policy Mount</li>
+      <li>pam_krb5</li>
+      <li>GNU gv</li>
+      <li>LFTP</li>
+      <li>Uzbl</li>
+      <li>Slim</li>
+      <li>Bitdefender Console</li>
+      <li>iputils</li>
+      <li>DVBStreamer</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker may be able to gain escalated privileges,
+      execute arbitrary code, cause Denial of Service, obtain sensitive
+      information, or otherwise bypass security restrictions. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Insight users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/insight-6.7.1-r1"
+    </code>
+    
+    <p>All Perl Tk Module users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-perl/perl-tk-804.028-r2"
+    </code>
+    
+    <p>All Source-Navigator users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/sourcenav-5.1.4"
+    </code>
+    
+    <p>All Tk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/tk-8.4.18-r1"
+    </code>
+    
+    <p>All Partimage users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-block/partimage-0.6.8"
+    </code>
+    
+    <p>All Mlmmj users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/mlmmj-1.2.17.1"
+    </code>
+    
+    <p>All acl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/acl-2.2.49"
+    </code>
+    
+    <p>All Xinit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-apps/xinit-1.2.0-r4"
+    </code>
+    
+    <p>All gzip users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/gzip-1.4"
+    </code>
+    
+    <p>All ncompress users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/ncompress-4.2.4.3"
+    </code>
+    
+    <p>All liblzw users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/liblzw-0.2"
+    </code>
+    
+    <p>All splashutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-gfx/splashutils-1.5.4.3-r3"
+    </code>
+    
+    <p>All GNU M4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/m4-1.4.14-r1"
+    </code>
+    
+    <p>All KDE Display Manager users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-base/kdm-4.3.5-r1"
+    </code>
+    
+    <p>All GTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/gtk+-2.18.7"
+    </code>
+    
+    <p>All KGet 4.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-base/kget-4.3.5-r1"
+    </code>
+    
+    <p>All dvipng users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/dvipng-1.13"
+    </code>
+    
+    <p>All Beanstalk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-misc/beanstalkd-1.4.6"
+    </code>
+    
+    <p>All Policy Mount users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/pmount-0.9.23"
+    </code>
+    
+    <p>All pam_krb5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-auth/pam_krb5-4.3"
+    </code>
+    
+    <p>All GNU gv users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/gv-3.7.1"
+    </code>
+    
+    <p>All LFTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/lftp-4.0.6"
+    </code>
+    
+    <p>All Uzbl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/uzbl-2010.08.05"
+    </code>
+    
+    <p>All Slim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-misc/slim-1.3.2"
+    </code>
+    
+    <p>All iputils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/iputils-20100418"
+    </code>
+    
+    <p>All DVBStreamer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-tv/dvbstreamer-1.1-r1"
+    </code>
+    
+    <p>Gentoo has discontinued support for Bitdefender Console. We recommend
+      that users unmerge Bitdefender Console:
+    </p>
+    
+    <code>
+      # emerge --unmerge "app-antivirus/bitdefender-console"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures have
+      been available since 2011. It is likely that your system is already no
+      longer affected by these issues.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-3005">CVE-2006-3005</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2741">CVE-2007-2741</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0553">CVE-2008-0553</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1382">CVE-2008-1382</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5907">CVE-2008-5907</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-6218">CVE-2008-6218</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-6661">CVE-2008-6661</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0040">CVE-2009-0040</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0360">CVE-2009-0360</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0361">CVE-2009-0361</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0946">CVE-2009-0946</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2042">CVE-2009-2042</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2624">CVE-2009-2624</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3736">CVE-2009-3736</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4029">CVE-2009-4029</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4411">CVE-2009-4411</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4896">CVE-2009-4896</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0001">CVE-2010-0001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0436">CVE-2010-0436</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0732">CVE-2010-0732</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0829">CVE-2010-0829</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1000">CVE-2010-1000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1205">CVE-2010-1205</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1511">CVE-2010-1511</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2056">CVE-2010-2056</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2060">CVE-2010-2060</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2192">CVE-2010-2192</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2251">CVE-2010-2251</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2529">CVE-2010-2529</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2809">CVE-2010-2809</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2945">CVE-2010-2945</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jun 2014 10:53:22 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Dec 2014 23:30:24 +0000">ackle</metadata>
+</glsa>

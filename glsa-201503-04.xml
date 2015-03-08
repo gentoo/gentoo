@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-04">
+  <title>GNU C Library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNU C Library,  the
+    worst of which allowing a local attacker to execute arbitrary code or cause
+    a Denial of Service .
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>March 08, 2015</announced>
+  <revised>March 08, 2015: 1</revised>
+  <bug>431218</bug>
+  <bug>434408</bug>
+  <bug>454862</bug>
+  <bug>464634</bug>
+  <bug>477330</bug>
+  <bug>480734</bug>
+  <bug>484646</bug>
+  <bug>488084</bug>
+  <bug>489234</bug>
+  <bug>501196</bug>
+  <bug>513090</bug>
+  <bug>521930</bug>
+  <bug>537990</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.19-r1</unaffected>
+      <vulnerable range="lt">2.19-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU C library is the standard C library used by Gentoo Linux
+      systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the GNU C Library.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker may be able to execute arbitrary code or cause a Denial
+      of Service condition,.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All glibc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.19-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3404">CVE-2012-3404</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3405">CVE-2012-3405</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3406">CVE-2012-3406</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3480">CVE-2012-3480</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4412">CVE-2012-4412</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4424">CVE-2012-4424</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6656">CVE-2012-6656</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0242">CVE-2013-0242</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1914">CVE-2013-1914</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2207">CVE-2013-2207</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4237">CVE-2013-4237</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4332">CVE-2013-4332</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4458">CVE-2013-4458</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4788">CVE-2013-4788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4043">CVE-2014-4043</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0235">CVE-2015-0235</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 May 2014 23:06:40 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 08 Mar 2015 14:38:42 +0000">
+    creffett
+  </metadata>
+</glsa>

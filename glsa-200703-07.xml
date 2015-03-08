@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-07">
+  <title>STLport: Possible remote execution of arbitrary code</title>
+  <synopsis>
+    Two buffer overflows have been discovered in STLport possibly leading to
+    the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">STLport</product>
+  <announced>March 06, 2007</announced>
+  <revised>March 06, 2007: 01</revised>
+  <bug>165837</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/STLport" auto="yes" arch="*">
+      <unaffected range="ge">5.0.3</unaffected>
+      <vulnerable range="lt">5.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    STLport is a multi-platform C++ Standard Library implementation.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two buffer overflows have been discovered, one in "print floats" and
+    one in the rope constructor.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Both of the buffer overflows could result in the remote execution of
+    arbitrary code. Please note that the exploitability of the
+    vulnerabilities depends on how the library is used by other software
+    programs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All STLport users should upgrade to the latest version.
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/STLport-5.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0803">CVE-2007-0803</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 07:45:45 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Feb 2007 12:07:38 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 Feb 2007 22:45:11 +0000">
+    aetius
+  </metadata>
+</glsa>

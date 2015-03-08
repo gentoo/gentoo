@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-19">
+  <title>Dnsmasq: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Dnsmasq might result in the remote execution of
+    arbitrary code, or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">dnsmasq</product>
+  <announced>September 20, 2009</announced>
+  <revised>September 20, 2009: 01</revised>
+  <bug>282653</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.5.0</unaffected>
+      <vulnerable range="lt">2.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dnsmasq is a lightweight, easy to configure DNS forwarder and DHCP
+    server. It includes support for Trivial FTP (TFTP).
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in the TFTP functionality
+    included in Dnsmasq:
+    </p>
+    <ul>
+    <li>Pablo Jorge and Alberto Solino
+    discovered a heap-based buffer overflow (CVE-2009-2957).</li>
+    <li>An
+    anonymous researcher reported a NULL pointer reference
+    (CVE-2009-2958).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker in the local network could exploit these
+    vulnerabilities by sending specially crafted TFTP requests to a machine
+    running Dnsmasq, possibly resulting in the remote execution of
+    arbitrary code with the privileges of the user running the daemon, or a
+    Denial of Service. NOTE: The TFTP server is not enabled by default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You can disable the TFTP server either at buildtime by not enabling the
+    "tftp" USE flag, or at runtime. Make sure "--enable-tftp" is not set in
+    the DNSMASQ_OPTS variable in the /etc/conf.d/dnsmasq file and
+    "enable-tftp" is not set in /etc/dnsmasq.conf, either of which would
+    enable TFTP support if it is compiled in.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dnsmasq users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/dnsmasq-2.5.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2957">CVE-2009-2957</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2958">CVE-2009-2958</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 01 Sep 2009 10:28:12 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 Sep 2009 18:56:49 +0000">
+    a3li
+  </metadata>
+</glsa>

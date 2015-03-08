@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-12">
+  <title>zgv: Multiple buffer overflows</title>
+  <synopsis>
+    zgv contains multiple buffer overflows that can potentially lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">zgv</product>
+  <announced>November 07, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>69150</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/zgv" auto="yes" arch="*">
+      <unaffected range="ge">5.8</unaffected>
+      <vulnerable range="lt">5.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    zgv is a console image viewer based on svgalib.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple arithmetic overflows have been detected in the image
+    processing code of zgv.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially-crafted image file,
+    potentially resulting in execution of arbitrary code with the rights of
+    the user running zgv.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zgv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/zgv-5.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/379472">BugTraq Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1095">CVE-2004-1095</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat,  6 Nov 2004 19:26:29 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat,  6 Nov 2004 20:47:51 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat,  6 Nov 2004 21:08:18 +0000">
+    lewk
+  </metadata>
+</glsa>

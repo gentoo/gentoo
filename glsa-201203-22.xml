@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-22">
+  <title>nginx: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in nginx, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nginx</product>
+  <announced>March 28, 2012</announced>
+  <revised>March 28, 2012: 1</revised>
+  <bug>293785</bug>
+  <bug>293786</bug>
+  <bug>293788</bug>
+  <bug>389319</bug>
+  <bug>408367</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/nginx" auto="yes" arch="*">
+      <unaffected range="ge">1.0.14</unaffected>
+      <vulnerable range="lt">1.0.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nginx is a robust, small, and high performance HTTP and reverse proxy
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in nginx:</p>
+    
+    <ul>
+      <li>The TLS protocol does not properly handle session renegotiation
+        requests (CVE-2009-3555).
+      </li>
+      <li>The "ngx_http_process_request_headers()" function in ngx_http_parse.c
+        could cause a NULL pointer dereference (CVE-2009-3896).
+      </li>
+      <li>nginx does not properly sanitize user input for the the WebDAV COPY
+        or MOVE methods (CVE-2009-3898).
+      </li>
+      <li>The "ngx_resolver_copy()" function in ngx_resolver.c contains a
+        boundary error which could cause a heap-based buffer overflow
+        (CVE-2011-4315).
+      </li>
+      <li>nginx does not properly parse HTTP header responses which could
+        expose sensitive information (CVE-2012-1180).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the nginx process, cause a Denial of Service condition,
+      create or overwrite arbitrary files, or obtain sensitive information. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nginx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-1.0.14"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3896">CVE-2009-3896
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3898">CVE-2009-3898
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4315">CVE-2011-4315
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1180">CVE-2012-1180
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:49 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Wed, 28 Mar 2012 10:35:47 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-06">
+  <title>sharutils: Insecure temporary file creation</title>
+  <synopsis>
+    The unshar utility is vulnerable to symlink attacks, potentially allowing a
+    local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">sharutils</product>
+  <announced>April 06, 2005</announced>
+  <revised>April 06, 2005: 01</revised>
+  <bug>87939</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-arch/sharutils" auto="yes" arch="*">
+      <unaffected range="ge">4.2.1-r11</unaffected>
+      <vulnerable range="lt">4.2.1-r11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sharutils is a collection of tools to deal with shar archives.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joey Hess has discovered that the program unshar, which is a part
+    of sharutils, creates temporary files in a world-writable directory
+    with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When unshar is executed, this would result in the file being
+    overwritten with the rights of the user running the utility, which
+    could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sharutils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/sharutils-4.2.1-r11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ubuntulinux.org/support/documentation/usn/usn-104-1">Ubuntu Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue,  5 Apr 2005 07:42:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  5 Apr 2005 13:07:06 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  6 Apr 2005 20:15:09 +0000">
+    lewk
+  </metadata>
+</glsa>

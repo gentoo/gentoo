@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-08">
+  <title>NTP: Traffic amplification</title>
+  <synopsis>NTP can be abused to amplify Denial of Service attack traffic.</synopsis>
+  <product type="ebuild"></product>
+  <announced>January 16, 2014</announced>
+  <revised>January 16, 2014: 1</revised>
+  <bug>496776</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.6_p5-r10</unaffected>
+      <vulnerable range="lt">4.2.6_p5-r10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTP is a protocol designed to synchronize the clocks of computers over a
+      network. The net-misc/ntp package contains the official reference
+      implementation by the NTP Project.
+    </p>
+  </background>
+  <description>
+    <p>ntpd is susceptible to a reflected Denial of Service attack. Please
+      review the CVE identifiers and references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote attacker may conduct a distributed reflective
+      Denial of Service attack on another user via a vulnerable NTP server.
+    </p>
+  </impact>
+  <workaround>
+    <p>We modified the default ntp configuration in =net-misc/ntp-4.2.6_p5-r10
+      and added “noquery” to the default restriction which disallows anyone
+      to query the ntpd status, including “monlist”.
+    </p>
+    
+    <p>If you use a non-default configuration, and provide a ntp service to
+      untrusted networks, we highly recommend you to revise your configuration
+      to disable mode 6 and 7 queries for any untrusted (public) network.
+    </p>
+    
+    <p>You can always enable these queries for specific trusted networks. For
+      more details please see the “Access Control Support” chapter in the
+      ntp.conf(5) man page.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All NTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/ntp-4.2.6_p5-r10"
+    </code>
+    
+    <p>Note that the updated package contains a modified default configuration
+      only. You may need to modify your configuration further.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5211">CVE-2013-5211</uri>
+    <uri link="http://www.kb.cert.org/vuls/id/348126">VU#348126</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Jan 2014 20:55:36 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Jan 2014 22:31:29 +0000">
+    keytoaster
+  </metadata>
+</glsa>

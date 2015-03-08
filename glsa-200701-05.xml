@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-05">
+  <title>KDE kfile JPEG info plugin: Denial of Service</title>
+  <synopsis>
+    The KDE kfile JPEG info plugin of kdegraphics could enter an endless loop
+    leading to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">kdegraphics-kfile-plugins</product>
+  <announced>January 12, 2007</announced>
+  <revised>January 12, 2007: 01</revised>
+  <bug>155949</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdegraphics-kfile-plugins" auto="yes" arch="*">
+      <unaffected range="ge">3.5.5-r1</unaffected>
+      <vulnerable range="lt">3.5.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The KDE kfile-info JPEG plugin provides meta-information about JPEG
+    files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Marcus Meissner of the SUSE security team discovered a stack overflow
+    vulnerability in the code processing EXIF information in the kfile JPEG
+    info plugin.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a specially crafted JPEG
+    image with a KDE application like Konqueror or digiKam, leading to a
+    Denial of Service by an infinite recursion.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KDE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-kfile-plugins-3.5.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6297">CVE-2006-6297</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 22 Dec 2006 08:45:31 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Dec 2006 16:52:12 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 12 Jan 2007 13:14:10 +0000">
+    falco
+  </metadata>
+</glsa>

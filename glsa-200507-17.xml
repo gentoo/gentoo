@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-17">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities in Mozilla Thunderbird allow attacks ranging from
+    execution of script code with elevated privileges to information leak.
+  </synopsis>
+  <product type="ebuild">thunderbird</product>
+  <announced>July 18, 2005</announced>
+  <revised>July 18, 2005: 01</revised>
+  <bug>98855</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Thunderbird is the next-generation mail client from the
+    Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found and fixed in Mozilla
+    Thunderbird:
+    </p>
+    <ul>
+    <li>"moz_bug_r_a4" and "shutdown" discovered
+    that Thunderbird was improperly cloning base objects (MFSA
+    2005-56).</li>
+    <li>"moz_bug_r_a4" also reported that Thunderbird was
+    overly trusting contents, allowing privilege escalation via property
+    overrides (MFSA 2005-41, 2005-44), that it failed to validate XHTML DOM
+    nodes properly (MFSA 2005-55), and that XBL scripts ran even when
+    Javascript is disabled (MFSA 2005-46).</li>
+    <li>"shutdown" discovered a
+    possibly exploitable crash in InstallVersion.compareTo (MFSA
+    2005-50).</li>
+    <li>Andreas Sandblad from Secunia reported that a child
+    frame can call top.focus() even if the framing page comes from a
+    different origin and has overridden the focus() routine (MFSA
+    2005-52).</li>
+    <li>Georgi Guninski reported missing Install object
+    instance checks in the native implementations of XPInstall-related
+    JavaScript objects (MFSA 2005-40).</li>
+    <li>Finally, Vladimir V.
+    Perepelitsa discovered a memory disclosure bug in JavaScript's regular
+    expression string replacement when using an anonymous function as the
+    replacement argument (CAN-2005-0989 and MFSA 2005-33).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft malicious email messages that would
+    leverage these issues to inject and execute arbitrary script code with
+    elevated privileges or help in stealing information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds for all the issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.0.5&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Thunderbird">Mozilla Foundation Security Advisories</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0989">CAN-2005-0989</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 14 Jul 2005 11:30:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 17 Jul 2005 20:53:06 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-21">
+  <title>UnrealIRCd: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in UnrealIRCd might allow remote attackers to
+    compromise the "unrealircd" account, or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">unrealircd</product>
+  <announced>June 14, 2010</announced>
+  <revised>June 14, 2010: 02</revised>
+  <bug>260806</bug>
+  <bug>323691</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/unrealircd" auto="yes" arch="*">
+      <unaffected range="ge">3.2.8.1-r1</unaffected>
+      <vulnerable range="lt">3.2.8.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    UnrealIRCd is an Internet Relay Chat (IRC) daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in UnrealIRCd:
+    </p>
+    <ul>
+    <li>The vendor reported a buffer overflow in the user authorization
+    code (CVE-2009-4893).</li>
+    <li>The vendor reported that the distributed source code of UnrealIRCd
+    was compromised and altered to include a system() call that could be
+    called with arbitrary user input (CVE-2010-2075).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities to cause the
+    execution of arbitrary commands with the privileges of the user running
+    UnrealIRCd, or a Denial of Service condition. NOTE: By default
+    UnrealIRCd on Gentoo is run with the privileges of the "unrealircd"
+    user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All UnrealIRCd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/unrealircd-3.2.8.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.unrealircd.com/txt/unrealsecadvisory.20090413.txt">UnrealIRCd Security Advisory 20090413</uri>
+    <uri link="http://www.unrealircd.com/txt/unrealsecadvisory.20100612.txt">UnrealIRCd Security Advisory 20100612</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4893">CVE-2009-4893</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2075">CVE-2010-2075</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 12 Jun 2010 21:31:31 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Jun 2010 17:00:57 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Jun 2010 17:17:46 +0000">
+    vorlon
+  </metadata>
+</glsa>

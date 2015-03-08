@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-10">
+  <title>Opera: Command-line URL shell command injection</title>
+  <synopsis>
+    Lack of URL validation in Opera command-line wrapper could be abused to
+    execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>December 18, 2005</announced>
+  <revised>December 18, 2005: 01</revised>
+  <bug>113239</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">8.51</unaffected>
+      <vulnerable range="lt">8.51</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Peter Zelezny discovered that the shell script used to launch
+    Opera parses shell commands that are enclosed within backticks in the
+    URL provided via the command line.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability by enticing a
+    user to follow a specially crafted URL from a tool that uses Opera to
+    open URLs, resulting in the execution of arbitrary commands on the
+    targeted machine.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-8.51&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3750">CVE-2005-3750</uri>
+    <uri link="http://www.opera.com/docs/changelogs/linux/851/">Opera 8.51 Changelog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 Dec 2005 12:24:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 15 Dec 2005 12:24:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 16 Dec 2005 02:18:07 +0000">
+    adir
+  </metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-02">
+  <title>KDE Personal Information Management Suite Remote Buffer Overflow Vulnerability</title>
+  <synopsis>
+    KDE-PIM may be vulnerable to a remote buffer overflow attack that may allow
+    unauthorized access to an affected system. 
+  </synopsis>
+  <product type="ebuild">kde-base/kde</product>
+  <announced>April 06, 2004</announced>
+  <revised>April 06, 2004: 01</revised>
+  <bug>38256</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kde" auto="yes" arch="*">
+      <unaffected range="ge">3.1.5</unaffected>
+      <vulnerable range="le">3.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE-PIM is an application suite designed to manage mail, addresses,
+    appointments, and contacts.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow may occur in KDE-PIM's VCF file reader when a maliciously
+    crafted VCF file is opened by a user on a vulnerable system.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker may unauthorized access to a user's personal data or
+    execute commands with the user's privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    KDE users should upgrade to version 3.1.5 or later:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv ">=kde-base/kde-3.1.5"
+    # emerge ">=kde-base/kde-3.1.5"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0988">CAN-2003-0988</uri>
+  </references>
+  <metadata tag="submitter">aescriva</metadata>
+</glsa>

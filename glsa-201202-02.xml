@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201202-02">
+  <title>Quagga: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Quagga, the worst of which
+    leading to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Quagga</product>
+  <announced>February 21, 2012</announced>
+  <revised>February 21, 2012: 2</revised>
+  <bug>334303</bug>
+  <bug>359903</bug>
+  <bug>384651</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/quagga" auto="yes" arch="*">
+      <unaffected range="ge">0.99.20 </unaffected>
+      <vulnerable range="lt">0.99.20 </vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Quagga is a free routing daemon replacing Zebra supporting RIP, OSPF and
+      BGP.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Quagga. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A BGP peer could send a Route-Refresh message with specially-crafted ORF
+      record, which can cause Quagga's bgpd to crash or possibly execute
+      arbitrary code with the privileges of the user running Quagga's bgpd; a
+      BGP update AS path request with unknown AS type, or malformed
+      AS-Pathlimit or Extended-Community attributes could lead to Denial of
+      Service (daemon crash), an error in bgpd when handling AS_PATH attributes
+      within UPDATE messages can
+      be exploited to cause a heap-based buffer overflow resulting in a crash
+      of the
+      daemon and disruption of IPv4 routing, two errors in ospf6d and ospfd can
+      each be exploited to crash the daemon and disrupt IP routing.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Quagga users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/quagga-0.99.20"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1674">CVE-2010-1674</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1675">CVE-2010-1675</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2948">CVE-2010-2948</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2949">CVE-2010-2949</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3323">CVE-2011-3323</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3324">CVE-2011-3324</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3325">CVE-2011-3325</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3326">CVE-2011-3326</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3327">CVE-2011-3327</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:14 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Tue, 21 Feb 2012 19:14:56 +0000" tag="submitter">a3li</metadata>
+</glsa>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-16">
+  <title>Samba: Denial of Service vulnerabilities</title>
+  <synopsis>
+    Two Denial of Service vulnerabilities have been found and fixed in Samba.
+  </synopsis>
+  <product type="ebuild">Samba</product>
+  <announced>September 13, 2004</announced>
+  <revised>September 13, 2004: 01</revised>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.7</unaffected>
+      <unaffected range="lt">3.0</unaffected>
+      <vulnerable range="lt">3.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a freely available SMB/CIFS implementation which allows seamless
+    interoperability of file and print services to other SMB/CIFS clients. smbd
+    and nmbd are two daemons used by the Samba server.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a defect in smbd's ASN.1 parsing. A bad packet received during the
+    authentication request could throw newly-spawned smbd processes into an
+    infinite loop (CAN-2004-0807). Another defect was found in nmbd's
+    processing of mailslot packets, where a bad NetBIOS request could crash the
+    nmbd process (CAN-2004-0808).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted packets to trigger both
+    defects. The ASN.1 parsing issue can be exploited to exhaust all available
+    memory on the Samba host, potentially denying all service to that server.
+    The nmbd issue can be exploited to crash the nmbd process, resulting in a
+    Denial of Service condition on the Samba server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba 3.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-fs/samba-3.0.7"
+    # emerge ">=net-fs/samba-3.0.7"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0807">CAN-2004-0807</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0808">CAN-2004-0808</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 11 Sep 2004 15:16:21 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 13 Sep 2004 12:15:40 +0000">
+    jaervosz
+  </metadata>
+</glsa>

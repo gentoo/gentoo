@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-09">
+  <title>OpenLDAP: Denial of Service vulnerability</title>
+  <synopsis>
+    A flaw in OpenLDAP allows remote unauthenticated attackers to cause a
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">openldap</product>
+  <announced>August 08, 2008</announced>
+  <revised>August 08, 2008: 01</revised>
+  <bug>230269</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nds/openldap" auto="yes" arch="*">
+      <unaffected range="ge">2.3.43</unaffected>
+      <vulnerable range="lt">2.3.43</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenLDAP Software is an open source implementation of the Lightweight
+    Directory Access Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cameron Hotchkies discovered an error within the parsing of ASN.1 BER
+    encoded packets in the "ber_get_next()" function in
+    libraries/liblber/io.c.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote unauthenticated attacker can send a specially crafted ASN.1
+    BER encoded packet which will trigger the error and cause an
+    "assert()", terminating the "slapd" daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenLDAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-nds/openldap-2.3.43&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2952">CVE-2008-2952</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 05 Aug 2008 20:53:02 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Aug 2008 20:54:49 +0000">
+    falco
+  </metadata>
+</glsa>

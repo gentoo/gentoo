@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-11">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in PHP, the worst of
+    which could lead to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>August 29, 2014</announced>
+  <revised>January 02, 2015: 3</revised>
+  <bug>459904</bug>
+  <bug>472204</bug>
+  <bug>472558</bug>
+  <bug>474656</bug>
+  <bug>476570</bug>
+  <bug>481004</bug>
+  <bug>483212</bug>
+  <bug>485252</bug>
+  <bug>492784</bug>
+  <bug>493982</bug>
+  <bug>501312</bug>
+  <bug>503630</bug>
+  <bug>503670</bug>
+  <bug>505172</bug>
+  <bug>505712</bug>
+  <bug>509132</bug>
+  <bug>512288</bug>
+  <bug>512492</bug>
+  <bug>513032</bug>
+  <bug>516994</bug>
+  <bug>519932</bug>
+  <bug>520134</bug>
+  <bug>520438</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.5.16</unaffected>
+      <unaffected range="rge">5.4.32</unaffected>
+      <unaffected range="rge">5.3.29</unaffected>
+      <unaffected range="rge">5.4.34</unaffected>
+      <unaffected range="rge">5.4.35</unaffected>
+      <unaffected range="rge">5.4.36</unaffected>
+      <unaffected range="rge">5.4.37</unaffected>
+      <unaffected range="rge">5.4.38</unaffected>
+      <vulnerable range="lt">5.5.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is a widely-used general-purpose scripting language that is
+      especially suited for Web development and can be embedded into HTML. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker can cause arbitrary code execution, create
+      a Denial of Service condition, read or write arbitrary files, impersonate
+      other servers, hijack a web session, or have other unspecified impact.
+      Additionally, a local attacker could gain escalated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP 5.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.5.16"
+    </code>
+    
+    <p>All PHP 5.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.4.32"
+    </code>
+    
+    <p>All PHP 5.3 users should upgrade to the latest version. This release
+      marks the end of life of the PHP 5.3 series. Future releases of this
+      series are not planned. All PHP 5.3 users are encouraged to upgrade to
+      the current stable version of PHP 5.5 or previous stable version of PHP
+      5.4, which are supported till at least 2016 and 2015 respectively.
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.3.29"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4718">CVE-2011-4718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1635">CVE-2013-1635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1643">CVE-2013-1643</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1824">CVE-2013-1824</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2110">CVE-2013-2110</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3735">CVE-2013-3735</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4113">CVE-2013-4113</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4248">CVE-2013-4248</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4635">CVE-2013-4635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4636">CVE-2013-4636</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6420">CVE-2013-6420</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6712">CVE-2013-6712</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7226">CVE-2013-7226</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7327">CVE-2013-7327</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7345">CVE-2013-7345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0185">CVE-2014-0185</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0237">CVE-2014-0237</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0238">CVE-2014-0238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1943">CVE-2014-1943</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2270">CVE-2014-2270</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2497">CVE-2014-2497</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3597">CVE-2014-3597</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3981">CVE-2014-3981</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4049">CVE-2014-4049</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4670">CVE-2014-4670</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5120">CVE-2014-5120</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:19:36 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 02 Jan 2015 22:16:35 +0000">
+    creffett
+  </metadata>
+</glsa>

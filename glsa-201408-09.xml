@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-09">
+  <title>GNU Libtasn1: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in GNU Libtasn1, the
+    worse of which can allow a context-dependent attacker to cause a Denial of
+    Service condition. 
+  </synopsis>
+  <product type="ebuild">libtasn1</product>
+  <announced>August 29, 2014</announced>
+  <revised>August 29, 2014: 1</revised>
+  <bug>511536</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libtasn1" auto="yes" arch="*">
+      <unaffected range="ge">3.6</unaffected>
+      <vulnerable range="lt">3.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The ASN.1 library used in GNUTLS.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU Libtasn1. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Libtasn1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtasn1-3.6"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages. 
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3467">CVE-2014-3467</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3468">CVE-2014-3468</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3469">CVE-2014-3469</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Jun 2014 17:44:50 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 09:17:19 +0000">Zlogene</metadata>
+</glsa>

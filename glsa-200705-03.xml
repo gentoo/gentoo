@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-03">
+  <title>Tomcat: Information disclosure</title>
+  <synopsis>
+    A vulnerability has been discovered in Tomcat that allows for the
+    disclosure of sensitive information.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>May 01, 2007</announced>
+  <revised>May 01, 2007: 01</revised>
+  <bug>173122</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge">5.5.22</unaffected>
+      <vulnerable range="lt">5.5.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tomcat is the Apache Jakarta Project's official implementation of Java
+    Servlets and Java Server Pages.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tomcat allows special characters like slash, backslash or URL-encoded
+    backslash as a separator, while Apache does not.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could send a specially crafted URL to the vulnerable
+    Tomcat server, possibly resulting in a directory traversal and read
+    access to arbitrary files with the privileges of the user running
+    Tomcat. Note that this vulnerability can only be exploited when using
+    apache proxy modules like mod_proxy, mod_rewrite or mod_jk.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tomcat users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/tomcat-5.5.22&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0450">CVE-2007-0450</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 24 Apr 2007 19:49:54 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Apr 2007 20:54:19 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Apr 2007 20:54:45 +0000">
+    p-y
+  </metadata>
+</glsa>

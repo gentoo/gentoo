@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-12">
+  <title>Quake 3 engine based games: Buffer Overflow</title>
+  <synopsis>
+    The Quake 3 engine has a vulnerability that could be exploited to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">quake</product>
+  <announced>May 10, 2006</announced>
+  <revised>May 10, 2006: 01</revised>
+  <bug>132377</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-fps/quake3-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.32c</unaffected>
+      <vulnerable range="lt">1.32c</vulnerable>
+    </package>
+    <package name="games-fps/rtcw" auto="yes" arch="*">
+      <unaffected range="ge">1.41b</unaffected>
+      <vulnerable range="lt">1.41b</vulnerable>
+    </package>
+    <package name="games-fps/enemy-territory" auto="yes" arch="*">
+      <unaffected range="ge">2.60b</unaffected>
+      <vulnerable range="lt">2.60b</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Quake 3 is a multiplayer first person shooter.
+    </p>
+  </background>
+  <description>
+    <p>
+    landser discovered a vulnerability within the "remapShader"
+    command. Due to a boundary handling error in "remapShader", there is a
+    possibility of a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could set up a malicious game server and entice users
+    to connect to it, potentially resulting in the execution of arbitrary
+    code with the rights of the game user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not connect to untrusted game servers.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Quake 3 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/quake3-bin-1.32c&quot;</code>
+    <p>
+    All RTCW users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/rtcw-1.41b&quot;</code>
+    <p>
+    All Enemy Territory users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/enemy-territory-2.60b&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2236">CVE-2006-2236</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 09 May 2006 16:37:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 09 May 2006 16:37:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 09 May 2006 17:21:13 +0000">
+    fox2mike
+  </metadata>
+</glsa>

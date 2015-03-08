@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-37">
+  <title>Ghostscript: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple integer overflows in the Ghostscript ICC library might allow for
+    user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ghostscript-gpl ghostscript-esp ghostscript-gnu</product>
+  <announced>March 23, 2009</announced>
+  <revised>March 23, 2009: 01</revised>
+  <bug>261087</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">8.64-r2</unaffected>
+      <vulnerable range="lt">8.64-r2</vulnerable>
+    </package>
+    <package name="app-text/ghostscript-gnu" auto="yes" arch="*">
+      <unaffected range="ge">8.62.0</unaffected>
+      <vulnerable range="lt">8.62.0</vulnerable>
+    </package>
+    <package name="app-text/ghostscript-esp" auto="yes" arch="*">
+      <vulnerable range="le">8.15.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ghostscript is an interpreter for the PostScript language and the
+    Portable Document Format (PDF).
+    </p>
+  </background>
+  <description>
+    <p>
+    Jan Lieskovsky from the Red Hat Security Response Team discovered the
+    following vulnerabilities in Ghostscript's ICC Library:
+    </p>
+    <ul>
+    <li>Multiple integer overflows (CVE-2009-0583).</li>
+    <li>Multiple
+    insufficient bounds checks on certain variable sizes
+    (CVE-2009-0584).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    PostScript file containing images and a malicious ICC profile, possibly
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GPL Ghostscript users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gpl-8.64-r2&quot;</code>
+    <p>
+    All GNU Ghostscript users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gnu-8.62.0&quot;</code>
+    <p>
+    We recommend that users unmerge ESP Ghostscript and use GPL or GNU
+    Ghostscript instead:
+    </p>
+    <code>
+    # emerge --unmerge &quot;app-text/ghostscript-esp&quot;</code>
+    <p>
+    For installation instructions, see above.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0583">CVE-2009-0583</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0584">CVE-2009-0584</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 Mar 2009 20:18:05 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 Mar 2009 21:04:31 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 23 Mar 2009 13:39:36 +0000">
+    a3li
+  </metadata>
+</glsa>

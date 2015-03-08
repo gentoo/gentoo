@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-01">
+  <title>NTP: Denial of Service</title>
+  <synopsis>
+    A Denial of Service condition in ntpd can cause excessive CPU or bandwidth
+    consumption.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>January 03, 2010</announced>
+  <revised>January 03, 2010: 01</revised>
+  <bug>290881</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4_p7-r1</unaffected>
+      <vulnerable range="lt">4.2.4_p7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NTP is a set of the Network Time Protocol programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Robin Park and Dmitri Vinokurov discovered that ntp_request.c in ntpd
+    does not handle MODE_PRIVATE packets correctly, causing a continuous
+    exchange of MODE_PRIVATE error responses between two NTP daemons or
+    causing high CPU load on a single host.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote, unauthenticated attacker could send a specially crafted
+    MODE_PRIVATE packet, allowing for a Denial of Service condition (CPU
+    and bandwidth consumption).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NTP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/ntp-4.2.4_p7-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3563">CVE-2009-3563</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 10 Dec 2009 20:02:44 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2009 15:53:37 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 03 Jan 2010 00:05:58 +0000">
+    craig
+  </metadata>
+</glsa>

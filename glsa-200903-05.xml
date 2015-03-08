@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-05">
+  <title>PDFjam: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the PDFjam scripts allow for local privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">pdfjam</product>
+  <announced>March 07, 2009</announced>
+  <revised>March 07, 2009: 01</revised>
+  <bug>252734</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/pdfjam" auto="yes" arch="*">
+      <unaffected range="ge">1.20-r1</unaffected>
+      <vulnerable range="lt">1.20-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PDFjam is a small collection of shell scripts to edit PDF documents,
+    including pdfnup, pdfjoin and pdf90.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>
+    Martin Vaeth reported multiple untrusted search path vulnerabilities
+    (CVE-2008-5843).
+    </li>
+    <li>Marcus Meissner of the SUSE Security Team reported that
+    temporary files are created with a predictable name (CVE-2008-5743).
+    </li>
+    </ul> <p>
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could place a specially crafted Python module in the
+    current working directory or the /var/tmp directory, and entice a user
+    to run the PDFjam scripts, leading to the execution of arbitrary code
+    with the privileges of the user running the application. A local
+    attacker could also leverage symlink attacks to overwrite arbitrary
+    files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PDFjam users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/pdfjam-1.20-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5843">CVE-2008-5843</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5743">CVE-2008-5743</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Jan 2009 21:30:23 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 16:57:17 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 16:57:35 +0000">
+    rbu
+  </metadata>
+</glsa>

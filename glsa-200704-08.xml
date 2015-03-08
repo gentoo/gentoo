@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-08">
+  <title>DokuWiki: Cross-site scripting vulnerability</title>
+  <synopsis>
+    DokuWiki is vulnerable to a cross-site scripting attack.
+  </synopsis>
+  <product type="ebuild">dokuwiki</product>
+  <announced>April 12, 2007</announced>
+  <revised>April 12, 2007: 01</revised>
+  <bug>163781</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/dokuwiki" auto="yes" arch="*">
+      <unaffected range="ge">20061106</unaffected>
+      <vulnerable range="lt">20061106</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DokuWiki is a simple to use wiki aimed at creating documentation.
+    </p>
+  </background>
+  <description>
+    <p>
+    DokuWiki does not sanitize user input to the GET variable 'media' in
+    the fetch.php file.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could entice a user to click a specially crafted link and
+    inject CRLF characters into the variable. This would allow the creation
+    of new lines or fields in the returned HTTP Response header, which
+    would permit the attacker to execute arbitrary scripts in the context
+    of the user's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Replace the following line in lib/exe/fetch.php:
+    </p>
+    <code>$MEDIA = getID('media',false); // no cleaning - maybe external</code>
+    <p>
+    with
+    </p>
+    <code>$MEDIA = preg_replace('/[\x00-\x1F]+/s','',getID('media',false));</code>
+  </workaround>
+  <resolution>
+    <p>
+    All DokuWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/dokuwiki-20061106&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6965">CVE-2006-6965</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Apr 2007 22:16:33 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Apr 2007 13:45:23 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:45 +0000">
+    falco
+  </metadata>
+</glsa>

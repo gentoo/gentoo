@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-14">
+  <title>Mozilla Firefox, SeaMonkey, XULRunner: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Mozilla Firefox, SeaMonkey
+    and XULRunner, potentially allowing to compromise a user's system.
+  </synopsis>
+  <product type="ebuild">firefox seamonkey xulrunner</product>
+  <announced>November 12, 2007</announced>
+  <revised>November 12, 2007: 01</revised>
+  <bug>196480</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.9</unaffected>
+      <vulnerable range="lt">2.0.0.9</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.9</unaffected>
+      <vulnerable range="lt">2.0.0.9</vulnerable>
+    </package>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.1.6</unaffected>
+      <vulnerable range="lt">1.1.6</vulnerable>
+    </package>
+    <package name="www-client/seamonkey-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.1.6</unaffected>
+      <vulnerable range="lt">1.1.6</vulnerable>
+    </package>
+    <package name="net-libs/xulrunner" auto="yes" arch="*">
+      <unaffected range="ge">1.8.1.9</unaffected>
+      <vulnerable range="lt">1.8.1.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is a cross-platform web browser from Mozilla. SeaMonkey
+    is a free, cross-platform Internet suite.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Mozilla Firefox and
+    SeaMonkey. Various errors in the browser engine and the Javascript
+    engine can be exploited to cause a memory corruption (CVE-2007-5339 and
+    CVE-2007-5340). Before being used in a request, input passed to the
+    user ID when making an HTTP request with digest authentication is not
+    properly sanitised (CVE-2007-2292). The titlebar can be hidden by a XUL
+    markup language document (CVE-2007-5334). Additionally, an error exists
+    in the handling of "smb:" and "sftp:" URI schemes on systems with
+    gnome-vfs support (CVE-2007-5337). An unspecified error in the handling
+    of "XPCNativeWrappers" and not properly implementing JavaScript
+    onUnload() handlers may allow the execution of arbitrary Javascript
+    code (CVE-2007-5338 and CVE-2007-1095). Another error is triggered by
+    using the addMicrosummaryGenerator sidebar method to access file: URIs
+    (CVE-2007-5335).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these issues to execute arbitrary code,
+    gain the privileges of the user running the application, disclose
+    sensitive information, conduct phishing attacks, and read and
+    manipulate certain data.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.9&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.9&quot;</code>
+    <p>
+    All SeaMonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.6&quot;</code>
+    <p>
+    All SeaMonkey binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.6&quot;</code>
+    <p>
+    All XULRunner users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/xulrunner-1.8.1.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1095">CVE-2007-1095</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2292">CVE-2007-2292</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5334">CVE-2007-5334</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5335">CVE-2007-5335</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5337">CVE-2007-5337</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5338">CVE-2007-5338</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5339">CVE-2007-5339</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5340">CVE-2007-5340</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 24 Oct 2007 22:27:12 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 25 Oct 2007 23:05:04 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Nov 2007 21:08:46 +0000">
+    p-y
+  </metadata>
+</glsa>

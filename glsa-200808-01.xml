@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-01">
+  <title>xine-lib: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    xine-lib is vulnerable to multiple buffer overflows when processing media
+    streams.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>August 06, 2008</announced>
+  <revised>August 06, 2008: 01</revised>
+  <bug>213039</bug>
+  <bug>214270</bug>
+  <bug>218059</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.13</unaffected>
+      <vulnerable range="lt">1.1.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is the core library package for the xine media player, and
+    other players such as Amarok, Codeine/Dragon Player and Kaffeine.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in xine-lib:
+    </p>
+    <ul>
+    <li>
+    Alin Rad Pop of Secunia reported an array indexing vulnerability in the
+    sdpplin_parse() function in the file input/libreal/sdpplin.c when
+    processing streams from RTSP servers that contain a large "streamid"
+    SDP parameter (CVE-2008-0073).
+    </li>
+    <li>
+    Luigi Auriemma reported multiple integer overflows that result in
+    heap-based buffer overflows when processing ".FLV", ".MOV" ".RM",
+    ".MVE", ".MKV", and ".CAK" files (CVE-2008-1482).
+    </li>
+    <li>
+    Guido Landi reported a stack-based buffer overflow in the
+    demux_nsf_send_chunk() function when handling titles within NES Music
+    (.NSF) files (CVE-2008-1878).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to play a specially crafted video
+    file or stream with a player using xine-lib, potentially resulting in
+    the execution of arbitrary code with the privileges of the user running
+    the player.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.13&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0073">CVE-2008-0073</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1482">CVE-2008-1482</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1878">CVE-2008-1878</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 24 Mar 2008 19:44:35 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Apr 2008 20:23:27 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 00:56:00 +0000">
+    rbu
+  </metadata>
+</glsa>

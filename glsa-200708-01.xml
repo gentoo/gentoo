@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-01">
+  <title>Macromedia Flash Player: Remote arbitrary code execution</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Macromedia Flash Player,
+    allowing for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>August 08, 2007</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>185141</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">9.0.48.0</unaffected>
+      <vulnerable range="lt">9.0.48.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Macromedia Flash Player is a renderer for the popular SWF file type
+    which is commonly used to provide interactive websites, digital
+    experiences and mobile content.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mark Hills discovered some errors when interacting with a browser for
+    keystrokes handling (CVE-2007-2022). Stefano Di Paola and Giorgio Fedon
+    from Minded Security discovered a boundary error when processing FLV
+    files (CVE-2007-3456). An input validation error when processing HTTP
+    referrers has also been reported (CVE-2007-3457).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file,
+    possibly leading to the execution of arbitrary code with the privileges
+    of the user running the Macromedia Flash Player, or sensitive data
+    access.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Macromedia Flash Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-9.0.48.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2022">CVE-2007-2022</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3456">CVE-2007-3456</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3457">CVE-2007-3457</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 10:35:19 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 24 Jul 2007 09:40:21 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Jul 2007 09:40:28 +0000">
+    p-y
+  </metadata>
+</glsa>

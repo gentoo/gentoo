@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-10">
+  <title>pdnsd: Denial of Service and potential arbitrary code execution</title>
+  <synopsis>
+    pdnsd is vulnerable to a buffer overflow that may result in arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">pdnsd</product>
+  <announced>May 10, 2006</announced>
+  <revised>May 10, 2006: 01</revised>
+  <bug>131341</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdnsd" auto="yes" arch="*">
+      <unaffected range="ge">1.2.4</unaffected>
+      <vulnerable range="lt">1.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pdnsd is a proxy DNS server with permanent caching that is
+    designed to cope with unreachable DNS servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    The pdnsd team has discovered an unspecified buffer overflow
+    vulnerability. The PROTOS DNS Test Suite, by the Oulu University Secure
+    Programming Group (OUSPG), has also revealed a memory leak error within
+    the handling of the QTYPE and QCLASS DNS queries, leading to
+    consumption of large amounts of memory.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker can craft malicious DNS queries leading to a Denial of
+    Service, and potentially the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pdnsd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdnsd-1.2.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2076">CVE-2006-2076</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2077">CVE-2006-2077</uri>
+  </references>
+  <metadata tag="bugReady" timestamp="Sat, 06 May 2006 16:17:08 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 May 2006 10:55:02 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-13">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark, allowing
+    remote attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>December 16, 2013</announced>
+  <revised>December 16, 2013: 1</revised>
+  <bug>484582</bug>
+  <bug>490434</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.10.3</unaffected>
+      <unaffected range="rge">1.8.11</unaffected>
+      <vulnerable range="lt">1.10.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a versatile network protocol analyzer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark 1.10 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.10.3"
+    </code>
+    
+    <p>All Wireshark 1.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.8.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5717">CVE-2013-5717</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5718">CVE-2013-5718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5719">CVE-2013-5719</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5720">CVE-2013-5720</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5721">CVE-2013-5721</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5722">CVE-2013-5722</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6336">CVE-2013-6336</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6337">CVE-2013-6337</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6338">CVE-2013-6338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6339">CVE-2013-6339</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6340">CVE-2013-6340</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 30 Sep 2013 23:34:56 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Dec 2013 18:13:16 +0000">ackle</metadata>
+</glsa>

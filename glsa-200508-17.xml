@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-17">
+  <title>libpcre: Heap integer overflow</title>
+  <synopsis>
+    libpcre is vulnerable to a heap integer overflow, possibly leading to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpcre</product>
+  <announced>August 25, 2005</announced>
+  <revised>August 25, 2005: 01</revised>
+  <bug>103337</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libpcre" auto="yes" arch="*">
+      <unaffected range="ge">6.3</unaffected>
+      <vulnerable range="lt">6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpcre is a library providing functions for Perl-compatible
+    regular expressions.
+    </p>
+  </background>
+  <description>
+    <p>
+    libpcre fails to check certain quantifier values in regular
+    expressions for sane values.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could possibly exploit this vulnerability to execute
+    arbitrary code by sending specially crafted regular expressions to
+    applications making use of the libpcre library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libpcre users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libpcre-6.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="http://www.securitytracker.com/alerts/2005/Aug/1014744.html">SecurityTracker Alert ID 1014744</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 23 Aug 2005 08:06:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 23 Aug 2005 16:35:02 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 23 Aug 2005 19:48:38 +0000">
+    DerCorny
+  </metadata>
+</glsa>

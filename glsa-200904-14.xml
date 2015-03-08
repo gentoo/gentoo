@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-14">
+  <title>F-PROT Antivirus: Multiple Denial of Service vulnerabilities</title>
+  <synopsis>
+    Multiple errors in F-PROT Antivirus may lead to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">f-prot</product>
+  <announced>April 14, 2009</announced>
+  <revised>April 17, 2009: 04</revised>
+  <bug>232665</bug>
+  <bug>253497</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/f-prot" auto="yes" arch="*">
+      <unaffected range="ge">6.0.2</unaffected>
+      <vulnerable range="lt">6.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    F-PROT Antivirus is a multi-platform virus scanner for workstations and
+    mail servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found:
+    </p>
+    <ul>
+    <li>Multiple errors when processing UPX, ASPack or Microsoft Office
+    files (CVE-2008-3243).</li>
+    <li>Infinite Sergio Alvarez of n.runs AG reported an invalid memory
+    access when processing a CHM file with a large nb_dir value
+    (CVE-2008-3244).</li>
+    <li>Jonathan Brossard from iViZ Techno Solutions reported that F-PROT
+    Antivirus does not correctly process ELF binaries with corrupted
+    headers (CVE-2008-5747).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to scan a
+    specially crafted file, leading to a crash or infinite loop.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All F-PROT Antivirus users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/f-prot-6.0.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3243">CVE-2008-3243</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3244">CVE-2008-3244</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5747">CVE-2008-5747</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 08 Apr 2009 22:38:56 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Apr 2009 21:12:22 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Apr 2009 21:13:03 +0000">
+    p-y
+  </metadata>
+</glsa>

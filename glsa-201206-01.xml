@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-01">
+  <title>BIND: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
+    which allowing to cause remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>June 02, 2012</announced>
+  <revised>June 02, 2012: 1</revised>
+  <bug>347621</bug>
+  <bug>356223</bug>
+  <bug>368863</bug>
+  <bug>374201</bug>
+  <bug>374623</bug>
+  <bug>390753</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.7.4_p1</unaffected>
+      <vulnerable range="lt">9.7.4_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND is the Berkeley Internet Name Domain Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerabilities allow remote attackers to cause a Denial of Service
+      (daemon crash) via a DNS query, to bypass intended access restrictions,
+      to incorrectly cache a ncache entry and a rrsig for the same type and to
+      incorrectly mark zone data as insecure.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All bind users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.7.4_p1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since December 22, 2011. It is likely that your system is
+      already
+      no longer affected by this issue. 
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3613">CVE-2010-3613</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3614">CVE-2010-3614</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3615">CVE-2010-3615</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3762">CVE-2010-3762</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0414">CVE-2011-0414</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1910">CVE-2011-1910</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2464">CVE-2011-2464</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2465">CVE-2011-2465</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4313">CVE-2011-4313</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:02 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Sat, 02 Jun 2012 13:53:49 +0000" tag="submitter">craig</metadata>
+</glsa>

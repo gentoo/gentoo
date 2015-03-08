@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-08">
+  <title>ncompress: Buffer overflow</title>
+  <synopsis>
+    compress and uncompress, which could be used by daemon programs, contain a
+    buffer overflow that could lead to remote execution of arbitrary code with
+    the rights of the daemon process.
+  </synopsis>
+  <product type="ebuild">ncompress</product>
+  <announced>October 09, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>66251</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/ncompress" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4-r1</unaffected>
+      <vulnerable range="le">4.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ncompress is a utility handling compression and decompression of
+    Lempel-Ziv archives, compatible with the original *nix compress and
+    uncompress utilities (.Z extensions).
+    </p>
+  </background>
+  <description>
+    <p>
+    compress and uncompress do not properly check bounds on command line
+    options, including the filename. Large parameters would trigger a
+    buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By supplying a carefully crafted filename or other option, an attacker
+    could execute arbitrary code on the system. A local attacker could only
+    execute code with his own rights, but since compress and uncompress are
+    called by various daemon programs, this might also allow a remote
+    attacker to execute code with the rights of the daemon making use of
+    ncompress.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ncompress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-arch/ncompress-4.2.4-r1&quot;
+    # emerge &quot;&gt;=app-arch/ncompress-4.2.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kb.cert.org/vuls/id/176363">US-CERT Vulnerability Note VU#176363</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-1413">CVE-2001-1413</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  8 Oct 2004 21:09:39 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri,  8 Oct 2004 21:11:15 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat,  9 Oct 2004 10:24:20 +0000">
+    koon
+  </metadata>
+</glsa>

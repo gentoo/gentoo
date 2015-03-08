@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-10">
+  <title>Samba: Execution of arbitrary code</title>
+  <synopsis>
+    Samba contains a buffer overflow vulnerability potentially resulting in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>December 10, 2007</announced>
+  <revised>December 10, 2007: 01</revised>
+  <bug>200773</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.28</unaffected>
+      <vulnerable range="lt">3.0.28</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a suite of SMB and CIFS client/server programs for UNIX.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alin Rad Pop (Secunia Research) discovered a boundary checking error in
+    the send_mailslot() function which could lead to a stack-based buffer
+    overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted "SAMLOGON" domain
+    logon packet, possibly leading to the execution of arbitrary code with
+    elevated privileges. Note that this vulnerability is exploitable only
+    when domain logon support is enabled in Samba, which is not the case in
+    Gentoo's default configuration.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable domain logon in Samba by setting "<i>domain logons = no</i>" in
+    the "global" section of your smb.conf and restart Samba.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.28&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6015">CVE-2007-6015</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 10 Dec 2007 02:00:00 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 10 Dec 2007 19:33:11 +0000">
+    rbu
+  </metadata>
+</glsa>

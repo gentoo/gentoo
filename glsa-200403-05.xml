@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-05">
+  <title>UUDeview MIME Buffer Overflow</title>
+  <synopsis>
+    A specially-crafted MIME file (.mim, .uue, .uu, .b64, .bhx, .hqx, and .xxe
+    extensions) may cause UUDeview to crash or execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">UUDeview</product>
+  <announced>March 26, 2004</announced>
+  <revised>March 26, 2004: 01</revised>
+  <bug>44859</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/uudeview" auto="yes" arch="*">
+      <unaffected range="ge">0.5.20</unaffected>
+      <vulnerable range="lt">0.5.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    UUDeview is a program which is used to transmit binary files over the
+    Internet in a text-only format. It is commonly used for email and Usenet
+    attachments. It supports multiple encoding formats, including Base64,
+    BinHex and UUEncoding.
+    </p>
+  </background>
+  <description>
+    <p>
+    By decoding a MIME archive with excessively long strings for various
+    parameters, it is possible to crash UUDeview, or cause it to execute
+    arbitrary code.
+    </p>
+    <p>
+    This vulnerability was originally reported by iDEFENSE as part of a WinZip
+    advisory [ Reference: 1 ].
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could create a specially-crafted MIME file and send it via
+    email. When recipient decodes the file, UUDeview may execute arbitrary code
+    which is embedded in the MIME file, thus granting the attacker access to
+    the recipient's account.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. As a result, a software upgrade
+    is required and users should upgrade to uudeview 0.5.20.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to uudeview 0.5.20:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv ">=app-text/uudeview-0.5.20"
+    # emerge ">=app-text/uudeview-0.5.20"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=76&amp;type=vulnerabilities">iDEFENSE advisory</uri>
+    <uri link="http://www.securityfocus.com/bid/9758">SecurityFocus advisory</uri>
+  </references>
+</glsa>

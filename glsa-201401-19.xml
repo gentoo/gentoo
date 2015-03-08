@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-19">
+  <title>GMime: Arbitrary code execution</title>
+  <synopsis>A buffer overflow error in GMime might allow remote attackers to
+    execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">gmime</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>308051</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/gmime" auto="yes" arch="*">
+      <unaffected range="ge">2.4.15</unaffected>
+      <unaffected range="rge">2.4.17</unaffected>
+      <unaffected range="rge">2.2.26</unaffected>
+      <vulnerable range="lt">2.4.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GMime is a C/C++ library which may be used for the creation and parsing
+      of messages using the Multipurpose Internet Mail Extension (MIME).
+    </p>
+  </background>
+  <description>
+    <p>GMime contains a buffer overflow flaw in the GMIME_UUENCODE_LEN macro in
+      gmime/gmime-encodings.h.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly execute arbitrary code or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>GMime 2.4.x users on the PPC64 architecture should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/gmime-2.4.17"
+    </code>
+    
+    <p>GMime 2.4.x users on other architectures should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/gmime-2.4.15"
+    </code>
+    
+    <p>GMime 2.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/gmime-2.2.26"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0409">
+      CVE-2010-0409
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:54 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 19:00:40 +0000">Zlogene</metadata>
+</glsa>

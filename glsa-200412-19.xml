@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-19">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>
+    phpMyAdmin contains multiple vulnerabilities which could lead to file
+    disclosure or command execution.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>December 19, 2004</announced>
+  <revised>December 19, 2004: 01</revised>
+  <bug>74303</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1_rc1</unaffected>
+      <vulnerable range="lt">2.6.1_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the
+    administration of MySQL databases from a web-browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Nicolas Gregoire (exaprobe.com) has discovered two vulnerabilities
+    that exist only on a webserver where PHP safe_mode is off. These
+    vulnerabilities could lead to command execution or file disclosure.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    On a system where external MIME-based transformations are enabled,
+    an attacker can insert offensive values in MySQL, which would start a
+    shell when the data is browsed. On a system where the UploadDir is
+    enabled, read_dump.php could use the unsanitized sql_localfile variable
+    to disclose a file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You can temporarily enable PHP safe_mode or disable external
+    MIME-based transformation AND disable the UploadDir. But instead, we
+    strongly advise to update your version to 2.6.1_rc1.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.1_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1147">CAN-2004-1147</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1148">CAN-2004-1148</uri>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2004-4">PHPMyAdmin advisory: PMASA-2004-4</uri>
+    <uri link="http://www.exaprobe.com/labs/advisories/esa-2004-1213.html">Exaprobe.com advisory: esa-2004-1213</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 16 Dec 2004 13:35:32 +0000">
+    SeJo
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 18 Dec 2004 14:47:08 +0000">
+    koon
+  </metadata>
+</glsa>

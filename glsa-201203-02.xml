@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-02">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which might allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">cURL</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>308645</bug>
+  <bug>373235</bug>
+  <bug>400799</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.24.0</unaffected>
+      <vulnerable range="lt">7.24.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a command line tool for transferring files with URL syntax,
+      supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in cURL:</p>
+    
+    <ul>
+      <li>When zlib is enabled, the amount of data sent to an application for
+        automatic decompression is not restricted (CVE-2010-0734).
+      </li>
+      <li>When performing GSSAPI authentication, credential delegation is
+        always used (CVE-2011-2192).
+      </li>
+      <li>When SSL is enabled, cURL improperly disables the OpenSSL workaround
+        to mitigate an information disclosure vulnerability in the SSL and TLS
+        protocols (CVE-2011-3389).
+      </li>
+      <li>libcurl does not properly verify file paths for escape control
+        characters in IMAP, POP3 or SMTP URLs (CVE-2012-0036). 
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated process to open a
+      specially crafted file or URL using cURL, possibly resulting in the
+      remote execution of arbitrary code, a Denial of Service condition,
+      disclosure of sensitive information, or unwanted actions performed via
+      the IMAP, POP3 or SMTP protocols. Furthermore, remote servers may be able
+      to impersonate clients via GSSAPI requests.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.24.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0734">CVE-2010-0734
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2192">CVE-2011-2192
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3389">CVE-2011-3389
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0036">CVE-2012-0036
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:07 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:02:18 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201210-04">
+  <title>qemu-kvm: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in qemu-kvm, allowing attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ebuild</product>
+  <announced>October 18, 2012</announced>
+  <revised>October 18, 2012: 1</revised>
+  <bug>364889</bug>
+  <bug>365259</bug>
+  <bug>372411</bug>
+  <bug>373997</bug>
+  <bug>400595</bug>
+  <bug>430456</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/qemu-kvm" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1-r1</unaffected>
+      <vulnerable range="lt">1.1.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>qemu-kvm provides QEMU and Kernel-based Virtual Machine userland tools.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in qemu-kvm. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>These vulnerabilities allow a remote attacker to cause a Denial of
+      Service condition on the host server or qemu process, might allow for
+      arbitrary code execution or a symlink attack when qemu-kvm is in snapshot
+      mode.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All qemu-kvm users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-kvm-1.1.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1750">CVE-2011-1750</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1751">CVE-2011-1751</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2212">CVE-2011-2212</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2512">CVE-2011-2512</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0029">CVE-2012-0029</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2652">CVE-2012-2652</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:53 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:48:30 +0000">craig</metadata>
+</glsa>

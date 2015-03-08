@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200902-06">
+  <title>GNU Emacs, XEmacs: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities were found in GNU Emacs, possibly leading to
+    user-assisted execution of arbitrary code. One also affects edit-utils in
+    XEmacs.
+  </synopsis>
+  <product type="ebuild">emacs edit-utils</product>
+  <announced>February 23, 2009</announced>
+  <revised>February 23, 2009: 01</revised>
+  <bug>221197</bug>
+  <bug>236498</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-editors/emacs" auto="yes" arch="*">
+      <unaffected range="ge">22.2-r3</unaffected>
+      <unaffected range="rge">21.4-r17</unaffected>
+      <unaffected range="lt">19</unaffected>
+      <vulnerable range="lt">22.2-r3</vulnerable>
+    </package>
+    <package name="app-xemacs/edit-utils" auto="yes" arch="*">
+      <unaffected range="ge">2.39</unaffected>
+      <vulnerable range="lt">2.39</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU Emacs and XEmacs are highly extensible and customizable text
+    editors. edit-utils are miscellaneous extensions to XEmacs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Morten Welinder reports about GNU Emacs and edit-utils in XEmacs: By
+    shipping a .flc accompanying a source file (.c for example) and setting
+    font-lock-support-mode to fast-lock-mode in the source file through
+    local variables, any Lisp code in the .flc file is executed without
+    warning (CVE-2008-2142).
+    </p>
+    <p>
+    Romain Francoise reported a security risk in a feature of GNU Emacs
+    related to interacting with Python. The vulnerability arises because
+    Python, by default, prepends the current directory to the module search
+    path, allowing for arbitrary code execution when launched from a
+    specially crafted directory (CVE-2008-3949).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers could entice a user to open a specially crafted file
+    in GNU Emacs, possibly leading to the execution of arbitrary Emacs Lisp
+    code or arbitrary Python code with the privileges of the user running
+    GNU Emacs or XEmacs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Emacs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/emacs-22.2-r3&quot;</code>
+    <p>
+    All edit-utils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-xemacs/edit-utils-2.39&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2142">CVE-2008-2142</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3949">CVE-2008-3949</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2008 22:12:00 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 12 Jul 2008 19:44:28 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 09 Feb 2009 22:47:35 +0000">
+    p-y
+  </metadata>
+</glsa>

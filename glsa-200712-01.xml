@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-01">
+  <title>Hugin: Insecure temporary file creation</title>
+  <synopsis>
+    A vulnerability has been discovered in Hugin, potentially allowing for a
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">hugin</product>
+  <announced>December 05, 2007</announced>
+  <revised>December 05, 2007: 01</revised>
+  <bug>195996</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-gfx/hugin" auto="yes" arch="*">
+      <unaffected range="rge">0.6.1-r1</unaffected>
+      <unaffected range="ge">0.7_beta4-r1</unaffected>
+      <vulnerable range="lt">0.7_beta4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Hugin is a GUI for creating and processing panoramic images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Suse Linux reported that Hugin creates the
+    "hugin_debug_optim_results.txt" temporary file in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability with a symlink
+    attack, potentially overwriting an arbitrary file with the privileges
+    of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Hugin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/hugin-0.6.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5200">CVE-2007-5200</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 17 Nov 2007 23:47:03 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 17 Nov 2007 23:47:10 +0000">
+    p-y
+  </metadata>
+</glsa>

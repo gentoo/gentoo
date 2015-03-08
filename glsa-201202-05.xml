@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201202-05">
+  <title>Heimdal: Arbitrary code execution</title>
+  <synopsis>A boundary error in Heimdal could result in execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">heimdal</product>
+  <announced>February 22, 2012</announced>
+  <revised>February 22, 2012: 1</revised>
+  <bug>396105</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/heimdal" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1-r1</unaffected>
+      <vulnerable range="lt">1.5.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Heimdal is a free implementation of Kerberos 5.</p>
+  </background>
+  <description>
+    <p>A boundary error in the "encrypt_keyid()" function in
+      appl/telnet/libtelnet/encrypt.c of the telnet daemon and client could
+      cause a buffer overflow. 
+    </p>
+  </description>
+  <impact type="high">
+    <p>An unauthenticated remote attacker may be able to execute arbitrary code
+      with the privileges of the user running the telnet daemon or client, or
+      cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Heimdal users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/heimdal-1.5.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4862">CVE-2011-4862</uri>
+  </references>
+  <metadata timestamp="Tue, 17 Jan 2012 19:55:41 +0000" tag="requester">ago</metadata>
+  <metadata timestamp="Wed, 22 Feb 2012 19:56:26 +0000" tag="submitter">ackle</metadata>
+</glsa>

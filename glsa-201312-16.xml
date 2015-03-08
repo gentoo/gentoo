@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-16">
+  <title>Xfig: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Xfig could result in execution of arbitrary code
+    or Denial of Service.
+  </synopsis>
+  <product type="ebuild">xfig</product>
+  <announced>December 27, 2013</announced>
+  <revised>December 27, 2013: 1</revised>
+  <bug>348344</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xfig" auto="yes" arch="*">
+      <unaffected range="ge">3.2.5b-r1</unaffected>
+      <vulnerable range="lt">3.2.5b-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xfig is an interactive drawing tool.</p>
+  </background>
+  <description>
+    <p>Xfig contains a buffer overflow vulnerability in processing certain FIG
+      images.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially-crafted file,
+      potentially resulting in arbitrary code execution or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xfig users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/xfig-3.2.5b-r1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since January 09, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4262">
+      CVE-2010-4262
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:54 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Fri, 27 Dec 2013 17:20:28 +0000">Zlogene</metadata>
+</glsa>

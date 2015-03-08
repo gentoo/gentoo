@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-03">
+  <title>Multiple X11 terminals: Local privilege escalation</title>
+  <synopsis>
+    A vulnerability was found in aterm, Eterm, Mrxvt, multi-aterm, RXVT,
+    rxvt-unicode, and wterm, allowing for local privilege escalation.
+  </synopsis>
+  <product type="ebuild">aterm eterm rxvt mrxvt multi-aterm wterm rxvt-unicode</product>
+  <announced>May 07, 2008</announced>
+  <revised>May 10, 2008: 02</revised>
+  <bug>216833</bug>
+  <bug>217819</bug>
+  <bug>219746</bug>
+  <bug>219750</bug>
+  <bug>219754</bug>
+  <bug>219760</bug>
+  <bug>219762</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-terms/aterm" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1-r1</unaffected>
+      <vulnerable range="lt">1.0.1-r1</vulnerable>
+    </package>
+    <package name="x11-terms/eterm" auto="yes" arch="*">
+      <unaffected range="ge">0.9.4-r1</unaffected>
+      <vulnerable range="lt">0.9.4-r1</vulnerable>
+    </package>
+    <package name="x11-terms/mrxvt" auto="yes" arch="*">
+      <unaffected range="ge">0.5.3-r2</unaffected>
+      <vulnerable range="lt">0.5.3-r2</vulnerable>
+    </package>
+    <package name="x11-terms/multi-aterm" auto="yes" arch="*">
+      <unaffected range="ge">0.2.1-r1</unaffected>
+      <vulnerable range="lt">0.2.1-r1</vulnerable>
+    </package>
+    <package name="x11-terms/rxvt" auto="yes" arch="*">
+      <unaffected range="ge">2.7.10-r4</unaffected>
+      <vulnerable range="lt">2.7.10-r4</vulnerable>
+    </package>
+    <package name="x11-terms/rxvt-unicode" auto="yes" arch="*">
+      <unaffected range="ge">9.02-r1</unaffected>
+      <vulnerable range="lt">9.02-r1</vulnerable>
+    </package>
+    <package name="x11-terms/wterm" auto="yes" arch="*">
+      <unaffected range="ge">6.2.9-r3</unaffected>
+      <vulnerable range="lt">6.2.9-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Aterm, Eterm, Mrxvt, multi-aterm, RXVT, rxvt-unicode, and wterm are X11
+    terminal emulators.
+    </p>
+  </background>
+  <description>
+    <p>
+    Bernhard R. Link discovered that RXVT opens a terminal on :0 if the
+    "-display" option is not specified and the DISPLAY environment variable
+    is not set. Further research by the Gentoo Security Team has shown that
+    aterm, Eterm, Mrxvt, multi-aterm, rxvt-unicode, and wterm are also
+    affected.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to hijack X11
+    terminals of other users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All aterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/aterm-1.0.1-r1&quot;</code>
+    <p>
+    All Eterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/eterm-0.9.4-r1&quot;</code>
+    <p>
+    All Mrxvt users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/mrxvt-0.5.3-r2&quot;</code>
+    <p>
+    All multi-aterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/multi-aterm-0.2.1-r1&quot;</code>
+    <p>
+    All RXVT users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/rxvt-2.7.10-r4&quot;</code>
+    <p>
+    All rxvt-unicode users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/rxvt-unicode-9.02-r1&quot;</code>
+    <p>
+    All wterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/wterm-6.2.9-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1142">CVE-2008-1142</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1692">CVE-2008-1692</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 13:00:54 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 29 Apr 2008 13:12:03 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 May 2008 18:53:21 +0000">
+    keytoaster
+  </metadata>
+</glsa>

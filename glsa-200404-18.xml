@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-18">
+  <title>Multiple Vulnerabilities in ssmtp</title>
+  <synopsis>
+    There are multiple format string vulnerabilities in the SSMTP package,
+    which may allow an attacker to run arbitrary code with ssmtp's privileges
+    (potentially root).
+  </synopsis>
+  <product type="ebuild">ssmtp</product>
+  <announced>April 26, 2004</announced>
+  <revised>April 26, 2004: 01</revised>
+  <bug>47918</bug>
+  <bug>48435</bug>
+  <access>remote root </access>
+  <affected>
+    <package name="mail-mta/ssmtp" auto="yes" arch="*">
+      <unaffected range="ge">2.60.7</unaffected>
+      <vulnerable range="le">2.60.4-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SSMTP is a very simple mail transfer agent (MTA) that relays mail from the
+    local machine to another SMTP host. It is not designed to function as a
+    full mail server; its sole purpose is to relay mail.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are two format string vulnerabilities inside the log_event() and
+    die() functions of ssmtp. Strings from outside ssmtp are passed to various
+    printf()-like functions from within log_event() and die() as format
+    strings. An attacker could cause a specially-crafted string to be passed to
+    these functions, and potentially cause ssmtp to execute arbitrary code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    If ssmtp connects to a malicious mail relay server, this vulnerability can
+    be used to execute code with the rights of the mail sender, including root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of ssmtp.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are advised to upgrade to the latest available version of ssmtp.
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=mail-mta/ssmtp-2.60.7"
+    # emerge ">=mail-mta/ssmtp-2.60.7"</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/11378/">Secunia Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0156">CVE Reference</uri>
+    <uri link="http://lists.debian.org/debian-security-announce/debian-security-announce-2004/msg00084.html">Debian Advisory</uri>
+  </references>
+  <metadata tag="submitter">
+    condordes
+  </metadata>
+</glsa>

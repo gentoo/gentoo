@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200906-03">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple errors in phpMyAdmin might allow the remote execution of arbitrary
+    code or a Cross-Site Scripting attack.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>June 29, 2009</announced>
+  <revised>June 29, 2009: 01</revised>
+  <bug>263711</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.11.9.5</unaffected>
+      <vulnerable range="lt">2.11.9.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a web-based management tool for MySQL databases.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in phpMyAdmin:
+    </p>
+    <ul>
+    <li>Greg Ose discovered that the setup script does not sanitize input
+    properly, leading to the injection of arbitrary PHP code into the
+    configuration file (CVE-2009-1151).</li>
+    <li>Manuel Lopez Gallego and
+    Santiago Rodriguez Collazo reported that data from cookies used in the
+    "Export" page is not properly sanitized (CVE-2009-1150).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote unauthorized attacker could exploit the first vulnerability to
+    execute arbitrary code with the privileges of the user running
+    phpMyAdmin and conduct Cross-Site Scripting attacks using the second
+    vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Removing the "scripts/setup.php" file protects you from CVE-2009-1151.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.11.9.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1150">CVE-2009-1150</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1151">CVE-2009-1151</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 27 Jun 2009 20:32:40 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Jun 2009 22:35:56 +0000">
+    a3li
+  </metadata>
+</glsa>

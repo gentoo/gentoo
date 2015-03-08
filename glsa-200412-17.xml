@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-17">
+  <title>kfax: Multiple overflows in the included TIFF library</title>
+  <synopsis>
+    kfax contains several buffer overflows potentially leading to execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">kfax</product>
+  <announced>December 19, 2004</announced>
+  <revised>January 12, 2005: 04</revised>
+  <bug>73795</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdegraphics" auto="yes" arch="*">
+      <unaffected range="ge">3.3.2</unaffected>
+      <vulnerable range="lt">3.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. kfax (part of kdegraphics) is the KDE fax
+    file viewer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Than Ngo discovered that kfax contains a private copy of the TIFF
+    library and is therefore subject to several known vulnerabilities (see
+    References).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a carefully-crafted TIFF
+    image file with kfax, which would potentially lead to execution of
+    arbitrary code with the rights of the user running kfax.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The KDE Team recommends to remove the kfax binary as well as the
+    kfaxpart.la KPart:
+    </p>
+    <code>
+    rm /usr/kde/3.*/lib/kde3/kfaxpart.la
+    rm /usr/kde/3.*/bin/kfax</code>
+    <p>
+    Note: This will render the kfax functionality useless, if kfax
+    functionality is needed you should upgrade to the KDE 3.3.2 which is
+    not stable at the time of this writing.
+    </p>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kfax users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.3.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kde.org/info/security/advisory-20041209-2.txt">KDE Security Advisory: kfax libtiff vulnerabilities</uri>
+    <uri link="/security/en/glsa/glsa-200410-11.xml">GLSA 200410-11</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0803">CAN-2004-0803</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0804">CAN-2004-0804</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0886">CAN-2004-0886</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 10 Dec 2004 09:35:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 16:51:18 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-21">
+  <title>Midnight Commander: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple security issues have been discovered in Midnight Commander
+    including several buffer overflows and string format vulnerabilities.
+  </synopsis>
+  <product type="ebuild">MC</product>
+  <announced>May 26, 2004</announced>
+  <revised>May 26, 2004: 01</revised>
+  <bug>49990</bug>
+  <access>local </access>
+  <affected>
+    <package name="app-misc/mc" auto="yes" arch="*">
+      <unaffected range="ge">4.6.0-r7</unaffected>
+      <vulnerable range="le">4.6.0-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Midnight Commander is a visual console file manager.
+    </p>
+  </background>
+  <description>
+    <p>
+    Numerous security issues have been discovered in Midnight Commander,
+    including several buffer overflow vulnerabilities, multiple vulnerabilities
+    in the handling of temporary file and directory creation, and multiple
+    format string vulnerabilities.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The buffer overflows and format string vulnerabilities may allow attackers
+    to cause a denial of service or execute arbitrary code with permissions of
+    the user running MC. The insecure creation of temporary files and
+    directories could lead to a privilege escalation, including root
+    privileges, for a local attacker.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to version 4.6.0-r7 or higher of Midnight Commander.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Midnight Commander users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-misc/mc-4.6.0-r7
+    # emerge ">=app-misc/mc-4.6.0-r7"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0226">CAN-2004-0226</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0231">CAN-2004-0231</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0232">CAN-2004-0232</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

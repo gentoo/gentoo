@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-09">
+  <title>Mercurial: Directory traversal</title>
+  <synopsis>
+    A directory traversal vulnerability in Mercurial allows for the renaming of
+    arbitrary files.
+  </synopsis>
+  <product type="ebuild">mercurial</product>
+  <announced>July 15, 2008</announced>
+  <revised>July 15, 2008: 01</revised>
+  <bug>230193</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/mercurial" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1-r2</unaffected>
+      <vulnerable range="lt">1.0.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mercurial is a distributed Source Control Management system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jakub Wilk discovered a directory traversal vulnerabilty in the
+    applydiff() function in the mercurial/patch.py file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to import a specially crafted
+    patch, possibly resulting in the renaming of arbitrary files, even
+    outside the repository.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mercurial users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/mercurial-1.0.1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2942">CVE-2008-2942</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Jul 2008 10:37:24 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Jul 2008 11:41:04 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Jul 2008 11:48:10 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-14">
+  <title>Ruby OpenID: Denial of Service</title>
+  <synopsis>A vulnerability in Ruby OpenID may lead to Denial of Service.</synopsis>
+  <product type="ebuild">ruby-openid</product>
+  <announced>May 17, 2014</announced>
+  <revised>May 17, 2014: 1</revised>
+  <bug>460156</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/ruby-openid" auto="yes" arch="*">
+      <unaffected range="ge">2.2.2</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ruby OpenID is a robust library for verifying and serving OpenID
+      identities.
+    </p>
+  </background>
+  <description>
+    <p>An XML entity parsing error has been discovered in Ruby OpenID.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted XML file, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby OpenID users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/ruby-openid-2.2.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1812">CVE-2013-1812</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 09 Apr 2013 22:41:55 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:48:57 +0000">ackle</metadata>
+</glsa>

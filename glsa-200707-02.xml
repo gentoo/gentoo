@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-02">
+  <title>OpenOffice.org: Two buffer overflows</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in OpenOffice.org, allowing
+    for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openoffice</product>
+  <announced>July 02, 2007</announced>
+  <revised>July 02, 2007: 01</revised>
+  <bug>181773</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <unaffected range="ge">2.2.1</unaffected>
+      <vulnerable range="lt">2.2.1</vulnerable>
+    </package>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.2.1</unaffected>
+      <vulnerable range="lt">2.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenOffice.org is an open source office productivity suite, including
+    word processing, spreadsheet, presentation, drawing, data charting,
+    formula editing, and file conversion facilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    John Heasman of NGSSoftware has discovered a heap-based buffer overflow
+    when parsing the "prdata" tag in RTF files where the first token is
+    smaller than the second one (CVE-2007-0245). Additionally, the
+    OpenOffice binary program is shipped with a version of FreeType that
+    contains an integer signedness error in the n_points variable in file
+    truetype/ttgload.c, which was covered by GLSA 200705-22
+    (CVE-2007-2754).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    document, possibly leading to execution of arbitrary code with the
+    rights of the user running OpenOffice.org.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenOffice.org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.2.1&quot;</code>
+    <p>
+    All OpenOffice.org binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0245">CVE-2007-0245</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2754">CVE-2007-2754</uri>
+    <uri link="/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 25 Jun 2007 15:57:23 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Jun 2007 15:57:59 +0000">
+    falco
+  </metadata>
+</glsa>

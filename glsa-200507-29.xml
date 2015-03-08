@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-29">
+  <title>pstotext: Remote execution of arbitrary code</title>
+  <synopsis>
+    pstotext contains a vulnerability which can potentially result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pstotext</product>
+  <announced>July 31, 2005</announced>
+  <revised>August 11, 2005: 02</revised>
+  <bug>100245</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/pstotext" auto="yes" arch="*">
+      <unaffected range="ge">1.8g-r1</unaffected>
+      <vulnerable range="lt">1.8g-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pstotext is a program that works with GhostScript to extract plain text
+    from PostScript and PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Max Vozeler reported that pstotext calls the GhostScript interpreter on
+    untrusted PostScript files without specifying the -dSAFER option.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious PostScript file and entice a user
+    to run pstotext on it, resulting in the execution of arbitrary commands
+    with the permissions of the user running pstotext.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pstotext users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/pstotext-1.8g-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2536">CAN-2005-2536</uri>
+    <uri link="http://secunia.com/advisories/16183/">Secunia Advisory SA16183</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 30 Jul 2005 18:50:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 30 Jul 2005 18:53:14 +0000">
+    adir
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Jul 2005 19:15:41 +0000">
+    adir
+  </metadata>
+</glsa>

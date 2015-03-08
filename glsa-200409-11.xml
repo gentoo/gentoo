@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-11">
+  <title>star: Suid root vulnerability</title>
+  <synopsis>
+    star contains a suid root vulnerability which could potentially grant
+    unauthorized root access to an attacker.
+  </synopsis>
+  <product type="ebuild">star</product>
+  <announced>September 07, 2004</announced>
+  <revised>May 30, 2006: 03</revised>
+  <bug>61797</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-arch/star" auto="yes" arch="*">
+      <unaffected range="ge">1.5_alpha46</unaffected>
+      <vulnerable range="lt">1.5_alpha46</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    star is an enhanced tape archiver, much like tar, that is recognized
+    for it's speed as well as it's enhanced mt/rmt support.
+    </p>
+  </background>
+  <description>
+    <p>
+    A suid root vulnerability exists in versions of star that are
+    configured to use ssh for remote tape access.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Attackers with local user level access could potentially gain root
+    level access.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All star users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-arch/star-1.5_alpha46&quot;
+    # emerge &quot;&gt;=app-arch/star-1.5_alpha46&quot;</code>
+  </resolution>
+  <references>
+    <uri link="https://lists.berlios.de/pipermail/star-users/2004-August/000239.html">Star Mailing List Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0850">CVE-2004-0850</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  3 Sep 2004 20:05:50 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat,  4 Sep 2004 19:37:00 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  7 Sep 2004 20:59:47 +0000">
+    koon
+  </metadata>
+</glsa>

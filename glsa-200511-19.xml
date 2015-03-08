@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-19">
+  <title>eix: Insecure temporary file creation</title>
+  <synopsis>
+    eix has an insecure temporary file creation vulnerability, potentially
+    allowing a local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">eix</product>
+  <announced>November 22, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>112061</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-portage/eix" auto="yes" arch="*">
+      <unaffected range="ge">0.5.0_pre2</unaffected>
+      <unaffected range="rge">0.3.0-r2</unaffected>
+      <vulnerable range="lt">0.5.0_pre2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    eix is a small utility for searching ebuilds with indexing for fast
+    results.
+    </p>
+  </background>
+  <description>
+    <p>
+    Eric Romang discovered that eix creates a temporary file with a
+    predictable name. eix creates a temporary file in /tmp/eix.*.sync where
+    * is the process ID of the shell running eix.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker can watch the process list and determine the process
+    ID of the shell running eix while the "emerge --sync" command is
+    running, then create a link from the corresponding temporary file to a
+    system file, which would result in the file being overwritten with the
+    rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All eix users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-portage/eix</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3785">CVE-2005-3785</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 21 Nov 2005 09:11:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Nov 2005 20:48:28 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 22 Nov 2005 08:46:22 +0000">
+    koon
+  </metadata>
+</glsa>

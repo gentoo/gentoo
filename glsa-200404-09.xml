@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-09">
+  <title>Cross-realm trust vulnerability in Heimdal</title>
+  <synopsis>
+    Heimdal contains cross-realm vulnerability allowing someone with control
+    over a realm to impersonate anyone in the cross-realm trust path.
+  </synopsis>
+  <product type="ebuild">heimdal</product>
+  <announced>April 09, 2004</announced>
+  <revised>April 09, 2004: 01</revised>
+  <bug>46590</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-crypt/heimdal" auto="yes" arch="*">
+      <unaffected range="ge">0.6.1</unaffected>
+      <vulnerable range="le">0.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heimdal is a free implementation of Kerberos 5.
+    </p>
+  </background>
+  <description>
+    <p>
+    Heimdal does not properly perform certain consistency checks for
+    cross-realm requests, which allows remote attackers with control of a realm
+    to impersonate others in the cross-realm trust path.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers with control of a realm may be able to impersonate other
+    users in the cross-realm trust path.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Heimdal users should upgrade to version 0.6.1 or later:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv ">=app-crypt/heimdal-0.6.1"
+    # emerge ">=app-crypt/heimdal-0.6.1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0371">CVE</uri>
+  </references>
+  <metadata tag="submitter">klieber</metadata>
+</glsa>

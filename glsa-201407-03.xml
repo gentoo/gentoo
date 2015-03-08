@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201407-03">
+  <title>Xen: Multiple Vunlerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>July 16, 2014</announced>
+  <revised>July 16, 2014: 1</revised>
+  <bug>440768</bug>
+  <bug>484478</bug>
+  <bug>486354</bug>
+  <bug>497082</bug>
+  <bug>497084</bug>
+  <bug>497086</bug>
+  <bug>499054</bug>
+  <bug>499124</bug>
+  <bug>500528</bug>
+  <bug>500530</bug>
+  <bug>500536</bug>
+  <bug>501080</bug>
+  <bug>501906</bug>
+  <bug>505714</bug>
+  <bug>509054</bug>
+  <bug>513824</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulations/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.3.2-r4</unaffected>
+      <unaffected range="rge">4.2.4-r4</unaffected>
+      <vulnerable range="lt">4.3.2-r4</vulnerable>
+    </package>
+    <package name="app-emulations/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.3.2-r5</unaffected>
+      <unaffected range="rge">4.2.4-r6</unaffected>
+      <vulnerable range="lt">4.3.2-r5</vulnerable>
+    </package>
+    <package name="app-emulations/xen-pvgrub" auto="yes" arch="*">
+      <unaffected range="rge">4.3.2</unaffected>
+      <unaffected range="rge">4.2.4</unaffected>
+      <vulnerable range="lt">4.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker can utilize multiple vectors to execute arbitrary
+      code, cause Denial of Service, or gain access to data on the host.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen 4.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulations/xen-4.3.2-r2"
+    </code>
+    
+    <p>All Xen 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulations/xen-4.2.4-r2"
+    </code>
+    
+    <p>All xen-tools 4.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulations/xen-tools-4.3.2-r2"
+    </code>
+    
+    <p>All xen-tools 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulations/xen-tools-4.2.4-r2"
+    </code>
+    
+    <p>All Xen PVGRUB 4.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulations/xen-pvgrub-4.3.2"
+    </code>
+    
+    <p>All Xen PVGRUB 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulations/xen-pvgrub-4.2.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1442">CVE-2013-1442</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4329">CVE-2013-4329</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4355">CVE-2013-4355</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4356">CVE-2013-4356</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4361">CVE-2013-4361</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4368">CVE-2013-4368</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4369">CVE-2013-4369</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4370">CVE-2013-4370</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4371">CVE-2013-4371</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4375">CVE-2013-4375</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4416">CVE-2013-4416</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4494">CVE-2013-4494</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4551">CVE-2013-4551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4553">CVE-2013-4553</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4554">CVE-2013-4554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6375">CVE-2013-6375</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6400">CVE-2013-6400</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6885">CVE-2013-6885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6885">CVE-2013-6885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1642">CVE-2014-1642</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1666">CVE-2014-1666</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1891">CVE-2014-1891</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1892">CVE-2014-1892</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1893">CVE-2014-1893</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1894">CVE-2014-1894</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1895">CVE-2014-1895</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1896">CVE-2014-1896</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2599">CVE-2014-2599</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3124">CVE-2014-3124</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4021">CVE-2014-4021</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 May 2014 02:43:17 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 16 Jul 2014 16:10:46 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

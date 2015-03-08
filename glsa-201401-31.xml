@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-31">
+  <title>CEDET: Privilege escalation</title>
+  <synopsis>A vulnerability in CEDET could result in privilege escalation.</synopsis>
+  <product type="ebuild">cedet</product>
+  <announced>January 27, 2014</announced>
+  <revised>January 27, 2014: 2</revised>
+  <bug>398227</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emacs/cedet" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1</unaffected>
+      <vulnerable range="lt">1.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CEDET is a Collection of Emacs Development Environment Tools written
+      with the end goal of creating an advanced development environment in
+      Emacs.
+    </p>
+  </background>
+  <description>
+    <p>An untrusted search path vulnerability was discovered in CEDET.</p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate his privileges via a specially crafted
+      Lisp expression in a Project.ede file in the directory or a parent
+      directory of an opened file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CEDET users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emacs/cedet-1.0.1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since February  01, 2012. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0035">CVE-2012-0035</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 01 Feb 2012 17:22:27 +0000">ago</metadata>
+  <metadata tag="submitter" timestamp="Mon, 27 Jan 2014 09:57:54 +0000">Zlogene</metadata>
+</glsa>

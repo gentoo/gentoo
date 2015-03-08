@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-24">
+  <title>eGroupWare: XSS and SQL injection vulnerabilities</title>
+  <synopsis>
+    eGroupWare is affected by several SQL injection and cross-site scripting
+    (XSS) vulnerabilities.
+  </synopsis>
+  <product type="ebuild">eGroupWare</product>
+  <announced>April 25, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>89517</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0.007</unaffected>
+      <vulnerable range="lt">1.0.0.007</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    eGroupWare is a suite of web-based group applications including
+    calendar, address book, messenger and email.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple SQL injection and cross-site scripting vulnerabilities have
+    been found in several eGroupWare modules.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could possibly use the SQL injection vulnerabilities to gain
+    information from the database. Furthermore the cross-site scripting
+    issues give an attacker the ability to inject and execute malicious
+    script code or to steal cookie based authentication credentials,
+    potentially compromising the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All eGroupWare users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/egroupware-1.0.0.007&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.gulftech.org/?node=research&amp;article_id=00069-04202005">GulfTech Security Research Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1202">CVE-2005-1202</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1203">CVE-2005-1203</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 23 Apr 2005 09:15:46 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 24 Apr 2005 18:41:06 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 25 Apr 2005 09:36:49 +0000">
+    vorlon078
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-11">
+  <title>Dillo: Format string vulnerability</title>
+  <synopsis>
+    Dillo is vulnerable to a format string bug, which may result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Dillo</product>
+  <announced>January 09, 2005</announced>
+  <revised>January 09, 2005: 01</revised>
+  <bug>76665</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/dillo" auto="yes" arch="*">
+      <unaffected range="ge">0.8.3-r4</unaffected>
+      <vulnerable range="lt">0.8.3-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dillo is a small and fast multi-platform web browser based on
+    GTK+.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gentoo Linux developer Tavis Ormandy found a format string bug in
+    Dillo's handling of messages in a_Interface_msg().
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious web page which, when accessed
+    using Dillo, would trigger the format string vulnerability and
+    potentially execute arbitrary code with the rights of the user running
+    Dillo.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dillo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/dillo-0.8.3-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0012">CAN-2005-0012</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  7 Jan 2005 15:41:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  9 Jan 2005 17:56:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun,  9 Jan 2005 18:39:04 +0000">
+    koon
+  </metadata>
+</glsa>

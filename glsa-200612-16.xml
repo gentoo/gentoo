@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-16">
+  <title>Links: Arbitrary Samba command execution</title>
+  <synopsis>
+    Links does not properly validate "smb://" URLs, making it vulnerable to the
+    execution of arbitrary Samba commands.
+  </synopsis>
+  <product type="ebuild">links</product>
+  <announced>December 14, 2006</announced>
+  <revised>December 14, 2006: 01</revised>
+  <bug>157028</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/links" auto="yes" arch="*">
+      <unaffected range="ge">2.1_pre26</unaffected>
+      <vulnerable range="lt">2.1_pre26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Links is a web browser running in both graphics and text modes.
+    </p>
+  </background>
+  <description>
+    <p>
+    Teemu Salmela discovered that Links does not properly validate "smb://"
+    URLs when it runs smbclient commands.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to browse to a specially crafted
+    "smb://" URL and execute arbitrary Samba commands, which would allow
+    the overwriting of arbitrary local files or the upload or the download
+    of arbitrary files. This vulnerability can be exploited only if
+    "smbclient" is installed on the victim's computer, which is provided by
+    the "samba" Gentoo package.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Links users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/links-2.1_pre26&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5925">CVE-2006-5925</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 10 Dec 2006 21:05:34 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 12 Dec 2006 00:14:43 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 13 Dec 2006 14:10:35 +0000">
+    vorlon
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-06">
+  <title>TikiWiki: Arbitrary command execution through XML-RPC</title>
+  <synopsis>
+    TikiWiki includes PHP XML-RPC code, making it vulnerable to arbitrary
+    command execution.
+  </synopsis>
+  <product type="ebuild">Tikiwiki</product>
+  <announced>July 06, 2005</announced>
+  <revised>July 06, 2005: 01</revised>
+  <bug>97648</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5-r1</unaffected>
+      <vulnerable range="lt">1.8.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TikiWiki is a web-based groupware and content management system
+    (CMS), using PHP, ADOdb and Smarty. TikiWiki includes vulnerable PHP
+    XML-RPC code.
+    </p>
+  </background>
+  <description>
+    <p>
+    TikiWiki is vulnerable to arbitrary command execution as described
+    in GLSA 200507-01.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to execute
+    arbitrary PHP code by sending specially crafted XML data.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TikiWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.8.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://security.gentoo.org/glsa/glsa-200507-01.xml">GLSA 200507-01</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 Jul 2005 08:27:19 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 06 Jul 2005 08:27:44 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 06 Jul 2005 11:56:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-07">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mozilla Firefox.
+  </synopsis>
+  <product type="ebuild">mozilla-firefox</product>
+  <announced>December 10, 2006</announced>
+  <revised>December 10, 2006: 01</revised>
+  <bug>154434</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.8</unaffected>
+      <vulnerable range="lt">1.5.0.8</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.8</unaffected>
+      <vulnerable range="lt">1.5.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is a popular open-source web browser from the Mozilla
+    Project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mozilla Firefox improperly handles Script objects while they are being
+    executed. Mozilla Firefox has also been found to be vulnerable to
+    various possible buffer overflows. Lastly, the binary release of
+    Mozilla Firefox is vulnerable to a low exponent RSA signature forgery
+    issue because it is bundled with a vulnerable version of NSS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to view specially crafted JavaScript
+    and execute arbitrary code with the rights of the user running Mozilla
+    Firefox. An attacker could also entice a user to view a specially
+    crafted web page that causes a buffer overflow and again executes
+    arbitrary code. It is also possible for an attacker to make up SSL/TLS
+    certificates that would not be detected as invalid by the binary
+    release of Mozilla Firefox, raising the possibility for
+    Man-in-the-Middle attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.8&quot;</code>
+    <p>
+    All Mozilla Firefox binary release users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5462">CVE-2006-5462</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5463">CVE-2006-5463</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5464">CVE-2006-5464</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5747">CVE-2006-5747</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5748">CVE-2006-5748</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:11:10 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Nov 2006 06:11:37 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 13:30:11 +0000">
+    shellsage
+  </metadata>
+</glsa>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-14">
+  <title>phpMyAdmin: Vulnerability in MIME-based transformation system</title>
+  <synopsis>
+    A vulnerability has been found in the MIME-based transformation system of
+    phpMyAdmin, which may allow remote execution of arbitrary commands if PHP's
+    "safe mode" is disabled.
+  </synopsis>
+  <product type="ebuild">phpMyAdmin</product>
+  <announced>October 18, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>67409</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.6.0_p2</unaffected>
+      <vulnerable range="lt">2.6.0_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a popular web-based MySQL administration tool written in
+    PHP. It allows users to browse and administer a MySQL database from a
+    web-browser. Transformations are a phpMyAdmin feature allowing plug-ins
+    to rewrite the contents of any column seen in phpMyAdmin's Browsing
+    mode, including using insertion of PHP or JavaScript code.
+    </p>
+  </background>
+  <description>
+    <p>
+    A defect was found in phpMyAdmin's MIME-based transformation system,
+    when used with "external" transformations.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to execute arbitrary
+    commands on the server with the rights of the HTTP server user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Enabling PHP safe mode ("safe_mode = On" in php.ini) may serve as a
+    temporary workaround.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=dev-db/phpmyadmin-2.6.0_p2&quot;
+    # emerge &quot;&gt;=dev-db/phpmyadmin-2.6.0_p2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/forum/forum.php?forum_id=414281">phpMyAdmin 2.6.0_pl2 Release Announcement</uri>
+    <uri link="http://secunia.com/advisories/12813/">Secunia Advisory SA12813</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2630">CVE-2004-2630</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 14 Oct 2004 19:19:23 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 16 Oct 2004 10:34:28 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 17 Oct 2004 17:40:28 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-03">
+  <title>ClamAV: Denial of Service</title>
+  <synopsis>
+    ClamAV contains two vulnerabilities allowing a Denial of Service.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>March 02, 2007</announced>
+  <revised>March 02, 2007: 01</revised>
+  <bug>167201</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.90</unaffected>
+      <vulnerable range="lt">0.90</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    An anonymous researcher discovered a file descriptor leak error in the
+    processing of CAB archives and a lack of validation of the "id"
+    parameter string used to create local files when parsing MIME headers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can send several crafted CAB archives with a
+    zero-length record header that will fill the available file descriptors
+    until no other is available, which will prevent ClamAV from scanning
+    most archives. An attacker can also send an email with specially
+    crafted MIME headers to overwrite local files with the permissions of
+    the user running ClamAV, such as the virus database file, which could
+    prevent ClamAV from detecting any virus.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The first vulnerability can be prevented by refusing any file of type
+    CAB, but there is no known workaround for the second issue.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.90&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0897">CVE-2007-0897</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0898">CVE-2007-0898</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 26 Feb 2007 22:43:01 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 13:49:10 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 02 Mar 2007 00:24:54 +0000">
+    falco
+  </metadata>
+</glsa>

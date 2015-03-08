@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-13">
+  <title>Dropbear: Privilege escalation</title>
+  <synopsis>
+    A buffer overflow in Dropbear could allow authenticated users to execute
+    arbitrary code as the root user.
+  </synopsis>
+  <product type="ebuild">dropbear</product>
+  <announced>December 23, 2005</announced>
+  <revised>December 23, 2005: 01</revised>
+  <bug>116006</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dropbear" auto="yes" arch="*">
+      <unaffected range="ge">0.47</unaffected>
+      <vulnerable range="lt">0.47</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Dropbear is an SSH server and client with a small memory
+    footprint.
+    </p>
+  </background>
+  <description>
+    <p>
+    Under certain conditions Dropbear could fail to allocate a
+    sufficient amount of memory, possibly resulting in a buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending specially crafted data to the server, authenticated
+    users could exploit this vulnerability to execute arbitrary code with
+    the permissions of the SSH server user, which is the root user by
+    default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Dropbear users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dropbear-0.47&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4178">CVE-2005-4178</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 Dec 2005 11:10:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 20 Dec 2005 16:40:12 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 21 Dec 2005 10:00:54 +0000">
+    DerCorny
+  </metadata>
+</glsa>

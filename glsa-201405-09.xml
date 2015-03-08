@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-09">
+  <title>ImageMagick: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in ImageMagick, the
+    worst of which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>May 17, 2014</announced>
+  <revised>May 17, 2014: 1</revised>
+  <bug>409431</bug>
+  <bug>483032</bug>
+  <bug>500988</bug>
+  <bug>506562</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.8.8.10</unaffected>
+      <vulnerable range="lt">6.8.8.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ImageMagick is a collection of tools and libraries for manipulating
+      various image formats. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ImageMagick. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+    
+    <p>Note that CVE-2012-1185 and CVE-2012-1186 were issued due to incomplete
+      fixes for CVE-2012-0247 and CVE-2012-0248, respectively. The earlier CVEs
+      were addressed in GLSA 201203-09.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can utilize multiple vectors to execute arbitrary code
+      or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.8.8.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1185">CVE-2012-1185</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1186">CVE-2012-1186</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4298">CVE-2013-4298</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1947">CVE-2014-1947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2030">CVE-2014-2030</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 07 May 2012 02:54:09 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 May 2014 13:31:31 +0000">
+    creffett
+  </metadata>
+</glsa>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-01">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>A vulnerability has been found in sudo which may allow local users
+    to gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>416281</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5_p1</unaffected>
+      <vulnerable range="lt">1.8.5_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo allows a system administrator to give users the ability to run
+      commands as other users. Access to commands may also be granted on a
+      range to hosts.
+    </p>
+  </background>
+  <description>
+    <p>An error in sudo may allow unintended IPv4 hosts to be granted access to
+      commands.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.5_p1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2337">CVE-2012-2337</uri>
+  </references>
+  <metadata timestamp="Sat, 26 May 2012 19:07:01 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 22:09:16 +0000" tag="submitter">ackle</metadata>
+</glsa>

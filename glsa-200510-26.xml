@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-26">
+  <title>XLI, Xloadimage: Buffer overflow</title>
+  <synopsis>
+    XLI and Xloadimage contain a vulnerability which could potentially result
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xli xloadimage</product>
+  <announced>October 30, 2005</announced>
+  <revised>October 30, 2005: 01</revised>
+  <bug>108365</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xli" auto="yes" arch="*">
+      <unaffected range="ge">1.17.0-r2</unaffected>
+      <vulnerable range="lt">1.17.0-r2</vulnerable>
+    </package>
+    <package name="media-gfx/xloadimage" auto="yes" arch="*">
+      <unaffected range="ge">4.1-r4</unaffected>
+      <vulnerable range="lt">4.1-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XLI and Xloadimage are X11 image manipulation utilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    When XLI or Xloadimage process an image, they create a new image
+    object to contain the new image, copying the title from the old image
+    to the newly created image. Ariel Berkman reported that the 'zoom',
+    'reduce', and 'rotate' functions use a fixed length buffer to contain
+    the new title, which could be overwritten by the NIFF or XPM image
+    processors.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious user could craft a malicious XPM or NIFF file and
+    entice a user to view it using XLI, or manipulate it using Xloadimage,
+    potentially resulting in the execution of arbitrary code with the
+    permissions of the user running XLI or Xloadimage.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All XLI users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xli-1.17.0-r2&quot;</code>
+    <p>
+    All Xloadimage users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xloadimage-4.1-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3178">CAN-2005-3178</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Oct 2005 15:18:40 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Oct 2005 03:10:06 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 30 Oct 2005 15:11:22 +0000">
+    koon
+  </metadata>
+</glsa>

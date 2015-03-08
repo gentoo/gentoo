@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-02">
+  <title>ProFTPD: Format string vulnerabilities</title>
+  <synopsis>
+    Under specific circumstances, ProFTPD is vulnerable to format string
+    vulnerabilities, potentially resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>August 01, 2005</announced>
+  <revised>August 01, 2005: 01</revised>
+  <bug>100364</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.2.10-r7</unaffected>
+      <vulnerable range="lt">1.2.10-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ProFTPD is a configurable GPL-licensed FTP server software.
+    </p>
+  </background>
+  <description>
+    <p> "infamous42md" reported that ProFTPD is vulnerable to format
+    string vulnerabilities when displaying a shutdown message containing
+    the name of the current directory, and when displaying response
+    messages to the client using information retrieved from a database
+    using mod_sql.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could create a directory with a malicious name
+    that would trigger the format string issue if specific variables are
+    used in the shutdown message, potentially resulting in a Denial of
+    Service or the execution of arbitrary code with the rights of the user
+    running the ProFTPD server. An attacker with control over the database
+    contents could achieve the same result by introducing malicious
+    messages that would trigger the other format string issue when used in
+    server responses.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not use the "%C", "%R", or "%U" in shutdown messages, and do
+    not set the "SQLShowInfo" directive.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ProFTPD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/proftpd-1.2.10-r7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2390">CAN-2005-2390</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 27 Jul 2005 14:13:46 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Jul 2005 00:11:05 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 31 Jul 2005 14:18:50 +0000">
+    DerCorny
+  </metadata>
+</glsa>

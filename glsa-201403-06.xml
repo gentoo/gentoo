@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-06">
+  <title>libupnp: Arbitrary code execution</title>
+  <synopsis>Multiple buffer overflow flaws in libupnp may allow execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">libupnp</product>
+  <announced>March 26, 2014</announced>
+  <revised>March 26, 2014: 1</revised>
+  <bug>454570</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libupnp" auto="yes" arch="*">
+      <unaffected range="ge">1.6.18</unaffected>
+      <vulnerable range="lt">1.6.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libupnp is a portable, open source, UPnP development kit.</p>
+  </background>
+  <description>
+    <p>Multiple buffer overflow vulnerabilities have been discovered in
+      libupnp. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libupnp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libupnp-1.6.18"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5958">CVE-2012-5958</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5959">CVE-2012-5959</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5960">CVE-2012-5960</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 15:38:12 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Mar 2014 10:27:19 +0000">ackle</metadata>
+</glsa>

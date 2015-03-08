@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-10">
+  <title>GraphicsMagick: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GraphicsMagick,
+    allowing remote attackers to execute arbitrary code or cause a Denial of
+    Service condition.
+  </synopsis>
+  <product type="ebuild">graphicsmagick</product>
+  <announced>November 19, 2013</announced>
+  <revised>November 19, 2013: 1</revised>
+  <bug>365769</bug>
+  <bug>488050</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/graphicsmagick" auto="yes" arch="*">
+      <unaffected range="ge">1.3.18</unaffected>
+      <vulnerable range="lt">1.3.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GraphicsMagick is the Swiss army knife of image processing.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GraphicsMagick. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially-crafted image
+      file, potentially resulting in arbitrary code execution or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GraphicsMagick users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/graphicsmagick-1.3.18"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1097">CVE-2008-1097</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1882">CVE-2009-1882</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3736">CVE-2009-3736</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4589">CVE-2013-4589</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 24 Feb 2013 15:58:45 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Nov 2013 00:09:06 +0000">Zlogene</metadata>
+</glsa>

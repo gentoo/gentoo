@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-30">
+  <title>ssl-cert eclass: Certificate disclosure</title>
+  <synopsis>
+    An error in the usage of the ssl-cert eclass within multiple ebuilds might
+    allow for disclosure of generated SSL private keys.
+  </synopsis>
+  <product type="ebuild">ssl-cert.eclass</product>
+  <announced>March 20, 2008</announced>
+  <revised>March 20, 2008: 01</revised>
+  <bug>174759</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/conserver" auto="yes" arch="*">
+      <unaffected range="ge">8.1.16</unaffected>
+      <vulnerable range="lt">8.1.16</vulnerable>
+    </package>
+    <package name="mail-mta/postfix" auto="yes" arch="*">
+      <unaffected range="ge">2.4.6-r2</unaffected>
+      <unaffected range="rge">2.3.8-r1</unaffected>
+      <unaffected range="rge">2.2.11-r1</unaffected>
+      <vulnerable range="lt">2.4.6-r2</vulnerable>
+    </package>
+    <package name="net-ftp/netkit-ftpd" auto="yes" arch="*">
+      <unaffected range="ge">0.17-r7</unaffected>
+      <vulnerable range="lt">0.17-r7</vulnerable>
+    </package>
+    <package name="net-im/ejabberd" auto="yes" arch="*">
+      <unaffected range="ge">1.1.3</unaffected>
+      <vulnerable range="lt">1.1.3</vulnerable>
+    </package>
+    <package name="net-irc/unrealircd" auto="yes" arch="*">
+      <unaffected range="ge">3.2.7-r2</unaffected>
+      <vulnerable range="lt">3.2.7-r2</vulnerable>
+    </package>
+    <package name="net-mail/cyrus-imapd" auto="yes" arch="*">
+      <unaffected range="ge">2.3.9-r1</unaffected>
+      <vulnerable range="lt">2.3.9-r1</vulnerable>
+    </package>
+    <package name="net-mail/dovecot" auto="yes" arch="*">
+      <unaffected range="ge">1.0.10</unaffected>
+      <vulnerable range="lt">1.0.10</vulnerable>
+    </package>
+    <package name="net-misc/stunnel" auto="yes" arch="*">
+      <unaffected range="ge">4.21-r1</unaffected>
+      <unaffected range="lt">4.0</unaffected>
+      <vulnerable range="lt">4.21-r1</vulnerable>
+    </package>
+    <package name="net-nntp/inn" auto="yes" arch="*">
+      <unaffected range="ge">2.4.3-r1</unaffected>
+      <vulnerable range="lt">2.4.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The ssl-cert eclass is a code module used by Gentoo ebuilds to generate
+    SSL certificates.
+    </p>
+  </background>
+  <description>
+    <p>
+    Robin Johnson reported that the docert() function provided by
+    ssl-cert.eclass can be called by source building stages of an ebuild,
+    such as src_compile() or src_install(), which will result in the
+    generated SSL keys being included inside binary packages (binpkgs).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could recover the SSL keys from publicly readable
+    binary packages when "<i>emerge</i>" is called with the "<i>--buildpkg
+    (-b)</i>" or "<i>--buildpkgonly (-B)</i>" option. Remote attackers can
+    recover these keys if the packages are served to a network. Binary
+    packages built using "<i>quickpkg</i>" are not affected.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not use pre-generated SSL keys, but use keys that were generated
+    using a different Certificate Authority.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Upgrading to newer versions of the above packages will neither remove
+    possibly compromised SSL certificates, nor old binary packages. Please
+    remove the certificates installed by Portage, and then emerge an
+    upgrade to the package.
+    </p>
+    <p>
+    All Conserver users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/conserver-8.1.16&quot;</code>
+    <p>
+    All Postfix 2.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.4.6-r2&quot;</code>
+    <p>
+    All Postfix 2.3 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.3.8-r1&quot;</code>
+    <p>
+    All Postfix 2.2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.2.11-r1&quot;</code>
+    <p>
+    All Netkit FTP Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/netkit-ftpd-0.17-r7&quot;</code>
+    <p>
+    All ejabberd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/ejabberd-1.1.3&quot;</code>
+    <p>
+    All UnrealIRCd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/unrealircd-3.2.7-r2&quot;</code>
+    <p>
+    All Cyrus IMAP Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/cyrus-imapd-2.3.9-r1&quot;</code>
+    <p>
+    All Dovecot users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/dovecot-1.0.10&quot;</code>
+    <p>
+    All stunnel 4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/stunnel-4.21&quot;</code>
+    <p>
+    All InterNetNews users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-nntp/inn-2.4.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1383">CVE-2008-1383</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 14 Mar 2008 23:17:10 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 15 Mar 2008 00:11:06 +0000">
+    rbu
+  </metadata>
+</glsa>

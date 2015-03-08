@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200911-05">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Wireshark, allowing for
+    the remote execution of arbitrary code, or Denial of Service.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>November 25, 2009</announced>
+  <revised>November 25, 2009: 01</revised>
+  <bug>285280</bug>
+  <bug>290710</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a versatile network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Wireshark:
+    </p>
+    <ul><li>Ryan Giobbi reported an integer overflow in wiretap/erf.c
+    (CVE-2009-3829).</li>
+    <li>The vendor reported multiple unspecified
+    vulnerabilities in the Bluetooth L2CAP, RADIUS, and MIOP dissectors
+    (CVE-2009-2560), in the OpcUa dissector (CVE-2009-3241), in packet.c in
+    the GSM A RR dissector (CVE-2009-3242), in the TLS dissector
+    (CVE-2009-3243), in the Paltalk dissector (CVE-2009-3549), in the
+    DCERPC/NT dissector (CVE-2009-3550), and in the
+    dissect_negprot_response() function in packet-smb.c in the SMB
+    dissector (CVE-2009-3551).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted "erf"
+    file using Wireshark, possibly resulting in the execution of arbitrary
+    code with the privileges of the user running the application. A remote
+    attacker could furthermore send specially crafted packets on a network
+    being monitored by Wireshark or entice a user to open a malformed
+    packet trace file using Wireshark, possibly resulting in a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2560">CVE-2009-2560</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3241">CVE-2009-3241</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3242">CVE-2009-3242</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3243">CVE-2009-3243</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3549">CVE-2009-3549</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3550">CVE-2009-3550</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3551">CVE-2009-3551</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3829">CVE-2009-3829</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 04 Nov 2009 23:06:15 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 04 Nov 2009 23:24:04 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Nov 2009 15:36:13 +0000">
+    a3li
+  </metadata>
+</glsa>

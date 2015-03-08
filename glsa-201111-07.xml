@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-07">
+  <title>TinTin++: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in TinTin++ which could
+    allow a remote attacker to conduct several attacks, including the execution
+    of arbitrary code and Denial of Service.
+  </synopsis>
+  <product type="ebuild">TinTin++</product>
+  <announced>November 20, 2011</announced>
+  <revised>November 20, 2011: 1</revised>
+  <bug>209903</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-mud/tintin" auto="yes" arch="*">
+      <unaffected range="ge">1.98.0</unaffected>
+      <vulnerable range="lt">1.98.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TinTin++ is a free MUD gaming client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in TinTin++. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Remote unauthenticated attackers may be able to execute arbitrary code
+      with the privileges of the TinTin++ process, cause a Denial of Service,
+      or truncate arbitrary files in the top level of the home directory
+      belonging to the user running the TinTin++ process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TinTin++ users should upgrade to the latest stable version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=games-mud/tintin-1.98.0"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since March 25, 2008. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0671">CVE-2008-0671</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0672">CVE-2008-0672</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0673">CVE-2008-0673</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:02 +0000" tag="requester">system</metadata>
+  <metadata timestamp="Sun, 20 Nov 2011 17:56:45 +0000" tag="submitter">ackle</metadata>
+</glsa>

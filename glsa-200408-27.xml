@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-27">
+  <title>Gaim: New vulnerabilities</title>
+  <synopsis>
+    Gaim contains several security issues that might allow an attacker to
+    execute arbitrary code or commands.
+  </synopsis>
+  <product type="ebuild">Gaim</product>
+  <announced>August 27, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>61457</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">0.81-r5</unaffected>
+      <vulnerable range="lt">0.81-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a multi-protocol instant messaging client for Linux which
+    supports many instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gaim fails to do proper bounds checking when:
+    </p>
+    <ul>
+    <li>Handling MSN messages (partially fixed with GLSA 200408-12).</li>
+    <li>Handling rich text format messages.</li>
+    <li>Resolving local hostname.</li>
+    <li>Receiving long URLs.</li>
+    <li>Handling groupware messages.</li>
+    <li>Allocating memory for webpages with fake content-length
+    header.</li>
+    </ul>
+    <p>
+    Furthermore Gaim fails to escape filenames when using drag and drop
+    installation of smiley themes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities could allow an attacker to crash Gaim or execute
+    arbitrary code or commands with the permissions of the user running
+    Gaim.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Gaim.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-im/gaim-0.81-r5&quot;
+    # emerge &quot;&gt;=net-im/gaim-0.81-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://gaim.sourceforge.net/security/index.php">Gaim security issues</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0500">CVE-2004-0500</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0754">CVE-2004-0754</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0784">CVE-2004-0784</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0785">CVE-2004-0785</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 26 Aug 2004 15:30:26 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Aug 2004 19:01:27 +0000">
+    jaervosz
+  </metadata>
+</glsa>

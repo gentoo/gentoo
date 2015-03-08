@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-07">
+  <title>ClamAV RAR Archive Remote Denial Of Service Vulnerability</title>
+  <synopsis>
+    ClamAV is vulnerable to a denial of service attack when processing certain
+    RAR archives.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>April 07, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>45357</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.68.1</unaffected>
+      <vulnerable range="le">0.68</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    From <uri link="http://www.clamav.net/">http://www.clamav.net/</uri> :
+    </p>
+    <p>
+    "Clam AntiVirus is a GPL anti-virus toolkit for UNIX. The main purpose
+    of this software is the integration with mail servers (attachment
+    scanning). The package provides a flexible and scalable multi-threaded
+    daemon, a command line scanner, and a tool for automatic updating via
+    Internet. The programs are based on a shared library distributed with
+    the Clam AntiVirus package, which you can use with your own software.
+    Most importantly, the virus database is kept up to date."
+    </p>
+  </background>
+  <description>
+    <p>
+    Certain types of RAR archives, including those created by variants of
+    the W32.Beagle.A@mm worm, may cause clamav to crash when it attempts to
+    process them.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This vulnerability causes a Denial of Service in the clamav process.
+    Depending on	configuration, this may cause dependent services such as
+    mail to fail as well.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are
+    advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    ClamAV users should upgrade to version 0.68.1 or later:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-antivirus/clamav-0.68.1&quot;
+    # emerge &quot;&gt;=app-antivirus/clamav-0.68.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1909">CVE-2004-1909</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

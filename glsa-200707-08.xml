@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-08">
+  <title>NVClock: Insecure file usage</title>
+  <synopsis>
+    A vulnerability has been discovered in NVClock, allowing for the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nvclock</product>
+  <announced>July 24, 2007</announced>
+  <revised>July 24, 2007: 01</revised>
+  <bug>184071</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-video/nvclock" auto="yes" arch="*">
+      <unaffected range="ge">0.7-r2</unaffected>
+      <vulnerable range="lt">0.7-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NVClock is an utility for changing NVidia graphic chipsets internal
+    frequency.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Team discovered that NVClock
+    makes usage of an insecure temporary file in the /tmp directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create a specially crafted temporary file in
+    /tmp to execute arbitrary code with the privileges of the user running
+    NVCLock.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NVClock users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/nvclock-0.7-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3531">CVE-2007-3531</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 09:48:09 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Jul 2007 18:59:19 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 Jul 2007 18:59:32 +0000">
+    p-y
+  </metadata>
+</glsa>

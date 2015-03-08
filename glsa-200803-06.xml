@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-06">
+  <title>SWORD: Shell command injection</title>
+  <synopsis>
+    Insufficient input checking in SWORD may allow shell command injection.
+  </synopsis>
+  <product type="ebuild">sword</product>
+  <announced>March 03, 2008</announced>
+  <revised>March 03, 2008: 01</revised>
+  <bug>210754</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/sword" auto="yes" arch="*">
+      <unaffected range="ge">1.5.8-r2</unaffected>
+      <vulnerable range="lt">1.5.8-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SWORD is a library for Bible study software.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dan Dennison reported that the diatheke.pl script used in SWORD does
+    not properly sanitize shell meta-characters in the "range" parameter
+    before processing it.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could provide specially crafted input to a vulnerable
+    application, possibly resulting in the remote execution of arbitrary
+    shell commands with the privileges of the user running SWORD (generally
+    the web server account).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SWORD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/sword-1.5.8-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0932">CVE-2008-0932</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 23 Feb 2008 19:11:13 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Feb 2008 12:41:01 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 29 Feb 2008 12:41:15 +0000">
+    p-y
+  </metadata>
+</glsa>

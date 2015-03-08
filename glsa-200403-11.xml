@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-11">
+  <title>Squid ACL [url_regex] bypass vulnerability</title>
+  <synopsis>
+    Squid versions 2.0 through to 2.5.STABLE4 could allow a remote attacker to
+    bypass Access Control Lists by sending a specially-crafted URL request
+    containing '%00': in such circumstances; the url_regex ACL may not properly
+    detect the malicious URL, allowing the attacker to effectively bypass the
+    ACL.
+  </synopsis>
+  <product type="ebuild">Squid</product>
+  <announced>March 30, 2004</announced>
+  <revised>September 02, 2004: 02</revised>
+  <bug>45273</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.5</unaffected>
+      <vulnerable range="lt">2.5.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a fully-featured Web Proxy Cache designed to run on Unix systems
+    that supports proxying and caching of HTTP, FTP, and other URLs, as well as
+    SSL support, cache hierarchies, transparent caching, access control lists
+    and many other features.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in Squid allows users to bypass certain access controls by passing a
+    URL containing &quot;%00&quot; which exploits the Squid decoding function.
+    This may insert a NUL character into decoded URLs, which may allow users to
+    bypass url_regex access control lists that are enforced upon them.
+    </p>
+    <p>
+    In such a scenario, Squid will insert a NUL character after
+    the&quot;%00&quot; and it will make a comparison between the URL to the end
+    of the NUL character rather than the contents after it: the comparison does
+    not result in a match, and the user's request is not denied.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Restricted users may be able to bypass url_regex access control lists that
+    are enforced upon them which may cause unwanted network traffic as well as
+    a route for other possible exploits. Users of Squid 2.5STABLE4 and below
+    who require the url_regex features are recommended to upgrade to 2.5STABLE5
+    to maintain the security of their infrastructure.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of Squid.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Squid can be updated as follows:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-proxy/squid-2.5.5"
+    # emerge ">=net-proxy/squid-2.5.5"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0189">CAN-2004-0189</uri>
+    <uri link="http://www.squid-cache.org/Advisories/SQUID-2004_1.txt">Squid 2.5.STABLE5 Release Announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  2 Sep 2004 21:11:59 +0000">
+    vorlon078
+  </metadata>
+</glsa>

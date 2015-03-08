@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-11">
+  <title>ImageMagick: EXIF buffer overflow</title>
+  <synopsis>
+    ImageMagick contains an error in boundary checks when handling EXIF
+    information, which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>November 06, 2004</announced>
+  <revised>November 06, 2004: 01</revised>
+  <bug>69825</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.1.3.2</unaffected>
+      <vulnerable range="lt">6.1.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is a collection of tools to read, write and manipulate images
+    in many formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    ImageMagick fails to do proper bounds checking when handling image files
+    with EXIF information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could use an image file with specially-crafted EXIF information
+    to cause arbitrary code execution with the permissions of the user running
+    ImageMagick.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=media-gfx/imagemagick-6.1.3.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0981">CAN-2004-0981</uri>
+    <uri link="http://www.imagemagick.org/www/Changelog.html">ImageMagick ChangeLog</uri>
+    <uri link="http://secunia.com/advisories/12995/">SA 12995</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  5 Nov 2004 13:21:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat,  6 Nov 2004 13:00:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat,  6 Nov 2004 18:34:28 +0000">
+    jaervosz
+  </metadata>
+</glsa>

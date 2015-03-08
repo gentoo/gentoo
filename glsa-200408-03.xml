@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-03">
+  <title>libpng: Numerous vulnerabilities</title>
+  <synopsis>
+    libpng contains numerous vulnerabilities potentially allowing an attacker
+    to perform a Denial of Service attack or even execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>August 05, 2004</announced>
+  <revised>August 05, 2004: 01</revised>
+  <bug>59424</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.2.5-r8</unaffected>
+      <vulnerable range="le">1.2.5-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpng is a standard library used to process PNG (Portable Network
+    Graphics) images. It is used by several other programs, including web
+    browsers and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>
+    libpng contains numerous vulnerabilities including null pointer dereference
+    errors and boundary errors in various functions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities to cause programs linked
+    against the library to crash or execute arbitrary code with the permissions
+    of the user running the vulnerable program, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libpng users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-libs/libpng-1.2.5-r8"
+    # emerge ">=media-libs/libpng-1.2.5-r8"</code>
+    <p>
+    You should also run revdep-rebuild to rebuild any packages that depend on
+    older versions of libpng :
+    </p>
+    <code>
+    # revdep-rebuild</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0597">CAN-2004-0597</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0598">CAN-2004-0598</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0599">CAN-2004-0599</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 09:45:46 +0000">
+    jaervosz
+  </metadata>
+</glsa>

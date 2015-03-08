@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-17">
+  <title>fvwm: fvwm-menu-directory fvwm command injection</title>
+  <synopsis>
+    A flaw in fvwm-menu-directory may permit a local attacker to execute
+    arbitrary commands with the privileges of another user.
+  </synopsis>
+  <product type="ebuild">fvwm</product>
+  <announced>November 23, 2006</announced>
+  <revised>November 23, 2006: 01</revised>
+  <bug>155078</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-wm/fvwm" auto="yes" arch="*">
+      <unaffected range="ge">2.5.18-r1</unaffected>
+      <vulnerable range="lt">2.5.18-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    fvwm is a highly configurable virtual window manager for X11 desktops.
+    fvwm-menu-directory allows fvwm users to browse directories from within
+    fvwm.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team discovered that
+    fvwm-menu-directory does not sufficiently sanitise directory names
+    prior to generating menus.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker who can convince an fvwm-menu-directory user to browse
+    a directory they control could cause fvwm commands to be executed with
+    the privileges of the fvwm user. Fvwm commands can be used to execute
+    arbitrary shell commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All fvwm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-wm/fvwm-2.5.18-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5969">CVE-2006-5969</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 05:59:03 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Nov 2006 05:59:31 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 11:10:22 +0000">
+    taviso
+  </metadata>
+</glsa>

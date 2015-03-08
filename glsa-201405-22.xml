@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-22">
+  <title>Pidgin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Pidgin may allow execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>May 18, 2014</announced>
+  <revised>May 18, 2014: 1</revised>
+  <bug>457580</bug>
+  <bug>499596</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.10.9</unaffected>
+      <unaffected range="rge">2.10.9-r1</unaffected>
+      <vulnerable range="lt">2.10.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pidgin is a GTK Instant Messenger client for a variety of instant
+      messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pidgin. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the Pidgin process, cause a Denial of Service condition,
+      overwrite files, or spoof traffic.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pidgin users on HPPA or users of GNOME 3.8 and later on AMD64 or X86
+      should upgrade to the latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.10.9-r1"
+    </code>
+    
+    <p>All Pidgin users on ALPHA, PPC, PPC64, SPARC, and users of GNOME before
+      3.8 on AMD64 and X86 should upgrade to the latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.10.9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6152">CVE-2012-6152</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0271">CVE-2013-0271</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0272">CVE-2013-0272</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0273">CVE-2013-0273</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0274">CVE-2013-0274</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6477">CVE-2013-6477</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6478">CVE-2013-6478</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6479">CVE-2013-6479</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6481">CVE-2013-6481</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6482">CVE-2013-6482</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6483">CVE-2013-6483</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6484">CVE-2013-6484</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6485">CVE-2013-6485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6487">CVE-2013-6487</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6489">CVE-2013-6489</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6490">CVE-2013-6490</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0020">CVE-2014-0020</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 15:51:12 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:28:53 +0000">ackle</metadata>
+</glsa>

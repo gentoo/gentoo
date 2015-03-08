@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-02">
+  <title>xine-lib: Buffer overflow</title>
+  <synopsis>
+    xine-lib is vulnerable to a buffer overflow in the Real Media input plugin,
+    which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>December 09, 2006</announced>
+  <revised>December 09, 2006: 01</revised>
+  <bug>156645</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2-r3</unaffected>
+      <vulnerable range="lt">1.1.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine is a portable and reusable multimedia playback engine. xine-lib is
+    xine's core engine.
+    </p>
+  </background>
+  <description>
+    <p>
+    A possible buffer overflow has been reported in the Real Media input
+    plugin.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this vulnerability by enticing a user into
+    loading a specially crafted stream with xine or an application using
+    xine-lib. This can lead to a Denial of Service and possibly the
+    execution of arbitrary code with the rights of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6172">CVE-2006-6172</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 03 Dec 2006 14:51:06 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 Dec 2006 10:43:19 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 09 Dec 2006 07:44:10 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-08">
+  <title>GnuPG: Integer overflow vulnerability</title>
+  <synopsis>
+    GnuPG is vulnerable to an integer overflow that could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnupg</product>
+  <announced>August 05, 2006</announced>
+  <revised>August 08, 2006: 02</revised>
+  <bug>142248</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5</unaffected>
+      <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite
+    of cryptographic software.
+    </p>
+  </background>
+  <description>
+    <p>
+    Evgeny Legerov discovered a vulnerability in GnuPG that when certain
+    packets are handled an integer overflow may occur.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a specially crafted email to a user running an affected
+    version of GnuPG, a remote attacker could possibly execute arbitrary
+    code with the permissions of the user running GnuPG.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuPG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=app-crypt/gnupg-1.4*&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3746">CVE-2006-3746</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Aug 2006 13:24:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 02 Aug 2006 13:48:08 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 05 Aug 2006 11:09:20 +0000">
+    jaervosz
+  </metadata>
+</glsa>

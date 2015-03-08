@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-04">
+  <title>Poppler: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Poppler is affected by a memory management issue, which could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>July 08, 2008</announced>
+  <revised>July 08, 2008: 01</revised>
+  <bug>229931</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3-r1</unaffected>
+      <vulnerable range="lt">0.6.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Poppler is a cross-platform PDF rendering library originally based on
+    Xpdf.
+    </p>
+  </background>
+  <description>
+    <p>
+    Felipe Andres Manzano reported a memory management issue in the Page
+    class constructor/destructor.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    file with a Poppler-based PDF viewer such as Gentoo's Xpdf, Epdfview,
+    or Evince, potentially resulting in the execution of arbitrary code
+    with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All poppler users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.6.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2950">CVE-2008-2950</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 07 Jul 2008 09:09:47 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 08 Jul 2008 18:44:36 +0000">
+    vorlon
+  </metadata>
+</glsa>

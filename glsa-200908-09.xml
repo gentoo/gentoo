@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-09">
+  <title>DokuWiki: Local file inclusion</title>
+  <synopsis>
+    An input sanitation error in DokuWiki might lead to the dislosure of local
+    files or even the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">dokuwiki</product>
+  <announced>August 18, 2009</announced>
+  <revised>August 19, 2009: 02</revised>
+  <bug>272431</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/dokuwiki" auto="yes" arch="*">
+      <unaffected range="ge">20090214b</unaffected>
+      <vulnerable range="lt">20090214b</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DokuWiki is a standards compliant Wiki system written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    girex reported that data from the "config_cascade" parameter in
+    inc/init.php is not properly sanitized before being used.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to execute PHP code
+    from arbitrary local, or, when the used PHP version supports ftp://
+    URLs, also from remote files via FTP. Furthermore, it is possible to
+    disclose the contents of local files. NOTE: Successful exploitation
+    requires the PHP option "register_globals" to be enabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable "register_globals" in php.ini.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DokuWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/dokuwiki-2009-02-14b&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1960">CVE-2009-1960</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 19 Jul 2009 18:47:33 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Aug 2009 19:07:45 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Aug 2009 13:32:43 +0000">
+    a3li
+  </metadata>
+</glsa>

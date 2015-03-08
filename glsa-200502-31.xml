@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-31">
+  <title>uim: Privilege escalation vulnerability</title>
+  <synopsis>
+    Under certain conditions, applications linked against uim suffer from a
+    privilege escalation vulnerability.
+  </synopsis>
+  <product type="ebuild">uim</product>
+  <announced>February 28, 2005</announced>
+  <revised>February 28, 2005: 01</revised>
+  <bug>82678</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-i18n/uim" auto="yes" arch="*">
+      <unaffected range="ge">0.4.5.1</unaffected>
+      <vulnerable range="lt">0.4.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    uim is a simple, secure and flexible input method library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Takumi Asaki discovered that uim insufficiently checks environment
+    variables. setuid/setgid applications linked against libuim could end
+    up executing arbitrary code. This vulnerability only affects
+    immodule-enabled Qt (if you build Qt 3.3.2 or later versions with
+    USE="immqt" or USE="immqt-bc").
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious local user could exploit this vulnerability to execute
+    arbitrary code with escalated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All uim users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-i18n/uim-0.4.5.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0503">CAN-2005-0503</uri>
+    <uri link="http://lists.freedesktop.org/archives/uim/2005-February/000996.html">uim announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 25 Feb 2005 09:53:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 27 Feb 2005 12:40:49 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 28 Feb 2005 08:59:25 +0000">
+    koon
+  </metadata>
+</glsa>

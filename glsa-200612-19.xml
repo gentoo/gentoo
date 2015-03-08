@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-19">
+  <title>pam_ldap: Authentication bypass vulnerability</title>
+  <synopsis>
+    pam_ldap contains a vulnerability that may allow a remote user with a
+    locked account to gain unauthorized system access.
+  </synopsis>
+  <product type="ebuild">pam_ldap</product>
+  <announced>December 20, 2006</announced>
+  <revised>December 20, 2006: 01</revised>
+  <bug>153916</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-auth/pam_ldap" auto="yes" arch="*">
+      <unaffected range="ge">183</unaffected>
+      <vulnerable range="lt">183</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pam_ldap is a Pluggable Authentication Module which allows
+    authentication against LDAP directories.
+    </p>
+  </background>
+  <description>
+    <p>
+    Steve Rigler discovered that pam_ldap does not correctly handle
+    "PasswordPolicyResponse" control responses from an LDAP directory. This
+    causes the pam_authenticate() function to always succeed, even if the
+    previous authentication failed.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A locked user may exploit this vulnerability to bypass the LDAP
+    authentication mechanism, possibly gaining unauthorized access to the
+    system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pam_ldap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/pam_ldap-183&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5170">CVE-2006-5170</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 19 Dec 2006 16:57:27 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Dec 2006 16:58:04 +0000">
+    falco
+  </metadata>
+</glsa>

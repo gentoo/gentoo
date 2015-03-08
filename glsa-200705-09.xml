@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-09">
+  <title>IPsec-Tools: Denial of Service</title>
+  <synopsis>
+    IPsec-Tools contains a vulnerability that allows a remote attacker to crash
+    the IPsec tunnel.
+  </synopsis>
+  <product type="ebuild">ipsec-tools</product>
+  <announced>May 08, 2007</announced>
+  <revised>May 08, 2007: 01</revised>
+  <bug>173219</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-firewall/ipsec-tools" auto="yes" arch="*">
+      <unaffected range="ge">0.6.7</unaffected>
+      <vulnerable range="lt">0.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    IPsec-Tools is a port of KAME's implementation of the IPsec utilities.
+    It contains a collection of network monitoring tools, including racoon,
+    ping, and ping6.
+    </p>
+  </background>
+  <description>
+    <p>
+    The isakmp_info_recv() function in src/racoon/isakmp_inf.c does not
+    always check that DELETE (ISAKMP_NPTYPE_D) and NOTIFY (ISAKMP_NPTYPE_N)
+    packets are encrypted.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted IPsec message to one
+    of the two peers during the beginning of phase 1, resulting in the
+    termination of the IPsec exchange.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IPsec-Tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-firewall/ipsec-tools-0.6.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1841">CVE-2007-1841</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 May 2007 18:53:19 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 May 2007 12:07:13 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 07 May 2007 19:54:14 +0000">
+    vorlon
+  </metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-10">
+  <title>Gld: Remote execution of arbitrary code</title>
+  <synopsis>
+    Gld contains several serious vulnerabilities, potentially resulting in the
+    execution of arbitrary code as the root user.
+  </synopsis>
+  <product type="ebuild">Gld</product>
+  <announced>April 13, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>88904</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/gld" auto="yes" arch="*">
+      <unaffected range="ge">1.5</unaffected>
+      <vulnerable range="le">1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gld is a standalone greylisting server for Postfix.
+    </p>
+  </background>
+  <description>
+    <p>
+    dong-hun discovered several buffer overflows in server.c, as well as
+    several format string vulnerabilities in cnf.c.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability to execute arbitrary code
+    with the permissions of the user running Gld, the default user being
+    root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gld users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/gld-1.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://securitytracker.com/alerts/2005/Apr/1013678.html">SecurityTracker ID 1013678</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1099">CVE-2005-1099</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1100">CVE-2005-1100</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 13 Apr 2005 10:26:52 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 13 Apr 2005 12:04:44 +0000">
+    jaervosz
+  </metadata>
+</glsa>

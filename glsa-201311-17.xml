@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-17">
+  <title>Perl: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Perl, the worst of which
+    could allow a local attacker to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>November 28, 2013</announced>
+  <revised>November 28, 2013: 1</revised>
+  <bug>249629</bug>
+  <bug>313565</bug>
+  <bug>362025</bug>
+  <bug>386357</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.12.3-r1</unaffected>
+      <vulnerable range="lt">5.12.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Perl is Larry Wall’s Practical Extraction and Report Language.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Perl. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could cause a Denial of Service condition or perform
+      symlink attacks to overwrite arbitrary files with the privileges of the
+      user running the application. A context-dependent attacker could cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.12.3-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5302">CVE-2008-5302</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5303">CVE-2008-5303</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1158">CVE-2010-1158</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0761">CVE-2011-0761</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1487">CVE-2011-1487</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:30 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:18:07 +0000">craig</metadata>
+</glsa>

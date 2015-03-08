@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-03">
+  <title>Multiple OpenSSL Vulnerabilities</title>
+  <synopsis>
+    Three vulnerabilities have been found in OpenSSL via a commercial test
+    suite for the TLS protocol developed by Codenomicon Ltd.
+  </synopsis>
+  <product type="ebuild">OpenSSL</product>
+  <announced>March 17, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>44941</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.7d</unaffected>
+      <unaffected range="eq">0.9.6m</unaffected>
+      <vulnerable range="le">0.9.7c</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The OpenSSL Project is a collaborative effort to develop a robust,
+    commercial-grade, full-featured, and Open Source toolkit implementing
+    the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS
+    v1) protocols as well as a full-strength general purpose cryptography
+    library.
+    </p>
+  </background>
+  <description>
+    <ol>
+    <li>
+    Testing performed by the OpenSSL group using the Codenomicon TLS Test
+    Tool uncovered a null-pointer assignment in the do_change_cipher_spec()
+    function. A remote attacker could perform a carefully crafted SSL/TLS
+    handshake against a server that used the OpenSSL library in such a way
+    as to cause OpenSSL to crash. Depending on the application this could
+    lead to a denial of service. All versions of OpenSSL from 0.9.6c to
+    0.9.6l inclusive and from 0.9.7a to 0.9.7c inclusive are affected by
+    this issue.
+    </li>
+    <li>
+    A flaw has been discovered in SSL/TLS handshaking code when using
+    Kerberos ciphersuites. A remote attacker could perform a carefully
+    crafted SSL/TLS handshake against a server configured to use Kerberos
+    ciphersuites in such a way as to cause OpenSSL to crash. Most
+    applications have no ability to use Kerberos cipher suites and will
+    therefore be unaffected. Versions 0.9.7a, 0.9.7b, and 0.9.7c of OpenSSL
+    are affected by this issue.
+    </li>
+    <li>
+    Testing performed by the OpenSSL group using the Codenomicon TLS Test
+    Tool uncovered a bug in older versions of OpenSSL 0.9.6 that can lead
+    to a Denial of Service attack (infinite loop). This issue was traced to
+    a fix that was added to OpenSSL 0.9.6d some time ago. This issue will
+    affect vendors that ship older versions of OpenSSL with backported
+    security patches.
+    </li>
+    </ol>
+  </description>
+  <impact type="normal">
+    <p>
+    Although there are no public exploits known for bug, users are
+    recommended to upgrade to ensure the security of their infrastructure.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no immediate workaround; a software upgrade is required. The
+    vulnerable function in the code has been rewritten.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are recommened to upgrade openssl to either 0.9.7d or 0.9.6m:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv &quot;&gt;=dev-libs/openssl-0.9.7d&quot;
+    # emerge &quot;&gt;=dev-libs/openssl-0.9.7d&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0079">CVE-2004-0079</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0081">CVE-2004-0081</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0112">CVE-2004-0112</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:54:03 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-06">
+  <title>Squid: Denial of Service vulnerabilities</title>
+  <synopsis>
+    Squid contains several bugs when handling certain malformed requests
+    resulting in a Denial of Service.
+  </synopsis>
+  <product type="ebuild">Squid</product>
+  <announced>September 07, 2005</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>104603</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.10-r2</unaffected>
+      <vulnerable range="lt">2.5.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured Web proxy cache designed to run on Unix-like
+    systems. It supports proxying and caching of HTTP, FTP, and other
+    protocols, as well as SSL support, cache hierarchies, transparent
+    caching, access control lists and many more features.
+    </p>
+  </background>
+  <description>
+    <p>
+    Certain malformed requests result in a segmentation fault in the
+    sslConnectTimeout function, handling of other certain requests trigger
+    assertion failures.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By performing malformed requests an attacker could cause Squid to crash
+    by triggering an assertion failure or invalid memory reference.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.5.10-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.squid-cache.org/Versions/v2/2.5/bugs/">Squid Patches</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2794">CVE-2005-2794</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2796">CVE-2005-2796</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 05 Sep 2005 08:24:13 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Sep 2005 08:39:15 +0000">
+    adir
+  </metadata>
+</glsa>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-26">
+  <title>Sylpheed, Sylpheed-claws: Message reply overflow</title>
+  <synopsis>
+    Sylpheed and Sylpheed-claws contain a vulnerability that can be triggered
+    when replying to specially crafted messages.
+  </synopsis>
+  <product type="ebuild">sylpheed sylpheed-claws</product>
+  <announced>March 20, 2005</announced>
+  <revised>March 20, 2005: 01</revised>
+  <bug>84056</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/sylpheed" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3</unaffected>
+      <vulnerable range="lt">1.0.3</vulnerable>
+    </package>
+    <package name="mail-client/sylpheed-claws" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3</unaffected>
+      <vulnerable range="lt">1.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sylpheed is a lightweight email client and newsreader.
+    Sylpheed-claws is a 'bleeding edge' version of Sylpheed.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sylpheed and Sylpheed-claws fail to properly handle non-ASCII
+    characters in email headers when composing reply messages.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can send an email containing a malicious non-ASCII
+    header which, when replied to, would cause the program to crash,
+    potentially allowing the execution of arbitrary code with the
+    privileges of the user running the software.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sylpheed users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-1.0.3&quot;</code>
+    <p>
+    All Sylpheed-claws users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-claws-1.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sylpheed.good-day.net/#changes">Sylpheed ChangeLog</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0667">CAN-2005-0667</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 14 Mar 2005 20:05:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Mar 2005 14:35:33 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 Mar 2005 22:41:22 +0000">
+    lewk
+  </metadata>
+</glsa>

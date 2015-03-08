@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-17">
+  <title>mtink: Insecure tempfile handling</title>
+  <synopsis>
+    mtink is vulnerable to symlink attacks, potentially allowing a local user
+    to overwrite arbitrary files with the rights of the user running the
+    utility.
+  </synopsis>
+  <product type="ebuild">mtink</product>
+  <announced>November 09, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>70310</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-print/mtink" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mtink is a status monitor and inkjet cartridge changer for some Epson
+    printers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy from Gentoo Linux discovered that mtink uses insecure
+    permissions on temporary files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When
+    mtink is executed, this would result in the file being overwritten with
+    the rights of the user running the utility, which could be the root
+    user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mtink users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/mtink-1.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1110">CVE-2004-1110</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  8 Nov 2004 11:16:34 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  8 Nov 2004 11:16:46 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  8 Nov 2004 21:01:51 +0000">
+    jaervosz
+  </metadata>
+</glsa>

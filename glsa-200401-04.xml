@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200401-04">
+  <title>GAIM 0.75 Remote overflows</title>
+  <synopsis>
+    Various overflows in the handling of AIM DirectIM packets was revealed in
+    GAIM that could lead to a remote compromise of the IM client.
+  </synopsis>
+  <product type="ebuild">GAIM</product>
+  <announced>January 26, 2004</announced>
+  <revised>January 26, 2004: 01</revised>
+  <bug>39470</bug>
+  <access>man-in-the-middle</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">0.75-r7</unaffected>
+      <vulnerable range="lt">0.75-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a multi-platform and multi-protocol instant messaging
+    client.  It is compatible with AIM , ICQ, MSN Messenger, Yahoo,
+    IRC, Jabber, Gadu-Gadu, and the Zephyr networks.
+    </p>
+  </background>
+  <description>
+    <p>
+    Yahoo changed the authentication methods to their IM servers,
+    rendering GAIM useless. The GAIM team released a rushed release
+    solving this issue, however, at the same time a code audit
+    revealed 12 new vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Due to the nature of instant messaging many of these bugs require
+    man-in-the-middle attacks between the client and the server. But
+    the underlying protocols are easy to implement and attacking
+    ordinary TCP sessions is a fairly simple task. As a result, all
+    users are advised to upgrade their GAIM installation.
+    </p>
+    <ul>
+      <li>
+        Users of GAIM 0.74 or below are affected by 7 of the
+        vulnerabilities and are encouraged to upgrade.
+      </li>
+      <li>
+        Users of GAIM 0.75 are affected by 11 of the vulnerabilities
+        and are encouraged to upgrade to the patched version of GAIM
+        offered by Gentoo.
+      </li>
+      <li>
+        Users of GAIM 0.75-r6 are only affected by
+        4 of the vulnerabilities, but are still urged to upgrade to
+        maintain security.
+      </li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no immediate workaround; a software upgrade is required.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are recommended to upgrade GAIM to 0.75-r7.
+    </p>
+    <code>
+    $> emerge sync
+    $> emerge -pv ">=net-im/gaim-0.75-r7"
+    $> emerge ">=net-im/gaim-0.75-r7"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/351235/2004-01-23/2004-01-29/0">Security advisory from Stefan Esser</uri>
+  </references>
+</glsa>

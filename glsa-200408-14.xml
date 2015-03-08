@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-14">
+  <title>acroread: UUDecode filename buffer overflow</title>
+  <synopsis>
+    acroread contains two errors in the handling of UUEncoded filenames that
+    may lead to execution of arbitrary code or programs.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>August 15, 2004</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>60205</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">5.09</unaffected>
+      <vulnerable range="le">5.08</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    acroread is Adobe's Acrobat PDF reader for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    acroread contains two errors in the handling of UUEncoded filenames.
+    First, it fails to check the length of a filename before copying it
+    into a fixed size buffer and, secondly, it fails to check for the
+    backtick shell metacharacter in the filename before executing a command
+    with a shell.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a PDF with a specially crafted filename, an
+    attacker could execute arbitrary code or programs with the permissions
+    of the user running acroread.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of acroread.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All acroread users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-text/acroread-5.09&quot;
+    # emerge &quot;&gt;=app-text/acroread-5.09&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://idefense.com/application/poi/display?id=124&amp;type=vulnerabilities">iDEFENSE Advisory 124</uri>
+    <uri link="http://idefense.com/application/poi/display?id=125&amp;type=vulnerabilities">iDEFENSE Advisory 125</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0630">CVE-2004-0630</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0631">CVE-2004-0631</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 14 Aug 2004 07:56:36 +0000">
+    jaervosz
+  </metadata>
+</glsa>

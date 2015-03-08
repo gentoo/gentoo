@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-04">
+  <title>libwww-perl: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libwww-perl, the worst
+    of which could allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libwww-perl</product>
+  <announced>February 04, 2014</announced>
+  <revised>February 04, 2014: 1</revised>
+  <bug>329943</bug>
+  <bug>386309</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/libwww-perl" auto="yes" arch="*">
+      <unaffected range="ge">6.30.0</unaffected>
+      <vulnerable range="lt">6.30.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libwww is a collection of Perl modules providing a consistent interface
+      to the World-Wide Web.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libwww-perl. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to download a specially-crafted
+      file with an application linked against libwww-perl, which could result
+      in overwritten files or arbitrary code execution by writing to a dotfile
+      in the user’s home directory (such as .bashrc). Additionally, a remote
+      attacker could perform a Man-in-the-Middle attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libwww-perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-perl/libwww-perl-6.30.0"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since December 18, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2253">CVE-2010-2253</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0633">CVE-2011-0633</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:06 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Feb 2014 15:57:46 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

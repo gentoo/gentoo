@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-39">
+  <title>SquirrelMail: Multiple vulnerabilities</title>
+  <synopsis>
+    SquirrelMail fails to properly sanitize user input, which could lead to
+    arbitrary code execution and compromise webmail accounts.
+  </synopsis>
+  <product type="ebuild">SquirrelMail</product>
+  <announced>January 28, 2005</announced>
+  <revised>January 28, 2005: 01</revised>
+  <bug>78116</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <unaffected range="ge">1.4.4</unaffected>
+      <vulnerable range="le">1.4.3a-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SquirrelMail is a webmail package written in PHP. It supports IMAP
+    and SMTP and can optionally be installed with SQL support.
+    </p>
+  </background>
+  <description>
+    <p>
+    SquirrelMail fails to properly sanitize certain strings when
+    decoding specially-crafted strings, which can lead to PHP file
+    inclusion and XSS.
+    </p>
+    <ul>
+    <li>Insufficient checking of incoming URLs
+    in prefs.php (CAN-2005-0075) and in webmail.php (CAN-2005-0103).</li>
+    <li>Insufficient escaping of integers in webmail.php
+    (CAN-2005-0104).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a specially-crafted URL, an attacker can execute
+    arbitrary code from the local system with the permissions of the web
+    server. Furthermore by enticing a user to load a specially-crafted URL,
+    it is possible to display arbitrary remote web pages in Squirrelmail's
+    frameset and execute arbitrary scripts running in the context of the
+    victim's browser. This could lead to a compromise of the user's webmail
+    account, cookie theft, etc.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The arbitrary code execution is only possible with
+    "register_globals" set to "On". Gentoo ships PHP with
+    "register_globals" set to "Off" by default. There are no known
+    workarounds for the other issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SquirrelMail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.4&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/mailarchive/message.php?msg_id=10628451">SquirrelMail Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0075">CAN-2005-0075</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0103">CAN-2005-0103</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0104">CAN-2005-0104</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 25 Jan 2005 17:32:40 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 28 Jan 2005 10:51:51 +0000">
+    koon
+  </metadata>
+</glsa>

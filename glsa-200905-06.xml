@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-06">
+  <title>acpid: Denial of Service</title>
+  <synopsis>
+    An error in acpid might allow remote attackers to cause a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">acpid</product>
+  <announced>May 24, 2009</announced>
+  <revised>May 24, 2009: 01</revised>
+  <bug>268079</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-power/acpid" auto="yes" arch="*">
+      <unaffected range="ge">1.0.10</unaffected>
+      <vulnerable range="lt">1.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    acpid is a daemon for the Advanced Configuration and Power Interface
+    (ACPI).
+    </p>
+  </background>
+  <description>
+    <p>
+    The acpid daemon allows opening a large number of UNIX sockets without
+    closing them, triggering an infinite loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers can cause a Denial of Service (CPU consumption and
+    connectivity loss).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All acpid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-power/acpid-1.0.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0798">CVE-2009-0798</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 24 May 2009 00:11:41 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 24 May 2009 00:29:02 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 24 May 2009 18:05:05 +0000">
+    p-y
+  </metadata>
+</glsa>

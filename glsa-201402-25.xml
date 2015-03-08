@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-25">
+  <title>OpenSSL: Denial of Service</title>
+  <synopsis>A vulnerability in OpenSSL's handling of TLS handshakes could
+    result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>497838</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1f</unaffected>
+      <unaffected range="lt">1.0.1</unaffected>
+      <vulnerable range="lt">1.0.1f</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>A flaw in the ssl3_take_mac function can result in a NULL pointer
+      dereference.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted TLS handshake,
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL 1.0.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.1f"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4353">CVE-2013-4353</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Jan 2014 06:18:59 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:36:48 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

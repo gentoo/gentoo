@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200402-07">
+  <title>Clam Antivirus DoS vulnerability</title>
+  <synopsis>
+    Oliver Eikemeier has reported a vulnerability in Clam AV, which can be
+    exploited by a malformed uuencoded message causing a denial of service for
+    programs that rely on the clamav daemon, such as SMTP daemons.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>February 17, 2004</announced>
+  <revised>February 17, 2004: 01</revised>
+  <bug>41248</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.67</unaffected>
+      <vulnerable range="lt">0.67</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a GPLed anti-virus toolkit, designed for integration with
+    mail servers to perform attachment scanning. Clam AV also provides a
+    command line scanner and a tool for fetching updates of the virus database.
+    </p>
+  </background>
+  <description>
+    <p>
+    Oliver Eikemeier of Fillmore Labs discovered the overflow in Clam AV 0.65
+    when it handled malformed UUEncoded messages, causing the daemon to shut
+    down.
+    </p>
+    <p>
+    The problem originated in libclamav which calculates the line length of an
+    uuencoded message by taking the ASCII value of the first character minus 64
+    while doing an assertion if the length is not in the allowed range,
+    effectively terminating the calling program as clamav would not be
+    available.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malformed message would cause a denial of service,
+    and depending on the server configuration this may impact other daemons
+    relying on Clam AV in a fatal manner.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no immediate workaround, a software upgrade is required.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are urged to upgrade their Clam AV installations to Clam AV 0.67:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv ">=app-antivirus/clamav-0.6.7"
+    # emerge ">=app-antivirus/clamav-0.6.7"</code>
+  </resolution>
+  <references>
+  </references>
+</glsa>

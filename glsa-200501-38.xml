@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-38">
+  <title>Perl: rmtree and DBI tmpfile vulnerabilities</title>
+  <synopsis>
+    The Perl DBI library and File::Path::rmtree function are vulnerable to
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">Perl</product>
+  <announced>January 26, 2005</announced>
+  <revised>March 15, 2005: 03</revised>
+  <bug>75696</bug>
+  <bug>78634</bug>
+  <bug>79685</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-perl/DBI" auto="yes" arch="*">
+      <unaffected range="rge">1.37-r1</unaffected>
+      <unaffected range="ge">1.38-r1</unaffected>
+      <vulnerable range="le">1.38</vulnerable>
+    </package>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.8.6-r4</unaffected>
+      <unaffected range="rge">5.8.5-r5</unaffected>
+      <unaffected range="rge">5.8.4-r4</unaffected>
+      <unaffected range="rge">5.8.2-r4</unaffected>
+      <vulnerable range="le">5.8.6-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Perl is a cross platform programming language. The DBI is the standard
+    database interface module for Perl.
+    </p>
+  </background>
+  <description>
+    <p>
+    Javier Fernandez-Sanguino Pena discovered that the DBI library creates
+    temporary files in an insecure, predictable way (CAN-2005-0077). Paul
+    Szabo found out that "File::Path::rmtree" is vulnerable to various race
+    conditions (CAN-2004-0452, CAN-2005-0448).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory that point to a valid file somewhere on the filesystem. When
+    the DBI library or File::Path::rmtree is executed, this could be used
+    to overwrite or remove files with the rights of the user calling these
+    functions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Perl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-lang/perl</code>
+    <p>
+    All DBI library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-perl/DBI</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0452">CAN-2004-0452</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0077">CAN-2005-0077</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0448">CAN-2005-0448</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 26 Jan 2005 15:06:53 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Jan 2005 20:14:36 +0000">
+    koon
+  </metadata>
+</glsa>

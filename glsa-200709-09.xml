@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-09">
+  <title>GNU Tar: Directory traversal vulnerability</title>
+  <synopsis>
+    A directory traversal vulnerability has been discovered in GNU Tar.
+  </synopsis>
+  <product type="ebuild">tar</product>
+  <announced>September 15, 2007</announced>
+  <revised>September 15, 2007: 01</revised>
+  <bug>189682</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/tar" auto="yes" arch="*">
+      <unaffected range="ge">1.18-r2</unaffected>
+      <vulnerable range="lt">1.18-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU Tar program provides the ability to create tar archives, as
+    well as various other kinds of manipulation.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry V. Levin discovered a directory traversal vulnerability in the
+    contains_dot_dot() function in file src/names.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to extract a specially crafted tar archive, a remote
+    attacker could extract files to arbitrary locations outside of the
+    specified directory with the permissions of the user running GNU Tar.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Tar users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/tar-1.18-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4131">CVE-2007-4131</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 13 Sep 2007 18:11:35 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 13 Sep 2007 18:49:13 +0000">
+    mfleming
+  </metadata>
+</glsa>

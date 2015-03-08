@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-06">
+  <title>tiff: New overflows in image decoding</title>
+  <synopsis>
+    An integer overflow has been found in the TIFF library image decoding
+    routines and the tiffdump utility, potentially allowing arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>January 05, 2005</announced>
+  <revised>January 05, 2005: 01</revised>
+  <bug>75213</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">3.7.1-r1</unaffected>
+      <vulnerable range="lt">3.7.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The TIFF library contains encoding and decoding routines for the
+    Tag Image File Format. It is called by numerous programs, including
+    GNOME and KDE applications, to interpret TIFF images.
+    </p>
+  </background>
+  <description>
+    <p>
+    infamous41md found a potential integer overflow in the directory
+    entry count routines of the TIFF library (CAN-2004-1308). Dmitry V.
+    Levin found another similar issue in the tiffdump utility
+    (CAN-2004-1183).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a carefully crafted
+    TIFF image file, which would potentially lead to execution of arbitrary
+    code with the rights of the user viewing the image. This affects any
+    program that makes use of the TIFF library, including many web browsers
+    or mail readers.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TIFF library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.7.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1183">CAN-2004-1183</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1308">CAN-2004-1308</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=174&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon,  3 Jan 2005 10:21:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 14:07:42 +0000">
+    koon
+  </metadata>
+</glsa>

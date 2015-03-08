@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200402-06">
+  <title>Updated kernel packages fix the AMD64 ptrace vulnerability</title>
+  <synopsis>
+    A vulnerability has been discovered by in the ptrace emulation code for
+    AMD64 platforms when eflags are processed, allowing a local user to obtain
+    elevated priveleges. 
+  </synopsis>
+  <product type="ebuild">Kernel</product>
+  <announced>February 17, 2004</announced>
+  <revised>February 17, 2004: 01</revised>
+  <access>local</access>
+  <affected>
+    <package name="sys-kernel/ck-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.6.2</unaffected>
+      <vulnerable range="lt">2.6.2</vulnerable>
+    </package>
+    <package name="sys-kernel/development-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.6.2</unaffected>
+      <vulnerable range="lt">2.6.2</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-dev-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.6.2</unaffected>
+      <vulnerable range="lt">2.6.2</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.4.22-r6</unaffected>
+      <vulnerable range="lt">2.4.22-r6</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-test-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.6.2-r1</unaffected>
+      <vulnerable range="lt">2.6.2</vulnerable>
+    </package>
+    <package name="sys-kernel/gs-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.4.25_pre7-r1</unaffected>
+      <vulnerable range="lt">2.4.25_pre7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/vanilla-prepatch-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.4.25_rc3</unaffected>
+      <vulnerable range="lt">2.4.25_rc3</vulnerable>
+    </package>
+    <package name="sys-kernel/vanilla-sources" auto="yes" arch="amd64">
+      <unaffected range="ge">2.4.24-r1</unaffected>
+      <vulnerable range="lt">2.4.24-r1</vulnerable>
+    </package>
+  </affected>
+  <description>
+    <p>
+    A vulnerability has been discovered by Andi Kleen in the ptrace emulation
+    code for AMD64 platforms when eflags are processed, allowing a local user
+    to obtain elevated priveleges.  The Common Vulnerabilities and Exposures
+    project, http://cve.mitre.org, has assigned CAN-2004-0001 to this issue.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Only users of the AMD64 platform are affected: in this scenario, a user may
+    be able to obtain elevated priveleges, including root access. However, no
+    public exploit is known for the vulnerability at this time.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no temporary workaround - a kernel upgrade is required. A list of
+    unaffected kernels is provided along with this announcement.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to upgrade to the latest available sources for
+    their system:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv your-favourite-sources
+    # emerge your-favourite-sources
+    # # Follow usual procedure for compiling and installing a kernel.
+    # # If you use genkernel, run genkernel as you would do normally.
+    </code>
+    <code>
+    # # IF YOUR KERNEL IS MARKED as "remerge required!" THEN
+    # # YOU SHOULD UPDATE YOUR KERNEL EVEN IF PORTAGE
+    # # REPORTS THAT THE SAME VERSION IS INSTALLED.
+    </code>
+  </resolution>
+  <references>
+  </references>
+</glsa>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-21">
+  <title>phpMyAdmin: Local file inclusion and XSS vulnerabilities</title>
+  <synopsis>
+    phpMyAdmin contains a local file inclusion vulnerability that may lead to
+    the execution of arbitrary code, along with several cross-site scripting
+    issues.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>October 25, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>110146</bug>
+  <access>local and remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.6.4_p3</unaffected>
+      <vulnerable range="lt">2.6.4_p3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the
+    administration of MySQL over the web.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser discovered that by calling certain PHP files directly, it
+    was possible to workaround the grab_globals.lib.php security model and
+    overwrite the $cfg configuration array. Systems running PHP in safe
+    mode are not affected. Futhermore, Tobias Klein reported several
+    cross-site-scripting issues resulting from insufficient user input
+    sanitizing.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker may exploit this vulnerability by sending malicious
+    requests, causing the execution of arbitrary code with the rights of
+    the user running the web server. Furthermore, the cross-site scripting
+    issues give a remote attacker the ability to inject and execute
+    malicious script code or to steal cookie-based authentication
+    credentials, potentially compromising the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround for all those issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.4_p3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-5">PMASA-2005-5</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3300">CVE-2005-3300</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3301">CVE-2005-3301</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 24 Oct 2005 08:28:30 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 25 Oct 2005 08:03:47 +0000">
+    koon
+  </metadata>
+</glsa>

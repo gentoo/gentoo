@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-20">
+  <title>CUPS: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple errors in CUPS might allow for the remote execution of arbitrary
+    code or DNS rebinding attacks.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>April 23, 2009</announced>
+  <revised>April 23, 2009: 01</revised>
+  <bug>263070</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.3.10</unaffected>
+      <vulnerable range="lt">1.3.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CUPS, the Common Unix Printing System, is a full-featured print server.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following issues were reported in CUPS:
+    </p>
+    <ul>
+    <li>iDefense
+    reported an integer overflow in the _cupsImageReadTIFF() function in
+    the "imagetops" filter, leading to a heap-based buffer overflow
+    (CVE-2009-0163).</li>
+    <li>Aaron Siegel of Apple Product Security
+    reported that the CUPS web interface does not verify the content of the
+    "Host" HTTP header properly (CVE-2009-0164).</li>
+    <li>Braden Thomas and
+    Drew Yao of Apple Product Security reported that CUPS is vulnerable to
+    CVE-2009-0146, CVE-2009-0147 and CVE-2009-0166, found earlier in xpdf
+    and poppler.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might send or entice a user to send a specially
+    crafted print job to CUPS, possibly resulting in the execution of
+    arbitrary code with the privileges of the configured CUPS user -- by
+    default this is "lp", or a Denial of Service. Furthermore, the web
+    interface could be used to conduct DNS rebinding attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.3.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0146">CVE-2009-0146</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0147">CVE-2009-0147</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0163">CVE-2009-0163</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0164">CVE-2009-0164</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0166">CVE-2009-0166</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 20 Apr 2009 08:43:52 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Apr 2009 11:20:52 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Apr 2009 19:42:53 +0000">
+    p-y
+  </metadata>
+</glsa>

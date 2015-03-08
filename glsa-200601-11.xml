@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-11">
+  <title>KDE kjs: URI heap overflow vulnerability</title>
+  <synopsis>
+    KDE fails to properly validate URIs when handling javascript, potentially
+    resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">KDE</product>
+  <announced>January 22, 2006</announced>
+  <revised>January 22, 2006: 01</revised>
+  <bug>118550</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.4.3-r1</unaffected>
+      <vulnerable range="lt">3.4.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like Operating Systems. kjs is the javascript interpreter used in
+    Konqueror and other parts of KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    Maksim Orlovich discovered an incorrect bounds check in kjs when
+    handling URIs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to load a specially crafted webpage containing
+    malicious javascript, an attacker could execute arbitrary code with the
+    rights of the user running kjs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/kdelibs-3.4.3-r1</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0019">CVE-2006-0019</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20060119-1.txt">KDE Security Advisory: kjs encodeuri/decodeuri heap overflow vulnerability</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 20 Jan 2006 06:30:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 21 Jan 2006 13:57:57 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-26">
+  <title>libxml2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in libxml2 which could lead to
+    execution of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>October 26, 2011</announced>
+  <revised>October 26, 2011: 1</revised>
+  <bug>345555</bug>
+  <bug>370715</bug>
+  <bug>386985</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.7.8-r3</unaffected>
+      <vulnerable range="lt">2.7.8-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxml2 is the XML C parser and toolkit developed for the Gnome project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libxml2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local or remote attacker may be able to execute arbitrary code with
+      the privileges of the application or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxml2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.7.8-r3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4008">CVE-2010-4008</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4494">CVE-2010-4494</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1944">CVE-2011-1944</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2821">CVE-2011-2821</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2834">CVE-2011-2834</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:45 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Wed, 26 Oct 2011 20:50:29 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-06">
+  <title>IO::Socket::SSL: Certificate validation error</title>
+  <synopsis>
+    An error in the hostname matching of IO::Socket::SSL might enable remote
+    attackers to conduct man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">IO::Socket::SSL</product>
+  <announced>January 16, 2011</announced>
+  <revised>January 16, 2011: 01</revised>
+  <bug>276360</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/IO-Socket-SSL" auto="yes" arch="*">
+      <unaffected range="ge">1.26</unaffected>
+      <vulnerable range="lt">1.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    IO::Socket::SSL is a Perl class implementing an object oriented
+    interface to SSL sockets.
+    </p>
+  </background>
+  <description>
+    <p>
+    The vendor reported that IO::Socket::SSL does not properly handle
+    Common Name (CN) fields.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might employ a specially crafted certificate to
+    conduct man-in-the-middle attacks on SSL connections made using
+    IO::Socket::SSL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IO::Socket::SSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/IO-Socket-SSL-1.26&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3024">CVE-2009-3024</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 18:07:06 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Apr 2010 12:25:53 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 22 Sep 2010 19:52:04 +0000">
+    p-y
+  </metadata>
+</glsa>

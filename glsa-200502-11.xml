@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-11">
+  <title>Mailman: Directory traversal vulnerability</title>
+  <synopsis>
+    Mailman fails to properly sanitize input, leading to information
+    disclosure.
+  </synopsis>
+  <product type="ebuild">mailman</product>
+  <announced>February 10, 2005</announced>
+  <revised>February 10, 2005: 01</revised>
+  <bug>81109</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/mailman" auto="yes" arch="*">
+      <unaffected range="ge">2.1.5-r4</unaffected>
+      <vulnerable range="lt">2.1.5-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mailman is a Python-based mailing list server with an extensive
+    web interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mailman contains an error in private.py which fails to properly
+    sanitize input paths.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this flaw to obtain arbitrary files on
+    the web server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mailman users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailman-2.1.5-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://lists.netsys.com/pipermail/full-disclosure/2005-February/031562.html">Full Disclosure Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0202">CAN-2005-0202</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  9 Feb 2005 21:12:44 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  9 Feb 2005 21:59:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Feb 2005 16:41:33 +0000">
+    jaervosz
+  </metadata>
+</glsa>

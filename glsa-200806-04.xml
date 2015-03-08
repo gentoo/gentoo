@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-04">
+  <title>rdesktop: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in rdesktop may lead to the execution of arbitrary
+    code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">rdesktop</product>
+  <announced>June 14, 2008</announced>
+  <revised>June 14, 2008: 01</revised>
+  <bug>220911</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rdesktop" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0</unaffected>
+      <vulnerable range="lt">1.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rdesktop is an open source Remote Desktop Protocol (RDP) client.
+    </p>
+  </background>
+  <description>
+    <p>
+    An anonymous researcher reported multiple vulnerabilities in rdesktop
+    via iDefense Labs:
+    </p>
+    <ul>
+    <li>An integer underflow error exists in
+    the function iso_recv_msg() in the file iso.c which can be triggered
+    via a specially crafted RDP request, causing a heap-based buffer
+    overflow (CVE-2008-1801).</li>
+    <li>An input validation error exists in
+    the function process_redirect_pdu() in the file rdp.c which can be
+    triggered via a specially crafted RDP redirect request, causing a
+    BSS-based buffer overflow (CVE-2008-1802).</li>
+    <li>
+    An integer signedness error exists in the function xrealloc() in the
+    file rdesktop.c which can be be exploited to cause a heap-based buffer
+    overflow (CVE-2008-1803).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities by enticing a user to
+    connect to a malicious RDP server thereby allowing the attacker to
+    execute arbitrary code or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All rdesktop users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/rdesktop-1.6.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1801">CVE-2008-1801</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1802">CVE-2008-1802</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1803">CVE-2008-1803</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 19 May 2008 15:23:05 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Jun 2008 15:21:36 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Jun 2008 15:00:31 +0000">
+    mfleming
+  </metadata>
+</glsa>

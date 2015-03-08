@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-07">
+  <title>Blender: Untrusted search path</title>
+  <synopsis>
+    An untrusted search path vulnerability in Blender might result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">blender</product>
+  <announced>January 13, 2010</announced>
+  <revised>January 13, 2010: 01</revised>
+  <bug>245310</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-gfx/blender" auto="yes" arch="*">
+      <unaffected range="ge">2.48a-r3</unaffected>
+      <vulnerable range="lt">2.48a-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Blender is a 3D Creation/Animation/Publishing System.
+    </p>
+  </background>
+  <description>
+    <p>
+    Steffen Joeris reported that Blender's BPY_interface calls
+    PySys_SetArgv() in such a way that Python prepends sys.path with an
+    empty string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user to run "blender" from a directory
+    containing a specially crafted Python module, resulting in the
+    execution of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Blender users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/blender-2.48a-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4863">CVE-2008-4863</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 30 Nov 2008 19:04:32 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:25:09 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:40:27 +0000">
+    craig
+  </metadata>
+</glsa>

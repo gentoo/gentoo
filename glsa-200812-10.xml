@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-10">
+  <title>Archive::Tar: Directory traversal vulnerability</title>
+  <synopsis>
+    A directory traversal vulnerability has been discovered in Archive::Tar.
+  </synopsis>
+  <product type="ebuild">Archive-Tar</product>
+  <announced>December 10, 2008</announced>
+  <revised>December 10, 2008: 01</revised>
+  <bug>192989</bug>
+  <access>remote</access>
+  <affected>
+    <package name="perl-core/Archive-Tar" auto="yes" arch="*">
+      <unaffected range="ge">1.40</unaffected>
+      <vulnerable range="lt">1.40</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Archive::Tar is a Perl module for creation and manipulation of tar
+    files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jonathan Smith of rPath reported that Archive::Tar does not check for
+    ".." in file names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to extract a
+    specially crafted tar archive, overwriting files at arbitrary locations
+    outside of the specified directory.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Archive::Tar users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=perl-core/Archive-Tar-1.40&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4829">CVE-2007-4829</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:55:42 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 20:31:02 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 20:31:20 +0000">
+    rbu
+  </metadata>
+</glsa>

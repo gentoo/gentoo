@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-07">
+  <title>ModPlug: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    ModPlug contains several buffer overflows that could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libmodplug gst-plugins-bad</product>
+  <announced>July 12, 2009</announced>
+  <revised>July 12, 2009: 01</revised>
+  <bug>266913</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libmodplug" auto="yes" arch="*">
+      <unaffected range="ge">0.8.7</unaffected>
+      <vulnerable range="lt">0.8.7</vulnerable>
+    </package>
+    <package name="media-libs/gst-plugins-bad" auto="yes" arch="*">
+      <unaffected range="ge">0.10.11</unaffected>
+      <vulnerable range="lt">0.10.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ModPlug is a library for playing MOD-like music.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities have been reported in ModPlug:
+    </p>
+    <ul>
+    <li>
+    dummy reported an integer overflow in the CSoundFile::ReadMed()
+    function when processing a MED file with a crafted song comment or song
+    name, which triggers a heap-based buffer overflow (CVE-2009-1438).
+    </li>
+    <li>
+    Manfred Tremmel and Stanislav Brabec reported a buffer overflow in the
+    PATinst() function when processing a long instrument name
+    (CVE-2009-1513).
+    </li>
+    </ul> <p>
+    The GStreamer Bad plug-ins (gst-plugins-bad) before 0.10.11 built a
+    vulnerable copy of ModPlug.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to read specially crafted files,
+    possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ModPlug users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libmodplug-0.8.7&quot;</code>
+    <p>
+    gst-plugins-bad 0.10.11 and later versions do not include the ModPlug
+    plug-in (it has been moved to media-plugins/gst-plugins-modplug). All
+    gst-plugins-bad users should upgrade to the latest version and install
+    media-plugins/gst-plugins-modplug:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gst-plugins-bad-0.10.11&quot;
+    # emerge --ask --verbose &quot;media-plugins/gst-plugins-modplug&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1438">CVE-2009-1438</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1513">CVE-2009-1513</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 13:45:14 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 01:50:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Jul 2009 01:50:38 +0000">
+    rbu
+  </metadata>
+</glsa>

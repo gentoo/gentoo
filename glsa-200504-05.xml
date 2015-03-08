@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-05">
+  <title>Gaim: Denial of Service issues</title>
+  <synopsis>
+    Gaim contains multiple vulnerabilities that can lead to a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">Gaim</product>
+  <announced>April 06, 2005</announced>
+  <revised>April 06, 2005: 03</revised>
+  <bug>87903</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">1.2.1</unaffected>
+      <vulnerable range="lt">1.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a full featured instant messaging client which handles a
+    variety of instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been addressed in the latest release of
+    Gaim:
+    </p>
+    <ul><li>A buffer overread in the gaim_markup_strip_html() function,
+    which is used when logging conversations (CAN-2005-0965).</li>
+    <li>Markup tags are improperly escaped using Gaim's IRC plugin
+    (CAN-2005-0966).</li>
+    <li>Sending a specially crafted file transfer request to a Gaim Jabber
+    user can trigger a crash (CAN-2005-0967).</li>
+    </ul>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could possibly cause a Denial of Service by exploiting any
+    of these vulnerabilities.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/gaim-1.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0967">CAN-2005-0967</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0966">CAN-2005-0966</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0965">CAN-2005-0965</uri>
+    <uri link="http://gaim.sourceforge.net/security/">Gaim Vulnerability Index</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  4 Apr 2005 16:07:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  4 Apr 2005 16:59:15 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  6 Apr 2005 11:01:53 +0000">
+    lewk
+  </metadata>
+</glsa>

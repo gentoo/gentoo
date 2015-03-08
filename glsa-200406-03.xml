@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-03">
+  <title>sitecopy: Multiple vulnerabilities in included libneon</title>
+  <synopsis>
+    sitecopy includes a vulnerable version of the neon library.
+  </synopsis>
+  <product type="ebuild">sitecopy</product>
+  <announced>June 05, 2004</announced>
+  <revised>August 15, 2004: 04</revised>
+  <bug>51585</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/sitecopy" auto="yes" arch="*">
+      <unaffected range="ge">0.13.4-r2</unaffected>
+      <vulnerable range="le">0.13.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sitecopy easily maintains remote websites. It makes it simple to keep a
+    remote site synchronized with the local site with one command.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple format string vulnerabilities and a heap overflow vulnerability
+    were discovered in the code of the neon library (GLSA 200405-01 and
+    200405-13). Current versions of the sitecopy package include their own
+    version of this library.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    When connected to a malicious WebDAV server, these vulnerabilities could
+    allow execution of arbitrary code with the rights of the user running
+    sitecopy.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of sitecopy.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sitecopy users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/sitecopy-0.13.4-r2"
+    # emerge ">=net-misc/sitecopy-0.13.4-r2"</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200405-01.xml">GLSA 200405-01</uri>
+    <uri link="/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

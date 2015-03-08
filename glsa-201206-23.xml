@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-23">
+  <title>PyCrypto: Weak key generation</title>
+  <synopsis>PyCrypto generates weak ElGamal keys.</synopsis>
+  <product type="ebuild">pycrypto</product>
+  <announced>June 24, 2012</announced>
+  <revised>June 24, 2012: 1</revised>
+  <bug>417625</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pycrypto" auto="yes" arch="*">
+      <unaffected range="ge">2.6</unaffected>
+      <vulnerable range="lt">2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PyCrypto is the Python Cryptography Toolkit.</p>
+  </background>
+  <description>
+    <p>An error in the generate() function in ElGamal.py causes PyCrypto to
+      generate weak ElGamal keys.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might be able to derive private keys.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PyCrypto users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pycrypto-2.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2417">CVE-2012-2417</uri>
+  </references>
+  <metadata timestamp="Mon, 11 Jun 2012 22:45:07 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Sun, 24 Jun 2012 12:38:41 +0000" tag="submitter">ackle</metadata>
+</glsa>

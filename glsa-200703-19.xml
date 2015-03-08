@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-19">
+  <title>LTSP: Authentication bypass in included LibVNCServer code</title>
+  <synopsis>
+    LTSP includes a version of libVNCServer that is vulnerable to an
+    authentication bypass.
+  </synopsis>
+  <product type="ebuild">ltsp</product>
+  <announced>March 18, 2007</announced>
+  <revised>March 18, 2007: 01</revised>
+  <bug>142661</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ltsp" auto="yes" arch="*">
+      <unaffected range="ge">4.2-r1</unaffected>
+      <vulnerable range="lt">4.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Linux Terminal Server Project adds thin-client support to Linux
+    servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    The LTSP server includes vulnerable LibVNCServer code, which fails to
+    properly validate protocol types effectively letting users decide what
+    protocol to use, such as "Type 1 - None" (GLSA-200608-05). The LTSP VNC
+    server will accept this security type, even if it is not offered by the
+    server.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability to gain unauthorized
+    access with the privileges of the user running the VNC server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LTSP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/ltsp-4.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2450">CVE-2006-2450</uri>
+    <uri link="/security/en/glsa/glsa-200608-05.xml">GLSA 200608-05</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Feb 2007 19:11:34 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 10 Feb 2007 23:53:14 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 02:25:26 +0000">
+    aetius
+  </metadata>
+</glsa>

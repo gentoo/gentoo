@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-19">
+  <title>PHP: Vulnerabilities in included PCRE and XML-RPC libraries</title>
+  <synopsis>
+    PHP makes use of an affected PCRE library and ships with an affected
+    XML-RPC library and is therefore potentially vulnerable to remote execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>September 27, 2005</announced>
+  <revised>September 27, 2005: 01</revised>
+  <bug>102373</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/php" auto="yes" arch="*">
+      <unaffected range="rge">4.3.11-r1</unaffected>
+      <unaffected range="ge">4.4.0-r1</unaffected>
+      <vulnerable range="lt">4.4.0-r1</vulnerable>
+    </package>
+    <package name="dev-php/mod_php" auto="yes" arch="*">
+      <unaffected range="rge">4.3.11-r1</unaffected>
+      <unaffected range="ge">4.4.0-r2</unaffected>
+      <vulnerable range="lt">4.4.0-r2</vulnerable>
+    </package>
+    <package name="dev-php/php-cgi" auto="yes" arch="*">
+      <unaffected range="rge">4.3.11-r2</unaffected>
+      <unaffected range="ge">4.4.0-r2</unaffected>
+      <vulnerable range="lt">4.4.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a general-purpose scripting language widely used to develop
+    web-based applications. It can run inside a web server using the
+    mod_php module or the CGI version of PHP, or can run stand-alone in a
+    CLI.
+    </p>
+  </background>
+  <description>
+    <p>
+    PHP makes use of a private copy of libpcre which is subject to an
+    integer overflow leading to a heap overflow (see GLSA 200508-17). It
+    also ships with an XML-RPC library affected by a script injection
+    vulnerability (see GLSA 200508-13).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could target a PHP-based web application that would
+    use untrusted data as regular expressions, potentially resulting in the
+    execution of arbitrary code. If web applications make use of the
+    XML-RPC library shipped with PHP, they are also vulnerable to remote
+    execution of arbitrary PHP code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-php/php</code>
+    <p>
+    All mod_php users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-php/mod_php</code>
+    <p>
+    All php-cgi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-php/php-cgi</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="/security/en/glsa/glsa-200508-13.xml">GLSA 200508-13</uri>
+    <uri link="/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 26 Sep 2005 15:50:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 27 Sep 2005 07:58:50 +0000">
+    koon
+  </metadata>
+</glsa>

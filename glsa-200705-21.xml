@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-21">
+  <title>MPlayer: Two buffer overflows</title>
+  <synopsis>
+    Two vulnerabilities have been discovered in MPlayer, each one could lead to
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>May 30, 2007</announced>
+  <revised>October 12, 2007: 02</revised>
+  <bug>168917</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0.20070321</unaffected>
+      <unaffected range="lt">1.0</unaffected>
+      <vulnerable range="lt">1.0.20070321</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player incuding support for a wide range of audio
+    and video formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been reported in the DMO_VideoDecoder_Open()
+    function in file loader/dmo/DMO_VideoDecoder.c. Another buffer overflow
+    has been reported in the DS_VideoDecoder_Open() function in file
+    loader/dshow/DS_VideoDecoder.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted video
+    file, potentially resulting in the execution of arbitrary code with the
+    privileges of the user running MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0.20070321&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1246">CVE-2007-1246</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1387">CVE-2007-1387</uri>
+    <uri link="/security/en/glsa/glsa-200704-09.xml">GLSA 200704-09</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 May 2007 07:29:09 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 May 2007 07:29:20 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 May 2007 13:01:40 +0000">
+    p-y
+  </metadata>
+</glsa>

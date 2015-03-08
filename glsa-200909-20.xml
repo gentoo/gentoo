@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-20">
+  <title>cURL: Certificate validation error</title>
+  <synopsis>
+    An error in the X.509 certificate handling of cURL might enable remote
+    attackers to conduct man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>September 25, 2009</announced>
+  <revised>September 25, 2009: 01</revised>
+  <bug>281515</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.19.6</unaffected>
+      <vulnerable range="lt">7.19.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cURL is a command line tool for transferring files with URL syntax,
+    supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Scott Cantor reported that cURL does not properly handle fields in
+    X.509 certificates that contain an ASCII NUL (\0) character.
+    Specifically, the processing of such fields is stopped at the first
+    occurence of a NUL character. This type of vulnerability was recently
+    discovered by Dan Kaminsky and Moxie Marlinspike.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might employ a specially crafted X.509 certificate
+    (that for instance contains a NUL character in the Common Name field)
+    to conduct man-in-the-middle attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cURL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.19.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2417">CVE-2009-2417</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 13 Sep 2009 18:08:24 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 14 Sep 2009 12:08:01 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Sep 2009 18:22:08 +0000">
+    a3li
+  </metadata>
+</glsa>

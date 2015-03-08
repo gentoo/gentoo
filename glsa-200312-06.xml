@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200312-06">
+  <title>XChat: malformed dcc send request denial of service</title>
+  <synopsis>
+    A bug in XChat could allow malformed dcc send requests to cause a denial of
+    service.
+  </synopsis>
+  <product type="ebuild">xchat</product>
+  <announced>2003-12-14</announced>
+  <revised>2003-12-14: 01</revised>
+  <bug>35623</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/xchat" auto="yes" arch="*">
+      <unaffected range="ge">2.0.6-r1</unaffected>
+      <vulnerable range="eq">2.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    XChat is a multiplatform IRC client.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a remotely exploitable bug in XChat 2.0.6 that could lead to a
+    denial of service attack.  Gentoo wishes to thank lloydbates for discovering
+    this bug, as well as jcdutton and rac for submitting patches to fix the bug.
+    </p>
+  </description>
+  <impact type="medium">
+    <p>
+    A malformed DCC packet sent by a remote attacker can cause XChat to crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    For Gentoo users, xchat-2.0.6 was marked ~arch (unstable) for most
+    architectures.  Since it was never marked as stable in the portage tree,
+    only xchat users who have explictly added the unstable keyword to
+    ACCEPT_KEYWORDS are affected.  Users may updated affected machines to the
+    patched version of xchat using the following commands:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=net-irc/xchat-2.0.6-r1'
+    # emerge '&gt;=net-irc/xchat-2.0.6-r1'
+    # emerge clean</code>
+    <p>
+    This assumes that users are running with ACCEPT_KEYWORDS enabled for their
+    architecture.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://mail.nl.linux.org/xchat-announce/2003-12/msg00000.html">XChat Announcement</uri>
+  </references>
+</glsa>

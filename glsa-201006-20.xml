@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-20">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Asterisk might allow remote attackers to cause
+    a Denial of Service condition, or conduct other attacks.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>June 04, 2010</announced>
+  <revised>June 04, 2010: 01</revised>
+  <bug>281107</bug>
+  <bug>283624</bug>
+  <bug>284892</bug>
+  <bug>295270</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.37</unaffected>
+      <vulnerable range="lt">1.2.37</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Asterisk is an open source telephony engine and toolkit.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Asterisk:
+    </p>
+    <ul>
+    <li>Nick Baggott reported that Asterisk does not properly process
+    overly long ASCII strings in various packets (CVE-2009-2726).</li>
+    <li>Noam Rathaus and Blake Cornell reported a flaw in the IAX2 protocol
+    implementation (CVE-2009-2346).</li>
+    <li>amorsen reported an input
+    processing error in the RTP protocol implementation
+    (CVE-2009-4055).</li>
+    <li>Patrik Karlsson reported an information
+    disclosure flaw related to the REGISTER message (CVE-2009-3727).</li>
+    <li>A vulnerability was found in the bundled Prototype JavaScript
+    library, related to AJAX calls (CVE-2008-7220).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by sending a
+    specially crafted package, possibly causing a Denial of Service
+    condition, or resulting in information disclosure.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Asterisk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.37&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since January 5, 2010. It is likely that your system is
+    already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2726">CVE-2009-2726</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2346">CVE-2009-2346</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4055">CVE-2009-4055</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3727">CVE-2009-3727</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7220">CVE-2008-7220</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 06 Nov 2009 13:21:43 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 31 May 2010 15:08:16 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 15:08:22 +0000">
+    a3li
+  </metadata>
+</glsa>

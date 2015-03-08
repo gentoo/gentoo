@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-15">
+  <title>Opera: Multiple spoofing vulnerabilities</title>
+  <synopsis>
+    Opera contains three vulnerabilities, allowing an attacker to impersonate
+    legitimate websites with URI obfuscation or to spoof websites with frame
+    injection.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>July 20, 2004</announced>
+  <revised>July 20, 2004: 01</revised>
+  <bug>56311</bug>
+  <bug>56109</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">7.53</unaffected>
+      <vulnerable range="le">7.52</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Opera fails to remove illegal characters from an URI of a link and to check
+    that the target frame of a link belongs to the same website as the link.
+    Opera also updates the address bar before loading a page. Additionally,
+    Opera contains a certificate verification problem.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities could allow an attacker to impersonate legitimate
+    websites to steal sensitive information from users. This could be done by
+    obfuscating the real URI of a link or by injecting a malicious frame into
+    an arbitrary frame of another browser window.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=www-client/opera-7.53"
+    # emerge ">=www-client/opera-7.53"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/10517">Bugtraq Announcement</uri>
+    <uri link="http://secunia.com/advisories/11978/">Secunia Advisory SA11978</uri>
+    <uri link="http://secunia.com/advisories/12028/">Secunia Advisory SA12028</uri>
+    <uri link="http://www.opera.com/linux/changelogs/753/">Opera Changelog</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

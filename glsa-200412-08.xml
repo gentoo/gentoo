@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-08">
+  <title>nfs-utils: Multiple remote vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in nfs-utils that could lead
+    to a Denial of Service, or the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nfs-utils</product>
+  <announced>December 14, 2004</announced>
+  <revised>December 14, 2004: 01</revised>
+  <bug>72113</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/nfs-utils" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6-r6</unaffected>
+      <vulnerable range="lt">1.0.6-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    nfs-utils is a package containing the client and daemon
+    implementations for the NFS protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Arjan van de Ven has discovered a buffer overflow on 64-bit
+    architectures in 'rquota_server.c' of nfs-utils (CAN-2004-0946). A
+    remotely exploitable flaw on all architectures also exists in the
+    'statd.c' file of nfs-utils (CAN-2004-1014), which can be triggered by
+    a mishandled SIGPIPE.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could potentially cause a Denial of Service, or
+    even execute arbitrary code (64-bit architectures only) on a remote NFS
+    server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All nfs-utils users should upgarde to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/nfs-utils-1.0.6-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0946">CAN-2004-0946</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1014">CAN-2004-1014</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun,  5 Dec 2004 18:33:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon,  6 Dec 2004 15:50:26 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Dec 2004 10:25:46 +0000">
+    koon
+  </metadata>
+</glsa>

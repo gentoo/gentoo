@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-15">
+  <title>Paros: Default administrator password</title>
+  <synopsis>
+    Paros's database component is installed without a password, allowing
+    execution of arbitrary system commands.
+  </synopsis>
+  <product type="ebuild">Paros</product>
+  <announced>January 29, 2006</announced>
+  <revised>January 29, 2006: 01</revised>
+  <bug>120352</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/paros" auto="yes" arch="*">
+      <unaffected range="gt">3.2.5</unaffected>
+      <vulnerable range="le">3.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Paros is an intercepting proxy between a web server and a client
+    meant to be used for security assessments. It allows the user to watch
+    and modify the HTTP(S) traffic.
+    </p>
+  </background>
+  <description>
+    <p>
+    Andrew Christensen discovered that in older versions of Paros the
+    database component HSQLDB is installed with an empty password for the
+    database administrator "sa".
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Since the database listens globally by default, an attacker can
+    connect and issue arbitrary commands, including execution of binaries
+    installed on the host.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Paros users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --snyc
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/paros-3.2.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3280">CVE-2005-3280</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 26 Jan 2006 06:06:09 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 27 Jan 2006 21:44:45 +0000">
+    adir
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-10">
+  <title>Inkscape: Two format string vulnerabilities</title>
+  <synopsis>
+    Two format string vulnerabilities have been discovered in Inkscape,
+    allowing for user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Inkscape</product>
+  <announced>April 16, 2007</announced>
+  <revised>April 16, 2007: 01</revised>
+  <bug>171799</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/inkscape" auto="yes" arch="*">
+      <unaffected range="ge">0.45.1</unaffected>
+      <vulnerable range="lt">0.45.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Inkscape is a vector graphics editor, using Scalable Vector Graphics
+    (SVG) Format.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kees Cook has discovered two vulnerabilities in Inkscape. The
+    application does not properly handle format string specifiers in some
+    dialog boxes. Inkscape is also vulnerable to another format string
+    error in its Jabber whiteboard protocol.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted URI,
+    possibly leading to execution of arbitrary code with the privileges of
+    the user running Inkscape.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Inkscape users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/inkscape-0.45.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1463">CVE-2007-1463</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1464">CVE-2007-1464</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 09 Apr 2007 20:15:01 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 11 Apr 2007 18:16:25 +0000">
+    p-y
+  </metadata>
+</glsa>

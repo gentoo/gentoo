@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-01">
+  <title>libwmf: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    libwmf bundles an old GD version which contains a "use-after-free"
+    vulnerability.
+  </synopsis>
+  <product type="ebuild">libwmf</product>
+  <announced>July 02, 2009</announced>
+  <revised>July 02, 2009: 01</revised>
+  <bug>268161</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libwmf" auto="yes" arch="*">
+      <unaffected range="ge">0.2.8.4-r3</unaffected>
+      <vulnerable range="lt">0.2.8.4-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libwmf is a library for converting WMF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    The embedded fork of the GD library introduced a "use-after-free"
+    vulnerability in a modification which is specific to libwmf.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted WMF
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libwmf users should upgrade to the latest version which no longer
+    builds the GD library:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libwmf-0.2.8.4-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1364">CVE-2009-1364</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 22 May 2009 17:28:39 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 24 May 2009 00:52:28 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Jun 2009 22:09:20 +0000">
+    craig
+  </metadata>
+</glsa>

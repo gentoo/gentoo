@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-03">
+  <title>Pixman: User-assisted execution of arbitrary code</title>
+  <synopsis>An integer underflow vulnerability in Pixman may allow a
+    context-dependent attacker to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">pixman</product>
+  <announced>February 02, 2014</announced>
+  <revised>February 02, 2014: 1</revised>
+  <bug>493292</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-libs/pixman" auto="yes" arch="*">
+      <unaffected range="ge">0.32.4</unaffected>
+      <vulnerable range="lt">0.32.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pixman is a pixel manipulation library.</p>
+  </background>
+  <description>
+    <p>The trapezoid handling code in Pixman contains an integer underflow
+      vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted file using an application linked against Pixman, possibly
+      resulting in  execution of arbitrary code with the privileges of the
+      process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pixman users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/pixman-0.32.4"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6425">CVE-2013-6425</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 26 Dec 2013 20:19:41 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Feb 2014 17:59:34 +0000">
+    creffett
+  </metadata>
+</glsa>

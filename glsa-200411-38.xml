@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-38">
+  <title>Sun and Blackdown Java: Applet privilege escalation</title>
+  <synopsis>
+    The Java plug-in security in Sun and Blackdown Java environments can be
+    bypassed to access arbitrary packages, allowing untrusted Java applets to
+    perform unrestricted actions on the host system.
+  </synopsis>
+  <product type="ebuild">Java</product>
+  <announced>November 29, 2004</announced>
+  <revised>May 31, 2006: 02</revised>
+  <bug>72172</bug>
+  <bug>72221</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jdk" auto="yes" arch="x86 amd64">
+      <unaffected range="ge">1.4.2.06</unaffected>
+      <vulnerable range="lt">1.4.2.06</vulnerable>
+    </package>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="x86 amd64">
+      <unaffected range="ge">1.4.2.06</unaffected>
+      <vulnerable range="lt">1.4.2.06</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jdk" auto="yes" arch="x86 amd64">
+      <unaffected range="ge">1.4.2.01</unaffected>
+      <vulnerable range="lt">1.4.2.01</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jre" auto="yes" arch="x86 amd64">
+      <unaffected range="ge">1.4.2.01</unaffected>
+      <vulnerable range="lt">1.4.2.01</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sun and Blackdown both provide implementations of Java Development Kits
+    (JDK) and Java Runtime Environments (JRE). All these implementations
+    provide a Java plug-in that can be used to execute Java applets in a
+    restricted environment for web browsers.
+    </p>
+  </background>
+  <description>
+    <p>
+    All Java plug-ins are subject to a vulnerability allowing unrestricted
+    Java package access.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could embed a malicious Java applet in a web page and
+    entice a victim to view it. This applet can then bypass security
+    restrictions and execute any command or access any file with the rights
+    of the user running the web browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    As a workaround you could disable Java applets on your web browser.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.06&quot;</code>
+    <p>
+    All Sun JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.06&quot;</code>
+    <p>
+    All Blackdown JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jdk-1.4.2.01&quot;</code>
+    <p>
+    All Blackdown JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jre-1.4.2.01&quot;</code>
+    <p>
+    Note: You should unmerge all vulnerable versions to be fully protected.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=158&amp;type=vulnerabilities">iDEFENSE Security Advisory 11.22.04</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1029">CAN-2004-1029</uri>
+    <uri link="http://www.blackdown.org/java-linux/java2-status/security/Blackdown-SA-2004-01.txt">Blackdown Security Advisory 2004-01</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Nov 2004 09:46:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Nov 2004 21:58:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Nov 2004 21:15:47 +0000">
+    koon
+  </metadata>
+</glsa>

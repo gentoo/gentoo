@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-01">
+  <title>OpenSC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in OpenSC.
+  </synopsis>
+  <product type="ebuild">opensc</product>
+  <announced>August 01, 2009</announced>
+  <revised>August 01, 2009: 01</revised>
+  <bug>260514</bug>
+  <bug>269920</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-libs/opensc" auto="yes" arch="*">
+      <unaffected range="ge">0.11.8</unaffected>
+      <vulnerable range="lt">0.11.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSC provides a set of libraries and utilities to access smart cards.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in OpenSC:
+    </p>
+    <ul>
+    <li>b.badrignans discovered that OpenSC incorrectly initialises private
+    data objects (CVE-2009-0368).</li>
+    <li>Miquel Comas Marti discovered
+    that src/tools/pkcs11-tool.c in pkcs11-tool in OpenSC 0.11.7, when used
+    with unspecified third-party PKCS#11 modules, generates RSA keys with
+    incorrect public exponents (CVE-2009-1603).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    The first vulnerabilty allows physically proximate attackers to bypass
+    intended PIN requirements and read private data objects. The second
+    vulnerability allows attackers to read the cleartext form of messages
+    that were intended to be encrypted.
+    </p>
+    <p>
+    NOTE: Smart cards which were initialised using an affected version of
+    OpenSC need to be modified or re-initialised. See the vendor's advisory
+    for details.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/opensc-0.11.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0368">CVE-2009-0368</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1603">CVE-2009-1603</uri>
+    <uri link="http://www.opensc-project.org/pipermail/opensc-announce/2009-February/000023.html">OpenSC Security Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 24 Jun 2009 16:49:20 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 29 Jul 2009 17:15:19 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 01 Aug 2009 12:35:17 +0000">
+    keytoaster
+  </metadata>
+</glsa>

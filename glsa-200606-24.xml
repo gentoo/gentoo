@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-24">
+  <title>wv2: Integer overflow</title>
+  <synopsis>
+    An integer overflow could allow an attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">wv2</product>
+  <announced>June 23, 2006</announced>
+  <revised>June 23, 2006: 01</revised>
+  <bug>136759</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/wv2" auto="yes" arch="*">
+      <unaffected range="ge">0.2.3</unaffected>
+      <vulnerable range="lt">0.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    wv2 is a filter library for Microsoft Word files, used in many Office
+    suites.
+    </p>
+  </background>
+  <description>
+    <p>
+    A boundary checking error was found in wv2, which could lead to an
+    integer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could execute arbitrary code with the rights of the user
+    running the program that uses the library via a maliciously crafted
+    Microsoft Word document.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All wv2 users should update to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/wv2-0.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2197">CVE 2006-2197</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 Jun 2006 15:46:28 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 21 Jun 2006 17:08:02 +0000">
+    hlieberman
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 21 Jun 2006 18:19:37 +0000">
+    DerCorny
+  </metadata>
+</glsa>

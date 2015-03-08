@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-08">
+  <title>libpng: Multiple Denials of Service</title>
+  <synopsis>
+    Several vulnerabilities in libpng may allow a remote attacker to crash
+    applications that handle untrusted images.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>November 07, 2007</announced>
+  <revised>November 07, 2007: 01</revised>
+  <bug>195261</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.2.21-r3</unaffected>
+      <vulnerable range="lt">1.2.21-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpng is a free ANSI C library used to process and manipulate PNG
+    images.
+    </p>
+  </background>
+  <description>
+    <p>
+    An off-by-one error when handling ICC profile chunks in the
+    png_set_iCCP() function was discovered (CVE-2007-5266). George Cook and
+    Jeff Phillips reported several errors in pngrtran.c, the use of logical
+    instead of a bitwise functions and incorrect comparisons
+    (CVE-2007-5268). Tavis Ormandy reported out-of-bounds read errors in
+    several PNG chunk handling functions (CVE-2007-5269).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft an image that when processed or viewed by
+    an application using libpng would cause the application to terminate
+    abnormally.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libpng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.21-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5266">CVE-2007-5266</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5268">CVE-2007-5268</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5269">CVE-2007-5269</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 20 Oct 2007 09:57:33 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 20 Oct 2007 09:57:41 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Oct 2007 00:26:03 +0000">
+    rbu
+  </metadata>
+</glsa>

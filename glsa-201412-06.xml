@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-06">
+  <title>libxml2: Denial of Service</title>
+  <synopsis>A vulnerability in libxml2 could result in Denial of Service.</synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>December 10, 2014</announced>
+  <revised>December 10, 2014: 1</revised>
+  <bug>525656</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.9.2</unaffected>
+      <vulnerable range="lt">2.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxml2 is the XML C parser and toolkit developed for the Gnome project.</p>
+  </background>
+  <description>
+    <p>parser.c in libxml2 before 2.9.2 does not properly prevent entity
+      expansion even when entity substitution has been disabled.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to a specially crafted
+      XML file using an application linked against libxml2, possibly resulting
+      in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxml2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.9.2"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3660">CVE-2014-3660</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 09 Dec 2014 18:18:43 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 10 Dec 2014 08:06:04 +0000">K_F</metadata>
+</glsa>

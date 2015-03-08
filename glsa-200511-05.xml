@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-05">
+  <title>GNUMP3d: Directory traversal and XSS vulnerabilities</title>
+  <synopsis>
+    GNUMP3d is vulnerable to directory traversal and cross-site scripting
+    attacks that may result in information disclosure or the compromise of a
+    browser.
+  </synopsis>
+  <product type="ebuild">gnump3d</product>
+  <announced>November 06, 2005</announced>
+  <revised>August 21, 2007: 02</revised>
+  <bug>109667</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/gnump3d" auto="yes" arch="*">
+      <unaffected range="ge">2.9_pre7</unaffected>
+      <vulnerable range="lt">2.9_pre7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNUMP3d is a streaming server for MP3s, OGG vorbis files, movies and
+    other media formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Steve Kemp reported about two cross-site scripting attacks that are
+    related to the handling of files (CVE-2005-3424, CVE-2005-3425). Also
+    reported is a directory traversal vulnerability which comes from the
+    attempt to sanitize input paths (CVE-2005-3123).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this to disclose sensitive information
+    or inject and execute malicious script code, potentially compromising
+    the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNUMP3d users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/gnump3d-2.9_pre7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3123">CVE-2005-3123</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3424">CVE-2005-3424</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3425">CVE-2005-3425</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 Nov 2005 12:32:56 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 04 Nov 2005 13:55:23 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 05 Nov 2005 08:54:39 +0000">
+    koon
+  </metadata>
+</glsa>

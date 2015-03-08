@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-18">
+  <title>rgmanager: Privilege escalation</title>
+  <synopsis>A vulnerability was found in rgmanager, allowing for privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">rgmanager</product>
+  <announced>October 22, 2011</announced>
+  <revised>October 22, 2011: 1</revised>
+  <bug>352213</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-cluster/rgmanager" auto="yes" arch="*">
+      <unaffected range="ge">2.03.09-r1</unaffected>
+      <vulnerable range="lt">2.03.09-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>rgmanager is a clustered resource group manager.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in rgmanager. Please review the CVE
+      identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rgmanager users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=sys-cluster/rgmanager-2.03.09-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3389">CVE-2010-3389</uri>
+  </references>
+  <metadata timestamp="Sat, 08 Oct 2011 22:41:31 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Sat, 22 Oct 2011 16:33:13 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

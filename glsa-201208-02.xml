@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201208-02">
+  <title>Puppet: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Puppet, the worst of
+    which could lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Puppet</product>
+  <announced>August 14, 2012</announced>
+  <revised>August 14, 2012: 1</revised>
+  <bug>410857</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/puppet" auto="yes" arch="*">
+      <unaffected range="ge">2.7.13</unaffected>
+      <vulnerable range="lt">2.7.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Puppet is a system configuration management tool written in Ruby.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Puppet:</p>
+    
+    <ul>
+      <li>Puppet uses predictable file names for temporary files
+        (CVE-2012-1906).
+      </li>
+      <li>REST requests for a file in a remote filebucket are not handled
+        properly by overriding filebucket storage locations (CVE-2012-1986).
+      </li>
+      <li>REST requests for a file in a remote filebucket are not handled
+        properly by reading streams or writing files on the Puppet master's
+        file system (CVE-2012-1987).
+      </li>
+      <li>File name paths are not properly sanitized from bucket requests
+        (CVE-2012-1988).
+      </li>
+      <li>The Telnet utility in Puppet does not handle temporary files securely
+        (CVE-2012-1989).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker with access to agent SSL keys could possibly execute
+      arbitrary code with the privileges of the process, cause a Denial of
+      Service condition, or perform symlink attacks to overwrite or read
+      arbitrary files on the Puppet master. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Puppet users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/puppet-2.7.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1906">CVE-2012-1906</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1986">CVE-2012-1986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1987">CVE-2012-1987</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1988">CVE-2012-1988</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1989">CVE-2012-1989</uri>
+  </references>
+  <metadata timestamp="Thu, 12 Apr 2012 20:04:53 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 14 Aug 2012 20:30:25 +0000" tag="submitter">ackle</metadata>
+</glsa>

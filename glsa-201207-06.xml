@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-06">
+  <title>JRuby: Denial of Service</title>
+  <synopsis>A hash collision vulnerability in JRuby allows remote attackers to
+    cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">jruby</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>396305</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/jruby" auto="yes" arch="*">
+      <unaffected range="ge">1.6.5.1</unaffected>
+      <vulnerable range="lt">1.6.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>JRuby is a Java-based Ruby interpreter implementation.</p>
+  </background>
+  <description>
+    <p>JRuby does not properly randomize hash functions to protect against hash
+      collision attacks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted input, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All JRuby users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/jruby-1.6.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4838">CVE-2011-4838</uri>
+  </references>
+  <metadata timestamp="Mon, 11 Jun 2012 19:25:16 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 22:35:40 +0000" tag="submitter">ackle</metadata>
+</glsa>

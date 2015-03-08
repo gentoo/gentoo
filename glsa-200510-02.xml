@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-02">
+  <title>Berkeley MPEG Tools: Multiple insecure temporary files</title>
+  <synopsis>
+    The Berkeley MPEG Tools use temporary files in various insecure ways,
+    potentially allowing a local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">MPEG Tools</product>
+  <announced>October 03, 2005</announced>
+  <revised>October 03, 2005: 01</revised>
+  <bug>107344</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-video/mpeg-tools" auto="yes" arch="*">
+      <unaffected range="ge">1.5b-r2</unaffected>
+      <vulnerable range="lt">1.5b-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Berkeley MPEG Tools are a collection of utilities for
+    manipulating MPEG video technology, including an encoder (mpeg_encode)
+    and various conversion utilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mike Frysinger of the Gentoo Security Team discovered that
+    mpeg_encode and the conversion utilities were creating temporary files
+    with predictable or fixed filenames. The 'test' make target of the MPEG
+    Tools also relied on several temporary files created insecurely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When the utilities are executed (or 'make test' is run), this would
+    result in the file being overwritten with the rights of the user
+    running the command.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Berkeley MPEG Tools users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mpeg-tools-1.5b-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3115">CAN-2005-3115</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 Sep 2005 07:41:47 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 01 Oct 2005 09:55:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Oct 2005 13:13:54 +0000">
+    koon
+  </metadata>
+</glsa>

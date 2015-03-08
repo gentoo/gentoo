@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-11">
+  <title>Vixie Cron: Denial of Service</title>
+  <synopsis>
+    The Gentoo implementation of Vixie Cron is vulnerable to a local Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">vixie-cron</product>
+  <announced>April 16, 2007</announced>
+  <revised>April 16, 2007: 01</revised>
+  <bug>164466</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/vixie-cron" auto="yes" arch="*">
+      <unaffected range="ge">4.1-r10</unaffected>
+      <vulnerable range="lt">4.1-r10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Vixie Cron is a command scheduler with extended syntax over cron.
+    </p>
+  </background>
+  <description>
+    <p>
+    During an internal audit, Raphael Marichez of the Gentoo Linux Security
+    Team found that Vixie Cron has weak permissions set on Gentoo, allowing
+    for a local user to create hard links to system and users cron files,
+    while a st_nlink check in database.c will generate a superfluous error.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Depending on the partitioning scheme and the "cron" group membership, a
+    malicious local user can create hard links to system or users cron
+    files that will trigger the st_link safety check and prevent the
+    targeted cron file from being run from the next restart or database
+    reload.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Vixie Cron users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-process/vixie-cron-4.1-r10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1856">CVE-2007-1856</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 13 Apr 2007 15:58:28 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Apr 2007 21:36:24 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Apr 2007 18:10:18 +0000">
+    vorlon
+  </metadata>
+</glsa>

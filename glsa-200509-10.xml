@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-10">
+  <title>Mailutils: Format string vulnerability in imap4d</title>
+  <synopsis>
+    The imap4d server contains a vulnerability allowing an authenticated user
+    to execute arbitrary code with the privileges of the imap4d process.
+  </synopsis>
+  <product type="ebuild">mailutils</product>
+  <announced>September 17, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>105458</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/mailutils" auto="yes" arch="*">
+      <unaffected range="ge">0.6-r2</unaffected>
+      <vulnerable range="lt">0.6-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU Mailutils are a collection of mail-related utilities, including
+    an IMAP4 server (imap4d).
+    </p>
+  </background>
+  <description>
+    <p>
+    The imap4d server contains a format string bug in the handling of IMAP
+    SEARCH requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An authenticated IMAP user could exploit the format string error in
+    imap4d to execute arbitrary code as the imap4d user, which is usually
+    root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Mailutils users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailutils-0.6-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=303&amp;type=vulnerabilities">iDEFENSE 09.09.05 advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2878">CVE-2005-2878</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 15 Sep 2005 13:42:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 15 Sep 2005 13:42:17 +0000">
+    koon
+  </metadata>
+</glsa>

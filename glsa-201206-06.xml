@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-06">
+  <title>OpenJPEG: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in OpenJPEG could result in execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">OpenJPEG</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>409203</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/openjpeg" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0</unaffected>
+      <vulnerable range="lt">1.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJPEG is an open-source JPEG 2000 library.</p>
+  </background>
+  <description>
+    <p>An error in jp2.c of OpenJPEG could allow an out-of-bounds write error. </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted JPEG
+      file, possibly resulting in execution of arbitrary code or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJPEG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/openjpeg-1.5.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1499">CVE-2012-1499</uri>
+  </references>
+  <metadata timestamp="Thu, 22 Mar 2012 13:07:16 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 00:29:40 +0000" tag="submitter">ackle</metadata>
+</glsa>

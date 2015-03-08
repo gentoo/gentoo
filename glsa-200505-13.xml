@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-13">
+  <title>FreeRADIUS: SQL injection and Denial of Service vulnerability</title>
+  <synopsis>
+    The FreeRADIUS server is vulnerable to an SQL injection attack and a buffer
+    overflow, possibly resulting in disclosure and modification of data and
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild">freeradius</product>
+  <announced>May 17, 2005</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>91736</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2-r4</unaffected>
+      <vulnerable range="lt">1.0.2-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeRADIUS is an open source RADIUS authentication server
+    implementation.
+    </p>
+  </background>
+  <description>
+    <p>
+    Primoz Bratanic discovered that the sql_escape_func function of
+    FreeRADIUS may be vulnerable to a buffer overflow (BID 13541). He also
+    discovered that FreeRADIUS fails to sanitize user-input before using it
+    in a SQL query, possibly allowing SQL command injection (BID 13540).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By supplying carefully crafted input, a malicious user could cause an
+    SQL injection or a buffer overflow, possibly leading to the disclosure
+    and the modification of sensitive data or Denial of Service by crashing
+    the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeRADIUS users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/freeradius-1.0.2-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/13540/">BugTraq ID 13540</uri>
+    <uri link="http://www.securityfocus.com/bid/13541/">BugTraq ID 13541</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1454">CVE-2005-1454</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1455">CVE-2005-1455</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 12 May 2005 12:54:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 May 2005 13:46:19 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 May 2005 13:01:45 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-03">
+  <title>file: Denial of Service</title>
+  <synopsis>A vulnerability in file could result in Denial of Service.</synopsis>
+  <product type="ebuild">file</product>
+  <announced>March 13, 2014</announced>
+  <revised>March 13, 2014: 1</revised>
+  <bug>501574</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">5.17</unaffected>
+      <vulnerable range="lt">5.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>file is a utility that guesses a file format by scanning binary data for
+      patterns.
+    </p>
+  </background>
+  <description>
+    <p>A flaw was found in the way the file utility determines the type of a
+      file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All file users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/file-5.17"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1943">CVE-2014-1943</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Feb 2014 08:49:09 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Mar 2014 16:36:21 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

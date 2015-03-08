@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-13">
+  <title>Squid: NTLM authentication helper buffer overflow</title>
+  <synopsis>
+    Squid contains a bug where it fails to properly check bounds of the 'pass'
+    variable.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>June 17, 2004</announced>
+  <revised>September 02, 2004: 02</revised>
+  <bug>53367</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.5-r2</unaffected>
+      <vulnerable range="le">2.5.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid contains a bug in the function ntlm_check_auth(). It fails to do
+    proper bounds checking on the values copyied to the 'pass' variable.
+    </p>
+  </background>
+  <description>
+    <p>
+    Squid is a full-featured Web Proxy Cache designed to run on Unix systems.
+    It supports proxying and caching of HTTP, FTP, and other URLs, as well as
+    SSL support, cache hierarchies, transparent caching, access control lists
+    and many other features.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    If Squid is configured to use NTLM authentication, an attacker could
+    exploit this vulnerability by sending a very long password. This could lead
+    to arbitrary code execution with the permissions of the user running Squid.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-proxy/squid-2.5.5-r2"
+    # emerge ">=net-proxy/squid-2.5.5-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0541">CAN-2004-0541</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

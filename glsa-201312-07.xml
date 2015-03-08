@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-07">
+  <title>OpenEXR: Multiple Vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in OpenEXR, allowing
+    remote attackers to execute arbitrary code or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">openexr</product>
+  <announced>December 09, 2013</announced>
+  <revised>December 09, 2013: 1</revised>
+  <bug>277202</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/openexr" auto="yes" arch="*">
+      <unaffected range="ge">1.7.0</unaffected>
+      <vulnerable range="lt">1.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenEXR is a high dynamic-range (HDR) image file format developed by
+      Industrial Light &amp; Magic for use in computer imaging applications. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenEXR. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could execute arbitrary code or cause a
+      Denial of Service condition via unspecified vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenEXR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/openexr-1.7.0"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since December 08, 2010. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1720">
+      CVE-2009-1720
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1721">
+      CVE-2009-1721
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:13 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 09 Dec 2013 05:43:34 +0000">Zlogene</metadata>
+</glsa>

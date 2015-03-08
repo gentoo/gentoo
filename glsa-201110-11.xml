@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-11">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Adobe Flash Player might allow remote
+    attackers to execute arbitrary code or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">Adobe Flash Player</product>
+  <announced>October 13, 2011</announced>
+  <revised>October 13, 2011: 1</revised>
+  <bug>354207</bug>
+  <bug>359019</bug>
+  <bug>363179</bug>
+  <bug>367031</bug>
+  <bug>370215</bug>
+  <bug>372899</bug>
+  <bug>378637</bug>
+  <bug>384017</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">10.3.183.10</unaffected>
+      <vulnerable range="lt">10.3.183.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers and Adobe Security Advisories and
+      Bulletins referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>By enticing a user to open a specially crafted SWF file a remote
+      attacker could cause a Denial of Service or the execution of arbitrary
+      code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-10.3.183.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://www.adobe.com/support/security/advisories/apsa11-01.html">
+      APSA11-01
+    </uri>
+    <uri link="http://www.adobe.com/support/security/advisories/apsa11-02.html">
+      APSA11-02
+    </uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb11-02.html">
+      APSB11-02
+    </uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb11-12.html">
+      APSB11-12
+    </uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb11-13.html">
+      APSB11-13
+    </uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb11-21.html">
+      APSB11-21
+    </uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb11-26.html">
+      APSB11-26
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0558">CVE-2011-0558</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0559">CVE-2011-0559</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0560">CVE-2011-0560</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0561">CVE-2011-0561</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0571">CVE-2011-0571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0572">CVE-2011-0572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0573">CVE-2011-0573</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0574">CVE-2011-0574</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0575">CVE-2011-0575</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0577">CVE-2011-0577</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0578">CVE-2011-0578</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0579">CVE-2011-0579</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0589">CVE-2011-0589</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0607">CVE-2011-0607</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0608">CVE-2011-0608</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0609">CVE-2011-0609</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0611">CVE-2011-0611</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0618">CVE-2011-0618</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0619">CVE-2011-0619</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0620">CVE-2011-0620</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0621">CVE-2011-0621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0622">CVE-2011-0622</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0623">CVE-2011-0623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0624">CVE-2011-0624</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0625">CVE-2011-0625</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0626">CVE-2011-0626</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0627">CVE-2011-0627</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0628">CVE-2011-0628</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2107">CVE-2011-2107</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2110">CVE-2011-2110</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2135">CVE-2011-2125</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2130">CVE-2011-2130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2134">CVE-2011-2134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2136">CVE-2011-2136</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2137">CVE-2011-2137</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2138">CVE-2011-2138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2139">CVE-2011-2139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2140">CVE-2011-2140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2414">CVE-2011-2414</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2415">CVE-2011-2415</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2416">CVE-2011-2416</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2417">CVE-2011-2417</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2424">CVE-2011-2424</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2425">CVE-2011-2425</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2426">CVE-2011-2426</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2427">CVE-2011-2427</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2428">CVE-2011-2428</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2429">CVE-2011-2429</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2430">CVE-2011-2430</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2444">CVE-2011-2444</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:02 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Thu, 13 Oct 2011 23:52:05 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

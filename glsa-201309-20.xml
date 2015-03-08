@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-20">
+  <title>Dropbear: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dropbear, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">dropbear</product>
+  <announced>September 26, 2013</announced>
+  <revised>September 26, 2013: 1</revised>
+  <bug>328409</bug>
+  <bug>405607</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dropbear" auto="yes" arch="*">
+      <unaffected range="ge">2012.55</unaffected>
+      <vulnerable range="lt">2012.55</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dropbear is an SSH server and client designed with a small memory
+      footprint.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dropbear. Please review
+      the CVE identifier and Gentoo bug referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request to trigger a
+      use-after-free condition, possibly resulting in arbitrary code execution
+      or a Denial of Service condition. Additionally, the bundled version of
+      libtommath has an error in its prime number generation, which could
+      result in the generation of weak keys.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dropbear users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dropbear-2012.55"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0920">CVE-2012-0920</uri>
+    <uri link="https://bugs.gentoo.org/show_bug.cgi?id=328383">libtommath
+      Gentoo bug
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 03 Mar 2012 20:26:25 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Sep 2013 23:47:21 +0000">
+    creffett
+  </metadata>
+</glsa>

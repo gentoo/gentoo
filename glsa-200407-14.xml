@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-14">
+  <title>Unreal Tournament 2003/2004: Buffer overflow in 'secure' queries</title>
+  <synopsis>
+    Game servers based on the Unreal engine are vulnerable to remote code
+    execution through malformed 'secure' queries.
+  </synopsis>
+  <product type="ebuild">Unreal Tournament</product>
+  <announced>July 19, 2004</announced>
+  <revised>July 19, 2004: 01</revised>
+  <bug>54726</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-fps/ut2003" auto="yes" arch="*">
+      <unaffected range="ge">2225-r3</unaffected>
+      <vulnerable range="le">2225-r2</vulnerable>
+    </package>
+    <package name="games-server/ut2003-ded" auto="yes" arch="*">
+      <unaffected range="ge">2225-r2</unaffected>
+      <vulnerable range="le">2225-r1</vulnerable>
+    </package>
+    <package name="games-fps/ut2004" auto="yes" arch="*">
+      <unaffected range="ge">3236</unaffected>
+      <vulnerable range="lt">3236</vulnerable>
+    </package>
+    <package name="games-fps/ut2004-demo" auto="yes" arch="*">
+      <unaffected range="ge">3120-r4</unaffected>
+      <vulnerable range="le">3120-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Unreal Tournament 2003 and 2004 are popular first-person-shooter games.
+    They are both based on the Unreal engine, and can be used in a game server
+    / client setup.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Unreal-based game servers support a specific type of query called
+    'secure'. Part of the Gamespy protocol, this query is used to ask if the
+    game server is able to calculate an exact response using a provided string.
+    Luigi Auriemma found that sending a long 'secure' query triggers a buffer
+    overflow in the game server.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a malicious UDP-based 'secure' query, an attacker could execute
+    arbitrary code on the game server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users can avoid this vulnerability by not using Unreal Tournament to host
+    games as a server. All users running a server should upgrade to the latest
+    versions.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Unreal Tournament users should upgrade to the latest available
+    versions:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=games-fps/ut2003-2225-r3"
+    # emerge ">=games-fps/ut2003-2225-r3"
+
+    # emerge -pv ">=games-server/ut2003-ded-2225-r2"
+    # emerge ">=games-server/ut2003-ded-2225-r2"
+
+    # emerge -pv ">=games-fps/ut2004-3236"
+    # emerge ">=games-fps/ut2004-3236"
+
+    # emerge -pv ">=games-fps/ut2004-demo-3120-r4"
+    # emerge ">=games-fps/ut2004-demo-3120-r4"</code>
+  </resolution>
+  <references>
+    <uri link="http://aluigi.altervista.org/adv/unsecure-adv.txt">Luigi Auriemma advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0608">CAN-2004-0608</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

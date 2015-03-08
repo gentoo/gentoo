@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-11">
+  <title>Amarok: User-assisted remote execution of arbitrary code</title>
+  <synopsis>
+    The Magnatune component shipped with Amarok is vulnerable to the injection
+    of arbitrary shell code from a malicious Magnatune server.
+  </synopsis>
+  <product type="ebuild">amarok</product>
+  <announced>March 13, 2007</announced>
+  <revised>March 13, 2007: 01</revised>
+  <bug>166901</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/amarok" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5-r1</unaffected>
+      <vulnerable range="lt">1.4.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Amarok is an advanced music player.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Magnatune downloader doesn't quote the "m_currentAlbumFileName"
+    parameter while calling the "unzip" shell command.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A compromised or malicious Magnatune server can remotely execute
+    arbitrary shell code with the rights of the user running Amarok on a
+    client that have previously registered for buying music.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not use the Magnatune component of Amarok.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Amarok users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/amarok-1.4.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/24159">SA24159</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Feb 2007 17:45:23 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 27 Feb 2007 13:56:19 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 14:11:31 +0000">
+    falco
+  </metadata>
+</glsa>

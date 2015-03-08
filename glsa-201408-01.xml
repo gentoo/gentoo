@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-01">
+  <title>Zend Framework: SQL injection</title>
+  <synopsis>A vulnerability in Zend Framework could allow a remote attacker to
+    inject SQL commands. 
+  </synopsis>
+  <product type="ebuild">ZendFramework</product>
+  <announced>August 04, 2014</announced>
+  <revised>August 04, 2014: 1</revised>
+  <bug>369139</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/ZendFramework" auto="yes" arch="*">
+      <unaffected range="ge">1.11.6</unaffected>
+      <vulnerable range="lt">1.11.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Zend Framework is a high quality and open source framework for
+      developing Web Applications.
+    </p>
+  </background>
+  <description>
+    <p>Developers using non-ASCII-compatible encodings in conjunction with the
+      MySQL PDO driver of PHP may be vulnerable to SQL injection attacks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could use specially crafted input to execute arbitrary
+      SQL statements. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ZendFramework users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/ZendFramework-1.11.6"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures have
+      been
+      available since 2011-06-07. It is likely that your system is already
+      updated
+      to no longer be affected by this issue. 
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1939">CVE-2011-1939</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 21:42:50 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 04 Aug 2014 09:08:18 +0000">K_F</metadata>
+</glsa>

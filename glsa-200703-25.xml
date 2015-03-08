@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-25">
+  <title>Ekiga: Format string vulnerability</title>
+  <synopsis>
+    A format string vulnerability in Ekiga may allow the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">ekiga</product>
+  <announced>March 29, 2007</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>167643</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-voip/ekiga" auto="yes" arch="*">
+      <unaffected range="ge">2.0.7</unaffected>
+      <vulnerable range="lt">2.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ekiga is an open source VoIP and video conferencing application.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mu Security has discovered that Ekiga fails to implement formatted
+    printing correctly.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability to crash Ekiga and
+    potentially execute arbitrary code by sending a specially crafted Q.931
+    SETUP packet to a victim.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ekiga users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-voip/ekiga-2.0.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1006">CVE-2007-1006</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 05 Mar 2007 17:17:52 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Mar 2007 18:05:22 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 21:26:33 +0000">
+    falco
+  </metadata>
+</glsa>

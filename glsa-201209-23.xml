@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-23">
+  <title>GIMP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GIMP, the worst of
+    which allow execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">gimp</product>
+  <announced>September 28, 2012</announced>
+  <revised>September 28, 2012: 1</revised>
+  <bug>293127</bug>
+  <bug>350915</bug>
+  <bug>372975</bug>
+  <bug>379289</bug>
+  <bug>418425</bug>
+  <bug>432582</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gimp" auto="yes" arch="*">
+      <unaffected range="ge">2.6.12-r2</unaffected>
+      <vulnerable range="lt">2.6.12-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GIMP is the GNU Image Manipulation Program.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GIMP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GIMP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.6.12-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1570">CVE-2009-1570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3909">CVE-2009-3909</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4540">CVE-2010-4540</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4541">CVE-2010-4541</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4542">CVE-2010-4542</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4543">CVE-2010-4543</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1178">CVE-2011-1178</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2896">CVE-2011-2896</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2763">CVE-2012-2763</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3402">CVE-2012-3402</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:15 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Sep 2012 11:27:42 +0000">ackle</metadata>
+</glsa>

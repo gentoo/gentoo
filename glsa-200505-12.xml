@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-12">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>
+    PostgreSQL is vulnerable to Denial of Service attacks and possibly allows
+    unprivileged users to gain administrator rights.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>May 15, 2005</announced>
+  <revised>June 26, 2007: 04</revised>
+  <bug>91231</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="eq">7.3*</unaffected>
+      <unaffected range="eq">7.4*</unaffected>
+      <unaffected range="rge">8.0.1-r3</unaffected>
+      <unaffected range="ge">8.0.2-r1</unaffected>
+      <vulnerable range="lt">7.3.10</vulnerable>
+      <vulnerable range="lt">7.4.7-r2</vulnerable>
+      <vulnerable range="lt">8.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PostgreSQL is a SQL compliant, open source object-relational database
+    management system.
+    </p>
+  </background>
+  <description>
+    <p>
+    PostgreSQL gives public EXECUTE access to a number of character
+    conversion routines, but doesn't validate the given arguments
+    (CAN-2005-1409). It has also been reported that the contrib/tsearch2
+    module of PostgreSQL misdeclares the return value of some functions as
+    "internal" (CAN-2005-1410).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could call the character conversion routines with specially
+    setup arguments to crash the backend process of PostgreSQL or to
+    potentially gain administrator rights. A malicious user could also call
+    the misdeclared functions of the contrib/tsearch2 module, resulting in
+    a Denial of Service or other, yet uninvestigated, impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PostgreSQL users should update to the latest available version and
+    follow the guide at <uri
+    link="http://www.postgresql.org/about/news.315">http://www.postgresql.o
+    rg/about/news.315</uri>
+    </p>
+    
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-db/postgresql</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1409">CAN-2005-1409</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1410">CAN-2005-1410</uri>
+    <uri link="http://www.postgresql.org/about/news.315">PostgreSQL Announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 11 May 2005 15:07:25 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 15 May 2005 09:19:16 +0000">
+    koon
+  </metadata>
+</glsa>

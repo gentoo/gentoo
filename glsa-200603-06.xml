@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-06">
+  <title>GNU tar: Buffer overflow</title>
+  <synopsis>
+    A malicious tar archive could trigger a Buffer overflow in GNU tar,
+    potentially resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tar</product>
+  <announced>March 10, 2006</announced>
+  <revised>March 10, 2006: 01</revised>
+  <bug>123038</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/tar" auto="yes" arch="*">
+      <unaffected range="ge">1.15.1-r1</unaffected>
+      <vulnerable range="lt">1.15.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU tar is the standard GNU utility for creating and manipulating
+    tar archives, a common format used for creating backups and
+    distributing files on UNIX-like systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jim Meyering discovered a flaw in the handling of certain header
+    fields that could result in a buffer overflow when extracting or
+    listing the contents of an archive.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could construct a malicious tar archive that
+    could potentially execute arbitrary code with the privileges of the
+    user running GNU tar.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU tar users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/tar-1.15.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0300">CVE-2006-0300</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 07 Mar 2006 20:43:28 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 08 Mar 2006 16:57:53 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Mar 2006 18:23:47 +0000">
+    koon
+  </metadata>
+</glsa>

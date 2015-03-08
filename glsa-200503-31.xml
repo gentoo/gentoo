@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-31">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>
+    Mozilla Firefox 1.0.2 fixes new security vulnerabilities, including the
+    remote execution of arbitrary code through malicious GIF images or
+    sidebars.
+  </synopsis>
+  <product type="ebuild">Firefox</product>
+  <announced>March 25, 2005</announced>
+  <revised>March 25, 2005: 01</revised>
+  <bug>86148</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is the popular next-generation browser from the
+    Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found and fixed in Mozilla
+    Firefox:
+    </p>
+    <ul>
+    <li>Mark Dowd from ISS X-Force reported an
+    exploitable heap overrun in the GIF processing of obsolete Netscape
+    extension 2 (CAN-2005-0399)</li>
+    <li>Kohei Yoshino discovered that a
+    page bookmarked as a sidebar could bypass privileges control
+    (CAN-2005-0402)</li>
+    <li>Michael Krax reported a new way to bypass XUL
+    security restrictions through drag-and-drop of items like scrollbars
+    (CAN-2005-0401)</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <ul>
+    <li>The GIF heap overflow could be triggered by a malicious GIF
+    image that would end up executing arbitrary code with the rights of the
+    user running Firefox</li>
+    <li>By tricking the user into bookmarking a
+    malicious page as a Sidebar, a remote attacker could potentially
+    execute arbitrary code with the rights of the user running the
+    browser</li>
+    <li>By setting up a malicious website and convincing users
+    to obey very specific drag-and-drop instructions, attackers may
+    leverage drag-and-drop features to bypass XUL security restrictions,
+    which could be used as a stepping stone to exploit other
+    vulnerabilities</li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.2&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0399">CAN-2005-0399</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0401">CAN-2005-0401</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0402">CAN-2005-0402</uri>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Security Advisories</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 22 Mar 2005 09:29:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Mar 2005 12:27:17 +0000">
+    koon
+  </metadata>
+</glsa>

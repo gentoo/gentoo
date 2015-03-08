@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-11">
+  <title>Multiple Vulnerabilities in pwlib</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in pwlib that may lead to a remote
+    denial of service or buffer overflow attack. 
+  </synopsis>
+  <product type="ebuild">dev-libs/pwlib</product>
+  <announced>April 09, 2004</announced>
+  <revised>April 09, 2004: 01</revised>
+  <bug>45846</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/pwlib" auto="yes" arch="*">
+      <unaffected range="ge">1.5.2-r3</unaffected>
+      <vulnerable range="le">1.5.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pwlib is a multi-platform library designed for OpenH323.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found in the implimentation of protocol
+    H.323 contained in pwlib. Most of the vulnerabilies are in the parsing of
+    ASN.1 elements which would allow an attacker to use a maliciously crafted
+    ASN.1 element to cause unpredictable behavior in pwlib.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker may cause a denial of service condition or cause a buffer
+    overflow that would allow arbitrary code to be executed with root
+    privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Blocking ports 1719 and 1720 may reduce the likelihood of an attack. All
+    users are advised to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pwlib users are advised to upgrade to version 1.5.2-r3 or later:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-libs/pwlib-1.5.2-r3"
+    # emerge ">=dev-libs/pwlib-1.5.2-r3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0097">CAN-2004-0097</uri>
+    <uri link="http://www.uniras.gov.uk/vuls/2004/006489/h323.htm">NISCC Vulnerability Advisory 006489/H323</uri>
+  </references>
+  <metadata tag="submitter">
+    aescriva
+  </metadata>
+</glsa>

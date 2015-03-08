@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-23">
+  <title>Website META Language: Insecure temporary file usage</title>
+  <synopsis>
+    Multiple insecure temporary file vulnerabilities have been discovered in
+    the Website META Language.
+  </synopsis>
+  <product type="ebuild">wml</product>
+  <announced>March 15, 2008</announced>
+  <revised>March 15, 2008: 01</revised>
+  <bug>209927</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/wml" auto="yes" arch="*">
+      <unaffected range="ge">2.0.11-r3</unaffected>
+      <vulnerable range="lt">2.0.11-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Website META Language is a free and extensible Webdesigner's off-line
+    HTML generation toolkit for Unix.
+    </p>
+  </background>
+  <description>
+    <p>
+    Temporary files are handled insecurely in the files
+    wml_backend/p1_ipp/ipp.src, wml_contrib/wmg.cgi, and
+    wml_backend/p3_eperl/eperl_sys.c, allowing users to overwrite or delete
+    arbitrary files with the privileges of the user running the program.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Local users can exploit the insecure temporary file vulnerabilities via
+    symlink attacks to perform certain actions with escalated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Restrict access to the temporary directory to trusted users only.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Website META Language users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/wml-2.0.11-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0665">CVE-2008-0665</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0666">CVE-2008-0666</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Mar 2008 22:05:35 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Mar 2008 22:05:48 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 20:18:51 +0000">
+    mfleming
+  </metadata>
+</glsa>

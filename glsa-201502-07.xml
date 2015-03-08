@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-07">
+  <title>libevent: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple integer overflow errors in libevent could result in
+    execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">libevent</product>
+  <announced>February 07, 2015</announced>
+  <revised>February 07, 2015: 1</revised>
+  <bug>535774</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libevent" auto="yes" arch="*">
+      <unaffected range="ge">2.0.22</unaffected>
+      <vulnerable range="lt">2.0.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libevent is a library to execute a function when a specific event occurs
+      on a file descriptor.
+    </p>
+  </background>
+  <description>
+    <p>Multiple integer overflow errors in libevent could cause a heap-based
+      buffer overflow. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could cause an application linked against
+      libevent to pass an excessively long input through evbuffer, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libevent users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libevent-2.0.22"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6272">CVE-2014-6272</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 17 Jan 2015 19:27:12 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 20:31:58 +0000">ackle</metadata>
+</glsa>

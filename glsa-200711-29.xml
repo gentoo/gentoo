@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-29">
+  <title>Samba: Execution of arbitrary code</title>
+  <synopsis>
+    Samba contains two buffer overflow vulnerabilities potentially resulting in
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>November 20, 2007</announced>
+  <revised>December 05, 2007: 03</revised>
+  <bug>197519</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.27a</unaffected>
+      <vulnerable range="lt">3.0.27a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a suite of SMB and CIFS client/server programs for UNIX.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities have been reported in nmbd. Alin Rad Pop (Secunia
+    Research) discovered a boundary checking error in the
+    reply_netbios_packet() function which could lead to a stack-based
+    buffer overflow (CVE-2007-5398). The Samba developers discovered a
+    boundary error when processing GETDC logon requests also leading to a
+    buffer overflow (CVE-2007-4572).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    To exploit the first vulnerability, a remote unauthenticated attacker
+    could send specially crafted WINS "Name Registration" requests followed
+    by a WINS "Name Query" request. This might lead to execution of
+    arbitrary code with elevated privileges. Note that this vulnerability
+    is exploitable only when WINS server support is enabled in Samba. The
+    second vulnerability could be exploited by sending specially crafted
+    "GETDC" mailslot requests, but requires Samba to be configured as a
+    Primary or Backup Domain Controller. It is not believed the be
+    exploitable to execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    To work around the first vulnerability, disable WINS support in Samba
+    by setting "<i>wins support = no</i>" in the "global" section of your
+    smb.conf and restart Samba.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.27a&quot;</code>
+    <p>
+    The first vulnerability (CVE-2007-5398) was already fixed in Samba
+    3.0.26a-r2.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4572">CVE-2007-4572</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5398">CVE-2007-5398</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 03 Nov 2007 23:37:14 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 20 Nov 2007 21:13:02 +0000">
+    p-y
+  </metadata>
+</glsa>

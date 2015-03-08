@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-12">
+  <title>GNUstep Base library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNUstep Base library,
+    the worst of which allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnustep-base</product>
+  <announced>January 20, 2014</announced>
+  <revised>January 20, 2014: 1</revised>
+  <bug>325577</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="gnustep-base/gnustep-base" auto="yes" arch="*">
+      <unaffected range="ge">1.20.1</unaffected>
+      <vulnerable range="lt">1.20.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNUstep Base library is a free software package implementing the API of
+      the OpenStep Foundation Kit (tm), including later additions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNUstep Base library.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker could possibly execute arbitrary code. A
+      local attacker could possibly read arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNUstep Base library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=gnustep-base/gnustep-base-1.20.1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 13, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1457">CVE-2010-1457</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1620">CVE-2010-1620</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:30 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 08:51:59 +0000">Zlogene</metadata>
+</glsa>

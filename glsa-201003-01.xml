@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201003-01">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>
+    Two vulnerabilities in sudo might allow local users to escalate privileges
+    and execute arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>March 03, 2010</announced>
+  <revised>March 03, 2010: 01</revised>
+  <bug>306865</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.7.2_p4</unaffected>
+      <vulnerable range="lt">1.7.2_p4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sudo allows a system administrator to give users the ability to run
+    commands as other users.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in sudo:
+    </p>
+    <ul>
+    <li>Glenn Waller and neonsignal reported that sudo does not properly
+    handle access control of the "sudoedit" pseudo-command
+    (CVE-2010-0426).</li>
+    <li>Harald Koenig reported that sudo does not
+    properly set supplementary groups when using the "runas_default" option
+    (CVE-2010-0427).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker with privileges to use "sudoedit" or the privilege to
+    execute commands with the "runas_default" setting enabled could
+    leverage these vulnerabilities to execute arbitrary code with elevated
+    privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    CVE-2010-0426: Revoke all "sudoedit" privileges, or use the full path
+    to sudoedit. CVE-2010-0427: Remove all occurrences of the
+    "runas_default" setting.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sudo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.7.2_p4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0426">CVE-2010-0426</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0427">CVE-2010-0427</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 02 Mar 2010 19:53:26 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 02 Mar 2010 20:22:07 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 03 Mar 2010 16:28:38 +0000">
+    a3li
+  </metadata>
+</glsa>

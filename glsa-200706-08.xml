@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-08">
+  <title>emul-linux-x86-java: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in emul-linux-x86-java,
+    possibly resulting in the execution of arbitrary code or a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">emul-linux-x86-java</product>
+  <announced>June 26, 2007</announced>
+  <revised>May 28, 2009: 03</revised>
+  <bug>178962</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/emul-linux-x86-java" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.11</unaffected>
+      <unaffected range="rge">1.4.2.16</unaffected>
+      <unaffected range="rge">1.4.2.17</unaffected>
+      <unaffected range="rge">1.4.2.19</unaffected>
+      <vulnerable range="lt">1.5.0.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    emul-linux-x86-java is the 32 bit version of the Sun's J2SE Development
+    Kit.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans of the Google Security Team has discovered an integer
+    overflow in the ICC parser, and another vulnerability in the BMP
+    parser. An unspecified vulnerability involving an "incorrect use of
+    system classes" was reported by the Fujitsu security team.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    image, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running Emul-linux-x86-java. They also could
+    entice a user to open a specially crafted BMP image, resulting in a
+    Denial of Service. Note that these vulnerabilities may also be
+    triggered by a tool processing image files automatically.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Emul-linux-x86-java users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.5.0.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 07 Jun 2007 21:24:22 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 14:32:58 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 14:33:07 +0000">
+    p-y
+  </metadata>
+</glsa>

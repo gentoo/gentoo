@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-13">
+  <title>kdebase, kdelibs: Multiple security issues</title>
+  <synopsis>
+    KDE contains three security issues that can allow an attacker to compromise
+    system accounts, cause a Denial of Service, or spoof websites via frame
+    injection.
+  </synopsis>
+  <product type="ebuild">kde, kdebase, kdelibs</product>
+  <announced>August 12, 2004</announced>
+  <revised>August 12, 2004: 01</revised>
+  <bug>60068</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="kde-base/kdebase" auto="yes" arch="*">
+      <unaffected range="ge">3.2.3-r1</unaffected>
+      <vulnerable range="lt">3.2.3-r1</vulnerable>
+    </package>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.2.3-r1</unaffected>
+      <vulnerable range="lt">3.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a powerful Free Software graphical desktop environment for Linux and
+    Unix-like Operating Systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    KDE contains three security issues:
+    </p>
+    <ul>
+    <li>Insecure handling of temporary files when running KDE applications
+    outside of the KDE environment</li>
+    <li>DCOPServer creates temporary files in an insecure manner</li>
+    <li>The Konqueror browser allows websites to load webpages into a target
+    frame of any other open frame-based webpage</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities to create or overwrite
+    files with the permissions of another user, compromise the account of users
+    running a KDE application and insert arbitrary frames into an otherwise
+    trusted webpage.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of kdebase.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KDE users should upgrade to the latest versions of kdelibs and kdebase:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=kde-base/kdebase-3.2.3-r1"
+    # emerge ">=kde-base/kdebase-3.2.3-r1"
+
+    # emerge -pv ">=kde-base/kdelibs-3.2.3-r1"
+    # emerge ">=kde-base/kdelibs-3.2.3-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kde.org/info/security/advisory-20040811-1.txt">KDE Advisory: Temporary Directory Vulnerability</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20040811-2.txt">KDE Advisory: DCOPServer Temporary Filename Vulnerability</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20040811-3.txt">KDE Advisory: Konqueror Frame Injection Vulnerability</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 11 Aug 2004 17:47:27 +0000">
+    jaervosz
+  </metadata>
+</glsa>

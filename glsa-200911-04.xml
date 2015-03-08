@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200911-04">
+  <title>dstat: Untrusted search path</title>
+  <synopsis>
+    An untrusted search path vulnerability in the dstat might result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">dstat</product>
+  <announced>November 25, 2009</announced>
+  <revised>November 25, 2009: 01</revised>
+  <bug>293497</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dstat" auto="yes" arch="*">
+      <unaffected range="ge">0.6.9-r1</unaffected>
+      <vulnerable range="lt">0.6.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    dstat is a versatile system resource monitor written in Python.
+    </p>
+  </background>
+  <description>
+    <p>
+    Robert Buchholz of the Gentoo Security Team reported that dstat
+    includes the current working directory and subdirectories in the Python
+    module search path (sys.path) before calling "import".
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user to run "dstat" from a directory
+    containing a specially crafted Python module, resulting in the
+    execution of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "dstat" from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All dstat users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/dstat-0.6.9-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3894">CVE-2009-3894</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Nov 2009 12:30:20 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Nov 2009 12:35:21 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Nov 2009 13:40:09 +0000">
+    rbu
+  </metadata>
+</glsa>

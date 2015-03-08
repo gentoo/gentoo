@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-13">
+  <title>MySQL: SQL Injection</title>
+  <synopsis>
+    MySQL is vulnerable to an SQL Injection flaw in the multi-byte encoding
+    process.
+  </synopsis>
+  <product type="ebuild">MySQL</product>
+  <announced>June 11, 2006</announced>
+  <revised>December 13, 2006: 04</revised>
+  <bug>135076</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.0.22</unaffected>
+      <unaffected range="rge">4.1.20</unaffected>
+      <unaffected range="rge">4.1.21</unaffected>
+      <unaffected range="rge">4.1.22</unaffected>
+      <unaffected range="lt">4.1</unaffected>
+      <vulnerable range="lt">5.0.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular multi-threaded, multi-user SQL server.
+    </p>
+  </background>
+  <description>
+    <p>
+    MySQL is vulnerable to an injection flaw in mysql_real_escape() when
+    used with multi-byte characters.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Due to a flaw in the multi-byte character process, an attacker is still
+    able to inject arbitary SQL statements into the MySQL server for
+    execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are a few workarounds available: NO_BACKSLASH_ESCAPES mode as a
+    workaround for a bug in mysql_real_escape_string(): SET
+    sql_mode='NO_BACKSLASH_ESCAPES'; SET GLOBAL
+    sql_mode='NO_BACKSLASH_ESCAPES'; and server command line options:
+    --sql-mode=NO_BACKSLASH_ESCAPES.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-4.1.20&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2753">CVE-2006-2753</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:09:29 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 19:55:54 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 09:13:55 +0000">
+    daxomatic
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-13">
+  <title>memcached: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in memcached, allowing
+    remote attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">memcached</product>
+  <announced>June 15, 2014</announced>
+  <revised>June 15, 2014: 1</revised>
+  <bug>279386</bug>
+  <bug>452098</bug>
+  <bug>467962</bug>
+  <bug>496506</bug>
+  <bug>498078</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/memcached" auto="yes" arch="*">
+      <unaffected range="ge">1.4.17</unaffected>
+      <vulnerable range="lt">1.4.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>memcached is a high-performance, distributed memory object caching
+      system
+    </p>
+  </background>
+  <description>
+    <p>memcached authentication could be bypassed when using SASL due to a flaw
+      related to SASL authentication state. Also several heap-based buffer
+      overflows due to integer conversions when parsing certain length
+      attributes were discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute
+      arbitrary code with the privileges of the process, cause a Denial of
+      Service condition or authenticate with invalid SASL credentials,
+      bypassing memcached authentication completely.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All memcached users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/memcached-1.4.17"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2415">CVE-2009-2415</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7239">CVE-2013-7239</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4971">CVE-2011-4971</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0179">CVE-2013-0179</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7290">CVE-2013-7290</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7291">CVE-2013-7291</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Jan 2014 06:07:00 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Jun 2014 00:21:52 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

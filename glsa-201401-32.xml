@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-32">
+  <title>Exim: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Exim, the worst of which
+    leading to remote execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">Exim</product>
+  <announced>January 27, 2014</announced>
+  <revised>January 27, 2014: 3</revised>
+  <bug>322665</bug>
+  <bug>348249</bug>
+  <bug>353352</bug>
+  <bug>366369</bug>
+  <bug>439734</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.80.1</unaffected>
+      <vulnerable range="lt">4.80.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Exim is a highly configurable, drop-in replacement for sendmail.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Exim. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with root
+      privileges, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Exim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/exim-4.80.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2023">CVE-2010-2023</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2024">CVE-2010-2024</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4344">CVE-2010-4344</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4345">CVE-2010-4345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0017">CVE-2011-0017</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1407">CVE-2011-1407</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1764">CVE-2011-1764</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5671">CVE-2012-5671</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:21 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 27 Jan 2014 13:05:26 +0000">craig</metadata>
+</glsa>

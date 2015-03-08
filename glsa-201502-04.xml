@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-04">
+  <title>MediaWiki: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MediaWiki, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">mediawiki</product>
+  <announced>February 07, 2015</announced>
+  <revised>February 07, 2015: 1</revised>
+  <bug>498064</bug>
+  <bug>499632</bug>
+  <bug>503012</bug>
+  <bug>506018</bug>
+  <bug>515138</bug>
+  <bug>518608</bug>
+  <bug>523852</bug>
+  <bug>524364</bug>
+  <bug>532920</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mediawiki" auto="yes" arch="*">
+      <unaffected range="ge">1.23.8</unaffected>
+      <unaffected range="rge">1.22.15</unaffected>
+      <unaffected range="rge">1.19.23</unaffected>
+      <vulnerable range="lt">1.23.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MediaWiki is a collaborative editing software used by large projects
+      such as Wikipedia.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MediaWiki. Please
+      review the CVE identifiers and MediaWiki announcement referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker may be able to execute arbitrary code with the
+      privileges of the process, create a Denial of Service condition, obtain
+      sensitive information, bypass security restrictions, and inject arbitrary
+      web script or HTML.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MediaWiki 1.23 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.23.8"
+    </code>
+    
+    <p>All MediaWiki 1.22 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.22.15"
+    </code>
+    
+    <p>All MediaWiki 1.19 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.19.23"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6451">CVE-2013-6451</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6452">CVE-2013-6452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6453">CVE-2013-6453</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6454">CVE-2013-6454</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6472">CVE-2013-6472</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1610">CVE-2014-1610</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2242">CVE-2014-2242</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2243">CVE-2014-2243</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2244">CVE-2014-2244</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2665">CVE-2014-2665</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2853">CVE-2014-2853</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5241">CVE-2014-5241</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5242">CVE-2014-5242</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5243">CVE-2014-5243</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7199">CVE-2014-7199</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7295">CVE-2014-7295</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9276">CVE-2014-9276</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9277">CVE-2014-9277</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9475">CVE-2014-9475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9476">CVE-2014-9476</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9477">CVE-2014-9477</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9478">CVE-2014-9478</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9479">CVE-2014-9479</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9480">CVE-2014-9480</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9481">CVE-2014-9481</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9487">CVE-2014-9487</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9507">CVE-2014-9507</uri>
+    <uri link="https://lists.wikimedia.org/pipermail/mediawiki-announce/2014-June/000155.html">
+      MediaWiki Security and Maintenance Releases: 1.19.17, 1.21.11, 1.22.8 and
+      1.23.1
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 09 Feb 2014 10:34:22 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 17:27:17 +0000">
+    sdamashek
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-17">
+  <title>GNU Radius: Format string vulnerability</title>
+  <synopsis>
+    A format string vulnerabilty has been found in GNU Radius, which could lead
+    to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnuradius</product>
+  <announced>December 14, 2006</announced>
+  <revised>December 14, 2006: 01</revised>
+  <bug>156376</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/gnuradius" auto="yes" arch="*">
+      <unaffected range="ge">1.4</unaffected>
+      <vulnerable range="lt">1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU Radius is a GNU version of Radius, a server for remote user
+    authentication and accounting.
+    </p>
+  </background>
+  <description>
+    <p>
+    A format string vulnerability was found in the sqllog function from the
+    SQL accounting code for radiusd. That function is only used if one or
+    more of the "postgresql", "mysql" or "odbc" USE flags are enabled,
+    which is not the default, except for the "server" 2006.1 and 2007.0
+    profiles which enable the "mysql" USE flag.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An unauthenticated remote attacker could execute arbitrary code with
+    the privileges of the user running radiusd, which may be the root user.
+    It is important to note that there is no default GNU Radius user for
+    Gentoo systems because no init script is provided with the package.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Radius users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/gnuradius-1.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4181">CVE-2006-4181</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Dec 2006 16:15:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Dec 2006 20:51:18 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 22:14:11 +0000">
+    falco
+  </metadata>
+</glsa>

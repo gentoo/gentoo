@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200811-03">
+  <title>FAAD2: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow in FAAD2 might lead to user-assisted execution of
+    arbitrary code via an MP4 file.
+  </synopsis>
+  <product type="ebuild">faad2</product>
+  <announced>November 09, 2008</announced>
+  <revised>November 09, 2008: 01</revised>
+  <bug>238445</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/faad2" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1-r2</unaffected>
+      <vulnerable range="lt">2.6.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FAAD2 is an open source MPEG-4 and MPEG-2 AAC decoder.
+    </p>
+  </background>
+  <description>
+    <p>
+    The ICST-ERCIS (Peking University) reported a heap-based buffer
+    overflow in the decodeMP4file() function in frontend/main.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    MPEG-4 (MP4) file in an application using FAAD2, possibly leading to
+    the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FAAD2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/faad2-2.6.1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4201">CVE-2008-4201</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 01 Oct 2008 21:20:46 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Oct 2008 20:30:57 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 30 Oct 2008 23:45:59 +0000">
+    rbu
+  </metadata>
+</glsa>

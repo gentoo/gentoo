@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-11">
+  <title>HAVP: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability has been reported in HAVP.
+  </synopsis>
+  <product type="ebuild">havp</product>
+  <announced>September 21, 2008</announced>
+  <revised>September 21, 2008: 01</revised>
+  <bug>234715</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/havp" auto="yes" arch="*">
+      <unaffected range="ge">0.89</unaffected>
+      <vulnerable range="lt">0.89</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    HAVP is a HTTP AntiVirus Proxy.
+    </p>
+  </background>
+  <description>
+    <p>
+    Peter Warasin reported an infinite loop in sockethandler.cpp when
+    connecting to a non-responsive HTTP server.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send requests to unavailable servers, resulting
+    in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All HAVP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/havp-0.89&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3688">CVE-2008-3688</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 18 Sep 2008 21:30:12 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Sep 2008 21:30:30 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 19 Sep 2008 11:28:47 +0000">
+    p-y
+  </metadata>
+</glsa>

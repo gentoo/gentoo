@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-17">
+  <title>AbiWord: New RTF import buffer overflows</title>
+  <synopsis>
+    AbiWord is vulnerable to an additional set of buffer overflows during RTF
+    import, making it vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">AbiWord</product>
+  <announced>October 20, 2005</announced>
+  <revised>October 20, 2005: 01</revised>
+  <bug>109157</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/abiword" auto="yes" arch="*">
+      <unaffected range="ge">2.2.11</unaffected>
+      <vulnerable range="lt">2.2.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    AbiWord is a free and cross-platform word processing program. It
+    allows to import RTF files into AbiWord documents.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans discovered a different set of buffer overflows than
+    the one described in GLSA 200509-20 in the RTF import function in
+    AbiWord.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could design a malicious RTF file and entice a user to
+    import it in AbiWord, potentially resulting in the execution of
+    arbitrary code with the rights of the user running AbiWord.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AbiWord users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/abiword-2.2.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200509-20.xml">GLSA-200509-20</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2972">CAN-2005-2972</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Oct 2005 07:36:44 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 18 Oct 2005 14:22:32 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Oct 2005 05:41:16 +0000">
+    jaervosz
+  </metadata>
+</glsa>

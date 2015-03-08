@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-07">
+  <title>foomatic-filters: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in foomatic-filters could result in the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">foomatic-filters</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>379559</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/foomatic-filters" auto="yes" arch="*">
+      <unaffected range="ge">4.0.9</unaffected>
+      <vulnerable range="lt">4.0.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The foomatic-filters package contains wrapper scripts which are designed
+      to be used with Foomatic.
+    </p>
+  </background>
+  <description>
+    <p>The foomatic-rip filter improperly handles command-line arguments,
+      including those issued by FoomaticRIPCommandLine fields in PPD files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PPD
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the system user "lp".
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All foomatic-filters users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-print/foomatic-filters-4.0.9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2697">CVE-2011-2697</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2964">CVE-2011-2964</uri>
+  </references>
+  <metadata timestamp="Sun, 29 Jan 2012 22:40:52 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:40:15 +0000" tag="submitter">ackle</metadata>
+</glsa>

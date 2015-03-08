@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-27">
+  <title>xine-lib: Two heap overflow vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities have been found in xine-lib which could lead to the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>April 26, 2005</announced>
+  <revised>April 26, 2005: 01</revised>
+  <bug>89976</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.0-r2</unaffected>
+      <unaffected range="rge">1_rc6-r2</unaffected>
+      <vulnerable range="lt">1.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is a multimedia library which can be utilized to create
+    multimedia frontends.
+    </p>
+  </background>
+  <description>
+    <p>
+    Heap overflows have been found in the code handling RealMedia RTSP
+    and Microsoft Media Services streams over TCP (MMST).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By setting up a malicious server and enticing a user to use its
+    streaming data, a remote attacker could possibly execute arbitrary code
+    on the client computer with the permissions of the user running any
+    multimedia frontend making use of the xine-lib library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose media-libs/xine-lib</code>
+  </resolution>
+  <references>
+    <uri link="http://xinehq.de/index.php/security/XSA-2004-8">Xine Advisory XSA-2004-8</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 22 Apr 2005 08:22:32 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Apr 2005 20:44:06 +0000">
+    koon
+  </metadata>
+</glsa>

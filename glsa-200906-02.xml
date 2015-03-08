@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200906-02">
+  <title>Ruby: Denial of Service</title>
+  <synopsis>
+    A flaw in the Ruby standard library might allow remote attackers to cause a
+    Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>June 28, 2009</announced>
+  <revised>June 28, 2009: 01</revised>
+  <bug>273213</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.6_p369</unaffected>
+      <vulnerable range="lt">1.8.6_p369</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an interpreted object-oriented programming language. The
+    elaborate standard library includes the "BigDecimal" class.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tadayoshi Funaba reported that BigDecimal in
+    ext/bigdecimal/bigdecimal.c does not properly handle string arguments
+    containing overly long numbers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this issue to remotely cause a Denial
+    of Service attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.6_p369&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1904">CVE-2009-1904</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 21 Jun 2009 14:29:50 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 28 Jun 2009 21:32:27 +0000">
+    a3li
+  </metadata>
+</glsa>

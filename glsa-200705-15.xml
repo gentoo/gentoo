@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-15">
+  <title>Samba: Multiple vulnerabilities</title>
+  <synopsis>
+    Samba contains multiple vulnerabilities potentially resulting in the
+    execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>May 15, 2007</announced>
+  <revised>May 15, 2007: 01</revised>
+  <bug>177029</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.24-r2</unaffected>
+      <vulnerable range="lt">3.0.24-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a suite of SMB and CIFS client/server programs for UNIX.
+    </p>
+  </background>
+  <description>
+    <p>
+    Samba contains a logical error in the smbd daemon when translating
+    local SID to user names (CVE-2007-2444). Furthermore, Samba contains
+    several bugs when parsing NDR encoded RPC parameters (CVE-2007-2446).
+    Lastly, Samba fails to properly sanitize remote procedure input
+    provided via Microsoft Remote Procedure Calls (CVE-2007-2447).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities to gain root
+    privileges via various vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.24-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2444">CVE-2007-2444</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2446">CVE-2007-2446</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2447">CVE-2007-2447</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 14 May 2007 17:44:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 May 2007 12:42:21 +0000">
+    jaervosz
+  </metadata>
+</glsa>

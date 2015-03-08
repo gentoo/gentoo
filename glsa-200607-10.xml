@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-10">
+  <title>Samba: Denial of Service vulnerability</title>
+  <synopsis>
+    A large number of share connection requests could cause a Denial of Service
+    within Samba.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>July 25, 2006</announced>
+  <revised>July 25, 2006: 01</revised>
+  <bug>139369</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.22-r3</unaffected>
+      <vulnerable range="lt">3.0.22-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a freely available SMB/CIFS implementation which allows
+    seamless interoperability of file and print services to other SMB/CIFS
+    clients.
+    </p>
+  </background>
+  <description>
+    <p>
+    During an internal audit the Samba team discovered that a flaw in the
+    way Samba stores share connection requests could lead to a Denial of
+    Service.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a large amount of share connection requests to a vulnerable
+    Samba server, an attacker could cause a Denial of Service due to memory
+    consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.22-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3403">CVE-2006-3403</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 23 Jul 2006 19:09:42 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Jul 2006 19:57:17 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Jul 2006 19:57:30 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-21">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Asterisk</product>
+  <announced>March 28, 2012</announced>
+  <revised>March 28, 2012: 1</revised>
+  <bug>408431</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.8.10.1</unaffected>
+      <vulnerable range="lt">1.8.10.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in Asterisk:</p>
+    
+    <ul>
+      <li>The "milliwatt_generate()" function in app_milliwatt.c is vulnerable
+        to a stack overrun (AST-2012-002).
+      </li>
+      <li>The "ast_parse_digest()" function in utils.c is vulnerable to a
+        stack-based buffer overflow (AST-2012-003).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A remote unauthenticated attacker could execute arbitrary code or cause
+      a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.10.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://downloads.asterisk.org/pub/security/AST-2012-002.txt">
+      AST-2012-002
+    </uri>
+    <uri link="http://downloads.asterisk.org/pub/security/AST-2012-003.txt">
+      AST-2012-003
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1183">CVE-2012-1183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1184">CVE-2012-1184</uri>
+  </references>
+  <metadata timestamp="Fri, 16 Mar 2012 10:54:51 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Wed, 28 Mar 2012 10:35:00 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-16">
+  <title>Aircrack-ng: Remote execution of arbitrary code</title>
+  <synopsis>
+    Aircrack-ng contains a buffer overflow that could lead to the remote
+    execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">aircrack-ng</product>
+  <announced>April 22, 2007</announced>
+  <revised>April 22, 2007: 01</revised>
+  <bug>174340</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/aircrack-ng" auto="yes" arch="*">
+      <unaffected range="ge">0.7-r2</unaffected>
+      <vulnerable range="lt">0.7-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Aircrack-ng is an 802.11 WEP and WPA-PSK keys cracking program that can
+    recover keys once enough data packets have been captured.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jonathan So reported that the airodump-ng module does not correctly
+    check the size of 802.11 authentication packets before copying them
+    into a buffer.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could trigger a stack-based buffer overflow by
+    sending a specially crafted 802.11 authentication packet to a user
+    running airodump-ng with the -w (--write) option. This could lead to
+    the remote execution of arbitrary code with the permissions of the user
+    running airodump-ng, which is typically the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Aircrack-ng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/aircrack-ng-0.7-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2057">CVE-2007-2057</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 13 Apr 2007 21:21:54 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 13 Apr 2007 21:24:05 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 14 Apr 2007 22:00:25 +0000">
+    falco
+  </metadata>
+</glsa>

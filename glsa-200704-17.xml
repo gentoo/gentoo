@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-17">
+  <title>3proxy: Buffer overflow</title>
+  <synopsis>
+    A vulnerability has been discovered in 3proxy allowing for the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">3proxy</product>
+  <announced>April 22, 2007</announced>
+  <revised>April 22, 2007: 01</revised>
+  <bug>174429</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/3proxy" auto="yes" arch="*">
+      <unaffected range="ge">0.5.3h</unaffected>
+      <vulnerable range="lt">0.5.3h</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    3proxy is a multi-protocol proxy, including HTTP/HTTPS/FTP and SOCKS
+    support.
+    </p>
+  </background>
+  <description>
+    <p>
+    The 3proxy development team reported a buffer overflow in the logurl()
+    function when processing overly long requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted transparent request to
+    the proxy, resulting in the execution of arbitrary code with privileges
+    of the user running 3proxy.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All 3proxy users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/3proxy-0.5.3h&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2031">CVE-2007-2031</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Apr 2007 05:09:29 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 18 Apr 2007 08:45:40 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 18 Apr 2007 20:45:40 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-06">
+  <title>UnZip: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A double free vulnerability discovered in UnZip might lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">unzip</product>
+  <announced>April 06, 2008</announced>
+  <revised>April 06, 2008: 01</revised>
+  <bug>213761</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/unzip" auto="yes" arch="*">
+      <unaffected range="ge">5.52-r2</unaffected>
+      <vulnerable range="lt">5.52-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Info-ZIP's UnZip is a tool to list and extract files inside PKZIP
+    compressed files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team discovered that the NEEDBITS
+    macro in the inflate_dynamic() function in the file inflate.c can be
+    invoked using invalid buffers, which can lead to a double free.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers could entice a user or automated system to open a
+    specially crafted ZIP file that might lead to the execution of
+    arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All UnZip users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/unzip-5.52-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0888">CVE-2008-0888</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 19:46:56 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 22:38:54 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 22:39:11 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-14">
+  <title>Common Data Format library: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in the Common Data
+    Format library.
+  </synopsis>
+  <product type="ebuild">cdf</product>
+  <announced>May 13, 2008</announced>
+  <revised>May 13, 2008: 01</revised>
+  <bug>220391</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sci-libs/cdf" auto="yes" arch="*">
+      <unaffected range="ge">3.2.1</unaffected>
+      <vulnerable range="lt">3.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Common Data Format library is a scientific data management package
+    which allows programmers and application developers to manage and
+    manipulate scalar, vector, and multi-dimensional data arrays in a
+    platform independent fashion.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alfredo Ortega (Core Security Technologies) reported a boundary error
+    within the Read32s_64() function when processing CDF files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted CDF
+    file, possibly resulting in the remote execution of arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Common Data Format library users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sci-libs/cdf-3.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2080">CVE-2008-2080</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 May 2008 18:49:47 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 May 2008 10:41:41 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 May 2008 10:41:52 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-18">
+  <title>Poppler: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Poppler does not handle fonts inside PDF files safely, allowing for
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>April 17, 2008</announced>
+  <revised>April 17, 2008: 02</revised>
+  <bug>216850</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3</unaffected>
+      <vulnerable range="lt">0.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Poppler is a cross-platform PDF rendering library originally based on
+    Xpdf.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kees Cook from the Ubuntu Security Team reported that the
+    CairoFont::create() function in the file CairoFontEngine.cc does not
+    verify the type of an embedded font object inside a PDF file before
+    dereferencing a function pointer from it.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted PDF
+    file with a Poppler-based PDF viewer such as Gentoo's Xpdf, Epdfview,
+    or Evince, potentially resulting in the execution of arbitrary code
+    with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Poppler users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.6.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1693">CVE-2008-1693</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 01:16:23 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 17 Apr 2008 11:28:12 +0000">
+    rbu
+  </metadata>
+</glsa>

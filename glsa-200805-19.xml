@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-19">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in ClamAV may result in the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>May 20, 2008</announced>
+  <revised>May 20, 2008: 01</revised>
+  <bug>213762</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.93</unaffected>
+      <vulnerable range="lt">0.93</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a free anti-virus toolkit for UNIX, designed
+    especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported:
+    </p>
+    <ul>
+    <li>
+    Damian Put reported a heap-based buffer overflow when processing PeSpin
+    packed PE binaries (CVE-2008-0314).
+    </li>
+    <li>
+    Alin Rad Pop of Secunia Research reported a buffer overflow in the
+    cli_scanpe() function when processing Upack PE binaries
+    (CVE-2008-1100).
+    </li>
+    <li>
+    Hanno Boeck reported an infinite loop when processing ARJ archives
+    (CVE-2008-1387).
+    </li>
+    <li>
+    Damian Put and Thomas Pollet reported a heap-based buffer overflow when
+    processing WWPack compressed PE binaries (CVE-2008-1833).
+    </li>
+    <li>
+    A buffer over-read was discovered in the rfc2231() function when
+    producing a string that is not NULL terminated (CVE-2008-1836).
+    </li>
+    <li>
+    An unspecified vulnerability leading to "memory problems" when scanning
+    RAR files was reported (CVE-2008-1837).
+    </li>
+    <li>
+    Thierry Zoller reported that scanning of RAR files could be
+    circumvented (CVE-2008-1835).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could entice a user or automated system to scan a
+    specially crafted file, possibly leading to the execution of arbitrary
+    code with the privileges of the user running ClamAV (either a system
+    user or the "clamav" user if clamd is compromised), or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.93&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0314">CVE-2008-0314</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1100">CVE-2008-1100</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1387">CVE-2008-1387</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1833">CVE-2008-1833</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1835">CVE-2008-1835</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1836">CVE-2008-1836</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1837">CVE-2008-1837</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 14 May 2008 18:45:19 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 May 2008 18:56:12 +0000">
+    rbu
+  </metadata>
+</glsa>

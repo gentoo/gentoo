@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-22">
+  <title>Django: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Django, the worst of
+    which may lead to Denial of Service.
+  </synopsis>
+  <product type="ebuild">django</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>521324</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/django" auto="yes" arch="*">
+      <unaffected range="ge">1.6.7</unaffected>
+      <unaffected range="rge">1.5.10</unaffected>
+      <unaffected range="rge">1.4.15</unaffected>
+      <vulnerable range="lt">1.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Django is a Python-based web framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Django. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to create a Denial of Service condition,
+      obtain sensitive information, or hijack web sessions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Django 1.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.6.7"
+    </code>
+    
+    <p>All Django 1.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.5.10"
+    </code>
+    
+    <p>All Django 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.4.15"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0480">CVE-2014-0480</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0481">CVE-2014-0481</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0482">CVE-2014-0482</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0483">CVE-2014-0483</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 04 Sep 2014 18:15:07 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:08:48 +0000">ackle</metadata>
+</glsa>

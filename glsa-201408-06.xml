@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-06">
+  <title>libpng: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in libpng which can
+    allow a remote attacker to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>August 14, 2014</announced>
+  <revised>August 14, 2014: 2</revised>
+  <bug>503014</bug>
+  <bug>507378</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.6.10</unaffected>
+      <unaffected range="lt">1.3</unaffected>
+      <unaffected range="rge">1.5.18</unaffected>
+      <vulnerable range="lt">1.6.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several programs, including web browsers
+      and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>The png_push_read_chunk function in pngpread.c in the progressive
+      decoder enters an infinite loop, when it encounters a zero-length IDAT
+      chunk. In addition certain integer overflows have been detected and
+      corrected.
+    </p>
+    
+    <p>The 1.2 branch is not affected by these vulnerabilities.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PNG
+      file using an application linked against libpng, possibly resulting in
+      Denial of Service. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpng users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.6.10"
+    </code>
+    
+    <p>Users with current installs in the 1.5 branch should also upgrade this
+      using:</p>
+      <code>
+        # emerge --sync
+        # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.18:1.5"
+      </code>
+      
+      <p>Packages which depend on this library may need to be recompiled. Tools
+        such as revdep-rebuild may assist in identifying these packages.
+      </p>
+    </resolution>
+    <references>
+      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7353">
+        CVE-2013-7353
+      </uri>
+      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7354">
+        CVE-2013-7354
+      </uri>
+      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0333">
+        CVE-2014-0333
+      </uri>
+    </references>
+    <metadata tag="requester" timestamp="Thu, 15 May 2014 04:38:43 +0000">
+      BlueKnight
+    </metadata>
+    <metadata tag="submitter" timestamp="Thu, 14 Aug 2014 13:52:46 +0000">
+      pinkbyte
+    </metadata>
+  </glsa>

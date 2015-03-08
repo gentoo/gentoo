@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-15">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities were found and fixed in PHP image handling
+    functions, potentially resulting in Denial of Service conditions or the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>April 18, 2005</announced>
+  <revised>April 18, 2005: 01</revised>
+  <bug>87517</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.11</unaffected>
+      <vulnerable range="lt">4.3.11</vulnerable>
+    </package>
+    <package name="dev-php/mod_php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.11</unaffected>
+      <vulnerable range="lt">4.3.11</vulnerable>
+    </package>
+    <package name="dev-php/php-cgi" auto="yes" arch="*">
+      <unaffected range="ge">4.3.11</unaffected>
+      <vulnerable range="lt">4.3.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a general-purpose scripting language widely used to develop
+    web-based applications. It can run inside a web server using the
+    mod_php module or the CGI version of PHP, or can run stand-alone in a
+    CLI.
+    </p>
+  </background>
+  <description>
+    <p>
+    An integer overflow and an unbound recursion were discovered in
+    the processing of Image File Directory tags in PHP's EXIF module
+    (CAN-2005-1042, CAN-2005-1043). Furthermore, two infinite loops have
+    been discovered in the getimagesize() function when processing IFF or
+    JPEG images (CAN-2005-0524, CAN-2005-0525).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could craft an image file with a malicious EXIF
+    IFD tag, a large IFD nesting level or invalid size parameters and send
+    it to a web application that would process this user-provided image
+    using one of the affected functions. This could result in denying
+    service on the attacked server and potentially executing arbitrary code
+    with the rights of the web server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-4.3.11&quot;</code>
+    <p>
+    All mod_php users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/mod_php-4.3.11&quot;</code>
+    <p>
+    All php-cgi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-cgi-4.3.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.php.net/release_4_3_11.php">PHP 4.3.11 Release Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0524">CAN-2005-0524</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0525">CAN-2005-0525</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1042">CAN-2005-1042</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1043">CAN-2005-1043</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 17 Apr 2005 16:51:49 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 17 Apr 2005 16:51:59 +0000">
+    koon
+  </metadata>
+</glsa>

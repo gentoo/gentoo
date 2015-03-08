@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-04">
+  <title>Xpdf, Poppler: Heap overflow</title>
+  <synopsis>
+    Xpdf and Poppler are vulnerable to a heap overflow that may be exploited to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xpdf poppler</product>
+  <announced>February 12, 2006</announced>
+  <revised>February 12, 2006: 01</revised>
+  <bug>120985</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.01-r7</unaffected>
+      <vulnerable range="lt">3.01-r7</vulnerable>
+    </package>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.5.0-r4</unaffected>
+      <vulnerable range="lt">0.5.0-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xpdf is a PDF file viewer that runs under the X Window System.
+    Poppler is a PDF rendering library based on the Xpdf 3.0 code base.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dirk Mueller has reported a vulnerability in Xpdf. It is caused by
+    a missing boundary check in the splash rasterizer engine when handling
+    PDF splash images with overly large dimensions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted PDF file to a victim, an attacker
+    could cause an overflow, potentially resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.01-r7&quot;</code>
+    <p>
+    All Poppler users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.5.0-r4&quot;</code>
+    <p>
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0301">CVE-2006-0301</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 08 Feb 2006 03:05:29 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 08 Feb 2006 03:06:48 +0000">
+    adir
+  </metadata>
+</glsa>

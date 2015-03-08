@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-14">
+  <title>ImageMagick: Multiple Vulnerabilities</title>
+  <synopsis>
+    Multiple buffer overflows have been discovered in ImageMagick, which could
+    potentially result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Imagemagick</product>
+  <announced>September 26, 2006</announced>
+  <revised>September 26, 2006: 01</revised>
+  <bug>144091</bug>
+  <bug>143533</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.2.9.5</unaffected>
+      <vulnerable range="lt">6.2.9.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is a free software suite to manipulate, convert, and create
+    many image formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team discovered a stack and heap
+    buffer overflow in the GIMP XCF Image decoder and multiple heap and
+    integer overflows in the SUN bitmap decoder. Damian Put discovered a
+    heap overflow in the SGI image decoder.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may be able to create a specially crafted image that, when
+    processed with ImageMagick, executes arbitrary code with the privileges
+    of the executing user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.2.9.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3743">CVE-2006-3743</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3744">CVE-2006-3744</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4144">CVE-2006-4144</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Sep 2006 07:52:00 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 22 Sep 2006 10:27:30 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Sep 2006 18:09:30 +0000">
+    jaervosz
+  </metadata>
+</glsa>

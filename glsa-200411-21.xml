@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-21">
+  <title>Samba: Multiple vulnerabilities</title>
+  <synopsis>
+    Samba is vulnerable to a buffer overflow that could lead to execution of
+    arbitrary code (CAN-2004-0882). Another flaw in Samba may allow a remote
+    attacker to cause a Denial of Service by excessive consumption of CPU
+    cycles (CAN-2004-0930).
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>November 11, 2004</announced>
+  <revised>November 15, 2004: 02</revised>
+  <bug>70429</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.8</unaffected>
+      <unaffected range="lt">3.0</unaffected>
+      <vulnerable range="lt">3.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a freely available SMB/CIFS implementation which allows
+    seamless interoperability of file and print services to other SMB/CIFS
+    clients.
+    </p>
+  </background>
+  <description>
+    <p>
+    Samba fails to do proper bounds checking when handling
+    TRANSACT2_QFILEPATHINFO replies. Additionally an input validation flaw
+    exists in ms_fnmatch.c when matching filenames that contain wildcards.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may be able to execute arbitrary code with the permissions
+    of the user running Samba. A remote attacker may also be able to cause
+    an abnormal consumption of CPU resources, resulting in slower
+    performance of the server or even a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-fs/samba-3.0.8"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.samba.org/samba/security/CAN-2004-0930.html">Samba Security Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0930">CAN-2004-0930</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0882">CAN-2004-0882</uri>
+    <uri link="http://security.e-matters.de/advisories/132004.html">E-Matters Advisory 13/2004</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 10 Nov 2004 10:26:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 10 Nov 2004 20:53:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Nov 2004 10:18:49 +0000">
+    vorlon078
+  </metadata>
+</glsa>

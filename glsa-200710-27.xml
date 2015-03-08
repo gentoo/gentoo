@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-27">
+  <title>ImageMagick: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in ImageMagick, possibly
+    resulting in arbitrary code execution or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>October 24, 2007</announced>
+  <revised>October 24, 2007: 01</revised>
+  <bug>186030</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.3.5.10</unaffected>
+      <vulnerable range="lt">6.3.5.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is a collection of tools and libraries for manipulating
+    various image formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    regenrecht reported multiple infinite loops in functions ReadDCMImage()
+    and ReadXCFImage() (CVE-2007-4985), multiple integer overflows when
+    handling certain types of images (CVE-2007-4986, CVE-2007-4988), and an
+    off-by-one error in the ReadBlobString() function (CVE-2007-4987).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    image, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user running the application, or an
+    excessive CPU consumption. Note that applications relying on
+    ImageMagick to process images can also trigger the vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.3.5.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4985">CVE-2007-4985</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4986">CVE-2007-4986</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4987">CVE-2007-4987</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4988">CVE-2007-4988</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 30 Sep 2007 09:56:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Oct 2007 12:45:56 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 23 Oct 2007 14:53:02 +0000">
+    keytoaster
+  </metadata>
+</glsa>

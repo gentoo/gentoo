@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-14">
+  <title>Sun and Blackdown Java: Applet privilege escalation</title>
+  <synopsis>
+    Sun's and Blackdown's JDK or JRE may allow untrusted applets to elevate
+    their privileges.
+  </synopsis>
+  <product type="ebuild">sun-jdk sun-jre-bin blackdown-jre blackdown-jdk</product>
+  <announced>June 19, 2005</announced>
+  <revised>June 19, 2005: 01</revised>
+  <bug>96092</bug>
+  <bug>96229</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.08</unaffected>
+      <vulnerable range="lt">1.4.2.08</vulnerable>
+    </package>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.08</unaffected>
+      <vulnerable range="lt">1.4.2.08</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.02</unaffected>
+      <vulnerable range="lt">1.4.2.02</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jre" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.02</unaffected>
+      <vulnerable range="lt">1.4.2.02</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sun and Blackdown both provide implementations of the Java
+    Development Kit (JDK) and Java Runtime Environment (JRE).
+    </p>
+  </background>
+  <description>
+    <p>
+    Both Sun's and Blackdown's JDK and JRE may allow untrusted applets
+    to elevate privileges.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could embed a malicious Java applet in a web
+    page and entice a victim to view it. This applet can then bypass
+    security restrictions and execute any command or access any file with
+    the rights of the user running the web browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.08&quot;</code>
+    <p>
+    All Sun JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.08&quot;</code>
+    <p>
+    All Blackdown JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jdk-1.4.2.02&quot;</code>
+    <p>
+    All Blackdown JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jre-1.4.2.02&quot;</code>
+    <p>
+    Note to SPARC users: There is no stable secure Blackdown Java
+    for the SPARC architecture. Affected users should remove the package
+    until a SPARC package is released.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-101749-1">Sun Security Alert ID 101749</uri>
+    <uri link="http://www.blackdown.org/java-linux/java2-status/security/Blackdown-SA-2005-02.txt">Blackdown Java Security Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Jun 2005 16:05:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Jun 2005 17:03:44 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 17 Jun 2005 10:34:14 +0000">
+    koon
+  </metadata>
+</glsa>

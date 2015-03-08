@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-11">
+  <title>GStreamer plug-ins: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple vulnerabilities in multiple GStreamer plug-ins might allow for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gst-plugins-good gst-plugins-base gst-plugins-libpng</product>
+  <announced>July 12, 2009</announced>
+  <revised>July 12, 2009: 01</revised>
+  <bug>256096</bug>
+  <bug>261594</bug>
+  <bug>272972</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/gst-plugins-good" auto="yes" arch="*">
+      <unaffected range="ge">0.10.14</unaffected>
+      <vulnerable range="lt">0.10.14</vulnerable>
+    </package>
+    <package name="media-libs/gst-plugins-base" auto="yes" arch="*">
+      <unaffected range="ge">0.10.22</unaffected>
+      <vulnerable range="lt">0.10.22</vulnerable>
+    </package>
+    <package name="media-plugins/gst-plugins-libpng" auto="yes" arch="*">
+      <unaffected range="ge">0.10.14-r1</unaffected>
+      <vulnerable range="lt">0.10.14-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GStreamer plug-ins provide decoders to the GStreamer open source
+    media framework.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in several GStreamer
+    plug-ins:
+    </p>
+    <ul>
+    <li>
+    Tobias Klein reported two heap-based buffer overflows and an array
+    index error in the qtdemux_parse_samples() function in gst-plugins-good
+    when processing a QuickTime media .mov file (CVE-2009-0386,
+    CVE-2009-0387, CVE-2009-0397).
+    </li>
+    <li>
+    Thomas Hoger of the Red Hat Security Response Team reported an integer
+    overflow that can lead to a heap-based buffer overflow in the
+    gst_vorbis_tag_add_coverart() function in gst-plugins-base when
+    processing COVERART tags (CVE-2009-0586).
+    </li>
+    <li>
+    Tielei Wang of ICST-ERCIS, Peking University reported multiple integer
+    overflows leading to buffer overflows in gst-plugins-libpng when
+    processing a PNG file (CVE-2009-1932).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system using a
+    GStreamer plug-in to process a specially crafted file, resulting in the
+    execution of arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gst-plugins-good users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gst-plugins-good-0.10.14&quot;</code>
+    <p>
+    All gst-plugins-base users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gst-plugins-base-0.10.22&quot;</code>
+    <p>
+    All gst-plugins-libpng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-plugins/gst-plugins-libpng-0.10.14-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0386">CVE-2009-0386</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0387">CVE-2009-0387</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0397">CVE-2009-0397</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0586">CVE-2009-0586</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1932">CVE-2009-1932</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 13:44:55 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 01:19:25 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Jul 2009 01:21:49 +0000">
+    rbu
+  </metadata>
+</glsa>

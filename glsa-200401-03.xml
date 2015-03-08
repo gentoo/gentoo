@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200401-03">
+  <title>Apache mod_python Denial of Service vulnerability</title>
+  <synopsis>
+    Apache's mod_python module could crash the httpd process if a specific,
+    malformed query string was sent.
+  </synopsis>
+  <product type="ebuild">mod_python</product>
+  <announced>January 27, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>39154</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_python" auto="yes" arch="*">
+      <unaffected range="ge">2.7.10</unaffected>
+      <vulnerable range="lt">2.7.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mod_python is an Apache module that embeds the Python interpreter
+    within the server allowing Python-based web-applications to be
+    created.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Apache Foundation has reported that mod_python may be prone to
+    Denial of Service attacks when handling a malformed
+    query. Mod_python 2.7.9 was released to fix the vulnerability,
+    however, because the vulnerability has not been fully fixed,
+    version 2.7.10 has been released.
+    </p>
+    <p>
+    Users of mod_python 3.0.4 are not affected by this vulnerability.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Although there are no known public exploits known for this
+    exploit, users are recommended to upgrade mod_python to ensure the
+    security of their infrastructure.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Mod_python 2.7.10 has been released to solve this issue; there is
+    no immediate workaround.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users using mod_python 2.7.9 or below are recommended to
+    update their mod_python installation:
+    </p>
+    <code>
+    $> emerge sync
+    $> emerge -pv ">=www-apache/mod_python-2.7.10"
+    $> emerge ">=www-apache/mod_python-2.7.10"
+    $> /etc/init.d/apache restart</code>
+  </resolution>
+  <references>
+    <uri link="http://www.modpython.org/pipermail/mod_python/2004-January/014879.html">Mod_python 2.7.10 release announcement</uri>
+  </references>
+</glsa>

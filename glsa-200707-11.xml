@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-11">
+  <title>MIT Kerberos 5: Arbitrary remote code execution</title>
+  <synopsis>
+    Multiple vulnerabilities in MIT Kerberos 5 could potentially result in
+    remote code execution with root privileges by unauthenticated users.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>July 25, 2007</announced>
+  <revised>July 25, 2007: 01</revised>
+  <bug>183338</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.5.2-r3</unaffected>
+      <vulnerable range="lt">1.5.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is a suite of applications that implement the Kerberos
+    network protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    kadmind is affected by multiple vulnerabilities in the RPC library
+    shipped with MIT Kerberos 5. It fails to properly handle zero-length
+    RPC credentials (CVE-2007-2442) and the RPC library can write past the
+    end of the stack buffer (CVE-2007-2443). Furthermore kadmind fails to
+    do proper bounds checking (CVE-2007-2798).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote unauthenticated attacker could exploit these vulnerabilities
+    to execute arbitrary code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.5.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2442">CVE-2007-2442</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2443">CVE-2007-2443</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2798">CVE-2007-2798</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 07:39:18 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Jul 2007 20:11:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 Jul 2007 17:56:29 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-14">
+  <title>libextractor: Two heap-based buffer overflows</title>
+  <synopsis>
+    libextractor is vulnerable to two heap overflow vulnerabilities which could
+    lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libextractor</product>
+  <announced>May 21, 2006</announced>
+  <revised>May 21, 2006: 01</revised>
+  <bug>133570</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libextractor" auto="yes" arch="*">
+      <unaffected range="ge">0.5.14</unaffected>
+      <vulnerable range="lt">0.5.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libextractor is a library used to extract metadata from arbitrary
+    files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma has found two heap-based buffer overflows in
+    libextractor 0.5.13 and earlier: one of them occurs in the
+    asf_read_header function in the ASF plugin, and the other occurs in the
+    parse_trak_atom function in the Qt plugin.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to open a malformed file using an application
+    that employs libextractor and its ASF or Qt plugins, an attacker could
+    execute arbitrary code in the context of the application running the
+    affected library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libextractor users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libextractor-0.5.14&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2458">CVE-2006-2458</uri>
+    <uri link="http://aluigi.altervista.org/adv/libextho-adv.txt">Original advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 19 May 2006 13:49:39 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 19 May 2006 13:49:51 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 19 May 2006 16:16:14 +0000">
+    falco
+  </metadata>
+</glsa>

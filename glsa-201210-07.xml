@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201210-07">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium, some of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>October 21, 2012</announced>
+  <revised>October 21, 2012: 1</revised>
+  <bug>433551</bug>
+  <bug>436234</bug>
+  <bug>437664</bug>
+  <bug>437984</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">22.0.1229.94</unaffected>
+      <vulnerable range="lt">22.0.1229.94</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers and release notes referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted web
+      site using Chromium, possibly resulting in the execution of arbitrary
+      code with the privileges of the process, arbitrary file write, a Denial
+      of Service condition, Cross-Site Scripting in SSL interstitial and
+      various Universal Cross-Site Scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-22.0.1229.94"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2859">CVE-2012-2859</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2860">CVE-2012-2860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2865">CVE-2012-2865</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2866">CVE-2012-2866</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2867">CVE-2012-2867</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2868">CVE-2012-2868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2869">CVE-2012-2869</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2872">CVE-2012-2872</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2874">CVE-2012-2874</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2876">CVE-2012-2876</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2877">CVE-2012-2877</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2878">CVE-2012-2878</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2879">CVE-2012-2879</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2880">CVE-2012-2880</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2881">CVE-2012-2881</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2882">CVE-2012-2882</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2883">CVE-2012-2883</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2884">CVE-2012-2884</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2885">CVE-2012-2885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2886">CVE-2012-2886</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2887">CVE-2012-2887</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2888">CVE-2012-2888</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2889">CVE-2012-2889</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2891">CVE-2012-2891</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2892">CVE-2012-2892</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2894">CVE-2012-2894</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2896">CVE-2012-2896</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2900">CVE-2012-2900</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5108">CVE-2012-5108</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5110">CVE-2012-5110</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5111">CVE-2012-5111</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5112">CVE-2012-5112</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5376">CVE-2012-5376</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/08/stable-channel-update_30.html">
+      Release Notes 21.0.1180.89
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html">
+      Release Notes 22.0.1229.79
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/10/stable-channel-update.html">
+      Release Notes 22.0.1229.92
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/10/stable-channel-update_6105.html">
+      Release Notes 22.0.1229.94
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 06 Sep 2012 13:01:44 +0000">
+    phajdan.jr
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 21 Oct 2012 15:03:00 +0000">
+    phajdan.jr
+  </metadata>
+</glsa>

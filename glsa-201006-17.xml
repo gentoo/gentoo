@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-17">
+  <title>lighttpd: Denial of Service</title>
+  <synopsis>
+    A processing error in lighttpd might result in a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>June 03, 2010</announced>
+  <revised>June 03, 2010: 01</revised>
+  <bug>303213</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.25-r1</unaffected>
+      <vulnerable range="lt">1.4.25-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    lighttpd is a lightweight high-performance web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Li Ming reported that lighttpd does not properly process packets that
+    are sent overly slow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might send specially crafted packets to a server
+    running lighttpd, possibly resulting in a Denial of Service condition
+    via host memory exhaustion.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.25-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0295">CVE-2010-0295</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 15 Mar 2010 14:19:51 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 31 May 2010 15:20:53 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 15:20:59 +0000">
+    a3li
+  </metadata>
+</glsa>

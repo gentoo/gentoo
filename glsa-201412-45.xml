@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-45">
+  <title>Facter: Privilege escalation</title>
+  <synopsis>An untrusted search path vulnerability in Facter could lead to
+    local privilege escalation.
+  </synopsis>
+  <product type="ebuild">facter</product>
+  <announced>December 26, 2014</announced>
+  <revised>December 26, 2014: 1</revised>
+  <bug>514476</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-ruby/facter" auto="yes" arch="*">
+      <unaffected range="ge">1.7.6</unaffected>
+      <vulnerable range="lt">1.7.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Facter is a cross-platform Ruby library for retrieving facts from
+      operating systems.
+    </p>
+  </background>
+  <description>
+    <p>Facter includes the current working directory in the search path.</p>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Facter users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/facter-1.7.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3248">CVE-2014-3248</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 16 Aug 2014 21:34:38 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 18:59:01 +0000">ackle</metadata>
+</glsa>

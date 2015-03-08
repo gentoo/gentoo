@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201404-04">
+  <title>Crack: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Crack might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">crack</product>
+  <announced>April 07, 2014</announced>
+  <revised>April 07, 2014: 1</revised>
+  <bug>460164</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/crack" auto="yes" arch="*">
+      <unaffected range="ge">0.3.2</unaffected>
+      <vulnerable range="lt">0.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Crack is a really simple JSON and XML parsing Ruby gem, ripped from Merb
+      and Rails.
+    </p>
+  </background>
+  <description>
+    <p>An XML parameter parsing vulnerability has been discovered in Crack. </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process, cause a Denial of
+      Service condition, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Crack users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/crack-0.3.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1800">CVE-2013-1800</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 18:59:21 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Apr 2014 20:37:34 +0000">ackle</metadata>
+</glsa>

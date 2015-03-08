@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-04">
+  <title>GnuTLS: Denial of Service vulnerability</title>
+  <synopsis>
+    The GnuTLS library is vulnerable to Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">GnuTLS</product>
+  <announced>May 09, 2005</announced>
+  <revised>May 09, 2005: 01</revised>
+  <bug>90726</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <unaffected range="rge">1.0.25</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuTLS is a free TLS 1.0 and SSL 3.0 implementation for the GNU
+    project.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been discovered in the record packet parsing
+    in the GnuTLS library. Additionally, a flaw was also found in the RSA
+    key export functionality.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability and cause a
+    Denial of Service to any application that utilizes the GnuTLS library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuTLS users should remove the existing installation and
+    upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --unmerge gnutls
+    # emerge --ask --oneshot --verbose net-libs/gnutls</code>
+    <p>
+    Due to small API changes with the previous version, please do
+    the following to ensure your applications are using the latest GnuTLS
+    that you just emerged.
+    </p>
+    <code>
+    # revdep-rebuild --soname-regexp libgnutls.so.1[0-1]</code>
+    <p>
+    Previously exported RSA keys can be fixed by executing the
+    following command on the key files:
+    </p>
+    <code>
+    # certtool -k infile outfile</code>
+  </resolution>
+  <references>
+    <uri link="http://lists.gnupg.org/pipermail/gnutls-dev/2005-April/000858.html">GnuTLS Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1431">CAN-2005-1431</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 Apr 2005 18:20:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 30 Apr 2005 14:44:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Apr 2005 16:35:11 +0000">
+    lewk
+  </metadata>
+</glsa>

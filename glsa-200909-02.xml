@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-02">
+  <title>libvorbis: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A processing error in libvorbis might result in the execution of arbitrary
+    code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">libvorbis</product>
+  <announced>September 07, 2009</announced>
+  <revised>September 07, 2009: 01</revised>
+  <bug>280590</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libvorbis" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libvorbis is the reference implementation of the Xiph.org Ogg Vorbis
+    audio file format. It is used by many applications for playback of Ogg
+    Vorbis files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Lucas Adamski reported that libvorbis does not correctly process file
+    headers, related to static mode headers and encoding books.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to play a specially crafted OGG
+    Vorbis file using an application that uses libvorbis, possibly
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libvorbis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libvorbis-1.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2663">CVE-2009-2663</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 31 Aug 2009 02:17:32 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 31 Aug 2009 02:42:12 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:56 +0000">
+    a3li
+  </metadata>
+</glsa>

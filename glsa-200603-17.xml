@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-17">
+  <title>PeerCast: Buffer overflow</title>
+  <synopsis>
+    PeerCast is vulnerable to a buffer overflow that may lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">peercast</product>
+  <announced>March 21, 2006</announced>
+  <revised>March 21, 2006: 01</revised>
+  <bug>123432</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/peercast" auto="yes" arch="*">
+      <unaffected range="ge">0.1217</unaffected>
+      <vulnerable range="lt">0.1217</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PeerCast is a Peer to Peer broadcasting technology for listening
+    to radio and watching video on the Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    INFIGO discovered a problem in the URL handling code. Buffers that
+    are allocated on the stack can be overflowed inside of nextCGIarg()
+    function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a specially crafted request to the HTTP server, a
+    remote attacker can cause a stack overflow, resulting in the execution
+    of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PeerCast users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1217&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2006-1148">CVE-2006-1148</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 11 Mar 2006 11:34:53 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Mar 2006 17:55:02 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Mar 2006 02:16:00 +0000">
+    adir
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-12">
+  <title>GPdf: heap overflows in included Xpdf code</title>
+  <synopsis>
+    GPdf includes vulnerable Xpdf code to handle PDF files, making it
+    vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gpdf</product>
+  <announced>February 21, 2006</announced>
+  <revised>February 21, 2006: 01</revised>
+  <bug>121511</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/gpdf" auto="yes" arch="*">
+      <unaffected range="ge">2.10.0-r4</unaffected>
+      <vulnerable range="lt">2.10.0-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GPdf is a Gnome PDF viewer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dirk Mueller found a heap overflow vulnerability in the XPdf
+    codebase when handling splash images that exceed size of the associated
+    bitmap.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted PDF
+    file with GPdf, potentially resulting in the execution of arbitrary
+    code with the rights of the user running the affected application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GPdf users should upgrade to the latest version.
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.10.0-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0301">CVE-2006-0301</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Feb 2006 20:47:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 17 Feb 2006 21:40:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 17 Feb 2006 23:04:04 +0000">
+    dragonheart
+  </metadata>
+</glsa>

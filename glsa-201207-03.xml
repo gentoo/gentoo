@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-03">
+  <title>ChaSen: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow vulnerability in ChaSen could result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ChaSen</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>390769</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/chasen" auto="yes" arch="*">
+      <unaffected range="ge">2.4.4-r2</unaffected>
+      <vulnerable range="lt">2.4.4-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ChaSen is a Japanese morphological analysis system.</p>
+  </background>
+  <description>
+    <p>An error in chalib.c of ChaSen could cause a buffer overflow.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted text
+      file using ChaSen or an application using the ChaSen libraries, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ChaSen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/chasen-2.4.4-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4000">CVE-2011-4000</uri>
+  </references>
+  <metadata timestamp="Sun, 15 Apr 2012 23:16:56 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 22:20:31 +0000" tag="submitter">ackle</metadata>
+</glsa>

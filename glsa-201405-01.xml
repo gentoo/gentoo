@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-01">
+  <title>udisks: Arbitrary code execution</title>
+  <synopsis>A stack-based buffer overflow vulnerability has been found in
+    udisks, allowing a local attacker to possibly execute arbitrary code or
+    cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">udisks</product>
+  <announced>May 02, 2014</announced>
+  <revised>May 02, 2014: 1</revised>
+  <bug>504100</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/udisks" auto="yes" arch="*">
+      <unaffected range="rge">1.0.5</unaffected>
+      <unaffected range="ge">2.1.3</unaffected>
+      <vulnerable range="lt">2.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>udisks is an abstraction for enumerating block devices and performing
+      operations on them. 
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow can be triggered when udisks is given a
+      long path name as a mount point.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All udisks 1.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/udisks-1.0.5:0"
+    </code>
+    
+    <p>All udisks 2.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/udisks-2.1.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0004">CVE-2014-0004</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 24 Mar 2014 22:02:46 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 02 May 2014 06:36:09 +0000">Zlogene</metadata>
+</glsa>

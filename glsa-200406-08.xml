@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-08">
+  <title>Squirrelmail: Another XSS vulnerability</title>
+  <synopsis>
+    Squirrelmail fails to properly sanitize user input, which could lead to a
+    compromise of webmail accounts.
+  </synopsis>
+  <product type="ebuild">Squirrelmail</product>
+  <announced>June 15, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>52434</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3</unaffected>
+      <vulnerable range="le">1.4.3_rc1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SquirrelMail is a webmail package written in PHP. It supports IMAP and
+    SMTP, and can optionally be installed with SQL support.
+    </p>
+  </background>
+  <description>
+    <p>
+    A new cross-site scripting (XSS) vulnerability in
+    Squirrelmail-1.4.3_rc1 has been discovered. In functions/mime.php
+    Squirrelmail fails to properly sanitize user input.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to read a specially crafted e-mail, an attacker can
+    execute arbitrary scripts running in the context of the victim's
+    browser. This could lead to a compromise of the user's webmail account,
+    cookie theft, etc.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SquirrelMail users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=mail-client/squirrelmail-1.4.3&quot;
+    # emerge &quot;&gt;=mail-client/squirrelmail-1.4.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-1.txt">RS-Labs Advisory</uri>
+    <uri link="http://www.cert.org/advisories/CA-2000-02.html">CERT description of XSS</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0520">CVE-2004-0520</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

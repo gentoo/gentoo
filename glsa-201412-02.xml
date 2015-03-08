@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-02">
+  <title>nfs-utils: Information disclosure</title>
+  <synopsis>A vulnerability in nfs-utils might allow remote attackers to gain
+    access to restricted information.
+  </synopsis>
+  <product type="ebuild">nfs-utils</product>
+  <announced>December 08, 2014</announced>
+  <revised>December 08, 2014: 1</revised>
+  <bug>464636</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/nfs-utils" auto="yes" arch="*">
+      <unaffected range="ge">1.2.8</unaffected>
+      <vulnerable range="lt">1.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nfs-utils contains the client and daemon implementations for the NFS
+      protocol.
+    </p>
+  </background>
+  <description>
+    <p>rpc.gssd in nfs-utils is vulnerable to DNS spoofing due to it depending
+      on PTR resolution for GSSAPI authentication, allowing for data to be
+      submitted to a malicious server without the knowledge of the user.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to obtain sensitive information. </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nfs-utils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/nfs-utils-1.2.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1923">CVE-2013-1923</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 27 Jun 2014 21:18:15 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Dec 2014 22:50:14 +0000">K_F</metadata>
+</glsa>

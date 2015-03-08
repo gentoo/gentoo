@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-07">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>
+    phpMyAdmin contains multiple vulnerabilities that could lead to command
+    execution, XSS issues and bypass of security restrictions.
+  </synopsis>
+  <product type="ebuild">phpMyAdmin</product>
+  <announced>March 03, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>83190</bug>
+  <bug>83792</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1_p2-r1</unaffected>
+      <vulnerable range="lt">2.6.1_p2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the
+    administration of MySQL databases from a web-browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    phpMyAdmin contains several security issues:
+    </p>
+    <ul>
+    <li>Maksymilian Arciemowicz has discovered multiple variable injection
+    vulnerabilities that can be exploited through "$cfg" and "GLOBALS"
+    variables and localized strings</li>
+    <li>It is possible to force phpMyAdmin to disclose information in error
+    messages</li>
+    <li>Failure to correctly escape special characters</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially-crafted request, an attacker can include and
+    execute arbitrary PHP code or cause path information disclosure.
+    Furthermore the XSS issue allows an attacker to inject malicious script
+    code, potentially compromising the victim's browser. Lastly the
+    improper escaping of special characters results in unintended privilege
+    settings for MySQL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.1_p2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-1">PMASA-2005-1</uri>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-2">PMASA-2005-2</uri>
+    <uri link="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1113788&amp;group_id=23067&amp;atid=377408">phpMyAdmin bug 1113788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0543">CVE-2005-0543</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0544">CVE-2005-0544</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0653">CVE-2005-0653</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  2 Mar 2005 21:38:30 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  2 Mar 2005 22:39:01 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu,  3 Mar 2005 15:44:32 +0000">
+    koon
+  </metadata>
+</glsa>

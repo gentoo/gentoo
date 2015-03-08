@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-10">
+  <title>libexif, exif: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libexif and exif, some
+    of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libexif</product>
+  <announced>January 19, 2014</announced>
+  <revised>January 19, 2014: 1</revised>
+  <bug>426366</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libexif" auto="yes" arch="*">
+      <unaffected range="ge">0.6.21</unaffected>
+      <vulnerable range="lt">0.6.21</vulnerable>
+    </package>
+    <package name="media-gfx/exif" auto="yes" arch="*">
+      <unaffected range="ge">0.6.21</unaffected>
+      <vulnerable range="lt">0.6.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libexif is a library for parsing, editing and saving Exif metadata from
+      images. exif is a small command line interface for libexif.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libexif and exif.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using exif or an application linked against libexif, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libexif users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libexif-0.6.21"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as  revdep-rebuild may assist in identifying  some of these
+      packages.
+    </p>
+    
+    <p>All exif users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/exif-0.6.21"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2812">CVE-2012-2812</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2813">CVE-2012-2813</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2814">CVE-2012-2814</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2836">CVE-2012-2836</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2837">CVE-2012-2837</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2840">CVE-2012-2840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2841">CVE-2012-2841</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2845">CVE-2012-2845</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 Jul 2012 17:42:17 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Jan 2014 15:10:21 +0000">ackle</metadata>
+</glsa>

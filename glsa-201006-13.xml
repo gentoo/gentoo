@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-13">
+  <title>Smarty: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the Smarty template engine might allow remote
+    attackers to execute arbitrary PHP code.
+  </synopsis>
+  <product type="ebuild">smarty</product>
+  <announced>June 02, 2010</announced>
+  <revised>June 02, 2010: 01</revised>
+  <bug>212147</bug>
+  <bug>243856</bug>
+  <bug>270494</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/smarty" auto="yes" arch="*">
+      <unaffected range="ge">2.6.23</unaffected>
+      <vulnerable range="lt">2.6.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Smarty is a template engine for PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Smarty:
+    </p>
+    <ul>
+    <li>The vendor reported that the modifier.regex_replace.php plug-in
+    contains an input sanitation flaw related to the ASCII NUL character
+    (CVE-2008-1066).</li>
+    <li>The vendor reported that the
+    _expand_quoted_text() function in libs/Smarty_Compiler.class.php
+    contains an input sanitation flaw via multiple vectors (CVE-2008-4810,
+    CVE-2008-4811).</li>
+    <li>Nine:Situations:Group::bookoo reported that
+    the smarty_function_math() function in libs/plugins/function.math.php
+    contains input sanitation flaw (CVE-2009-1669).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    These issues might allow a remote attacker to execute arbitrary PHP
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Smarty users should upgrade to an unaffected version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/smarty-2.6.23&quot;</code>
+    <p>
+    NOTE: This is a legacy GLSA. Updates for all affected architectures are
+    available since June 2, 2009. It is likely that your system is already
+    no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1066">CVE-2008-1066</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4810">CVE-2008-4810</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4811">CVE-2008-4811</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1669">CVE-2009-1669</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 15 Mar 2008 21:06:13 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 19 Sep 2008 19:51:21 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 30 May 2010 11:16:44 +0000">
+    a3li
+  </metadata>
+</glsa>

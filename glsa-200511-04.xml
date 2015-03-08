@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-04">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    ClamAV has many security flaws which make it vulnerable to remote execution
+    of arbitrary code and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>November 06, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>109213</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.87.1</unaffected>
+      <vulnerable range="lt">0.87.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL anti-virus toolkit, designed for integration with mail
+    servers to perform attachment scanning. ClamAV also provides a command
+    line scanner and a tool for fetching updates of the virus database.
+    </p>
+  </background>
+  <description>
+    <p>
+    ClamAV has multiple security flaws: a boundary check was performed
+    incorrectly in petite.c, a buffer size calculation in unfsg_133 was
+    incorrect in fsg.c, a possible infinite loop was fixed in tnef.c and a
+    possible infinite loop in cabd_find was fixed in cabd.c . In addition
+    to this, Marcin Owsiany reported that a corrupted DOC file causes a
+    segmentation fault in ClamAV.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a malicious attachment to a mail server that is hooked with
+    ClamAV, a remote attacker could cause a Denial of Service or the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.87.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3239">CAN-2005-3239</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3303">CAN-2005-3303</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3500">CVE-2005-3500</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3501">CVE-2005-3501</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3587">CVE-2005-3587</uri>
+    <uri link="http://sourceforge.net/project/shownotes.php?release_id=368319">ClamAV release notes</uri>
+    <uri link="http://www.zerodayinitiative.com/advisories/ZDI-05-002.html">Zero Day Initiative advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 04 Nov 2005 08:33:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 04 Nov 2005 15:17:11 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 Nov 2005 14:23:05 +0000">
+    koon
+  </metadata>
+</glsa>

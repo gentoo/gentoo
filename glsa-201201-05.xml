@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-05">
+  <title>mDNSResponder: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in mDNSResponder, which
+    could lead to execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">mDNSResponder</product>
+  <announced>January 22, 2012</announced>
+  <revised>January 22, 2012: 1</revised>
+  <bug>290822</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/mDNSResponder" auto="yes" arch="*">
+      <unaffected range="ge">212.1</unaffected>
+      <vulnerable range="lt">212.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mDNSResponder is a component of Apple's Bonjour, an initiative for
+      zero-configuration networking. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mDNSResponder. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local or remote attacker may be able to execute arbitrary code with
+      root privileges or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mDNSResponder users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/mDNSResponder-212.1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since November 21, 2009. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2386">CVE-2007-2386</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3744">CVE-2007-3744</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3828">CVE-2007-3828</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0989">CVE-2008-0989</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2326">CVE-2008-2326</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-3630">CVE-2008-3630</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:04 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 22 Jan 2012 13:43:13 +0000" tag="submitter">ackle</metadata>
+</glsa>

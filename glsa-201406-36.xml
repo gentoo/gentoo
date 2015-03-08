@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-36">
+  <title>OpenLDAP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in OpenLDAP, allowing for
+    Denial of Service or a man-in-the-middle attack.
+  </synopsis>
+  <product type="ebuild">OpenLDAP</product>
+  <announced>June 30, 2014</announced>
+  <revised>June 30, 2014: 1</revised>
+  <bug>290345</bug>
+  <bug>323777</bug>
+  <bug>355333</bug>
+  <bug>388605</bug>
+  <bug>407941</bug>
+  <bug>424167</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nds/openldap" auto="yes" arch="*">
+      <unaffected range="ge">2.4.35</unaffected>
+      <vulnerable range="lt">2.4.35</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenLDAP is an LDAP suite of application and development tools.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenLDAP. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might employ a specially crafted certificate to
+      conduct man-in-the-middle attacks on SSL connections made using OpenLDAP,
+      bypass security restrictions or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenLDAP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-nds/openldap-2.4.35"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3767">CVE-2009-3767</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0211">CVE-2010-0211</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0212">CVE-2010-0212</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1024">CVE-2011-1024</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1025">CVE-2011-1025</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1081">CVE-2011-1081</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4079">CVE-2011-4079</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1164">CVE-2012-1164</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2668">CVE-2012-2668</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:10 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 30 Jun 2014 19:44:53 +0000">craig</metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-24">
+  <title>BNC: Buffer overflow vulnerability</title>
+  <synopsis>
+    BNC contains a buffer overflow vulnerability that may lead to Denial of
+    Service and execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">BNC</product>
+  <announced>November 16, 2004</announced>
+  <revised>November 16, 2004: 01</revised>
+  <bug>70674</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/bnc" auto="yes" arch="*">
+      <unaffected range="ge">2.9.1</unaffected>
+      <vulnerable range="lt">2.9.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    BNC (BouNCe) is an IRC proxy server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Leon Juranic discovered that BNC fails to do proper bounds
+    checking when checking server response.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this to cause a Denial of Service and
+    potentially execute arbitary code with the permissions of the user
+    running BNC.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BNC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-irc/bnc-2.9.1"</code>
+  </resolution>
+  <references>
+    <uri link="http://gotbnc.com/changes.html">BNC ChangeLog</uri>
+    <uri link="http://security.lss.hr/en/index.php?page=details&amp;ID=LSS-2004-11-03">LSS-2004-11-03</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 11 Nov 2004 20:17:39 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Nov 2004 21:49:41 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 12 Nov 2004 23:44:26 +0000">
+    jaervosz
+  </metadata>
+</glsa>

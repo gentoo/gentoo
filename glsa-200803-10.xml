@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-10">
+  <title>lighttpd: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in lighttpd.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>March 05, 2008</announced>
+  <revised>March 05, 2008: 01</revised>
+  <bug>211230</bug>
+  <bug>211956</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.18-r2</unaffected>
+      <vulnerable range="lt">1.4.18-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    lighttpd is a lightweight high-performance web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    lighttpd contains a calculation error when allocating the global file
+    descriptor array (CVE-2008-0983). Furthermore, it sends the source of a
+    CGI script instead of returning a 500 error (Internal Server Error)
+    when the fork() system call fails (CVE-2008-1111).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities to cause a Denial
+    of Service or gain the source of a CGI script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.18-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0983">CVE-2008-0983</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1111">CVE-2008-1111</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Mar 2008 13:11:03 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Mar 2008 22:33:25 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 04 Mar 2008 21:56:43 +0000">
+    p-y
+  </metadata>
+</glsa>

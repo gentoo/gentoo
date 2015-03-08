@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-08">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player,
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>June 10, 2014</announced>
+  <revised>June 10, 2014: 1</revised>
+  <bug>510278</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.359</unaffected>
+      <vulnerable range="lt">11.2.202.359</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute
+      arbitrary code with the privileges of the process, or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.359"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0510">CVE-2014-0510</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0516">CVE-2014-0516</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0517">CVE-2014-0517</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0518">CVE-2014-0518</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0519">CVE-2014-0519</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0520">CVE-2014-0520</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 May 2014 09:40:39 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Tue, 10 Jun 2014 09:22:32 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

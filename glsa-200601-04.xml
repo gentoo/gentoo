@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-04">
+  <title>VMware Workstation: Vulnerability in NAT networking</title>
+  <synopsis>
+    VMware guest operating systems can execute arbitrary code with elevated
+    privileges on the host operating system through a flaw in NAT networking.
+  </synopsis>
+  <product type="ebuild">VMware</product>
+  <announced>January 07, 2006</announced>
+  <revised>May 25, 2006: 02</revised>
+  <bug>116238</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="app-emulation/vmware-workstation" auto="yes" arch="*">
+      <unaffected range="ge">5.5.1.19175</unaffected>
+      <unaffected range="rge">4.5.3.19414</unaffected>
+      <unaffected range="rge">3.2.1.2242-r10</unaffected>
+      <vulnerable range="lt">5.5.1.19175</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VMware Workstation is a powerful virtual machine for developers and
+    system administrators.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tim Shelton discovered that vmnet-natd, the host module providing
+    NAT-style networking for VMware guest operating systems, is unable to
+    process incorrect 'EPRT' and 'PORT' FTP requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Malicious guest operating systems using the NAT networking feature or
+    local VMware Workstation users could exploit this vulnerability to
+    execute arbitrary code on the host system with elevated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the NAT service by following the instructions at <uri
+    link="http://www.vmware.com/support/kb">http://www.vmware.com/support/k
+    b</uri>, Answer ID 2002.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VMware Workstation users should upgrade to a fixed version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-emulation/vmware-workstation</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4459">CVE-2005-4459</uri>
+    <uri link="http://www.vmware.com/support/kb/enduser/std_adp.php?p_faqid=2000">VMware Security Response</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 04 Jan 2006 10:03:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 05 Jan 2006 15:09:42 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-07">
+  <title>libotr: Arbitrary code execution</title>
+  <synopsis>A buffer overflow vulnerability in libotr could allow a remote
+    attacker to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libotr</product>
+  <announced>September 15, 2013</announced>
+  <revised>September 15, 2013: 1</revised>
+  <bug>430486</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libotr" auto="yes" arch="*">
+      <unaffected range="ge">3.2.1</unaffected>
+      <vulnerable range="lt">3.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libotr is a portable off-the-record messaging library.</p>
+  </background>
+  <description>
+    <p>Multiple heap-based buffer overflows are present in the Base64 decoder
+      of libotr.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted OTR message, resulting
+      in arbitrary code execution with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libotr users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libotr-3.2.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3461">CVE-2012-3461</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 11 Sep 2013 14:50:36 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:34:43 +0000">
+    creffett
+  </metadata>
+</glsa>

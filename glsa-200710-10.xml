@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-10">
+  <title>SKK Tools: Insecure temporary file creation</title>
+  <synopsis>
+    SKK insecurely creates temporary files.
+  </synopsis>
+  <product type="ebuild">skktools</product>
+  <announced>October 12, 2007</announced>
+  <revised>October 12, 2007: 01</revised>
+  <bug>193121</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-i18n/skktools" auto="yes" arch="*">
+      <unaffected range="ge">1.2-r1</unaffected>
+      <vulnerable range="lt">1.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SKK is a Japanese input method for Emacs.
+    </p>
+  </background>
+  <description>
+    <p>
+    skkdic-expr.c insecurely writes temporary files to a location in the
+    form $TMPDIR/skkdic$PID.{pag,dir,db}, where $PID is the process ID.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the directory where the
+    temporary files are written, pointing to a valid file somewhere on the
+    filesystem that is writable by the user running the SKK software. When
+    SKK writes the temporary file, the target valid file would then be
+    overwritten with the contents of the SKK temporary file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SKK Tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-i18n/skktools-1.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3916">CVE-2007-3916</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Sep 2007 19:17:24 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Sep 2007 19:18:40 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 20:45:18 +0000">
+    aetius
+  </metadata>
+</glsa>

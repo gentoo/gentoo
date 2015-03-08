@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-22">
+  <title>poppassd_pam: Unauthorized password changing</title>
+  <synopsis>
+    poppassd_pam allows anyone to change any user's password without
+    authenticating the user first.
+  </synopsis>
+  <product type="ebuild">poppassd_pam</product>
+  <announced>January 11, 2005</announced>
+  <revised>January 11, 2005: 01</revised>
+  <bug>75820</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/poppassd_ceti" auto="yes" arch="*">
+      <unaffected range="ge">1.8.4</unaffected>
+      <vulnerable range="le">1.0</vulnerable>
+    </package>
+    <package name="net-mail/poppassd_pam" auto="yes" arch="*">
+      <vulnerable range="le">1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    poppassd_pam is a PAM-enabled server for changing system passwords
+    that can be used to change POP server passwords.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gentoo Linux developer Marcus Hanwell discovered that poppassd_pam
+    did not check that the old password was valid before changing
+    passwords. Our investigation revealed that poppassd_pam did not call
+    pam_authenticate before calling pam_chauthtok.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could change the system password of any user,
+    including root. This leads to a complete compromise of the POP
+    accounts, and may also lead to a complete root compromise of the
+    affected server, if it also provides shell access authenticated using
+    system passwords.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All poppassd_pam users should migrate to the new package called
+    poppassd_ceti:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/poppassd_ceti-1.8.4&quot;</code>
+    <p>
+    Note: Portage will automatically replace the poppassd_pam
+    package by the poppassd_ceti package.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0002">CAN-2005-0002</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Jan 2005 08:56:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Jan 2005 12:12:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 19:52:14 +0000">
+    koon
+  </metadata>
+</glsa>

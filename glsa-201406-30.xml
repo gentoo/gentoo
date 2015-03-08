@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-30">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>A vulnerability has been found in sudo allowing a local attacker to
+    gain elevated privileges. 
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>June 27, 2014</announced>
+  <revised>June 27, 2014: 1</revised>
+  <bug>503586</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5</unaffected>
+      <unaffected range="lt">1.6.9</unaffected>
+      <vulnerable range="lt">1.8.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo allows a system administrator to give users the ability to run
+      commands as other users. Access to commands may also be granted on a
+      range to hosts. 
+    </p>
+  </background>
+  <description>
+    <p>When the Sudo env_reset option is disabled (it is enabled by default),
+      certain environment variables are not blacklisted as expected.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker, authorized to run commands using sudo, can use this
+      flaw to execute arbitrary code or escalate his privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0106">CVE-2014-0106</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Jun 2014 23:56:18 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 27 Jun 2014 08:30:38 +0000">K_F</metadata>
+</glsa>

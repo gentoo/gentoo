@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-05">
+  <title>xli, xloadimage: Multiple vulnerabilities</title>
+  <synopsis>
+    xli and xloadimage are vulnerable to multiple issues, potentially leading
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xli</product>
+  <announced>March 02, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>79762</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xloadimage" auto="yes" arch="*">
+      <unaffected range="ge">4.1-r2</unaffected>
+      <vulnerable range="lt">4.1-r2</vulnerable>
+    </package>
+    <package name="media-gfx/xli" auto="yes" arch="*">
+      <unaffected range="ge">1.17.0-r1</unaffected>
+      <vulnerable range="lt">1.17.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xli and xloadimage are X11 utilities for displaying and manipulating a
+    wide range of image formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team has reported that
+    xli and xloadimage contain a flaw in the handling of compressed images,
+    where shell meta-characters are not adequately escaped. Rob Holland of
+    the Gentoo Linux Security Audit Team has reported that an xloadimage
+    vulnerability in the handling of Faces Project images discovered by
+    zen-parse in 2001 remained unpatched in xli. Additionally, it has been
+    reported that insufficient validation of image properties in xli could
+    potentially result in buffer management errors.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would permit a remote attacker to execute
+    arbitrary shell commands, or arbitrary code with the privileges of the
+    xloadimage or xli user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xli users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xli-1.17.0-r1&quot;</code>
+    <p>
+    All xloadimage users should also upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xloadimage-4.1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2001-0775">CAN-2001-0775</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0638">CVE-2005-0638</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0639">CVE-2005-0639</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 28 Feb 2005 21:34:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Feb 2005 22:05:32 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  2 Mar 2005 16:53:18 +0000">
+    koon
+  </metadata>
+</glsa>

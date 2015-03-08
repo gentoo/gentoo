@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-08">
+  <title>WordPress: Arbitrary command execution</title>
+  <synopsis>
+    WordPress fails to sufficiently check the format of cached username data.
+  </synopsis>
+  <product type="ebuild">wordpress</product>
+  <announced>June 09, 2006</announced>
+  <revised>June 10, 2006: 02</revised>
+  <bug>134397</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3</unaffected>
+      <vulnerable range="lt">2.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a PHP and MySQL based content management and publishing
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    rgod discovered that WordPress insufficiently checks the format of
+    cached username data.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this vulnerability to execute arbitrary
+    commands by sending a specially crafted username. As of Wordpress 2.0.2
+    the user data cache is disabled by default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordPress users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-2.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2667">CVE-2006-2667</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2702">CVE-2006-2702</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 06 Jun 2006 16:40:51 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 06 Jun 2006 17:50:23 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-36">
+  <title>MLDonkey: Information disclosure</title>
+  <synopsis>
+    A vulnerability in the MLDonkey web interface allows remote attackers to
+    disclose arbitrary files.
+  </synopsis>
+  <product type="ebuild">mldonkey</product>
+  <announced>March 23, 2009</announced>
+  <revised>March 23, 2009: 01</revised>
+  <bug>260072</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/mldonkey" auto="yes" arch="*">
+      <unaffected range="ge">3.0.0</unaffected>
+      <vulnerable range="lt">3.0.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MLDonkey is a multi-network P2P application written in Ocaml, coming
+    with its own Gtk GUI, web and telnet interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Michael Peselnik reported that src/utils/lib/url.ml in the web
+    interface of MLDonkey does not handle file names with leading double
+    slashes properly.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could gain access to arbitrary files readable by the
+    user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the web interface or restrict access to it.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MLDonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/mldonkey-3.0.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0753">CVE-2009-0753</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 Mar 2009 20:26:47 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 Mar 2009 20:38:08 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 22 Mar 2009 22:00:11 +0000">
+    a3li
+  </metadata>
+</glsa>

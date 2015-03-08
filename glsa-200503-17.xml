@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-17">
+  <title>libexif: Buffer overflow vulnerability</title>
+  <synopsis>
+    libexif fails to validate certain inputs, making it vulnerable to buffer
+    overflows.
+  </synopsis>
+  <product type="ebuild">libexif</product>
+  <announced>March 12, 2005</announced>
+  <revised>March 12, 2005: 01</revised>
+  <bug>84076</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libexif" auto="yes" arch="*">
+      <unaffected range="ge">0.5.12-r1</unaffected>
+      <vulnerable range="lt">0.5.12-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libexif is a library for parsing, editing and saving EXIF data.
+    </p>
+  </background>
+  <description>
+    <p>
+    libexif contains a buffer overflow vulnerability in the EXIF tag
+    validation code. When opening an image with a specially crafted EXIF
+    tag, the lack of validation can cause applications linked to libexif to
+    crash.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A specially crafted EXIF file could crash applications making use
+    of libexif, potentially allowing the execution of arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libexif users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libexif-0.5.12-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0664">CAN-2005-0664</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 12 Mar 2005 16:28:06 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 12 Mar 2005 17:56:45 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 12 Mar 2005 18:48:27 +0000">
+    lewk
+  </metadata>
+</glsa>

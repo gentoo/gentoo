@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-04">
+  <title>Logsurfer: Arbitrary code execution</title>
+  <synopsis>A double-free flaw in Logsurfer allows a remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">Logsurfer</product>
+  <announced>January 20, 2012</announced>
+  <revised>January 20, 2012: 1</revised>
+  <bug>387397</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/logsurfer+" auto="yes" arch="*">
+      <unaffected range="ge">1.8</unaffected>
+      <vulnerable range="lt">1.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Logsurfer is a real time log monitoring and analysis tool.</p>
+  </background>
+  <description>
+    <p>Logsurfer log files may contain substrings used for executing external
+      commands. The prepare_exec() function in src/exec.c contains a
+      double-free vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could inject specially-crafted strings into a log file
+      processed by Logsurfer, resulting in the execution of arbitrary code with
+      the permissions of the Logsurfer user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Logsurfer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/logsurfer+-1.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3626">
+      CVE-2011-3626
+    </uri>
+  </references>
+  <metadata timestamp="Sat, 19 Nov 2011 12:42:58 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Fri, 20 Jan 2012 18:19:29 +0000" tag="submitter">ackle</metadata>
+</glsa>

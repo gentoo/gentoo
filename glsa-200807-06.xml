@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-06">
+  <title>Apache: Denial of Service</title>
+  <synopsis>
+    Multiple vulnerabilities in Apache might lead to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>July 09, 2008</announced>
+  <revised>July 09, 2008: 01</revised>
+  <bug>222643</bug>
+  <bug>227111</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.2.9</unaffected>
+      <vulnerable range="lt">2.2.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of the most popular web servers on the
+    Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Apache:
+    </p>
+    <ul>
+    <li>
+    Dustin Kirkland reported that the mod_ssl module can leak memory when
+    the client reports support for a compression algorithm (CVE-2008-1678).
+    </li>
+    <li>
+    Ryujiro Shibuya reported that the ap_proxy_http_process_response()
+    function in the mod_proxy module does not limit the number of forwarded
+    interim responses (CVE-2008-2364).
+    </li>
+    <li>
+    sp3x of SecurityReason reported a Cross-Site Request Forgery
+    vulnerability in the balancer-manager in the mod_proxy_balancer module
+    (CVE-2007-6420).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by connecting to
+    an Apache httpd, by causing an Apache proxy server to connect to a
+    malicious server, or by enticing a balancer administrator to connect to
+    a specially-crafted URL, resulting in a Denial of Service of the Apache
+    daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.2.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6420">CVE-2007-6420</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1678">CVE-2008-1678</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2364">CVE-2008-2364</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Jun 2008 10:47:39 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Jun 2008 23:51:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 23:51:13 +0000">
+    rbu
+  </metadata>
+</glsa>

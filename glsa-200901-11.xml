@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-11">
+  <title>Avahi: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability has been discovered in Avahi.
+  </synopsis>
+  <product type="ebuild">avahi</product>
+  <announced>January 14, 2009</announced>
+  <revised>January 14, 2009: 01</revised>
+  <bug>250913</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/avahi" auto="yes" arch="*">
+      <unaffected range="ge">0.6.24</unaffected>
+      <vulnerable range="lt">0.6.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Avahi is a system that facilitates service discovery on a local
+    network.
+    </p>
+  </background>
+  <description>
+    <p>
+    Hugo Dias reported a failed assertion in the
+    originates_from_local_legacy_unicast_socket() function in
+    avahi-core/server.c when processing mDNS packets with a source port of
+    0.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted packets to the daemon,
+    leading to its crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Avahi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/avahi-0.6.24&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5081">CVE-2008-5081</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:41:03 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Jan 2009 22:42:38 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Jan 2009 22:42:49 +0000">
+    p-y
+  </metadata>
+</glsa>

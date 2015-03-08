@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-16">
+  <title>Multiple XSS Vulnerabilities in SquirrelMail</title>
+  <synopsis>
+    SquirrelMail is subject to several XSS and one SQL injection vulnerability.
+  </synopsis>
+  <product type="ebuild">SquirrelMail</product>
+  <announced>May 25, 2004</announced>
+  <revised>May 27, 2006: 04</revised>
+  <bug>49675</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3_rc1</unaffected>
+      <vulnerable range="lt">1.4.3_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SquirrelMail is a webmail package written in PHP. It supports IMAP and
+    SMTP, and can optionally be installed with SQL support.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several unspecified cross-site scripting (XSS) vulnerabilities and a
+    well hidden SQL injection vulnerability were found. An XSS attack
+    allows an attacker to insert malicious code into a web-based
+    application. SquirrelMail does not check for code when parsing
+    variables received via the URL query string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    One of the XSS vulnerabilities could be exploited by an attacker to
+    steal cookie-based authentication credentials from the user's browser.
+    The SQL injection issue could potentially be used by an attacker to run
+    arbitrary SQL commands inside the SquirrelMail database with privileges
+    of the SquirrelMail database user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to
+    upgrade to version 1.4.3_rc1 or higher of SquirrelMail.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SquirrelMail users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=mail-client/squirrelmail-1.4.3_rc1&quot;
+    # emerge &quot;&gt;=mail-client/squirrelmail-1.4.3_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=4199060&amp;forum_id=1988">SquirrelMail 1.4.3_rc1 release annoucement</uri>
+    <uri link="http://www.securityfocus.com/bid/10246/">Bugtraq security annoucement</uri>
+    <uri link="http://www.cert.org/advisories/CA-2000-02.html">CERT description of XSS</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0519">CVE-2004-0519</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0521">CVE-2004-0521</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

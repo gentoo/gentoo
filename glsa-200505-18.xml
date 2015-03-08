@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-18">
+  <title>Net-SNMP: fixproc insecure temporary file creation</title>
+  <synopsis>
+    Net-SNMP creates temporary files in an insecure manner, possibly allowing
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">net-snmp</product>
+  <announced>May 23, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>91792</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/net-snmp" auto="yes" arch="*">
+      <unaffected range="ge">5.2.1-r1</unaffected>
+      <vulnerable range="lt">5.2.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Net-SNMP is a suite of applications used to implement the Simple
+    Network Management Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    The fixproc application of Net-SNMP creates temporary files with
+    predictable filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious local attacker could exploit a race condition to change the
+    content of the temporary files before they are executed by fixproc,
+    possibly leading to the execution of arbitrary code. A local attacker
+    could also create symbolic links in the temporary files directory,
+    pointing to a valid file somewhere on the filesystem. When fixproc is
+    executed, this would result in the file being overwritten.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Net-SNMP users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/net-snmp-5.2.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1740">CVE-2005-1740</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 May 2005 14:27:59 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 22 May 2005 15:33:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 May 2005 23:22:24 +0000">
+    DerCorny
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-17">
+  <title>IPsec-Tools: authentication bug in racoon</title>
+  <synopsis>
+    racoon provided as part of IPsec-Tools fails do proper authentication.
+  </synopsis>
+  <product type="ebuild">IPsec-Tools</product>
+  <announced>June 22, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>53915</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-firewall/ipsec-tools" auto="yes" arch="*">
+      <unaffected range="ge">0.3.3</unaffected>
+      <vulnerable range="lt">0.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    IPsec-Tools is a port of KAME's implementation of the IPsec utilities.
+    It contains a collection of network monitoring tools, including racoon,
+    ping, and ping6.
+    </p>
+  </background>
+  <description>
+    <p>
+    The KAME IKE daemon racoon is used to authenticate peers during Phase 1
+    when using either preshared keys, GSS-API, or RSA signatures. When
+    using RSA signatures racoon validates the X.509 certificate but not the
+    RSA signature.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a valid and trusted X.509 certificate and any private key an
+    attacker could exploit this vulnerability to perform man-in-the-middle
+    attacks and initiate unauthorized connections.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IPsec-Tools users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-firewall/ipsec-tools-0.3.3&quot;
+    # emerge &quot;&gt;=net-firewall/ipsec-tools-0.3.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://ipsec-tools.sourceforge.net/x509sig.html">IPsec-Tools Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0155">CVE-2004-0155</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0607">CVE-2004-0607</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

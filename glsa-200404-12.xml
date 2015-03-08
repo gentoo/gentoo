@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-12">
+  <title>Scorched 3D server chat box format string vulnerability</title>
+  <synopsis>
+    Scorched 3D is vulnerable to a format string attack in the chat box that
+    leads to Denial of Service on the game server and possibly allows execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">scorched3d</product>
+  <announced>April 09, 2004</announced>
+  <revised>April 09, 2004: 08</revised>
+  <bug>39302</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-strategy/scorched3d" auto="yes" arch="*">
+      <unaffected range="ge">37</unaffected>
+      <vulnerable range="lt">37</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Scorched 3D is a game based loosely on the classic DOS game &quot;Scorched
+    Earth&quot;. Scorched 3D adds amongst other new features a 3D island
+    environment and LAN and internet play. Scorched 3D is totally free and is
+    available for multiple operating systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Scorched 3D (build 36.2 and before) does not properly check the text
+    entered in the Chat box (T key). Using format string characters, you can
+    generate a heap overflow. This and several other unchecked buffers have
+    been corrected in the build 37 release.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    This vulnerability can be easily exploited to remotely crash the Scorched
+    3D server, disconnecting all clients. It could also theorically be used to
+    execute arbitrary code on the server with the rights of the user running
+    the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Scorched 3D users should upgrade to version 37 or later:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=games-strategy/scorched3d-37"
+    # emerge ">=games-strategy/scorched3d-37"</code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

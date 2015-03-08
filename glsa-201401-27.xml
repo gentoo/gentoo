@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-27">
+  <title>GNU TeXmacs: Privilege escalation</title>
+  <synopsis>A vulnerability in GNU TeXmacs could result in privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">texmacs</product>
+  <announced>January 26, 2014</announced>
+  <revised>January 26, 2014: 2</revised>
+  <bug>337532</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-office/texmacs" auto="yes" arch="*">
+      <unaffected range="ge">1.0.7.2-r1</unaffected>
+      <vulnerable range="lt">1.0.7.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU TeXmacs is a free WYSIWYG editing platform with special features for
+      scientists.
+    </p>
+  </background>
+  <description>
+    <p>The texmacs and tm_mupad_help scripts in TeXmacs place a zero-length
+      directory name in the LD_LIBRARY_PATH, which might result in the current
+      working directory (.) to be included when searching for dynamically
+      linked libraries.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges via a specially crafted
+      shared library.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU TeXmacs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/texmacs-1.0.7.2-r1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since April 02, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3394">
+      CVE-2010-3394
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:13 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jan 2014 00:54:29 +0000">Zlogene</metadata>
+</glsa>

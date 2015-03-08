@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-08">
+  <title>SquidClamav: Denial of Service</title>
+  <synopsis>A vulnerability in SquidClamav may result in Denial of Service.</synopsis>
+  <product type="ebuild">squidclamav</product>
+  <announced>September 24, 2012</announced>
+  <revised>September 24, 2012: 1</revised>
+  <bug>428778</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squidclamav" auto="yes" arch="*">
+      <unaffected range="ge">6.8</unaffected>
+      <vulnerable range="lt">6.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SquidClamav is a HTTP anti-virus for Squid based on ClamAV and ICAP.</p>
+  </background>
+  <description>
+    <p>SquidClamav does not properly escape URLs before passing them to the
+      system command call.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted URL to SquidClamav,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SquidClamav users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/squidclamav-6.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3501">CVE-2012-3501</uri>
+    <uri link="http://squidclamav.darold.net/news.html">SquidClamav News</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:12:43 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 23:23:20 +0000">ackle</metadata>
+</glsa>

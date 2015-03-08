@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200902-04">
+  <title>xterm: User-assisted arbitrary commands execution</title>
+  <synopsis>
+    An error in the processing of special sequences in xterm may lead to
+    arbitrary commands execution.
+  </synopsis>
+  <product type="ebuild">xterm</product>
+  <announced>February 12, 2009</announced>
+  <revised>February 12, 2009: 01</revised>
+  <bug>253155</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-terms/xterm" auto="yes" arch="*">
+      <unaffected range="ge">239</unaffected>
+      <vulnerable range="lt">239</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xterm is a terminal emulator for the X Window system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Paul Szabo reported an insufficient input sanitization when processing
+    Device Control Request Status String (DECRQSS) sequences.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to display a file containing
+    specially crafted DECRQSS sequences, possibly resulting in the remote
+    execution of arbitrary commands with the privileges of the user viewing
+    the file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xterm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/xterm-239&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2383">CVE-2008-2383</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 28 Jan 2009 00:33:40 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 10 Feb 2009 10:22:45 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 10 Feb 2009 10:22:57 +0000">
+    p-y
+  </metadata>
+</glsa>

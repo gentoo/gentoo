@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200402-04">
+  <title>Gallery 1.4.1 and below remote exploit vulnerability</title>
+  <synopsis>
+    The Gallery developers have discovered a potentially serious security flaw
+    in Gallery 1.3.1, 1.3.2, 1.3.3, 1.4 and 1.4.1 which can allow a 
+    remote exploit of your webserver.
+  </synopsis>
+  <product type="ebuild">Gallery</product>
+  <announced>February 11, 2004</announced>
+  <revised>February 11, 2004: 01</revised>
+  <bug>39638</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/gallery" auto="yes" arch="*">
+      <unaffected range="ge">1.4.1_p1</unaffected>
+      <vulnerable range="lt">1.4.1_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gallery is an open source image management system written in PHP.
+    More information is available at http://gallery.sourceforge.net
+    </p>
+  </background>
+  <description>
+    <p>
+    Starting in the 1.3.1 release, Gallery includes code to simulate the behaviour
+    of the PHP 'register_globals' variable in environments where that setting
+    is disabled.  It is simulated by extracting the values of the various
+    $HTTP_ global variables into the global namespace.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A crafted URL such as 
+    http://example.com/gallery/init.php?HTTP_POST_VARS=xxx  causes the
+    'register_globals' simulation code to overwrite the $HTTP_POST_VARS which,
+    when it is extracted, will deliver the given payload. If the
+    payload compromises $GALLERY_BASEDIR then the malicious user can perform a
+    PHP injection exploit and gain remote access to the webserver with PHP 
+    user UID access rights.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The workaround for the vulnerability is to replace init.php and
+    setup/init.php with the files in the following ZIP file:
+    http://prdownloads.sourceforge.net/gallery/patch_1.4.1-to-1.4.1-pl1.zip?download 
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are encouraged to upgrade their gallery installation:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -p ">=www-apps/gallery-1.4.1_p1"
+    # emerge ">=www-apps/gallery-1.4.1_p1"</code>
+  </resolution>
+  <references>
+  </references>
+</glsa>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-32">
+  <title>Links: SSL verification vulnerability</title>
+  <synopsis>An error in the verification of SSL certificates in Links might
+    enable remote attackers to conduct man-in-the-middle attacks. 
+  </synopsis>
+  <product type="ebuild">Links</product>
+  <announced>June 25, 2012</announced>
+  <revised>June 25, 2012: 1</revised>
+  <bug>253847</bug>
+  <bug>411493</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/links" auto="yes" arch="*">
+      <unaffected range="ge">2.6</unaffected>
+      <vulnerable range="lt">2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Links is a fast lightweight text and graphic web-browser.</p>
+  </background>
+  <description>
+    <p>A SSL verification vulnerability and two unspecified vulnerabilities
+      have been discovered in Links. Please review the Secunia Advisory
+      referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker might conduct man-in-the-middle attacks. The unspecified
+      errors could allow for out-of-bounds reads and writes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Links users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/links-2.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/Advisories/33391/">Secunia Advisory SA33391</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:18 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 25 Jun 2012 18:51:32 +0000" tag="submitter">craig</metadata>
+</glsa>

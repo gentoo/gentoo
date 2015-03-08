@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-08">
+  <title>phpMyAdmin: Cross-site scripting vulnerability</title>
+  <synopsis>
+    phpMyAdmin is vulnerable to a cross-site scripting attack.
+  </synopsis>
+  <product type="ebuild">phpMyAdmin</product>
+  <announced>April 11, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>87952</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.6.2_rc1</unaffected>
+      <vulnerable range="lt">2.6.2_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the
+    administration of MySQL databases from a web-browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Oriol Torrent Santiago has discovered that phpMyAdmin fails to validate
+    input to the "convcharset" variable, rendering it vulnerable to
+    cross-site scripting attacks.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By sending a specially-crafted request, an attacker can inject and
+    execute malicious script code, potentially compromising the victim's
+    browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.2_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-3">PMASA-2005-3</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0992">CVE-2005-0992</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 10 Apr 2005 23:16:29 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Apr 2005 00:34:48 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Apr 2005 00:35:39 +0000">
+    lewk
+  </metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-07">
+  <title>Shorewall : Insecure temp file handling</title>
+  <synopsis>
+    Shorewall contains a bug in the code handling the creation of temporary
+    files and directories. This can allow a non-root user to overwrite
+    arbitrary system files.
+  </synopsis>
+  <product type="ebuild">Shorewall</product>
+  <announced>July 08, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>55675</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-firewall/shorewall" auto="yes" arch="*">
+      <unaffected range="ge">1.4.10f</unaffected>
+      <vulnerable range="le">1.4.10c</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Shorewall is a high level tool for configuring Netfilter, the firewall
+    facility included in the Linux Kernel.
+    </p>
+  </background>
+  <description>
+    <p>
+    Shorewall uses temporary files and directories in an insecure manner. A
+    local user could create symbolic links at specific locations,
+    eventually overwriting other files on the filesystem with the rights of
+    the shorewall process.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this vulnerability to overwrite arbitrary
+    system files with root privileges, resulting in Denial of Service or
+    further exploitation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users should upgrade to
+    the latest available version of Shorewall.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest available version of Shorewall,
+    as follows:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-firewall/shorewall-1.4.10f&quot;
+    # emerge &quot;&gt;=net-firewall/shorewall-1.4.10f&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://lists.shorewall.net/pipermail/shorewall-announce/2004-June/000385.html">Shorewall Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0647">CVE-2004-0647</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

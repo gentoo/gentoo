@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201407-04">
+  <title>GnuPG: Denial of Service</title>
+  <synopsis>A vulnerability in GnuPG can lead to a Denial of Service condition.</synopsis>
+  <product type="ebuild">GnuPG. </product>
+  <announced>July 16, 2014</announced>
+  <revised>July 16, 2014: 1</revised>
+  <bug>514718</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">2.0.24</unaffected>
+      <unaffected range="rge">1.4.17</unaffected>
+      <unaffected range="rge">1.4.18</unaffected>
+      <unaffected range="rge">1.4.19</unaffected>
+      <unaffected range="rge">1.4.20</unaffected>
+      <unaffected range="rge">1.4.21</unaffected>
+      <vulnerable range="lt">2.0.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite of
+      cryptographic software.
+    </p>
+  </background>
+  <description>
+    <p>GnuPG does not properly handle a specially crated compressed packet
+      resulting in an infinite loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker can cause a Denial of Service.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuPG 2.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-2.0.24"
+    </code>
+    
+    <p>All GnuPG 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-1.4.17"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4617">CVE-2014-4617</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 05 Jul 2014 11:31:33 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 16 Jul 2014 16:57:44 +0000">K_F</metadata>
+</glsa>

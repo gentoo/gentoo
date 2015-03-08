@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-01">
+  <title>D-Bus, GLib: Privilege escalation</title>
+  <synopsis>A vulnerability has been found in D-Bus which allows local
+    attackers to gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>June 01, 2014</announced>
+  <revised>June 01, 2014: 1</revised>
+  <bug>436028</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.6.8</unaffected>
+      <vulnerable range="lt">1.6.8</vulnerable>
+    </package>
+    <package name="dev-libs/glib" auto="yes" arch="*">
+      <unaffected range="ge">2.32.4-r1</unaffected>
+      <vulnerable range="lt">2.32.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a daemon providing a framework for applications to communicate
+      with one another. GLib is a library providing a number of GNOMEâ€™s core
+      objects and functions.
+    </p>
+  </background>
+  <description>
+    <p>When libdbus is used in a setuid program, a user can gain escalated
+      privileges by leveraging the DBUS_SYSTEM_BUS_ADDRESS variable. GLib can
+      be used in a setuid context with D-Bus, and so can trigger this
+      vulnerability. Please review the CVE identifier below for more details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges and execute arbitrary
+      code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.6.8"
+    </code>
+    
+    <p>All GLib users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/glib-2.32.4-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3524">CVE-2012-3524</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 14 Oct 2012 18:04:56 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jun 2014 14:05:31 +0000">
+    creffett
+  </metadata>
+</glsa>

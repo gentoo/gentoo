@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201307-01">
+  <title>HAProxy: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in HAProxy, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">HAProxy</product>
+  <announced>July 11, 2013</announced>
+  <revised>July 11, 2013: 1</revised>
+  <bug>464340</bug>
+  <bug>473674</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/haproxy" auto="yes" arch="*">
+      <unaffected range="ge">1.4.24</unaffected>
+      <vulnerable range="lt">1.4.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>HAProxy is a free, very fast and reliable solution offering high
+      availability, load balancing, and proxying for TCP and HTTP-based
+      applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in HAProxy. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted request, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      application or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All HAProxy users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/haproxy-1.4.24"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1912">CVE-2013-1912</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2175">CVE-2013-2175</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 07 Jul 2013 15:13:45 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Jul 2013 23:08:33 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

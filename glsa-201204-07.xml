@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201204-07">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Adobe Flash Player, the worst of which
+    might allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">Adobe Flash Player</product>
+  <announced>April 17, 2012</announced>
+  <revised>April 17, 2012: 1</revised>
+  <bug>390149</bug>
+  <bug>404101</bug>
+  <bug>407023</bug>
+  <bug>410005</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.228</unaffected>
+      <vulnerable range="lt">11.2.202.228</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted SWF
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition. Furthermore,
+      a remote attacker may be able to bypass intended access restrictions,
+      bypass cross-domain policy, inject arbitrary web script, or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.228"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2445">CVE-2011-2445</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2450">CVE-2011-2450</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2451">CVE-2011-2451</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2452">CVE-2011-2452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2453">CVE-2011-2453</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2454">CVE-2011-2454</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2455">CVE-2011-2455</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2456">CVE-2011-2456</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2457">CVE-2011-2457</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2458">CVE-2011-2458</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2459">CVE-2011-2459</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2460">CVE-2011-2460</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0752">CVE-2012-0752</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0753">CVE-2012-0753</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0754">CVE-2012-0754</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0755">CVE-2012-0755</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0756">CVE-2012-0756</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0767">CVE-2012-0767</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0768">CVE-2012-0768</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0769">CVE-2012-0769</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0773">CVE-2012-0773</uri>
+  </references>
+  <metadata timestamp="Fri, 02 Dec 2011 19:37:21 +0000" tag="requester">ago</metadata>
+  <metadata timestamp="Tue, 17 Apr 2012 22:44:16 +0000" tag="submitter">ackle</metadata>
+</glsa>

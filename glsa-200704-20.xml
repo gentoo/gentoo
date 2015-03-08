@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-20">
+  <title>NAS: Multiple vulnerabilities</title>
+  <synopsis>
+    The Network Audio System is vulnerable to a buffer overflow that could
+    result in the execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">NAS</product>
+  <announced>April 23, 2007</announced>
+  <revised>April 23, 2007: 01</revised>
+  <bug>171428</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/nas" auto="yes" arch="*">
+      <unaffected range="ge">1.8b</unaffected>
+      <vulnerable range="lt">1.8b</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NAS is a network transparent, client/server audio transport system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma has discovered multiple vulnerabilities in NAS, some of
+    which include a buffer overflow in the function accept_att_local(), an
+    integer overflow in the function ProcAuWriteElement(), and a null
+    pointer error in the function ReadRequestFromClient().
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker having access to the NAS daemon could send an overly long
+    slave name to the server, leading to the execution of arbitrary code
+    with root privileges. A remote attacker could also send a specially
+    crafted packet containing an invalid client ID, which would crash the
+    server and result in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NAS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/nas-1.8b&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1543">CVE-2007-1543</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1544">CVE-2007-1544</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1545">CVE-2007-1545</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1546">CVE-2007-1546</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1547">CVE-2007-1547</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Apr 2007 13:48:29 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 15:19:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Apr 2007 14:16:06 +0000">
+    jaervosz
+  </metadata>
+</glsa>

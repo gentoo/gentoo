@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-12">
+  <title>Postfix: Local privilege escalation vulnerability</title>
+  <synopsis>
+    Postfix incorrectly checks the ownership of a mailbox, allowing, in certain
+    circumstances, to append data to arbitrary files on a local system with
+    root privileges.
+  </synopsis>
+  <product type="ebuild">postfix</product>
+  <announced>August 14, 2008</announced>
+  <revised>October 23, 2008: 02</revised>
+  <bug>232642</bug>
+  <access>local</access>
+  <affected>
+    <package name="mail-mta/postfix" auto="yes" arch="*">
+      <unaffected range="rge">2.4.7-r1</unaffected>
+      <unaffected range="ge">2.5.3-r1</unaffected>
+      <unaffected range="rge">2.4.8</unaffected>
+      <unaffected range="ge">2.4.9</unaffected>
+      <vulnerable range="lt">2.5.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Postfix is Wietse Venema's mailer that attempts to be fast, easy to
+    administer, and secure, as an alternative to the widely-used Sendmail
+    program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sebastian Krahmer of SuSE has found that Postfix allows to deliver mail
+    to root-owned symlinks in an insecure manner under certain conditions.
+    Normally, Postfix does not deliver mail to symlinks, except to
+    root-owned symlinks, for compatibility with the systems using symlinks
+    in /dev like Solaris. Furthermore, some systems like Linux allow to
+    hardlink a symlink, while the POSIX.1-2001 standard requires that the
+    symlink is followed. Depending on the write permissions and the
+    delivery agent being used, this can lead to an arbitrary local file
+    overwriting vulnerability (CVE-2008-2936). Furthermore, the Postfix
+    delivery agent does not properly verify the ownership of a mailbox
+    before delivering mail (CVE-2008-2937).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The combination of these features allows a local attacker to hardlink a
+    root-owned symlink such that the newly created symlink would be
+    root-owned and would point to a regular file (or another symlink) that
+    would be written by the Postfix built-in local(8) or virtual(8)
+    delivery agents, regardless the ownership of the final destination
+    regular file. Depending on the write permissions of the spool mail
+    directory, the delivery style, and the existence of a root mailbox,
+    this could allow a local attacker to append a mail to an arbitrary file
+    like /etc/passwd in order to gain root privileges.
+    </p>
+    <p>
+    The default configuration of Gentoo Linux does not permit any kind of
+    user privilege escalation.
+    </p>
+    <p>
+    The second vulnerability (CVE-2008-2937) allows a local attacker,
+    already having write permissions to the mail spool directory which is
+    not the case on Gentoo by default, to create a previously nonexistent
+    mailbox before Postfix creates it, allowing to read the mail of another
+    user on the system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The following conditions should be met in order to be vulnerable to
+    local privilege escalation.
+    </p>
+    <ul>
+    <li>The mail delivery style is mailbox, with the Postfix built-in
+    local(8) or virtual(8) delivery agents.</li>
+    <li>The mail spool directory (/var/spool/mail) is user-writeable.</li>
+    <li>The user can create hardlinks pointing to root-owned symlinks
+    located in other directories.</li>
+    </ul>
+    <p>
+    Consequently, each one of the following workarounds is efficient.
+    </p>
+    <ul>
+    <li>Verify that your /var/spool/mail directory is not writeable by a
+    user. Normally on Gentoo, only the mail group has write access, and no
+    end-user should be granted the mail group ownership.</li>
+    <li>Prevent the local users from being able to create hardlinks
+    pointing outside of the /var/spool/mail directory, e.g. with a
+    dedicated partition.</li>
+    <li>Use a non-builtin Postfix delivery agent, like procmail or
+    maildrop.</li>
+    <li>Use the maildir delivery style of Postfix ("home_mailbox=Maildir/"
+    for example).</li>
+    </ul>
+    <p>
+    Concerning the second vulnerability, check the write permissions of
+    /var/spool/mail, or check that every Unix account already has a
+    mailbox, by using Wietse Venema's Perl script available in the official
+    advisory.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Postfix users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.5.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2936">CVE-2008-2936</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2937">CVE-2008-2937</uri>
+    <uri link="http://article.gmane.org/gmane.mail.postfix.announce/110">Official Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 14 Aug 2008 13:13:26 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 14 Aug 2008 22:37:03 +0000">
+    falco
+  </metadata>
+</glsa>

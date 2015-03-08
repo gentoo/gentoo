@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-07">
+  <title>X.Org X Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org X Server,
+    allowing attackers to execute arbitrary code or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>May 15, 2014</announced>
+  <revised>May 15, 2014: 1</revised>
+  <bug>466222</bug>
+  <bug>471098</bug>
+  <bug>487360</bug>
+  <bug>497836</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.14.3-r2</unaffected>
+      <vulnerable range="lt">1.14.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org X Server. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker could execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.14.3-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1056">CVE-2013-1056</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1940">CVE-2013-1940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1981">CVE-2013-1981</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1982">CVE-2013-1982</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1983">CVE-2013-1983</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1984">CVE-2013-1984</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1985">CVE-2013-1985</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1986">CVE-2013-1986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1987">CVE-2013-1987</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1988">CVE-2013-1988</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1989">CVE-2013-1989</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1990">CVE-2013-1990</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1991">CVE-2013-1991</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1992">CVE-2013-1992</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1993">CVE-2013-1993</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1994">CVE-2013-1994</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1995">CVE-2013-1995</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1996">CVE-2013-1996</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1997">CVE-2013-1997</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1998">CVE-2013-1998</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1999">CVE-2013-1999</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2000">CVE-2013-2000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2001">CVE-2013-2001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2002">CVE-2013-2002</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2003">CVE-2013-2003</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2004">CVE-2013-2004</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2005">CVE-2013-2005</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2062">CVE-2013-2062</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2063">CVE-2013-2063</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2064">CVE-2013-2064</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2066">CVE-2013-2066</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4396">CVE-2013-4396</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 28 Oct 2013 17:45:33 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 15 May 2014 11:50:15 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

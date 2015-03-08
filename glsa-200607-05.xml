@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-05">
+  <title>SHOUTcast server: Multiple vulnerabilities</title>
+  <synopsis>
+    The SHOUTcast server is vulnerable to a file disclosure vulnerability and
+    multiple XSS vulnerabilities.
+  </synopsis>
+  <product type="ebuild">shoutcast</product>
+  <announced>July 09, 2006</announced>
+  <revised>July 29, 2006: 03</revised>
+  <bug>136721</bug>
+  <bug>136221</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/shoutcast-server-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.9.7</unaffected>
+      <vulnerable range="lt">1.9.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SHOUTcast server is a streaming audio server.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SHOUTcast server is vulnerable to a file disclosure when the server
+    receives a specially crafted GET request. Furthermore it also fails to
+    sanitize the input passed to the "Description", "URL", "Genre", "AIM",
+    and "ICQ" fields.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted GET request to the SHOUTcast server, the
+    attacker can read any file that can be read by the SHOUTcast process.
+    Furthermore it is possible that various request variables could also be
+    exploited to execute arbitrary scripts in the context of a victim's
+    browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SHOUTcast server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/shoutcast-server-bin-1.9.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://people.ksp.sk/~goober/advisory/001-shoutcast.html">Original advisory</uri>
+    <uri link="http://secunia.com/advisories/20524/">SA20524</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3007">CVE-2006-3007</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3534">CVE-2006-3534</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3535">CVE-2006-3535</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 Jun 2006 16:19:23 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 30 Jun 2006 17:31:32 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 02 Jul 2006 14:51:02 +0000">
+    koon
+  </metadata>
+</glsa>

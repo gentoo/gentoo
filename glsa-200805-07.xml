@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-07">
+  <title>Linux Terminal Server Project: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in components shipped with
+    LTSP which allow remote attackers to compromise terminal clients.
+  </synopsis>
+  <product type="ebuild">ltsp</product>
+  <announced>May 09, 2008</announced>
+  <revised>May 09, 2008: 01</revised>
+  <bug>215699</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ltsp" auto="yes" arch="*">
+      <vulnerable range="lt">5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Linux Terminal Server Project adds thin-client support to Linux
+    servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    LTSP version 4.2, ships prebuilt copies of programs such as the Linux
+    Kernel, the X.org X11 server (GLSA 200705-06, GLSA 200710-16, GLSA
+    200801-09), libpng (GLSA 200705-24, GLSA 200711-08), Freetype (GLSA
+    200705-02, GLSA 200705-22) and OpenSSL (GLSA 200710-06, GLSA 200710-30)
+    which were subject to multiple security vulnerabilities since 2006.
+    Please note that the given list of vulnerabilities might not be
+    exhaustive.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly exploit vulnerabilities in the
+    aforementioned programs and execute arbitrary code, disclose sensitive
+    data or cause a Denial of Service within LTSP 4.2 clients.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    LTSP 4.2 is not maintained upstream in favor of version 5. Since
+    version 5 is not yet available in Gentoo, the package has been masked.
+    We recommend that users unmerge LTSP:
+    </p>
+    <code>
+    # emerge --unmerge net-misc/ltsp</code>
+    <p>
+    If you have a requirement for Linux Terminal Servers, please either set
+    up a terminal server by hand or use one of the distributions that
+    already migrated to LTSP 5. If you want to contribute to the
+    integration of LTSP 5 in Gentoo, or want to follow its development,
+    find details in bug 177580.
+    </p>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200705-02.xml">GLSA 200705-02</uri>
+    <uri link="/security/en/glsa/glsa-200705-06.xml">GLSA 200705-06</uri>
+    <uri link="/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
+    <uri link="/security/en/glsa/glsa-200705-24.xml">GLSA 200705-24</uri>
+    <uri link="/security/en/glsa/glsa-200710-06.xml">GLSA 200710-06</uri>
+    <uri link="/security/en/glsa/glsa-200710-16.xml">GLSA 200710-16</uri>
+    <uri link="/security/en/glsa/glsa-200710-30.xml">GLSA 200710-30</uri>
+    <uri link="/security/en/glsa/glsa-200711-08.xml">GLSA 200711-08</uri>
+    <uri link="/security/en/glsa/glsa-200801-09.xml">GLSA 200801-09</uri>
+    <uri link="https://bugs.gentoo.org/177580">Gentoo bug 177580: Port LTSP 5 to Gentoo</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 01 Apr 2008 19:23:11 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:37 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 22:27:26 +0000">
+    rbu
+  </metadata>
+</glsa>

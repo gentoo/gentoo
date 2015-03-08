@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-12">
+  <title>Ettercap: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Ettercap, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ettercap</product>
+  <announced>May 17, 2014</announced>
+  <revised>May 17, 2014: 1</revised>
+  <bug>340897</bug>
+  <bug>451198</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ettercap" auto="yes" arch="*">
+      <unaffected range="ge">0.7.5.2</unaffected>
+      <vulnerable range="lt">0.7.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ettercap is a suite of tools for content filtering, sniffing and man in
+      the middle attacks on a LAN.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ettercap:</p>
+    
+    <ul>
+      <li>Ettercap does not handle temporary files securely (CVE-2010-3843).</li>
+      <li>A format string flaw in Ettercap could cause a buffer overflow
+        (CVE-2010-3844).
+      </li>
+      <li>A stack-based buffer overflow exists in Ettercap (CVE-2013-0722).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to load a specially crafted
+      configuration file using Ettercap, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition. 
+    </p>
+    
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ettercap users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ettercap-0.7.5.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3843">CVE-2010-3843</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3844">CVE-2010-3844</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0722">CVE-2013-0722</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 15 Oct 2012 00:56:47 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:46:36 +0000">ackle</metadata>
+</glsa>

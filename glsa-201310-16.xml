@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-16">
+  <title>TPTEST: Arbitrary code execution</title>
+  <synopsis>Two buffer overflow vulnerabilities in TPTEST may allow remote
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">tptest</product>
+  <announced>October 26, 2013</announced>
+  <revised>October 26, 2013: 1</revised>
+  <bug>261191</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/tptest" auto="yes" arch="*">
+      <unaffected range="ge">3.1.7-r2</unaffected>
+      <vulnerable range="lt">3.1.7-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TPTEST is a tool to measure the speed of a user’s Internet connection.</p>
+  </background>
+  <description>
+    <p>The GetStatsFromLine() function in TPTEST is vulnerable to buffer
+      overflows from STATS lines with long email and pwd fields.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially-crafted STATS line, possibly
+      resulting in arbitrary code execution or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TPTEST users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/tptest-3.1.7-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0650">CVE-2009-0650</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0659">CVE-2009-0659</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 10 Oct 2013 10:39:46 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 26 Oct 2013 20:08:51 +0000">
+    creffett
+  </metadata>
+</glsa>

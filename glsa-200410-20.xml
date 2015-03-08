@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-20">
+  <title>Xpdf, CUPS: Multiple integer overflows</title>
+  <synopsis>
+    Multiple integer overflows were discovered in Xpdf, potentially resulting
+    in execution of arbitrary code upon viewing a malicious PDF file. CUPS
+    includes Xpdf code and therefore is vulnerable to the same issues.
+  </synopsis>
+  <product type="ebuild">Xpdf</product>
+  <announced>October 21, 2004</announced>
+  <revised>November 06, 2004: 02</revised>
+  <bug>69662</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.00-r5</unaffected>
+      <vulnerable range="le">3.00-r4</vulnerable>
+    </package>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.1.20-r5</unaffected>
+      <vulnerable range="le">1.1.20-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xpdf is an open source viewer for Portable Document Format (PDF) files. The
+    Common UNIX Printing System (CUPS) is a cross-platform print spooler that
+    includes some Xpdf code.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans discovered multiple integer overflow issues in Xpdf.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice an user to open a specially-crafted PDF file,
+    potentially resulting in execution of arbitrary code with the rights of the
+    user running Xpdf. By enticing an user to directly print the PDF file to a
+    CUPS printer, an attacker could also crash the CUPS spooler or execute
+    arbitrary code with the rights of the CUPS spooler, which is usually the
+    "lp" user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=app-text/xpdf-3.00-r5"</code>
+    <p>
+    All CUPS users should also upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-print/cups-1.1.20-r5"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 21 Oct 2004 10:10:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 21 Oct 2004 14:18:53 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-13">
+  <title>File: Denial of Service</title>
+  <synopsis>
+    A vulnerability has been discovered in file allowing for a denial of
+    service.
+  </synopsis>
+  <product type="ebuild">file</product>
+  <announced>April 17, 2007</announced>
+  <revised>September 17, 2007: 02</revised>
+  <bug>174217</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">4.21-r1</unaffected>
+      <vulnerable range="eq">4.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    file is a utility that identifies a file format by scanning binary data
+    for patterns.
+    </p>
+  </background>
+  <description>
+    <p>
+    Conor Edberg discovered an error in the way file processes a specific
+    regular expression.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file,
+    using excessive CPU ressources and possibly leading to a Denial of
+    Service. Note that this vulnerability could be also triggered through
+    an automatic file scanner like amavisd-new.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All file users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/file-4.20-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2026">CVE-2007-2026</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 11 Apr 2007 22:06:47 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Apr 2007 13:54:28 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Apr 2007 12:18:04 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-16">
+  <title>cups-filters: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cups-filters, worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">cups-filters</product>
+  <announced>June 16, 2014</announced>
+  <revised>June 16, 2014: 1</revised>
+  <bug>504474</bug>
+  <bug>506518</bug>
+  <bug>508844</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-print/cups-filters" auto="yes" arch="*">
+      <unaffected range="ge">1.0.53</unaffected>
+      <vulnerable range="lt">1.0.53</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cups-filters is an OpenPrinting CUPS Filters.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cups-filters. Please
+      review the CVE identifiers referenced below for more details about the
+      vulnerabilities. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker(s) could possibly execute arbitrary code utilizing
+      multiple attack vectors, or a local attacker could gain escalated
+      privileges via a specially crafted shared library.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cups-filters users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/cups-filters-1.0.53"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6473">CVE-2013-6473</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6474">CVE-2013-6474</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6475">CVE-2013-6475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6476">CVE-2013-6476</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2707">CVE-2014-2707</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jun 2014 05:04:01 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Jun 2014 17:40:51 +0000">Zlogene</metadata>
+</glsa>

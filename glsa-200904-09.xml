@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-09">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in MIT Kerberos 5 might allow remote
+    unauthenticated users to execute arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>April 08, 2009</announced>
+  <revised>April 08, 2009: 01</revised>
+  <bug>262736</bug>
+  <bug>263398</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r6</unaffected>
+      <vulnerable range="lt">1.6.3-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is a suite of applications that implement the Kerberos
+    network protocol. kadmind is the MIT Kerberos 5 administration daemon,
+    KDC is the Key Distribution Center.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in MIT Kerberos 5:
+    </p>
+    <ul>
+    <li>A free() call on an uninitialized pointer in the ASN.1 decoder
+    when decoding an invalid encoding (CVE-2009-0846).</li>
+    <li>A buffer
+    overread in the SPNEGO GSS-API application, reported by Apple Product
+    Security (CVE-2009-0844).</li>
+    <li>A NULL pointer dereference in the
+    SPNEGO GSS-API application, reported by Richard Evans
+    (CVE-2009-0845).</li>
+    <li>An incorrect length check inside an ASN.1
+    decoder leading to spurious malloc() failures (CVE-2009-0847).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote unauthenticated attacker could exploit the first vulnerability
+    to cause a Denial of Service or, in unlikely circumstances, execute
+    arbitrary code on the host running krb5kdc or kadmind with root
+    privileges and compromise the Kerberos key database. Exploitation of
+    the other vulnerabilities might lead to a Denial of Service in kadmind,
+    krb5kdc, or other daemons performing authorization against Kerberos
+    that utilize GSS-API or an information disclosure.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.6.3-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0844">CVE-2009-0844</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0845">CVE-2009-0845</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0846">CVE-2009-0846</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0847">CVE-2009-0847</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 08 Apr 2009 01:07:26 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 08 Apr 2009 18:19:31 +0000">
+    p-y
+  </metadata>
+</glsa>

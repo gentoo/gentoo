@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-05">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Asterisk might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">Asterisk</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>413353</bug>
+  <bug>418189</bug>
+  <bug>418191</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.8.12.1</unaffected>
+      <vulnerable range="lt">1.8.12.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Asterisk:</p>
+    
+    <ul>
+      <li>An error in manager.c allows shell access through the MixMonitor
+        application, GetVar, or Status (CVE-2012-2414).
+      </li>
+      <li>An error in chan_skinny.c could cause a heap-based buffer overflow
+        (CVE-2012-2415).
+      </li>
+      <li>An error in chan_sip.c prevents Asterisk from checking if a channel
+        exists before connected line updates (CVE-2012-2416).
+      </li>
+      <li>An error in chan_iax2.c may cause an invalid pointer to be called
+        (CVE-2012-2947).
+      </li>
+      <li>chan_skinny.c contains a NULL pointer dereference (CVE-2012-2948).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.12.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2414">CVE-2012-2414</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2415">CVE-2012-2415</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2416">CVE-2012-2416</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2947">CVE-2012-2947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2948">CVE-2012-2948</uri>
+  </references>
+  <metadata timestamp="Tue, 24 Apr 2012 21:44:51 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 00:28:33 +0000" tag="submitter">ackle</metadata>
+</glsa>

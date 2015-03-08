@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-03">
+  <title>Dovecot: Denial of Service</title>
+  <synopsis>A vulnerability in Dovecot could allow a remote attacker to create
+    a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">dovecot</product>
+  <announced>December 08, 2014</announced>
+  <revised>December 08, 2014: 1</revised>
+  <bug>509954</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/dovecot" auto="yes" arch="*">
+      <unaffected range="ge">2.2.13</unaffected>
+      <vulnerable range="lt">2.2.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dovecot is an open source IMAP and POP3 email server.</p>
+  </background>
+  <description>
+    <p>Dovecot does not properly close connections, allowing a resource
+      exhaustion for incomplete SSL/TLS handshakes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dovecot users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-2.2.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3430">CVE-2014-3430</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 18:57:07 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Dec 2014 22:57:38 +0000">Zlogene</metadata>
+</glsa>

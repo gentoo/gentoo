@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-08">
+  <title>SeaMonkey: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified in the SeaMonkey project.
+  </synopsis>
+  <product type="ebuild">seamonkey</product>
+  <announced>December 10, 2006</announced>
+  <revised>December 10, 2006: 01</revised>
+  <bug>154449</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6</unaffected>
+      <vulnerable range="lt">1.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The SeaMonkey project is a community effort to deliver
+    production-quality releases of code derived from the application
+    formerly known as 'Mozilla Application Suite'.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SeaMonkey project is vulnerable to arbitrary JavaScript bytecode
+    execution and arbitrary code execution.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could entice a user to load malicious JavaScript or a
+    malicious web page with a SeaMonkey application and execute arbitrary
+    code with the rights of the user running those products. It is
+    important to note that in the SeaMonkey email client, JavaScript is
+    disabled by default.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SeaMonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.0.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5462">CVE-2006-5462</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5463">CVE-2006-5463</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5464">CVE-2006-5464</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5747">CVE-2006-5747</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5748">CVE-2006-5748</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:08:42 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 13:46:12 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Dec 2006 19:01:27 +0000">
+    falco
+  </metadata>
+</glsa>

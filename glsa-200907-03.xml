@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-03">
+  <title>APR Utility Library: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the Apache Portable Runtime Utility Library
+    might enable remote attackers to cause a Denial of Service or disclose
+    sensitive information.
+  </synopsis>
+  <product type="ebuild">apr-util</product>
+  <announced>July 04, 2009</announced>
+  <revised>July 04, 2009: 01</revised>
+  <bug>268643</bug>
+  <bug>272260</bug>
+  <bug>274193</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/apr-util" auto="yes" arch="*">
+      <unaffected range="ge">1.3.7</unaffected>
+      <vulnerable range="lt">1.3.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache Portable Runtime Utility Library (aka apr-util) provides an
+    interface to functionality such as XML parsing, string matching and
+    databases connections.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in the APR Utility
+    Library:
+    </p>
+    <ul>
+    <li>Matthew Palmer reported a heap-based buffer
+    underflow while compiling search patterns in the
+    apr_strmatch_precompile() function in strmatch/apr_strmatch.c
+    (CVE-2009-0023).</li>
+    <li>kcope reported that the expat XML parser in
+    xml/apr_xml.c does not limit the amount of XML entities expanded
+    recursively (CVE-2009-1955).</li>
+    <li>C. Michael Pilato reported an
+    off-by-one error in the apr_brigade_vprintf() function in
+    buckets/apr_brigade.c (CVE-2009-1956).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities to cause a Denial
+    of Service (crash or memory exhaustion) via an Apache HTTP server
+    running mod_dav or mod_dav_svn, or using several configuration files.
+    Additionally, a remote attacker could disclose sensitive information or
+    cause a Denial of Service by sending a specially crafted input. NOTE:
+    Only big-endian architectures such as PPC and HPPA are affected by the
+    latter flaw.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache Portable Runtime Utility Library users should upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/apr-util-1.3.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0023">CVE-2009-0023</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1955">CVE-2009-1955</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1956">CVE-2009-1956</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 26 Jun 2009 08:48:34 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 28 Jun 2009 12:16:58 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 04 Jul 2009 07:45:32 +0000">
+    a3li
+  </metadata>
+</glsa>

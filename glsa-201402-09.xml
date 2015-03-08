@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-09">
+  <title>Apache mod_fcgid: Arbitrary code execution </title>
+  <synopsis>A buffer overflow in Apache mod_fcgid might allow remote attackers
+    to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">mod_fcgid</product>
+  <announced>February 07, 2014</announced>
+  <revised>February 07, 2014: 1</revised>
+  <bug>487314</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_fcgid" auto="yes" arch="*">
+      <unaffected range="ge">2.3.9</unaffected>
+      <vulnerable range="lt">2.3.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache mod_fcgid is a binary-compatible alternative to mod_fastcgi with
+      better process management.
+    </p>
+  </background>
+  <description>
+    <p>Apache mod_fcgid fails to perform a boundary check on user-supplied
+      input, potentially resulting in a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can supply a crafted input, possibly resulting in
+      execution of arbitrary code or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache mod_fcgid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_fcgid-2.3.9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4365">CVE-2013-4365</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Jan 2014 21:08:50 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Feb 2014 20:03:11 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

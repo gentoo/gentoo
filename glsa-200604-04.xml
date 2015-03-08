@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-04">
+  <title>Kaffeine: Buffer overflow</title>
+  <synopsis>
+    Kaffeine is vulnerable to a buffer overflow that could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">kaffeine</product>
+  <announced>April 05, 2006</announced>
+  <revised>April 05, 2006: 01</revised>
+  <bug>127326</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/kaffeine" auto="yes" arch="*">
+      <unaffected range="ge">0.7.1-r2</unaffected>
+      <vulnerable range="lt">0.7.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Kaffeine is a graphical front-end for the xine-lib multimedia
+    library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kaffeine uses an unchecked buffer when fetching remote RAM
+    playlists via HTTP.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to play a specially-crafted
+    RAM playlist resulting in the execution of arbitrary code with the
+    permissions of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Kaffeine users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/kaffeine-0.7.1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0051">CVE-2006-0051</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20060404-1.txt">KDE Security Advisory: Kaffeine buffer overflow</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Apr 2006 13:17:18 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Apr 2006 19:29:42 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Apr 2006 21:13:35 +0000">
+    jaervosz
+  </metadata>
+</glsa>

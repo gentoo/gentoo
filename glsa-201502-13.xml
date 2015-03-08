@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-13">
+  <title>Chromium: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which can allow remote attackers to cause Denial of Service or gain
+    escalated privileges. 
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>February 17, 2015</announced>
+  <revised>February 17, 2015: 1</revised>
+  <bug>537366</bug>
+  <bug>539094</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">40.0.2214.111</unaffected>
+      <vulnerable range="lt">40.0.2214.111</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition,
+      gain privileges via a filesystem: URI, or have other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-40.0.2214.111"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7923">CVE-2014-7923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7924">CVE-2014-7924</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7925">CVE-2014-7925</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7926">CVE-2014-7926</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7927">CVE-2014-7927</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7928">CVE-2014-7928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7929">CVE-2014-7929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7930">CVE-2014-7930</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7931">CVE-2014-7931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7932">CVE-2014-7932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7933">CVE-2014-7933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7934">CVE-2014-7934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7935">CVE-2014-7935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7936">CVE-2014-7936</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7937">CVE-2014-7937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7938">CVE-2014-7938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7939">CVE-2014-7939</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7940">CVE-2014-7940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7941">CVE-2014-7941</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7942">CVE-2014-7942</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7943">CVE-2014-7943</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7944">CVE-2014-7944</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7945">CVE-2014-7945</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7946">CVE-2014-7946</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7947">CVE-2014-7947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7948">CVE-2014-7948</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9646">CVE-2014-9646</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9647">CVE-2014-9647</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9648">CVE-2014-9648</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1205">CVE-2015-1205</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1209">CVE-2015-1209</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1210">CVE-2015-1210</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1211">CVE-2015-1211</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1212">CVE-2015-1212</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1346">CVE-2015-1346</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1359">CVE-2015-1359</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1360">CVE-2015-1360</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1361">CVE-2015-1361</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Jan 2015 22:37:02 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Feb 2015 22:01:01 +0000">K_F</metadata>
+</glsa>

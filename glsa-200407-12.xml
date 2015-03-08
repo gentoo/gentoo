@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-12">
+  <title>Linux Kernel: Remote DoS vulnerability with IPTables TCP Handling</title>
+  <synopsis>
+    A flaw has been discovered in 2.6 series Linux kernels that allows an
+    attacker to send a malformed TCP packet, causing the affected kernel to
+    possibly enter an infinite loop and hang the vulnerable machine.
+  </synopsis>
+  <product type="ebuild">Kernel</product>
+  <announced>July 14, 2004</announced>
+  <revised>October 10, 2004: 02</revised>
+  <bug>55694</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-kernel/aa-sources" auto="no" arch="*">
+      <unaffected range="ge">2.6.5-r5</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.5-r5</vulnerable>
+    </package>
+    <package name="sys-kernel/ck-sources" auto="no" arch="*">
+      <unaffected range="ge">2.6.7-r2</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/development-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.8</unaffected>
+      <vulnerable range="lt">2.6.8</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r7</unaffected>
+      <vulnerable range="lt">2.6.7-r7</vulnerable>
+    </package>
+    <package name="sys-kernel/hardened-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/hppa-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7_p1-r1</unaffected>
+      <vulnerable range="lt">2.6.7_p1-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/mips-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.4-r4</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.4-r4</vulnerable>
+    </package>
+    <package name="sys-kernel/mm-sources" auto="no" arch="*">
+      <unaffected range="ge">2.6.7-r4</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.7-r4</vulnerable>
+    </package>
+    <package name="sys-kernel/pegasos-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/rsbac-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/uclinux-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7_p0-r1</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.7_p0</vulnerable>
+    </package>
+    <package name="sys-kernel/usermode-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.6-r2</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.6-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/win4lin-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/xbox-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <unaffected range="lt">2.6</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Linux kernel is responsible for managing the core aspects of a
+    GNU/Linux system, providing an interface for core system applications as
+    well as providing the essential structure and capability to access hardware
+    that is needed for a running system.
+    </p>
+  </background>
+  <description>
+    <p>
+    An attacker can utilize an erroneous data type in the IPTables TCP option
+    handling code, which lies in an iterator. By making a TCP packet with a
+    header length larger than 127 bytes, a negative integer would be implied in
+    the iterator.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending one malformed packet, the kernel could get stuck in a loop,
+    consuming all of the CPU resources and rendering the machine useless,
+    causing a Denial of Service. This vulnerability requires no local access.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    If users do not use the netfilter functionality or do not use any
+    ``--tcp-option'' rules they are not vulnerable to this exploit. Users that
+    are may remove netfilter support from their kernel or may remove any
+    ``--tcp-option'' rules they might be using. However, all users are urged to
+    upgrade their kernels to patched versions.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to upgrade to the latest available sources for their
+    system:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv your-favorite-sources
+    # emerge your-favorite-sources
+
+    # # Follow usual procedure for compiling and installing a kernel.
+    # # If you use genkernel, run genkernel as you would do normally.</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0626">CAN-2004-0626</uri>
+  </references>
+  <metadata tag="submitter">
+    plasmaroo
+  </metadata>
+</glsa>

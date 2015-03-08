@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-21">
+  <title>Sarg: Remote execution of arbitrary code</title>
+  <synopsis>
+    Sarg is vulnerable to the execution of arbitrary code when processed with
+    untrusted input files.
+  </synopsis>
+  <product type="ebuild">sarg</product>
+  <announced>March 12, 2008</announced>
+  <revised>March 12, 2008: 01</revised>
+  <bug>212208</bug>
+  <bug>212731</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/sarg" auto="yes" arch="*">
+      <unaffected range="ge">2.2.5</unaffected>
+      <vulnerable range="lt">2.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sarg (Squid Analysis Report Generator) is a tool that provides many
+    informations about the Squid web proxy server users activities: time,
+    sites, traffic, etc.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sarg doesn't properly check its input for abnormal content when
+    processing Squid log files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker using a vulnerable Squid as a proxy server or a
+    reverse-proxy server can inject arbitrary content into the "User-Agent"
+    HTTP client header, that will be processed by sarg, which will lead to
+    the execution of arbitrary code, or JavaScript injection, allowing
+    Cross-Site Scripting attacks and the theft of credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sarg users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/sarg-2.2.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1167">CVE-2008-1167</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1168">CVE-2008-1168</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Mar 2008 16:52:09 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 09 Mar 2008 18:03:52 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 09 Mar 2008 21:03:08 +0000">
+    p-y
+  </metadata>
+</glsa>

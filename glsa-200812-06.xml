@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-06">
+  <title>libxml2: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in libxml2 might lead to execution of arbitrary
+    code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>December 02, 2008</announced>
+  <revised>December 02, 2008: 01</revised>
+  <bug>234099</bug>
+  <bug>237806</bug>
+  <bug>239346</bug>
+  <bug>245960</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.7.2-r1</unaffected>
+      <vulnerable range="lt">2.7.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libxml2 is the XML (eXtended Markup Language) C parser and toolkit
+    initially developed for the Gnome project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were reported in libxml2:
+    </p>
+    <ul>
+    <li>
+    Andreas Solberg reported that libxml2 does not properly detect
+    recursion during entity expansion in an attribute value
+    (CVE-2008-3281).
+    </li>
+    <li>
+    A heap-based buffer overflow has been reported in the
+    xmlParseAttValueComplex() function in parser.c (CVE-2008-3529).
+    </li>
+    <li>
+    Christian Weiske reported that predefined entity definitions in
+    entities are not properly handled (CVE-2008-4409).
+    </li>
+    <li>
+    Drew Yao of Apple Product Security reported an integer overflow in the
+    xmlBufferResize() function that can lead to an infinite loop
+    (CVE-2008-4225).
+    </li>
+    <li>
+    Drew Yao of Apple Product Security reported an integer overflow in the
+    xmlSAX2Characters() function leading to a memory corruption
+    (CVE-2008-4226).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to open a
+    specially crafted XML document with an application using libxml2,
+    possibly resulting in the exeution of arbitrary code or a high CPU and
+    memory consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libxml2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libxml2-2.7.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3281">CVE-2008-3281</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3529">CVE-2008-3529</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4409">CVE-2008-4409</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4225">CVE-2008-4225</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4226">CVE-2008-4226</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 01 Oct 2008 21:27:07 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 31 Oct 2008 00:21:31 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 31 Oct 2008 00:21:45 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-21">
+  <title>Charybdis, ShadowIRCd: Denial of Service</title>
+  <synopsis>A vulnerability has been found in Charybdis and ShadowIRCd,
+    possibly resulting in remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">shadowircd</product>
+  <announced>May 18, 2014</announced>
+  <revised>May 18, 2014: 1</revised>
+  <bug>449544</bug>
+  <bug>449790</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/charybdis" auto="yes" arch="*">
+      <unaffected range="ge">3.4.2</unaffected>
+      <vulnerable range="lt">3.4.2</vulnerable>
+    </package>
+    <package name="net-irc/shadowircd" auto="yes" arch="*">
+      <unaffected range="ge">6.3.3</unaffected>
+      <vulnerable range="lt">6.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Charybdis is the Atheme Project’s IRC daemon based on ratbox.
+      ShadowIRCd is an IRC daemon based on Charybdis that adds several useful
+      features.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in Charybdis and ShadowIRCd. Please
+      review the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Charybdis users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/charybdis-3.4.2"
+    </code>
+    
+    <p>All ShadowIRCd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/shadowircd-6.3.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6084">CVE-2012-6084</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 Jan 2013 17:21:58 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:28:17 +0000">ackle</metadata>
+</glsa>

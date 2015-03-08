@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-19">
+  <title>imlib2: Buffer overflows in image decoding</title>
+  <synopsis>
+    Multiple overflows have been found in the imlib2 library image decoding
+    routines, potentially allowing the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">imlib2</product>
+  <announced>January 11, 2005</announced>
+  <revised>January 11, 2005: 01</revised>
+  <bug>77002</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/imlib2" auto="yes" arch="*">
+      <unaffected range="ge">1.2.0</unaffected>
+      <vulnerable range="lt">1.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    imlib2 is an advanced replacement for image manipulation libraries
+    such as libXpm. It is utilized by numerous programs, including gkrellm
+    and several window managers, to display images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Pavel Kankovsky discovered that several buffer overflows found in
+    the libXpm library (see GLSA 200409-34) also apply to imlib (see GLSA
+    200412-03) and imlib2. He also fixed a number of other potential
+    security vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a carefully-crafted
+    image file, which would potentially lead to the execution of arbitrary
+    code with the rights of the user viewing the image. This affects any
+    program that utilizes of the imlib2 library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All imlib2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/imlib2-1.2.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1026">CAN-2004-1026</uri>
+    <uri link="http://security.gentoo.org/glsa/glsa-200412-03.xml">GLSA 200412-03</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat,  8 Jan 2005 09:59:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun,  9 Jan 2005 05:41:55 +0000">
+    dmargoli
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 10 Jan 2005 22:14:19 +0000">
+    koon
+  </metadata>
+</glsa>

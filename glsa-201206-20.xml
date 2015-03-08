@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-20">
+  <title>gdk-pixbuf: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities in gdk-pixbuf may create a Denial of
+    Service condition.
+  </synopsis>
+  <product type="ebuild">gdk-pixbuf</product>
+  <announced>June 23, 2012</announced>
+  <revised>June 23, 2012: 1</revised>
+  <bug>373999</bug>
+  <bug>412033</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">2.24.1-r1</unaffected>
+      <vulnerable range="lt">2.24.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>gdk-pixbuf is an image loading library for GTK+.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in gdk-pixbuf:</p>
+    
+    <ul>
+      <li>The "gdk_pixbuf__gif_image_load()" function in io-gif.c fails to
+        properly handle certain return values from subroutines (CVE-2011-2485).
+      </li>
+      <li>The "read_bitmap_file_data()" function in io-xbm.c contains an
+        integer overflow error (CVE-2012-2370).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      in an application linked against gdk-pixbuf, possibly resulting in Denial
+      of Service. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All gdk-pixbuf users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/gdk-pixbuf-2.24.1-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2485">CVE-2011-2485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2370">CVE-2012-2370</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:08 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sat, 23 Jun 2012 20:11:46 +0000" tag="submitter">ackle</metadata>
+</glsa>

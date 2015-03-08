@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-20">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in ClamAV allowing remote
+    execution of arbitrary code and Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>202762</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.91.2-r1</unaffected>
+      <vulnerable range="lt">0.91.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a free anti-virus toolkit for UNIX, designed
+    especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDefense reported an integer overflow vulnerability in the cli_scanpe()
+    function when parsing Portable Executable (PE) files packed in the MEW
+    format, that could be exploited to cause a heap-based buffer overflow
+    (CVE-2007-6335). Toeroek Edwin reported an off-by-one error when
+    decompressing MS-ZIP compressed CAB files (CVE-2007-6336). An
+    unspecified vulnerability related to the bzip2 decompression algorithm
+    has also been discovered (CVE-2007-6337).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could entice a user or automated system to scan a
+    specially crafted file, possibly leading to the execution of arbitrary
+    code with the privileges of the user running ClamAV (either a system
+    user or the "clamav" user if clamd is compromised).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.91.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6335">CVE-2007-6335</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6336">CVE-2007-6336</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6337">CVE-2007-6337</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 27 Dec 2007 00:36:49 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 28 Dec 2007 22:56:45 +0000">
+    p-y
+  </metadata>
+</glsa>

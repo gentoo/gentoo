@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-11">
+  <title>TikiWiki: Multiple vulnerabilities</title>
+  <synopsis>
+    TikiWiki allows for the disclosure of MySQL database authentication
+    credentials and for cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">tikiwiki</product>
+  <announced>November 20, 2006</announced>
+  <revised>November 20, 2006: 01</revised>
+  <bug>153820</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.9.6</unaffected>
+      <vulnerable range="lt">1.9.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TikiWiki is an open source content management system written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    In numerous files TikiWiki provides an empty sort_mode parameter,
+    causing TikiWiki to display additional information, including database
+    authentication credentials, in certain error messages. TikiWiki also
+    improperly sanitizes the "url" request variable sent to
+    tiki-featured_link.php.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause a database error in various pages of a TikiWiki
+    instance by providing an empty sort_mode request variable, and gain
+    unauthorized access to credentials of the MySQL databases used by
+    TikiWiki. An attacker could also entice a user to browse to a specially
+    crafted URL that could run scripts in the scope of the user's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TikiWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.9.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5702">CVE-2006-5702</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5703">CVE-2006-5703</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Nov 2006 17:34:20 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Nov 2006 18:20:06 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 13 Nov 2006 22:24:46 +0000">
+    falco
+  </metadata>
+</glsa>

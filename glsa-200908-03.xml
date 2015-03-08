@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-03">
+  <title>libTIFF: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple boundary checking vulnerabilities in libTIFF may allow for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>August 07, 2009</announced>
+  <revised>August 07, 2009: 01</revised>
+  <bug>276339</bug>
+  <bug>276988</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">3.8.2-r8</unaffected>
+      <vulnerable range="lt">3.8.2-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libTIFF provides support for reading and manipulating TIFF (Tagged
+    Image File Format) images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities have been reported in libTIFF:
+    </p>
+    <ul>
+    <li>
+    wololo reported a buffer underflow in the LZWDecodeCompat() function
+    (CVE-2009-2285).
+    </li>
+    <li>
+    Tielei Wang of ICST-ERCIS, Peking University reported two integer
+    overflows leading to heap-based buffer overflows in the tiff2rgba and
+    rgb2ycbcr tools (CVE-2009-2347).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted TIFF
+    file with an application making use of libTIFF or the tiff2rgba and
+    rgb2ycbcr tools, possibly resulting in the execution of arbitrary code
+    with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libTIFF users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.8.2-r8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2285">CVE-2009-2285</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2347">CVE-2009-2347</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 09 Jul 2009 08:33:26 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 02:17:53 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Aug 2009 13:20:56 +0000">
+    a3li
+  </metadata>
+</glsa>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-21">
+  <title>cpio: Arbitrary code execution </title>
+  <synopsis>A heap-based buffer overflow in cpio might allow a remote rmt
+    server to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">cpio</product>
+  <announced>November 28, 2013</announced>
+  <revised>November 28, 2013: 1</revised>
+  <bug>314663</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/cpio" auto="yes" arch="*">
+      <unaffected range="ge">2.11</unaffected>
+      <vulnerable range="lt">2.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU cpio copies files into or out of a cpio or tar archive.</p>
+  </background>
+  <description>
+    <p>Cpio contains a heap-based buffer overflow in the rmt_read__ function in
+      lib/rtapelib.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote server could sending more data than was requested, related to
+      archive filenames that contain a : (colon) character, possibly resulting
+      in execution of arbitrary code or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cpio users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/cpio-2.11"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0624">
+      CVE-2010-0624
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:31 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:19:10 +0000">Zlogene</metadata>
+</glsa>

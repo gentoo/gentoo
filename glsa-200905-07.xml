@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-07">
+  <title>Pidgin: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Pidgin might allow for the remote execution of
+    arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>May 25, 2009</announced>
+  <revised>May 25, 2009: 01</revised>
+  <bug>270811</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.5.6</unaffected>
+      <vulnerable range="lt">2.5.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pidgin (formerly Gaim) is an instant messaging client for a variety of
+    instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Pidgin:
+    </p>
+    <ul>
+    <li>Veracode reported a boundary error in the "XMPP SOCKS5 bytestream
+    server" when initiating an outgoing file transfer (CVE-2009-1373).</li>
+    <li>Ka-Hing Cheung reported a heap corruption flaw in the QQ protocol
+    handler (CVE-2009-1374).</li>
+    <li>A memory corruption flaw in
+    "PurpleCircBuffer" was disclosed by Josef Andrysek
+    (CVE-2009-1375).</li>
+    <li>The previous fix for CVE-2008-2927 contains a
+    cast from uint64 to size_t, possibly leading to an integer overflow
+    (CVE-2009-1376, GLSA 200901-13).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted messages or files using
+    the MSN, XMPP or QQ protocols, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application,
+    or a Denial of Service. NOTE: Successful exploitation might require the
+    victim's interaction.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pidgin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/pidgin-2.5.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1373">CVE-2009-1373</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1374">CVE-2009-1374</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1375">CVE-2009-1375</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1376">CVE-2009-1376</uri>
+    <uri link="/security/en/glsa/glsa-200901-13.xml">GLSA 200901-13</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 25 May 2009 17:46:41 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 May 2009 17:46:49 +0000">
+    a3li
+  </metadata>
+</glsa>

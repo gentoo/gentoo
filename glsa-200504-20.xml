@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-20">
+  <title>openMosixview: Insecure temporary file creation</title>
+  <synopsis>
+    openMosixview and the openMosixcollector daemon are vulnerable to symlink
+    attacks, potentially allowing a local user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">openMosixview</product>
+  <announced>April 21, 2005</announced>
+  <revised>April 21, 2005: 01</revised>
+  <bug>86686</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-cluster/openmosixview" auto="yes" arch="*">
+      <unaffected range="ge">1.5-r1</unaffected>
+      <vulnerable range="lt">1.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The openMosixview package contains several tools used to manage
+    openMosix clusters, including openMosixview (the main monitoring and
+    administration application) and openMosixcollector (a daemon collecting
+    cluster and node information).
+    </p>
+  </background>
+  <description>
+    <p>
+    Gangstuck and Psirac from Rexotec discovered that openMosixview
+    insecurely creates several temporary files with predictable filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When openMosixView or the openMosixcollector daemon runs, this would
+    result in the file being overwritten with the rights of the user
+    running the utility, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All openMosixview users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/openmosixview-1.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0894">CAN-2005-0894</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 20 Apr 2005 11:45:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 20 Apr 2005 11:46:46 +0000">
+    koon
+  </metadata>
+</glsa>

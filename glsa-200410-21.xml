@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-21">
+  <title>Apache 2, mod_ssl: Bypass of SSLCipherSuite directive</title>
+  <synopsis>
+    In certain configurations, it can be possible to bypass restrictions set by
+    the "SSLCipherSuite" directive of mod_ssl.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>October 21, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>66807</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.0.52</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.0.52</vulnerable>
+    </package>
+    <package name="net-www/mod_ssl" auto="yes" arch="*">
+      <unaffected range="ge">2.8.20</unaffected>
+      <vulnerable range="lt">2.8.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of the most popular web servers on the
+    internet. mod_ssl provides SSL v2/v3 and TLS v1 support for Apache 1.3 and
+    is also included in Apache 2.
+    </p>
+  </background>
+  <description>
+    <p>
+    A flaw has been found in mod_ssl where the "SSLCipherSuite" directive could
+    be bypassed in certain configurations if it is used in a directory or
+    location context to restrict the set of allowed cipher suites.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could gain access to a location using any cipher suite
+    allowed by the server/virtual host configuration, disregarding the
+    restrictions by "SSLCipherSuite" for that location.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache 2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=www-servers/apache-2.0.52"
+    # emerge ">=www-servers/apache-2.0.52"</code>
+    <p>
+    All mod_ssl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-www/mod_ssl-2.8.20"
+    # emerge ">=net-www/mod_ssl-2.8.20"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0885">CAN-2004-0885</uri>
+    <uri link="http://issues.apache.org/bugzilla/show_bug.cgi?id=31505">Apache HTTPD Bug 31505</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri,  8 Oct 2004 21:14:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Oct 2004 20:52:28 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 21 Oct 2004 04:34:44 +0000">
+    lewk
+  </metadata>
+</glsa>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-01">
+  <title>GStreamer FFmpeg plugin: Heap-based buffer overflow</title>
+  <synopsis>
+    The GStreamer FFmpeg plugin is vulnerable to a buffer overflow that may be
+    exploited by attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">gst-plugins-ffmpeg</product>
+  <announced>February 05, 2006</announced>
+  <revised>February 05, 2006: 01</revised>
+  <bug>119512</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-plugins/gst-plugins-ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">0.8.7-r1</unaffected>
+      <vulnerable range="lt">0.8.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GStreamer FFmpeg plugin uses code from the FFmpeg library to
+    provide fast colorspace conversion and multimedia decoders to the
+    GStreamer open source media framework.
+    </p>
+  </background>
+  <description>
+    <p>
+    The GStreamer FFmpeg plugin contains derived code from the FFmpeg
+    library, which is vulnerable to a heap overflow in the
+    "avcodec_default_get_buffer()" function discovered by Simon Kilvington
+    (see GLSA 200601-06).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run an application using
+    the GStreamer FFmpeg plugin on a maliciously crafted PIX_FMT_PAL8
+    format image file (like PNG images), possibly leading to the execution
+    of arbitrary code with the permissions of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GStreamer FFmpeg plugin users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-plugins/gst-plugins-ffmpeg-0.8.7-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4048">CVE-2005-4048</uri>
+    <uri link="/security/en/glsa/glsa-200601-06.xml">GLSA 200601-06</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Jan 2006 21:54:38 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 31 Jan 2006 03:13:44 +0000">
+    adir
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 01 Feb 2006 15:27:50 +0000">
+    DerCorny
+  </metadata>
+</glsa>

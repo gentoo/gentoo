@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-16">
+  <title>glibc: Information leak with LD_DEBUG</title>
+  <synopsis>
+    glibc contains an information leak vulnerability allowing the debugging of
+    SUID binaries.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>August 16, 2004</announced>
+  <revised>May 28, 2006: 04</revised>
+  <bug>59526</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="alpha arm hppa ia64 sparc s390">
+      <unaffected range="ge">2.3.2-r11</unaffected>
+      <vulnerable range="le">2.3.2-r10</vulnerable>
+    </package>
+    <package name="sys-libs/glibc" auto="yes" arch="x86 ppc">
+      <unaffected range="ge">2.3.3.20040420-r1</unaffected>
+      <vulnerable range="le">2.3.3.20040420</vulnerable>
+    </package>
+    <package name="sys-libs/glibc" auto="yes" arch="mips">
+      <unaffected range="ge">2.3.4.20040619-r1</unaffected>
+      <vulnerable range="le">2.3.3.20040420</vulnerable>
+    </package>
+    <package name="sys-libs/glibc" auto="yes" arch="amd64">
+      <unaffected range="ge">2.3.4.20040619-r1</unaffected>
+      <vulnerable range="le">2.3.4.20040619</vulnerable>
+    </package>
+    <package name="sys-libs/glibc" auto="yes" arch="ppc64">
+      <unaffected range="ge">2.3.4.20040808</unaffected>
+      <vulnerable range="le">2.3.4.20040605</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU C library defines various Unix-like "system calls" and other
+    basic facilities needed for a standard POSIX-like application to
+    operate.
+    </p>
+  </background>
+  <description>
+    <p>
+    Silvio Cesare discovered a potential information leak in glibc. It
+    allows LD_DEBUG on SUID binaries where it should not be allowed. This
+    has various security implications, which may be used to gain
+    confidentional information.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker can gain the list of symbols a SUID application uses and
+    their locations and can then use a trojaned library taking precendence
+    over those symbols to gain information or perform further exploitation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of glibc.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All glibc users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv your_version
+    # emerge your_version</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1453">CVE-2004-1453</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 17:16:41 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-19">
+  <title>X.Org X Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in the X.Org X server might allow local
+    attackers to disclose information.
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>October 22, 2011</announced>
+  <revised>October 22, 2011: 2</revised>
+  <bug>387069</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="rge">1.9.5-r1</unaffected>
+      <unaffected range="ge">1.10.4-r1</unaffected>
+      <vulnerable range="lt">1.10.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model.
+    </p>
+  </background>
+  <description>
+    <p>vladz reported the following vulnerabilities in the X.Org X server:</p>
+    
+    <ul>
+      <li>The X.Org X server follows symbolic links when trying to access the
+        lock file for a X display, showing a predictable behavior depending on
+        the file type of the link target (CVE-2011-4028).
+      </li>
+      <li>The X.Org X server lock file mechanism allows for a race condition to
+        cause the X server to modify the file permissions of an arbitrary file
+        to 0444 (CVE-2011-4029).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could exploit these vulnerabilities to disclose
+      information by making arbitrary files on a system world-readable or gain
+      information whether a specified file exists on the system and whether it
+      is a file, directory, or a named pipe.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X Server 1.9 users should upgrade to the latest 1.9 version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.9.5-r1"
+    </code>
+    
+    <p>All X.Org X Server 1.10 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.10.4-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4028">CVE-2011-4028</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4029">CVE-2011-4029</uri>
+  </references>
+  <metadata timestamp="Thu, 13 Oct 2011 20:53:51 +0000" tag="requester">a3li</metadata>
+  <metadata timestamp="Sat, 22 Oct 2011 17:19:57 +0000" tag="submitter">a3li</metadata>
+</glsa>

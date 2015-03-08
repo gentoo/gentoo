@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-29">
+  <title>Mailman: Cross-site scripting vulnerability</title>
+  <synopsis>
+    Mailman is vulnerable to cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">mailman</product>
+  <announced>January 22, 2005</announced>
+  <revised>January 22, 2005: 01</revised>
+  <bug>77524</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/mailman" auto="yes" arch="*">
+      <unaffected range="ge">2.1.5-r3</unaffected>
+      <vulnerable range="lt">2.1.5-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mailman is a Python-based mailing list server with an extensive
+    web interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Weimer has discovered a cross-site scripting vulnerability
+    in the error messages that are produced by Mailman.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By enticing a user to visiting a specially-crafted URL, an
+    attacker can execute arbitrary script code running in the context of
+    the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mailman users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailman-2.1.5-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1177">CAN-2004-1177</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Jan 2005 10:01:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Jan 2005 09:22:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Jan 2005 16:36:40 +0000">
+    lewk
+  </metadata>
+</glsa>

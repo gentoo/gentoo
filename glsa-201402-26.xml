@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-26">
+  <title>libssh: Arbitrary code execution</title>
+  <synopsis>Multiple vulnerabilities have been found in libssh, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">libssh</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>444147</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libssh" auto="yes" arch="*">
+      <unaffected range="ge">0.5.3</unaffected>
+      <vulnerable range="lt">0.5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libssh is a C library providing SSHv2 and SSHv1.</p>
+  </background>
+  <description>
+    <p>Multiple buffer overflow, double free, and integer overflow
+      vulnerabilities have been discovered in libssh.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libssh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libssh-0.5.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4559">CVE-2012-4559</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4560">CVE-2012-4560</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4561">CVE-2012-4561</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4562">CVE-2012-4562</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6063">CVE-2012-6063</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 03 Dec 2012 11:55:23 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:44:25 +0000">ackle</metadata>
+</glsa>

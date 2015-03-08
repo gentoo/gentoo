@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-08">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    PHP is affected by multiple issues, including a buffer overflow in
+    wordwrap() which may lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>May 08, 2006</announced>
+  <revised>May 15, 2007: 09</revised>
+  <bug>127939</bug>
+  <bug>128883</bug>
+  <bug>131135</bug>
+  <bug>133524</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="arm hppa ppc s390 sh sparc x86 x86-fbsd">
+      <unaffected range="ge">5.1.4</unaffected>
+      <unaffected range="rge">4.4.2-r2</unaffected>
+      <unaffected range="rge">4.4.3-r1</unaffected>
+      <unaffected range="rge">4.4.4-r4</unaffected>
+      <unaffected range="rge">4.4.6</unaffected>
+      <unaffected range="ge">4.4.7</unaffected>
+      <vulnerable range="lt">5.1.4</vulnerable>
+    </package>
+    <package name="dev-lang/php" auto="yes" arch="alpha amd64 ia64 ppc64">
+      <unaffected range="ge">5.1.4-r4</unaffected>
+      <unaffected range="rge">4.4.2-r6</unaffected>
+      <unaffected range="rge">4.4.3-r1</unaffected>
+      <unaffected range="rge">4.4.4-r4</unaffected>
+      <unaffected range="rge">4.4.6</unaffected>
+      <unaffected range="ge">4.4.7</unaffected>
+      <vulnerable range="lt">5.1.4-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a widely-used general-purpose scripting language that is
+    especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were discovered on PHP4 and PHP5 by Infigo,
+    Tonu Samuel and Maksymilian Arciemowicz. These included a buffer
+    overflow in the wordwrap() function, restriction bypasses in the copy()
+    and tempname() functions, a cross-site scripting issue in the phpinfo()
+    function, a potential crash in the substr_compare() function and a
+    memory leak in the non-binary-safe html_entity_decode() function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Remote attackers might be able to exploit these issues in PHP
+    applications making use of the affected functions, potentially
+    resulting in the execution of arbitrary code, Denial of Service,
+    execution of scripted contents in the context of the affected site,
+    security bypass or information leak.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this point.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-lang/php</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0996">CVE-2006-0996</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1490">CVE-2006-1490</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1990">CVE-2006-1990</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1991">CVE-2006-1991</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 05 May 2006 20:33:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 May 2006 09:55:35 +0000">
+    fox2mike
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 08 May 2006 13:38:05 +0000">
+    koon
+  </metadata>
+</glsa>

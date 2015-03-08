@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-01">
+  <title>Cyrus-SASL: Denial of Service</title>
+  <synopsis>A NULL pointer dereference in Cyrus-SASL may allow remote attackers
+    to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">cyrus-sasl</product>
+  <announced>September 01, 2013</announced>
+  <revised>September 01, 2013: 1</revised>
+  <bug>476764</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/cyrus-sasl" auto="yes" arch="*">
+      <unaffected range="ge">2.1.26-r3</unaffected>
+      <vulnerable range="lt">2.1.26-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cyrus-SASL is an implementation of the Simple Authentication and
+      Security Layer.
+    </p>
+  </background>
+  <description>
+    <p>In the GNU C Library (glibc) from version 2.17 onwards, the crypt()
+      function call can return NULL when the salt violates specifications or
+      the system is in FIPS-140 mode and a DES or MD5 hashed password is
+      passed. When Cyrus-SASL’s authentication mechanisms call crypt(), a
+      NULL may be returned.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could trigger this vulnerability to cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Cyrus-SASL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/cyrus-sasl-2.1.26-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4122">CVE-2013-4122</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:52:45 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Sep 2013 19:36:23 +0000">
+    creffett
+  </metadata>
+</glsa>

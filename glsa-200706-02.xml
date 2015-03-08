@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-02">
+  <title>Evolution: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability has been discovered in Evolution allowing for the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">evolution</product>
+  <announced>June 06, 2007</announced>
+  <revised>June 06, 2007: 01</revised>
+  <bug>170879</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/evolution" auto="yes" arch="*">
+      <unaffected range="ge">2.8.3-r2</unaffected>
+      <vulnerable range="lt">2.8.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evolution is the mail client of the GNOME desktop environment.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar from Secunia Research has discovered a format string
+    error in the write_html() function in the file
+    calendar/gui/e-cal-component-memo-preview.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    shared memo, possibly resulting in the execution of arbitrary code with
+    the privileges of the user running Evolution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Evolution users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/evolution-2.8.3-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1002">CVE-2007-1002</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 02 Jun 2007 07:29:21 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 03 Jun 2007 18:06:03 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 06 Jun 2007 20:42:46 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-19">
+  <title>NVIDIA Drivers: Privilege escalation</title>
+  <synopsis>A vulnerability in NVIDIA drivers may allow a local attacker to
+    gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">nvidia-drivers</product>
+  <announced>June 23, 2012</announced>
+  <revised>June 23, 2012: 1</revised>
+  <bug>411617</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-drivers/nvidia-drivers" auto="yes" arch="*">
+      <unaffected range="ge">295.40</unaffected>
+      <vulnerable range="lt">295.40</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The NVIDIA drivers provide X11 and GLX support for NVIDIA graphic
+      boards.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability has been found in the way NVIDIA drivers handle
+      read/write access to GPU device nodes, allowing access to arbitrary
+      system memory locations.
+    </p>
+    
+    <p>NOTE: Exposure to this vulnerability is reduced in Gentoo due to 660
+      permissions being used on the GPU device nodes by default.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NVIDIA driver users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=x11-drivers/nvidia-drivers-295.40"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0946">CVE-2012-0946</uri>
+  </references>
+  <metadata timestamp="Wed, 18 Apr 2012 00:15:12 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Sat, 23 Jun 2012 14:21:13 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-16">
+  <title>libsndfile: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow vulnerability in libsndfile might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libsndfile</product>
+  <announced>April 17, 2009</announced>
+  <revised>April 17, 2009: 01</revised>
+  <bug>261173</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libsndfile" auto="yes" arch="*">
+      <unaffected range="ge">1.0.19</unaffected>
+      <vulnerable range="lt">1.0.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libsndfile is a C library for reading and writing files containing
+    sampled sound.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alin Rad Pop from Secunia Research reported an integer overflow when
+    processing CAF description chunks, leading to a heap-based buffer
+    overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted CAF
+    file, resulting in the remote execution of arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libsndfile users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libsndfile-1.0.19&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0186">CVE-2009-0186</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Apr 2009 20:06:42 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Apr 2009 18:44:04 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Apr 2009 18:44:13 +0000">
+    p-y
+  </metadata>
+</glsa>

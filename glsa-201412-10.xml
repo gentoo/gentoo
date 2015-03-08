@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-10">
+  <title>Multiple packages, Multiple vulnerabilities fixed in 2012</title>
+  <synopsis>This GLSA contains notification of vulnerabilities found in several
+    Gentoo packages which have been fixed prior to January 1, 2013. The worst
+    of these vulnerabilities could lead to local privilege escalation and
+    remote code execution. Please see the package list and CVE identifiers
+    below for more information.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>December 11, 2014</announced>
+  <revised>December 11, 2014: 1</revised>
+  <bug>284536</bug>
+  <bug>300903</bug>
+  <bug>334475</bug>
+  <bug>358787</bug>
+  <bug>371320</bug>
+  <bug>372905</bug>
+  <bug>399427</bug>
+  <bug>401645</bug>
+  <bug>427802</bug>
+  <bug>428776</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge">1.8.004.20120613</unaffected>
+      <vulnerable range="lt">1.8.004.20120613</vulnerable>
+    </package>
+    <package name="x11-libs/vte" auto="yes" arch="*">
+      <unaffected range="ge">0.32.2</unaffected>
+      <unaffected range="rge">0.28.2-r204</unaffected>
+      <unaffected range="rge">0.28.2-r206</unaffected>
+      <vulnerable range="lt">0.32.2</vulnerable>
+    </package>
+    <package name="net-analyzer/lft" auto="yes" arch="*">
+      <unaffected range="ge">3.33</unaffected>
+      <vulnerable range="lt">3.33</vulnerable>
+    </package>
+    <package name="dev-php/suhosin" auto="yes" arch="*">
+      <unaffected range="ge">0.9.33</unaffected>
+      <vulnerable range="lt">0.9.33</vulnerable>
+    </package>
+    <package name="x11-misc/slock" auto="yes" arch="*">
+      <unaffected range="ge">1.0</unaffected>
+      <vulnerable range="lt">1.0</vulnerable>
+    </package>
+    <package name="sys-cluster/ganglia" auto="yes" arch="*">
+      <unaffected range="ge">3.3.7</unaffected>
+      <vulnerable range="lt">3.3.7</vulnerable>
+    </package>
+    <package name="net-im/gg-transport" auto="yes" arch="*">
+      <unaffected range="ge">2.2.4</unaffected>
+      <vulnerable range="lt">2.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>For more information on the packages listed in this GLSA, please see
+      their homepage referenced in the ebuild.
+    </p>
+  </background>
+  <description>
+    <p>Vulnerabilities have been discovered in the packages listed below.
+      Please review the CVE identifiers in the Reference section for details.
+    </p>
+    
+    <ul>
+      <li>EGroupware</li>
+      <li>VTE</li>
+      <li>Layer Four Traceroute (LFT)</li>
+      <li>Suhosin</li>
+      <li>Slock</li>
+      <li>Ganglia</li>
+      <li>Jabber to GaduGadu Gateway</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker may be able to gain escalated privileges,
+      execute arbitrary code, cause Denial of Service, obtain sensitive
+      information, or otherwise bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All EGroupware users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-apps/egroupware-1.8.004.20120613"
+    </code>
+    
+    <p>All VTE 0.32 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/vte-0.32.2"
+    </code>
+    
+    <p>All VTE 0.28 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/vte-0.28.2-r204"
+    </code>
+    
+    <p>All Layer Four Traceroute users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/lft-3.33"
+    </code>
+    
+    <p>All Suhosin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/suhosin-0.9.33"
+    </code>
+    
+    <p>All Slock users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-misc/slock-1.0"
+    </code>
+    
+    <p>All Ganglia users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-cluster/ganglia-3.3.7"
+    </code>
+    
+    <p>All Jabber to GaduGadu Gateway users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/gg-transport-2.2.4"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures have
+      been available since 2013. It is likely that your system is already no
+      longer affected by these issues.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4776">CVE-2008-4776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2713">CVE-2010-2713</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3313">CVE-2010-3313</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3314">CVE-2010-3314</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0765">CVE-2011-0765</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2198">CVE-2011-2198</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0807">CVE-2012-0807</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0808">CVE-2012-0808</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1620">CVE-2012-1620</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2738">CVE-2012-2738</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3448">CVE-2012-3448</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Aug 2014 19:34:43 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Dec 2014 23:30:44 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-10">
+  <title>Vilistextum: Buffer overflow vulnerability</title>
+  <synopsis>
+    Vilistextum is vulnerable to a buffer overflow that allows an attacker to
+    execute arbitrary code through the use of a malicious webpage.
+  </synopsis>
+  <product type="ebuild">vilistextum</product>
+  <announced>January 06, 2005</announced>
+  <revised>January 06, 2005: 01</revised>
+  <bug>74694</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/vilistextum" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7</unaffected>
+      <vulnerable range="lt">2.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Vilistextum is an HTML to text converter.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ariel Berkman discovered that Vilistextum unsafely reads data into
+    an array without checking the length. This code vulnerability may lead
+    to a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malicious webpage which, when
+    converted, would result in the execution of arbitrary code with the
+    rights of the user running Vilistextum.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Vilistextum users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/vilistextum-2.6.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/vilistextum.txt">Original Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1299">CAN-2004-1299</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  3 Jan 2005 15:34:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 11:50:53 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  6 Jan 2005 13:22:37 +0000">
+    SeJo
+  </metadata>
+</glsa>

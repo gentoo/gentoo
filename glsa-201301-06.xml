@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201301-06">
+  <title>ISC DHCP: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities have been found in ISC DHCP, the worst of
+    which may allow remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">ISC DHCP Server</product>
+  <announced>January 09, 2013</announced>
+  <revised>January 09, 2013: 1</revised>
+  <bug>362453</bug>
+  <bug>378799</bug>
+  <bug>393617</bug>
+  <bug>398763</bug>
+  <bug>428120</bug>
+  <bug>434880</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4_p2</unaffected>
+      <vulnerable range="lt">4.2.4_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ISC DHCP is a Dynamic Host Configuration Protocol (DHCP) client/server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ISC DHCP. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerabilities might allow remote attackers to execute arbitrary
+      code or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ISC DHCP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcp-4.2.4_p2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0997">CVE-2011-0997</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2748">CVE-2011-2748</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2749">CVE-2011-2749</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4539">CVE-2011-4539</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4868">CVE-2011-4868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3570">CVE-2012-3570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3571">CVE-2012-3571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3954">CVE-2012-3954</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3955">CVE-2012-3955</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Oct 2011 16:33:23 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Jan 2013 00:42:17 +0000">craig</metadata>
+</glsa>

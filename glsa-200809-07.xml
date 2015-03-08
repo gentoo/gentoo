@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-07">
+  <title>libTIFF: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple buffer underflow vulnerabilities in libTIFF may allow for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>September 08, 2008</announced>
+  <revised>September 08, 2008: 01</revised>
+  <bug>234080</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">3.8.2-r4</unaffected>
+      <vulnerable range="lt">3.8.2-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libTIFF provides support for reading and manipulating TIFF (Tagged
+    Image File Format) images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Drew Yao (Apple Product Security) and Clay Wood reported multiple
+    buffer underflows in the LZWDecode() and LZWDecodeCompat() functions in
+    tif_lzw.c when processing TIFF files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted TIFF
+    file with an application making use of libTIFF, possibly resulting in
+    the remote execution of arbitrary code with the privileges of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libTIFF users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.8.2-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2327">CVE-2008-2327</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 02 Sep 2008 17:01:52 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 05 Sep 2008 22:08:51 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 05 Sep 2008 22:08:59 +0000">
+    p-y
+  </metadata>
+</glsa>

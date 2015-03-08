@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-16">
+  <title>cpio: Directory traversal vulnerability</title>
+  <synopsis>
+    cpio contains a flaw which may allow a specially crafted cpio archive to
+    extract files to an arbitrary directory.
+  </synopsis>
+  <product type="ebuild">cpio</product>
+  <announced>June 20, 2005</announced>
+  <revised>June 20, 2005: 01</revised>
+  <bug>90619</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-arch/cpio" auto="yes" arch="*">
+      <unaffected range="ge">2.6-r3</unaffected>
+      <vulnerable range="lt">2.6-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cpio is a file archival tool which can also read and write tar
+    files.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been found in cpio that can potentially allow
+    a cpio archive to extract its files to an arbitrary directory of the
+    creator's choice.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could create a malicious cpio archive which would
+    create files in arbitrary locations on the victim's system. This issue
+    could also be used in conjunction with a previous race condition
+    vulnerability (CAN-2005-1111) to change permissions on files owned by
+    the victim.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cpio users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/cpio-2.6-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/396429">Original Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1111">CAN-2005-1111</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 03 May 2005 21:22:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 05 May 2005 15:24:08 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Jun 2005 20:39:43 +0000">
+    jaervosz
+  </metadata>
+</glsa>

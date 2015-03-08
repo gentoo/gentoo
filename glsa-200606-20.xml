@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-20">
+  <title>Typespeed: Remote execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow in the network code of Typespeed can lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">typespeed</product>
+  <announced>June 19, 2006</announced>
+  <revised>June 19, 2006: 01</revised>
+  <bug>135071</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-misc/typespeed" auto="yes" arch="*">
+      <unaffected range="ge">0.5.0</unaffected>
+      <vulnerable range="lt">0.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Typespeed is a game to test and practice 10-finger-typing. Network code
+    allows two users to compete head-to-head.
+    </p>
+  </background>
+  <description>
+    <p>
+    Niko Tyni discovered a buffer overflow in the addnewword() function of
+    Typespeed's network code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending specially crafted network packets to a machine running
+    Typespeed in multiplayer mode, a remote attacker can execute arbitrary
+    code with the permissions of the user running the game.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run Typespeed in multiplayer mode. There is no known workaround
+    at this time for multiplayer mode.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Typespeed users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-misc/typespeed-0.5.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1515">CVE-2006-1515</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jun 2006 22:01:54 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Jun 2006 05:10:07 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Jun 2006 12:23:54 +0000">
+    falco
+  </metadata>
+</glsa>

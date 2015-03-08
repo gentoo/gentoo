@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-08">
+  <title>GD: Integer overflow</title>
+  <synopsis>
+    The PNG image decoding routines in the GD library contain an integer
+    overflow that may allow execution of arbitrary code with the rights of the
+    program decoding a malicious PNG image.
+  </synopsis>
+  <product type="ebuild">GD</product>
+  <announced>November 03, 2004</announced>
+  <revised>November 03, 2004: 01</revised>
+  <bug>69070</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/gd" auto="yes" arch="*">
+      <unaffected range="ge">2.0.32</unaffected>
+      <vulnerable range="lt">2.0.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GD graphics library is an open source library which allows programmers
+    to easily generate PNG, JPEG, GIF and WBMP images from many different
+    programming languages.
+    </p>
+  </background>
+  <description>
+    <p>
+    infamous41md found an integer overflow in the memory allocation procedure
+    of the GD routine that handles loading PNG image files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to load a carefully crafted PNG image
+    file in a GD-powered application, or send a PNG image to a web application
+    which uses GD PNG decoding functions. This could potentially lead to
+    execution of arbitrary code with the rights of the program loading the
+    image.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=media-libs/gd-2.0.32"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/379382">Original BugTraq advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0990">CAN-2004-0990</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  1 Nov 2004 10:23:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  2 Nov 2004 21:56:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  3 Nov 2004 20:55:19 +0000">
+    koon
+  </metadata>
+</glsa>

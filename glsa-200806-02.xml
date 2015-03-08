@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-02">
+  <title>libxslt: Execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability was found in libxslt, possibly resulting in the execution
+    of arbitrary code and Denial of Service.
+  </synopsis>
+  <product type="ebuild">libxslt</product>
+  <announced>June 03, 2008</announced>
+  <revised>June 03, 2008: 01</revised>
+  <bug>222499</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxslt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.24</unaffected>
+      <vulnerable range="lt">1.1.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Libxslt is the XSLT C library developed for the GNOME project. XSLT
+    itself is an XML language to define transformations for XML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Anthony de Almeida Lopes reported a vulnerability in libxslt when
+    handling XSL style-sheet files, which could be exploited to trigger the
+    use of uninitialized memory, e.g. in a call to "free()".
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user or automated system to process an
+    XML file using a specially crafted XSL transformation file, possibly
+    resulting in the execution of arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libxslt users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libxslt-1.1.24&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1767">CVE-2008-1767</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 27 May 2008 20:52:43 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 May 2008 21:07:25 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 02 Jun 2008 21:27:22 +0000">
+    p-y
+  </metadata>
+</glsa>

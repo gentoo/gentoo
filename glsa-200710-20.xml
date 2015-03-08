@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-20">
+  <title>PDFKit, ImageKits: Buffer overflow</title>
+  <synopsis>
+    PDFKit and ImageKits are vulnerable to an integer overflow and a stack
+    overflow allowing for the user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pdfkit imagekits</product>
+  <announced>October 18, 2007</announced>
+  <revised>October 18, 2007: 01</revised>
+  <bug>188185</bug>
+  <access>remote</access>
+  <affected>
+    <package name="gnustep-libs/pdfkit" auto="yes" arch="*">
+      <vulnerable range="le">0.9_pre062906</vulnerable>
+    </package>
+    <package name="gnustep-libs/imagekits" auto="yes" arch="*">
+      <vulnerable range="le">0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PDFKit is a framework for rendering of PDF content in GNUstep
+    applications. ImageKits is a collection of frameworks to support
+    imaging in GNUstep applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Maurycy Prodeus discovered an integer overflow vulnerability possibly
+    leading to a stack-based buffer overflow in the XPDF code which PDFKit
+    is based on. ImageKits also contains a copy of PDFKit.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to view a specially crafted PDF file with a viewer
+    based on ImageKits or PDFKit such as Gentoo's ViewPDF, a remote
+    attacker could cause an overflow, potentially resulting in the
+    execution of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    PDFKit and ImageKits are not maintained upstream, so the packages were
+    masked in Portage. We recommend that users unmerge PDFKit and
+    ImageKits:
+    </p>
+    <code>
+    # emerge --unmerge gnustep-libs/pdfkit
+    # emerge --unmerge gnustep-libs/imagekits</code>
+    <p>
+    As an alternative, users should upgrade their systems to use PopplerKit
+    instead of PDFKit and Vindaloo instead of ViewPDF.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
+    <uri link="/security/en/glsa/glsa-200709-12.xml">GLSA 200709-12</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 02 Oct 2007 21:24:54 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 23:31:24 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 09 Oct 2007 18:28:10 +0000">
+    p-y
+  </metadata>
+</glsa>

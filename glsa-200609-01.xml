@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-01">
+  <title>Streamripper: Multiple remote buffer overflows</title>
+  <synopsis>
+    Streamripper is vulnerable to multiple remote buffer overflows, leading to
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">streamripper</product>
+  <announced>September 06, 2006</announced>
+  <revised>September 06, 2006: 01</revised>
+  <bug>144861</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/streamripper" auto="yes" arch="*">
+      <unaffected range="ge">1.61.26</unaffected>
+      <vulnerable range="lt">1.61.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Streamripper extracts and records individual MP3 file tracks from
+    SHOUTcast streams.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar, from the Debian Security Audit Project, has found that
+    Streamripper is vulnerable to multiple stack based buffer overflows
+    caused by improper bounds checking when processing malformed HTTP
+    headers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to connect to a malicious server, an attacker could
+    execute arbitrary code with the permissions of the user running
+    Streamripper
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Streamripper users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/streamripper-1.61.26&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3124">CVE-2006-3124</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Sep 2006 14:37:38 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 04 Sep 2006 18:11:08 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Sep 2006 19:33:58 +0000">
+    jaervosz
+  </metadata>
+</glsa>

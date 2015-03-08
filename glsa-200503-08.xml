@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-08">
+  <title>OpenMotif, LessTif: New libXpm buffer overflows</title>
+  <synopsis>
+    A new vulnerability has been discovered in libXpm, which is included in
+    OpenMotif and LessTif, that can potentially lead to remote code execution.
+  </synopsis>
+  <product type="ebuild">openmotif</product>
+  <announced>March 04, 2005</announced>
+  <revised>March 04, 2005: 01</revised>
+  <bug>83655</bug>
+  <bug>83656</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/openmotif" auto="yes" arch="*">
+      <unaffected range="ge">2.2.3-r3</unaffected>
+      <unaffected range="rge">2.1.30-r9</unaffected>
+      <vulnerable range="lt">2.2.3-r3</vulnerable>
+    </package>
+    <package name="x11-libs/lesstif" auto="yes" arch="*">
+      <unaffected range="ge">0.94.0-r2</unaffected>
+      <vulnerable range="lt">0.94.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LessTif is a clone of OSF/Motif, which is a standard user
+    interface toolkit available on Unix and Linux. OpenMotif also provides
+    a free version of the Motif toolkit for open source applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Gilbert discovered potentially exploitable buffer overflow
+    cases in libXpm that weren't fixed in previous libXpm security
+    advisories.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A carefully-crafted XPM file could crash applications making use
+    of the OpenMotif or LessTif toolkits, potentially allowing the
+    execution of arbitrary code with the privileges of the user running the
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenMotif users should upgrade to an unaffected version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose x11-libs/openmotif</code>
+    <p>
+    All LessTif users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/lesstif-0.94.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0605">CAN-2005-0605</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  2 Mar 2005 21:43:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  3 Mar 2005 09:21:40 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu,  3 Mar 2005 21:47:17 +0000">
+    koon
+  </metadata>
+</glsa>

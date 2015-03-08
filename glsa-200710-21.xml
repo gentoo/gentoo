@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-21">
+  <title>TikiWiki: Arbitrary command execution</title>
+  <synopsis>
+    Tikiwiki contains a command injection vulnerability which may allow remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tikiwiki</product>
+  <announced>October 20, 2007</announced>
+  <revised>October 20, 2007: 01</revised>
+  <bug>195503</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.9.8.1</unaffected>
+      <vulnerable range="lt">1.9.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TikiWiki is an open source content management system written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    ShAnKaR reported that input passed to the "f" array parameter in
+    tiki-graph_formula.php is not properly verified before being used to
+    execute PHP functions.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could execute arbitrary code with the rights of the user
+    running the web server by passing a specially crafted parameter string
+    to the tiki-graph_formula.php file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TikiWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.9.8.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5423">CVE-2007-5423</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 13 Oct 2007 13:08:51 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 17 Oct 2007 22:20:02 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Oct 2007 18:49:04 +0000">
+    rbu
+  </metadata>
+</glsa>

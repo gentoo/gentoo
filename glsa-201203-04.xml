@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-04">
+  <title>libxml2: Denial of Service</title>
+  <synopsis>A hash collision vulnerability in libxml2 allows remote attackers
+    to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>405261</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.7.8-r5</unaffected>
+      <vulnerable range="lt">2.7.8-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxml2 is the XML C parser and toolkit developed for the Gnome project.</p>
+  </background>
+  <description>
+    <p>libxml2 does not properly randomize hash functions to protect against
+      hash collision attacks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to open a
+      specially crafted XML document with an application using libxml2
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxml2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.7.8-r5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0841">CVE-2012-0841</uri>
+  </references>
+  <metadata timestamp="Sun, 04 Mar 2012 20:55:53 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:04:40 +0000" tag="submitter">ackle</metadata>
+</glsa>

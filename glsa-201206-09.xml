@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-09">
+  <title>MediaWiki: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MediaWiki, the worst of
+    which leading to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">MediaWiki</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>366685</bug>
+  <bug>409513</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mediawiki" auto="yes" arch="*">
+      <unaffected range="ge">1.18.2</unaffected>
+      <vulnerable range="lt">1.18.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The MediaWiki wiki web application as used on wikipedia.org.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mediawiki. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>MediaWiki allows remote attackers to bypass authentication, to perform
+      imports from any wgImportSources wiki via a crafted POST request, to
+      conduct cross-site scripting (XSS) attacks or obtain sensitive
+      information, to inject arbitrary web script or HTML, to conduct
+      clickjacking attacks, to execute arbitrary PHP code, to inject arbitrary
+      web script or HTML, to bypass intended access restrictions and to obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MediaWiki users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.18.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2787">CVE-2010-2787</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2788">CVE-2010-2788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2789">CVE-2010-2789</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0003">CVE-2011-0003</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0047">CVE-2011-0047</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0537">CVE-2011-0537</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1579">CVE-2011-1579</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1580">CVE-2011-1580</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1766">CVE-2011-1766</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1766">CVE-2011-1766</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1578">CVE-2012-1578</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1579">CVE-2012-1579</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1580">CVE-2012-1580</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1581">CVE-2012-1581</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1582">CVE-2012-1582</uri>
+  </references>
+  <metadata timestamp="Sat, 08 Oct 2011 12:42:24 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 18:10:28 +0000" tag="submitter">craig</metadata>
+</glsa>

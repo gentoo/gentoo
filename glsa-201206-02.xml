@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-02">
+  <title>QtGui: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in QtGui could result in execution of arbitrary
+    code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">qt-gui</product>
+  <announced>June 03, 2012</announced>
+  <revised>June 03, 2012: 1</revised>
+  <bug>384089</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/qt-gui" auto="yes" arch="*">
+      <unaffected range="ge">4.7.4-r1</unaffected>
+      <vulnerable range="lt">4.7.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QtGui is a module for the Qt toolkit.</p>
+  </background>
+  <description>
+    <p>An error in qtiffhandler.cpp could cause a buffer overflow.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted TIFF
+      image with an application linked against QtGui, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtGui users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/qt-gui-4.7.4-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3194">CVE-2011-3194</uri>
+  </references>
+  <metadata timestamp="Tue, 15 May 2012 06:37:52 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 03 Jun 2012 11:37:52 +0000" tag="submitter">ackle</metadata>
+</glsa>

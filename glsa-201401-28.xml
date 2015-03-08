@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-28">
+  <title>Tomboy: Privilege escalation</title>
+  <synopsis>A vulnerability in Tomboy could result in privilege escalation.</synopsis>
+  <product type="ebuild">tomboy</product>
+  <announced>January 26, 2014</announced>
+  <revised>January 26, 2014: 1</revised>
+  <bug>356583</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-misc/tomboy" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2-r1</unaffected>
+      <vulnerable range="lt">1.4.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Tomboy is a desktop note-taking application. </p>
+  </background>
+  <description>
+    <p>Tomboy places a zero-length directory name in the LD_LIBRARY_PATH, which
+      might result in the current working directory (.) to be included when
+      searching for dynamically linked libraries.
+    </p>
+    
+    <p>NOTE: This vulnerability exists due to an incomplete fix for
+      CVE-2005-4790 (GLSA 200711-12).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain escalated privileges via a specially crafted
+      shared library.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tomboy users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-misc/tomboy-1.4.2-r1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since March 02, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4005">CVE-2010-4005</uri>
+    <uri link="http://www.gentoo.org/security/en/glsa/glsa-200711-12.xml">GLSA
+      200711-12
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:58 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jan 2014 01:22:06 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-19">
+  <title>Opera telnet URI handler file creation/truncation vulnerability</title>
+  <synopsis>
+    A vulnerability exists in Opera's telnet URI handler that may allow a
+    remote attacker to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>May 25, 2004</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>50857</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">7.50_beta1</unaffected>
+      <vulnerable range="lt">7.50_beta1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    The telnet URI handler in Opera does not check for leading '-'
+    characters in the host name. Consequently, a maliciously-crafted
+    telnet:// link may be able to pass options to the telnet program
+    itself. One example would be the following:
+    </p>
+    <p>
+    telnet://-nMyFile
+    </p>
+    <p>
+    If MyFile exists in the user's home directory and the user clicking on
+    the link has write permissions to it, the contents of the file will be
+    overwritten with the output of the telnet trace information. If MyFile
+    does not exist, the file will be created in the user's home directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This exploit has two possible impacts. First, it may create new files
+    in the user's home directory. Second, and far more serious, it may
+    overwrite existing files that the user has write permissions to. An
+    attacker with some knowledge of a user's home directory might be able
+    to destroy important files stored within.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the telnet URI handler from within Opera.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users are encouraged to upgrade to the latest version of the
+    program:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-client/opera-7.50_beta1&quot;
+    # emerge &quot;&gt;=www-client/opera-7.50_beta1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=104&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Security Advisory 05.12.04</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0473">CVE-2004-0473</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

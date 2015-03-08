@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-23">
+  <title>Star: Directory traversal vulnerability</title>
+  <synopsis>
+    A directory traversal vulnerability has been discovered in Star.
+  </synopsis>
+  <product type="ebuild">star</product>
+  <announced>October 22, 2007</announced>
+  <revised>October 22, 2007: 01</revised>
+  <bug>189690</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/star" auto="yes" arch="*">
+      <unaffected range="ge">1.5_alpha84</unaffected>
+      <vulnerable range="lt">1.5_alpha84</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Star program provides the ability to create and extract tar
+    archives.
+    </p>
+  </background>
+  <description>
+    <p>
+    Robert Buchholz of the Gentoo Security team discovered a directory
+    traversal vulnerability in the has_dotdot() function which does not
+    identify //.. (slash slash dot dot) sequences in file names inside tar
+    files.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By enticing a user to extract a specially crafted tar archive, a remote
+    attacker could extract files to arbitrary locations outside of the
+    specified directory with the permissions of the user running Star.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Star users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/star-1.5_alpha84&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4134">CVE-2007-4134</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 11 Oct 2007 21:17:08 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Oct 2007 01:04:21 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 15 Oct 2007 17:56:09 +0000">
+    rbu
+  </metadata>
+</glsa>

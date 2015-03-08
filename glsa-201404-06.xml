@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201404-06">
+  <title>Mesa: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Mesa could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">mesa</product>
+  <announced>April 08, 2014</announced>
+  <revised>April 08, 2014: 1</revised>
+  <bug>432400</bug>
+  <bug>445916</bug>
+  <bug>472280</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/mesa" auto="yes" arch="*">
+      <unaffected range="ge">9.1.4</unaffected>
+      <vulnerable range="lt">9.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mesa is an OpenGL-like graphic library for Linux.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mesa. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute
+      arbitrary code with the privileges of the process, or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mesa users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/mesa-9.1.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2864">CVE-2012-2864</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5129">CVE-2012-5129</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1872">CVE-2013-1872</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Dec 2012 15:24:43 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Tue, 08 Apr 2014 08:42:29 +0000">ackle</metadata>
+</glsa>

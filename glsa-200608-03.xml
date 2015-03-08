@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-03">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>
+    The Mozilla Foundation has reported numerous security vulnerabilities
+    related to Mozilla Firefox.
+  </synopsis>
+  <product type="ebuild">Firefox</product>
+  <announced>August 03, 2006</announced>
+  <revised>August 03, 2006: 01</revised>
+  <bug>141842</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.5</unaffected>
+      <vulnerable range="lt">1.5.0.5</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.5</unaffected>
+      <vulnerable range="lt">1.5.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is a redesign of the Mozilla Navigator component. The
+    goal is to produce a cross-platform stand-alone browser application.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities have been reported:
+    </p>
+    <ul>
+    <li>Benjamin Smedberg discovered that chrome URL's could be made to
+    reference remote files.</li>
+    <li>Developers in the Mozilla community
+    looked for and fixed several crash bugs to improve the stability of
+    Mozilla clients.</li>
+    <li>"shutdown" reports that cross-site scripting
+    (XSS) attacks could be performed using the construct
+    XPCNativeWrapper(window).Function(...), which created a function that
+    appeared to belong to the window in question even after it had been
+    navigated to the target site.</li>
+    <li>"shutdown" reports that scripts
+    granting the UniversalBrowserRead privilege can leverage that into the
+    equivalent of the far more powerful UniversalXPConnect since they are
+    allowed to "read" into a privileged context.</li>
+    <li>"moz_bug_r_a4"
+    reports that A malicious Proxy AutoConfig (PAC) server could serve a
+    PAC script that can execute code with elevated privileges by setting
+    the required FindProxyForURL function to the eval method on a
+    privileged object that leaked into the PAC sandbox.</li>
+    <li>"moz_bug_r_a4" discovered that Named JavaScript functions have a
+    parent object created using the standard Object() constructor
+    (ECMA-specified behavior) and that this constructor can be redefined by
+    script (also ECMA-specified behavior).</li>
+    <li>Igor Bukanov and
+    shutdown found additional places where an untimely garbage collection
+    could delete a temporary object that was in active use.</li>
+    <li>Georgi
+    Guninski found potential integer overflow issues with long strings in
+    the toSource() methods of the Object, Array and String objects as well
+    as string function arguments.</li>
+    <li>H. D. Moore reported a testcase
+    that was able to trigger a race condition where JavaScript garbage
+    collection deleted a temporary variable still being used in the
+    creation of a new Function object.</li>
+    <li>A malicious page can hijack
+    native DOM methods on a document object in another domain, which will
+    run the attacker's script when called by the victim page.</li>
+    <li>Secunia Research has discovered a vulnerability which is caused due
+    to an memory corruption error within the handling of simultaneously
+    happening XPCOM events. This leads to use of a deleted timer
+    object.</li>
+    <li>An anonymous researcher for TippingPoint and the Zero
+    Day Initiative showed that when used in a web page Java would reference
+    properties of the window.navigator object as it started up.</li>
+    <li>Thilo Girmann discovered that in certain circumstances a JavaScript
+    reference to a frame or window was not properly cleared when the
+    referenced content went away.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A user can be enticed to open specially crafted URLs, visit webpages
+    containing malicious JavaScript or execute a specially crafted script.
+    These events could lead to the execution of arbitrary code, or the
+    installation of malware on the user's computer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.5&quot;</code>
+    <p>
+    Users of the binary package should upgrade as well:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3113">CVE-2006-3113</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3677">CVE-2006-3677</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3801">CVE-2006-3801</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3802">CVE-2006-3802</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3803">CVE-2006-3803</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3805">CVE-2006-3805</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3806">CVE-2006-3806</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3807">CVE-2006-3807</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3808">CVE-2006-3808</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3809">CVE-2006-3809</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3810">CVE-2006-3810</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3811">CVE-2006-3811</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3812">CVE-2006-3812</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 28 Jul 2006 18:10:10 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Aug 2006 16:55:03 +0000">
+    DerCorny
+  </metadata>
+</glsa>

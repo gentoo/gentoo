@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-01">
+  <title>Compress::Zlib: Buffer overflow</title>
+  <synopsis>
+    Compress::Zlib is vulnerable to a buffer overflow which could potentially
+    lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Compress-Zlib</product>
+  <announced>August 01, 2005</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>100540</bug>
+  <access>remote</access>
+  <affected>
+    <package name="perl-core/Compress-Zlib" auto="yes" arch="*">
+      <unaffected range="ge">1.35</unaffected>
+      <vulnerable range="lt">1.35</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Compress::Zlib is a Perl module which provides an interface to
+    the zlib compression library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Compress::Zlib 1.34 contains a local vulnerable version of zlib,
+    which may lead to a buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By creating a specially crafted compressed data stream, attackers
+    can overwrite data structures for applications that use Compress::Zlib,
+    resulting in a Denial of Service and potentially arbitrary code
+    execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Compress::Zlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=perl-core/Compress-Zlib-1.35&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
+    <uri link="/security/en/glsa/glsa-200507-05.xml">GLSA 200507-05</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1849">CAN-2005-1849</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 28 Jul 2005 11:43:56 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Jul 2005 23:24:17 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 01 Aug 2005 05:55:33 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-18">
+  <title>Minitube: Insecure temporary file usage</title>
+  <synopsis>An insecure temporary file usage has been reported in Minitube,
+    possibly allowing symlink attacks.
+  </synopsis>
+  <product type="ebuild">Minitube</product>
+  <announced>March 16, 2012</announced>
+  <revised>March 16, 2012: 1</revised>
+  <bug>388867</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-video/minitube" auto="yes" arch="*">
+      <unaffected range="ge">1.6</unaffected>
+      <vulnerable range="lt">1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Minitube is a Qt4 YouTube desktop client.</p>
+  </background>
+  <description>
+    <p>Tomáš Pružina reported that Minitube does not handle temporary files
+      securely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Minitube users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/minitube-1.6"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since November 11, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://flavio.tordini.org/minitube-1-6-released">Minitube 1.6
+      Release
+    </uri>
+  </references>
+  <metadata timestamp="Tue, 06 Mar 2012 21:07:35 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Fri, 16 Mar 2012 11:06:53 +0000" tag="submitter">ackle</metadata>
+</glsa>

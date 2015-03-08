@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-02">
+  <title>Gnumeric: Heap overflow in the included PCRE library</title>
+  <synopsis>
+    Gnumeric is vulnerable to a heap overflow, possibly leading to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Gnumeric</product>
+  <announced>September 03, 2005</announced>
+  <revised>September 03, 2005: 01</revised>
+  <bug>104010</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/gnumeric" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3-r2</unaffected>
+      <vulnerable range="lt">1.4.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Gnumeric spreadsheet is a versatile application developed as
+    part of the GNOME Office project. libpcre is a library providing
+    functions for Perl-compatible regular expressions.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gnumeric contains a private copy of libpcre which is subject to an
+    integer overflow leading to a heap overflow (see GLSA 200508-17).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could potentially exploit this vulnerability by
+    tricking a user into opening a specially crafted spreadsheet, which
+    could lead to the execution of arbitrary code with the privileges of
+    the user running Gnumeric.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gnumeric users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/gnumeric-1.4.3-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 02 Sep 2005 07:34:06 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 02 Sep 2005 08:27:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 02 Sep 2005 15:23:09 +0000">
+    formula7
+  </metadata>
+</glsa>

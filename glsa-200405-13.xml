@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-13">
+  <title>neon heap-based buffer overflow</title>
+  <synopsis>
+    A vulnerability potentially allowing remote execution of arbitrary code has
+    been discovered in the neon library.
+  </synopsis>
+  <product type="ebuild">neon</product>
+  <announced>May 20, 2004</announced>
+  <revised>May 20, 2004: 01</revised>
+  <bug>51490</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-misc/neon" auto="yes" arch="*">
+      <unaffected range="ge">0.24.6</unaffected>
+      <vulnerable range="le">0.24.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    neon provides an HTTP and WebDAV client library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser discovered a vulnerability in the code of the neon library :
+    if a malicious date string is passed to the ne_rfc1036_parse() function, it
+    can trigger a string overflow into static heap variables.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Depending on the application linked against libneon and when connected to a
+    malicious WebDAV server, this vulnerability could allow execution of
+    arbitrary code with the rights of the user running that application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of neon.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of neon should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/neon-0.24.6"
+    # emerge ">=net-misc/neon-0.24.6"</code>
+  </resolution>
+  <references>
+    <uri link="http://security.e-matters.de/advisories/062004.html">E-matters advisory 06/2004</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0398">CAN-2004-0398</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-04">
+  <title>IMAP Proxy: Format string vulnerabilities</title>
+  <synopsis>
+    Format string vulnerabilities in IMAP Proxy may lead to the execution of
+    arbitrary code when connected to malicious IMAP servers.
+  </synopsis>
+  <product type="ebuild">up-imapproxy</product>
+  <announced>March 06, 2006</announced>
+  <revised>March 06, 2006: 01</revised>
+  <bug>107679</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/up-imapproxy" auto="yes" arch="*">
+      <unaffected range="ge">1.2.4</unaffected>
+      <vulnerable range="lt">1.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    IMAP Proxy (also known as up-imapproxy) proxies IMAP transactions
+    between an IMAP client and an IMAP server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Steve Kemp discovered two format string errors in IMAP Proxy.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could design a malicious IMAP server and entice
+    someone to connect to it using IMAP Proxy, resulting in the execution
+    of arbitrary code with the rights of the victim user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Only connect to trusted IMAP servers using IMAP Proxy.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IMAP Proxy users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/up-imapproxy-1.2.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2661">CVE-2005-2661</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 05 Mar 2006 09:44:08 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 05 Mar 2006 09:44:28 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Mar 2006 15:59:30 +0000">
+    koon
+  </metadata>
+</glsa>

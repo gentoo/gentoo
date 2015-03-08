@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-05">
+  <title>OpenAFS: Arbitrary code execution</title>
+  <synopsis>
+    The cache manager of OpenAFS contains several bugs resulting in remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">OpenAFS</product>
+  <announced>January 16, 2011</announced>
+  <revised>January 16, 2011: 01</revised>
+  <bug>265538</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/openafs" auto="yes" arch="*">
+      <unaffected range="ge">1.4.9</unaffected>
+      <vulnerable range="lt">1.4.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenAFS is a distributed file system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities were discovered:
+    </p>
+    <ul><li>
+    Simon Wilkinson discovered from a bug report by Toby Blake that the
+    cache manager of OpenAFS contains a heap-based buffer overflow which is
+    related to the use of the ERR_PTR macro (CVE-2009-1250).</li>
+    <li>A
+    pointer dereference bug when using XDR arrays was discovered by Simon
+    Wilkinson, with assistance from Derrick Brashear and Jeffrey Altman.
+    (CVE-2009-1251).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    The vulnerabilities might allow remote unauthenticated attackers to
+    cause a Denial of Service (system crash) and possibly execute arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenAFS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/openafs-1.4.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1250">CVE-2009-1250</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1251">CVE-2009-1251</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 01 Jun 2010 20:56:43 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2010 20:07:41 +0000">
+    p-y
+  </metadata>
+</glsa>

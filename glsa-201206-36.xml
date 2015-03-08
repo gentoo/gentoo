@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-36">
+  <title>logrotate: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in logrotate, which could lead
+    to arbitrary system command execution.
+  </synopsis>
+  <product type="ebuild">logrotate</product>
+  <announced>June 25, 2012</announced>
+  <revised>June 25, 2012: 1</revised>
+  <bug>356811</bug>
+  <bug>372973</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/logrotate" auto="yes" arch="*">
+      <unaffected range="ge">3.8.0</unaffected>
+      <vulnerable range="lt">3.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>logrotate rotates, compresses, and mails system logs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in logrotate. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could use this flaw to truncate arbitrary system file,
+      to change file owner or mode on arbitrary system files, to conduct
+      symlink attacks and send arbitrary system files, to execute arbitrary
+      system commands, to cause abort in subsequent logrotate runs, to disclose
+      sensitive information, to execute arbitrary code or cause a Denial of
+      Service condition.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All logrotate users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/logrotate-3.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1098">CVE-2011-1098</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1154">CVE-2011-1154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1155">CVE-2011-1155</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1549">CVE-2011-1549</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:29 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 25 Jun 2012 19:17:59 +0000" tag="submitter">craig</metadata>
+</glsa>

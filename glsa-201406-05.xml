@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-05">
+  <title>Mutt: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Mutt could allow remote attackers to execute
+    arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">mutt</product>
+  <announced>June 05, 2014</announced>
+  <revised>June 05, 2014: 1</revised>
+  <bug>504462</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mutt" auto="yes" arch="*">
+      <unaffected range="ge">1.5.22-r3</unaffected>
+      <vulnerable range="lt">1.5.22-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mutt is a small but powerful text-based mail client. </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow has been discovered in the mutt_copy_hdr
+      function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted message, possibly
+      resulting in execution of arbitrary code with the privileges of the user
+      running Mutt or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/mutt-1.5.22-r3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0467">CVE-2014-0467</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 May 2014 03:40:42 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 05 Jun 2014 00:18:36 +0000">
+    creffett
+  </metadata>
+</glsa>

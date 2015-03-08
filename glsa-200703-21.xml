@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-21">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    PHP contains several vulnerabilities including a heap buffer overflow,
+    potentially leading to the remote execution of arbitrary code under certain
+    conditions.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>March 20, 2007</announced>
+  <revised>March 29, 2008: 03</revised>
+  <bug>153911</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.2.1-r3</unaffected>
+      <unaffected range="rge">5.1.6-r11</unaffected>
+      <unaffected range="rge">4.4.6</unaffected>
+      <unaffected range="rge">4.4.7</unaffected>
+      <unaffected range="rge">4.4.8_pre20070816</unaffected>
+      <vulnerable range="lt">5.2.1-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a widely-used general-purpose scripting language that is
+    especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were found in PHP by the Hardened-PHP Project
+    and other researchers. These vulnerabilities include a heap-based
+    buffer overflow in htmlentities() and htmlspecialchars() if called with
+    UTF-8 parameters, and an off-by-one error in str_ireplace(). Other
+    vulnerabilities were also found in the PHP4 branch, including possible
+    overflows, stack corruptions and a format string vulnerability in the
+    *print() functions on 64 bit systems.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Remote attackers might be able to exploit these issues in PHP
+    applications making use of the affected functions, potentially
+    resulting in the execution of arbitrary code, Denial of Service,
+    execution of scripted contents in the context of the affected site,
+    security bypass or information leak.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;dev-lang/php&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5465">CVE-2006-5465</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0906">CVE-2007-0906</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0907">CVE-2007-0907</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0908">CVE-2007-0908</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0909">CVE-2007-0909</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0910">CVE-2007-0910</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0911">CVE-2007-0911</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0988">CVE-2007-0988</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1286">CVE-2007-1286</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1375">CVE-2007-1375</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1376">CVE-2007-1376</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1380">CVE-2007-1380</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1383">CVE-2007-1383</uri>
+    <uri link="http://www.php.net/releases/4_4_5.php">PHP 4.4.5 Release Announcement</uri>
+    <uri link="http://www.php.net/releases/5_2_1.php">PHP 5.2.1 Release Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 Mar 2007 13:36:33 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 16 Mar 2007 10:54:22 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 16 Mar 2007 11:47:58 +0000">
+    vorlon
+  </metadata>
+</glsa>

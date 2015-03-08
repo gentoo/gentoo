@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-29">
+  <title>unarj: Long filenames buffer overflow and a path traversal vulnerability</title>
+  <synopsis>
+    unarj contains a buffer overflow and a directory traversal vulnerability.
+    This could lead to overwriting of arbitrary files or the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">unarj</product>
+  <announced>November 19, 2004</announced>
+  <revised>November 19, 2004: 01</revised>
+  <bug>70966</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/unarj" auto="yes" arch="*">
+      <unaffected range="ge">2.63a-r2</unaffected>
+      <vulnerable range="lt">2.63a-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    unarj is an ARJ archive decompressor.
+    </p>
+  </background>
+  <description>
+    <p>
+    unarj has a bounds checking vulnerability within the handling of
+    long filenames in archives. It also fails to properly sanitize paths
+    when extracting an archive (if the "x" option is used to preserve
+    paths).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could trigger a buffer overflow or a path traversal by
+    enticing a user to open an archive containing specially-crafted path
+    names, potentially resulting in the overwrite of files or execution of
+    arbitrary code with the permissions of the user running unarj.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All unarj users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/unarj-2.63a-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0947">CAN-2004-0947</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1027">CAN-2004-1027</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 18 Nov 2004 16:42:36 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Nov 2004 16:42:55 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 19 Nov 2004 09:32:28 +0000">
+    koon
+  </metadata>
+</glsa>

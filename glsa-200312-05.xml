@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200312-05">
+  <title>GnuPG: ElGamal signing keys compromised and format string vulnerability</title>
+  <synopsis>
+    A bug in GnuPG allows ElGamal signing keys to be compromised, and a format
+    string bug in the gpgkeys_hkp utility may allow arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">GnuPG</product>
+  <announced>2003-12-12</announced>
+  <revised>2003-12-12: 01</revised>
+  <bug>34504</bug>
+  <access>unknown</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3-r5</unaffected>
+      <vulnerable range="le">1.2.3-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuPG is a popular open source signing and encryption tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two flaws have been found in GnuPG 1.2.3.
+    </p>
+    <p>
+    First, ElGamal signing keys can be compromised.  These keys are not commonly
+    used, but this is "a significant security failure which can lead to a
+    compromise of almost all ElGamal keys used for signing.  Note that this is a
+    real world vulnerability which will reveal your private key within a few
+    seconds".
+    </p>
+    <p>
+    Second, there is a format string flaw in the 'gpgkeys_hkp' utility which
+    "would allow a malicious keyserver in the worst case to execute an arbitrary
+    code on the user's machine."
+    </p>
+  </description>
+  <impact type="minimal">
+    <p>
+    If you have used ElGamal keys for signing your private key can be
+    compromised, and a malicious keyserver could remotely execute arbitrary code
+    with the permissions of the user running gpgkeys_hkp.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users who have created ElGamal signing keys should immediately revoke
+    them.  In addition, all Gentoo Linux machines with gnupg installed should be
+    updated to use gnupg-1.2.3-r5 or higher:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=app-crypt/gnupg-1.2.3-r5'
+    # emerge '&gt;=app-crypt/gnupg-1.2.3-r5'
+    # emerge clean</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0971">CAN-2003-0971</uri>
+    <uri link="http://marc.theaimsgroup.com/?l=gnupg-announce&amp;m=106992378510843&amp;q=raw">GnuPG Announcement</uri>
+    <uri link="http://www.s-quadra.com/advisories/Adv-20031203.txt">S-Quadra Advisory</uri>
+  </references>
+</glsa>

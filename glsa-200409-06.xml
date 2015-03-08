@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-06">
+  <title>eGroupWare: Multiple XSS vulnerabilities</title>
+  <synopsis>
+    The eGroupWare software contains multiple cross site scripting
+    vulnerabilities.
+  </synopsis>
+  <product type="ebuild">eGroupWare</product>
+  <announced>September 02, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>61510</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge">1.0.00.004</unaffected>
+      <vulnerable range="le">1.0.00.003</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    eGroupWare is a suite of web-based group applications including
+    calendar, address book, messenger and email.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joxean Koret recently discovered multiple cross site scripting
+    vulnerabilities in various modules for the eGroupWare suite. This
+    includes the calendar, address book, messenger and ticket modules.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities give an attacker the ability to inject and
+    execute malicious script code, potentially compromising the victim's
+    browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of eGroupWare.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All eGroupWare users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-apps/egroupware-1.0.00.004&quot;
+    # emerge &quot;&gt;=www-apps/egroupware-1.0.00.004&quot;</code>
+  </resolution>
+  <references>
+    <uri link="https://sourceforge.net/forum/forum.php?forum_id=401807">eGroupWare Announcement</uri>
+    <uri link="http://www.securityfocus.com/archive/1/372603/2004-08-21/2004-08-27/0">Bugtraq Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1467">CVE-2004-1467</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  1 Sep 2004 13:44:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  1 Sep 2004 19:01:03 +0000">
+    lewk
+  </metadata>
+</glsa>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-23">
+  <title>Nagios: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Nagios, the worst of
+    which may allow remote code execution.
+  </synopsis>
+  <product type="ebuild">nagios-core</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>447802</bug>
+  <bug>495132</bug>
+  <bug>501200</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/nagios-core" auto="yes" arch="*">
+      <unaffected range="ge">3.5.1</unaffected>
+      <vulnerable range="lt">3.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nagios is an open source host, service and network monitoring program.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Nagios. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code, cause a Denial
+      of Service condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nagios users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nagios-core-3.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6096">CVE-2012-6096</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7108">CVE-2013-7108</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7205">CVE-2013-7205</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 07 Dec 2014 20:13:43 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:55:06 +0000">ackle</metadata>
+</glsa>

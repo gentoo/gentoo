@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-11">
+  <title>Kronolith: Local file inclusion</title>
+  <synopsis>
+    Kronolith contains a flaw that could allow the execution of arbitrary
+    files.
+  </synopsis>
+  <product type="ebuild">horde-kronolith</product>
+  <announced>January 16, 2007</announced>
+  <revised>January 16, 2007: 01</revised>
+  <bug>156627</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde-kronolith" auto="yes" arch="*">
+      <unaffected range="ge">2.1.4</unaffected>
+      <vulnerable range="lt">2.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Kronolith is a web-based calendar which relies on the Horde Framework
+    for integration with other applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kronolith contains a mistake in lib/FBView.php where a raw, unfiltered
+    string is used instead of a sanitized string to view local files.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An authenticated attacker could craft an HTTP GET request that uses
+    directory traversal techniques to execute any file on the web server as
+    PHP code, which could allow information disclosure or arbitrary code
+    execution with the rights of the user running the PHP application
+    (usually the webserver user).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All horde-kronolith users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-kronolith-2.1.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6175">CVE-2006-6175</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 17:58:37 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:17 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 12:41:09 +0000">
+    aetius
+  </metadata>
+</glsa>

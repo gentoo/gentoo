@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-25">
+  <title>Asterisk: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been discovered in Asterisk, the
+    worst of which could allow privileged users to execute arbitrary system
+    shell commands.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>June 25, 2014</announced>
+  <revised>June 25, 2014: 2</revised>
+  <bug>513102</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">11.10.2</unaffected>
+      <unaffected range="rge">1.8.28.2</unaffected>
+      <vulnerable range="lt">11.10.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the CVE identifiers below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker that gains access to a privileged Asterisk account can
+      execute arbitrary system shell commands. Furthermore an unprivileged
+      remote attacker could cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk 11 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-11.10.2"
+    </code>
+    
+    <p>All Asterisk 1.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.28.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4046">CVE-2014-4046</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4047">CVE-2014-4047</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 24 Jun 2014 02:00:18 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 21:51:56 +0000">K_F</metadata>
+</glsa>

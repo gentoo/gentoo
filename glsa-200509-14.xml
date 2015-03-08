@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-14">
+  <title>Zebedee: Denial of Service vulnerability</title>
+  <synopsis>
+    A bug in Zebedee allows a remote attacker to perform a Denial of Service
+    attack.
+  </synopsis>
+  <product type="ebuild">zebedee</product>
+  <announced>September 20, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>105115</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/zebedee" auto="yes" arch="*">
+      <unaffected range="rge">2.4.1-r1</unaffected>
+      <unaffected range="ge">2.5.3</unaffected>
+      <vulnerable range="lt">2.5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Zebedee is an application that establishes an encrypted, compressed
+    tunnel for TCP/IP or UDP data transfer between two systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    "Shiraishi.M" reported that Zebedee crashes when "0" is received as the
+    port number in the protocol option header.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By performing malformed requests a remote attacker could cause Zebedee
+    to crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Zebedee users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose net-misc/zebedee</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/14796">BugTraq ID 14796</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2904">CVE-2005-2904</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 Sep 2005 10:16:59 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 16 Sep 2005 08:11:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 Sep 2005 12:52:52 +0000">
+    adir
+  </metadata>
+</glsa>

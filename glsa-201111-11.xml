@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-11">
+  <title>GNU Tar: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow flaw in GNU Tar could result in execution of
+    arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">tar</product>
+  <announced>November 20, 2011</announced>
+  <revised>November 20, 2011: 1</revised>
+  <bug>313333</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/tar" auto="yes" arch="*">
+      <unaffected range="ge">1.23</unaffected>
+      <vulnerable range="lt">1.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Tar is a utility to create archives as well as add and extract files
+      from archives.
+    </p>
+  </background>
+  <description>
+    <p>GNU Tar is vulnerable to a boundary error in the rmt_read__ function in
+      lib/rtapelib.c, which could cause a heap-based buffer overflow. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice the user to load a specially crafted
+      archive, possibly resulting in the execution of arbitrary code or a
+      Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Tar users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/tar-1.23"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since July 18, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0624">CVE-2010-0624</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:10 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 20 Nov 2011 17:56:56 +0000" tag="submitter">ackle</metadata>
+</glsa>

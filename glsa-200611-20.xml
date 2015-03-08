@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-20">
+  <title>GNU gv: Stack overflow</title>
+  <synopsis>
+    GNU gv improperly handles user-supplied data possibly allowing for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gv</product>
+  <announced>November 24, 2006</announced>
+  <revised>November 24, 2006: 01</revised>
+  <bug>154573</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/gv" auto="yes" arch="*">
+      <unaffected range="ge">3.6.2-r1</unaffected>
+      <vulnerable range="lt">3.6.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU gv is a viewer for PostScript and PDF documents.
+    </p>
+  </background>
+  <description>
+    <p>
+    GNU gv does not properly boundary check user-supplied data before
+    copying it into process buffers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted document
+    with GNU gv and execute arbitrary code with the rights of the user on
+    the system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gv-3.6.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5864">CVE-2006-5864</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:07:37 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 14:27:05 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 20:18:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-10">
+  <title>GnuTLS: Certificate validation error</title>
+  <synopsis>
+    A certificate validation error in GnuTLS might allow for spoofing attacks.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>January 14, 2009</announced>
+  <revised>January 14, 2009: 01</revised>
+  <bug>245850</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">2.4.1-r2</unaffected>
+      <vulnerable range="lt">2.4.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuTLS is an open-source implementation of TLS 1.0 and SSL 3.0.
+    </p>
+  </background>
+  <description>
+    <p>
+    Martin von Gagern reported that the _gnutls_x509_verify_certificate()
+    function in lib/x509/verify.c trusts certificate chains in which the
+    last certificate is an arbitrary trusted, self-signed certificate.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability and spoof arbitrary
+    names to conduct Man-In-The-Middle attacks and intercept sensitive
+    information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuTLS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gnutls-2.4.1-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989">CVE-2008-4989</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 30 Nov 2008 19:06:26 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 23:37:58 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 23:38:09 +0000">
+    p-y
+  </metadata>
+</glsa>

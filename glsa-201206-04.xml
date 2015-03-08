@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-04">
+  <title>ArgyllCMS: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability has been found in ArgyllCMS which could allow
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">argyllcms</product>
+  <announced>June 18, 2012</announced>
+  <revised>June 18, 2012: 1</revised>
+  <bug>416781</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/argyllcms" auto="yes" arch="*">
+      <unaffected range="ge">1.4.0</unaffected>
+      <vulnerable range="lt">1.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ArgyllCMS is an ICC compatible color management system that supports
+      accurate ICC profile creation for scanners, cameras and film recorders. 
+    </p>
+  </background>
+  <description>
+    <p>ArgyllCMS does not properly handle ICC profiles causing a use-after-free
+      vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using ArgyllCMS, possibly resulting in  execution of arbitrary code
+      with the privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All argyllcms users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/argyllcms-1.4.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1616">
+      CVE-2012-1616
+    </uri>
+  </references>
+  <metadata timestamp="Tue, 22 May 2012 19:47:51 +0000" tag="requester">n0idx80</metadata>
+  <metadata timestamp="Mon, 18 Jun 2012 22:09:51 +0000" tag="submitter">n0idx80</metadata>
+</glsa>

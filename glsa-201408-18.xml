@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-18">
+  <title>NRPE: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NRPE, the worst of
+    which can allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nrpe</product>
+  <announced>August 30, 2014</announced>
+  <revised>August 30, 2014: 1</revised>
+  <bug>397603</bug>
+  <bug>459870</bug>
+  <bug>508122</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/nrpe" auto="yes" arch="*">
+      <unaffected range="ge">2.15</unaffected>
+      <vulnerable range="lt">2.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nagios Remote Plugin Executor (NRPE) remotely executes Nagios plugins on
+      other Linux/Unix machines.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NRPE. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can utilize multiple vectors to execute arbitrary
+      code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NRPE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nrpe-2.15"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1362">CVE-2013-1362</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2913">CVE-2014-2913</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Sep 2012 17:08:14 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Aug 2014 01:17:35 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

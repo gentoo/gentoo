@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-10">
+  <title>Tar: Directory traversal vulnerability</title>
+  <synopsis>
+    Tar is vulnerable to directory traversal possibly allowing for the
+    overwriting of arbitrary files.
+  </synopsis>
+  <product type="ebuild">tar</product>
+  <announced>December 11, 2006</announced>
+  <revised>December 11, 2006: 01</revised>
+  <bug>155901</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/tar" auto="yes" arch="*">
+      <unaffected range="ge">1.16-r2</unaffected>
+      <vulnerable range="lt">1.16-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Tar program provides the ability to create and manipulate tar
+    archives.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tar does not properly extract archive elements using the GNUTYPE_NAMES
+    record name, allowing files to be created at arbitrary locations using
+    symlinks. Once a symlink is extracted, files after the symlink in the
+    archive will be extracted to the destination of the symlink.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to extract a specially crafted tar
+    archive, possibly allowing for the overwriting of arbitrary files on
+    the system extracting the archive.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tar users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/tar-1.16-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6097">CVE-2006-6097</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 07 Dec 2006 10:14:08 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Dec 2006 20:35:35 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 17:59:09 +0000">
+    shellsage
+  </metadata>
+</glsa>

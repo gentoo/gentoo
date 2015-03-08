@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-25">
+  <title>OpenSLP: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple buffer overflows have been found in OpenSLP, which could lead to
+    the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">OpenSLP</product>
+  <announced>March 20, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>85347</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/openslp" auto="yes" arch="*">
+      <unaffected range="ge">1.2.1</unaffected>
+      <vulnerable range="lt">1.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSLP is an open-source implementation of Service Location Protocol
+    (SLP).
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple buffer overflows have been found in OpenSLP, when handling
+    malformed SLP packets.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending specially crafted SLP packets, a remote attacker could
+    potentially execute arbitrary code with the rights of the OpenSLP
+    daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSLP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/openslp-1.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.novell.com/linux/security/advisories/2005_15_openslp.html">SUSE Security Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0769">CVE-2005-0769</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 16 Mar 2005 22:37:07 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Mar 2005 14:53:57 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 Mar 2005 20:02:39 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-16">
+  <title>Apache JK Tomcat Connector: Remote execution of arbitrary code</title>
+  <synopsis>
+    The Apache Tomcat Connector (mod_jk) contains a buffer overflow
+    vulnerability that could result in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mod_jk</product>
+  <announced>March 16, 2007</announced>
+  <revised>March 16, 2007: 01</revised>
+  <bug>169433</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_jk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.21-r1</unaffected>
+      <vulnerable range="lt">1.2.21-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is a very widely used web server. mod_jk
+    provides the JK module for connecting Tomcat and Apache using the ajp13
+    protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    ZDI reported an unsafe memory copy in mod_jk that was discovered by an
+    anonymous researcher in the map_uri_to_worker function of
+    native/common/jk_uri_worker_map.c .
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can send a long URL request to an Apache server using
+    Tomcat. That can trigger the vulnerability and lead to a stack-based
+    buffer overflow, which could result in the execution of arbitrary code
+    with the permissions of the Apache user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache Tomcat users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_jk-1.2.21-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0774">CVE-2007-0774</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Mar 2007 16:08:28 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Mar 2007 00:11:00 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 Mar 2007 20:16:09 +0000">
+    jaervosz
+  </metadata>
+</glsa>

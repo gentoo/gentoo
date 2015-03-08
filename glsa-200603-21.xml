@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-21">
+  <title>Sendmail: Race condition in the handling of asynchronous signals</title>
+  <synopsis>
+    Sendmail is vulnerable to a race condition which could lead to the
+    execution of arbitrary code with sendmail privileges.
+  </synopsis>
+  <product type="ebuild">sendmail</product>
+  <announced>March 22, 2006</announced>
+  <revised>March 22, 2006: 01</revised>
+  <bug>125623</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/sendmail" auto="yes" arch="*">
+      <unaffected range="ge">8.13.6</unaffected>
+      <vulnerable range="lt">8.13.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sendmail is a popular mail transfer agent (MTA).
+    </p>
+  </background>
+  <description>
+    <p>
+    ISS discovered that Sendmail is vulnerable to a race condition in
+    the handling of asynchronous signals.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this via certain crafted timing
+    conditions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sendmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/sendmail-8.13.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0058">CVE-2006-0058</uri>
+    <uri link="http://www.sendmail.com/company/advisory/index.shtml">Sendmail Inc. advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 21 Mar 2006 20:21:08 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 22 Mar 2006 19:48:59 +0000">
+    jaervosz
+  </metadata>
+</glsa>

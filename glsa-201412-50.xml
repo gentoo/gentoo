@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-50">
+  <title>getmail: Information disclosure</title>
+  <synopsis>Multiple vulnerabilities have been discovered in getmail, allowing
+    remote attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">getmail</product>
+  <announced>December 28, 2014</announced>
+  <revised>December 28, 2014: 1</revised>
+  <bug>524684</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/getmail" auto="yes" arch="*">
+      <unaffected range="ge">4.46.0</unaffected>
+      <vulnerable range="lt">4.46.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>getmail is a POP3 mail retriever with reliable Maildir and mbox
+      delivery.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in getmail. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a man-in-the-middle attack via multiple
+      vectors to obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All getmail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/getmail-4.46.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7273">CVE-2014-7273</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7274">CVE-2014-7274</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7275">CVE-2014-7275</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 28 Dec 2014 09:32:32 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 28 Dec 2014 17:37:18 +0000">Zlogene</metadata>
+</glsa>

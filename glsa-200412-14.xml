@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-14">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities were found and fixed in PHP, ranging from an
+    information leak and a safe_mode restriction bypass to a potential remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>December 19, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>74547</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.10</unaffected>
+      <vulnerable range="lt">4.3.10</vulnerable>
+    </package>
+    <package name="dev-php/mod_php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.10</unaffected>
+      <vulnerable range="lt">4.3.10</vulnerable>
+    </package>
+    <package name="dev-php/php-cgi" auto="yes" arch="*">
+      <unaffected range="ge">4.3.10</unaffected>
+      <vulnerable range="lt">4.3.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a general-purpose scripting language widely used to develop
+    web-based applications. It can run inside a web server using the
+    mod_php module or the CGI version of PHP, or can run stand-alone in a
+    CLI.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser and Marcus Boerger reported several different issues in
+    the unserialize() function, including serious exploitable bugs in the
+    way it handles negative references (CAN-2004-1019).
+    </p>
+    <p>
+    Stefan Esser also discovered that the pack() and unpack() functions are
+    subject to integer overflows that can lead to a heap buffer overflow
+    and a heap information leak. Finally, he found that the way
+    multithreaded PHP handles safe_mode_exec_dir restrictions can be
+    bypassed, and that various path truncation issues also allow to bypass
+    path and safe_mode restrictions.
+    </p>
+    <p>
+    Ilia Alshanetsky found a stack overflow issue in the exif_read_data()
+    function (CAN-2004-1065). Finally, Daniel Fabian found that addslashes
+    and magic_quotes_gpc do not properly escape null characters and that
+    magic_quotes_gpc contains a bug that could lead to one level directory
+    traversal.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    These issues could be exploited by a remote attacker to retrieve web
+    server heap information, bypass safe_mode or path restrictions and
+    potentially execute arbitrary code with the rights of the web server
+    running a PHP application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-4.3.10&quot;</code>
+    <p>
+    All mod_php users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/mod_php-4.3.10&quot;</code>
+    <p>
+    All php-cgi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-cgi-4.3.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.php.net/release_4_3_10.php">PHP 4.3.10 Release Announcement</uri>
+    <uri link="http://www.hardened-php.net/advisories/012004.txt">Hardened-PHP Security Advisory</uri>
+    <uri link="http://www.securityfocus.com/archive/1/384663/2004-12-15/2004-12-21/0">SEC Consult Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1019">CAN-2004-1019</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1020">CAN-2004-1020</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1063">CVE-2004-1063</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1064">CVE-2004-1064</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1065">CVE-2004-1065</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Dec 2004 10:35:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Dec 2004 11:09:01 +0000">
+    Koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 18 Dec 2004 14:09:43 +0000">
+    koon
+  </metadata>
+</glsa>

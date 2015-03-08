@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-29">
+  <title>Tikiwiki: SQL injection and multiple XSS vulnerabilities</title>
+  <synopsis>
+    An SQL injection vulnerability and multiple XSS vulnerabilities have been
+    discovered.
+  </synopsis>
+  <product type="ebuild">tikiwiki</product>
+  <announced>June 29, 2006</announced>
+  <revised>June 29, 2006: 01</revised>
+  <bug>136723</bug>
+  <bug>134483</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.9.4</unaffected>
+      <vulnerable range="lt">1.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tikiwiki is a web-based groupware and content management system (CMS),
+    using PHP, ADOdb and Smarty.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tikiwiki fails to properly sanitize user input before processing it,
+    including in SQL statements.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could execute arbitrary SQL statements on the underlying
+    database, or inject arbitrary scripts into the context of a user's
+    browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tikiwiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.9.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3048">CVE-2006-3048</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3047">CVE-2006-3047</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 26 Jun 2006 00:18:20 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 26 Jun 2006 20:19:12 +0000">
+    koon
+  </metadata>
+</glsa>

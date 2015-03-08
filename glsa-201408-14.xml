@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-14">
+  <title>stunnel: Information disclosure</title>
+  <synopsis>A vulnerability in stunnel might allow remote attackers to gain
+    access to private key information.
+  </synopsis>
+  <product type="ebuild">stunnel</product>
+  <announced>August 29, 2014</announced>
+  <revised>August 29, 2014: 1</revised>
+  <bug>503506</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/stunnel" auto="yes" arch="*">
+      <unaffected range="ge">5.02</unaffected>
+      <vulnerable range="lt">5.02</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The stunnel program is designed to work as an SSL encryption wrapper
+      between a client and a local or remote server. 
+    </p>
+  </background>
+  <description>
+    <p>stunnel does not properly update the state of the pseudo-random
+      generator after fork-threading which causes subsequent children with the
+      same process ID to use the same entropy pool. ECDSA and DSA keys, when
+      not used in deterministic mode (RFC6979), rely on random data for its k
+      parameter to not leak private key information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may gain access to private key information from ECDSA
+      or DSA keys.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All stunnel users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/stunnel-5.02"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0016">CVE-2014-0016</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2014 22:44:37 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 18:54:29 +0000">K_F</metadata>
+</glsa>

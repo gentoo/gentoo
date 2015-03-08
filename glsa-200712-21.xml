@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-21">
+  <title>Mozilla Firefox, SeaMonkey: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Mozilla Firefox and
+    Mozilla Seamonkey.
+  </synopsis>
+  <product type="ebuild">firefox seamonkey</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>198965</bug>
+  <bug>200909</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.11</unaffected>
+      <vulnerable range="lt">2.0.0.11</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.11</unaffected>
+      <vulnerable range="lt">2.0.0.11</vulnerable>
+    </package>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.1.7</unaffected>
+      <vulnerable range="lt">1.1.7</vulnerable>
+    </package>
+    <package name="www-client/seamonkey-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.1.7</unaffected>
+      <vulnerable range="lt">1.1.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is a cross-platform web browser from Mozilla. SeaMonkey
+    is a free, cross-platform Internet suite.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jesse Ruderman and Petko D. Petkov reported that the jar protocol
+    handler in Mozilla Firefox and Seamonkey does not properly check MIME
+    types (CVE-2007-5947). Gregory Fleischer reported that the
+    window.location property can be used to generate a fake HTTP Referer
+    (CVE-2007-5960). Multiple memory errors have also been reported
+    (CVE-2007-5959).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly exploit these vulnerabilities to
+    execute arbitrary code in the context of the browser and conduct
+    Cross-Site-Scripting or Cross-Site Request Forgery attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.11&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.11&quot;</code>
+    <p>
+    All SeaMonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.7&quot;</code>
+    <p>
+    All SeaMonkey binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5947">CVE-2007-5947</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5959">CVE-2007-5959</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5960">CVE-2007-5960</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Dec 2007 23:32:55 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 12 Dec 2007 16:56:13 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Dec 2007 11:43:38 +0000">
+    p-y
+  </metadata>
+</glsa>

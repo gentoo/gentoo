@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-17">
+  <title>FUSE: mtab corruption through fusermount</title>
+  <synopsis>
+    The fusermount utility from FUSE can be abused to corrupt the /etc/mtab
+    file contents, potentially allowing a local attacker to set unauthorized
+    mount options.
+  </synopsis>
+  <product type="ebuild">FUSE</product>
+  <announced>November 22, 2005</announced>
+  <revised>November 22, 2005: 01</revised>
+  <bug>112902</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/fuse" auto="yes" arch="*">
+      <unaffected range="ge">2.4.1-r1</unaffected>
+      <vulnerable range="lt">2.4.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FUSE (Filesystem in Userspace) allows implementation of a fully
+    functional filesystem in a userspace program. The fusermount utility is
+    used to mount/unmount FUSE file systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Thomas Biege discovered that fusermount fails to securely handle
+    special characters specified in mount points.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could corrupt the contents of the /etc/mtab file
+    by mounting over a maliciously-named directory using fusermount,
+    potentially allowing the attacker to set unauthorized mount options.
+    This is possible only if fusermount is installed setuid root, which is
+    the default in Gentoo.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FUSE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-fs/fuse-2.4.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3531">CVE-2005-3531</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 Nov 2005 12:06:35 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Nov 2005 13:30:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 22 Nov 2005 16:07:17 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-08">
+  <title>Xpdf, GPdf, CUPS, Poppler: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Xpdf, GPdf, CUPS and
+    Poppler potentially resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xpdf, gpdf, poppler,cups</product>
+  <announced>December 16, 2005</announced>
+  <revised>December 17, 2005: 02</revised>
+  <bug>114428</bug>
+  <bug>115286</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.01-r2</unaffected>
+      <vulnerable range="lt">3.01-r2</vulnerable>
+    </package>
+    <package name="app-text/gpdf" auto="yes" arch="*">
+      <unaffected range="ge">2.10.0-r2</unaffected>
+      <vulnerable range="lt">2.10.0-r2</vulnerable>
+    </package>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.4.2-r1</unaffected>
+      <unaffected range="rge">0.3.0-r1</unaffected>
+      <vulnerable range="lt">0.4.2-r1</vulnerable>
+    </package>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.1.23-r3</unaffected>
+      <vulnerable range="lt">1.1.23-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xpdf and GPdf are PDF file viewers that run under the X Window System.
+    Poppler is a PDF rendering library based on Xpdf code. The Common UNIX
+    Printing System (CUPS) is a cross-platform print spooler. It makes use
+    of Xpdf code to handle PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    infamous41md discovered that several Xpdf functions lack sufficient
+    boundary checking, resulting in multiple exploitable buffer overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially-crafted PDF file
+    which would trigger an overflow, potentially resulting in execution of
+    arbitrary code with the rights of the user running Xpdf, CUPS, GPdf or
+    Poppler.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.01-r2&quot;</code>
+    <p>
+    All GPdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.10.0-r2&quot;</code>
+    <p>
+    All Poppler users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-text/poppler</code>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.1.23-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3191">CVE-2005-3191</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3192">CVE-2005-3192</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3193">CVE-2005-3193</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 08 Dec 2005 08:57:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Dec 2005 12:15:58 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 15 Dec 2005 11:55:50 +0000">
+    koon
+  </metadata>
+</glsa>

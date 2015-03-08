@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-15">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>September 26, 2012</announced>
+  <revised>September 26, 2012: 1</revised>
+  <bug>425050</bug>
+  <bug>433750</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.8.15.1</unaffected>
+      <vulnerable range="lt">1.8.15.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Asterisk:</p>
+    
+    <ul>
+      <li>An error in manager.c allows shell access (CVE-2012-2186).</li>
+      <li>An error in Asterisk could cause all RTP ports to be exhausted
+        (CVE-2012-3812).
+      </li>
+      <li>A double-free error could occur when two parties attempt to
+        manipulate the same voicemail account simultaneously (CVE-2012-3863).
+      </li>
+      <li>Asterisk does not properly implement certain ACL rules
+        (CVE-2012-4737).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote, authenticated attacker could execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or bypass
+      outbound call restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.15.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2186">CVE-2012-2186</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3812">CVE-2012-3812</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3863">CVE-2012-3863</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4737">CVE-2012-4737</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 15:47:40 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Sep 2012 21:43:31 +0000">ackle</metadata>
+</glsa>

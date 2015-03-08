@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-16">
+  <title>CouchDB: Denial of Service</title>
+  <synopsis>A vulnerability in CouchDB could result in Denial of Service.</synopsis>
+  <product type="ebuild">couchdb</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>506354</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/couchdb" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1</unaffected>
+      <vulnerable range="lt">1.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache CouchDB is a distributed, fault-tolerant and schema-free
+      document-oriented database.
+    </p>
+  </background>
+  <description>
+    <p>CouchDB does not properly sanitize the count parameter for Universally
+      Unique Identifiers (UUID) requests. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request to CouchDB,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>The /_uuids handler can be disabled in local.ini with the following
+      configuration:
+    </p>
+    
+    <p>[httpd_global_handlers]
+      _uuids =
+    </p>
+  </workaround>
+  <resolution>
+    <p>All CouchDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/couchdb-1.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2668">CVE-2014-2668</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:24:09 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 17:06:39 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-01">
+  <title>GNU libmicrohttpd: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in GNU libmicrohttpd, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libmicrohttpd</product>
+  <announced>February 02, 2014</announced>
+  <revised>February 02, 2014: 1</revised>
+  <bug>493450</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libmicrohttpd" auto="yes" arch="*">
+      <unaffected range="ge">0.9.32</unaffected>
+      <vulnerable range="lt">0.9.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU libmicrohttpd is a small C library that is supposed to make it easy
+      to run an HTTP server as part of another application.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU libmicrohttpd.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, or obtain sensitive
+      information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU libmicrohttpd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libmicrohttpd-0.9.32"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7038">CVE-2013-7038</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7039">CVE-2013-7039</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 01 Feb 2014 21:37:58 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Feb 2014 17:09:10 +0000">Zlogene</metadata>
+</glsa>

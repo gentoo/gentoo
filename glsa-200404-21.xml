@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-21">
+  <title>Multiple Vulnerabilities in Samba</title>
+  <synopsis>
+    There is a bug in smbfs which may allow local users to gain root via a
+    setuid file on a mounted Samba share. Also, there is a tmpfile symlink
+    vulnerability in the smbprint script distributed with Samba.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>April 29, 2004</announced>
+  <revised>April 29, 2004: 01</revised>
+  <bug>41800</bug>
+  <bug>45965</bug>
+  <access>local </access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.2a-r2</unaffected>
+      <vulnerable range="le">3.0.2a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a package which allows UNIX systems to act as file servers for
+    Windows computers. It also allows UNIX systems to mount shares exported by
+    a Samba/CIFS/Windows server. smbmount is a program in the Samba package
+    which allows normal users on a UNIX system to mount remote shares. smbprint
+    is an example script included in the Samba package which can be used to
+    facilitate network printing.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities have been discovered in Samba. The first vulnerability
+    allows a local user who has access to the smbmount command to gain root. An
+    attacker could place a setuid-root binary on a Samba share/server he or she
+    controls, and then use the smbmount command to mount the share on the
+    target UNIX box. The remote Samba server must support UNIX extensions for
+    this to work. This has been fixed in version 3.0.2a.
+    </p>
+    <p>
+    The second vulnerability is in the smbprint script. By creating a symlink
+    from /tmp/smbprint.log, an attacker could cause the smbprint script to
+    write to an arbitrary file on the system. This has been fixed in version
+    3.0.2a-r2.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Local users with access to the smbmount command may gain root access. Also,
+    arbitrary files may be overwritten using the smbprint script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    To workaround the setuid bug, remove the setuid bits from the
+    /usr/bin/smbmnt, /usr/bin/smbumount and /usr/bin/mount.cifs binaries.
+    However, please note that this workaround will prevent ordinary users from
+    mounting remote SMB and CIFS shares.
+    </p>
+    <p>
+    To work around the smbprint vulnerability, set "debug=no" in the smbprint
+    configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should update to the latest version of the Samba package.
+    </p>
+    <p>
+    The following commands will perform the upgrade:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-fs/samba-3.0.2a-r2"
+    # emerge ">=net-fs/samba-3.0.2a-r2"</code>
+    <p>
+    Those who are using Samba's password database also need to run the
+    following command:
+    </p>
+    <code>
+    # pdbedit --force-initialized-passwords</code>
+    <p>
+    Those using LDAP for Samba passwords also need to check the sambaPwdLastSet
+    attribute on each account, and ensure it is not 0.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/353222/2004-04-09/2004-04-15/1">BugTraq Thread: Samba 3.x + kernel 2.6.x local root vulnerability</uri>
+    <uri link="http://seclists.org/lists/bugtraq/2004/Mar/0189.html">BugTraq: smbprint Vulnerability</uri>
+  </references>
+  <metadata tag="submitter">
+    condordes
+  </metadata>
+</glsa>

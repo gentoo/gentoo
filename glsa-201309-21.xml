@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-21">
+  <title>klibc: Command Injection</title>
+  <synopsis>A vulnerability in klibc could allow remote attackers to execute
+    arbitrary shell code.
+  </synopsis>
+  <product type="ebuild">klibc</product>
+  <announced>September 26, 2013</announced>
+  <revised>September 26, 2013: 1</revised>
+  <bug>369075</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/klibc" auto="yes" arch="*">
+      <unaffected range="ge">1.5.25</unaffected>
+      <vulnerable range="lt">1.5.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>klibc is a minimalistic libc used for making an initramfs.</p>
+  </background>
+  <description>
+    <p>The ipconfig utility in klibc writes DHCP options to
+      /tmp/net-$DEVICE.conf, and this file is later sourced by other scripts to
+      get defined variables. The options written to this file are not properly
+      escaped.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted DHCP reply, which could
+      execute arbitrary shell code with the privileges of any process which
+      sources DHCP options.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All klibc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/klibc-1.5.25"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1930">CVE-2011-1930</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 Aug 2013 11:18:21 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Sep 2013 23:52:30 +0000">
+    creffett
+  </metadata>
+</glsa>

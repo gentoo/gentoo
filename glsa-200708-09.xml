@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-09">
+  <title>Mozilla products: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Mozilla Firefox,
+    Thunderbird, SeaMonkey and XULRunner, some of which may allow user-assisted
+    arbitrary remote code execution.
+  </synopsis>
+  <product type="ebuild">mozilla-firefox,mozilla-firefox-bin,seamonkey,seamonkey-bin,mozilla-thunderbird,mozilla-thunderbird-bin,xulrunner</product>
+  <announced>August 14, 2007</announced>
+  <revised>August 14, 2007: 01</revised>
+  <bug>185737</bug>
+  <bug>187205</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.6</unaffected>
+      <vulnerable range="lt">2.0.0.6</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.6</unaffected>
+      <vulnerable range="lt">2.0.0.6</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.6</unaffected>
+      <vulnerable range="lt">2.0.0.6</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0.6</unaffected>
+      <vulnerable range="lt">2.0.0.6</vulnerable>
+    </package>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+    <package name="www-client/seamonkey-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+    <package name="net-libs/xulrunner" auto="yes" arch="*">
+      <unaffected range="ge">1.8.1.6</unaffected>
+      <vulnerable range="lt">1.8.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla Firefox is an open-source web browser from the Mozilla Project,
+    and Mozilla Thunderbird an email client. The SeaMonkey project is a
+    community effort to deliver production-quality releases of code derived
+    from the application formerly known as the 'Mozilla Application Suite'.
+    XULRunner is a Mozilla runtime package that can be used to bootstrap
+    XUL+XPCOM applications like Firefox and Thunderbird.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mozilla developers fixed several bugs, including an issue with
+    modifying XPCNativeWrappers (CVE-2007-3738), a problem with event
+    handlers executing elements outside of the document (CVE-2007-3737),
+    and a cross-site scripting (XSS) vulnerability (CVE-2007-3736). They
+    also fixed a problem with promiscuous IFRAME access (CVE-2007-3089) and
+    an XULRunner URL spoofing issue with the wyciwyg:// URI and HTTP 302
+    redirects (CVE-2007-3656). Denials of Service involving corrupted
+    memory were fixed in the browser engine (CVE-2007-3734) and the
+    JavaScript engine (CVE-2007-3735). Finally, another XSS vulnerability
+    caused by a regression in the CVE-2007-3089 patch was fixed
+    (CVE-2007-3844).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to view a specially crafted web
+    page that will trigger one of the vulnerabilities, possibly leading to
+    the execution of arbitrary code or a Denial of Service. It is also
+    possible for an attacker to perform cross-site scripting attacks, which
+    could result in the exposure of sensitive information such as login
+    credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Firefox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.6&quot;</code>
+    <p>
+    All Mozilla Firefox binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.6&quot;</code>
+    <p>
+    All Mozilla Thunderbird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-2.0.0.6&quot;</code>
+    <p>
+    All Mozilla Thunderbird binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-2.0.0.6&quot;</code>
+    <p>
+    All SeaMonkey users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.4&quot;</code>
+    <p>
+    All SeaMonkey binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.4&quot;</code>
+    <p>
+    All XULRunner users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/xulrunner-1.8.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3089">CVE-2007-3089</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3656">CVE-2007-3656</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3734">CVE-2007-3734</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3735">CVE-2007-3735</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3736">CVE-2007-3736</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3737">CVE-2007-3737</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3738">CVE-2007-3738</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3844">CVE-2007-3844</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 05 Aug 2007 10:45:13 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Aug 2007 10:48:05 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Aug 2007 16:40:39 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-06">
+  <title>aria2: Multiple vulnerabilities</title>
+  <synopsis>
+    A buffer overflow and a format string vulnerability in aria2 allow remote
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">aria2</product>
+  <announced>January 13, 2010</announced>
+  <revised>January 13, 2010: 01</revised>
+  <bug>288291</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/aria2" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3</unaffected>
+      <vulnerable range="lt">1.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    aria2 is a download utility with resuming and segmented downloading
+    with HTTP/HTTPS/FTP/BitTorrent support.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tatsuhiro Tsujikawa reported a buffer overflow in
+    DHTRoutingTableDeserializer.cc (CVE-2009-3575) and a format string
+    vulnerability in the AbstractCommand::onAbort() function in
+    src/AbstractCommand.cc (CVE-2009-3617).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote, unauthenticated attacker could possibly execute arbitrary
+    code with the privileges of the user running the application or cause a
+    Denial of Service (application crash).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not use DHT (CVE-2009-3575) and disable logging (CVE-2009-3617).
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All aria2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/aria2-1.6.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3575">CVE-2009-3575</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3617">CVE-2009-3617</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 06 Nov 2009 09:27:41 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:05:40 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:40:46 +0000">
+    craig
+  </metadata>
+</glsa>

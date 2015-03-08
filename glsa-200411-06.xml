@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-06">
+  <title>MIME-tools: Virus detection evasion</title>
+  <synopsis>
+    MIME-tools doesn't handle empty MIME boundaries correctly. This may prevent
+    some virus-scanning programs which use MIME-tools from detecting certain
+    viruses.
+  </synopsis>
+  <product type="ebuild">MIME-tools</product>
+  <announced>November 02, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>69181</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/MIME-tools" auto="yes" arch="*">
+      <unaffected range="ge">5.415</unaffected>
+      <vulnerable range="lt">5.415</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIME-tools is a Perl module containing functions to handle MIME
+    attachments.
+    </p>
+  </background>
+  <description>
+    <p>
+    MIME-tools doesn't correctly parse attachment boundaries with an empty
+    name (boundary="").
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could send a carefully crafted email and evade detection on
+    some email virus-scanning programs using MIME-tools for attachment
+    decoding.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIME-tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/MIME-tools-5.415&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://lists.roaringpenguin.com/pipermail/mimedefang/2004-October/024959.html">MIMEDefang announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1098">CVE-2004-1098</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue,  2 Nov 2004 13:33:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  2 Nov 2004 13:34:00 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  2 Nov 2004 17:50:24 +0000">
+    koon
+  </metadata>
+</glsa>

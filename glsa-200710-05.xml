@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-05">
+  <title>QGit: Insecure temporary file creation</title>
+  <synopsis>
+    A vulnerability has been discovered in QGit allowing local users to
+    overwrite arbitrary files and execute arbitrary code with another user's
+    rights.
+  </synopsis>
+  <product type="ebuild">qgit</product>
+  <announced>October 07, 2007</announced>
+  <revised>October 07, 2007: 01</revised>
+  <bug>190697</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-util/qgit" auto="yes" arch="*">
+      <unaffected range="ge">1.5.7</unaffected>
+      <vulnerable range="lt">1.5.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    QGit is a graphical interface to git repositories that allows you to
+    browse revisions history, view patch content and changed files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Raphael Marichez discovered that the DataLoader::doStart() method
+    creates temporary files in an insecure manner and executes them.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform a symlink attack, possibly overwriting
+    files or executing arbitrary code with the rights of the user running
+    QGit.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All QGit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/qgit-1.5.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-4631">CVE-2007-4631</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 24 Sep 2007 08:55:56 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 24 Sep 2007 08:56:46 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 18:55:10 +0000">
+    rbu
+  </metadata>
+</glsa>

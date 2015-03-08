@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-08">
+  <title>GIMP: Buffer overflow</title>
+  <synopsis>
+    GIMP is vulnerable to a buffer overflow which may lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">gimp</product>
+  <announced>May 07, 2007</announced>
+  <revised>May 07, 2007: 01</revised>
+  <bug>176226</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gimp" auto="yes" arch="*">
+      <unaffected range="ge">2.2.14</unaffected>
+      <vulnerable range="lt">2.2.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GIMP is the GNU Image Manipulation Program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Marsu discovered that the "set_color_table()" function in the SUNRAS
+    plugin is vulnerable to a stack-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted .RAS file,
+    possibly leading to the execution of arbitrary code with the privileges
+    of the user running GIMP.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GIMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/gimp-2.2.14&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2356">CVE-2007-2356</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 06 May 2007 21:00:37 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 May 2007 21:03:26 +0000">
+    p-y
+  </metadata>
+</glsa>

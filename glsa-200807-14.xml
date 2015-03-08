@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-14">
+  <title>Linux Audit: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability in Linux Audit may allow local attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">audit</product>
+  <announced>July 31, 2008</announced>
+  <revised>July 31, 2008: 01</revised>
+  <bug>215705</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/audit" auto="yes" arch="*">
+      <unaffected range="ge">1.7.3</unaffected>
+      <vulnerable range="lt">1.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Linux Audit is a set of userspace utilities for storing and processing
+    auditing records.
+    </p>
+  </background>
+  <description>
+    <p>
+    A stack-based buffer overflow has been reported in the
+    audit_log_user_command() function in the file lib/audit_logging.c when
+    processing overly long arguments.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could execute a specially crafted command on the host
+    running Linux Audit, possibly resulting in the execution of arbitrary
+    code with the privileges of the user running Linux Audit.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Linux Audit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-process/audit-1.7.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1628">CVE-2008-1628</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 21 Jul 2008 20:07:20 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 21 Jul 2008 20:07:28 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-09">
+  <title>fence: Multiple symlink vulnerabilities</title>
+  <synopsis>
+    fence contains multiple programs containing vulnerabilities that may allow
+    local users to overwrite arbitrary files via a symlink attack.
+  </synopsis>
+  <product type="ebuild">fence</product>
+  <announced>September 29, 2010</announced>
+  <revised>September 29, 2010: 01</revised>
+  <bug>240576</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-cluster/fence" auto="yes" arch="*">
+      <vulnerable range="lt">2.03.09</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    fence is an I/O group fencing system.
+    </p>
+  </background>
+  <description>
+    <p>
+    The fence_apc, fence_apc_snmp (CVE-2008-4579) and fence_manual
+    (CVE-2008-4580) programs contain symlink vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities may allow arbitrary files to be overwritten with
+    root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Gentoo discontinued support for fence. All fence users should uninstall
+    and choose another software that provides the same functionality.
+    </p>
+    <code>
+    # emerge --unmerge sys-cluster/fence</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4579">CVE-2008-4579</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4580">CVE-2008-4580</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 11:03:13 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 10 Apr 2010 02:06:28 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 15:37:24 +0000">
+    a3li
+  </metadata>
+</glsa>

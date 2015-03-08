@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-05">
+  <title>tcpdump: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in tcpdump could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">tcpdump</product>
+  <announced>February 07, 2015</announced>
+  <revised>February 07, 2015: 1</revised>
+  <bug>534660</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/tcpdump" auto="yes" arch="*">
+      <unaffected range="ge">4.6.2-r1</unaffected>
+      <vulnerable range="lt">4.6.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tcpdump is a tool for capturing and inspecting network traffic.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in tcpdump:</p>
+    
+    <ul>
+      <li>The olsr_print function function contains an integer underflow error
+        (CVE-2014-8767)
+      </li>
+      <li>The geonet_print function function contains multiple integer
+        underflow errors (CVE-2014-8768)
+      </li>
+      <li>The decoder for the Ad hoc On-Demand Distance Vector protocol
+        contains an out-of-bounds memory access error (CVE-2014-8769)
+      </li>
+      <li>The ppp_hdlc function contains a buffer overflow error
+        (CVE-2014-9140)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to send a specially crafted packet,
+      possibly resulting in execution of arbitrary code or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tcpdump users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/tcpdump-4.6.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8767">CVE-2014-8767</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8768">CVE-2014-8768</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8769">CVE-2014-8769</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9140">CVE-2014-9140</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 17 Jan 2015 19:41:40 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 20:04:53 +0000">ackle</metadata>
+</glsa>

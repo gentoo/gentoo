@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-29">
+  <title>FreeRADIUS: Multiple Denial of Service vulnerabilities</title>
+  <synopsis>
+    Multiple Denial of Service vulnerabilities were found and fixed in
+    FreeRADIUS.
+  </synopsis>
+  <product type="ebuild">FreeRADIUS</product>
+  <announced>September 22, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>60587</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1</unaffected>
+      <vulnerable range="lt">1.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeRADIUS is an open source RADIUS authentication server
+    implementation.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are undisclosed defects in the way FreeRADIUS handles incorrect
+    received packets.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially-crafted packets to the
+    FreeRADIUS server to deny service to other users by crashing the
+    server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeRADIUS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-dialup/freeradius-1.0.1&quot;
+    # emerge &quot;&gt;=net-dialup/freeradius-1.0.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.freeradius.org/security.html">FreeRADIUS Vulnerability Notifications</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0938">CVE-2004-0938</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0960">CVE-2004-0960</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0961">CVE-2004-0961</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 20 Sep 2004 13:27:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Sep 2004 15:22:58 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2004 11:24:01 +0000">
+    koon
+  </metadata>
+</glsa>

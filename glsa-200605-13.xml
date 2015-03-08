@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-13">
+  <title>MySQL: Information leakage</title>
+  <synopsis>
+    A MySQL server may leak information to unauthorized users.
+  </synopsis>
+  <product type="ebuild">MySQL</product>
+  <announced>May 11, 2006</announced>
+  <revised>May 15, 2006: 04</revised>
+  <bug>132146</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">4.1.19</unaffected>
+      <unaffected range="rge">4.0.27</unaffected>
+      <vulnerable range="lt">4.1.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular multi-threaded, multi-user SQL database server.
+    </p>
+  </background>
+  <description>
+    <p>
+    The processing of the COM_TABLE_DUMP command by a MySQL server fails to
+    properly validate packets that arrive from the client via a network
+    socket.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By crafting specific malicious packets an attacker could gather
+    confidential information from the memory of a MySQL server process, for
+    example results of queries by other users or applications. By using PHP
+    code injection or similar techniques it would be possible to exploit
+    this flaw through web applications that use MySQL as a database
+    backend.
+    </p>
+    <p>
+    Note that on 5.x versions it is possible to overwrite the stack and
+    execute arbitrary code with this technique. Users of MySQL 5.x are
+    urged to upgrade to the latest available version.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version.
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-4.0.27&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.derkeiler.com/Mailing-Lists/securityfocus/bugtraq/2006-05/msg00041.html">Original advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1516">CVE-2006-1516</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1517">CVE-2006-1517</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 06 May 2006 16:33:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 May 2006 07:03:06 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 08 May 2006 13:21:08 +0000">
+    koon
+  </metadata>
+</glsa>

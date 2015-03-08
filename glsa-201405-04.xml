@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-04">
+  <title>Adobe Flash Player: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which could result in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>May 03, 2014</announced>
+  <revised>May 03, 2014: 1</revised>
+  <bug>501960</bug>
+  <bug>504286</bug>
+  <bug>507176</bug>
+  <bug>508986</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.356</unaffected>
+      <vulnerable range="lt">11.2.202.356</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted SWF
+      file using Adobe Flash Player, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition. Furthermore, a remote attacker may be able to bypass the Same
+      Origin Policy or read the clipboard via unspecified vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.356"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0498">CVE-2014-0498</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0499">CVE-2014-0499</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0502">CVE-2014-0502</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0503">CVE-2014-0503</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0504">CVE-2014-0504</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0506">CVE-2014-0506</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0507">CVE-2014-0507</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0508">CVE-2014-0508</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0509">CVE-2014-0509</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0515">CVE-2014-0515</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Feb 2014 14:21:18 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 03 May 2014 18:43:48 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

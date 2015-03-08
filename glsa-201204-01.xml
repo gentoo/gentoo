@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201204-01">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in VirtualBox, allowing local
+    attackers to gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>April 09, 2012</announced>
+  <revised>April 09, 2012: 1</revised>
+  <bug>386317</bug>
+  <bug>399807</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge">4.1.8</unaffected>
+      <vulnerable range="lt">4.1.8</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
+      <unaffected range="ge">4.1.4</unaffected>
+      <vulnerable range="lt">4.1.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple unspecified vulnerabilities have been discovered in VirtualBox.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker may be able to gain escalated privileges via unknown
+      attack vectors. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VirtualBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-4.1.8"
+    </code>
+    
+    <p>All VirtualBox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-4.1.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4414">CVE-2010-4414</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2300">CVE-2011-2300</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2305">CVE-2011-2305</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0105">CVE-2012-0105</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0111">CVE-2012-0111</uri>
+  </references>
+  <metadata timestamp="Wed, 07 Dec 2011 22:00:54 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Apr 2012 22:33:28 +0000" tag="submitter">ackle</metadata>
+</glsa>

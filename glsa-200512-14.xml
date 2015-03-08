@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-14">
+  <title>NBD Tools: Buffer overflow in NBD server</title>
+  <synopsis>
+    The NBD server is vulnerable to a buffer overflow that may result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">NBD</product>
+  <announced>December 23, 2005</announced>
+  <revised>December 23, 2005: 01</revised>
+  <bug>116314</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-block/nbd" auto="yes" arch="*">
+      <unaffected range="ge">2.8.2-r1</unaffected>
+      <vulnerable range="lt">2.8.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The NBD Tools are the Network Block Device utilities allowing one
+    to use remote block devices over a TCP/IP network. It includes a
+    userland NBD server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kurt Fitzner discovered that the NBD server allocates a request
+    buffer that fails to take into account the size of the reply header.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a malicious request that can result
+    in the execution of arbitrary code with the rights of the NBD server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NBD Tools users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-block/nbd-2.8.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3534">CVE-2005-3534</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 23 Dec 2005 10:21:27 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 23 Dec 2005 10:21:38 +0000">
+    koon
+  </metadata>
+</glsa>

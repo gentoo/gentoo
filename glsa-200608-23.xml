@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-23">
+  <title>Heartbeat: Denial of Service</title>
+  <synopsis>
+    Heartbeat is vulnerable to a Denial of Service which can be triggered by a
+    remote attacker without authentication.
+  </synopsis>
+  <product type="ebuild">heartbeat</product>
+  <announced>August 24, 2006</announced>
+  <revised>September 22, 2006: 02</revised>
+  <bug>141894</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-cluster/heartbeat" auto="yes" arch="*">
+      <unaffected range="ge">2.0.7</unaffected>
+      <unaffected range="rge">1.2.5</unaffected>
+      <vulnerable range="lt">2.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heartbeat is a component of the High-Availability Linux project. It is
+    used to perform death-of-node detection, communications and cluster
+    management.
+    </p>
+  </background>
+  <description>
+    <p>
+    Yan Rong Ge discovered that the peel_netstring() function in
+    cl_netstring.c does not validate the "length" parameter of user input,
+    which can lead to an out-of-bounds memory access when processing
+    certain Heartbeat messages (CVE-2006-3121). Furthermore an unspecified
+    local DoS issue was fixed (CVE-2006-3815).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a malicious UDP Heartbeat message, even before
+    authentication, a remote attacker can crash the master control process
+    of the cluster.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Heartbeat users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose sys-cluster/heartbeat</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3121">CVE-2006-3121</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3815">CVE-2006-3815</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 19 Aug 2006 16:22:39 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Aug 2006 14:22:38 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 23 Aug 2006 14:19:23 +0000">
+    falco
+  </metadata>
+</glsa>

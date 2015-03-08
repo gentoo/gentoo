@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201204-08">
+  <title>Perl DBD-Pg Module: Arbitrary code execution</title>
+  <synopsis>Two format string vulnerabilities have been found in the Perl
+    DBD-Pg module, allowing a remote PostgreSQL servers to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">DBD-Pg</product>
+  <announced>April 17, 2012</announced>
+  <revised>April 17, 2012: 1</revised>
+  <bug>407549</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/DBD-Pg" auto="yes" arch="*">
+      <unaffected range="ge">2.19.0</unaffected>
+      <vulnerable range="lt">2.19.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>DBD-Pg is a PostgreSQL interface module for Perl.</p>
+  </background>
+  <description>
+    <p>Format string vulnerabilities have been found in the the "pg_warn()" and
+      "dbd_st_prepare()" functions in dbdimp.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote PostgreSQL server could send specially crafted database
+      warnings or DBD statements, possibly resulting in execution of arbitrary
+      code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All users of the Perl DBD-Pg module should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-perl/DBD-Pg-2.19.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1151">CVE-2012-1151</uri>
+  </references>
+  <metadata timestamp="Sat, 17 Mar 2012 19:18:38 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 17 Apr 2012 22:44:31 +0000" tag="submitter">ackle</metadata>
+</glsa>

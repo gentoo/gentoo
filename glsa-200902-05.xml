@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200902-05">
+  <title>KTorrent: Multiple vulnerabilitites</title>
+  <synopsis>
+    Two vulnerabilities in the web interface plugin in KTorrent allow for
+    remote execution of code and arbitrary torrent uploads.
+  </synopsis>
+  <product type="ebuild">ktorrent</product>
+  <announced>February 23, 2009</announced>
+  <revised>February 23, 2009: 01</revised>
+  <bug>244741</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/ktorrent" auto="yes" arch="*">
+      <unaffected range="ge">2.2.8</unaffected>
+      <vulnerable range="lt">2.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KTorrent is a BitTorrent program for KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    The web interface plugin does not restrict access to the torrent upload
+    functionality (CVE-2008-5905) and does not sanitize request parameters
+    properly (CVE-2008-5906) .
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted parameters to the web
+    interface that would allow for arbitrary torrent uploads and remote
+    code execution with the privileges of the KTorrent process.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disabling the web interface plugin will prevent exploitation of both
+    issues. Click "Plugins" in the configuration menu and uncheck the
+    checkbox left of "WebInterface", then apply the changes.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KTorrent users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/ktorrent-2.2.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5905">CVE-2008-5905</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5906">CVE-2008-5906</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Jan 2009 20:05:03 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 00:24:20 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 19:16:54 +0000">
+    p-y
+  </metadata>
+</glsa>

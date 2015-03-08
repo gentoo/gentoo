@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201208-03">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium, some of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>August 14, 2012</announced>
+  <revised>August 14, 2012: 1</revised>
+  <bug>423719</bug>
+  <bug>426204</bug>
+  <bug>429174</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">21.0.1180.57</unaffected>
+      <vulnerable range="lt">21.0.1180.57</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers and release notes referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted web
+      site using Chromium, possibly resulting in the execution of arbitrary
+      code with the privileges of the process, a Denial of Service condition,
+      disclosure of sensitive information, or other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-21.0.1180.57"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2815">CVE-2012-2815</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2817">CVE-2012-2817</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2818">CVE-2012-2818</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2819">CVE-2012-2819</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2820">CVE-2012-2820</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2821">CVE-2012-2821</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2823">CVE-2012-2823</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2824">CVE-2012-2824</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2825">CVE-2012-2825</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2826">CVE-2012-2826</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2829">CVE-2012-2829</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2830">CVE-2012-2830</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2831">CVE-2012-2831</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2834">CVE-2012-2834</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2842">CVE-2012-2842</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2843">CVE-2012-2843</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2846">CVE-2012-2846</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2847">CVE-2012-2847</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2848">CVE-2012-2848</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2849">CVE-2012-2849</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2853">CVE-2012-2853</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2854">CVE-2012-2854</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2857">CVE-2012-2857</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2858">CVE-2012-2858</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2859">CVE-2012-2859</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2860">CVE-2012-2860</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/06/stable-channel-update_26.html">
+      Release Notes 20.0.1132.43
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/07/stable-channel-update.html">
+      Release Notes 20.0.1132.57
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2012/07/stable-channel-release.html">
+      Release Notes 21.0.1180.57
+    </uri>
+  </references>
+  <metadata timestamp="Wed, 27 Jun 2012 21:59:02 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 14 Aug 2012 20:30:39 +0000" tag="submitter">ackle</metadata>
+</glsa>

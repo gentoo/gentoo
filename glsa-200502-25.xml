@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-25">
+  <title>Squid: Denial of Service through DNS responses</title>
+  <synopsis>
+    Squid contains a bug in the handling of certain DNS responses resulting in
+    a Denial of Service.
+  </synopsis>
+  <product type="ebuild">Squid</product>
+  <announced>February 18, 2005</announced>
+  <revised>February 18, 2005: 01</revised>
+  <bug>81997</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.8</unaffected>
+      <vulnerable range="lt">2.5.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured Web proxy cache designed to run on
+    Unix-like systems. It supports proxying and caching of HTTP, FTP, and
+    other protocols, as well as SSL support, cache hierarchies, transparent
+    caching, access control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>
+    Handling of certain DNS responses trigger assertion failures.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By returning a specially crafted DNS response an attacker could
+    cause Squid to crash by triggering an assertion failure.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.5.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0446">CAN-2005-0446</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 17 Feb 2005 20:33:19 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Feb 2005 21:28:52 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 18 Feb 2005 09:26:51 +0000">
+    koon
+  </metadata>
+</glsa>

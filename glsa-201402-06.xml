@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-06">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which could result in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>February 06, 2014</announced>
+  <revised>February 06, 2014: 1</revised>
+  <bug>491148</bug>
+  <bug>493894</bug>
+  <bug>498170</bug>
+  <bug>500313</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.336</unaffected>
+      <vulnerable range="lt">11.2.202.336</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple unspecified vulnerabilities have been discovered in Adobe Flash
+      Player. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted SWF
+      file using Adobe Flash Player, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.336"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5329">CVE-2013-5329</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5330">CVE-2013-5330</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5331">CVE-2013-5331</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5332">CVE-2013-5332</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0491">CVE-2014-0491</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0492">CVE-2014-0492</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0497">CVE-2014-0497</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 15 Nov 2013 06:52:08 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 06 Feb 2014 10:58:54 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

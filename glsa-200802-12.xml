@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-12">
+  <title>xine-lib: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    xine-lib is vulnerable to multiple buffer overflows when processing FLAC
+    and ASF streams.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>February 26, 2008</announced>
+  <revised>March 03, 2008: 02</revised>
+  <bug>209106</bug>
+  <bug>208100</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.10.1</unaffected>
+      <vulnerable range="lt">1.1.10.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is the core library package for the xine media player.
+    </p>
+  </background>
+  <description>
+    <p>
+    Damian Frizza and Alfredo Ortega (Core Security Technologies)
+    discovered a stack-based buffer overflow within the open_flac_file()
+    function in the file demux_flac.c when parsing tags within a FLAC file
+    (CVE-2008-0486). A buffer overflow when parsing ASF headers, which is
+    similar to CVE-2006-1664, has also been discovered (CVE-2008-1110).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to play specially crafted FLAC or
+    ASF video streams with a player using xine-lib, potentially resulting
+    in the execution of arbitrary code with the privileges of the user
+    running the player.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.10.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1664">CVE-2006-1664</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0486">CVE-2008-0486</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1110">CVE-2008-1110</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 20 Feb 2008 08:36:00 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 20 Feb 2008 08:36:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 23 Feb 2008 19:46:42 +0000">
+    rbu
+  </metadata>
+</glsa>

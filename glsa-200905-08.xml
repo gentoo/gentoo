@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-08">
+  <title>NTP: Remote execution of arbitrary code</title>
+  <synopsis>
+    Multiple errors in the NTP client and server programs might allow for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>May 26, 2009</announced>
+  <revised>May 26, 2009: 01</revised>
+  <bug>263033</bug>
+  <bug>268962</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4_p7</unaffected>
+      <vulnerable range="lt">4.2.4_p7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NTP contains the client and daemon implementations for the Network Time
+    Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been found in the programs included in
+    the NTP package:
+    </p>
+    <ul>
+    <li>Apple Product Security reported a
+    boundary error in the cookedprint() function in ntpq/ntpq.c, possibly
+    leading to a stack-based buffer overflow (CVE-2009-0159).</li>
+    <li>Chris Ries of CMU reported a boundary error within the
+    crypto_recv() function in ntpd/ntp_crypto.c, possibly leading to a
+    stack-based buffer overflow (CVE-2009-1252).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker might send a specially crafted package to a machine
+    running ntpd, possibly resulting in the remote execution of arbitrary
+    code with the privileges of the user running the daemon, or a Denial of
+    Service. NOTE: Successful exploitation requires the "autokey" feature
+    to be enabled. This feature is only available if NTP was built with the
+    'ssl' USE flag.
+    </p>
+    <p>
+    Furthermore, a remote attacker could entice a user into connecting to a
+    malicious server using ntpq, possibly resulting in the remote execution
+    of arbitrary code with the privileges of the user running the
+    application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You can protect against CVE-2009-1252 by disabling the 'ssl' USE flag
+    and recompiling NTP.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NTP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/ntp-4.2.4_p7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0159">CVE-2009-0159</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1252">CVE-2009-1252</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 25 May 2009 17:26:27 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 May 2009 17:27:05 +0000">
+    a3li
+  </metadata>
+</glsa>

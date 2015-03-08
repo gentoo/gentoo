@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-12">
+  <title>Evolution: Format string vulnerability</title>
+  <synopsis>
+    A format string error has been discovered in Evolution, possibly resulting
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">evolution</product>
+  <announced>March 05, 2008</announced>
+  <revised>March 05, 2008: 01</revised>
+  <bug>212272</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/evolution" auto="yes" arch="*">
+      <unaffected range="ge">2.12.3-r1</unaffected>
+      <vulnerable range="lt">2.12.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evolution is a GNOME groupware application.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar from Secunia Research discovered a format string error
+    in the emf_multipart_encrypted() function in the file mail/em-format.c
+    when reading certain data (e.g. the "Version:" field) from an encrypted
+    e-mail.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    encrypted e-mail, potentially resulting in the execution of arbitrary
+    code with the privileges of the user running Evolution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Evolution users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/evolution-2.12.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0072">CVE-2008-0072</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 05 Mar 2008 20:09:16 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Mar 2008 21:00:40 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Mar 2008 21:00:49 +0000">
+    p-y
+  </metadata>
+</glsa>

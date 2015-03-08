@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-10">
+  <title>Adobe Reader: Arbitrary Code Execution</title>
+  <synopsis>A vulnerability in Adobe Reader could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>September 15, 2013</announced>
+  <revised>September 15, 2013: 1</revised>
+  <bug>483210</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">9.5.5</unaffected>
+      <vulnerable range="lt">9.5.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Adobe Reader is a closed-source PDF reader.</p>
+  </background>
+  <description>
+    <p>An unspecified vulnerability exists in Adobe Reader.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Reader users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-9.5.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3346">CVE-2013-3346</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 31 Aug 2013 22:47:11 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:43:05 +0000">
+    creffett
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-04">
+  <title>DevIL: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple boundary errors in DevIL may allow for the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">devil</product>
+  <announced>March 06, 2009</announced>
+  <revised>March 06, 2009: 01</revised>
+  <bug>255217</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/devil" auto="yes" arch="*">
+      <unaffected range="ge">1.7.7</unaffected>
+      <vulnerable range="lt">1.7.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Developer's Image Library (DevIL) is a cross-platform image library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Cornelius (Secunia Research) discovered two boundary errors
+    within the iGetHdrHeader() function in src-IL/src/il_hdr.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    Radiance RGBE file, possibly resulting in the execution of arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DevIL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/devil-1.7.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5262">CVE-2008-5262</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:17:56 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 05 Mar 2009 23:09:26 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 Mar 2009 22:07:22 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-17">
+  <title>Qpopper: Multiple Vulnerabilities</title>
+  <synopsis>
+    Qpopper contains two vulnerabilities allowing an attacker to overwrite
+    arbitrary files and create files with insecure permissions.
+  </synopsis>
+  <product type="ebuild">qpopper</product>
+  <announced>May 23, 2005</announced>
+  <revised>May 23, 2005: 01</revised>
+  <bug>90622</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-mail/qpopper" auto="yes" arch="*">
+      <unaffected range="ge">4.0.5-r3</unaffected>
+      <vulnerable range="lt">4.0.5-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Qpopper is a widely used server for the POP3 protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jens Steube discovered that Qpopper doesn't drop privileges to
+    process local files from normal users (CAN-2005-1151). The upstream
+    developers discovered that Qpopper can be forced to create group or
+    world writeable files (CAN-2005-1152).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious local attacker could exploit Qpopper to overwrite
+    arbitrary files as root or create new files which are group or world
+    writeable.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Qpopper users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/qpopper-4.0.5-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1151">CAN-2005-1151</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1152">CAN-2005-1152</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 10 May 2005 16:31:30 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 23 May 2005 19:25:37 +0000">
+    jaervosz
+  </metadata>
+</glsa>

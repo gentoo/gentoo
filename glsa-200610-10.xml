@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-10">
+  <title>ClamAV: Multiple Vulnerabilities</title>
+  <synopsis>
+    ClamAV is vulnerable to a heap-based buffer overflow potentially allowing
+    remote execution of arbitrary code and a Denial of Service.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>October 24, 2006</announced>
+  <revised>October 24, 2006: 01</revised>
+  <bug>151561</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.88.5</unaffected>
+      <vulnerable range="lt">0.88.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    Damian Put and an anonymous researcher reported a potential heap-based
+    buffer overflow vulnerability in rebuildpe.c responsible for the
+    rebuilding of an unpacked PE file, and a possible crash in chmunpack.c
+    in the CHM unpacker.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a malicious attachment to a mail server running ClamAV, or
+    providing a malicious file to ClamAV through any other method, a remote
+    attacker could cause a Denial of Service and potentially the execution
+    of arbitrary code with the permissions of the user running ClamAV.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/project/shownotes.php?release_id=455799">Original commit log</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4182">CVE-2006-4182</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 16 Oct 2006 11:34:35 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 14:39:53 +0000">
+    falco
+  </metadata>
+</glsa>

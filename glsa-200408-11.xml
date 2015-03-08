@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-11">
+  <title>Nessus: "adduser" race condition vulnerability</title>
+  <synopsis>
+    Nessus contains a vulnerability allowing a user to perform a privilege
+    escalation attack.
+  </synopsis>
+  <product type="ebuild">Nessus</product>
+  <announced>August 12, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>58014</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/nessus" auto="yes" arch="*">
+      <unaffected range="ge">2.0.12</unaffected>
+      <vulnerable range="le">2.0.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Nessus is a free and powerful network security scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    A race condition can occur in "nessus-adduser" if the user has not
+    configured their TMPDIR variable.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious user could exploit this bug to escalate privileges to the
+    rights of the user running "nessus-adduser".
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Nessus.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Nessus users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-analyzer/nessus-2.0.12&quot;
+    # emerge &quot;&gt;=net-analyzer/nessus-2.0.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/12127/">Secunia Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1445">CVE-2004-1445</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

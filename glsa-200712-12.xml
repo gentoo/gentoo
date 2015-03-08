@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-12">
+  <title>IRC Services: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability has been reported in IRC Services.
+  </synopsis>
+  <product type="ebuild">ircservices</product>
+  <announced>December 13, 2007</announced>
+  <revised>December 13, 2007: 01</revised>
+  <bug>199897</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/ircservices" auto="yes" arch="*">
+      <unaffected range="ge">5.0.63</unaffected>
+      <vulnerable range="lt">5.0.63</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    IRC Services is a system of services to be used with Internet Relay
+    Chat networks.
+    </p>
+  </background>
+  <description>
+    <p>
+    loverboy reported that the "default_encrypt()" function in file
+    encrypt.c does not properly handle overly long passwords.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could provide an overly long password to the
+    vulnerable server, resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IRC Services users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/ircservices-5.0.63&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6122">CVE-2007-6122</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Dec 2007 21:48:10 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 10 Dec 2007 21:51:02 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Dec 2007 22:44:42 +0000">
+    p-y
+  </metadata>
+</glsa>

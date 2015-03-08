@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-16">
+  <title>Linux Kernel: Multiple DoS and permission vulnerabilities</title>
+  <synopsis>
+    Multiple permission vulnerabilities have been found in the Linux kernel,
+    allowing an attacker to change the group IDs of files mounted on a remote
+    filesystem (CAN-2004-0497), as well as an issue in 2.6 series kernels which
+    allows /proc permissions to be bypassed. A context sharing vulnerability in
+    vserver-sources is also handled by this advisory as well as CAN-2004-0447,
+    CAN-2004-0496 and CAN-2004-0565. Patched, or updated versions of these
+    kernels have been released and details are included along with this
+    advisory.
+  </synopsis>
+  <product type="ebuild">Kernel</product>
+  <announced>July 22, 2004</announced>
+  <revised>March 27, 2011: 03</revised>
+  <bug>56171</bug>
+  <bug>56479</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-kernel/aa-sources" auto="no" arch="*">
+      <unaffected range="rge">2.4.23-r2</unaffected>
+      <unaffected range="ge">2.6.5-r5</unaffected>
+      <vulnerable range="lt">2.6.5-r5</vulnerable>
+    </package>
+    <package name="sys-kernel/alpha-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.21-r9</unaffected>
+      <vulnerable range="lt">2.4.21-r9</vulnerable>
+    </package>
+    <package name="sys-kernel/ck-sources" auto="no" arch="*">
+      <unaffected range="rge">2.4.26-r1</unaffected>
+      <unaffected range="ge">2.6.7-r5</unaffected>
+      <vulnerable range="lt">2.6.7-r5</vulnerable>
+    </package>
+    <package name="sys-kernel/compaq-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.9.32.7-r8</unaffected>
+      <vulnerable range="lt">2.4.9.32.7-r8</vulnerable>
+    </package>
+    <package name="sys-kernel/development-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.8_rc1</unaffected>
+      <vulnerable range="lt">2.6.8_rc1</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r8</unaffected>
+      <vulnerable range="lt">2.6.7-r8</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.19-r18</unaffected>
+      <unaffected range="rge">2.4.20-r21</unaffected>
+      <unaffected range="rge">2.4.22-r13</unaffected>
+      <unaffected range="rge">2.4.25-r6</unaffected>
+      <unaffected range="ge">2.4.26-r5</unaffected>
+      <vulnerable range="lt">2.4.26-r5</vulnerable>
+    </package>
+    <package name="sys-kernel/grsec-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26.2.0-r6</unaffected>
+      <vulnerable range="lt">2.4.26.2.0-r6</vulnerable>
+    </package>
+    <package name="sys-kernel/gs-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.25_pre7-r8</unaffected>
+      <vulnerable range="lt">2.4.25_pre7-r8</vulnerable>
+    </package>
+    <package name="sys-kernel/hardened-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r2</unaffected>
+      <vulnerable range="lt">2.6.7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/hardened-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/hppa-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7_p1-r2</unaffected>
+      <vulnerable range="lt">2.6.7_p1-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/hppa-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26_p6-r1</unaffected>
+      <vulnerable range="lt">2.4.26_p6-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/ia64-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24-r7</unaffected>
+      <vulnerable range="lt">2.4.24-r7</vulnerable>
+    </package>
+    <package name="sys-kernel/mm-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r6</unaffected>
+      <vulnerable range="lt">2.6.7-r6</vulnerable>
+    </package>
+    <package name="sys-kernel/openmosix-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.22-r11</unaffected>
+      <vulnerable range="lt">2.4.22-r11</vulnerable>
+    </package>
+    <package name="sys-kernel/pac-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r9</unaffected>
+      <vulnerable range="lt">2.4.23-r9</vulnerable>
+    </package>
+    <package name="sys-kernel/planet-ccrma-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.21-r11</unaffected>
+      <vulnerable range="lt">2.4.21-r11</vulnerable>
+    </package>
+    <package name="sys-kernel/pegasos-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r2</unaffected>
+      <vulnerable range="lt">2.6.7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/pegasos-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/rsbac-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/rsbac-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r2</unaffected>
+      <vulnerable range="lt">2.6.7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/selinux-sources" auto="no" arch="*">
+      <unaffected range="ge">2.4.26-r2</unaffected>
+      <vulnerable range="lt">2.4.26-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/sparc-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.26-r3</unaffected>
+      <vulnerable range="lt">2.4.26-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/uclinux-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.26_p0-r3</unaffected>
+      <unaffected range="ge">2.6.7_p0-r2</unaffected>
+      <vulnerable range="lt">2.6.7_p0-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/usermode-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.24-r6</unaffected>
+      <unaffected range="rge">2.4.26-r3</unaffected>
+      <unaffected range="ge">2.6.6-r4</unaffected>
+      <vulnerable range="lt">2.6.6-r4</vulnerable>
+    </package>
+    <package name="sys-kernel/vserver-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.0</unaffected>
+      <vulnerable range="lt">2.4.26.1.28-r1</vulnerable>
+      <vulnerable range="ge">2.4</vulnerable>
+      <vulnerable range="lt">2.0</vulnerable>
+    </package>
+    <package name="sys-kernel/win4lin-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.26-r3</unaffected>
+      <unaffected range="ge">2.6.7-r2</unaffected>
+      <vulnerable range="lt">2.6.7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/wolk-sources" auto="yes" arch="*">
+      <unaffected range="rge">4.9-r10</unaffected>
+      <unaffected range="rge">4.11-r7</unaffected>
+      <unaffected range="ge">4.14-r4</unaffected>
+      <vulnerable range="lt">4.14-r4</vulnerable>
+    </package>
+    <package name="sys-kernel/xbox-sources" auto="yes" arch="*">
+      <unaffected range="rge">2.4.26-r3</unaffected>
+      <unaffected range="ge">2.6.7-r2</unaffected>
+      <vulnerable range="lt">2.6.7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/mips-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.27</unaffected>
+      <vulnerable range="lt">2.4.27</vulnerable>
+    </package>
+    <package name="sys-kernel/vanilla-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.27</unaffected>
+      <vulnerable range="le">2.4.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Linux kernel is responsible for managing the core aspects of a
+    GNU/Linux system, providing an interface for core system applications
+    as well as providing the essential structure and capability to access
+    hardware that is needed for a running system.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Linux kernel allows a local attacker to mount a remote file system
+    on a vulnerable Linux host and modify files' group IDs. On 2.4 series
+    kernels this vulnerability only affects shared NFS file systems. This
+    vulnerability has been assigned CAN-2004-0497 by the Common
+    Vulnerabilities and Exposures project.
+    </p>
+    <p>
+    Also, a flaw in the handling of /proc attributes has been found in 2.6
+    series kernels; allowing the unauthorized modification of /proc
+    entries, especially those which rely solely on file permissions for
+    security to vital kernel parameters.
+    </p>
+    <p>
+    An issue specific to the VServer Linux sources has been found, by which
+    /proc related changes in one virtual context are applied to other
+    contexts as well, including the host system.
+    </p>
+    <p>
+    CAN-2004-0447 resolves a local DoS vulnerability on IA64 platforms
+    which can cause unknown behaviour and CAN-2004-0565 resolves a floating
+    point information leak on IA64 platforms by which registers of other
+    processes can be read by a local user.
+    </p>
+    <p>
+    Finally, CAN-2004-0496 addresses some more unknown vulnerabilities in
+    2.6 series Linux kernels older than 2.6.7 which were found by the
+    Sparse source code checking tool.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Bad Group IDs can possibly cause a Denial of Service on parts of a host
+    if the changed files normally require a special GID to properly
+    operate. By exploiting this vulnerability, users in the original file
+    group would also be blocked from accessing the changed files.
+    </p>
+    <p>
+    The /proc attribute vulnerability allows local users with previously no
+    permissions to certain /proc entries to exploit the vulnerability and
+    then gain read, write and execute access to entries.
+    </p>
+    <p>
+    These new privileges can be used to cause unknown behaviour ranging
+    from reduced system performance to a Denial of Service by manipulating
+    various kernel options which are usually reserved for the superuser.
+    This flaw might also be used for opening restrictions set through /proc
+    entries, allowing further attacks to take place through another
+    possibly unexpected attack vector.
+    </p>
+    <p>
+    The VServer issue can also be used to induce similar unexpected
+    behaviour to other VServer contexts, including the host. By successful
+    exploitation, a Denial of Service for other contexts can be caused
+    allowing only root to read certain /proc entries. Such a change would
+    also be replicated to other contexts, forbidding normal users on those
+    contexts to read /proc entries which could contain details needed by
+    daemons running as a non-root user, for example.
+    </p>
+    <p>
+    Additionally, this vulnerability allows an attacker to read information
+    from another context, possibly hosting a different server, gaining
+    critical information such as what processes are running. This may be
+    used for furthering the exploitation of either context.
+    </p>
+    <p>
+    CAN-2004-0447 and CAN-2004-0496 permit various local unknown Denial of
+    Service vulnerabilities with unknown impacts - these vulnerabilities
+    can be used to possibly elevate privileges or access reserved kernel
+    memory which can be used for further exploitation of the system.
+    </p>
+    <p>
+    CAN-2004-0565 allows FPU register values of other processes to be read
+    by a local user setting the MFH bit during a floating point operation -
+    since no check was in place to ensure that the FPH bit was owned by the
+    requesting process, but only an MFH bit check, an attacker can simply
+    set the MFH bit and access FPU registers of processes running as other
+    users, possibly those running as root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    2.4 users may not be affected by CAN-2004-0497 if they do not use
+    remote network filesystems and do not have support for any such
+    filesystems in their kernel configuration. All 2.6 users are affected
+    by the /proc attribute issue and the only known workaround is to
+    disable /proc support. The VServer flaw applies only to
+    vserver-sources, and no workaround is currently known for the issue.
+    There is no known fix to CAN-2004-0447, CAN-2004-0496 or CAN-2004-0565
+    other than to upgrade the kernel to a patched version.
+    </p>
+    <p>
+    As a result, all users affected by any of these vulnerabilities should
+    upgrade their kernels to ensure the integrity of their systems.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to upgrade to the latest available sources for
+    their system:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv your-favorite-sources
+    # emerge your-favorite-sources
+    
+    # # Follow usual procedure for compiling and installing a kernel.
+    # # If you use genkernel, run genkernel as you would do normally.</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0447">CAN-2004-0447</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0496">CAN-2004-0496</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0497">CAN-2004-0497</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0565">CAN-2004-0565</uri>
+    <uri link="http://www.securityfocus.com/archive/1/367977">VServer /proc Context Vulnerability</uri>
+  </references>
+  <metadata tag="submitter">
+    plasmaroo
+  </metadata>
+</glsa>

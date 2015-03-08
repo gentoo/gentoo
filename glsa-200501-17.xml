@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-17">
+  <title>KPdf, KOffice: More vulnerabilities in included Xpdf</title>
+  <synopsis>
+    KPdf and KOffice both include vulnerable Xpdf code to handle PDF files,
+    making them vulnerable to the execution of arbitrary code if a user is
+    enticed to view a malicious PDF file.
+  </synopsis>
+  <product type="ebuild">kpdf, koffice</product>
+  <announced>January 11, 2005</announced>
+  <revised>January 12, 2005: 02</revised>
+  <bug>75203</bug>
+  <bug>75204</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/koffice" auto="yes" arch="*">
+      <unaffected range="ge">1.3.5-r1</unaffected>
+      <vulnerable range="lt">1.3.5-r1</vulnerable>
+    </package>
+    <package name="kde-base/kdegraphics" auto="yes" arch="*">
+      <unaffected range="ge">3.3.2-r1</unaffected>
+      <unaffected range="rge">3.2.3-r3</unaffected>
+      <vulnerable range="lt">3.3.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KPdf is a KDE-based PDF viewer included in the kdegraphics package.
+    KOffice is an integrated office suite for KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    KPdf and KOffice both include Xpdf code to handle PDF files. Xpdf is
+    vulnerable to multiple new integer overflows, as described in GLSA
+    200412-24.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially-crafted PDF file,
+    potentially resulting in the execution of arbitrary code with the
+    rights of the user running the affected utility.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All KPdf users should upgrade to the latest version of kdegraphics:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/kdegraphics</code>
+    <p>
+    All KOffice users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-office/koffice</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200412-24.xml">GLSA 200412-24</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
+    <uri link="http://kde.org/info/security/advisory-20041223-1.txt">KDE Security Advisory: kpdf Buffer Overflow Vulnerability</uri>
+    <uri link="http://koffice.kde.org/security/2004_xpdf_integer_overflow_2.php">KOffice XPDF Integer Overflow 2</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed,  5 Jan 2005 17:17:02 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 12:37:24 +0000">
+    jaervosz
+  </metadata>
+</glsa>

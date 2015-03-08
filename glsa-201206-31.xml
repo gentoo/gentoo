@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-31">
+  <title>Linux-PAM: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Linux-PAM, allowing
+    local attackers to possibly gain escalated privileges, cause a Denial of
+    Service, corrupt data, or obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">pam</product>
+  <announced>June 25, 2012</announced>
+  <revised>June 25, 2012: 1</revised>
+  <bug>343399</bug>
+  <bug>386273</bug>
+  <bug>388431</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/pam" auto="yes" arch="*">
+      <unaffected range="ge">1.1.5</unaffected>
+      <vulnerable range="lt">1.1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Linux-PAM (Pluggable Authentication Modules) is an architecture allowing
+      the separation of the development of privilege granting software from the
+      development of secure and appropriate authentication schemes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Linux-PAM. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could use specially crafted files to cause a buffer
+      overflow, possibly resulting in privilege escalation or Denial of
+      Service. Furthermore, a local attacker could execute specially crafted
+      programs or symlink attacks, possibly resulting in data loss or
+      disclosure of sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Linux-PAM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/pam-1.1.5"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since November 25, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3316">CVE-2010-3316</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3430">CVE-2010-3430</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3431">CVE-2010-3431</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3435">CVE-2010-3435</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3853">CVE-2010-3853</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4706">CVE-2010-4706</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4707">CVE-2010-4707</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4708">CVE-2010-4708</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3148">CVE-2011-3148</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3149">CVE-2011-3149</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:20 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 25 Jun 2012 18:51:25 +0000" tag="submitter">craig</metadata>
+</glsa>

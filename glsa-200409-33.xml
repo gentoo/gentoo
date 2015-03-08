@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-33">
+  <title>Apache: Exposure of protected directories</title>
+  <synopsis>
+    A bug in the way Apache handles the Satisfy directive can lead to the
+    exposure of protected directories to unauthorized users.
+  </synopsis>
+  <product type="ebuild">net=www/apache</product>
+  <announced>September 24, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>64804</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.0.51-r1</unaffected>
+      <unaffected range="lt">2.0.51</unaffected>
+      <vulnerable range="eq">2.0.51</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of most popular web servers on the Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    A bug in the way Apache handles the Satisfy directive, which is used to
+    require that certain conditions (client host, client authentication, etc)
+    be met before access to a certain directory is granted, could allow the
+    exposure of protected directories to unauthorized clients.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Directories containing protected data could be exposed to all visitors to
+    the webserver.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=www-servers/apache-2.0.51-r1"
+    # emerge ">=www-servers/apache-2.0.51-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://issues.apache.org/bugzilla/show_bug.cgi?id=31315">Apache Bug #31315</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0811">CAN-2004-0811</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 21 Sep 2004 16:24:09 +0000">
+    dmargoli
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 24 Sep 2004 04:13:15 +0000">
+    lewk
+  </metadata>
+</glsa>

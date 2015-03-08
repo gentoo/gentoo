@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-01">
+  <title>Firebird: Buffer overflow</title>
+  <synopsis>
+    A vulnerability has been discovered in Firebird, allowing for the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">firebird</product>
+  <announced>July 01, 2007</announced>
+  <revised>July 01, 2007: 01</revised>
+  <bug>181811</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/firebird" auto="yes" arch="*">
+      <unaffected range="ge">2.0.1</unaffected>
+      <vulnerable range="lt">2.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Firebird is an open source relational database that runs on Linux,
+    Windows, and various UNIX systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cody Pierce from TippingPoint DVLabs has discovered a buffer overflow
+    when processing "connect" requests with an overly large "p_cnct_count"
+    value.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An unauthenticated remote attacker could send a specially crafted
+    request to a vulnerable server, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running Firebird.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Firebird users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/firebird-2.0.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3181">CVE-2007-3181</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 25 Jun 2007 19:06:37 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Jun 2007 18:04:58 +0000">
+    p-y
+  </metadata>
+</glsa>

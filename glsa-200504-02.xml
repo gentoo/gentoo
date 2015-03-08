@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-02">
+  <title>Sylpheed, Sylpheed-claws: Buffer overflow on message display</title>
+  <synopsis>
+    Sylpheed and Sylpheed-claws contain a vulnerability that can be triggered
+    when displaying messages with specially crafted attachments.
+  </synopsis>
+  <product type="ebuild">sylpheed</product>
+  <announced>April 02, 2005</announced>
+  <revised>April 02, 2005: 01</revised>
+  <bug>86541</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/sylpheed" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4</unaffected>
+      <vulnerable range="lt">1.0.4</vulnerable>
+    </package>
+    <package name="mail-client/sylpheed-claws" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4</unaffected>
+      <vulnerable range="lt">1.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sylpheed is a lightweight email client and newsreader.
+    Sylpheed-claws is a 'bleeding edge' version of Sylpheed.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sylpheed and Sylpheed-claws fail to properly handle messages
+    containing attachments with MIME-encoded filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can send a malicious email message which, when
+    displayed, would cause the program to crash, potentially allowing the
+    execution of arbitrary code with the privileges of the user running the
+    software.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sylpheed users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-1.0.4&quot;</code>
+    <p>
+    All Sylpheed-claws users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-claws-1.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sylpheed.good-day.net/#changes">Sylpheed ChangeLog</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 31 Mar 2005 08:06:56 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 31 Mar 2005 08:07:15 +0000">
+    koon
+  </metadata>
+</glsa>

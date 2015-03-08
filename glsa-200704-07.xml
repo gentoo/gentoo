@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-07">
+  <title>libwpd: Multiple vulnerabilities</title>
+  <synopsis>
+    libwpd is vulnerable to several heap overflows and an integer overflow.
+  </synopsis>
+  <product type="ebuild">libwpd</product>
+  <announced>April 06, 2007</announced>
+  <revised>April 06, 2007: 01</revised>
+  <bug>169675</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/libwpd" auto="yes" arch="*">
+      <unaffected range="ge">0.8.9</unaffected>
+      <vulnerable range="lt">0.8.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libwpd is a library used to convert Wordperfect documents into other
+    formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    libwpd contains heap-based overflows in two functions that convert
+    WordPerfect document tables. In addition, it contains an integer
+    overflow in a text-conversion function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to convert a specially crafted
+    WordPerfect file, resulting in a crash or possibly the execution of
+    arbitrary code with the rights of the user running libwpd.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libwpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/libwpd-0.8.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0002">CVE-2007-0002</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1466">CVE-2007-1466</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Apr 2007 22:18:42 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Apr 2007 12:29:29 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:58 +0000">
+    falco
+  </metadata>
+</glsa>

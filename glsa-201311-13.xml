@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-13">
+  <title>OpenVPN: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenVPN, allowing
+    remote attackers to read encrypted traffic.
+  </synopsis>
+  <product type="ebuild">openvpn</product>
+  <announced>November 20, 2013</announced>
+  <revised>November 20, 2013: 1</revised>
+  <bug>293894</bug>
+  <bug>468756</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openvpn" auto="yes" arch="*">
+      <unaffected range="ge">2.3.1</unaffected>
+      <vulnerable range="lt">2.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenVPN is a multi-platform, full-featured SSL VPN solution. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenVPN. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to recover plaintext from an encrypted
+      communication. Another vulnerability could allow remote attacker perform
+      a Man-in-the-Middle attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenVPN users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openvpn-2.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2061">CVE-2013-2061</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:49:37 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Nov 2013 10:13:40 +0000">
+    creffett
+  </metadata>
+</glsa>

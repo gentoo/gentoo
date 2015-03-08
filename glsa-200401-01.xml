@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200401-01">
+  <title>Linux kernel do_mremap() local privilege escalation vulnerability</title>
+  <synopsis>
+    A critical security vulnerability has been found in recent Linux kernels
+    which allows for local privelege escalation.
+  </synopsis>
+  <product type="ebuild">Kernel</product>
+  <announced>January 08, 2004</announced>
+  <revised>January 08, 2004: 01</revised>
+  <bug>37292</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-kernel/aa-sources" auto="no" arch="*">
+      <unaffected range="ge">2.4.23-r1</unaffected>
+      <vulnerable range="lt">2.4.23-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/alpha-sources" auto="no" arch="*">
+      <unaffected range="ge">2.4.21-r2</unaffected>
+      <vulnerable range="lt">2.4.21-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/arm-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.19-r2</unaffected>
+      <vulnerable range="lt">2.4.19-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/ck-sources" auto="no" arch="*">
+      <unaffected range="ge">2.4.23-r1</unaffected>
+      <vulnerable range="lt">2.4.23-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/compaq-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.9.32.7-r1</unaffected>
+      <vulnerable range="lt">2.4.9.32.7-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/development-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1_rc3</unaffected>
+      <vulnerable range="lt">2.6.1_rc3</vulnerable>
+    </package>
+    <package name="sys-kernel/gaming-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.20-r7</unaffected>
+      <vulnerable range="lt">2.4.20-r7</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1_rc3</unaffected>
+      <vulnerable range="lt">2.6.1_rc3</vulnerable>
+    </package>
+    <package name="sys-kernel/gentoo-sources" auto="yes" arch="*">
+      <unaffected range="gt">2.4.22-r3</unaffected>
+      <vulnerable range="lt">2.4.22-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/grsec-sources" auto="yes" arch="*">
+      <unaffected range="gt">2.4.23.2.0_rc4-r1</unaffected>
+      <vulnerable range="lt">2.4.23.2.0_rc4-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/gs-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23_pre8-r2</unaffected>
+      <vulnerable range="lt">2.4.23_pre8-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/hardened-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.22-r2</unaffected>
+      <vulnerable range="lt">2.4.22-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/hppa-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23_p4-r2</unaffected>
+      <vulnerable range="lt">2.4.23_p4-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/ia64-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.22-r2</unaffected>
+      <vulnerable range="lt">2.4.22-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/mips-prepatch-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24_pre2-r1</unaffected>
+      <vulnerable range="lt">2.4.24_pre2-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/mips-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r2</unaffected>
+      <vulnerable range="lt">2.4.23-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/mm-sources" auto="no" arch="*">
+      <unaffected range="ge">2.6.1_rc1-r2</unaffected>
+      <vulnerable range="lt">2.6.1_rc1-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/openmosix-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.22-r3</unaffected>
+      <vulnerable range="lt">2.4.22-r3</vulnerable>
+    </package>
+    <package name="sys-kernel/pac-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r1</unaffected>
+      <vulnerable range="lt">2.4.23-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/pfeifer-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.21.1_pre4-r1</unaffected>
+      <vulnerable range="lt">2.4.21.1_pre4-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/planet-ccrma-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.21-r4</unaffected>
+      <vulnerable range="lt">2.4.21-r4</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc-development-sources" auto="no" arch="*">
+      <unaffected range="ge">2.6.1_rc1-r1</unaffected>
+      <vulnerable range="lt">2.6.1_rc1-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r1</unaffected>
+      <vulnerable range="lt">2.4.23-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc-sources-benh" auto="yes" arch="*">
+      <unaffected range="ge">2.4.22-r4</unaffected>
+      <vulnerable range="lt">2.4.22-r4</vulnerable>
+    </package>
+    <package name="sys-kernel/ppc-sources-crypto" auto="yes" arch="*">
+      <unaffected range="ge">2.4.20-r2</unaffected>
+      <vulnerable range="lt">2.4.20-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/selinux-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24</unaffected>
+      <vulnerable range="lt">2.4.24</vulnerable>
+    </package>
+    <package name="sys-kernel/sparc-dev-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1_rc2</unaffected>
+      <vulnerable range="lt">2.6.1_rc2</vulnerable>
+    </package>
+    <package name="sys-kernel/sparc-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24</unaffected>
+      <vulnerable range="lt">2.4.24</vulnerable>
+    </package>
+    <package name="sys-kernel/usermode-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r1</unaffected>
+      <vulnerable range="lt">2.4.23-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/vanilla-prepatch-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.25_pre4</unaffected>
+      <vulnerable range="lt">2.4.25_pre4</vulnerable>
+    </package>
+    <package name="sys-kernel/vanilla-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.24</unaffected>
+      <vulnerable range="lt">2.4.24</vulnerable>
+    </package>
+    <package name="sys-kernel/win4lin-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.6.0-r1</unaffected>
+      <vulnerable range="lt">2.6.0-r1</vulnerable>
+    </package>
+    <package name="sys-kernel/wolk-sources" auto="yes" arch="*">
+      <unaffected range="ge">4.10_pre7-r2</unaffected>
+      <vulnerable range="lt">4.10_pre7-r2</vulnerable>
+    </package>
+    <package name="sys-kernel/xfs-sources" auto="yes" arch="*">
+      <unaffected range="ge">2.4.23-r1</unaffected>
+      <vulnerable range="lt">2.4.23-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Linux kernel is responsible for memory management in a working
+    system - to allow this, processes are allowed to allocate and unallocate
+    memory.
+    </p>
+  </background>
+  <description>
+    <p>
+    The memory subsystem allows for shrinking, growing, and moving of
+    chunks of memory along any of the allocated memory areas which the kernel
+    posesses. 
+    </p>
+    <p>
+    A typical virtual memory area covers at least one memory page. An incorrect
+    bound check discovered inside the do_mremap() kernel code performing
+    remapping of a virtual memory area may lead to creation of a virtual memory
+    area of 0 bytes length.
+    </p>
+    <p>
+    The problem is based on the general mremap flaw that remapping 2 pages from
+    inside a VMA creates a memory hole of only one page in length but an
+    additional VMA of two pages. In the case of a zero sized remapping request
+    no VMA hole is created but an additional VMA descriptor of 0
+    bytes in length is created.
+    </p>
+    <p>
+    This advisory also addresses an information leak in the Linux RTC system.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Arbitrary code may be able to exploit this vulnerability and may
+    disrupt the operation of other
+    parts of the kernel memory management subroutines finally leading to
+    unexpected behavior.
+    </p>
+    <p>
+    Since no special privileges are required to use the mremap(2) system call
+    any process may misuse its unexpected behavior to disrupt the kernel memory
+    management subsystem. Proper exploitation of this vulnerability may lead to
+    local privilege escalation including execution of arbitrary code
+    with kernel level access.
+    </p>
+    <p>
+    Proof-of-concept exploit code has been created and successfully tested,
+    permitting root escalation on vulnerable systems. As a result, all users
+    should upgrade their kernels to new or patched versions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no temporary workaround - a kernel upgrade is required. A list
+    of unaffected kernels is provided along with this announcement.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users are encouraged to upgrade to the latest available sources for
+    their system:
+    </p>
+    <code>
+    $> emerge sync
+    $> emerge -pv your-favourite-sources
+    $> emerge your-favourite-sources
+    $> # Follow usual procedure for compiling and installing a kernel.
+    $> # If you use genkernel, run genkernel as you would do normally.
+
+    $> # IF YOUR KERNEL IS MARKED as "remerge required!" THEN
+    $> # YOU SHOULD UPDATE YOUR KERNEL EVEN IF PORTAGE
+    $> # REPORTS THAT THE SAME VERSION IS INSTALLED.</code>
+  </resolution>
+  <references>
+    <uri link="http://isec.pl/vulnerabilities/isec-0012-mremap.txt">Vulnerability</uri>
+  </references>
+</glsa>

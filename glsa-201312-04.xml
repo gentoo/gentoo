@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-04">
+  <title>libtheora: Arbitrary code execution</title>
+  <synopsis>An integer overflow in libtheora might allow remote attackers to
+    execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libtheora</product>
+  <announced>December 03, 2013</announced>
+  <revised>December 03, 2013: 1</revised>
+  <bug>298039</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libtheora" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1</unaffected>
+      <vulnerable range="lt">1.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libtheora is the reference implementation of Theora, a free and open
+      video compression format from the Xiph.org Foundation.
+    </p>
+  </background>
+  <description>
+    <p>An integer overflow flaw has been discovered in libtheora.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libtheora users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libtheora-1.1.1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3389">
+      CVE-2009-3389
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:01 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Dec 2013 04:32:42 +0000">Zlogene</metadata>
+</glsa>

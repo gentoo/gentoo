@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-10">
+  <title>Wget: User-assisted file creation or overwrite</title>
+  <synopsis>Insecure usage of server provided filenames may allow the creation
+    or overwriting of local files.
+  </synopsis>
+  <product type="ebuild">Wget</product>
+  <announced>October 13, 2011</announced>
+  <revised>October 13, 2011: 1</revised>
+  <bug>329941</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.12-r2</unaffected>
+      <vulnerable range="lt">1.12-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols. 
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Wget was unsafely trusting server-provided
+      filenames. This allowed attackers to overwrite or create files on the
+      user's system by sending a redirect from the expected URL to another URL
+      specifying the targeted file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote attacker may be able to create or overwrite
+      local files by enticing the user to open an attacker controlled URL,
+      possibly leading to execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.12-r2"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since September 19, 2010. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2252">CVE-2010-2252</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:55 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Thu, 13 Oct 2011 23:47:06 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

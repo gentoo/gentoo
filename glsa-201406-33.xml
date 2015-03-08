@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-33">
+  <title>Wireshark: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>June 29, 2014</announced>
+  <revised>June 29, 2014: 1</revised>
+  <bug>503792</bug>
+  <bug>507298</bug>
+  <bug>508506</bug>
+  <bug>513094</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="rge">1.8.15</unaffected>
+      <unaffected range="ge">1.10.8</unaffected>
+      <vulnerable range="lt">1.10.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause arbitrary code execution or a Denial of
+      Service condition via a specially crafted packet.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark 1.8.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.8.15"
+    </code>
+    
+    <p>All Wireshark 1.10.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.10.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2281">CVE-2014-2281</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2282">CVE-2014-2282</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2283">CVE-2014-2283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2299">CVE-2014-2299</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2907">CVE-2014-2907</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4020">CVE-2014-4020</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4174">CVE-2014-4174</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 24 Mar 2014 22:48:06 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 29 Jun 2014 15:53:26 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

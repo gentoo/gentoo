@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-10">
+  <title>Festival: Privilege elevation</title>
+  <synopsis>
+    A vulnerability has been discovered in Festival, allowing for a local
+    privilege escalation.
+  </synopsis>
+  <product type="ebuild">festival</product>
+  <announced>July 25, 2007</announced>
+  <revised>July 25, 2007: 01</revised>
+  <bug>170477</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-accessibility/festival" auto="yes" arch="*">
+      <unaffected range="ge">1.95_beta-r4</unaffected>
+      <vulnerable range="lt">1.95_beta-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Festival is a text-to-speech accessibility program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Konstantine Shirow reported a vulnerability in default Gentoo
+    configurations of Festival. The daemon is configured to run with root
+    privileges and to listen on localhost, without requiring a password.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could gain root privileges by connecting to the daemon
+    and execute arbitrary commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Set a password in the configuration file /etc/festival/server.scm by
+    adding the line: (set! server_passwd password)
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Festival users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-accessibility/festival-1.95_beta-r4&quot;</code>
+  </resolution>
+  <references/>
+  <metadata tag="submitter" timestamp="Wed, 25 Jul 2007 09:41:45 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Jul 2007 21:25:25 +0000">
+    falco
+  </metadata>
+</glsa>

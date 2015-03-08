@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-09">
+  <title>OpenSC: Insufficient protection of smart card PIN</title>
+  <synopsis>
+    Smart cards formatted using OpenSC do not sufficiently protect the PIN,
+    allowing attackers to reset it.
+  </synopsis>
+  <product type="ebuild">opensc</product>
+  <announced>December 10, 2008</announced>
+  <revised>December 10, 2008: 01</revised>
+  <bug>233543</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-libs/opensc" auto="yes" arch="*">
+      <unaffected range="ge">0.11.6</unaffected>
+      <vulnerable range="lt">0.11.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSC is a smart card application that allows reading and writing via
+    PKCS#11.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chaskiel M Grundman reported that OpenSC uses weak permissions (ADMIN
+    file control information of 00) for the 5015 directory on smart cards
+    and USB crypto tokens running Siemens CardOS M4.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A physically proximate attacker can exploit this vulnerability to
+    change the PIN on a smart card and use it for authentication, leading
+    to privilege escalation.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSC users should upgrade to the latest version, and then check
+    and update their smart cards:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/opensc-0.11.6&quot;
+    # pkcs15-tool --test-update
+    # pkcs15-tool --test-update --update</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2235">CVE-2008-2235</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:58:19 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 19:57:21 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 19:57:53 +0000">
+    rbu
+  </metadata>
+</glsa>

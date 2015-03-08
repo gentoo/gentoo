@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-24">
+  <title>tnftp: Arbitrary file overwriting</title>
+  <synopsis>
+    tnftp fails to validate filenames when downloading files, making it
+    vulnerable to arbitrary file overwriting.
+  </synopsis>
+  <product type="ebuild">tnftp</product>
+  <announced>January 14, 2005</announced>
+  <revised>January 14, 2005: 01</revised>
+  <bug>74704</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/tnftp" auto="yes" arch="*">
+      <unaffected range="ge">20050103</unaffected>
+      <vulnerable range="lt">20050103</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    tnftp is a NetBSD FTP client with several advanced features.
+    </p>
+  </background>
+  <description>
+    <p>
+    The 'mget' function in cmds.c lacks validation of the filenames
+    that are supplied by the server.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker running an FTP server could supply clients with
+    malicious filenames, potentially allowing the overwriting of arbitrary
+    files with the permission of the connected user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All tnftp users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/tnftp-20050103&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1294">CAN-2004-1294</uri>
+    <uri link="http://tigger.uic.edu/~jlongs2/holes/tnftp.txt">Original Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Jan 2005 09:24:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 21:44:41 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 12 Jan 2005 23:35:57 +0000">
+    lewk
+  </metadata>
+</glsa>

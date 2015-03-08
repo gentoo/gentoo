@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-04">
+  <title>Multiple vulnerabilities in sysstat</title>
+  <synopsis>
+    Multiple vulnerabilities in the way sysstat handles symlinks may allow an
+    attacker to execute arbitrary code or overwrite arbitrary files
+  </synopsis>
+  <product type="ebuild">sysstat</product>
+  <announced>April 06, 2004</announced>
+  <revised>April 06, 2004: 01</revised>
+  <bug>45159</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sysstat" auto="yes" arch="x86 ppc sparc amd64">
+      <unaffected range="ge">5.0.2</unaffected>
+      <vulnerable range="lt">5.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sysstat is a package containing a number of performance monitoring
+    utilities for Linux, including sar, mpstat, iostat and sa tools
+    </p>
+  </background>
+  <description>
+    <p>
+    There are two vulnerabilities in the way sysstat handles symlinks:
+    </p>
+	<ol>
+    <li>The isag utility, which displays sysstat data in a graphical format,
+    creates a temporary file in an insecure manner.</li>
+    <li>Two scripts in the sysstat package, post and trigger, create temporary
+    files in an insecure manner.</li>
+	</ol>
+  </description>
+  <impact type="normal">
+    <p>
+    Both vulnerabilities may allow an attacker to overwrite arbitrary files
+    under the permissions of the user executing any of the affected 
+    utilities.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Systat users should upgrade to version 4.2 or later:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv ">=app-admin/sysstat-5.0.2"
+    # emerge ">=app-admin/sysstat-5.0.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0107">CVE (1)</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0108">CVE (2)</uri>
+  </references>
+  <metadata tag="submitter">klieber</metadata>
+</glsa>

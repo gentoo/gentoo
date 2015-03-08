@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-01">
+  <title>gif2png: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    gif2png contains a stack overflow vulnerability when parsing command line
+    arguments.
+  </synopsis>
+  <product type="ebuild">gif2png</product>
+  <announced>January 05, 2011</announced>
+  <revised>January 05, 2011: 01</revised>
+  <bug>346501</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gif2png" auto="yes" arch="*">
+      <unaffected range="ge">2.5.1-r1</unaffected>
+      <vulnerable range="lt">2.5.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gif2png is a command line program that converts image files from the
+    Graphics Interchange Format (GIF) format to the Portable Network
+    Graphics (PNG) format.
+    </p>
+  </background>
+  <description>
+    <p>
+    gif2png contains a command line parsing vulnerability that may result
+    in a stack overflow due to an unexpectedly long input filename.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    image, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application, or a Denial of Service.
+    Note that applications relying on gif2png to process images can also
+    trigger the vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gif2png users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/gif2png-2.5.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-5018">CVE-2009-5018</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Dec 2010 20:36:18 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Jan 2011 04:34:18 +0000">
+    underling
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 04 Jan 2011 17:46:37 +0000">
+    underling
+  </metadata>
+</glsa>

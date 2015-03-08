@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-07">
+  <title>MPlayer: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in MPlayer, possibly allowing
+    for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>July 24, 2007</announced>
+  <revised>October 12, 2007: 03</revised>
+  <bug>181097</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0.20070622</unaffected>
+      <unaffected range="lt">1.0</unaffected>
+      <vulnerable range="lt">1.0.20070622</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player incuding support for a wide range of audio
+    and video formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Cornelius and Reimar Doffinger of Secunia Research discovered
+    several boundary errors in the functions cddb_query_parse(),
+    cddb_parse_matches_list() and cddb_read_parse(), each allowing for a
+    stack-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file
+    with malicious CDDB entries, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0.20070622&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2948">CVE-2007-2948</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 07:30:30 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Jul 2007 18:47:22 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 17 Jul 2007 18:48:15 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-27">
+  <title>gFTP: Directory traversal vulnerability</title>
+  <synopsis>
+    gFTP is vulnerable to directory traversal attacks, possibly leading to the
+    creation or overwriting of arbitrary files.
+  </synopsis>
+  <product type="ebuild">gFTP</product>
+  <announced>February 19, 2005</announced>
+  <revised>February 19, 2005: 01</revised>
+  <bug>81994</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/gftp" auto="yes" arch="*">
+      <unaffected range="ge">2.0.18-r1</unaffected>
+      <vulnerable range="lt">2.0.18-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gFTP is a GNOME based, multi-threaded file transfer client.
+    </p>
+  </background>
+  <description>
+    <p>
+    gFTP lacks input validation of filenames received by remote
+    servers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to connect to a malicious FTP
+    server and conduct a directory traversal attack by making use of
+    specially crafted filenames. This could lead to arbitrary files being
+    created or overwritten.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gFTP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/gftp-2.0.18-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://archives.seul.org/gftp/announce/Feb-2005/msg00000.html">gFTP Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0372">CAN-2005-0372</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 16 Feb 2005 19:28:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Feb 2005 20:30:31 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 19 Feb 2005 10:43:51 +0000">
+    koon
+  </metadata>
+</glsa>

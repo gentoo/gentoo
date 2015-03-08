@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-03">
+  <title>Horde IMP: Security bypass</title>
+  <synopsis>
+    Insufficient checks in Horde may allow a remote attacker to bypass security
+    restrictions.
+  </synopsis>
+  <product type="ebuild">horde-imp</product>
+  <announced>February 11, 2008</announced>
+  <revised>February 11, 2008: 01</revised>
+  <bug>205377</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde-imp" auto="yes" arch="*">
+      <unaffected range="ge">4.1.6</unaffected>
+      <vulnerable range="lt">4.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Horde IMP provides a web-based access to IMAP and POP3 mailboxes.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar, Secunia Research discovered that the "frame" and
+    "frameset" HTML tags are not properly filtered out. He also reported
+    that certain HTTP requests are executed without being checked.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted HTML
+    e-mail, possibly resulting in the deletion of arbitrary e-mail
+    messages.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde IMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-imp-4.1.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6018">CVE-2007-6018</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 05 Feb 2008 12:56:07 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Feb 2008 12:56:20 +0000">
+    p-y
+  </metadata>
+</glsa>

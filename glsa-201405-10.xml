@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-10">
+  <title>Rack: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Rack, the worst of
+    which allow execution of arbitrary code. 
+  </synopsis>
+  <product type="ebuild">rack</product>
+  <announced>May 17, 2014</announced>
+  <revised>May 17, 2014: 1</revised>
+  <bug>451620</bug>
+  <bug>456176</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rack" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5</unaffected>
+      <unaffected range="rge">1.3.10</unaffected>
+      <unaffected range="rge">1.2.8</unaffected>
+      <unaffected range="rge">1.1.6</unaffected>
+      <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Rack is a modular Ruby web server interface.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Rack. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Rack 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rack-1.4.5"
+    </code>
+    
+    <p>All Rack 1.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rack-1.3.10"
+    </code>
+    
+    <p>All Rack 1.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rack-1.2.8"
+    </code>
+    
+    <p>All Rack 1.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rack-1.1.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6109">CVE-2012-6109</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0183">CVE-2013-0183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0184">CVE-2013-0184</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0262">CVE-2013-0262</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0263">CVE-2013-0263</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 24 Mar 2013 19:45:11 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:44:33 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-30">
+  <title>CUPS: Stack overflow in included Xpdf code</title>
+  <synopsis>
+    CUPS includes Xpdf code and therefore is vulnerable to the recent stack
+    overflow issue, potentially resulting in the remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">CUPS</product>
+  <announced>January 22, 2005</announced>
+  <revised>January 22, 2005: 01</revised>
+  <bug>78249</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.1.23-r1</unaffected>
+      <vulnerable range="lt">1.1.23-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Common UNIX Printing System (CUPS) is a cross-platform print
+    spooler. It makes use of Xpdf code to handle PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Decrypt::makeFileKey2 function in Xpdf's Decrypt.cc
+    insufficiently checks boundaries when processing /Encrypt /Length tags
+    in PDF files (GLSA 200501-28).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    This issue could be exploited by a remote attacker to execute
+    arbitrary code by sending a malicious print job to a CUPS spooler.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.1.23-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
+    <uri link="/security/en/glsa/glsa-200501-28.xml">GLSA 200501-28</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 21 Jan 2005 20:52:56 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 21 Jan 2005 20:53:07 +0000">
+    koon
+  </metadata>
+</glsa>

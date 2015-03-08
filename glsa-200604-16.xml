@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-16">
+  <title>xine-lib: Buffer overflow vulnerability</title>
+  <synopsis>
+    xine-lib contains a buffer overflow vulnerability which may lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>April 26, 2006</announced>
+  <revised>April 26, 2006: 01</revised>
+  <bug>128838</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2_pre20060328-r1</unaffected>
+      <vulnerable range="lt">1.1.2_pre20060328-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is the xine core engine. xine is a free multimedia
+    player. It plays CDs, DVDs, and VCDs, and can also decode other common
+    multimedia formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Federico L. Bossi Bonin discovered that when handling MPEG streams
+    xine-lib fails to make a proper boundary check of the input data
+    supplied by the user before copying it to an insufficiently sized
+    memory buffer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to play a specially-crafted
+    MPEG file, resulting in the execution of arbitrary code with the
+    permissions of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.2_pre20060328-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1664">CVE-2006-1664</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Apr 2006 20:35:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Apr 2006 00:46:13 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 24 Apr 2006 16:31:50 +0000">
+    koon
+  </metadata>
+</glsa>

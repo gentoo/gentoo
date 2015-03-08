@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-24">
+  <title>Foomatic: Arbitrary command execution in foomatic-rip filter</title>
+  <synopsis>
+    The foomatic-rip filter in foomatic-filters contains a vulnerability which
+    may allow arbitrary command execution on the print server.
+  </synopsis>
+  <product type="ebuild">foomatic</product>
+  <announced>September 20, 2004</announced>
+  <revised>September 20, 2004: 01</revised>
+  <bug>64166</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/foomatic" auto="yes" arch="*">
+      <unaffected range="ge">3.0.2</unaffected>
+      <vulnerable range="le">3.0.1</vulnerable>
+    </package>
+    <package name="net-print/foomatic-filters" auto="yes" arch="*">
+      <unaffected range="ge">3.0.2</unaffected>
+      <vulnerable range="le">3.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Foomatic is a system for connecting printer drivers with spooler systems
+    such as CUPS and LPD. The foomatic-filters package contains wrapper scripts
+    which are designed to be used with Foomatic.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a vulnerability in the foomatic-filters package. This
+    vulnerability is due to insufficient checking of command-line parameters
+    and environment variables in the foomatic-rip filter.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    This vulnerability may allow both local and remote attackers to execute
+    arbitrary commands on the print server with the permissions of the spooler
+    (oftentimes the &quot;lp&quot; user).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All foomatic users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-print/foomatic-3.0.2"
+    # emerge ">=net-print/foomatic-3.0.2"</code>
+    <p>
+    PLEASE NOTE: You should update foomatic, instead of foomatic-filters. This
+    will help to ensure that all other foomatic components remain functional.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.linuxprinting.org/pipermail/foomatic-devel/2004q3/001996.html">Foomatic Announcement</uri>
+    <uri link="http://www.mandrakesoft.com/security/advisories?name=MDKSA-2004:094">Mandrakesoft Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0801">CAN 2004-0801</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 16 Sep 2004 17:39:12 +0000">
+    condordes
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Sep 2004 01:02:29 +0000">
+    lewk
+  </metadata>
+</glsa>

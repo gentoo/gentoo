@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-21">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player
+    could result in the execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">Adobe Flash Player</product>
+  <announced>June 23, 2012</announced>
+  <revised>June 23, 2012: 1</revised>
+  <bug>414603</bug>
+  <bug>420311</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.236</unaffected>
+      <vulnerable range="lt">11.2.202.236</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted SWF
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.236"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0779">CVE-2012-0779</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2034">CVE-2012-2034</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2035">CVE-2012-2035</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2036">CVE-2012-2036</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2037">CVE-2012-2037</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2038">CVE-2012-2038</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2039">CVE-2012-2039</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2040">CVE-2012-2040</uri>
+  </references>
+  <metadata timestamp="Sat, 05 May 2012 11:36:09 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Sat, 23 Jun 2012 20:11:51 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-18">
+  <title>util-linux: Local privilege escalation</title>
+  <synopsis>
+    The mount and umount programs might allow local attackers to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">util-linux</product>
+  <announced>October 18, 2007</announced>
+  <revised>October 18, 2007: 01</revised>
+  <bug>195390</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/util-linux" auto="yes" arch="*">
+      <unaffected range="ge">2.12r-r8</unaffected>
+      <vulnerable range="lt">2.12r-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    util-linux is a suite of Linux programs including mount and umount,
+    programs used to mount and unmount filesystems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ludwig Nussel discovered that the check_special_mountprog() and
+    check_special_umountprog() functions call setuid() and setgid() in the
+    wrong order and do not check the return values, which can lead to
+    privileges being dropped improperly.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker may be able to exploit this vulnerability by using
+    mount helpers such as the mount.nfs program to gain root privileges and
+    run arbitrary commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All util-linux users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/util-linux-2.12r-r8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5191">CVE-2007-5191</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Oct 2007 17:17:12 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 12 Oct 2007 17:18:23 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Oct 2007 00:47:53 +0000">
+    rbu
+  </metadata>
+</glsa>

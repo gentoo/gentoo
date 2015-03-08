@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-09">
+  <title>MySQL: Denial of Service</title>
+  <synopsis>
+    An authenticated user can crash MySQL through invalid parameters to the
+    date_format function.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>August 06, 2006</announced>
+  <revised>August 07, 2006: 02</revised>
+  <bug>142429</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">4.1.21</unaffected>
+      <unaffected range="lt">4.1.0</unaffected>
+      <vulnerable range="lt">4.1.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular multi-threaded, multi-user SQL server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jean-David Maillefer discovered a format string vulnerability in
+    time.cc where MySQL fails to properly handle specially formatted user
+    input to the date_format function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By specifying a format string as the first parameter to the date_format
+    function, an authenticated attacker could cause MySQL to crash,
+    resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --verbose --oneshot &quot;&gt;=dev-db/mysql-4.1.21&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3469">CVE-2006-3469</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Aug 2006 17:22:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 Aug 2006 17:22:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Aug 2006 18:32:52 +0000">
+    hlieberman
+  </metadata>
+</glsa>

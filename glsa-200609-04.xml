@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-04">
+  <title>LibXfont: Multiple integer overflows</title>
+  <synopsis>
+    A buffer overflow was discovered in the PCF font parser, potentially
+    resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">LibXfont</product>
+  <announced>September 06, 2006</announced>
+  <revised>September 06, 2006: 01</revised>
+  <bug>144092</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="ge">1.2.0-r1</unaffected>
+      <vulnerable range="lt">1.2.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libXfont is the X.Org Xfont library, some parts are based on the
+    FreeType code base.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several integer overflows have been found in the PCF font parser.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could possibly execute arbitrary code or crash the
+    Xserver by enticing a user to load a specially crafted PCF font file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not use untrusted PCF Font files.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libXfont users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libXfont-1.2.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3467">CVE-2006-3467</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Aug 2006 17:04:06 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 03 Sep 2006 12:10:42 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Sep 2006 19:36:43 +0000">
+    jaervosz
+  </metadata>
+</glsa>

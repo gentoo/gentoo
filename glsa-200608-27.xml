@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-27">
+  <title>Motor: Execution of arbitrary code</title>
+  <synopsis>
+    Motor uses a vulnerable ktools library, which could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">motor</product>
+  <announced>August 29, 2006</announced>
+  <revised>August 29, 2006: 01</revised>
+  <bug>135020</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/motor" auto="yes" arch="*">
+      <unaffected range="rge">3.3.0-r1</unaffected>
+      <unaffected range="ge">3.4.0-r1</unaffected>
+      <vulnerable range="lt">3.4.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Motor is a text mode based programming environment for Linux, with a
+    syntax highlighting feature, project manager, makefile generator, gcc
+    and gdb front-end, and CVS integration.
+    </p>
+  </background>
+  <description>
+    <p>
+    In November 2005, Zone-H Research reported a boundary error in the
+    ktools library in the VGETSTRING() macro of kkstrtext.h, which may
+    cause a buffer overflow via an overly long input string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to use a malicious file or input,
+    which could lead to the crash of Motor and possibly the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Motor 3.3.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/motor-3.3.0-r1&quot;</code>
+    <p>
+    All motor 3.4.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/motor-3.4.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3863">CVE-2005-3863</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Aug 2006 15:20:34 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 26 Aug 2006 14:27:17 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 26 Aug 2006 15:28:41 +0000">
+    falco
+  </metadata>
+</glsa>

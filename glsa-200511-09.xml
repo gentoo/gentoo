@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-09">
+  <title>Lynx: Arbitrary command execution</title>
+  <synopsis>
+    Lynx is vulnerable to an issue which allows the remote execution of
+    arbitrary commands.
+  </synopsis>
+  <product type="ebuild">lynx</product>
+  <announced>November 13, 2005</announced>
+  <revised>November 13, 2005: 01</revised>
+  <bug>112213</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/lynx" auto="yes" arch="*">
+      <unaffected range="ge">2.8.5-r2</unaffected>
+      <vulnerable range="lt">2.8.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Lynx is a fully-featured WWW client for users running
+    cursor-addressable, character-cell display devices such as vt100
+    terminals and terminal emulators.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDefense labs discovered a problem within the feature to execute
+    local cgi-bin programs via the "lynxcgi:" URI handler. Due to a
+    configuration error, the default settings allow websites to specify
+    commands to run as the user running Lynx.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can entice a user to access a malicious HTTP
+    server, causing Lynx to execute arbitrary commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable "lynxcgi" links by specifying the following directive in
+    lynx.cfg:
+    </p>
+    <code>
+    TRUSTED_LYNXCGI:none</code>
+  </workaround>
+  <resolution>
+    <p>
+    All Lynx users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/lynx-2.8.5-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2929">CVE-2005-2929</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=338&amp;type=vulnerabilities">iDefense Security Advisory 11.11.05</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Nov 2005 20:17:54 +0000">
+    taviso
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 11 Nov 2005 21:30:52 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 Nov 2005 17:03:02 +0000">
+    koon
+  </metadata>
+</glsa>

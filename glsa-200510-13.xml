@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-13">
+  <title>SPE: Insecure file permissions</title>
+  <synopsis>
+    SPE files are installed with world-writeable permissions, potentially
+    leading to privilege escalation.
+  </synopsis>
+  <product type="ebuild">spe</product>
+  <announced>October 15, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>108538</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-util/spe" auto="yes" arch="*">
+      <unaffected range="ge">0.7.5c-r1</unaffected>
+      <unaffected range="rge">0.5.1f-r1</unaffected>
+      <vulnerable range="lt">0.7.5c-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SPE is a cross-platform Python Integrated Development Environment
+    (IDE).
+    </p>
+  </background>
+  <description>
+    <p>
+    It was reported that due to an oversight all SPE's files are set as
+    world-writeable.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could modify the executable files, causing arbitrary
+    code to be executed with the permissions of the user running SPE.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SPE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-util/spe</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3291">CVE-2005-3291</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Oct 2005 21:00:30 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 12 Oct 2005 02:02:14 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 15 Oct 2005 08:06:19 +0000">
+    koon
+  </metadata>
+</glsa>

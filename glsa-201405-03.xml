@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-03">
+  <title>WeeChat: Multiple vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been found in WeeChat, the worst of which
+    may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">weechat</product>
+  <announced>May 03, 2014</announced>
+  <revised>May 03, 2014: 1</revised>
+  <bug>442600</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/weechat" auto="yes" arch="*">
+      <unaffected range="ge">0.3.9.2</unaffected>
+      <vulnerable range="lt">0.3.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wee Enhanced Environment for Chat (WeeChat) is a light and extensible
+      console IRC client.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been discovered in WeeChat:</p>
+    
+    <ul>
+      <li>The hook_process() function does not properly handle shell expansions
+        (CVE-2012-5534).
+      </li>
+      <li>WeeChat does not properly decode colors which could cause a
+        heap-based buffer overflow (CVE-2012-5854).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted script
+      or send messages with specially crafted colors, possibly resulting in
+      execution of arbitrary code with the privileges of the process, or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WeeChat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/weechat-0.3.9.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5534">CVE-2012-5534</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5854">CVE-2012-5854</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 21 Nov 2012 20:56:00 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 03 May 2014 13:54:42 +0000">ackle</metadata>
+</glsa>

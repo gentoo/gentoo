@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-04">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the Apache HTTP daemon allow for local
+    privilege escalation, information disclosure or Denial of Service attacks.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>July 12, 2009</announced>
+  <revised>July 12, 2009: 01</revised>
+  <bug>268154</bug>
+  <bug>271470</bug>
+  <bug>276426</bug>
+  <bug>276792</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.2.11-r2</unaffected>
+      <vulnerable range="lt">2.2.11-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of the most popular web servers on the
+    Internet.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in the Apache HTTP
+    server:
+    </p>
+    <ul>
+    <li>Jonathan Peatfield reported that the
+    "Options=IncludesNoEXEC" argument to the "AllowOverride" directive is
+    not processed properly (CVE-2009-1195).</li>
+    <li>Sander de Boer
+    discovered that the AJP proxy module (mod_proxy_ajp) does not correctly
+    handle POST requests that do not contain a request body
+    (CVE-2009-1191).</li>
+    <li>The vendor reported that the HTTP proxy
+    module (mod_proxy_http), when being used as a reverse proxy, does not
+    properly handle requests containing more data as stated in the
+    "Content-Length" header (CVE-2009-1890).</li>
+    <li>Francois Guerraz
+    discovered that mod_deflate does not abort the compression of large
+    files even when the requesting connection is closed prematurely
+    (CVE-2009-1891).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could circumvent restrictions put up by the server
+    administrator and execute arbitrary commands with the privileges of the
+    user running the Apache server. A remote attacker could send multiple
+    requests to a server with the AJP proxy module, possibly resulting in
+    the disclosure of a request intended for another client, or cause a
+    Denial of Service by sending specially crafted requests to servers
+    running mod_proxy_http or mod_deflate.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Remove "include", "proxy_ajp", "proxy_http" and "deflate" from
+    APACHE2_MODULES in make.conf and rebuild Apache, or disable the
+    aforementioned modules in the Apache configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.2.11-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1195">CVE-2009-1195</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1191">CVE-2009-1191</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1890">CVE-2009-1890</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1891">CVE-2009-1891</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 11 Jul 2009 20:22:24 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 21:34:40 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 12 Jul 2009 15:17:06 +0000">
+    a3li
+  </metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-28">
+  <title>Chrony: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chrony, possibly
+    allowing remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">chrony</product>
+  <announced>February 28, 2014</announced>
+  <revised>February 28, 2014: 1</revised>
+  <bug>480364</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/chrony" auto="yes" arch="*">
+      <unaffected range="ge">1.29</unaffected>
+      <vulnerable range="le">1.29</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chrony is a pair of programs which are used to maintain the accuracy of
+      the system clock on a computer.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chrony. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition by
+      sending specially crafted packets.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chrony users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/chrony-1.29"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4502">CVE-2012-4502</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4503">CVE-2012-4503</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Oct 2011 13:39:51 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Feb 2014 10:05:17 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-05">
+  <title>ISC DHCP: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability was discovered in ISC DHCP.
+  </synopsis>
+  <product type="ebuild">dhcp</product>
+  <announced>August 06, 2008</announced>
+  <revised>August 06, 2008: 01</revised>
+  <bug>227135</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcp" auto="yes" arch="*">
+      <unaffected range="ge">3.1.1</unaffected>
+      <vulnerable range="lt">3.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC DHCP is ISC's reference implementation of all aspects of the
+    Dynamic Host Configuration Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow error was found in ISC DHCP server, that can only be
+    exploited under unusual server configurations where the DHCP server is
+    configured to provide clients with a large set of DHCP options.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability to cause a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ISC DHCP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dhcp-3.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0062">CVE-2007-0062</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 01 Jul 2008 08:33:40 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 04 Jul 2008 13:11:49 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 01 Aug 2008 23:00:13 +0000">
+    keytoaster
+  </metadata>
+</glsa>

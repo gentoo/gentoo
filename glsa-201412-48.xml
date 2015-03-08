@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-48">
+  <title>file: Denial of Service</title>
+  <synopsis>A vulnerability in file could allow a context-dependent attack to
+    create a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">file</product>
+  <announced>December 27, 2014</announced>
+  <revised>December 27, 2014: 1</revised>
+  <bug>532686</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">5.21</unaffected>
+      <vulnerable range="lt">5.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The file utility attempts to identify a file’s format by scanning
+      binary data for patterns.
+    </p>
+  </background>
+  <description>
+    <p>An issue with the ELF parser used by the file utility can cause a
+      resource consumption when reading a  specially-crafted ELF binary.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker may be able to cause Denial of Service.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All file users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/file-5.21"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8117">CVE-2014-8117</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 26 Dec 2014 19:35:05 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 27 Dec 2014 11:11:58 +0000">Zlogene</metadata>
+</glsa>

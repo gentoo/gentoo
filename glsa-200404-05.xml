@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-05">
+  <title>ipsec-tools contains an X.509 certificates vulnerability.</title>
+  <synopsis>
+    ipsec-tools contains a vulnerability that affects connections authenticated 
+    with X.509 certificates.
+  </synopsis>
+  <product type="ebuild">ipsec-tools</product>
+  <announced>April 07, 2004</announced>
+  <revised>April 07, 2004: 01</revised>
+  <bug>47013</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-firewall/ipsec-tools" auto="yes" arch="amd64">
+      <unaffected range="ge">0.2.5</unaffected>
+      <vulnerable range="le">0.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    From http://ipsec-tools.sourceforge.net/ :
+    </p>
+    <p>
+    &quot;IPsec-Tools is a port of KAME's IPsec utilities to the Linux-2.6
+    IPsec implementation.&quot;
+    </p>
+  </background>
+  <description>
+    <p>
+    <i>racoon</i> (a utility in the ipsec-tools package) does not verify digital
+    signatures on Phase1 packets.  This means  that anybody holding the correct
+    X.509 certificate would be able to establish a connection, even if they did
+    not have the corresponding private key.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Since digital signatures are not verified by the <i>racoon</i> tool, an attacker may
+	be able to connect to the VPN gateway and/or execute a man-in-the-middle attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    ipsec-tools users should upgrade to version 0.2.5 or later:
+    </p>
+    <code>
+    # emerge sync
+ 
+    # emerge -pv ">=net-firewall/ipsec-tools-0.2.5"
+    # emerge ">=net-firewall/ipsec-tools-0.2.5"</code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="submitter">klieber</metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-24">
+  <title>LTris: Buffer overflow</title>
+  <synopsis>
+    LTris is vulnerable to a buffer overflow which could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">LTris</product>
+  <announced>March 20, 2005</announced>
+  <revised>March 20, 2005: 01</revised>
+  <bug>85770</bug>
+  <access>local</access>
+  <affected>
+    <package name="games-puzzle/ltris" auto="yes" arch="*">
+      <unaffected range="ge">1.0.10</unaffected>
+      <vulnerable range="lt">1.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LTris is a Tetris clone.
+    </p>
+  </background>
+  <description>
+    <p>
+    LTris is vulnerable to a buffer overflow when reading the global
+    highscores file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By modifying the global highscores file a malicious user could
+    trick another user to execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LTris users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-puzzle/ltris-1.0.10&quot;</code>
+  </resolution>
+  <references/>
+  <metadata tag="requester" timestamp="Fri, 18 Mar 2005 18:14:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 20 Mar 2005 14:43:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Mar 2005 17:00:38 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-08">
+  <title>WebP: User-assisted execution of arbitrary code</title>
+  <synopsis>An integer overflow vulnerability in WebP could lead to arbitrary
+    code execution or Denial of Service.
+  </synopsis>
+  <product type="ebuild">libwebp</product>
+  <announced>December 10, 2013</announced>
+  <revised>December 10, 2013: 1</revised>
+  <bug>442152</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libwebp" auto="yes" arch="*">
+      <unaffected range="ge">0.2.1</unaffected>
+      <vulnerable range="lt">0.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebP is a lossy image compression format.</p>
+  </background>
+  <description>
+    <p>An integer overflow flaw has been found in WebP.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      in an application linked against WebP, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libwebp-0.2.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5127">CVE-2012-5127</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 26 Nov 2012 01:29:46 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Tue, 10 Dec 2013 07:54:19 +0000">ackle</metadata>
+</glsa>

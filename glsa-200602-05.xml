@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-05">
+  <title>KPdf: Heap based overflow</title>
+  <synopsis>
+    KPdf includes vulnerable Xpdf code to handle PDF files, making it
+    vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">kdegraphics, kpdf</product>
+  <announced>February 12, 2006</announced>
+  <revised>February 12, 2006: 01</revised>
+  <bug>121375</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/kdegraphics" auto="yes" arch="*">
+      <unaffected range="ge">3.4.3-r4</unaffected>
+      <vulnerable range="lt">3.4.3-r4</vulnerable>
+    </package>
+    <package name="kde-base/kpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.4.3-r4</unaffected>
+      <vulnerable range="lt">3.4.3-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KPdf is a KDE-based PDF viewer included in the kdegraphics
+    package.
+    </p>
+  </background>
+  <description>
+    <p>
+    KPdf includes Xpdf code to handle PDF files. Dirk Mueller
+    discovered that the Xpdf code is vulnerable a heap based overflow in
+    the splash rasterizer engine.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted PDF
+    file with Kpdf, potentially resulting in the execution of arbitrary
+    code with the rights of the user running the affected application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdegraphics users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.4.3-r4&quot;</code>
+    <p>
+    All Kpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kpdf-3.4.3-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0301">CVE-2006-0301</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20060202-1.txt">KDE Security Advisory: kpdf/xpdf heap based buffer overflow</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 10 Feb 2006 17:37:49 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Feb 2006 21:32:42 +0000">
+    koon
+  </metadata>
+</glsa>

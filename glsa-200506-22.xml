@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-22">
+  <title>sudo: Arbitrary command execution</title>
+  <synopsis>
+    A vulnerability in sudo may allow local users to elevate privileges.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>June 23, 2005</announced>
+  <revised>June 23, 2005: 01</revised>
+  <bug>96618</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.6.8_p9</unaffected>
+      <vulnerable range="lt">1.6.8_p9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sudo allows a system administrator to give users the ability to
+    run commands as other users.
+    </p>
+  </background>
+  <description>
+    <p>
+    The sudoers file is used to define the actions sudo users are
+    permitted to perform. Charles Morris discovered that a specific layout
+    of the sudoers file could cause the results of an internal check to be
+    clobbered, leaving sudo vulnerable to a race condition.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would permit a local sudo user to execute
+    arbitrary commands as another user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Reorder the sudoers file using the visudo utility to ensure the
+    'ALL' pseudo-command precedes other command definitions.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sudo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.6.8_p9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.sudo.ws/sudo/alerts/path_race.html">Sudo Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Jun 2005 20:05:11 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 22 Jun 2005 15:18:20 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 23 Jun 2005 06:48:01 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201208-06">
+  <title>libgdata: Man-in-the-Middle attack</title>
+  <synopsis>A vulnerability in libgdata could allow remote attackers to perform
+    man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">libgdata</product>
+  <announced>August 14, 2012</announced>
+  <revised>August 14, 2012: 1</revised>
+  <bug>408245</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libgdata" auto="yes" arch="*">
+      <unaffected range="ge">0.8.1-r2</unaffected>
+      <vulnerable range="lt">0.8.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libgdata is a GLib-based library for accessing online service APIs using
+      the GData protocol.
+    </p>
+  </background>
+  <description>
+    <p>An error in the "_gdata_service_build_session()" function of
+      gdata-service.c prevents libgdata from properly validating certificates.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could perform man-in-the-middle attacks to spoof
+      arbitrary SSL servers via a crafted certificate.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libgdata users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgdata-0.8.1-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1177">CVE-2012-1177</uri>
+  </references>
+  <metadata timestamp="Tue, 17 Apr 2012 00:40:07 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 14 Aug 2012 20:31:17 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-25">
+  <title>Squid: Multiple vulnerabilities</title>
+  <synopsis>
+    Squid contains vulnerabilities in the the code handling NTLM (NT Lan
+    Manager), Gopher to HTML, ACLs and WCCP (Web Cache Communication Protocol)
+    which could lead to ACL bypass, denial of service and arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>January 16, 2005</announced>
+  <revised>February 07, 2005: 03</revised>
+  <bug>77934</bug>
+  <bug>77521</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.5.7-r2</unaffected>
+      <vulnerable range="lt">2.5.7-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a full-featured Web proxy cache designed to run on Unix
+    systems. It supports proxying and caching of HTTP, FTP, and other URLs,
+    as well as SSL support, cache hierarchies, transparent caching, access
+    control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>
+    Squid contains a vulnerability in the gopherToHTML function
+    (CAN-2005-0094) and incorrectly checks the 'number of caches' field
+    when parsing WCCP_I_SEE_YOU messages (CAN-2005-0095). Furthermore the
+    NTLM code contains two errors. One is a memory leak in the
+    fakeauth_auth helper (CAN-2005-0096) and the other is a NULL pointer
+    dereferencing error (CAN-2005-0097). Finally Squid also contains an
+    error in the ACL parsing code (CAN-2005-0194).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    With the WCCP issue an attacker could cause denial of service by
+    sending a specially crafted UDP packet. With the Gopher issue an
+    attacker might be able to execute arbitrary code by enticing a user to
+    connect to a malicious Gopher server. The NTLM issues could lead to
+    denial of service by memory consumption or by crashing Squid. The ACL
+    issue could lead to ACL bypass.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.5.7-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://secunia.com/advisories/13825/">Secunia Advisory SA13825</uri>
+    <uri link="http://secunia.com/advisories/13789/">Secunia Advisory SA13789</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0094">CAN-2005-0094</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0095">CAN-2005-0095</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0096">CAN-2005-0096</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0097">CAN-2005-0097</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0194">CAN-2005-0194</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 14 Jan 2005 17:51:35 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 14 Jan 2005 17:55:02 +0000">
+    jaervosz
+  </metadata>
+</glsa>

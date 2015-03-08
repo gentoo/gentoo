@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-24">
+  <title>DBmail: Data disclosure</title>
+  <synopsis>
+    A vulnerability in DBMail could allow for passwordless login to any account
+    under certain configurations.
+  </synopsis>
+  <product type="ebuild">dbmail</product>
+  <announced>April 18, 2008</announced>
+  <revised>April 18, 2008: 01</revised>
+  <bug>218154</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/dbmail" auto="yes" arch="*">
+      <unaffected range="ge">2.2.9</unaffected>
+      <vulnerable range="lt">2.2.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DBMail is a mail storage and retrieval daemon that uses SQL databases
+    as its data store. IMAP and POP3 can be used to retrieve mails from the
+    database.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability in DBMail's authldap module when used in conjunction
+    with an Active Directory server has been reported by vugluskr. When
+    passing a zero length password to the module, it tries to bind
+    anonymously to the LDAP server. If the LDAP server allows anonymous
+    binds, this bind succeeds and results in a successful authentication to
+    DBMail.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By passing an empty password string to the server, an attacker could be
+    able to log in to any account.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DBMail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/dbmail-2.2.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6714">CVE-2007-6714</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 18 Apr 2008 08:54:02 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 18 Apr 2008 09:20:04 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 18 Apr 2008 14:01:09 +0000">
+    rbu
+  </metadata>
+</glsa>

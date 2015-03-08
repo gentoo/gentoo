@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-16">
+  <title>fcron: Information disclosure</title>
+  <synopsis>A vulnerability has been found in fcron, allowing local attackers
+    to conduct symlink attacks. 
+  </synopsis>
+  <product type="ebuild">fcron</product>
+  <announced>November 25, 2013</announced>
+  <revised>November 25, 2013: 1</revised>
+  <bug>308075</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/fcron" auto="yes" arch="*">
+      <unaffected range="ge">3.0.5-r2</unaffected>
+      <vulnerable range="lt">3.0.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>fcron is a periodic command scheduler for Unix-based systems</p>
+  </background>
+  <description>
+    <p>The fcrontab function contains a race condition relating to symlinks.</p>
+  </description>
+  <impact type="low">
+    <p>A local attacker could perform symlink attacks to read arbitrary files
+      with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All fcron users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-process/fcron-3.0.5-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0792">CVE-2010-0792</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:12 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 25 Nov 2013 17:22:51 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

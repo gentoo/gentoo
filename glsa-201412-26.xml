@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-26">
+  <title>strongSwan: Multiple Vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been found in strongSwan, possibly
+    resulting in Denial of Service or a bypass in authentication restrictions. 
+  </synopsis>
+  <product type="ebuild">strongswan</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>507722</bug>
+  <bug>509832</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/strongswan" auto="yes" arch="*">
+      <unaffected range="ge">5.1.3</unaffected>
+      <vulnerable range="lt">5.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>strongSwan is an IPSec implementation for Linux.</p>
+  </background>
+  <description>
+    <p>A NULL pointer dereference and an error in the IKEv2 implementation have
+      been found in strongSwan.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could create a Denial of Service condition or bypass
+      security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All strongSwan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/strongswan-5.1.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2338">CVE-2014-2338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2891">CVE-2014-2891</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:27:51 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:56:21 +0000">ackle</metadata>
+</glsa>

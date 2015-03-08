@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-19">
+  <title>cURL: NTLM username stack overflow</title>
+  <synopsis>
+    cURL is vulnerable to a buffer overflow which could lead to the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">cURL</product>
+  <announced>October 22, 2005</announced>
+  <revised>October 22, 2005: 01</revised>
+  <bug>109097</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.15.0</unaffected>
+      <vulnerable range="lt">7.15.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cURL is a command line tool and library for transferring files via
+    many different protocols. It supports NTLM authentication to retrieve
+    files from Windows-based systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDEFENSE reported that insufficient bounds checking on a memcpy()
+    of the supplied NTLM username can result in a stack overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could setup a malicious server and entice an
+    user to connect to it using a cURL client, potentially leading to the
+    execution of arbitrary code with the permissions of the user running
+    cURL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable NTLM authentication by not using the --anyauth or --ntlm
+    options when using cURL (the command line version). Workarounds for
+    programs that use the cURL library depend on the configuration options
+    presented by those programs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cURL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.15.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3185">CVE-2005-3185</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=322&amp;type=vulnerabilities">iDefense Security Advisory 10.13.05</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 21 Oct 2005 09:04:01 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 21 Oct 2005 09:04:50 +0000">
+    koon
+  </metadata>
+</glsa>

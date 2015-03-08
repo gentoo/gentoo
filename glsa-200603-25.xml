@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-25">
+  <title>OpenOffice.org: Heap overflow in included libcurl</title>
+  <synopsis>
+    OpenOffice.org contains a vulnerable version of libcurl that may cause a
+    heap overflow when parsing URLs.
+  </synopsis>
+  <product type="ebuild">openoffice openoffice-bin</product>
+  <announced>March 27, 2006</announced>
+  <revised>March 27, 2006: 01</revised>
+  <bug>126433</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2</unaffected>
+      <vulnerable range="lt">2.0.2</vulnerable>
+    </package>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <unaffected range="ge">2.0.1-r1</unaffected>
+      <vulnerable range="lt">2.0.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenOffice.org is an office productivity suite, including word
+    processing, spreadsheet, presentation, data charting, formula editing
+    and file conversion facilities. libcurl, which is included in
+    OpenOffice.org, is a free and easy-to-use client-side library for
+    transferring files with URL syntaxes, supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    OpenOffice.org includes libcurl code. This libcurl code is
+    vulnerable to a heap overflow when it tries to parse a URL that exceeds
+    a 256-byte limit (GLSA 200512-09).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to call a specially crafted URL
+    with OpenOffice.org, potentially resulting in the execution of
+    arbitrary code with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenOffice.org binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.0.2&quot;</code>
+    <p>
+    All OpenOffice.org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.0.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4077">CVE-2005-4077</uri>
+    <uri link="http://www.hardened-php.net/advisory_242005.109.html">Hardened-PHP Advisory 24/2005</uri>
+    <uri link="/security/en/glsa/glsa-200512-09.xml">GLSA 200512-09</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 17 Mar 2006 09:53:36 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 17 Mar 2006 18:15:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Mar 2006 01:42:41 +0000">
+    adir
+  </metadata>
+</glsa>

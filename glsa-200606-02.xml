@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-02">
+  <title>shadow: Privilege escalation</title>
+  <synopsis>
+    A security issue in shadow allows a local user to perform certain actions
+    with escalated privileges.
+  </synopsis>
+  <product type="ebuild">shadow</product>
+  <announced>June 07, 2006</announced>
+  <revised>June 07, 2006: 01</revised>
+  <bug>133615</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/shadow" auto="yes" arch="*">
+      <unaffected range="ge">4.0.15-r2</unaffected>
+      <vulnerable range="lt">4.0.15-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    shadow provides a set of utilities to deal with user accounts.
+    </p>
+  </background>
+  <description>
+    <p>
+    When the mailbox is created in useradd, the "open()" function does
+    not receive the three arguments it expects while O_CREAT is present,
+    which leads to random permissions on the created file, before fchmod()
+    is executed.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Depending on the random permissions given to the mailbox file
+    which is at this time owned by root, a local user may be able to open
+    this file for reading or writing, or even executing it, maybe as the
+    root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All shadow users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/shadow-4.0.15-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1174">CVE-2006-1174</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:06:38 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 01 Jun 2006 15:23:57 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:20:29 +0000">
+    falco
+  </metadata>
+</glsa>

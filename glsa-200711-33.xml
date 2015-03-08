@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-33">
+  <title>nss_ldap: Information disclosure</title>
+  <synopsis>
+    A race condition might lead to theft of user credentials or information
+    disclosure in services using nss_ldap.
+  </synopsis>
+  <product type="ebuild">nss_ldap</product>
+  <announced>November 25, 2007</announced>
+  <revised>November 25, 2007: 01</revised>
+  <bug>198390</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-auth/nss_ldap" auto="yes" arch="*">
+      <unaffected range="ge">258</unaffected>
+      <vulnerable range="lt">258</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    nss_ldap is a Name Service Switch module which allows 'passwd', 'group'
+    and 'host' database information to be pulled from LDAP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Josh Burley reported that nss_ldap does not properly handle the LDAP
+    connections due to a race condition that can be triggered by
+    multi-threaded applications using nss_ldap, which might lead to
+    requested data being returned to a wrong process.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Remote attackers could exploit this race condition by sending queries
+    to a vulnerable server using nss_ldap, possibly leading to theft of
+    user credentials or information disclosure (e.g. Dovecot returning
+    wrong mailbox contents).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All nss_ldap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/nss_ldap-258&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5794">CVE-2007-5794</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 15:50:09 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 15:50:16 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 21 Nov 2007 00:25:43 +0000">
+    rbu
+  </metadata>
+</glsa>

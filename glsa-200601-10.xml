@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-10">
+  <title>Sun and Blackdown Java: Applet privilege escalation</title>
+  <synopsis>
+    Sun's and Blackdown's JDK or JRE may allow untrusted applets to elevate
+    their privileges.
+  </synopsis>
+  <product type="ebuild">sun-jdk sun-jre-bin blackdown-jre blackdown-jdk</product>
+  <announced>January 16, 2006</announced>
+  <revised>January 16, 2006: 01</revised>
+  <bug>118114</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.09</unaffected>
+      <vulnerable range="lt">1.4.2.09</vulnerable>
+    </package>
+    <package name="dev-java/sun-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.09</unaffected>
+      <vulnerable range="lt">1.4.2.09</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jdk" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.03</unaffected>
+      <vulnerable range="lt">1.4.2.03</vulnerable>
+    </package>
+    <package name="dev-java/blackdown-jre" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2.03</unaffected>
+      <vulnerable range="lt">1.4.2.03</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Sun and Blackdown both provide implementations of the Java
+    Development Kit (JDK) and Java Runtime Environment (JRE).
+    </p>
+  </background>
+  <description>
+    <p>
+    Adam Gowdiak discovered multiple vulnerabilities in the Java
+    Runtime Environment's Reflection APIs that may allow untrusted applets
+    to elevate privileges.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could embed a malicious Java applet in a web
+    page and entice a victim to view it. This applet can then bypass
+    security restrictions and execute any command or access any file with
+    the rights of the user running the web browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Sun JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.09&quot;</code>
+    <p>
+    All Sun JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.09&quot;</code>
+    <p>
+    All Blackdown JDK users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jdk-1.4.2.03&quot;</code>
+    <p>
+    All Blackdown JRE users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jre-1.4.2.03&quot;</code>
+    <p>
+    Note to SPARC and PPC users: There is no stable secure
+    Blackdown Java for the SPARC or PPC architectures. Affected users on
+    the PPC architecture should consider switching to the IBM Java packages
+    (ibm-jdk-bin and ibm-jre-bin). Affected users on the SPARC should
+    remove the package until a SPARC package is released.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3905">CVE-2005-3905</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3906">CVE-2005-3906</uri>
+    <uri link="http://sunsolve.sun.com/searchproxy/document.do?assetkey=1-26-102003-1">Sun Security Alert ID 102003</uri>
+    <uri link="http://www.blackdown.org/java-linux/java2-status/security/Blackdown-SA-2005-03.txt">Blackdown Java-Linux Security Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 13 Jan 2006 09:49:14 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 13 Jan 2006 09:55:18 +0000">
+    koon
+  </metadata>
+</glsa>

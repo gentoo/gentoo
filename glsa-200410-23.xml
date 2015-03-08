@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-23">
+  <title>Gaim: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in Gaim which could allow a remote
+    attacker to crash the application, or possibly execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">gaim</product>
+  <announced>October 24, 2004</announced>
+  <revised>October 24, 2004: 01</revised>
+  <bug>68271</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/gaim" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gaim is a full featured instant messaging client which handls a variety of
+    instant messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    A possible buffer overflow exists in the code processing MSN SLP messages
+    (CAN-2004-0891). memcpy() was used without validating the size of the
+    buffer, and an incorrect buffer was used as destination under certain
+    circumstances. Additionally, memory allocation problems were found in the
+    processing of MSN SLP messages and the receiving of files. These issues
+    could lead Gaim to try to allocate more memory than available, resulting in
+    the crash of the application.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could crash Gaim and possibly execute arbitrary code by
+    exploiting the buffer overflow.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gaim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-im/gaim-1.0.2"
+    # emerge ">=net-im/gaim-1.0.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0891">CAN-2004-0891</uri>
+    <uri link="http://gaim.sourceforge.net/security/">Gaim Security Issues</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 22 Oct 2004 00:52:11 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 22 Oct 2004 08:35:43 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 23 Oct 2004 13:06:09 +0000">
+    vorlon078
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-02">
+  <title>FreeType: Multiple integer overflows</title>
+  <synopsis>
+    Multiple remotely exploitable buffer overflows have been discovered in
+    FreeType, resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">FreeType</product>
+  <announced>July 09, 2006</announced>
+  <revised>September 03, 2006: 02</revised>
+  <bug>124828</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.1.10-r2</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.1.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeType is a portable font engine.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple integer overflows exist in a variety of files (bdf/bdflib.c,
+    sfnt/ttcmap.c, cff/cffgload.c, base/ftmac.c).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these buffer overflows by enticing a
+    user to load a specially crafted font, which could result in the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeType users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/freetype-2.1.10-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1861">CVE-2006-1861</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Jul 2006 13:58:56 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Jul 2006 15:44:57 +0000">
+    hlieberman
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 05 Jul 2006 16:43:48 +0000">
+    falco
+  </metadata>
+</glsa>

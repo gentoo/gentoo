@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-11">
+  <title>Vobcopy: Insecure temporary file creation</title>
+  <synopsis>
+    Vobcopy uses temporary files in an insecure manner, allowing for a symlink
+    attack.
+  </synopsis>
+  <product type="ebuild">vobcopy</product>
+  <announced>March 05, 2008</announced>
+  <revised>March 05, 2008: 01</revised>
+  <bug>197578</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-video/vobcopy" auto="yes" arch="*">
+      <unaffected range="ge">1.1.0</unaffected>
+      <vulnerable range="lt">1.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Vobcopy is a tool for decrypting and copying DVD .vob files to a hard
+    disk.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joey Hess reported that vobcopy appends data to the file
+    "/tmp/vobcopy.bla" in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to conduct symlink
+    attacks and append data to arbitrary files with the privileges of the
+    user running Vobcopy.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Vobcopy users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vobcopy-1.1.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5718">CVE-2007-5718</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Mar 2008 14:25:49 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Mar 2008 22:37:51 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 04 Mar 2008 22:38:00 +0000">
+    p-y
+  </metadata>
+</glsa>

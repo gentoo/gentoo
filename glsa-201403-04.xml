@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-04">
+  <title>QtCore: Denial of Service</title>
+  <synopsis>A vulnerability in QXmlSimpleReader class can be used to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">qt-core</product>
+  <announced>March 13, 2014</announced>
+  <revised>March 13, 2014: 1</revised>
+  <bug>494728</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-qt/qtcore" auto="yes" arch="*">
+      <unaffected range="ge">4.8.5-r1</unaffected>
+      <vulnerable range="lt">4.8.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Qt toolkit is a comprehensive C++ application development framework.</p>
+  </background>
+  <description>
+    <p>A vulnerability in QXmlSimpleReader’s XML entity parsing has been
+      discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted XML
+      file using an application linked against QtCore, possibly resulting in
+      Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtCore users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtcore-4.8.5-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4549">CVE-2013-4549</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Feb 2014 14:50:40 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Mar 2014 16:57:59 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

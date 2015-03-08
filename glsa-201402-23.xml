@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-23">
+  <title>libXfont: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libXfont, the worst of
+    which allow for local privilege escalation.
+  </synopsis>
+  <product type="ebuild">libxfont</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>378797</bug>
+  <bug>497416</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="ge">1.4.7 </unaffected>
+      <vulnerable range="lt">1.4.7 </vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libXfont is an X11 font rasterisation library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libXfont. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could use a specially crafted file to gain privileges
+      or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libXfont users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.4.7 "
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2895">CVE-2011-2895</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6462">CVE-2013-6462</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:46 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:29:10 +0000">Zlogene</metadata>
+</glsa>

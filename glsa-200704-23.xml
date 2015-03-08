@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-23">
+  <title>capi4k-utils: Buffer overflow</title>
+  <synopsis>
+    capi4k-utils is vulnerable to a buffer overflow in the bufprint() function.
+  </synopsis>
+  <product type="ebuild">capi4k-utils</product>
+  <announced>April 27, 2007</announced>
+  <revised>April 27, 2007: 01</revised>
+  <bug>170870</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-dialup/capi4k-utils" auto="yes" arch="*">
+      <unaffected range="ge">20050718-r3</unaffected>
+      <vulnerable range="lt">20050718-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    capi4k-utils is a set of utilities for accessing COMMON-ISDN-API
+    software interfaces for ISDN devices.
+    </p>
+  </background>
+  <description>
+    <p>
+    The bufprint() function in capi4k-utils fails to properly check
+    boundaries of data coming from CAPI packets.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could possibly escalate privileges or cause a Denial
+    of Service by sending a crafted CAPI packet.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All capi4k-utils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/capi4k-utils-20050718-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2007-1217">CVE-2007-1217</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 24 Mar 2007 12:42:52 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 14:51:21 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:34 +0000">
+    falco
+  </metadata>
+</glsa>

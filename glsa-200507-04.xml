@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-04">
+  <title>RealPlayer: Heap overflow vulnerability</title>
+  <synopsis>
+    RealPlayer is vulnerable to a heap overflow that could lead to remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">realplayer</product>
+  <announced>July 06, 2005</announced>
+  <revised>July 06, 2005: 01</revised>
+  <bug>96923</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/realplayer" auto="yes" arch="*">
+      <unaffected range="ge">10.0.5</unaffected>
+      <vulnerable range="lt">10.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    RealPlayer is a multimedia player capable of handling multiple
+    multimedia file formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    RealPlayer is vulnerable to a heap overflow when opening RealMedia
+    files which make use of RealText.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to play a specially crafted RealMedia file an
+    attacker could execute arbitrary code with the permissions of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All RealPlayer users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://service.real.com/help/faq/security/050623_player/EN/">RealNetworks Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1766">CAN-2005-1766</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 26 Jun 2005 18:08:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jun 2005 18:38:32 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 06 Jul 2005 12:36:44 +0000">
+    koon
+  </metadata>
+</glsa>

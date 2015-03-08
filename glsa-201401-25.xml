@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-25">
+  <title>ldns: Arbitrary code execution</title>
+  <synopsis>A heap-based buffer overflow in ldns might allow remote attackers
+    to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">ldns</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>384249</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/ldns" auto="yes" arch="*">
+      <unaffected range="ge">1.6.11</unaffected>
+      <vulnerable range="lt">1.6.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ldns is a fast DNS library with the goal to simplify DNS programming and
+      to allow developers to easily create software conforming to current RFCs
+      and Internet drafts.
+    </p>
+  </background>
+  <description>
+    <p>ldns contains a heap-based buffer overflow in the
+      ldns_rr_new_frm_str_internal function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code or cause a Denial of
+      Service condition with a crafted Resource Record.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ldns users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/ldns-1.6.11"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since October 11, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3581">CVE-2011-3581</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:31 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 20:44:51 +0000">craig</metadata>
+</glsa>

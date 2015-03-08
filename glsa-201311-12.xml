@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-12">
+  <title>Open DC Hub: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Open DC Hub could result in execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">opendchub</product>
+  <announced>November 20, 2013</announced>
+  <revised>November 20, 2013: 1</revised>
+  <bug>314551</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/opendchub" auto="yes" arch="*">
+      <unaffected range="ge">0.8.2</unaffected>
+      <vulnerable range="lt">0.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Open DC Hub is the hub software for the Direct Connect file sharing
+      network. 
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow flaw has been discovered in the way Open
+      DC Hub sanitized content of a user’s MyINFO message.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated user may be able to execute arbitrary code or
+      cause a Denial of Service condition via specially crafted MyINFO message.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Open DC Hub users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/opendchub-0.8.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1147">
+      CVE-2010-1147
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:01 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Nov 2013 10:00:54 +0000">Zlogene</metadata>
+</glsa>

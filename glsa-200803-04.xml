@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-04">
+  <title>Mantis: Cross-Site Scripting</title>
+  <synopsis>
+    A persistent Cross-Site Scripting vulnerability has been discovered in
+    Mantis.
+  </synopsis>
+  <product type="ebuild">mantis</product>
+  <announced>March 03, 2008</announced>
+  <revised>March 03, 2008: 01</revised>
+  <bug>203791</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mantisbt" auto="yes" arch="*">
+      <unaffected range="ge">1.0.8-r1</unaffected>
+      <vulnerable range="lt">1.0.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mantis is a web-based bug tracking system.
+    </p>
+  </background>
+  <description>
+    <p>
+    seiji reported that the filename for the uploaded file in
+    bug_report.php is not properly sanitised before being stored.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could upload a file with a specially crafted to a bug
+    report, resulting in the execution of arbitrary HTML and script code
+    within the context of the users's browser. Note that this vulnerability
+    is only exploitable by authenticated users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mantis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-1.0.8-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6611">CVE-2007-6611</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 10 Feb 2008 18:16:34 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Feb 2008 18:16:43 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Feb 2008 12:32:54 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-20">
+  <title>GnuTLS: Execution of arbitrary code</title>
+  <synopsis>
+    Multiple vulnerabilities might allow for the execution of arbitrary code in
+    daemons using GnuTLS.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>May 21, 2008</announced>
+  <revised>May 21, 2008: 01</revised>
+  <bug>222823</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">2.2.5</unaffected>
+      <vulnerable range="lt">2.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnuTLS is an implementation of Secure Sockets Layer (SSL) 3.0 and
+    Transport Layer Security (TLS) 1.0, 1.1 and 1.2.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ossi Herrala and Jukka Taimisto of Codenomicon reported three
+    vulnerabilities in libgnutls of GnuTLS:
+    </p>
+    <ul>
+    <li>
+    "Client Hello" messages containing an invalid server name can lead to a
+    buffer overflow when evaluating "Security Parameters" (CVE-2008-1948).
+    </li>
+    <li>
+    Multiple "Client Hello" messages can lead to a NULL pointer dereference
+    (CVE-2008-1949).
+    </li>
+    <li>
+    A TLS handshake including an encrypted "Client Hello" message and an
+    invalid record length could lead to a buffer overread (CVE-2008-1950).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    Unauthenticated remote attackers could exploit these vulnerabilities to
+    cause Denial of Service conditions in daemons using GnuTLS. The first
+    vulnerability (CVE-2008-1948) might allow for the execution of
+    arbitrary code with the privileges of the daemon handling incoming TLS
+    connections.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuTLS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gnutls-2.2.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1948">CVE-2008-1948</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1949">CVE-2008-1949</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1950">CVE-2008-1950</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 20 May 2008 16:44:10 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 21 May 2008 16:32:55 +0000">
+    rbu
+  </metadata>
+</glsa>

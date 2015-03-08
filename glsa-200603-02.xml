@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-02">
+  <title>teTeX, pTeX, CSTeX: Multiple overflows in included XPdf code</title>
+  <synopsis>
+    CSTeTeX, pTeX, and teTeX include vulnerable XPdf code to handle PDF files,
+    making them vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tetex</product>
+  <announced>March 04, 2006</announced>
+  <revised>March 04, 2006: 01</revised>
+  <bug>115775</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/tetex" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r8</unaffected>
+      <vulnerable range="lt">2.0.2-r8</vulnerable>
+    </package>
+    <package name="app-text/cstetex" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r2</unaffected>
+      <vulnerable range="lt">2.0.2-r2</vulnerable>
+    </package>
+    <package name="app-text/ptex" auto="yes" arch="*">
+      <unaffected range="ge">3.1.5-r1</unaffected>
+      <vulnerable range="lt">3.1.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    teTex is a complete TeX distribution. It is used for creating and
+    manipulating LaTeX documents. CSTeX is a TeX distribution with Czech
+    and Slovak support. pTeX is and ASCII publishing TeX distribution.
+    </p>
+  </background>
+  <description>
+    <p>
+    CSTeX, teTex, and pTeX include XPdf code to handle PDF files. This
+    XPdf code is vulnerable to several heap overflows (GLSA 200512-08) as
+    well as several buffer and integer overflows discovered by Chris Evans
+    (CESA-2005-003).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted PDF
+    file with teTeX, pTeX or CSTeX, potentially resulting in the execution
+    of arbitrary code with the rights of the user running the affected
+    application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All teTex users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/tetex-2.0.2-r8&quot;</code>
+    <p>
+    All CSTeX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/cstetex-2.0.2-r2&quot;</code>
+    <p>
+    All pTeX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ptex-3.1.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3193">CVE-2005-3193</uri>
+    <uri link="/security/en/glsa/glsa-200512-08.xml">GLSA 200512-08</uri>
+    <uri link="http://scary.beasts.org/security/CESA-2005-003.txt">CESA-2005-003</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Feb 2006 20:57:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 17 Feb 2006 12:11:23 +0000">
+    dragonheart
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 04 Mar 2006 16:30:04 +0000">
+    koon
+  </metadata>
+</glsa>

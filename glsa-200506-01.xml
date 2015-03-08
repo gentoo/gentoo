@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-01">
+  <title>Binutils, elfutils: Buffer overflow</title>
+  <synopsis>
+    Various utilities from the GNU Binutils and elfutils packages are
+    vulnerable to a heap based buffer overflow, potentially resulting in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">binutils</product>
+  <announced>June 01, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>91398</bug>
+  <bug>91817</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/elfutils" auto="yes" arch="*">
+      <unaffected range="ge">0.108</unaffected>
+      <vulnerable range="lt">0.108</vulnerable>
+    </package>
+    <package name="sys-devel/binutils" auto="yes" arch="*">
+      <unaffected range="rge">2.14.90.0.8-r3</unaffected>
+      <unaffected range="rge">2.15.90.0.1.1-r5</unaffected>
+      <unaffected range="rge">2.15.90.0.3-r5</unaffected>
+      <unaffected range="rge">2.15.91.0.2-r2</unaffected>
+      <unaffected range="rge">2.15.92.0.2-r10</unaffected>
+      <unaffected range="ge">2.16-r1</unaffected>
+      <vulnerable range="lt">2.16-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU Binutils are a collection of tools to create, modify and
+    analyse binary files. Many of the files use BFD, the Binary File
+    Descriptor library, to do low-level manipulation. Elfutils provides a
+    library and utilities to access, modify and analyse ELF objects.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy and Ned Ludd of the Gentoo Linux Security Audit Team
+    discovered an integer overflow in the BFD library and elfutils,
+    resulting in a heap based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would require a user to access a specially
+    crafted binary file, resulting in the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Binutils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose sys-devel/binutils</code>
+    <p>
+    All elfutils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/elfutils-0.108&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1704">CVE-2005-1704</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 12 May 2005 20:12:23 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 01 Jun 2005 15:04:54 +0000">
+    koon
+  </metadata>
+</glsa>

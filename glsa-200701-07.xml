@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-07">
+  <title>OpenOffice.org: EMF/WMF file handling vulnerabilities</title>
+  <synopsis>
+    A truncation error and integer overflows in the EMF/WMF file handling of
+    OpenOffice.org could be exploited to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">openoffice</product>
+  <announced>January 12, 2007</announced>
+  <revised>January 12, 2007: 01</revised>
+  <bug>159951</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.1.0</unaffected>
+      <vulnerable range="lt">2.1.0</vulnerable>
+    </package>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <unaffected range="ge">2.0.4</unaffected>
+      <vulnerable range="lt">2.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenOffice.org is an open source office productivity suite, including
+    word processing, spreadsheet, presentation, drawing, data charting,
+    formula editing, and file conversion facilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    John Heasman of NGSSoftware has discovered integer overflows in the
+    EMR_POLYPOLYGON and EMR_POLYPOLYGON16 processing and an error within
+    the handling of META_ESCAPE records.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities to cause heap overflows
+    and potentially execute arbitrary code with the privileges of the user
+    running OpenOffice.org by enticing the user to open a document
+    containing a malicious WMF/EMF file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround known at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenOffice.org binary users should update to version 2.1.0 or
+    later:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.1.0&quot;</code>
+    <p>
+    All OpenOffice.org users should update to version 2.0.4 or later:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5870">CVE-2006-5870</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 09 Jan 2007 18:48:36 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 09 Jan 2007 19:06:14 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 12 Jan 2007 12:16:11 +0000">
+    falco
+  </metadata>
+</glsa>

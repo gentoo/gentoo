@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-31">
+  <title>jabberd 1.x: Denial of Service vulnerability</title>
+  <synopsis>
+    The jabberd server was found to be vulnerable to a remote Denial of Service
+    attack.
+  </synopsis>
+  <product type="ebuild">jabberd</product>
+  <announced>September 23, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>64741</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/jabberd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3-r4</unaffected>
+      <vulnerable range="le">1.4.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Jabber is a set of streaming XML protocols enabling message, presence,
+    and other structured information exchange between two hosts. jabberd is
+    the original implementation of the Jabber protocol server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jose Antonio Calvo found a defect in routines handling XML parsing of
+    incoming data. jabberd 1.x may crash upon reception of invalid data on
+    any socket connection on which XML is parsed.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may send a specific sequence of bytes to an open
+    socket to crash the jabberd server, resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All jabberd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-im/jabberd-1.4.3-r4&quot;
+    # emerge &quot;&gt;=net-im/jabberd-1.4.3-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.jabber.org/pipermail/jabberd/2004-September/002004.html">Vulnerability disclosure</uri>
+    <uri link="http://www.jabber.org/pipermail/jadmin/2004-September/018046.html">Jabber announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1378">CVE-2004-1378</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Sep 2004 11:27:04 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Sep 2004 15:51:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 22 Sep 2004 17:38:09 +0000">
+    koon
+  </metadata>
+</glsa>

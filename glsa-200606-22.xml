@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-22">
+  <title>aRts: Privilege escalation</title>
+  <synopsis>
+    The artswrapper part of aRts allows local users to execute arbitrary code
+    with elevated privileges.
+  </synopsis>
+  <product type="ebuild">aRts</product>
+  <announced>June 22, 2006</announced>
+  <revised>June 22, 2006: 01</revised>
+  <bug>135970</bug>
+  <access>local</access>
+  <affected>
+    <package name="kde-base/arts" auto="yes" arch="*">
+      <unaffected range="ge">3.5.2-r1</unaffected>
+      <unaffected range="rge">3.4.3-r1</unaffected>
+      <vulnerable range="lt">3.5.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    aRts is a real time modular system for synthesizing audio used by KDE.
+    artswrapper is a helper application used to start the aRts daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    artswrapper fails to properly check whether it can drop privileges
+    accordingly if setuid() fails due to a user exceeding assigned resource
+    limits.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Local attackers could exploit this vulnerability to execute arbitrary
+    code with elevated privileges. Note that the aRts package provided by
+    Gentoo is only vulnerable if the artswrappersuid USE-flag is enabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All aRts users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose kde-base/arts</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2916">CVE-2006-2916</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 15 Jun 2006 13:39:42 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 17 Jun 2006 13:17:47 +0000">
+    jaervosz
+  </metadata>
+</glsa>

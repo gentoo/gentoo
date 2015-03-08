@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200912-01">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in OpenSSL might allow remote attackers to conduct
+    multiple attacks, including the injection of arbitrary data into encrypted
+    byte streams.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>December 01, 2009</announced>
+  <revised>December 02, 2009: 02</revised>
+  <bug>270305</bug>
+  <bug>280591</bug>
+  <bug>292022</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.8l-r2</unaffected>
+      <vulnerable range="lt">0.9.8l-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+    (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+    purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in OpenSSL:
+    </p>
+    <ul>
+    <li>Marsh Ray of PhoneFactor and Martin Rex of SAP independently
+    reported that the TLS protocol does not properly handle session
+    renegotiation requests (CVE-2009-3555).</li>
+    <li>The MD2 hash algorithm is no longer considered to be
+    cryptographically strong, as demonstrated by Dan Kaminsky. Certificates
+    using this algorithm are no longer accepted (CVE-2009-2409).</li>
+    <li>Daniel Mentz and Robin Seggelmann reported the following
+    vulnerabilities related to DTLS: A use-after-free flaw (CVE-2009-1379)
+    and a NULL pointer dereference (CVE-2009-1387) in the
+    dtls1_retrieve_buffered_fragment() function in src/d1_both.c, multiple
+    memory leaks in the dtls1_process_out_of_seq_message() function in
+    src/d1_both.c (CVE-2009-1378), and a processing error related to a
+    large amount of DTLS records with a future epoch in the
+    dtls1_buffer_record() function in ssl/d1_pkt.c
+    (CVE-2009-1377).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote unauthenticated attacker, acting as a Man in the Middle, could
+    inject arbitrary plain text into a TLS session, possibly leading to the
+    ability to send requests as if authenticated as the victim. A remote
+    attacker could furthermore send specially crafted DTLS packages to a
+    service using OpenSSL for DTLS support, possibly resulting in a Denial
+    of Service. Also, a remote attacker might be able to create rogue
+    certificates, facilitated by a MD2 collision. NOTE: The amount of
+    computation needed for this attack is still very large.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8l-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1377">CVE-2009-1377</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1378">CVE-2009-1378</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1379">CVE-2009-1379</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1387">CVE-2009-1387</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2409">CVE-2009-2409</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555">CVE-2009-3555</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 23 Nov 2009 21:29:47 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 30 Nov 2009 13:42:39 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 01 Dec 2009 21:28:40 +0000">
+    a3li
+  </metadata>
+</glsa>

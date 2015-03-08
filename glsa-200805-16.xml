@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-16">
+  <title>OpenOffice.org: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in OpenOffice.org, possibly
+    allowing for user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openoffice openoffice-bin</product>
+  <announced>May 14, 2008</announced>
+  <revised>May 14, 2008: 02</revised>
+  <bug>218080</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <unaffected range="ge">2.4.0</unaffected>
+      <vulnerable range="lt">2.4.0</vulnerable>
+    </package>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.4.0</unaffected>
+      <vulnerable range="lt">2.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenOffice.org is an open source office productivity suite, including
+    word processing, spreadsheet, presentation, drawing, data charting,
+    formula editing, and file conversion facilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDefense Labs reported multiple vulnerabilities in OpenOffice.org:
+    </p>
+    <ul>
+    <li>
+    multiple heap-based buffer overflows when parsing the "Attribute" and
+    "Font" Description records of Quattro Pro (QPRO) files
+    (CVE-2007-5745),
+    </li>
+    <li>
+    an integer overflow when parsing the EMR_STRETCHBLT record of an EMF
+    file, resulting in a heap-based buffer overflow (CVE-2007-5746),
+    </li>
+    <li>
+    an integer underflow when parsing Quattro Pro (QPRO) files, resulting
+    in an excessive loop and a stack-based buffer overflow
+    (CVE-2007-5747),
+    </li>
+    <li>
+    and a heap-based buffer overflow when parsing the
+    "DocumentSummaryInformation" stream in an OLE file (CVE-2008-0320).
+    </li>
+    </ul>
+    <p>
+    Furthermore, Will Drewry (Google Security) reported vulnerabilities in
+    the memory management of the International Components for Unicode
+    (CVE-2007-4770, CVE-2007-4771), which was resolved with GLSA 200803-20.
+    However, the binary version of OpenOffice.org uses an internal copy of
+    said library.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    document, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user running OpenOffice.org.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenOffice.org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.4.0&quot;</code>
+    <p>
+    All OpenOffice.org binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.4.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4770">CVE-2007-4770</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4771">CVE-2007-4771</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5745">CVE-2007-5745</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5746">CVE-2007-5746</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5747">CVE-2007-5747</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0320">CVE-2008-0320</uri>
+    <uri link="/security/en/glsa/glsa-200803-20.xml">GLSA 200803-20</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 12:59:56 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 May 2008 17:40:20 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 08 May 2008 17:40:49 +0000">
+    rbu
+  </metadata>
+</glsa>

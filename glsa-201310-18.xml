@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-18">
+  <title>GnuTLS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in GnuTLS, the worst
+    of which could lead to Denial of Service.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>October 28, 2013</announced>
+  <revised>October 28, 2013: 1</revised>
+  <bug>455560</bug>
+  <bug>471788</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">2.12.23-r1</unaffected>
+      <vulnerable range="lt">2.12.23-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is an Open Source implementation of the TLS 1.2 and SSL 3.0
+      protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GnuTLS. Please review
+      the CVE identifiers and Lucky Thirteen research paper referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could sent a specially crafted packet to cause a
+      Denial of Service condition. Additionally, a remote attacker could
+      perform man-in-the-middle attacks to recover plaintext data.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-2.12.23-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1619">CVE-2013-1619</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2116">CVE-2013-2116</uri>
+    <uri link="http://www.isg.rhul.ac.uk/tls/TLStiming.pdf">Lucky Thirteen:
+      Breaking the TLS and DTLS Record Protocols
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 24 Mar 2013 19:32:51 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Oct 2013 11:33:22 +0000">ackle</metadata>
+</glsa>

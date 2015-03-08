@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-11">
+  <title>JPEG library: Denial of Service</title>
+  <synopsis>
+    The JPEG library is vulnerable to a Denial of Service.
+  </synopsis>
+  <product type="ebuild">jpeg</product>
+  <announced>June 11, 2006</announced>
+  <revised>July 29, 2006: 02</revised>
+  <bug>130889</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jpeg" auto="yes" arch="*">
+      <unaffected range="ge">6b-r7</unaffected>
+      <vulnerable range="lt">6b-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The JPEG library is able to load, handle and manipulate images in the
+    JPEG format.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Auditing Team discovered that the
+    vulnerable JPEG library ebuilds compile JPEG without the --maxmem
+    feature which is not recommended.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to load a specially crafted JPEG image file an
+    attacker could cause a Denial of Service, due to memory exhaustion.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    JPEG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/jpeg-6b-r7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3005">CVE-2006-3005</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 05 Jun 2006 22:15:44 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 22:17:08 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 06 Jun 2006 08:58:39 +0000">
+    daxomatic
+  </metadata>
+</glsa>

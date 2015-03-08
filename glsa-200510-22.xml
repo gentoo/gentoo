@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-22">
+  <title>SELinux PAM: Local password guessing attack</title>
+  <synopsis>
+    A vulnerability in the SELinux version of PAM allows a local attacker to
+    brute-force system passwords.
+  </synopsis>
+  <product type="ebuild">PAM</product>
+  <announced>October 28, 2005</announced>
+  <revised>October 28, 2005: 01</revised>
+  <bug>109485</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/pam" auto="yes" arch="*">
+      <unaffected range="ge">0.78-r3</unaffected>
+      <vulnerable range="lt">0.78-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PAM (Pluggable Authentication Modules) is an architecture allowing
+    the separation of the development of privilege granting software from
+    the development of secure and appropriate authentication schemes.
+    SELinux is an operating system based on Linux which includes Mandatory
+    Access Control.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SELinux patches for PAM introduce a vulnerability allowing a
+    password to be checked with the unix_chkpwd utility without delay or
+    logging. This vulnerability doesn't affect users who do not run
+    SELinux.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to brute-force
+    passwords and escalate privileges on an SELinux system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SELinux PAM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/pam-0.78-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2977">CVE-2005-2977</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Oct 2005 15:44:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Oct 2005 07:49:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Oct 2005 12:12:27 +0000">
+    koon
+  </metadata>
+</glsa>

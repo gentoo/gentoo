@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-15">
+  <title>qmailAdmin: Buffer overflow</title>
+  <synopsis>
+    qmailAdmin is vulnerable to a buffer overflow that could lead to the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">qmailadmin</product>
+  <announced>November 21, 2006</announced>
+  <revised>November 21, 2006: 01</revised>
+  <bug>153896</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/qmailadmin" auto="yes" arch="*">
+      <unaffected range="ge">1.2.10</unaffected>
+      <vulnerable range="lt">1.2.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    qmailAdmin is a free software package that provides a web interface for
+    managing a qmail system with virtual domains.
+    </p>
+  </background>
+  <description>
+    <p>
+    qmailAdmin fails to properly handle the "PATH_INFO" variable in
+    qmailadmin.c. The PATH_INFO is a standard CGI environment variable
+    filled with user supplied data.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability by sending
+    qmailAdmin a maliciously crafted URL that could lead to the execution
+    of arbitrary code with the permissions of the user running qmailAdmin.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All qmailAdmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/qmailadmin-1.2.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1141">CVE-2006-1141</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Nov 2006 21:38:39 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Nov 2006 21:39:01 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Nov 2006 08:53:09 +0000">
+    jaervosz
+  </metadata>
+</glsa>

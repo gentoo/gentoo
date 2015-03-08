@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-19">
+  <title>Pavuk: Multiple buffer overflows</title>
+  <synopsis>
+    Pavuk contains multiple buffer overflows that can allow a remote attacker
+    to run arbitrary code.
+  </synopsis>
+  <product type="ebuild">pavuk</product>
+  <announced>November 10, 2004</announced>
+  <revised>November 10, 2004: 01</revised>
+  <bug>70516</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/pavuk" auto="yes" arch="*">
+      <unaffected range="ge">0.9.31</unaffected>
+      <vulnerable range="lt">0.9.31</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pavuk is web spider and website mirroring tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Pavuk contains several buffer overflow vulnerabilities in the code handling digest authentication and HTTP header processing. This issue is similar to GLSA 200407-19, but contains more vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause a buffer overflow, leading to arbitrary code execution with the rights of the user running Pavuk.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pavuk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=net-misc/pavuk-0.9.31"</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200407-19.xml">GLSA-200407-19</uri>
+    <uri link="http://secunia.com/advisories/13120/">SA13120</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0456">CAN-2004-0456</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 10 Nov 2004 07:00:44 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 10 Nov 2004 15:50:02 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 10 Nov 2004 15:51:22 +0000">
+    lewk
+  </metadata>
+</glsa>

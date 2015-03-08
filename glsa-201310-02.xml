@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-02">
+  <title>isync: Man-in-the-Middle attack</title>
+  <synopsis>A vulnerability in isync could allow remote attackers to perform
+    man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">isync</product>
+  <announced>October 05, 2013</announced>
+  <revised>October 05, 2013: 1</revised>
+  <bug>458420</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/isync" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6</unaffected>
+      <vulnerable range="lt">1.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>isync is an IMAP and MailDir mailbox synchronizer. </p>
+  </background>
+  <description>
+    <p>isync does not properly verify the server’s hostname against the CN
+      field in the SSL certificate.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote server could perform man-in-the-middle attacks to disclose
+      passwords or obtain other sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All isync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/isync-1.0.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0289">CVE-2013-0289</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Apr 2013 23:32:51 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 05 Oct 2013 20:45:35 +0000">ackle</metadata>
+</glsa>

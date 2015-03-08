@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-34">
+  <title>CSTeX: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were discovered in CSTeX, possibly allowing to
+    execute arbitrary code or overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">cstetex</product>
+  <announced>November 25, 2007</announced>
+  <revised>November 25, 2007: 01</revised>
+  <bug>196673</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/cstetex" auto="no" arch="*">
+      <vulnerable range="lt">2.0.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CSTeX is a TeX distribution with Czech and Slovak support. It is used
+    for creating and manipulating LaTeX documents.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple issues were found in the teTeX 2 codebase that CSTeX builds
+    upon (GLSA 200709-17, GLSA 200711-26). CSTeX also includes vulnerable
+    code from the GD library (GLSA 200708-05), from Xpdf (GLSA 200709-12,
+    GLSA 200711-22) and from T1Lib (GLSA 200710-12).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers could possibly execute arbitrary code and local
+    attackers could possibly overwrite arbitrary files with the privileges
+    of the user running CSTeX via multiple vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    CSTeX is not maintained upstream, so the package was masked in Portage.
+    We recommend that users unmerge CSTeX:
+    </p>
+    <code>
+    # emerge --unmerge app-text/cstetex</code>
+    <p>
+    As an alternative, users should upgrade their systems to use teTeX or
+    TeX Live with its Babel packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200708-05.xml">GLSA 200708-05</uri>
+    <uri link="/security/en/glsa/glsa-200709-12.xml">GLSA 200709-12</uri>
+    <uri link="/security/en/glsa/glsa-200709-17.xml">GLSA 200709-17</uri>
+    <uri link="/security/en/glsa/glsa-200710-12.xml">GLSA 200710-12</uri>
+    <uri link="/security/en/glsa/glsa-200711-22.xml">GLSA 200711-22</uri>
+    <uri link="/security/en/glsa/glsa-200711-26.xml">GLSA 200711-26</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 00:12:34 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 19 Nov 2007 21:14:43 +0000">
+    rbu
+  </metadata>
+</glsa>

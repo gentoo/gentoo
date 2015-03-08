@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-08">
+  <title>feh: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in feh, the worst of which
+    leading to remote passive code execution.
+  </synopsis>
+  <product type="ebuild">feh</product>
+  <announced>October 13, 2011</announced>
+  <revised>October 13, 2011: 2</revised>
+  <bug>325531</bug>
+  <bug>354063</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-gfx/feh" auto="yes" arch="*">
+      <unaffected range="ge">1.12</unaffected>
+      <vulnerable range="lt">1.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>feh is a fast, lightweight imageviewer using imlib2.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in feh. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A malicious entity might entice a user to visit a URL using the
+      --wget-timestamp option, thus executing arbitrary commands via shell
+      metacharacters; a malicious local user could perform a symlink attack and
+      overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All feh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/feh-1.12"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2246">CVE-2010-2246</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0702">CVE-2011-0702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1031">CVE-2011-1031</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:47 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Thu, 13 Oct 2011 21:10:09 +0000" tag="submitter">craig</metadata>
+</glsa>

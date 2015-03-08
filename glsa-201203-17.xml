@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-17">
+  <title>HPLIP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in HPLIP, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">hplip</product>
+  <announced>March 16, 2012</announced>
+  <revised>March 16, 2012: 1</revised>
+  <bug>352085</bug>
+  <bug>388655</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-print/hplip" auto="yes" arch="*">
+      <unaffected range="ge">3.11.10</unaffected>
+      <vulnerable range="lt">3.11.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Hewlett-Packard Linux Imaging and Printing system (HPLIP) provides
+      drivers for HP's inkjet and laser printers, scanners and fax machines. 
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in HPLIP:</p>
+    
+    <ul>
+      <li>The "hpmud_get_pml()" function in pml.c contains a boundary error
+        which could cause a stack-based buffer overflow (CVE-2010-4267).
+      </li>
+      <li>The "send_data_to_stdout()" function in hpcupsfax.cpp creates
+        insecure temporary files (CVE-2011-2722).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A remote attacker might send specially crafted SNMP reponses, possibly
+      resulting in execution of arbitrary code or a Denial of Service
+      condition. Furthermore, a local attacker could perform symlink attacks to
+      overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All HPLIP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/hplip-3.11.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4267">CVE-2010-4267</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2722">CVE-2011-2722</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:15 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Fri, 16 Mar 2012 11:04:44 +0000" tag="submitter">ackle</metadata>
+</glsa>

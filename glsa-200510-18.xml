@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200510-18">
+  <title>Netpbm: Buffer overflow in pnmtopng</title>
+  <synopsis>
+    The pnmtopng utility, part of the Netpbm tools, contains a vulnerability
+    which can potentially result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Netpbm</product>
+  <announced>October 20, 2005</announced>
+  <revised>May 28, 2009: 06</revised>
+  <bug>109705</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/netpbm" auto="yes" arch="*">
+      <unaffected range="ge">10.29</unaffected>
+      <unaffected range="rge">10.26.32</unaffected>
+      <unaffected range="rge">10.26.33</unaffected>
+      <unaffected range="rge">10.26.42</unaffected>
+      <unaffected range="rge">10.26.43</unaffected>
+      <unaffected range="rge">10.26.44</unaffected>
+      <unaffected range="rge">10.26.48</unaffected>
+      <unaffected range="rge">10.26.49</unaffected>
+      <unaffected range="rge">10.26.52</unaffected>
+      <unaffected range="rge">10.26.53</unaffected>
+      <unaffected range="rge">10.26.59</unaffected>
+      <unaffected range="rge">10.26.61</unaffected>
+      <vulnerable range="lt">10.29</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Netpbm is a package of 220 graphics programs and a programming library,
+    including pnmtopng, a tool to convert PNM image files to the PNG
+    format.
+    </p>
+  </background>
+  <description>
+    <p>
+    RedHat reported that pnmtopng is vulnerable to a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious PNM file and entice a user to run
+    pnmtopng on it, potentially resulting in the execution of arbitrary
+    code with the permissions of the user running pnmtopng.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Netpbm users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose media-libs/netpbm</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2978">CAN-2005-2978</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 15 Oct 2005 09:38:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Oct 2005 07:38:22 +0000">
+    koon
+  </metadata>
+</glsa>

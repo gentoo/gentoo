@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-03">
+  <title>Snort: Denial of Service</title>
+  <synopsis>
+    Snort contains a vulnerability in the rule matching algorithm that could
+    result in a Denial of Service.
+  </synopsis>
+  <product type="ebuild">snort</product>
+  <announced>February 13, 2007</announced>
+  <revised>February 13, 2007: 01</revised>
+  <bug>161632</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/snort" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1.2</unaffected>
+      <vulnerable range="lt">2.6.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Snort is a widely deployed intrusion detection program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Randy Smith, Christian Estan and Somesh Jha discovered that the rule
+    matching algorithm of Snort can be exploited in a way known as a
+    "backtracking attack" to perform numerous time-consuming operations.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send specially crafted network packets, which
+    would result in the cessation of the detections and the consumption of
+    the CPU resources.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Snort users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/snort-2.6.1.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6931">CVE-2006-6931</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Feb 2007 19:01:49 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Feb 2007 22:41:30 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 23:29:42 +0000">
+    falco
+  </metadata>
+</glsa>

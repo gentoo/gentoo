@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-25">
+  <title>MySQL: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability was found in MySQL.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>November 18, 2007</announced>
+  <revised>November 18, 2007: 01</revised>
+  <bug>198988</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.0.44-r2</unaffected>
+      <vulnerable range="lt">5.0.44-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular multi-threaded, multi-user SQL server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joe Gallo and Artem Russakovskii reported an error in the
+    convert_search_mode_to_innobase() function in ha_innodb.cc in the
+    InnoDB engine that is leading to a failed assertion when handling
+    CONTAINS operations.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote authenticated attacker with ALTER privileges could send a
+    specially crafted request to a vulnerable database server possibly
+    leading to a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-5.0.44-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5925">CVE-2007-5925</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 14:18:51 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 Nov 2007 20:09:52 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 20:10:13 +0000">
+    rbu
+  </metadata>
+</glsa>

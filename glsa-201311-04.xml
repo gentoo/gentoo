@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-04">
+  <title>Vixie cron: Denial of Service</title>
+  <synopsis>A vulnerability has been found in Vixie cron, allowing local
+    attackers to conduct symlink attacks. 
+  </synopsis>
+  <product type="ebuild">vixie-cron</product>
+  <announced>November 07, 2013</announced>
+  <revised>November 07, 2013: 1</revised>
+  <bug>308055</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/vixie-cron" auto="yes" arch="*">
+      <unaffected range="ge">4.1-r14</unaffected>
+      <vulnerable range="lt">4.1-r14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Paul Vixie’s cron daemon, a fully featured crond implementation.</p>
+  </background>
+  <description>
+    <p>Vixie cron contains a race condition relating to atime and mtime values
+      of temporary files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could change the modification time of files, possibly
+      resulting in a Denial of Service condition via a symlink attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Vixie cron users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-process/vixie-cron-4.1-r14"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0424">CVE-2010-0424</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Nov 2013 03:18:24 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 Nov 2013 01:56:36 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

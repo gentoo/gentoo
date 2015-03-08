@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-02">
+  <title>Multiple vulnerabilities in LHa</title>
+  <synopsis>
+    Two stack-based buffer overflows and two directory traversal problems have
+    been found in LHa. These vulnerabilities can be used to execute arbitrary
+    code or as a denial of service attack.
+  </synopsis>
+  <product type="ebuild">lha</product>
+  <announced>May 09, 2004</announced>
+  <revised>October 20, 2006: 02</revised>
+  <bug>49961</bug>
+  <access>remote </access>
+  <affected>
+    <package name="app-arch/lha" auto="yes" arch="*">
+      <unaffected range="rge">114i-r2</unaffected>
+      <vulnerable range="rle">114i-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LHa is a console-based program for packing and unpacking LHarc archives.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar found two stack overflows and two directory traversal
+    vulnerabilities in LHa version 1.14 and 1.17. A stack overflow occurs when
+    testing or extracting archives containing long file or directory names.
+    Furthermore, LHa doesn't contain sufficient protection against relative or
+    absolute archive paths.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The stack overflows can be exploited to execute arbitrary code with the
+    rights of the user testing or extracting the archive. The directory
+    traversal vulnerabilities can be used to overwrite files in the filesystem
+    with the rights of the user extracting the archive, potentially leading to
+    denial of service or privilege escalation. Since LHa is often interfaced to
+    other software like an email virus scanner, this attack can be used
+    remotely.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of LHa.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of LHa should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-arch/lha-114i-r2"
+    # emerge ">=app-arch/lha-114i-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0234">CAN-2004-0234</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0235">CAN-2004-0235</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

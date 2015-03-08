@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-20">
+  <title>Clam AntiVirus: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Clam AntiVirus, the most
+    severe of which may allow the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Clam AntiVirus</product>
+  <announced>October 24, 2011</announced>
+  <revised>October 24, 2011: 2</revised>
+  <bug>338226</bug>
+  <bug>347627</bug>
+  <bug>354019</bug>
+  <bug>378815</bug>
+  <bug>387521</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.97.3</unaffected>
+      <vulnerable range="lt">0.97.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Clam AntiVirus (short: ClamAV) is an anti-virus toolkit for UNIX,
+      designed especially for e-mail scanning on mail gateways. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Clam AntiVirus. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An unauthenticated remote attacker may execute arbitrary code with the
+      privileges of the Clam AntiVirus process or cause a Denial of Service by
+      causing an affected user or system to scan a crafted file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Clam AntiVirus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.97.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0405">CVE-2010-0405</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3434">CVE-2010-3434</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4260">CVE-2010-4260</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4261">CVE-2010-4261</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4479">CVE-2010-4479</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1003">CVE-2011-1003</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2721">CVE-2011-2721</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3627">CVE-2011-3627</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:20 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 24 Oct 2011 15:40:45 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

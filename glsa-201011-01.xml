@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201011-01">
+  <title>GNU C library: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in glibc, the worst of which allowing
+    local attackers to execute arbitrary code as root.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>November 15, 2010</announced>
+  <revised>November 15, 2010: 01</revised>
+  <bug>285818</bug>
+  <bug>325555</bug>
+  <bug>330923</bug>
+  <bug>335871</bug>
+  <bug>341755</bug>
+  <access>local remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.11.2-r3</unaffected>
+      <vulnerable range="lt">2.11.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU C library is the standard C library used by Gentoo Linux
+    systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in glibc, amongst others the
+    widely-known recent LD_AUDIT and $ORIGIN issues. For further
+    information please consult the CVE entries referenced below.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could execute arbitrary code as root, cause a Denial
+    of Service, or gain privileges. Additionally, a user-assisted remote
+    attacker could cause the execution of arbitrary code, and a
+    context-dependent attacker could cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU C library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/glibc-2.11.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4880">CVE-2009-4880</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4881">CVE-2009-4881</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0296">CVE-2010-0296</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0830">CVE-2010-0830</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3847">CVE-2010-3847</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3856">CVE-2010-3856</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 23 Nov 2009 17:50:04 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 14 Nov 2010 19:59:41 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 15 Nov 2010 21:29:42 +0000">
+    keytoaster
+  </metadata>
+</glsa>

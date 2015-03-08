@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-20">
+  <title>DokuWiki: Shell command injection and Denial of Service</title>
+  <synopsis>
+    DokuWiki is vulnerable to shell command injection and Denial of Service
+    attacks when using ImageMagick.
+  </synopsis>
+  <product type="ebuild">dokuwiki</product>
+  <announced>September 28, 2006</announced>
+  <revised>December 13, 2006: 02</revised>
+  <bug>149266</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/dokuwiki" auto="yes" arch="*">
+      <unaffected range="ge">20060309e</unaffected>
+      <vulnerable range="lt">20060309e</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    DokuWiki is a wiki targeted at developer teams, workgroups and small
+    companies. It does not use a database backend.
+    </p>
+  </background>
+  <description>
+    <p>
+    Input validation flaws have been discovered in the image handling of
+    fetch.php if ImageMagick is used, which is not the default method.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit the flaws to execute arbitrary shell
+    commands with the rights of the web server daemon or cause a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All DokuWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/dokuwiki-20060309e&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.freelists.org/archives/dokuwiki/09-2006/msg00278.html">DokuWiki Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5098">CVE-2006-5098</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5099">CVE-2006-5099</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 27 Sep 2006 14:05:04 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 27 Sep 2006 14:54:15 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 28 Sep 2006 14:27:52 +0000">
+    vorlon078
+  </metadata>
+</glsa>

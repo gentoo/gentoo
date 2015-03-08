@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-14">
+  <title>D-Bus: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in D-Bus, the worst of which
+    allowing for a symlink attack.
+  </synopsis>
+  <product type="ebuild">D-Bus</product>
+  <announced>October 21, 2011</announced>
+  <revised>October 21, 2011: 1</revised>
+  <bug>348766</bug>
+  <bug>371261</bug>
+  <bug>372743</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.4.12</unaffected>
+      <vulnerable range="lt">1.4.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system, a simple way for applications to talk to
+      each other.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in D-Bus. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerabilities allow for local Denial of Service (daemon crash), or
+      arbitrary file overwriting.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.4.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4352">CVE-2010-4352</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2200">CVE-2011-2200</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2533">CVE-2011-2533</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:28 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Fri, 21 Oct 2011 21:15:45 +0000" tag="submitter">craig</metadata>
+</glsa>

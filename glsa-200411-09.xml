@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-09">
+  <title>shadow: Unauthorized modification of account information</title>
+  <synopsis>
+    A flaw in the chfn and chsh utilities might allow modification of account
+    properties by unauthorized users.
+  </synopsis>
+  <product type="ebuild">shadow</product>
+  <announced>November 04, 2004</announced>
+  <revised>November 05, 2004: 02</revised>
+  <bug>69212</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/shadow" auto="yes" arch="*">
+      <unaffected range="ge">4.0.5-r1</unaffected>
+      <vulnerable range="lt">4.0.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    shadow provides a set of utilities to deal with user accounts.
+    </p>
+  </background>
+  <description>
+    <p>
+    Martin Schulze reported a flaw in the passwd_check() function in
+    "libmisc/pwdcheck.c" which is used by chfn and chsh.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A logged-in local user with an expired password may be able to use chfn and
+    chsh to change his standard shell or GECOS information (full name, phone
+    number...) without being required to change his password.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All shadow users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=sys-apps/shadow-4.0.5-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://ftp.pld.org.pl/software/shadow/NEWS">shadow NEWS file</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1001">CAN-2004-1001</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  3 Nov 2004 20:36:10 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  3 Nov 2004 20:36:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  3 Nov 2004 21:01:01 +0000">
+    vorlon078
+  </metadata>
+</glsa>

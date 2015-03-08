@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-03">
+  <title>libvorbis: Multiple vulnerabilities</title>
+  <synopsis>
+    A buffer overflow vulnerability and several memory corruptions have been
+    discovered in libvorbis.
+  </synopsis>
+  <product type="ebuild">libvorbis</product>
+  <announced>October 07, 2007</announced>
+  <revised>October 07, 2007: 01</revised>
+  <bug>186716</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libvorbis" auto="yes" arch="*">
+      <unaffected range="ge">1.2.0</unaffected>
+      <vulnerable range="lt">1.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libvorbis is the reference implementation of the Xiph.org Ogg Vorbis
+    audio file format. It is used by many applications for playback of Ogg
+    Vorbis files.
+    </p>
+  </background>
+  <description>
+    <p>
+    David Thiel of iSEC Partners discovered a heap-based buffer overflow in
+    the _01inverse() function in res0.c and a boundary checking error in
+    the vorbis_info_clear() function in info.c (CVE-2007-3106 and
+    CVE-2007-4029). libvorbis is also prone to several Denial of Service
+    vulnerabilities in form of infinite loops and invalid memory access
+    with unknown impact (CVE-2007-4065 and CVE-2007-4066).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by enticing a
+    user to open a specially crafted Ogg Vorbis file or network stream with
+    an application using libvorbis. This might lead to the execution of
+    arbitrary code with privileges of the user playing the file or a Denial
+    of Service by a crash or CPU consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libvorbis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libvorbis-1.2.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3106">CVE-2007-3106</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4029">CVE-2007-4029</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4065">CVE-2007-4065</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4066">CVE-2007-4066</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Sep 2007 23:57:53 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 08 Sep 2007 16:21:39 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 15:39:27 +0000">
+    rbu
+  </metadata>
+</glsa>

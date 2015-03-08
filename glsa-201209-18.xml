@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-18">
+  <title>Postfixadmin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Postfixadmin which may
+    lead to SQL injection or cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">postfixadmin</product>
+  <announced>September 27, 2012</announced>
+  <revised>September 27, 2012: 1</revised>
+  <bug>400971</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/postfixadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.3.5</unaffected>
+      <vulnerable range="lt">2.3.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Postfixadmin is a web-based management tool for Postfix-style virtual
+      domains and users.
+    </p>
+  </background>
+  <description>
+    <p>Multiple SQL injection vulnerabilities (CVE-2012-0811) and cross-site
+      scripting vulnerabilities (CVE-2012-0812) have been found in
+      Postfixadmin.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit these vulnerabilities to execute
+      arbitrary SQL statements or arbitrary HTML and script code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Postfixadmin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/postfixadmin-2.3.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0811">CVE-2012-0811</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0812">CVE-2012-0812</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:01:37 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 11:52:28 +0000">ackle</metadata>
+</glsa>

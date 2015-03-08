@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-06">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities in VLC may lead to the remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>September 07, 2008</announced>
+  <revised>September 07, 2008: 01</revised>
+  <bug>235238</bug>
+  <bug>235589</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6i-r2</unaffected>
+      <vulnerable range="lt">0.8.6i-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VLC is a cross-platform media player and streaming server.
+    </p>
+  </background>
+  <description>
+    <p>
+    g_ reported the following vulnerabilities:
+    </p>
+    <ul><li>An integer
+    overflow leading to a heap-based buffer overflow in the Open() function
+    in modules/demux/tta.c (CVE-2008-3732).</li>
+    <li>A signedness error
+    leading to a stack-based buffer overflow in the mms_ReceiveCommand()
+    function in modules/access/mms/mmstu.c (CVE-2008-3794).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file,
+    possibly resulting in the remote execution of arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VLC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6i-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3732">CVE-2008-3732</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3794">CVE-2008-3794</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 25 Aug 2008 18:33:15 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Aug 2008 18:33:23 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Aug 2008 20:55:29 +0000">
+    p-y
+  </metadata>
+</glsa>

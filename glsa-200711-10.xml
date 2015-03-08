@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-10">
+  <title>Mono: Buffer overflow</title>
+  <synopsis>
+    Mono's BigInteger implementation contains a buffer overflow vulnerability
+    that might lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mono</product>
+  <announced>November 07, 2007</announced>
+  <revised>November 07, 2007: 01</revised>
+  <bug>197067</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/mono" auto="yes" arch="*">
+      <unaffected range="ge">1.2.5.1-r1</unaffected>
+      <vulnerable range="lt">1.2.5.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mono provides the necessary software to develop and run .NET client and
+    server applications on various platforms.
+    </p>
+  </background>
+  <description>
+    <p>
+    IOActive discovered an error in the Mono.Math.BigInteger class, in the
+    reduction step of the Montgomery-based Pow methods, that could lead to
+    a buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability by sending specially
+    crafted data to Mono applications using the BigInteger class, which
+    might lead to the execution of arbitrary code with the privileges of
+    the user running the application (possibly root) or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mono users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/mono-1.2.5.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5197">CVE-2007-5197</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 03 Nov 2007 23:52:57 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 Nov 2007 22:49:37 +0000">
+    p-y
+  </metadata>
+</glsa>

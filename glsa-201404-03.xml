@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201404-03">
+  <title>OptiPNG: User-assisted execution of arbitrary code</title>
+  <synopsis>A use-after-free error in OptiPNG could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">optipng</product>
+  <announced>April 07, 2014</announced>
+  <revised>April 07, 2014: 1</revised>
+  <bug>435340</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/optipng" auto="yes" arch="*">
+      <unaffected range="ge">0.7.3</unaffected>
+      <vulnerable range="lt">0.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OptiPNG is a PNG optimizer that recompresses image files to a smaller
+      size, without losing any information.
+    </p>
+  </background>
+  <description>
+    <p>A use-after-free vulnerability exists in the palette reduction
+      functionality of OptiPNG.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file, possibly resulting in  execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OptiPNG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/optipng-0.7.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4432">CVE-2012-4432</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Sep 2012 16:00:25 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Apr 2014 20:09:15 +0000">ackle</metadata>
+</glsa>

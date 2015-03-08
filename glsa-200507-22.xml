@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-22">
+  <title>sandbox: Insecure temporary file handling</title>
+  <synopsis>
+    The sandbox utility may create temporary files in an insecure manner.
+  </synopsis>
+  <product type="ebuild">sandbox</product>
+  <announced>July 25, 2005</announced>
+  <revised>August 11, 2005: 02</revised>
+  <bug>96782</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/sandbox" auto="yes" arch="*">
+      <unaffected range="ge">1.2.11</unaffected>
+      <vulnerable range="lt">1.2.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sandbox is a Gentoo Linux utility used by the Portage package
+    management system.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Gentoo Linux Security Audit Team discovered that the sandbox
+    utility was vulnerable to multiple TOCTOU (Time of Check, Time of Use)
+    file creation race conditions.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Local users may be able to create or overwrite arbitrary files with the
+    permissions of the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sandbox users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/sandbox-1.2.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2449">CAN-2005-2449</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 23 Jul 2005 11:46:49 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 23 Jul 2005 12:17:37 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 24 Jul 2005 07:49:01 +0000">
+    adir
+  </metadata>
+</glsa>

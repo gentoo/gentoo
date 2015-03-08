@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-16">
+  <title>Adobe Acrobat Reader: Multiple vulnerabilities</title>
+  <synopsis>
+    Adobe Acrobat Reader is vulnerable to remote code execution, Denial of
+    Service, and cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>January 22, 2007</announced>
+  <revised>January 22, 2007: 01</revised>
+  <bug>159874</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">7.0.9</unaffected>
+      <vulnerable range="lt">7.0.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Acrobat Reader is a PDF reader released by Adobe.
+    </p>
+  </background>
+  <description>
+    <p>
+    Adobe Acrobat Reader in stand-alone mode is vulnerable to remote code
+    execution via heap corruption when loading a specially crafted PDF
+    file.
+    </p>
+    <p>
+    The browser plugin released with Adobe Acrobat Reader (nppdf.so) does
+    not properly handle URLs, and crashes if given a URL that is too long.
+    The plugin does not correctly handle JavaScript, and executes
+    JavaScript that is given as a GET variable to the URL of a PDF file.
+    Lastly, the plugin does not properly handle the FDF, xml, xfdf AJAX
+    request parameters following the # character in a URL, allowing for
+    multiple cross-site scripting vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted PDF file
+    and execute arbitrary code with the rights of the user running Adobe
+    Acrobat Reader. An attacker could also entice a user to browse to a
+    specially crafted URL and either crash the Adobe Acrobat Reader browser
+    plugin, execute arbitrary JavaScript in the context of the user's
+    browser, or inject arbitrary HTML or JavaScript into the document being
+    viewed by the user. Note that users who have emerged Adobe Acrobat
+    Reader with the "nsplugin" USE flag disabled are not vulnerable to
+    issues with the Adobe Acrobat Reader browser plugin.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Acrobat Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-7.0.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5857">CVE-2006-5857</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0044">CVE-2007-0044</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0045">CVE-2007-0045</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0046">CVE-2007-0046</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0048">CVE-2007-0048</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 12:10:48 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 00:45:48 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 22 Jan 2007 12:38:29 +0000">
+    falco
+  </metadata>
+</glsa>

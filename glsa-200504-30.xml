@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-30">
+  <title>phpMyAdmin: Insecure SQL script installation</title>
+  <synopsis>
+    phpMyAdmin leaves the SQL install script with insecure permissions,
+    potentially leading to a database compromise.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>April 30, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>88831</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">2.6.2-r1</unaffected>
+      <vulnerable range="lt">2.6.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpMyAdmin is a tool written in PHP intended to handle the
+    administration of MySQL databases from a web-browser. phpMyAdmin uses a
+    pma MySQL user to control the linked-tables infrastructure. The SQL
+    install script sets the initial password for the pma user.
+    </p>
+  </background>
+  <description>
+    <p>
+    The phpMyAdmin installation process leaves the SQL install script with
+    insecure permissions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to obtain the initial
+    phpMyAdmin password and from there obtain information about databases
+    accessible by phpMyAdmin.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Change the password for the phpMyAdmin MySQL user (pma):
+    </p>
+    <code>
+    mysql -u root -p
+    SET PASSWORD FOR 'pma'@'localhost' = PASSWORD('MyNewPassword');</code>
+    <p>
+    Update your phpMyAdmin config.inc.php:
+    </p>
+    <code>
+    $cfg['Servers'][$i]['controlpass']   = 'MyNewPassword';</code>
+  </workaround>
+  <resolution>
+    <p>
+    All phpMyAdmin users should change password for the pma user as
+    described above and upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1392">CVE-2005-1392</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 29 Apr 2005 08:17:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 29 Apr 2005 18:24:53 +0000">
+    koon
+  </metadata>
+</glsa>

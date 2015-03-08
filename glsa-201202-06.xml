@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201202-06">
+  <title>Asterisk: Denial of Service</title>
+  <synopsis>A vulnerability in Asterisk could allow a remote attacker to cause
+    a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>February 22, 2012</announced>
+  <revised>February 22, 2012: 1</revised>
+  <bug>399507</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.8.8.2</unaffected>
+      <vulnerable range="lt">1.8.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been found in Asterisk's handling of certain
+      encrypted streams where the res_srtp module has been loaded but video
+      support has not been enabled.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted SDP message to the
+      Asterisk daemon, possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.8.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0885">CVE-2012-0885</uri>
+  </references>
+  <metadata timestamp="Fri, 27 Jan 2012 14:53:19 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Wed, 22 Feb 2012 19:58:56 +0000" tag="submitter">ackle</metadata>
+</glsa>

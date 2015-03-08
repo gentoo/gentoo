@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-19">
+  <title>PostgreSQL: Buffer overflows in PL/PgSQL parser</title>
+  <synopsis>
+    PostgreSQL is vulnerable to several buffer overflows in the PL/PgSQL parser
+    leading to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>February 14, 2005</announced>
+  <revised>June 26, 2007: 04</revised>
+  <bug>81350</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="eq">7.3*</unaffected>
+      <unaffected range="eq">7.4*</unaffected>
+      <unaffected range="ge">8.0.1-r1</unaffected>
+      <vulnerable range="lt">7.3.9-r1</vulnerable>
+      <vulnerable range="lt">7.4.13</vulnerable>
+      <vulnerable range="lt">8.0.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PostgreSQL is a SQL compliant, open source object-relational database
+    management system.
+    </p>
+  </background>
+  <description>
+    <p>
+    PostgreSQL is vulnerable to several buffer overflows in the PL/PgSQL
+    parser.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a malicious query resulting in the
+    execution of arbitrary code with the permissions of the user running
+    PostgreSQL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PostgreSQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-db/postgresql</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0247">CAN-2005-0247</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Feb 2005 15:37:29 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 11 Feb 2005 20:39:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Feb 2005 20:03:42 +0000">
+    koon
+  </metadata>
+</glsa>

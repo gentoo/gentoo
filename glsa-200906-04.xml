@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200906-04">
+  <title>Apache Tomcat JK Connector: Information disclosure</title>
+  <synopsis>
+    An error in the Apache Tomcat JK Connector might allow for an information
+    disclosure flaw.
+  </synopsis>
+  <product type="ebuild">mod_jk</product>
+  <announced>June 29, 2009</announced>
+  <revised>June 29, 2009: 01</revised>
+  <bug>265455</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_jk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.27</unaffected>
+      <vulnerable range="lt">1.2.27</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache Tomcat JK Connector (aka mod_jk) connects the Tomcat
+    application server with the Apache HTTP Server.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Red Hat Security Response Team discovered that mod_jk does not
+    properly handle (1) requests setting the "Content-Length" header while
+    not providing data and (2) clients sending repeated requests very
+    quickly.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could send specially crafted requests or a large
+    number of requests at a time, possibly resulting in the disclosure of a
+    response intended for another client.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache Tomcat JK Connector users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_jk-1.2.27&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5519">CVE-2008-5519</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 24 Jun 2009 16:46:40 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 28 Jun 2009 12:27:09 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Jun 2009 22:42:43 +0000">
+    a3li
+  </metadata>
+</glsa>

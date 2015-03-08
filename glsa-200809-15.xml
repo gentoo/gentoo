@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-15">
+  <title>GNU ed: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow vulnerability in ed may allow for the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">ed</product>
+  <announced>September 23, 2008</announced>
+  <revised>September 23, 2008: 01</revised>
+  <bug>236521</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/ed" auto="yes" arch="*">
+      <unaffected range="ge">1.0</unaffected>
+      <vulnerable range="lt">1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU ed is a basic line editor. red is a restricted version of ed that
+    does not allow shell command execution.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alfredo Ortega from Core Security Technologies reported a heap-based
+    buffer overflow in the strip_escapes() function when processing overly
+    long filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process specially crafted
+    commands with ed or red, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU ed users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/ed-1.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3916">CVE-2008-3916</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 14 Sep 2008 11:31:13 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Sep 2008 21:37:26 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Sep 2008 21:37:35 +0000">
+    p-y
+  </metadata>
+</glsa>

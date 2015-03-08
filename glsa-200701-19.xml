@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-19">
+  <title>OpenLDAP: Insecure usage of /tmp during installation</title>
+  <synopsis>
+    A shell script commonly released with OpenLDAP makes insecure usage of
+    files in /tmp during the emerge process.
+  </synopsis>
+  <product type="ebuild">openldap</product>
+  <announced>January 23, 2007</announced>
+  <revised>March 11, 2007: 02</revised>
+  <bug>159508</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-nds/openldap" auto="yes" arch="*">
+      <unaffected range="ge">2.1.30-r10</unaffected>
+      <unaffected range="ge">2.2.28-r7</unaffected>
+      <unaffected range="ge">2.3.30-r2</unaffected>
+      <vulnerable range="lt">2.1.30-r10</vulnerable>
+      <vulnerable range="lt">2.2.28-r7</vulnerable>
+      <vulnerable range="lt">2.3.30-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenLDAP Software is an open source implementation of the Lightweight
+    Directory Access Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Team has discovered that the
+    file gencert.sh distributed with the Gentoo ebuild for OpenLDAP does
+    not exit upon the existence of a directory in /tmp during installation
+    allowing for directory traversal.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A local attacker could create a symbolic link in /tmp and potentially
+    overwrite arbitrary system files upon a privileged user emerging
+    OpenLDAP.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenLDAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;net-nds/openldap&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0476">CVE-2007-0476</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 13 Jan 2007 21:20:49 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:19 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 00:28:23 +0000">
+    shellsage
+  </metadata>
+</glsa>

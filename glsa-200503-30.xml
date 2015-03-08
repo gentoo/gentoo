@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-30">
+  <title>Mozilla Suite: Multiple vulnerabilities</title>
+  <synopsis>
+    The Mozilla Suite is vulnerable to multiple issues ranging from the remote
+    execution of arbitrary code to various issues allowing to trick the user
+    into trusting fake web sites or interacting with privileged content.
+  </synopsis>
+  <product type="ebuild">Mozilla</product>
+  <announced>March 25, 2005</announced>
+  <revised>March 25, 2005: 01</revised>
+  <bug>84074</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.6</unaffected>
+      <vulnerable range="lt">1.7.6</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.6</unaffected>
+      <vulnerable range="lt">1.7.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Suite is a popular all-in-one web browser that
+    includes a mail and news reader.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found and fixed in the Mozilla
+    Suite:
+    </p>
+    <ul>
+    <li>Mark Dowd from ISS X-Force reported an exploitable
+    heap overrun in the GIF processing of obsolete Netscape extension 2
+    (CAN-2005-0399)</li>
+    <li>Michael Krax reported that plugins can be used
+    to load privileged content and trick the user to interact with it
+    (CAN-2005-0232, CAN-2005-0527)</li>
+    <li>Michael Krax also reported
+    potential spoofing or cross-site-scripting issues through overlapping
+    windows, image or scrollbar drag-and-drop, and by dropping javascript:
+    links on tabs (CAN-2005-0230, CAN-2005-0231, CAN-2005-0401,
+    CAN-2005-0591)</li>
+    <li>Daniel de Wildt and Gael Delalleau discovered a
+    memory overwrite in a string library (CAN-2005-0255)</li>
+    <li>Wind Li
+    discovered a possible heap overflow in UTF8 to Unicode conversion
+    (CAN-2005-0592)</li>
+    <li>Eric Johanson reported that Internationalized
+    Domain Name (IDN) features allow homograph attacks (CAN-2005-0233)</li>
+    <li>Mook, Doug Turner, Kohei Yoshino and M. Deaudelin reported various
+    ways of spoofing the SSL "secure site" indicator (CAN-2005-0593)</li>
+    <li>Georgi Guninski discovered that XSLT can include stylesheets from
+    arbitrary hosts (CAN-2005-0588)</li>
+    <li>Secunia discovered a way of
+    injecting content into a popup opened by another website
+    (CAN-2004-1156)</li>
+    <li>Phil Ringnalda reported a possible way to
+    spoof Install source with user:pass@host (CAN-2005-0590)</li>
+    <li>Jakob
+    Balle from Secunia discovered a possible way of spoofing the Download
+    dialog source (CAN-2005-0585)</li>
+    <li>Christian Schmidt reported a
+    potential spoofing issue in HTTP auth prompt tab (CAN-2005-0584)</li>
+    <li>Finally, Tavis Ormandy of the Gentoo Linux Security Audit Team
+    discovered that Mozilla insecurely creates temporary filenames in
+    /tmp/plugtmp (CAN-2005-0578)</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <ul>
+    <li>The GIF heap overflow could be triggered by a malicious GIF
+    image that would end up executing arbitrary code with the rights of the
+    user running Mozilla. The other overflow issues, while not thought to
+    be exploitable, would have the same impact</li>
+    <li>By setting up
+    malicious websites and convincing users to follow untrusted links or
+    obey very specific drag-and-drop or download instructions, attackers
+    may leverage the various spoofing issues to fake other websites to get
+    access to confidential information, push users to download malicious
+    files or make them interact with their browser preferences</li>
+    <li>The
+    temporary directory issue allows local attackers to overwrite arbitrary
+    files with the rights of another local user</li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Suite users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.6&quot;</code>
+    <p>
+    All Mozilla Suite binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1156">CAN-2004-1156</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0230">CAN-2005-0230</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0231">CAN-2005-0231</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0232">CAN-2005-0232</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0233">CAN-2005-0233</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0255">CAN-2005-0255</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0399">CAN-2005-0399</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0401">CAN-2005-0401</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0527">CAN-2005-0527</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0578">CAN-2005-0578</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0584">CAN-2005-0584</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0585">CAN-2005-0585</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0588">CAN-2005-0588</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0590">CAN-2005-0590</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0591">CAN-2005-0591</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0592">CAN-2005-0592</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0593">CAN-2005-0593</uri>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Security Advisories</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 22 Mar 2005 09:19:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Mar 2005 12:49:52 +0000">
+    koon
+  </metadata>
+</glsa>

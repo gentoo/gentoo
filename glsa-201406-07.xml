@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-07">
+  <title>Echoping: Buffer Overflow Vulnerabilities</title>
+  <synopsis>A buffer overflow in Echoping might allow remote attackers to cause
+    a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">echoping</product>
+  <announced>June 06, 2014</announced>
+  <revised>June 06, 2014: 1</revised>
+  <bug>349569</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/echoping" auto="yes" arch="*">
+      <unaffected range="ge">6.0.2_p434</unaffected>
+      <vulnerable range="lt">6.0.2_p434</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Echoping is a small program to test performances of a
+      remote host by sending it TCP packets.
+    </p>
+  </background>
+  <description>
+    <p>A boundary error exists within the “TLS_readline()” function, which
+      can be exploited to overflow a global buffer by sending an overly long
+      encrypted HTTP reply to Echoping. Also, a similar boundary error exists
+      within the “SSL_readline()” function, which can be exploited in the
+      same manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted HTTP reply, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Echoping users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/echoping-6.0.2_p434"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5111">CVE-2010-5111</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 17 Oct 2013 11:46:53 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 06 Jun 2014 12:23:36 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

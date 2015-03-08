@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-19">
+  <title>glibc: Insecure tempfile handling in catchsegv script</title>
+  <synopsis>
+    The catchsegv script in the glibc package is vulnerable to symlink attacks,
+    potentially allowing a local user to overwrite arbitrary files with the
+    rights of the user running the script.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>October 21, 2004</announced>
+  <revised>October 21, 2004: 01</revised>
+  <bug>66358</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="rge">2.2.5-r9</unaffected>
+      <unaffected range="rge">2.3.2-r12</unaffected>
+      <unaffected range="rge">2.3.3.20040420-r2</unaffected>
+      <unaffected range="rge">2.3.4.20040619-r2</unaffected>
+      <unaffected range="ge">2.3.4.20040808-r1</unaffected>
+      <vulnerable range="le">2.3.4.20040808</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    glibc is a package that contains the GNU C library.
+    </p>
+  </background>
+  <description>
+    <p>
+    The catchsegv script creates temporary files in world-writeable directories
+    with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When
+    catchsegv script is called, this would result in the file being overwritten
+    with the rights of the user running the utility, which could be the root
+    user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All glibc users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv sys-libs/glibc
+    # emerge sys-libs/glibc</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0968">CAN-2004-0968</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 20 Oct 2004 14:29:16 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 20 Oct 2004 14:29:39 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Oct 2004 16:11:58 +0000">
+    lewk
+  </metadata>
+</glsa>

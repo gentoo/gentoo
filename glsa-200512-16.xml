@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-16">
+  <title>OpenMotif, AMD64 x86 emulation X libraries: Buffer overflows in libUil library</title>
+  <synopsis>
+    Two buffer overflows have been discovered in libUil, part of the OpenMotif
+    toolkit, that can potentially lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openmotif</product>
+  <announced>December 28, 2005</announced>
+  <revised>January 29, 2006: 03</revised>
+  <bug>114234</bug>
+  <bug>116481</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/openmotif" auto="yes" arch="*">
+      <unaffected range="ge">2.2.3-r8</unaffected>
+      <unaffected range="rge">2.1.30-r13</unaffected>
+      <vulnerable range="lt">2.2.3-r8</vulnerable>
+    </package>
+    <package name="app-emulation/emul-linux-x86-xlibs" auto="yes" arch="AMD64">
+      <unaffected range="ge">2.2.1</unaffected>
+      <vulnerable range="lt">2.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenMotif provides a free version of the Motif toolkit for open source
+    applications. The OpenMotif libraries are included in the AMD64 x86
+    emulation X libraries, which emulate the x86 (32-bit) architecture on
+    the AMD64 (64-bit) architecture.
+    </p>
+  </background>
+  <description>
+    <p>
+    xfocus discovered two potential buffer overflows in the libUil library,
+    in the diag_issue_diagnostic and open_source_file functions.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Remotely-accessible or SUID applications making use of the affected
+    functions might be exploited to execute arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenMotif users should upgrade to an unaffected version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --unmerge --verbose x11-libs/openmotif
+    # emerge --ask --oneshot --verbose x11-libs/openmotif</code>
+    <p>
+    All AMD64 x86 emulation X libraries users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-emulation/emul-linux-x86-xlibs</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3964">CVE-2005-3964</uri>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2005-12/0047.html">xfocus SD-051202 Original Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 27 Dec 2005 10:06:00 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 27 Dec 2005 10:07:13 +0000">
+    koon
+  </metadata>
+</glsa>

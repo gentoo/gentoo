@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-05">
+  <title>GNU Wget: Arbitrary code execution</title>
+  <synopsis>An absolute path traversal vulnerability could lead to arbitrary
+    code execution.
+  </synopsis>
+  <product type="ebuild">wget</product>
+  <announced>November 16, 2014</announced>
+  <revised>November 16, 2014: 1</revised>
+  <bug>527056</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.16</unaffected>
+      <vulnerable range="lt">1.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols. 
+    </p>
+  </background>
+  <description>
+    <p>An absolute path traversal vulnerability has been found in GNU Wget.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote FTP server is able to write to arbitrary files, and
+      consequently execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.16"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4877">CVE-2014-4877</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 09 Nov 2014 09:21:36 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 16 Nov 2014 08:06:22 +0000">Zlogene</metadata>
+</glsa>

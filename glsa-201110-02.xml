@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-02">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Wireshark allow for the remote
+    execution of arbitrary code, or a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>October 09, 2011</announced>
+  <revised>October 09, 2011: 1</revised>
+  <bug>323859</bug>
+  <bug>330479</bug>
+  <bug>339401</bug>
+  <bug>346191</bug>
+  <bug>350551</bug>
+  <bug>354197</bug>
+  <bug>357237</bug>
+  <bug>363895</bug>
+  <bug>369683</bug>
+  <bug>373961</bug>
+  <bug>381551</bug>
+  <bug>383823</bug>
+  <bug>386179</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.4.9</unaffected>
+      <vulnerable range="lt">1.4.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a versatile network protocol analyzer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send specially crafted packets on a network
+      being monitored by Wireshark, entice a user to open a malformed packet
+      trace file using Wireshark, or deploy a specially crafted Lua script for
+      use by Wireshark, possibly resulting in the execution of arbitrary code,
+      or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.4.9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2283">CVE-2010-2283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2284">CVE-2010-2284</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2285">CVE-2010-2285</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2286">CVE-2010-2286</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2287">CVE-2010-2287</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2992">CVE-2010-2992</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2993">CVE-2010-2993</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2994">CVE-2010-2994</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2995">CVE-2010-2995</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3133">CVE-2010-3133</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3445">CVE-2010-3445</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4300">CVE-2010-4300</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4301">CVE-2010-4301</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4538">CVE-2010-4538</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0024">CVE-2011-0024</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0444">CVE-2011-0444</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0445">CVE-2011-0445</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0538">CVE-2011-0538</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0713">CVE-2011-0713</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1138">CVE-2011-1138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1139">CVE-2011-1139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1140">CVE-2011-1140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1141">CVE-2011-1141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1142">CVE-2011-1142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1143">CVE-2011-1143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1590">CVE-2011-1590</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1591">CVE-2011-1591</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1592">CVE-2011-1592</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1956">CVE-2011-1956</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1957">CVE-2011-1957</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1958">CVE-2011-1958</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1959">CVE-2011-1959</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2174">CVE-2011-2174</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2175">CVE-2011-2175</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2597">CVE-2011-2597</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2698">CVE-2011-2698</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3266">CVE-2011-3266</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3360">CVE-2011-3360</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3482">CVE-2011-3482</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3483">CVE-2011-3483</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:44 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 09 Oct 2011 15:48:24 +0000" tag="submitter">a3li</metadata>
+</glsa>

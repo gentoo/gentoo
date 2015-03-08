@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-27">
+  <title>Xzabite dyndnsupdate: Multiple vulnerabilities</title>
+  <synopsis>
+    Xzabite's dyndnsupdate software suffers from multiple vulnerabilities,
+    potentially resulting in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">dyndnsupdate</product>
+  <announced>March 21, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>84659</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dyndnsupdate" auto="yes" arch="*">
+      <vulnerable range="le">0.6.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    dyndnsupdate is a dyndns.org data updater written by Fredrik "xzabite"
+    Haglund.
+    </p>
+  </background>
+  <description>
+    <p>
+    Toby Dickenson discovered that dyndnsupdate suffers from multiple
+    overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker, posing as a dyndns.org server, could execute
+    arbitrary code with the rights of the user running dyndnsupdate.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Currently, there is no released version of dyndnsupdate that contains a
+    fix for these issues. The original xzabite.org distribution site is
+    dead, the code contains several other problems and more secure
+    alternatives exist, such as the net-dns/ddclient package. Therefore,
+    the dyndnsupdate package has been hard-masked prior to complete removal
+    from Portage, and current users are advised to unmerge the package:
+    </p>
+    <code>
+    # emerge --unmerge net-misc/dyndnsupdate</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0830">CVE-2005-0830</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 21 Mar 2005 09:32:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 21 Mar 2005 14:30:08 +0000">
+    koon
+  </metadata>
+</glsa>

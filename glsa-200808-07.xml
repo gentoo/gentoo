@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-07">
+  <title>ClamAV: Multiple Denials of Service</title>
+  <synopsis>
+    Multiple vulnerabilities in ClamAV may result in a Denial of Service.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>August 08, 2008</announced>
+  <revised>August 08, 2008: 01</revised>
+  <bug>204340</bug>
+  <bug>227351</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.93.3</unaffected>
+      <vulnerable range="lt">0.93.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a free anti-virus toolkit for UNIX, designed
+    especially for e-mail scanning on mail gateways.
+    </p>
+  </background>
+  <description>
+    <p>
+    Damian Put has discovered an out-of-bounds memory access while
+    processing Petite files (CVE-2008-2713, CVE-2008-3215). Also, please
+    note that the 0.93 ClamAV branch fixes the first of the two attack
+    vectors of CVE-2007-6595 concerning an insecure creation of temporary
+    files vulnerability. The sigtool attack vector seems still unfixed.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could entice a user or automated system to scan a
+    specially crafted Petite file, possibly resulting in a Denial of
+    Service (daemon crash). Also, the insecure creation of temporary files
+    vulnerability can be triggered by a local user to perform a symlink
+    attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.93.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6595">CVE-2007-6595</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2713">CVE-2008-2713</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3215">CVE-2008-3215</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 03 Aug 2008 21:50:46 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Aug 2008 21:44:31 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Aug 2008 21:46:23 +0000">
+    falco
+  </metadata>
+</glsa>

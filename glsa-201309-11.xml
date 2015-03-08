@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-11">
+  <title>Subversion: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Subversion, allowing
+    attackers to cause a Denial of Service, escalate privileges, or obtain
+    sensitive information.
+  </synopsis>
+  <product type="ebuild">subversion</product>
+  <announced>September 23, 2013</announced>
+  <revised>September 23, 2013: 1</revised>
+  <bug>350166</bug>
+  <bug>356741</bug>
+  <bug>369065</bug>
+  <bug>463728</bug>
+  <bug>463860</bug>
+  <bug>472202</bug>
+  <bug>482166</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-vcs/subversion" auto="yes" arch="*">
+      <unaffected range="ge">1.7.13</unaffected>
+      <vulnerable range="lt">1.7.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Subversion is a versioning system designed to be a replacement for CVS. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Subversion. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could cause a Denial of Service condition or obtain
+      sensitive information. A local attacker could escalate his privileges to
+      the user running svnserve.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Subversion users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/subversion-1.7.13"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4539">CVE-2010-4539</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4644">CVE-2010-4644</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0715">CVE-2011-0715</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1752">CVE-2011-1752</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1783">CVE-2011-1783</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1921">CVE-2011-1921</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1845">CVE-2013-1845</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1846">CVE-2013-1846</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1847">CVE-2013-1847</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1849">CVE-2013-1849</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1884">CVE-2013-1884</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1968">CVE-2013-1968</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2088">CVE-2013-2088</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2112">CVE-2013-2112</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4131">CVE-2013-4131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4277">CVE-2013-4277</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:25 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 23 Sep 2013 22:53:51 +0000">ackle</metadata>
+</glsa>

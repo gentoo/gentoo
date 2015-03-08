@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-06">
+  <title>Net::DNS: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in the Net::DNS Perl module,
+    allowing for a Denial of Service and a cache poisoning attack.
+  </synopsis>
+  <product type="ebuild">net-dns</product>
+  <announced>August 11, 2007</announced>
+  <revised>August 11, 2007: 01</revised>
+  <bug>184029</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/Net-DNS" auto="yes" arch="*">
+      <unaffected range="ge">0.60</unaffected>
+      <vulnerable range="lt">0.60</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Net::DNS is a Perl implementation of a DNS resolver.
+    </p>
+  </background>
+  <description>
+    <p>
+    hjp discovered an error when handling DNS query IDs which make them
+    partially predictable. Steffen Ullrich discovered an error in the
+    dn_expand() function which could lead to an endless loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted DNS request to the
+    server which could result in a Denial of Service with an infinite
+    recursion, or perform a cache poisoning attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Net::DNS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/Net-DNS-0.60&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3377">CVE-2007-3377</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3409">CVE-2007-3409</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jul 2007 13:12:37 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 25 Jul 2007 05:32:52 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 30 Jul 2007 09:51:53 +0000">
+    p-y
+  </metadata>
+</glsa>

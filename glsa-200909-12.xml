@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-12">
+  <title>HTMLDOC: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple insecure calls to the sscanf() function in HTMLDOC might result in
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">htmldoc</product>
+  <announced>September 12, 2009</announced>
+  <revised>September 12, 2009: 01</revised>
+  <bug>278186</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/htmldoc" auto="yes" arch="*">
+      <unaffected range="ge">1.8.27-r1</unaffected>
+      <vulnerable range="lt">1.8.27-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    HTMLDOC is a HTML indexer and HTML to PS and PDF converter.
+    </p>
+  </background>
+  <description>
+    <p>
+    ANTHRAX666 reported an insecure call to the sscanf() function in the
+    set_page_size() function in htmldoc/util.cxx. Nico Golde of the Debian
+    Security Team found two more insecure calls in the write_type1()
+    function in htmldoc/ps-pdf.cxx and the htmlLoadFontWidths() function in
+    htmldoc/htmllib.cxx.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process a specially crafted
+    HTML file using htmldoc, possibly resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    NOTE: Additional vectors via specially crafted AFM font metric files do
+    not cross trust boundaries, as the files can only be modified by
+    privileged users.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All HTMLDOC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/htmldoc-1.8.27-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3050">CVE-2009-3050</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Aug 2009 18:35:26 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Aug 2009 18:45:17 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 Sep 2009 09:53:24 +0000">
+    a3li
+  </metadata>
+</glsa>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-09">
+  <title>FFmpeg: Buffer overflows</title>
+  <synopsis>
+    FFmpeg is vulnerable to multiple buffer overflows that might be exploited
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ffmpeg</product>
+  <announced>September 13, 2006</announced>
+  <revised>December 13, 2006: 02</revised>
+  <bug>133520</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">0.4.9_p20060530</unaffected>
+      <vulnerable range="lt">0.4.9_p20060530</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FFmpeg is a very fast video and audio converter.
+    </p>
+  </background>
+  <description>
+    <p>
+    FFmpeg contains buffer overflows in the AVI processing code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could trigger the buffer overflows by enticing a user to
+    load a specially crafted AVI file in an application using the FFmpeg
+    library. This might result in the execution of arbitrary code in the
+    context of the running application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FFmpeg users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/ffmpeg-0.4.9_p20060530&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4799">CVE-2006-4799</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4800">CVE-2006-4800</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 12 Sep 2006 15:05:01 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 12 Sep 2006 15:13:14 +0000">
+    falco
+  </metadata>
+</glsa>

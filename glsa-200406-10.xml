@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-10">
+  <title>Gallery: Privilege escalation vulnerability</title>
+  <synopsis>
+    There is a vulnerability in the Gallery photo album software which may
+    allow an attacker to gain administrator privileges within Gallery.
+  </synopsis>
+  <product type="ebuild">gallery</product>
+  <announced>June 15, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>52798</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/gallery" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3_p2</unaffected>
+      <vulnerable range="le">1.4.3_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Gallery is a web application written in PHP which is used to organize
+    and publish photo albums. It allows multiple users to build and
+    maintain their own albums. It also supports the mirroring of images on
+    other servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    There is a vulnerability in the Gallery photo album software which may
+    allow an attacker to gain administrator privileges within Gallery. A
+    Gallery administrator has full access to all albums and photos on the
+    server, thus attackers may add or delete photos at will.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Attackers may gain full access to all Gallery albums. There is no risk
+    to the webserver itself, or the server on which it runs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest available version of Gallery.
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=www-apps/gallery-1.4.3_p2&quot;
+    # emerge &quot;&gt;=www-apps/gallery-1.4.3_p2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://gallery.menalto.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=123&amp;mode=thread&amp;order=0&amp;thold=0">Gallery Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0522">CVE-2004-0522</uri>
+  </references>
+  <metadata tag="submitter">
+    condordes
+  </metadata>
+</glsa>

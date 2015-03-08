@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-01">
+  <title>Libxml2 URI Parsing Buffer Overflow Vulnerabilities</title>
+  <synopsis>
+    A buffer overflow has been discovered in libxml2 versions prior to
+    2.6.6 which may be exploited by an attacker allowing the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">libxml</product>
+  <announced>March 05, 2004</announced>
+  <revised>March 05, 2004: 01</revised>
+  <bug>42735</bug>
+  <access>local and remote combination</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.6.6</unaffected>
+      <vulnerable range="lt">2.6.6</vulnerable>
+    </package>
+  </affected>
+  <description>
+    <p>
+    Yuuichi Teranishi discovered a flaw in libxml2 versions prior to 2.6.6.
+    When the libxml2 library fetches a remote resource via FTP or HTTP, libxml2
+    uses parsing routines that can overflow a buffer caused by improper bounds
+    checking if they are passed a URL longer than 4096 bytes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If an attacker is able to exploit an application using libxml2 that parses
+    remote resources, then this flaw could be used to execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    No workaround is available; users are urged to upgrade libxml2 to 2.6.6.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are recommended to upgrade their libxml2 installation:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv ">=dev-libs/libxml2-2.6.6"
+    # emerge ">=dev-libs/libxml2-2.6.6"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0110">CVE 2004-0110</uri>
+  </references>
+</glsa>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-20">
+  <title>imlib2: Multiple vulnerabilities</title>
+  <synopsis>
+    imlib2 contains several vulnerabilities that could lead to the remote
+    execution of arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">imlib2</product>
+  <announced>December 20, 2006</announced>
+  <revised>December 20, 2006: 01</revised>
+  <bug>154216</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/imlib2" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0</unaffected>
+      <vulnerable range="lt">1.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    imlib2 is an advanced replacement for image manipulation libraries such
+    as libXpm. It is utilized by numerous programs, including gkrellm and
+    several window managers, to display images.
+    </p>
+  </background>
+  <description>
+    <p>
+    M. Joonas Pihlaja discovered several buffer overflows in loader_argb.c,
+    loader_png.c, loader_lbm.c, loader_jpeg.c, loader_tiff.c, loader_tga.c,
+    loader_pnm.c and an out-of-bounds memory read access in loader_tga.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can entice a user to process a specially crafted JPG, ARGB,
+    PNG, LBM, PNM, TIFF, or TGA image with an "imlib2*" binary or another
+    application using the imlib2 libraries. Successful exploitation of the
+    buffer overflows causes the execution of arbitrary code with the
+    permissions of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All imlib2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/imlib2-1.3.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4806">CVE-2006-4806</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4807">CVE-2006-4807</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4808">CVE-2006-4808</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4809">CVE-2006-4809</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 15 Dec 2006 16:10:27 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 18 Dec 2006 20:15:32 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Dec 2006 16:42:29 +0000">
+    falco
+  </metadata>
+</glsa>

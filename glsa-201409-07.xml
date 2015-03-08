@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201409-07">
+  <title>c-icap: Denial of Service</title>
+  <synopsis>A vulnerability in c-icap could result in Denial of Service. </synopsis>
+  <product type="ebuild">c-icap,DoS</product>
+  <announced>September 19, 2014</announced>
+  <revised>September 19, 2014: 1</revised>
+  <bug>455324</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/c-icap" auto="yes" arch="*">
+      <unaffected range="ge">0.2.6</unaffected>
+      <vulnerable range="lt">0.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>c-icap is an implementation of an ICAP server. It can be used with HTTP
+      proxies that support the ICAP protocol to implement content adaptation
+      and filtering services. 
+    </p>
+  </background>
+  <description>
+    <p>c-icap contains a flaw in the parse_request() function of request.c that
+      may allow a remote denial of service. The issue is triggered when the
+      buffer fails to contain a ‘ ‘ or ‘?’ symbol, which will cause the
+      end pointer to increase and surpass allocated memory. With a specially
+      crafted request (e.g. via the OPTIONS method), a remote attacker can
+      cause a loss of availability for the program.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All c-icap users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/c-icap-0.2.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7401">CVE-2013-7401</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7402">CVE-2013-7402</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:33:11 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 19 Sep 2014 18:54:16 +0000">K_F</metadata>
+</glsa>

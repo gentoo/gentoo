@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-12">
+  <title>T1Lib: Buffer overflow</title>
+  <synopsis>
+    T1Lib is vulnerable to a buffer overflow allowing for the user-assisted
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">t1lib</product>
+  <announced>October 12, 2007</announced>
+  <revised>October 12, 2007: 01</revised>
+  <bug>193437</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/t1lib" auto="yes" arch="*">
+      <unaffected range="ge">5.0.2-r1</unaffected>
+      <vulnerable range="lt">5.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    T1Lib is a library for rasterizing bitmaps from Adobe Type 1 fonts.
+    </p>
+  </background>
+  <description>
+    <p>
+    Hamid Ebadi discovered a boundary error in the
+    intT1_EnvGetCompletePath() function which can lead to a buffer overflow
+    when processing an overly long filename.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a font file with a
+    specially crafted filename, possibly leading to the execution of
+    arbitrary code with the privileges of the user running the application
+    using T1Lib.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All T1Lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/t1lib-5.0.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4033">CVE-2007-4033</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Sep 2007 12:38:38 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Sep 2007 12:39:08 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Oct 2007 00:05:38 +0000">
+    rbu
+  </metadata>
+</glsa>

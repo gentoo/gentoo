@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-17">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Opera is vulnerable to several vulnerabilities which could result in
+    information disclosure and facilitate execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Opera</product>
+  <announced>February 14, 2005</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>73871</bug>
+  <bug>74076</bug>
+  <bug>74321</bug>
+  <bug>81747</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">7.54-r3</unaffected>
+      <vulnerable range="lt">7.54-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Opera contains several vulnerabilities:
+    </p>
+    <ul>
+    <li>fails to properly validate Content-Type and filename.</li>
+    <li>fails to properly validate date: URIs.</li>
+    <li>uses kfmclient exec as the Default Application to handle downloaded
+    files when integrated with KDE.</li>
+    <li>fails to properly control frames.</li>
+    <li>uses Sun Java packages insecurely.</li>
+    <li>searches an insecure path for plugins.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities to:
+    </p>
+    <ul>
+    <li>execute arbitrary code.</li>
+    <li>load a malicious frame in the context of another browser
+    session.</li>
+    <li>leak information.</li>
+    </ul>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-7.54-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.opera.com/linux/changelogs/754u1/">Opera Changelog for 7.54u1</uri>
+    <uri link="http://www.opera.com/linux/changelogs/754u2/">Opera Changelog for 7.54u2</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1157">CVE-2004-1157</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1489">CVE-2004-1489</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1490">CVE-2004-1490</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1491">CVE-2004-1491</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0456">CVE-2005-0456</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0457">CVE-2005-0457</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 10 Feb 2005 15:51:32 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 11 Feb 2005 11:21:17 +0000">
+    koon
+  </metadata>
+</glsa>

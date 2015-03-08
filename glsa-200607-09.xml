@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-09">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>
+    Wireshark (formerly known as Ethereal) is vulnerable to several security
+    issues, potentially allowing the execution of arbitrary code by a remote
+    attacker.
+  </synopsis>
+  <product type="ebuild">wireshark ethereal</product>
+  <announced>July 25, 2006</announced>
+  <revised>July 25, 2006: 01</revised>
+  <bug>140856</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">0.99.2</unaffected>
+      <vulnerable range="lt">0.99.2</vulnerable>
+    </package>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <vulnerable range="le">0.99.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark, formerly known as Ethereal, is a popular network protocol
+    analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Wireshark dissectors have been found vulnerable to a large number of
+    exploits, including off-by-one errors, buffer overflows, format string
+    overflows and an infinite loop.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Running an affected version of Wireshark or Ethereal could allow for a
+    remote attacker to execute arbitrary code on the user's computer by
+    sending specially crafted packets.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-0.99.2&quot;</code>
+    <p>
+    All Ethereal users should migrate to Wireshark:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --unmerge net-analyzer/ethereal
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-0.99.2&quot;</code>
+    <p>
+    To keep the [saved] configuration from Ethereal and reuse it with
+    Wireshark:
+    </p>
+    <code>
+    # mv ~/.ethereal ~/.wireshark</code>
+  </resolution>
+  <references>
+    <uri link="http://www.wireshark.org/security/wnpa-sec-2006-01.html">Wireshark wnpa-sec-2006-01</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3627">CVE-2006-3627</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3628">CVE-2006-3628</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3629">CVE-2006-3629</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3630">CVE-2006-3630</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3631">CVE-2006-3631</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3632">CVE-2006-3632</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Jul 2006 16:53:04 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 19 Jul 2006 18:04:14 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 22 Jul 2006 20:10:22 +0000">
+    jaervosz
+  </metadata>
+</glsa>

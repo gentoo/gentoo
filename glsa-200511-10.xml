@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-10">
+  <title>RAR: Format string and buffer overflow vulnerabilities</title>
+  <synopsis>
+    RAR contains a format string error and a buffer overflow vulnerability that
+    may be used to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">rar</product>
+  <announced>November 13, 2005</announced>
+  <revised>November 13, 2005: 01</revised>
+  <bug>111926</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/rar" auto="yes" arch="*">
+      <unaffected range="ge">3.5.1</unaffected>
+      <vulnerable range="lt">3.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    RAR is a powerful archive manager that can decompress RAR, ZIP and
+    other files, and can create new archives in RAR and ZIP file format.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tan Chew Keong reported about two vulnerabilities found in RAR:
+    </p>
+    <ul>
+    <li>A format string error exists when displaying a diagnostic
+    error message that informs the user of an invalid filename in an
+    UUE/XXE encoded file.</li>
+    <li>Some boundary errors in the processing
+    of malicious ACE archives can be exploited to cause a buffer
+    overflow.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities by enticing
+    a user to:
+    </p>
+    <ul><li>decode a specially crafted UUE/XXE file,
+    or</li>
+    <li>extract a malicious ACE archive containing a file with an
+    overly long filename.</li>
+    </ul>
+    <p>
+    When the user performs these
+    actions, the arbitrary code of the attacker's choice will be executed.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All RAR users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/rar-3.5.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.rarlabs.com/rarnew.htm">RAR Release Notes</uri>
+    <uri link="http://secunia.com/secunia_research/2005-53/advisory/">Secunia Research 11/10/2005</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Nov 2005 09:12:31 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 11 Nov 2005 14:35:09 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 11 Nov 2005 14:35:22 +0000">
+    adir
+  </metadata>
+</glsa>

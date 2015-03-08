@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-11">
+  <title>GCC-XML: Insecure temporary file usage</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in GCC-XML allowing for
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">gccxml</product>
+  <announced>September 09, 2009</announced>
+  <revised>September 09, 2009: 01</revised>
+  <bug>245765</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-cpp/gccxml" auto="yes" arch="*">
+      <unaffected range="ge">0.9.0_pre20090516</unaffected>
+      <vulnerable range="lt">0.9.0_pre20090516</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GCC-XML is an XML output extension to the C++ front-end of GCC.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported that find_flags in GCC-XML does not handle
+    "/tmp/*.cxx" temporary files securely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to overwrite arbitrary
+    files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GCC-XML users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-cpp/gccxml-0.9.0_pre20090516&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4957">CVE-2008-4957</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 25 May 2009 20:39:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 08:04:45 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:17 +0000">
+    a3li
+  </metadata>
+</glsa>

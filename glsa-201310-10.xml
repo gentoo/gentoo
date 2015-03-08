@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-10">
+  <title>PolarSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PolarSSL, the worst of
+    which might allow a remote attacker to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">PolarSSL</product>
+  <announced>October 17, 2013</announced>
+  <revised>October 17, 2013: 1</revised>
+  <bug>358783</bug>
+  <bug>416399</bug>
+  <bug>455562</bug>
+  <bug>464206</bug>
+  <bug>480882</bug>
+  <bug>487170</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/polarssl" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0</unaffected>
+      <vulnerable range="lt">1.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PolarSSL is a cryptographic library for embedded systems.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PolarSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might be able to cause Denial of Service, conduct a
+      man-in-the middle attack, compromise an encrypted communication channel,
+      or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PolarSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/polarssl-1.3.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1923">CVE-2011-1923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2130">CVE-2012-2130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0169">CVE-2013-0169</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1621">CVE-2013-1621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4623">CVE-2013-4623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5915">CVE-2013-5915</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:30:33 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Oct 2013 08:18:11 +0000">craig</metadata>
+</glsa>

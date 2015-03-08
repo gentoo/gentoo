@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-10">
+  <title>LutelWall: Insecure temporary file creation</title>
+  <synopsis>
+    LutelWall is vulnerable to symlink attacks, potentially allowing a local
+    user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">LutelWall</product>
+  <announced>June 11, 2005</announced>
+  <revised>June 11, 2005: 01</revised>
+  <bug>95378</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-firewall/lutelwall" auto="yes" arch="*">
+      <unaffected range="ge">0.98</unaffected>
+      <vulnerable range="lt">0.98</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LutelWall is a high-level Linux firewall configuration tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Eric Romang has discovered that the new_version_check() function
+    in LutelWall insecurely creates a temporary file when updating to a new
+    version.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary file
+    directory, pointing to a valid file somewhere on the filesystem. When
+    the update script is executed (usually by the root user), this would
+    result in the file being overwritten with the rights of this user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LutelWall users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-firewall/lutelwall-0.98&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1879">CAN-2005-1879</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jun 2005 12:14:36 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 10 Jun 2005 13:37:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jun 2005 15:27:13 +0000">
+    formula7
+  </metadata>
+</glsa>

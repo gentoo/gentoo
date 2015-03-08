@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-20">
+  <title>NASM: Buffer overflow vulnerability</title>
+  <synopsis>
+    NASM is vulnerable to a buffer overflow that allows an attacker to execute
+    arbitrary code through the use of a malicious object file.
+  </synopsis>
+  <product type="ebuild">NASM</product>
+  <announced>December 20, 2004</announced>
+  <revised>December 20, 2004: 01</revised>
+  <bug>74477</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/nasm" auto="yes" arch="*">
+      <unaffected range="ge">0.98.38-r1</unaffected>
+      <vulnerable range="le">0.98.38</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NASM is a 80x86 assembler that has been created for portability
+    and modularity. NASM supports Pentium, P6, SSE MMX, and 3DNow
+    extensions. It also supports a wide range of objects formats (ELF,
+    a.out, COFF, ...), and has its own disassembler.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jonathan Rockway discovered that NASM-0.98.38 has an unprotected
+    vsprintf() to an array in preproc.c. This code vulnerability may lead
+    to a buffer overflow and potential execution of arbitrary code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft a malicious object file which, when
+    supplied in NASM, would result in the execution of arbitrary code with
+    the rights of the user running NASM.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NASM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/nasm-0.98.38-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=6166881&amp;forum_id=4978">Original Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Dec 2004 22:07:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Dec 2004 22:07:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 17 Dec 2004 11:34:13 +0000">
+    SeJo
+  </metadata>
+</glsa>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-28">
+  <title>Ruby on Rails: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Ruby on Rails, the worst of
+    which allowing for execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">rails</product>
+  <announced>December 14, 2014</announced>
+  <revised>December 14, 2014: 1</revised>
+  <bug>354249</bug>
+  <bug>379511</bug>
+  <bug>386377</bug>
+  <bug>450974</bug>
+  <bug>453844</bug>
+  <bug>456840</bug>
+  <bug>462452</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rails" auto="no" arch="*">
+      <unaffected range="ge">2.3.18</unaffected>
+      <vulnerable range="lt">2.3.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ruby on Rails is a web-application and persistence framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ruby on Rails. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code or cause a Denial of
+      Service condition. Furthermore, a remote attacker may be able to execute
+      arbitrary SQL commands, change parameter names for form inputs and make
+      changes to arbitrary records in the system, bypass intended access
+      restrictions, render arbitrary views, inject arbitrary web script or
+      HTML, or conduct cross-site request forgery (CSRF) attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby on Rails 2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rails-2.3.18"
+    </code>
+    
+    <p>NOTE: All applications using Ruby on Rails should also be configured to
+      use the latest version available by running “rake rails:update”
+      inside the application directory.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA and stable updates for Ruby on Rails,
+      including the unaffected version listed above, are no longer available
+      from Gentoo. It may be possible to upgrade to the 3.2, 4.0, or 4.1
+      branches, however these packages are not currently stable.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3933">CVE-2010-3933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0446">CVE-2011-0446</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0447">CVE-2011-0447</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0448">CVE-2011-0448</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0449">CVE-2011-0449</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2929">CVE-2011-2929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2930">CVE-2011-2930</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2931">CVE-2011-2931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2932">CVE-2011-2932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3186">CVE-2011-3186</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0155">CVE-2013-0155</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0156">CVE-2013-0156</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0276">CVE-2013-0276</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0277">CVE-2013-0277</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0333">CVE-2013-0333</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1854">CVE-2013-1854</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1855">CVE-2013-1855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1856">CVE-2013-1856</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1857">CVE-2013-1857</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:28:02 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Sun, 14 Dec 2014 20:13:16 +0000">
+    keytoaster
+  </metadata>
+</glsa>

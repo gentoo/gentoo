@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-13">
+  <title>Clam AntiVirus: Multiple vulnerabilities</title>
+  <synopsis>
+    Clam AntiVirus is subject to vulnerabilities ranging from Denial of Service
+    to execution of arbitrary code when handling compressed executables.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>September 19, 2005</announced>
+  <revised>September 19, 2005: 01</revised>
+  <bug>106279</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.87</unaffected>
+      <vulnerable range="lt">0.87</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a GPL anti-virus toolkit, designed for
+    integration with mail servers to perform attachment scanning. Clam
+    AntiVirus also provides a command line scanner and a tool for fetching
+    updates of the virus database.
+    </p>
+  </background>
+  <description>
+    <p>
+    Clam AntiVirus is vulnerable to a buffer overflow in
+    "libclamav/upx.c" when processing malformed UPX-packed executables. It
+    can also be sent into an infinite loop in "libclamav/fsg.c" when
+    processing specially-crafted FSG-packed executables.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a specially-crafted file an attacker could execute
+    arbitrary code with the permissions of the user running Clam AntiVirus,
+    or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Clam AntiVirus users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.87&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2919">CAN-2005-2919</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2920">CAN-2005-2920</uri>
+    <uri link="http://sourceforge.net/project/shownotes.php?release_id=356974">Clam AntiVirus: Release Notes</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 18 Sep 2005 16:20:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Sep 2005 16:20:41 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-30">
+  <title>KDE start_kdeinit: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in start_kdeinit could possibly allow a local
+    attacker to execute arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">kdelibs</product>
+  <announced>April 29, 2008</announced>
+  <revised>April 08, 2009: 02</revised>
+  <bug>218933</bug>
+  <access>local</access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="rge">3.5.8-r4</unaffected>
+      <unaffected range="rge">3.5.9-r3</unaffected>
+      <unaffected range="gt">4.0</unaffected>
+      <unaffected range="lt">3.5.5</unaffected>
+      <unaffected range="rge">3.5.10-r2</unaffected>
+      <vulnerable range="lt">4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDE is a feature-rich graphical desktop environment for Linux and
+    Unix-like operating systems. start_kdeinit is a wrapper for kdeinit.
+    </p>
+  </background>
+  <description>
+    <p>
+    Vulnerabilities have been reported in the processing of user-controlled
+    data by start_kdeinit, which is setuid root by default.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could possibly execute arbitrary code with root
+    privileges, cause a Denial of Service or send Unix signals to other
+    processes, when start_kdeinit is setuid root.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All kdelibs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdelibs-3.5.8-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1671">CVE-2008-1671</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 24 Apr 2008 09:52:59 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 28 Apr 2008 13:20:59 +0000">
+    vorlon
+  </metadata>
+</glsa>

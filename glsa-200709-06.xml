@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-06">
+  <title>flac123: Buffer overflow</title>
+  <synopsis>
+    flac123 is affected by a buffer overflow vulnerability, which could allow
+    for the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">flac123</product>
+  <announced>September 14, 2007</announced>
+  <revised>September 14, 2007: 01</revised>
+  <bug>186220</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/flac123" auto="yes" arch="*">
+      <unaffected range="ge">0.0.11</unaffected>
+      <vulnerable range="lt">0.0.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    flac123 is a command-line application for playing FLAC audio files.
+    </p>
+  </background>
+  <description>
+    <p>
+    A possible buffer overflow vulnerability has been reported in the
+    local__vcentry_parse_value() function in vorbiscomment.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to play a specially crafted audio file,
+    which could lead to the execution of arbitrary code with the privileges
+    of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All flac123 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/flac123-0.0.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3507">CVE-2007-3507</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 29 Aug 2007 10:21:26 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 29 Aug 2007 11:36:53 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Sep 2007 15:39:45 +0000">
+    vorlon
+  </metadata>
+</glsa>

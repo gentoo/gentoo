@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-05">
+  <title>GnuTLS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in GnuTLS, allowing for easier
+    man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>October 10, 2011</announced>
+  <revised>October 10, 2011: 1</revised>
+  <bug>281224</bug>
+  <bug>292025</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">2.10.0</unaffected>
+      <vulnerable range="lt">2.10.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is an Open Source implementation of the TLS 1.2 and SSL 3.0
+      protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GnuTLS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could perform man-in-the-middle attacks to spoof arbitrary
+      SSL servers via a crafted certificate issued by a legitimate
+      Certification Authority or to inject an arbitrary amount of chosen
+      plaintext into the beginning of the application protocol stream, allowing
+      for further exploitation.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-2.10.0"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 6, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2730">CVE-2009-2730</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:18 +0000" tag="requester">
+    keytoaster
+  </metadata>
+  <metadata timestamp="Mon, 10 Oct 2011 20:33:39 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

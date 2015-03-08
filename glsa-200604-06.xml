@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-06">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    ClamAV contains multiple vulnerabilities that could lead to remote
+    execution of arbitrary code or cause an application crash.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>April 07, 2006</announced>
+  <revised>April 07, 2006: 01</revised>
+  <bug>128963</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.88.1</unaffected>
+      <vulnerable range="lt">0.88.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    ClamAV contains format string vulnerabilities in the logging code
+    (CVE-2006-1615). Furthermore Damian Put discovered an integer overflow
+    in ClamAV's PE header parser (CVE-2006-1614) and David Luyer discovered
+    that ClamAV can be tricked into performing an invalid memory access
+    (CVE-2006-1630).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a malicious attachment to a mail server running ClamAV,
+    a remote attacker could cause a Denial of Service or the execution of
+    arbitrary code. Note that the overflow in the PE header parser is only
+    exploitable when the ArchiveMaxFileSize option is disabled.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1614">CVE-2006-1614</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1615">CVE-2006-1615</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1630">CVE-2006-1630</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 06 Apr 2006 18:09:01 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Apr 2006 19:35:00 +0000">
+    vorlon078
+  </metadata>
+</glsa>

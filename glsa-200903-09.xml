@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-09">
+  <title>OpenTTD: Execution of arbitrary code</title>
+  <synopsis>
+    Multiple buffer overflows in OpenTTD might allow for the execution of
+    arbitrary code in the server.
+  </synopsis>
+  <product type="ebuild">openttd</product>
+  <announced>March 07, 2009</announced>
+  <revised>March 07, 2009: 01</revised>
+  <bug>233929</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-simulation/openttd" auto="yes" arch="*">
+      <unaffected range="ge">0.6.3</unaffected>
+      <vulnerable range="lt">0.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenTTD is a clone of Transport Tycoon Deluxe.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple buffer overflows have been reported in OpenTTD, when storing
+    long for client names (CVE-2008-3547), in the TruncateString function
+    in src/gfx.cpp (CVE-2008-3576) and in src/openttd.cpp when processing a
+    large filename supplied to the "-g" parameter in the ttd_main function
+    (CVE-2008-3577).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An authenticated attacker could exploit these vulnerabilities to
+    execute arbitrary code with the privileges of the OpenTTD server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenTTD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-simulation/openttd-0.6.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3547">CVE-2008-3547</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3576">CVE-2008-3576</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3577">CVE-2008-3577</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 12 Feb 2009 19:13:14 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Feb 2009 15:07:08 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 13 Feb 2009 15:08:05 +0000">
+    rbu
+  </metadata>
+</glsa>

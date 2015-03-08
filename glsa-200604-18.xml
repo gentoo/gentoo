@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-18">
+  <title>Mozilla Suite: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities in Mozilla Suite allow attacks ranging from script
+    execution with elevated privileges to information leaks.
+  </synopsis>
+  <product type="ebuild">mozilla</product>
+  <announced>April 28, 2006</announced>
+  <revised>April 28, 2006: 01</revised>
+  <bug>130887</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.13</unaffected>
+      <vulnerable range="lt">1.7.13</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.13</unaffected>
+      <vulnerable range="lt">1.7.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Mozilla Suite is a popular all-in-one web browser that
+    includes a mail and news reader.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several vulnerabilities were found in Mozilla Suite. Version
+    1.7.13 was released to fix them.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could craft malicious web pages or emails that
+    would leverage these issues to inject and execute arbitrary script code
+    with elevated privileges, steal local files, cookies or other
+    information from web pages or emails, and spoof content. Some of these
+    vulnerabilities might even be exploited to execute arbitrary code with
+    the rights of the user running the client.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds for all the issues at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mozilla Suite users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.13&quot;</code>
+    <p>
+    All Mozilla Suite binary users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.13&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4134">CVE-2005-4134</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0292">CVE-2006-0292</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0293">CVE-2006-0293</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0296">CVE-2006-0296</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0748">CVE-2006-0748</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0749">CVE-2006-0749</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0884">CVE-2006-0884</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1045">CVE-2006-1045</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1727">CVE-2006-1727</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1728">CVE-2006-1728</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1729">CVE-2006-1729</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1730">CVE-2006-1730</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1731">CVE-2006-1731</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1732">CVE-2006-1732</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1733">CVE-2006-1733</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1734">CVE-2006-1734</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1735">CVE-2006-1735</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1736">CVE-2006-1736</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1737">CVE-2006-1737</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1738">CVE-2006-1738</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1739">CVE-2006-1739</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1740">CVE-2006-1740</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1741">CVE-2006-1741</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1742">CVE-2006-1742</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1790">CVE-2006-1790</uri>
+    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Mozilla">Mozilla Foundation Security Advisories</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 24 Apr 2006 16:32:37 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Apr 2006 22:51:13 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Apr 2006 17:28:01 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-07">
+  <title>OpenVPN: Multiple vulnerabilities</title>
+  <synopsis>
+    The OpenVPN client is potentially vulnerable to the execution of arbitrary
+    code and the OpenVPN server is vulnerable to a Denial of Service issue.
+  </synopsis>
+  <product type="ebuild">OpenVPN</product>
+  <announced>November 06, 2005</announced>
+  <revised>November 06, 2005: 01</revised>
+  <bug>111116</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openvpn" auto="yes" arch="*">
+      <unaffected range="ge">2.0.4</unaffected>
+      <vulnerable range="lt">2.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenVPN is a multi-platform, full-featured SSL VPN solution.
+    </p>
+  </background>
+  <description>
+    <p>
+    The OpenVPN client contains a format string bug in the handling of
+    the foreign_option in options.c. Furthermore, when the OpenVPN server
+    runs in TCP mode, it may dereference a NULL pointer under specific
+    error conditions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could setup a malicious OpenVPN server and trick
+    the user into connecting to it, potentially executing arbitrary code on
+    the client's computer. A remote attacker could also exploit the NULL
+    dereference issue by sending specific packets to an OpenVPN server
+    running in TCP mode, resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not use "pull" or "client" options in the OpenVPN client
+    configuration file, and use UDP mode for the OpenVPN server.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenVPN users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openvpn-2.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3393">CVE-2005-3393</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3409">CVE-2005-3409</uri>
+    <uri link="http://openvpn.net/changelog.html">OpenVPN changelog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Nov 2005 12:34:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 04 Nov 2005 13:01:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 Nov 2005 14:23:34 +0000">
+    koon
+  </metadata>
+</glsa>

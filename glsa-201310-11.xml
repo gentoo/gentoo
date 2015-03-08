@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-11">
+  <title>Perl Parallel-ForkManager Module: Insecure temporary file usage</title>
+  <synopsis>An insecure temporary file usage has been reported in the Perl
+    Parallel-ForkManager module, possibly allowing symlink attacks.
+  </synopsis>
+  <product type="ebuild">Parallel-ForkManager</product>
+  <announced>October 17, 2013</announced>
+  <revised>October 17, 2013: 1</revised>
+  <bug>389839</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-perl/Parallel-ForkManager" auto="yes" arch="*">
+      <unaffected range="ge">1.20.0</unaffected>
+      <vulnerable range="lt">1.20.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Parallel-ForkManager is a simple parallel processing fork manager for
+      Perl.
+    </p>
+  </background>
+  <description>
+    <p>The Perl Parallel-ForkManager module does not handle temporary files
+      securely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Parallel-ForkManager users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-perl/Parallel-ForkManager-1.20.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4115">CVE-2011-4115</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Jan 2013 18:47:58 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Oct 2013 08:42:08 +0000">ackle</metadata>
+</glsa>

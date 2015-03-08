@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-14">
+  <title>BitlBee: Security bypass</title>
+  <synopsis>
+    Multiple vulnerabilities in Bitlbee may allow to bypass security
+    restrictions and hijack accounts.
+  </synopsis>
+  <product type="ebuild">bitlbee</product>
+  <announced>September 23, 2008</announced>
+  <revised>September 23, 2008: 01</revised>
+  <bug>236160</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/bitlbee" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    BitlBee is an IRC to IM gateway that support multiple IM protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple unspecified vulnerabilities were reported, including a NULL
+    pointer dereference.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities to overwrite
+    existing IM accounts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BitlBee users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/bitlbee-1.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3920">CVE-2008-3920</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3969">CVE-2008-3969</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 05 Sep 2008 20:44:15 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 19 Sep 2008 20:00:27 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 20 Sep 2008 21:14:39 +0000">
+    p-y
+  </metadata>
+</glsa>

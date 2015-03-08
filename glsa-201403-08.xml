@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-08">
+  <title>PlRPC: Arbitrary code execution</title>
+  <synopsis>PlRPC uses Storable which allows for code execution prior to
+    Authentication
+  </synopsis>
+  <product type="ebuild">PlRPC</product>
+  <announced>March 27, 2014</announced>
+  <revised>March 27, 2014: 1</revised>
+  <bug>497692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/PlRPC" auto="yes" arch="*">
+      <unaffected range="ge">0.202.0-r2</unaffected>
+      <vulnerable range="lt">0.202.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Perl RPC Module is a Perl module that implements IDL-free RPCs.</p>
+  </background>
+  <description>
+    <p>PlRPC uses Storable module for serialization and deserialization of
+      untrusted data. Deserialized data can contain objects which can lead to
+      loading of foreign modules, and possible execution of arbitrary code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute
+      arbitrary code with the privileges of the process, or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>External authentication mechanism can be used with PlRPC such as TLS or
+      IPSEC.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All PlRPC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-perl/PlRPC-0.202.0-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7284">CVE-2013-7284</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 28 Jan 2014 06:14:53 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Mar 2014 10:25:44 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

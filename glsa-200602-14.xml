@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-14">
+  <title>noweb: Insecure temporary file creation</title>
+  <synopsis>
+    noweb is vulnerable to symlink attacks, potentially allowing a local user
+    to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">noweb</product>
+  <announced>February 26, 2006</announced>
+  <revised>February 26, 2006: 01</revised>
+  <bug>122705</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/noweb" auto="yes" arch="*">
+      <unaffected range="ge">2.9-r5</unaffected>
+      <vulnerable range="lt">2.9-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    noweb is a simple, extensible, and language independent literate
+    programming tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Javier Fernandez-Sanguino has discovered that the lib/toascii.nw
+    and shell/roff.mm scripts insecurely create temporary files with
+    predictable filenames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary file
+    directory, pointing to a valid file somewhere on the filesystem. When
+    an affected script is called, this would result in the file being
+    overwritten with the rights of the user running the script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All noweb users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/noweb-2.9-r5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3342">CVE-2005-3342</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 23 Feb 2006 20:08:48 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 23 Feb 2006 20:09:04 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 24 Feb 2006 14:44:04 +0000">
+    formula7
+  </metadata>
+</glsa>

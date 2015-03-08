@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-31">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in MIT Kerberos 5, which could
+    allow a remote unauthenticated user to execute arbitrary code with root
+    privileges.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>March 24, 2008</announced>
+  <revised>March 24, 2008: 01</revised>
+  <bug>199205</bug>
+  <bug>212363</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r1</unaffected>
+      <vulnerable range="lt">1.6.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MIT Kerberos 5 is a suite of applications that implement the Kerberos
+    network protocol. kadmind is the MIT Kerberos 5 administration daemon,
+    KDC is the Key Distribution Center.
+    </p>
+  </background>
+  <description>
+    <ul><li>Two vulnerabilities were found in the Kerberos 4 support in
+    KDC: A global variable is not set for some incoming message types,
+    leading to a NULL pointer dereference or a double free()
+    (CVE-2008-0062) and unused portions of a buffer are not properly
+    cleared when generating an error message, which results in stack
+    content being contained in a reply (CVE-2008-0063).</li>
+    <li>Jeff
+    Altman (Secure Endpoints) discovered a buffer overflow in the RPC
+    library server code, used in the kadmin server, caused when too many
+    file descriptors are opened (CVE-2008-0947).</li>
+    <li>Venustech AD-LAB
+    discovered multiple vulnerabilities in the GSSAPI library: usage of a
+    freed variable in the gss_indicate_mechs() function (CVE-2007-5901) and
+    a double free() vulnerability in the gss_krb5int_make_seal_token_v3()
+    function (CVE-2007-5971).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    The first two vulnerabilities can be exploited by a remote
+    unauthenticated attacker to execute arbitrary code on the host running
+    krb5kdc, compromise the Kerberos key database or cause a Denial of
+    Service. These bugs can only be triggered when Kerberos 4 support is
+    enabled.
+    </p>
+    <p>
+    The RPC related vulnerability can be exploited by a remote
+    unauthenticated attacker to crash kadmind, and theoretically execute
+    arbitrary code with root privileges or cause database corruption. This
+    bug can only be triggered in configurations that allow large numbers of
+    open file descriptors in a process.
+    </p>
+    <p>
+    The GSSAPI vulnerabilities could be exploited by a remote attacker to
+    cause Denial of Service conditions or possibly execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Kerberos 4 support can be disabled via disabling the "krb4" USE flag
+    and recompiling the ebuild, or setting "v4_mode=none" in the
+    [kdcdefaults] section of /etc/krb5/kdc.conf. This will only work around
+    the KDC related vulnerabilities.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MIT Kerberos 5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.6.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5894">CVE-2007-5901</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5971">CVE-2007-5971</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0062">CVE-2008-0062</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0063">CVE-2008-0063</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0947">CVE-2008-0947</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Mar 2008 22:11:44 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 20 Mar 2008 23:06:42 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Mar 2008 23:15:12 +0000">
+    rbu
+  </metadata>
+</glsa>

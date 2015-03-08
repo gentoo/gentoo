@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-11">
+  <title>Ruby: Denial of Service</title>
+  <synopsis>
+    Ruby WEBrick and XMLRPC servers are vulnerable to Denial of Service.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>May 10, 2006</announced>
+  <revised>May 10, 2006: 01</revised>
+  <bug>130657</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.4-r1</unaffected>
+      <vulnerable range="lt">1.8.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an interpreted scripting language for quick and easy
+    object-oriented programming. It comes bundled with HTTP ("WEBrick") and
+    XMLRPC server objects.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ruby uses blocking sockets for WEBrick and XMLRPC servers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could send large amounts of data to an affected server
+    to block the socket and thus deny other connections to the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1931">CVE-2006-1931</uri>
+    <uri link="http://www.ruby-lang.org/en/20051224.html">Ruby release announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 08 May 2006 06:23:42 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 08 May 2006 13:21:34 +0000">
+    koon
+  </metadata>
+</glsa>

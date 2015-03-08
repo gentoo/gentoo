@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200801-21">
+  <title>Xdg-Utils: Arbitrary command execution</title>
+  <synopsis>
+    A vulnerability has been discovered in Xdg-Utils, allowing for the remote
+    execution of arbitrary commands.
+  </synopsis>
+  <product type="ebuild">xdg-utils</product>
+  <announced>January 30, 2008</announced>
+  <revised>January 30, 2008: 01</revised>
+  <bug>207331</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-misc/xdg-utils" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2-r1</unaffected>
+      <vulnerable range="lt">1.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xdg-Utils is a set of tools allowing all applications to easily
+    integrate with the Free Desktop configuration.
+    </p>
+  </background>
+  <description>
+    <p>
+    Miroslav Lichvar discovered that the "xdg-open" and "xdg-email" shell
+    scripts do not properly sanitize their input before processing it.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted link
+    with a vulnerable application using Xdg-Utils (e.g. an email client),
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xdg-Utils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-misc/xdg-utils-1.0.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0386">CVE-2008-0386</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 26 Jan 2008 12:15:55 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 28 Jan 2008 20:04:22 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 28 Jan 2008 20:04:30 +0000">
+    p-y
+  </metadata>
+</glsa>

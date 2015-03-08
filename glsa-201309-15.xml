@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-15">
+  <title>ProFTPD: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ProFTPD, the worst of
+    which leading to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ProFTPD</product>
+  <announced>September 24, 2013</announced>
+  <revised>September 24, 2013: 1</revised>
+  <bug>305343</bug>
+  <bug>343389</bug>
+  <bug>348998</bug>
+  <bug>354080</bug>
+  <bug>361963</bug>
+  <bug>390075</bug>
+  <bug>450746</bug>
+  <bug>484614</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.4d</unaffected>
+      <vulnerable range="lt">1.3.4d</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ProFTPD is an advanced and very configurable FTP server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ProFTPD. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker could possibly execute arbitrary code with
+      the privileges of the process, perform man-in-the-middle attacks to spoof
+      arbitrary SSL servers, cause a Denial of Service condition, or read and
+      modify arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ProFTPD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/proftpd-1.3.4d"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3867">CVE-2010-3867</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4221">CVE-2010-4221</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4652">CVE-2010-4652</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1137">CVE-2011-1137</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4130">CVE-2011-4130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6095">CVE-2012-6095</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4359">CVE-2013-4359</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:05 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 24 Sep 2013 23:08:08 +0000">craig</metadata>
+</glsa>

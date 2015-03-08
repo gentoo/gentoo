@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-15">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>449828</bug>
+  <bug>463622</bug>
+  <bug>482776</bug>
+  <bug>494630</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">11.7.0</unaffected>
+      <unaffected range="rge">1.8.25.0</unaffected>
+      <vulnerable range="lt">11.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, or obtain sensitive
+      information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk 11.* users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-11.7.0"
+    </code>
+    
+    <p>All Asterisk 1.8.* users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.25.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5976">CVE-2012-5976</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5977">CVE-2012-5977</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2264">CVE-2013-2264</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2685">CVE-2013-2685</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2686">CVE-2013-2686</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5641">CVE-2013-5641</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5642">CVE-2013-5642</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7100">CVE-2013-7100</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 Jan 2013 17:20:14 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 04:17:25 +0000">ackle</metadata>
+</glsa>

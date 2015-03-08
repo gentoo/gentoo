@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-37">
+  <title>LimeWire: Disclosure of sensitive information</title>
+  <synopsis>
+    Two vulnerabilities in LimeWire can be exploited to disclose sensitive
+    information.
+  </synopsis>
+  <product type="ebuild">LimeWire</product>
+  <announced>March 31, 2005</announced>
+  <revised>March 31, 2005: 01</revised>
+  <bug>85380</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/limewire" auto="yes" arch="*">
+      <unaffected range="ge">4.8.1</unaffected>
+      <vulnerable range="lt">4.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LimeWire is a Java peer-to-peer client compatible with the
+    Gnutella file-sharing protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two input validation errors were found in the handling of Gnutella
+    GET requests (CAN-2005-0788) and magnet requests (CAN-2005-0789).
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker can craft a specific Gnutella GET request or use
+    directory traversal on magnet requests to read arbitrary files on the
+    system with the rights of the user running LimeWire.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LimeWire users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/limewire-4.8.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0788">CAN-2005-0788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0789">CAN-2005-0789</uri>
+    <uri link="http://secunia.com/advisories/14555/">Secunia Advisory SA14555</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 30 Mar 2005 14:57:35 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 30 Mar 2005 14:58:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Mar 2005 16:12:57 +0000">
+    formula7
+  </metadata>
+</glsa>

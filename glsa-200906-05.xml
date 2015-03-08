@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200906-05">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Wireshark which allow for
+    Denial of Service or remote code execution.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>June 30, 2009</announced>
+  <revised>June 30, 2009: 02</revised>
+  <bug>242996</bug>
+  <bug>248425</bug>
+  <bug>258013</bug>
+  <bug>264571</bug>
+  <bug>271062</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.0.8</unaffected>
+      <vulnerable range="lt">1.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Wireshark is a versatile network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Wireshark:
+    </p>
+    <ul>
+    <li>
+    David Maciejak discovered a vulnerability in packet-usb.c in the USB
+    dissector via a malformed USB Request Block (URB) (CVE-2008-4680).
+    </li>
+    <li>
+    Florent Drouin and David Maciejak reported an unspecified vulnerability
+    in the Bluetooth RFCOMM dissector (CVE-2008-4681).
+    </li>
+    <li>
+    A malformed Tamos CommView capture file (aka .ncf file) with an
+    "unknown/unexpected packet type" triggers a failed assertion in wtap.c
+    (CVE-2008-4682).
+    </li>
+    <li>
+    An unchecked packet length parameter in the dissect_btacl() function in
+    packet-bthci_acl.c in the Bluetooth ACL dissector causes an erroneous
+    tvb_memcpy() call (CVE-2008-4683).
+    </li>
+    <li>
+    A vulnerability where packet-frame does not properly handle exceptions
+    thrown by post dissectors caused by a certain series of packets
+    (CVE-2008-4684).
+    </li>
+    <li>
+    Mike Davies reported a use-after-free vulnerability in the
+    dissect_q931_cause_ie() function in packet-q931.c in the Q.931
+    dissector via certain packets that trigger an exception
+    (CVE-2008-4685).
+    </li>
+    <li>
+    The Security Vulnerability Research Team of Bkis reported that the SMTP
+    dissector could consume excessive amounts of CPU and memory
+    (CVE-2008-5285).
+    </li>
+    <li>
+    The vendor reported that the WLCCP dissector could go into an infinite
+    loop (CVE-2008-6472).
+    </li>
+    <li>
+    babi discovered a buffer overflow in wiretap/netscreen.c via a
+    malformed NetScreen snoop file (CVE-2009-0599).
+    </li>
+    <li>
+    A specially crafted Tektronix K12 text capture file can cause an
+    application crash (CVE-2009-0600).
+    </li>
+    <li>
+    A format string vulnerability via format string specifiers in the HOME
+    environment variable (CVE-2009-0601).
+    </li>
+    <li>THCX Labs reported a format string vulnerability in the
+    PROFINET/DCP (PN-DCP) dissector via a PN-DCP packet with format string
+    specifiers in the station name (CVE-2009-1210).
+    </li>
+    <li>An unspecified vulnerability with unknown impact and attack vectors
+    (CVE-2009-1266).
+    </li>
+    <li>
+    Marty Adkins and Chris Maynard discovered a parsing error in the
+    dissector for the Check Point High-Availability Protocol (CPHAP)
+    (CVE-2009-1268).
+    </li>
+    <li>
+    Magnus Homann discovered a parsing error when loading a Tektronix .rf5
+    file (CVE-2009-1269).
+    </li>
+    <li>The vendor reported that the PCNFSD dissector could crash
+    (CVE-2009-1829).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities by sending
+    specially crafted packets on a network being monitored by Wireshark or
+    by enticing a user to read a malformed packet trace file which can
+    trigger a Denial of Service (application crash or excessive CPU and
+    memory usage) and possibly allow for the execution of arbitrary code
+    with the privileges of the user running Wireshark.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Wireshark users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4680">CVE-2008-4680</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4681">CVE-2008-4681</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4682">CVE-2008-4682</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4683">CVE-2008-4683</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4684">CVE-2008-4684</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4685">CVE-2008-4685</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5285">CVE-2008-5285</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6472">CVE-2008-6472</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0599">CVE-2009-0599</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0600">CVE-2009-0600</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0601">CVE-2009-0601</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1210">CVE-2009-1210</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1266">CVE-2009-1266</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1268">CVE-2009-1268</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1269">CVE-2009-1269</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1829">CVE-2009-1829</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 22 May 2009 11:33:22 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Jun 2009 22:09:27 +0000">
+    craig
+  </metadata>
+</glsa>

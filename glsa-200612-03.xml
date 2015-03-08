@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-03">
+  <title>GnuPG: Multiple vulnerabilities</title>
+  <synopsis>
+    GnuPG is vulnerable to a buffer overflow and an erroneous function pointer
+    dereference that can result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnupg</product>
+  <announced>December 10, 2006</announced>
+  <revised>December 10, 2006: 02</revised>
+  <bug>156476</bug>
+  <bug>156947</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">1.4.6</unaffected>
+      <vulnerable range="lt">1.4.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite
+    of cryptographic software.
+    </p>
+  </background>
+  <description>
+    <p>
+    Hugh Warrington has reported a boundary error in GnuPG, in the
+    "ask_outfile_name()" function from openfile.c: the
+    make_printable_string() function could return a string longer than
+    expected. Additionally, Tavis Ormandy of the Gentoo Security Team
+    reported a design error in which a function pointer can be incorrectly
+    dereferenced.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to interactively use GnuPG on a
+    crafted file and trigger the boundary error, which will result in a
+    buffer overflow. They could also entice a user to process a signed or
+    encrypted file with gpg or gpgv, possibly called through another
+    application like a mail client, to trigger the dereference error. Both
+    of these vulnerabilities would result in the execution of arbitrary
+    code with the permissions of the user running GnuPG. gpg-agent, gpgsm
+    and other tools are not affected.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnuPG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=app-crypt/gnupg-1.4*&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6169">CVE-2006-6169</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6235">CVE-2006-6235</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 07 Dec 2006 11:29:58 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 08 Dec 2006 11:06:22 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 09 Dec 2006 21:41:04 +0000">
+    falco
+  </metadata>
+</glsa>

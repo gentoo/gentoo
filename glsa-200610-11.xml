@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-11">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>
+    OpenSSL contains multiple vulnerabilities including the possible remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>October 24, 2006</announced>
+  <revised>October 24, 2006: 01</revised>
+  <bug>145510</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.8d</unaffected>
+      <unaffected range="rge">0.9.7l</unaffected>
+      <vulnerable range="lt">0.9.8d</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is a toolkit implementing the Secure Sockets Layer, Transport
+    Layer Security protocols and a general-purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy and Will Drewry, both of the Google Security Team,
+    discovered that the SSL_get_shared_ciphers() function contains a buffer
+    overflow vulnerability, and that the SSLv2 client code contains a flaw
+    leading to a crash. Additionally Dr. Stephen N. Henson found that the
+    ASN.1 handler contains two Denial of Service vulnerabilities: while
+    parsing an invalid ASN.1 structure and while handling certain types of
+    public key.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could trigger the buffer overflow vulnerability by sending
+    a malicious suite of ciphers to an application using the vulnerable
+    function, and thus execute arbitrary code with the rights of the user
+    running the application. An attacker could also consume CPU and/or
+    memory by exploiting the Denial of Service vulnerabilities. Finally a
+    malicious server could crash a SSLv2 client through the SSLv2
+    vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL 0.9.8 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8d&quot;</code>
+    <p>
+    All OpenSSL 0.9.7 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.7l&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2937">CVE-2006-2937</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2940">CVE-2006-2940</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3738">CVE-2006-3738</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4343">CVE-2006-4343</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 28 Sep 2006 15:36:31 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Oct 2006 16:05:39 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 10:05:56 +0000">
+    falco
+  </metadata>
+</glsa>

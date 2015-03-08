@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-14">
+  <title>Groff: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Groff, allowing
+    context-dependent attackers to conduct symlink attacks. 
+  </synopsis>
+  <product type="ebuild">groff</product>
+  <announced>October 25, 2013</announced>
+  <revised>October 25, 2013: 1</revised>
+  <bug>386335</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/groff" auto="yes" arch="*">
+      <unaffected range="ge">1.22.2</unaffected>
+      <vulnerable range="lt">1.22.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Troff (Groff) is a text formatter used for man pages.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Groff. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A context-dependent attacker could perform symlink attacks to overwrite
+      arbitrary files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Groff users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/groff-1.22.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5044">CVE-2009-5044</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5078">CVE-2009-5078</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5079">CVE-2009-5079</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5080">CVE-2009-5080</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5081">CVE-2009-5081</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5082">CVE-2009-5082</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 10 Oct 2013 02:36:54 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 25 Oct 2013 22:46:33 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

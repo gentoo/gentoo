@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-14">
+  <title>monkeyd: Multiple vulnerabilities</title>
+  <synopsis>
+    Format string and Denial of Service vulnerabilities have been discovered in
+    the monkeyd HTTP server, potentially resulting in the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">monkeyd</product>
+  <announced>April 15, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>87916</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/monkeyd" auto="yes" arch="*">
+      <unaffected range="ge">0.9.1</unaffected>
+      <vulnerable range="lt">0.9.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    monkeyd is a fast, efficient, small and easy to configure web server
+    for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team discovered a
+    double expansion error in monkeyd, resulting in a format string
+    vulnerability. Ciaran McCreesh of Gentoo Linux discovered a Denial of
+    Service vulnerability, a syntax error caused monkeyd to zero out
+    unallocated memory should a zero byte file be requested.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The format string vulnerability could allow an attacker to send a
+    specially crafted request to the monkeyd server, resulting in the
+    execution of arbitrary code with the permissions of the user running
+    monkeyd. The DoS vulnerability could allow an attacker to disrupt the
+    operation of the web server, should a zero byte file be accessible.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All monkeyd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/monkeyd-0.9.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1122">CVE-2005-1122</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1123">CVE-2005-1123</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 14 Apr 2005 15:11:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 14 Apr 2005 20:09:53 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 15 Apr 2005 16:10:15 +0000">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-28">
+  <title>Perl: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow in the Regular Expression engine in Perl possibly allows
+    for the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>November 19, 2007</announced>
+  <revised>November 19, 2007: 01</revised>
+  <bug>198196</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.8.8-r4</unaffected>
+      <vulnerable range="lt">5.8.8-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Perl is a stable, cross-platform programming language created by Larry
+    Wall.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy and Will Drewry (Google Security Team) discovered a
+    heap-based buffer overflow in the Regular Expression engine (regcomp.c)
+    that occurs when switching from byte to Unicode (UTF-8) characters in a
+    regular expression.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could either entice a user to compile a specially
+    crafted regular expression or actively compile it in case the script
+    accepts remote input of regular expressions, possibly leading to the
+    execution of arbitrary code with the privileges of the user running
+    Perl.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Perl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/perl-5.8.8-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5116">CVE-2007-5116</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 14 Nov 2007 01:27:30 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 15 Nov 2007 00:34:08 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 19 Nov 2007 14:24:28 +0000">
+    rbu
+  </metadata>
+</glsa>

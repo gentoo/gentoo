@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200606-01">
+  <title>Opera: Buffer overflow</title>
+  <synopsis>
+    Opera contains an integer signedness error resulting in a buffer overflow
+    which may allow a remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>June 07, 2006</announced>
+  <revised>June 07, 2006: 01</revised>
+  <bug>129800</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">8.54</unaffected>
+      <vulnerable range="lt">8.54</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a multi-platform web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    SEC Consult has discovered a buffer overflow in the code
+    processing style sheet attributes. It is caused by an integer
+    signedness error in a length check followed by a call to a string
+    function. It seems to be hard to exploit this buffer overflow to
+    execute arbitrary code because of the very large amount memory that has
+    to be copied.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can entice a user to visit a web page containing
+    a specially crafted style sheet attribute that will crash the user's
+    browser and maybe lead to the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-8.54&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1834">CVE-2006-1834</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 30 May 2006 13:12:35 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 31 May 2006 19:39:23 +0000">
+    DerCorny
+  </metadata>
+</glsa>

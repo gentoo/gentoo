@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-08">
+  <title>Blender: Heap-based buffer overflow</title>
+  <synopsis>
+    Blender is vulnerable to a buffer overflow that may be exploited by
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">blender</product>
+  <announced>January 13, 2006</announced>
+  <revised>January 13, 2006: 01</revised>
+  <bug>118163</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/blender" auto="yes" arch="*">
+      <unaffected range="ge">2.40</unaffected>
+      <vulnerable range="lt">2.40</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Blender is an open source software for 3D modeling, animation,
+    rendering, post-production, interactive creation and playback.
+    </p>
+  </background>
+  <description>
+    <p>
+    Damian Put has reported a flaw due to an integer overflow in the
+    "get_bhead()" function, leading to a heap overflow when processing
+    malformed ".blend" files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user into opening a specially
+    crafted ".blend" file, resulting in the execution of arbitrary code
+    with the permissions of the user running Blender.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Blender users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/blender-2.40&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4470">CVE-2005-4470</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 Jan 2006 19:17:22 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 10 Jan 2006 19:17:39 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2006 01:12:10 +0000">
+    adir
+  </metadata>
+</glsa>

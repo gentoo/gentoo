@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-15">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PostgreSQL, the worst
+    of which may allow remote Denial of Service.
+  </synopsis>
+  <product type="ebuild">postgresql-server</product>
+  <announced>August 29, 2014</announced>
+  <revised>August 29, 2014: 1</revised>
+  <bug>456080</bug>
+  <bug>463884</bug>
+  <bug>501946</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql-server" auto="yes" arch="*">
+      <unaffected range="ge">9.3.3</unaffected>
+      <unaffected range="rge">9.2.7</unaffected>
+      <unaffected range="rge">9.1.12</unaffected>
+      <unaffected range="rge">9.0.16</unaffected>
+      <unaffected range="rge">8.4.20</unaffected>
+      <vulnerable range="lt">9.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker may be able to create a Denial of
+      Service condition, bypass security restrictions, or have other
+      unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 9.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-9.3.3"
+    </code>
+    
+    <p>All PostgreSQL 9.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-9.2.7"
+    </code>
+    
+    <p>All PostgreSQL 9.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-9.1.12"
+    </code>
+    
+    <p>All PostgreSQL 9.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-9.0.16"
+    </code>
+    
+    <p>All PostgreSQL 8.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-8.4.20"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0255">CVE-2013-0255</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1899">CVE-2013-1899</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1900">CVE-2013-1900</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1901">CVE-2013-1901</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0060">CVE-2014-0060</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0061">CVE-2014-0061</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0062">CVE-2014-0062</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0063">CVE-2014-0063</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0064">CVE-2014-0064</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0065">CVE-2014-0065</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0066">CVE-2014-0066</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2669">CVE-2014-2669</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 10 Apr 2013 20:45:35 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 23:33:40 +0000">ackle</metadata>
+</glsa>

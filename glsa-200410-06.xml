@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-06">
+  <title>CUPS: Leakage of sensitive information</title>
+  <synopsis>
+    CUPS leaks information about user names and passwords when using remote
+    printing to SMB-shared printers which require authentication.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>October 09, 2004</announced>
+  <revised>October 09, 2004: 01</revised>
+  <bug>66501</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="rge">1.1.20-r3</unaffected>
+      <unaffected range="ge">1.1.21-r1</unaffected>
+      <vulnerable range="le">1.1.20-r2</vulnerable>
+      <vulnerable range="eq">1.1.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Common UNIX Printing System (CUPS) is a cross-platform print spooler.
+    </p>
+  </background>
+  <description>
+    <p>
+    When printing to a SMB-shared printer requiring authentication, CUPS leaks
+    the user name and password to a logfile.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local user could gain knowledge of sensitive authentication data.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-print/cups-1.1.20-r3"
+    # emerge ">=net-print/cups-1.1.20-r3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0923">CAN-2004-0923</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri,  8 Oct 2004 18:27:07 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri,  8 Oct 2004 21:07:38 +0000">
+    koon
+  </metadata>
+</glsa>

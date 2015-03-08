@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-22">
+  <title>Network Audio System: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Network Audio System,
+    the worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">nas</product>
+  <announced>June 25, 2014</announced>
+  <revised>June 25, 2014: 1</revised>
+  <bug>484480</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/nas" auto="yes" arch="*">
+      <unaffected range="ge">1.9.4</unaffected>
+      <vulnerable range="lt">1.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Network Audio System is a network transparent, client/server audio
+      transport system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Network Audio System.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly execute arbitrary code with
+      the privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Network Audio System users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/nas-1.9.4"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4256">CVE-2013-4256</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4258">CVE-2013-4258</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:31:39 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 20:32:15 +0000">Zlogene</metadata>
+</glsa>

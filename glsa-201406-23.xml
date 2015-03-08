@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-23">
+  <title>DenyHosts: Denial of Service</title>
+  <synopsis>A vulnerability in DenyHosts could allow a remote attacker to
+    create a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">denyhost</product>
+  <announced>June 25, 2014</announced>
+  <revised>June 25, 2014: 1</revised>
+  <bug>495130</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/denyhosts" auto="yes" arch="*">
+      <unaffected range="ge">2.6-r9</unaffected>
+      <vulnerable range="lt">2.6-r9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>DenyHosts is a script intended to be run by Linux system administrators
+      to help thwart SSH server attacks.
+    </p>
+  </background>
+  <description>
+    <p>DenyHosts does not properly define the regular expressions used when
+      parsing SSH authentication logs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition via
+      a crafted login name.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All DenyHost users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/denyhosts-2.6-r9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6890">CVE-2013-6890</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jun 2014 04:56:45 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 20:54:12 +0000">Zlogene</metadata>
+</glsa>

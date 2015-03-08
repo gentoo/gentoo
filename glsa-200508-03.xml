@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-03">
+  <title>nbSMTP: Format string vulnerability</title>
+  <synopsis>
+    nbSMTP is vulnerable to a format string vulnerability which may result in
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nbsmtp</product>
+  <announced>August 02, 2005</announced>
+  <revised>August 11, 2005: 02</revised>
+  <bug>100274</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/nbsmtp" auto="yes" arch="*">
+      <unaffected range="ge">1.00</unaffected>
+      <vulnerable range="lt">1.00</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    nbSMTP is an SMTP client suitable to run in chroot jails, in embedded
+    systems, laptops and workstations.
+    </p>
+  </background>
+  <description>
+    <p>
+    Niels Heinen discovered a format string vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker can setup a malicious SMTP server and exploit this
+    vulnerability to execute arbitrary code with the permissions of the
+    user running nbSMTP.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All nbSMTP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/nbsmtp-1.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2409">CAN-2005-2409</uri>
+    <uri link="http://nbsmtp.ferdyx.org/">nbSMTP official site</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 Jul 2005 15:56:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Jul 2005 23:01:19 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 02 Aug 2005 12:46:50 +0000">
+    koon
+  </metadata>
+</glsa>

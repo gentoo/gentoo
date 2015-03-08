@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-03">
+  <title>Python 2.2: Buffer overflow in getaddrinfo()</title>
+  <synopsis>
+    Python 2.2 has a vulnerability in DNS handling when IPV6 is disabled and a
+    malformed IPV6 address is encountered by getaddrinfo().
+  </synopsis>
+  <product type="ebuild">Python</product>
+  <announced>September 02, 2004</announced>
+  <revised>September 02, 2004: 01</revised>
+  <bug>62440</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">2.2.2</unaffected>
+      <unaffected range="lt">2.2</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Python is an interpreted, interactive, object-oriented, cross-platform
+    programming language.
+    </p>
+  </background>
+  <description>
+    <p>
+    If IPV6 is disabled in Python 2.2, getaddrinfo() is not able to handle IPV6
+    DNS requests properly and a buffer overflow occurs.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker can execute arbitrary code as the user running python.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users with IPV6 enabled are not affected by this vulnerability.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Python 2.2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-lang/python-2.2.2"
+    # emerge ">=dev-lang/python-2.2.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0150">CVE-2004-0150</uri>
+    <uri link="http://www.osvdb.org/4172">OSVDB:4172</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 31 Aug 2004 22:51:44 +0000">
+    chriswhite
+  </metadata>
+</glsa>

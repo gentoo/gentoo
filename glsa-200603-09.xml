@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-09">
+  <title>SquirrelMail: Cross-site scripting and IMAP command injection</title>
+  <synopsis>
+    SquirrelMail is vulnerable to several cross-site scripting vulnerabilities
+    and IMAP command injection.
+  </synopsis>
+  <product type="ebuild">squirrelmail</product>
+  <announced>March 12, 2006</announced>
+  <revised>March 12, 2006: 01</revised>
+  <bug>123781</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <unaffected range="ge">1.4.6</unaffected>
+      <vulnerable range="lt">1.4.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SquirrelMail is a webmail package written in PHP. It supports IMAP
+    and SMTP protocols.
+    </p>
+  </background>
+  <description>
+    <p>
+    SquirrelMail does not validate the right_frame parameter in
+    webmail.php, possibly allowing frame replacement or cross-site
+    scripting (CVE-2006-0188). Martijn Brinkers and Scott Hughes discovered
+    that MagicHTML fails to handle certain input correctly, potentially
+    leading to cross-site scripting (only Internet Explorer,
+    CVE-2006-0195). Vicente Aguilera reported that the
+    sqimap_mailbox_select function did not strip newlines from the mailbox
+    or subject parameter, possibly allowing IMAP command injection
+    (CVE-2006-0377).
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By exploiting the cross-site scripting vulnerabilities, an
+    attacker can execute arbitrary scripts running in the context of the
+    victim's browser. This could lead to a compromise of the user's webmail
+    account, cookie theft, etc. A remote attacker could exploit the IMAP
+    command injection to execute arbitrary IMAP commands on the configured
+    IMAP server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SquirrelMail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.6&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0188">CVE-2006-0188</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0195">CVE-2006-0195</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0377">CVE-2006-0377</uri>
+  </references>
+  <metadata tag="">
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Mar 2006 16:55:59 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 11 Mar 2006 21:38:55 +0000">
+    koon
+  </metadata>
+</glsa>

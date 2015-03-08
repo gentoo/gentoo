@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-14">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>January 20, 2014</announced>
+  <revised>January 20, 2014: 1</revised>
+  <bug>456074</bug>
+  <bug>465678</bug>
+  <bug>474354</bug>
+  <bug>492688</bug>
+  <bug>497092</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.34.0-r1</unaffected>
+      <vulnerable range="lt">7.34.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a command line tool for transferring files with URL syntax,
+      supporting numerous protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated process to connect to
+      a malicious server using cURL, possibly resulting in the remote execution
+      of arbitrary code or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.34.0-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0249">CVE-2013-0249</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1944">CVE-2013-1944</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2174">CVE-2013-2174</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6422">CVE-2013-6422</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 19:39:59 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 14:02:23 +0000">ackle</metadata>
+</glsa>

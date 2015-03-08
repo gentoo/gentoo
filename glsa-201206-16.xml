@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-16">
+  <title>TagLib: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in TagLib, possibly
+    resulting in Denial of Service.
+  </synopsis>
+  <product type="ebuild">TagLib</product>
+  <announced>June 22, 2012</announced>
+  <revised>June 22, 2012: 1</revised>
+  <bug>407673</bug>
+  <bug>410953</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/taglib" auto="yes" arch="*">
+      <unaffected range="ge">1.7.1</unaffected>
+      <vulnerable range="lt">1.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TagLib is a library for reading and editing audio meta data.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in TagLib:</p>
+    
+    <ul>
+      <li>The "analyzeCurrent()" function in ape/apeproperties.cpp contains a
+        division by zero error (CVE-2012-1107).
+      </li>
+      <li>The "parse()" function in inogg/xiphcomment.cpp contains an error
+        when processing the "vendorLength" field (CVE-2012-1108).
+      </li>
+      <li>The "mid()" function in toolkit/tbytevector.cpp contains an integer
+        overflow error (CVE-2012-1584).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to open a
+      specially crafted OGG file with an application using TagLib, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TagLib users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/taglib-1.7.1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as  revdep-rebuild may assist in identifying  some of these
+      packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1107">CVE-2012-1107</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1108">CVE-2012-1108</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1584">CVE-2012-1584</uri>
+  </references>
+  <metadata timestamp="Fri, 06 Apr 2012 15:50:48 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Fri, 22 Jun 2012 16:29:31 +0000" tag="submitter">ackle</metadata>
+</glsa>

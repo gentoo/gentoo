@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-36">
+  <title>libvirt: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities have been found in libvirt, worst of which
+    allows context-dependent attackers to cause Denial of Service. 
+  </synopsis>
+  <product type="ebuild">libvirt</product>
+  <announced>December 24, 2014</announced>
+  <revised>December 24, 2014: 1</revised>
+  <bug>532204</bug>
+  <bug>533286</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/libvirt" auto="yes" arch="*">
+      <unaffected range="ge">1.2.10-r3</unaffected>
+      <vulnerable range="lt">1.2.10-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libvirt is a C toolkit for manipulating virtual machines.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libvirt. Please review
+      the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker may be able to cause Denial of Service.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libvirt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/libvirt-1.2.10-r3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8131">CVE-2014-8131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8135">CVE-2014-8135</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8136">CVE-2014-8136</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 24 Dec 2014 14:21:18 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 20:40:55 +0000">K_F</metadata>
+</glsa>

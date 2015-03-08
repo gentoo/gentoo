@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-13">
+  <title>PEAR XML-RPC, phpxmlrpc: New PHP script injection vulnerability</title>
+  <synopsis>
+    The PEAR XML-RPC and phpxmlrpc libraries allow remote attackers to execute
+    arbitrary PHP script commands.
+  </synopsis>
+  <product type="ebuild">pear-xml_rpc phpxmlrpc</product>
+  <announced>August 24, 2005</announced>
+  <revised>August 24, 2005: 01</revised>
+  <bug>102378</bug>
+  <bug>102576</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/PEAR-XML_RPC" auto="yes" arch="*">
+      <unaffected range="ge">1.4.0</unaffected>
+      <vulnerable range="lt">1.4.0</vulnerable>
+    </package>
+    <package name="dev-php/phpxmlrpc" auto="yes" arch="*">
+      <unaffected range="ge">1.2-r1</unaffected>
+      <vulnerable range="lt">1.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The PEAR XML-RPC and phpxmlrpc libraries are both PHP
+    implementations of the XML-RPC protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser of the Hardened-PHP Project discovered that the PEAR
+    XML-RPC and phpxmlrpc libraries were improperly handling XMLRPC
+    requests and responses with malformed nested tags.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability to inject
+    arbitrary PHP script code into eval() statements by sending a specially
+    crafted XML document to web applications making use of these libraries.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PEAR-XML_RPC users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-XML_RPC-1.4.0&quot;</code>
+    <p>
+    All phpxmlrpc users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/phpxmlrpc-1.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="http://www.hardened-php.net/advisory_142005.66.html">Hardened-PHP 14/2005 Advisory</uri>
+    <uri link="http://www.hardened-php.net/advisory_152005.67.html">Hardened-PHP 15/2005 Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 23 Aug 2005 08:36:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 23 Aug 2005 20:48:36 +0000">
+    koon
+  </metadata>
+</glsa>

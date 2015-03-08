@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-18">
+  <title>rxvt-unicode: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in rxvt-unicode may allow a remote attacker to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">rxvt-unicode</product>
+  <announced>June 19, 2014</announced>
+  <revised>June 19, 2014: 1</revised>
+  <bug>509174</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-terms/rxvt-unicode" auto="yes" arch="*">
+      <unaffected range="ge">9.20</unaffected>
+      <vulnerable range="lt">9.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>rxvt-unicode (urxvt) is a clone of the rxvt terminal emulator.</p>
+  </background>
+  <description>
+    <p>rxvt-unicode does not properly handle OSC escape sequences, including
+      those used to read and write X window properties.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to run a specially crafted file
+      using rxvt-unicode, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rxvt-unicode users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-terms/rxvt-unicode-9.20"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3121">CVE-2014-3121</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 May 2014 04:08:05 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 19 Jun 2014 11:53:01 +0000">
+    creffett
+  </metadata>
+</glsa>

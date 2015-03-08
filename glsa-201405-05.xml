@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-05">
+  <title>Asterisk: Denial of Service</title>
+  <synopsis>Multiple buffer overflows in Asterisk might allow remote attackers
+    to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>May 03, 2014</announced>
+  <revised>May 03, 2014: 1</revised>
+  <bug>504180</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">11.8.1</unaffected>
+      <unaffected range="rge">1.8.26.1</unaffected>
+      <vulnerable range="lt">11.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the CVE identifiers and Asterisk Project Security Advisories referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk 11.* users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-11.8.1"
+    </code>
+    
+    <p>All Asterisk 1.8.* users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.26.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://downloads.asterisk.org/pub/security/AST-2014-001.pdf">
+      AST-2014-001
+    </uri>
+    <uri link="http://downloads.asterisk.org/pub/security/AST-2014-002.pdf">
+      AST-2014-002
+    </uri>
+    <uri link="http://downloads.asterisk.org/pub/security/AST-2014-003.pdf">
+      AST-2014-003
+    </uri>
+    <uri link="http://downloads.asterisk.org/pub/security/AST-2014-004.pdf">
+      AST-2014-004
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2286">CVE-2014-2286</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2287">CVE-2014-2287</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2288">CVE-2014-2288</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2289">CVE-2014-2289</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Apr 2014 19:55:21 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 03 May 2014 18:50:01 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

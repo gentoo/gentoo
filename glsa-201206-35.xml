@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-35">
+  <title>nbd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in nbd, which could lead to
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nbd</product>
+  <announced>June 25, 2012</announced>
+  <revised>June 25, 2012: 1</revised>
+  <bug>353097</bug>
+  <bug>372891</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-block/nbd" auto="yes" arch="*">
+      <unaffected range="ge">2.9.22</unaffected>
+      <vulnerable range="lt">2.9.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nbd is a userland client/server for kernel network block device.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in nbd. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>nbd allows remote attackers to cause a denial of service (NULL pointer
+      dereference and crash) or the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nbd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-block/nbd-2.9.22"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0530">CVE-2011-0530</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1925">CVE-2011-1925</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:56 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 25 Jun 2012 19:17:58 +0000" tag="submitter">craig</metadata>
+</glsa>

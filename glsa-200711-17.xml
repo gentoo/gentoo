@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-17">
+  <title>Ruby on Rails: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities were found in Ruby on Rails allowing for file
+    disclosure and theft of user credentials.
+  </synopsis>
+  <product type="ebuild">rails</product>
+  <announced>November 14, 2007</announced>
+  <revised>November 14, 2007: 01</revised>
+  <bug>195315</bug>
+  <bug>182223</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rails" auto="yes" arch="*">
+      <unaffected range="ge">1.2.5</unaffected>
+      <vulnerable range="lt">1.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby on Rails is a free web framework used to develop database-driven
+    web applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    candlerb found that ActiveResource, when processing responses using the
+    Hash.from_xml() function, does not properly sanitize filenames
+    (CVE-2007-5380). The session management functionality allowed the
+    "session_id" to be set in the URL (CVE-2007-5380). BCC discovered that
+    the to_json() function does not properly sanitize input before
+    returning it to the user (CVE-2007-3227).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Unauthenticated remote attackers could exploit these vulnerabilities to
+    determine the existence of files or to read the contents of arbitrary
+    XML files; conduct session fixation attacks and gain unauthorized
+    access; and to execute arbitrary HTML and script code in a user's
+    browser session in context of an affected site by enticing a user to
+    browse a specially crafted URL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby on Rails users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ruby/rails-1.2.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3227">CVE-2007-3227</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5379">CVE-2007-5379</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5380">CVE-2007-5380</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Nov 2007 08:24:34 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 Nov 2007 20:49:09 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 09 Nov 2007 19:31:01 +0000">
+    rbu
+  </metadata>
+</glsa>

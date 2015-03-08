@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-29">
+  <title>Apache Tomcat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Apache Tomcat, the
+    worst of which may result in Denial of Service.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>December 15, 2014</announced>
+  <revised>December 15, 2014: 1</revised>
+  <bug>442014</bug>
+  <bug>469434</bug>
+  <bug>500600</bug>
+  <bug>511762</bug>
+  <bug>517630</bug>
+  <bug>519590</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge">7.0.56</unaffected>
+      <unaffected range="rge">6.0.41</unaffected>
+      <vulnerable range="lt">7.0.56</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache Tomcat is a Servlet-3.0/JSP-2.2 Container.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Tomcat. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition as
+      well as obtain sensitive information, bypass protection mechanisms and
+      authentication restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tomcat 6.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-6.0.41"
+    </code>
+    
+    <p>All Tomcat 7.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-7.0.56"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2733">CVE-2012-2733</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3544">CVE-2012-3544</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3546">CVE-2012-3546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4431">CVE-2012-4431</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4534">CVE-2012-4534</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5885">CVE-2012-5885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5886">CVE-2012-5886</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5887">CVE-2012-5887</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2067">CVE-2013-2067</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2071">CVE-2013-2071</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4286">CVE-2013-4286</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4322">CVE-2013-4322</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4590">CVE-2013-4590</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0033">CVE-2014-0033</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0050">CVE-2014-0050</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0075">CVE-2014-0075</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0096">CVE-2014-0096</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0099">CVE-2014-0099</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0119">CVE-2014-0119</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 22:03:30 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Dec 2014 00:11:47 +0000">ackle</metadata>
+</glsa>

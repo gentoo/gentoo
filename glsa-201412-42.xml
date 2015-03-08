@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-42">
+  <title>Xen: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, possibly resulting
+    in Denial of Service.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>December 26, 2014</announced>
+  <revised>December 31, 2014: 2</revised>
+  <bug>523524</bug>
+  <bug>524200</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="rge">4.2.5-r1</unaffected>
+      <unaffected range="ge">4.3.3-r3</unaffected>
+      <vulnerable range="lt">4.3.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local user could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.2.5-r1"
+    </code>
+    
+    <p>All xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.3.3-r3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7154">CVE-2014-7154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7155">CVE-2014-7155</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7156">CVE-2014-7156</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7188">CVE-2014-7188</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Oct 2014 01:33:19 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 31 Dec 2014 14:18:28 +0000">Zlogene</metadata>
+</glsa>

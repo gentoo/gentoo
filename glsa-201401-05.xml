@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-05">
+  <title>ISC DHCP: Denial of Service</title>
+  <synopsis>A memory exhaustion vulnerability in ISC DHCP could lead to Denial
+    of Service.
+  </synopsis>
+  <product type="ebuild">dhcp</product>
+  <announced>January 06, 2014</announced>
+  <revised>January 06, 2014: 1</revised>
+  <bug>463848</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.5_p1</unaffected>
+      <vulnerable range="lt">4.2.5_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ISC DHCP is a Dynamic Host Configuration Protocol (DHCP) client/server.</p>
+  </background>
+  <description>
+    <p>ISC DHCP is vulnerable to a memory exhaustion attack involving regular
+      expressions sent by DHCP clients.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request from a
+      malicious or spoofed client, potentially leading to a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ISC DHCP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcp-4.2.5_p1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2494">CVE-2013-2494</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 03 Sep 2013 16:23:20 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Jan 2014 21:52:49 +0000">
+    creffett
+  </metadata>
+</glsa>

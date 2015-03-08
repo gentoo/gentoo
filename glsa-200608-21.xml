@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-21">
+  <title>Heimdal: Multiple local privilege escalation vulnerabilities</title>
+  <synopsis>
+    Certain Heimdal components, ftpd and rcp, are vulnerable to a local
+    privilege escalation.
+  </synopsis>
+  <product type="ebuild">Heimdal</product>
+  <announced>August 23, 2006</announced>
+  <revised>August 23, 2006: 01</revised>
+  <bug>143371</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-crypt/heimdal" auto="yes" arch="*">
+      <unaffected range="ge">0.7.2-r3</unaffected>
+      <vulnerable range="lt">0.7.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Heimdal is a free implementation of Kerberos 5.
+    </p>
+  </background>
+  <description>
+    <p>
+    The ftpd and rcp applications provided by Heimdal fail to check the
+    return value of calls to seteuid().
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could exploit this vulnerability to execute arbitrary
+    code with elevated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Heimdal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/heimdal-0.7.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.pdc.kth.se/heimdal/advisory/2006-08-08/">Official advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3083">CVE-2006-3083</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3084">CVE-2006-3084</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 12 Aug 2006 15:34:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 13 Aug 2006 22:34:21 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 14 Aug 2006 15:19:23 +0000">
+    falco
+  </metadata>
+</glsa>

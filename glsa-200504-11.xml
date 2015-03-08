@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-11">
+  <title>JunkBuster: Multiple vulnerabilities</title>
+  <synopsis>
+    JunkBuster is vulnerable to a heap corruption vulnerability, and under
+    certain configurations may allow an attacker to modify settings.
+  </synopsis>
+  <product type="ebuild">junkbuster</product>
+  <announced>April 13, 2005</announced>
+  <revised>April 21, 2005: 02</revised>
+  <bug>88537</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/junkbuster" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r3</unaffected>
+      <vulnerable range="lt">2.0.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    JunkBuster is a filtering HTTP proxy, designed to enhance privacy and
+    remove unwanted content.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Ranson reported a vulnerability when JunkBuster is configured to
+    run in single-threaded mode, an attacker can modify the referrer
+    setting by getting a victim to request a specially crafted URL
+    (CAN-2005-1108). Tavis Ormandy of the Gentoo Linux Security Audit Team
+    identified a heap corruption issue in the filtering of URLs
+    (CAN-2005-1109).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    If JunkBuster has been configured to run in single-threaded mode, an
+    attacker can disable or modify the filtering of Referrer: HTTP headers,
+    potentially compromising the privacy of users. The heap corruption
+    vulnerability could crash or disrupt the operation of the proxy,
+    potentially executing arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All JunkBuster users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/junkbuster-2.0.2-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1108">CAN-2005-1108</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1109">CAN-2005-1109</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 12 Apr 2005 20:24:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 12 Apr 2005 21:28:36 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 13 Apr 2005 08:43:25 +0000">
+    koon
+  </metadata>
+</glsa>

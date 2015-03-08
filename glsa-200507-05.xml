@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-05">
+  <title>zlib: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow has been discovered in zlib, potentially resulting in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">zlib</product>
+  <announced>July 06, 2005</announced>
+  <revised>July 06, 2005: 01</revised>
+  <bug>98121</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/zlib" auto="yes" arch="*">
+      <unaffected range="ge">1.2.2-r1</unaffected>
+      <vulnerable range="lt">1.2.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    zlib is a widely used free and patent unencumbered data
+    compression library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team discovered a
+    buffer overflow in zlib. A bounds checking operation failed to take
+    invalid data into account, allowing a specifically malformed deflate
+    data stream to overrun a buffer.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could construct a malformed data stream, embedding it
+    within network communication or an application file format, potentially
+    resulting in the execution of arbitrary code when decoded by the
+    application using the zlib library.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/zlib-1.2.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 04 Jul 2005 06:51:26 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 06 Jul 2005 14:21:00 +0000">
+    koon
+  </metadata>
+</glsa>

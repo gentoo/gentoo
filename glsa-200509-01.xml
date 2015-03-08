@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-01">
+  <title>MPlayer: Heap overflow in ad_pcm.c</title>
+  <synopsis>
+    A heap overflow in MPlayer might lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">MPlayer</product>
+  <announced>September 01, 2005</announced>
+  <revised>September 01, 2005: 01</revised>
+  <bug>103555</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre7-r1</unaffected>
+      <vulnerable range="lt">1.0_pre7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player capable of handling multiple multimedia
+    file formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sven Tantau discovered a heap overflow in the code handling the
+    strf chunk of PCM audio streams.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could craft a malicious video or audio file which,
+    when opened using MPlayer, would end up executing arbitrary code on the
+    victim's computer with the permissions of the user running MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    You can mitigate the issue by adding "ac=-pcm," to your MPlayer
+    configuration file (note that this will prevent you from playing
+    uncompressed audio).
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_pre7-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2718">CAN-2005-2718</uri>
+    <uri link="http://www.sven-tantau.de/public_files/mplayer/mplayer_20050824.txt">Original Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 28 Aug 2005 16:55:40 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 01 Sep 2005 08:08:19 +0000">
+    koon
+  </metadata>
+</glsa>

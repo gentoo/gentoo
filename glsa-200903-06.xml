@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-06">
+  <title>nfs-utils: Access restriction bypass</title>
+  <synopsis>
+    An error in nfs-utils allows for bypass of the netgroups restriction.
+  </synopsis>
+  <product type="ebuild">nfs-utils</product>
+  <announced>March 07, 2009</announced>
+  <revised>March 07, 2009: 01</revised>
+  <bug>242696</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/nfs-utils" auto="yes" arch="*">
+      <unaffected range="ge">1.1.3</unaffected>
+      <vulnerable range="lt">1.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    nfs-utils contains the client and daemon implementations for the NFS
+    protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Michele Marcionelli reported that nfs-utils invokes the hosts_ctl()
+    function with the wrong order of arguments, which causes TCP Wrappers
+    to ignore netgroups.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could bypass intended access restrictions, i.e. NFS
+    netgroups, and gain access to restricted services.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All nfs-utils users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/nfs-utils-1.1.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4552">CVE-2008-4552</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:56:17 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:22:47 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:23:17 +0000">
+    rbu
+  </metadata>
+</glsa>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-20">
+  <title>Okular: Arbitrary code execution </title>
+  <synopsis>A heap-based buffer overflow in Okular might allow a remote
+    attacker to execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">okular</product>
+  <announced>November 28, 2013</announced>
+  <revised>November 28, 2013: 1</revised>
+  <bug>334469</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-base/okular" auto="yes" arch="*">
+      <unaffected range="ge">4.4.5-r2</unaffected>
+      <vulnerable range="lt">4.4.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Okular is a universal document viewer based on KPDF for KDE 4.</p>
+  </background>
+  <description>
+    <p>Okular contains a heap-based buffer overflow  in the RLE decompression
+      functionality in the TranscribePalmImageToJPEG function in
+      generators/plucker/inplug/image.cpp.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PBD
+      file using Okular, possibly resulting in execution of arbitrary code with
+      the privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Okular users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-base/okular-4.4.5-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2575">
+      CVE-2010-2575
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:53 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:19:02 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-03">
+  <title>GNU Emacs: Multiple vulnerabilities</title>
+  <synopsis>
+    Two vulnerabilities were found in GNU Emacs possibly leading to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">emacs</product>
+  <announced>December 09, 2007</announced>
+  <revised>December 09, 2007: 01</revised>
+  <bug>197958</bug>
+  <bug>200297</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-editors/emacs" auto="yes" arch="*">
+      <unaffected range="ge">22.1-r3</unaffected>
+      <unaffected range="rge">21.4-r14</unaffected>
+      <unaffected range="lt">19</unaffected>
+      <vulnerable range="lt">22.1-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GNU Emacs is a highly extensible and customizable text editor.
+    </p>
+  </background>
+  <description>
+    <p>
+    Drake Wilson reported that the hack-local-variables() function in GNU
+    Emacs 22 does not properly match assignments of local variables in a
+    file against a list of unsafe or risky variables, allowing to override
+    them (CVE-2007-5795). Andreas Schwab (SUSE) discovered a stack-based
+    buffer overflow in the format function when handling values with high
+    precision (CVE-2007-6109).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers could entice a user to open a specially crafted file
+    in GNU Emacs, possibly leading to the execution of arbitrary Emacs Lisp
+    code (via CVE-2007-5795) or arbitrary code (via CVE-2007-6109) with the
+    privileges of the user running GNU Emacs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    The first vulnerability can be worked around by setting the
+    "enable-local-variables" option to "nil", disabling the processing of
+    local variable lists. GNU Emacs prior to version 22 is not affected by
+    this vulnerability. There is no known workaround for the second
+    vulnerability at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GNU Emacs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/emacs-22.1-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5795">CVE-2007-5795</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6109">CVE-2007-6109</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 Nov 2007 22:12:50 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Dec 2007 01:01:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Dec 2007 13:59:32 +0000">
+    rbu
+  </metadata>
+</glsa>

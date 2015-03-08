@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-15">
+  <title>libid3tag: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability was found in libid3tag.
+  </synopsis>
+  <product type="ebuild">libid3tag</product>
+  <announced>May 14, 2008</announced>
+  <revised>May 14, 2008: 01</revised>
+  <bug>210564</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libid3tag" auto="yes" arch="*">
+      <unaffected range="ge">0.15.1b-r2</unaffected>
+      <vulnerable range="lt">0.15.1b-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libid3tag is an ID3 tag manipulation library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kentaro Oda reported an infinite loop in the file field.c when parsing
+    an MP3 file with an ID3_FIELD_TYPE_STRINGLIST field that ends in '\0'.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted MP3
+    file, possibly resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libid3tag users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libid3tag-0.15.1b-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2109">CVE-2008-2109</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 May 2008 20:49:10 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 May 2008 20:57:48 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 May 2008 21:27:22 +0000">
+    keytoaster
+  </metadata>
+</glsa>

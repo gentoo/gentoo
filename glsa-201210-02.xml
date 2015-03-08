@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201210-02">
+  <title>MoinMoin: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in MoinMoin, the worst of
+    which allowing for injection of arbitrary web script or HTML.
+  </synopsis>
+  <product type="ebuild">MoinMoin</product>
+  <announced>October 18, 2012</announced>
+  <revised>October 18, 2012: 1</revised>
+  <bug>305663</bug>
+  <bug>339295</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/moinmoin" auto="yes" arch="*">
+      <unaffected range="ge">1.9.4</unaffected>
+      <vulnerable range="lt">1.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MoinMoin is a Python WikiEngine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MoinMoin. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>These vulnerabilities in MoinMoin allow remote users to inject arbitrary
+      web script or HTML, to obtain sensitive information and to bypass the
+      textcha protection mechanism. There are several other unknown impacts and
+      attack vectors.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MoinMoin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/moinmoin-1.9.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0668">CVE-2010-0668</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0669">CVE-2010-0669</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0717">CVE-2010-0717</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0828">CVE-2010-0828</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1238">CVE-2010-1238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2487">CVE-2010-2487</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2969">CVE-2010-2969</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2970">CVE-2010-2970</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1058">CVE-2011-1058</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:36:59 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:46:53 +0000">craig</metadata>
+</glsa>

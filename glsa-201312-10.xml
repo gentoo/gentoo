@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-10">
+  <title>libsmi: Arbitrary code execution </title>
+  <synopsis>A buffer overflow in libsmi might allow a context-dependent
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libsmi</product>
+  <announced>December 14, 2013</announced>
+  <revised>December 14, 2013: 1</revised>
+  <bug>342127</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/libsmi" auto="yes" arch="*">
+      <unaffected range="ge">0.4.8-r1</unaffected>
+      <vulnerable range="lt">0.4.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libsmi is a library that allows management applications to access SMI
+      MIB module definitions.
+    </p>
+  </background>
+  <description>
+    <p>libsmi contains a buffer overflow vulnerability in the smiGetNode()
+      function in lib/smi.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly execute arbitrary code by
+      way of a specially crafted Object Identifier (OID).
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libsmi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libsmi-0.4.8-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since October 30, 2010. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2891">CVE-2010-2891</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:09 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 14 Dec 2013 22:33:15 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-19">
+  <title>zlib: Buffer overflow</title>
+  <synopsis>
+    zlib is vulnerable to a buffer overflow which could potentially lead to
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">zlib</product>
+  <announced>July 22, 2005</announced>
+  <revised>July 22, 2005: 01</revised>
+  <bug>99751</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/zlib" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    zlib is a widely used free and patent unencumbered data
+    compression library.
+    </p>
+  </background>
+  <description>
+    <p>
+    zlib improperly handles invalid data streams which could lead to a
+    buffer overflow.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By creating a specially crafted compressed data stream, attackers
+    can overwrite data structures for applications that use zlib, resulting
+    in arbitrary code execution or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/zlib-1.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2005-07/0489.html">Full Disclosure Announcement</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1849">CAN-2005-1849</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 21 Jul 2005 05:28:09 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 21 Jul 2005 07:38:10 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 21 Jul 2005 18:38:18 +0000">
+    adir
+  </metadata>
+</glsa>

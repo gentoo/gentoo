@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-23">
+  <title>Clam AntiVirus: Denial of Service vulnerability</title>
+  <synopsis>
+    Clam AntiVirus is vulnerable to a Denial of Service attack when processing
+    certain Quantum archives.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>June 27, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>96960</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.86.1</unaffected>
+      <vulnerable range="lt">0.86.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Clam AntiVirus is a GPL anti-virus toolkit, designed for integration
+    with mail servers to perform attachment scanning. Clam AntiVirus also
+    provides a command line scanner and a tool for fetching updates of the
+    virus database.
+    </p>
+  </background>
+  <description>
+    <p>
+    Andrew Toller and Stefan Kanthak discovered that a flaw in libmspack's
+    Quantum archive decompressor renders Clam AntiVirus vulnerable to a
+    Denial of Service attack.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability to cause a Denial of
+    Service by sending a specially crafted Quantum archive to the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Clam AntiVirus users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.86.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://sourceforge.net/project/shownotes.php?release_id=337279">Clam AntiVirus Release Notes</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2056">CVE-2005-2056</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 24 Jun 2005 22:27:44 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 24 Jun 2005 23:09:26 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 26 Jun 2005 16:53:15 +0000">
+    jaervosz
+  </metadata>
+</glsa>

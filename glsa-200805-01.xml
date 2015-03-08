@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-01">
+  <title>Horde Application Framework: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the Horde Application Framework may lead to the
+    execution of arbitrary files, information disclosure, and allow a remote
+    attacker to bypass security restrictions.
+  </synopsis>
+  <product type="ebuild">horde</product>
+  <announced>May 05, 2008</announced>
+  <revised>May 05, 2008: 01</revised>
+  <bug>212635</bug>
+  <bug>213493</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde" auto="yes" arch="*">
+      <unaffected range="ge">3.1.7</unaffected>
+      <vulnerable range="lt">3.1.7</vulnerable>
+    </package>
+    <package name="www-apps/horde-groupware" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+    <package name="www-apps/horde-kronolith" auto="yes" arch="*">
+      <unaffected range="ge">2.1.7</unaffected>
+      <vulnerable range="lt">2.1.7</vulnerable>
+    </package>
+    <package name="www-apps/horde-mnemo" auto="yes" arch="*">
+      <unaffected range="ge">2.1.2</unaffected>
+      <vulnerable range="lt">2.1.2</vulnerable>
+    </package>
+    <package name="www-apps/horde-nag" auto="yes" arch="*">
+      <unaffected range="ge">2.1.4</unaffected>
+      <vulnerable range="lt">2.1.4</vulnerable>
+    </package>
+    <package name="www-apps/horde-webmail" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6</unaffected>
+      <vulnerable range="lt">1.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Horde Application Framework is a general-purpose web application
+    framework written in PHP, providing classes for handling preferences,
+    compression, browser detection, connection tracking, MIME and more.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in the Horde Application
+    Framework:
+    </p>
+    <ul>
+    <li>David Collins, Patrick Pelanne and the
+    HostGator.com LLC support team discovered that the theme preference
+    page does not sanitize POST variables for several options, allowing the
+    insertion of NULL bytes and ".." sequences (CVE-2008-1284).</li>
+    <li>An
+    error exists in the Horde API allowing users to bypass security
+    restrictions.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    The first vulnerability can be exploited by a remote attacker to read
+    arbitrary files and by remote authenticated attackers to execute
+    arbitrary files. The second vulnerability can be exploited by
+    authenticated remote attackers to perform restricted operations.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde Application Framework users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.1.7&quot;</code>
+    <p>
+    All horde-groupware users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-groupware-1.0.5&quot;</code>
+    <p>
+    All horde-kronolith users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-kronolith-2.1.7&quot;</code>
+    <p>
+    All horde-mnemo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-mnemo-2.1.2&quot;</code>
+    <p>
+    All horde-nag users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-nag-2.1.4&quot;</code>
+    <p>
+    All horde-webmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-webmail-1.0.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1284">CVE-2008-1284</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 20:23:06 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:55 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 26 Apr 2008 11:40:54 +0000">
+    mfleming
+  </metadata>
+</glsa>

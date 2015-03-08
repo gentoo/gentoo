@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-11">
+  <title>wv: Buffer overflow vulnerability</title>
+  <synopsis>
+    A buffer overflow vulnerability exists in the wv library that can allow an
+    attacker to execute arbitrary code with the privileges of the user running
+    the vulnerable application.
+  </synopsis>
+  <product type="ebuild">app-text/wv</product>
+  <announced>July 14, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>56595</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/wv" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0-r1</unaffected>
+      <vulnerable range="lt">1.0.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The wv library allows access to MS Word files. It can parse Word files
+    and allow other applications, such as abiword, to import those files
+    into their native formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    A use of strcat without proper bounds checking leads to an exploitable
+    buffer overflow. The vulnerable code is executed when wv encounters an
+    unrecognized token, so a specially crafted file, loaded in wv, can
+    trigger the vulnerable code and execute it's own arbitrary code. This
+    exploit is only possible when the user loads the document into HTML
+    view mode.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By inducing a user into running wv on a special file, an attacker can
+    execute arbitrary code with the permissions of the user running the
+    vulnerable program.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users should not view untrusted documents with wvHtml or applications
+    using wv. When loading an untrusted document in an application using
+    the wv library, make sure HTML view is disabled.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest available version.
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-text/wv-1.0.0-r1&quot;
+    # emerge &quot;&gt;=app-text/wv-1.0.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.idefense.com/application/poi/display?id=115&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0645">CVE-2004-0645</uri>
+  </references>
+  <metadata tag="submitter">
+    dmargoli
+  </metadata>
+</glsa>

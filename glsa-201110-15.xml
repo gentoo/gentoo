@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-15">
+  <title>GnuPG: User-assisted execution of arbitrary code</title>
+  <synopsis>The GPGSM utility included in GnuPG contains a use-after-free
+    vulnerability that may allow an unauthenticated remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">GnuPG</product>
+  <announced>October 22, 2011</announced>
+  <revised>October 22, 2011: 1</revised>
+  <bug>329583</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">2.0.16-r1</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.0.16-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite of
+      cryptographic software. The GPGSM utility in GnuPG is responsible for
+      processing X.509 certificates, signatures and encryption as well as
+      S/MIME messages. 
+    </p>
+  </background>
+  <description>
+    <p>The GPGSM utility in GnuPG contains a use-after-free vulnerability that
+      may be exploited when importing a crafted X.509 certificate explicitly or
+      during the signature verification process. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote attacker may execute arbitrary code with the
+      privileges of the user running GnuPG by enticing them to import a crafted
+      certificate.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuPG 2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-2.0.16-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2547">CVE-2010-2547</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:19 +0000" tag="requester">system</metadata>
+  <metadata timestamp="Sat, 22 Oct 2011 04:24:43 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

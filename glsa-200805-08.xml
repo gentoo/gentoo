@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-08">
+  <title>InspIRCd: Denial of Service</title>
+  <synopsis>
+    A buffer overflow in InspIRCd allows remote attackers to cause a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">inspircd</product>
+  <announced>May 09, 2008</announced>
+  <revised>May 09, 2008: 01</revised>
+  <bug>215704</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/inspircd" auto="yes" arch="*">
+      <unaffected range="ge">1.1.19</unaffected>
+      <vulnerable range="lt">1.1.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    InspIRCd (Inspire IRCd) is a modular C++ IRC daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    The "namesx" and "uhnames" modules do not properly validate network
+    input, leading to a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can send specially crafted IRC commands to the
+    server, causing a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Unload the "uhnames" module in the InspIRCd configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All InspIRCd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/inspircd-1.1.19&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1925">CVE-2008-1925</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 May 2008 14:50:35 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 06 May 2008 19:30:15 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 06 May 2008 19:30:22 +0000">
+    rbu
+  </metadata>
+</glsa>

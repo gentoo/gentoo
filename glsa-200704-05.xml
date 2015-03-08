@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-05">
+  <title>zziplib: Buffer Overflow</title>
+  <synopsis>
+    The zziplib library contains a buffer overflow vulnerability that could
+    lead to user-assisted remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">zziplib</product>
+  <announced>April 03, 2007</announced>
+  <revised>April 03, 2007: 01</revised>
+  <bug>171441</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/zziplib" auto="yes" arch="*">
+      <unaffected range="ge">0.13.49</unaffected>
+      <vulnerable range="lt">0.13.49</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The zziplib library is a lightweight library for extracting data from
+    files archived in a single zip file.
+    </p>
+  </background>
+  <description>
+    <p>
+    dmcox dmcox discovered a boundary error in the zzip_open_shared_io()
+    function from zzip/file.c .
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run a zziplib function with an
+    overly long string as an argument which would trigger the buffer
+    overflow and may lead to the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All zziplib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/zziplib-0.13.49&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1614">CVE-2007-1614</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 24 Mar 2007 20:39:36 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 26 Mar 2007 21:59:00 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 21:14:54 +0000">
+    falco
+  </metadata>
+</glsa>

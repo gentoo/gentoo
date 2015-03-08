@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-01">
+  <title>gFTP: Multiple vulnerabilities</title>
+  <synopsis>
+    Two buffer overflow vulnerabilities have been discovered in fsplib code
+    used in gFTP.
+  </synopsis>
+  <product type="ebuild">gftp</product>
+  <announced>November 01, 2007</announced>
+  <revised>November 01, 2007: 01</revised>
+  <bug>188252</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/gftp" auto="yes" arch="*">
+      <unaffected range="ge">2.0.18-r6</unaffected>
+      <vulnerable range="lt">2.0.18-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gFTP is an FTP client for the GNOME desktop environment.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kalle Olavi Niemitalo discovered two boundary errors in fsplib code
+    included in gFTP when processing overly long directory or file names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could trigger these vulnerabilities by enticing a
+    user to download a file with a specially crafted directory or file
+    name, possibly resulting in the execution of arbitrary code
+    (CVE-2007-3962) or a Denial of Service (CVE-2007-3961).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gFTP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/gftp-2.0.18-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3961">CVE-2007-3961</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3962">CVE-2007-3962</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Sep 2007 07:30:16 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Sep 2007 07:30:24 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 10 Oct 2007 19:23:34 +0000">
+    p-y
+  </metadata>
+</glsa>

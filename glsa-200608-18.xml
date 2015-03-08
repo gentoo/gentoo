@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-18">
+  <title>Net::Server: Format string vulnerability</title>
+  <synopsis>
+    A format string vulnerability has been reported in Net::Server which can be
+    exploited to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">net-server</product>
+  <announced>August 10, 2006</announced>
+  <revised>August 10, 2006: 01</revised>
+  <bug>142386</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/net-server" auto="yes" arch="*">
+      <unaffected range="ge">0.88</unaffected>
+      <vulnerable range="lt">0.88</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Net::Server is an extensible, generic Perl server engine. It is used by
+    several Perl applications like Postgrey.
+    </p>
+  </background>
+  <description>
+    <p>
+    The log function of Net::Server does not handle format string
+    specifiers properly before they are sent to syslog.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted datastream to an application using
+    Net::Server, an attacker could cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Net::Server should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/net-server-0.88&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1127">CVE-2005-1127</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 07 Aug 2006 08:06:01 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Aug 2006 12:30:18 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 08 Aug 2006 10:05:21 +0000">
+    vorlon078
+  </metadata>
+</glsa>

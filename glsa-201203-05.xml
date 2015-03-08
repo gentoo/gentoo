@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-05">
+  <title>Rack: Denial of Service</title>
+  <synopsis>A hash collision vulnerability in Rack allows remote attackers to
+    cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">rack</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>396455</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rack" auto="yes" arch="*">
+      <unaffected range="ge">1.1.3</unaffected>
+      <vulnerable range="lt">1.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Rack is a modular Ruby web server interface.</p>
+  </background>
+  <description>
+    <p>Rack does not properly randomize hash functions to protect against hash
+      collision attacks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted form post, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Rack users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rack-1.1.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5036">CVE-2011-5036</uri>
+  </references>
+  <metadata timestamp="Sun, 04 Mar 2012 21:22:25 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:05:34 +0000" tag="submitter">ackle</metadata>
+</glsa>

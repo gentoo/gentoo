@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201201-14">
+  <title>MIT Kerberos 5 Applications: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MIT Kerberos 5
+    Applications, the most severe of which may allow execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">mit-krb5-appl</product>
+  <announced>January 23, 2012</announced>
+  <revised>January 23, 2012: 1</revised>
+  <bug>374229</bug>
+  <bug>396137</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5-appl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2-r1</unaffected>
+      <vulnerable range="lt">1.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A suite of applications that implement the Kerberos 5 network protocol
+      from MIT.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MIT Kerberos 5
+      Applications:
+    </p>
+    
+    <ul>
+      <li>An error in the FTP daemon prevents it from dropping its initial
+        effective group identifier (CVE-2011-1526). 
+      </li>
+      <li>A boundary error in the telnet daemon and client could cause a buffer
+        overflow (CVE-2011-4862).
+      </li>
+    </ul>
+    
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote attacker may be able to execute arbitrary code
+      with the privileges of the user running the telnet daemon or client.
+      Furthermore, an authenticated remote attacker may be able to read or
+      write files owned by the same group as the effective group of the FTP
+      daemon. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MIT Kerberos 5 Applications users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-crypt/mit-krb5-appl-1.0.2-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1526">CVE-2011-1526</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4862">CVE-2011-4862</uri>
+  </references>
+  <metadata timestamp="Sun, 08 Jan 2012 17:28:51 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 23 Jan 2012 20:02:13 +0000" tag="submitter">ackle</metadata>
+</glsa>

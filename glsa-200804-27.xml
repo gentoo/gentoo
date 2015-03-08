@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-27">
+  <title>SILC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in SILC Client, Server, and Toolkit,
+    allowing for Denial of Service and execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">silc-toolkit silc-client silc-server</product>
+  <announced>April 24, 2008</announced>
+  <revised>April 24, 2008: 01</revised>
+  <bug>212362</bug>
+  <bug>214116</bug>
+  <bug>214812</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/silc-toolkit" auto="yes" arch="*">
+      <unaffected range="ge">1.1.7</unaffected>
+      <vulnerable range="lt">1.1.7</vulnerable>
+    </package>
+    <package name="net-im/silc-client" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+    <package name="net-im/silc-server" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2</unaffected>
+      <vulnerable range="lt">1.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SILC (Secure Internet Live Conferencing protocol) Toolkit is a software
+    development kit for use in clients, SILC Server is a communication
+    server, and SILC Client is an IRSSI-based text client.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>Nathan G. Grennan reported a boundary error in SILC Toolkit
+    within the silc_fingerprint() function in the file
+    lib/silcutil/silcutil.c when passing overly long data, resulting in a
+    stack-based buffer overflow (CVE-2008-1227).</li>
+    <li>A vulnerability
+    has been reported in SILC Server which is caused due to an error in the
+    handling of "NEW_CLIENT" packets that do not contain a nickname
+    (CVE-2008-1429).</li>
+    <li>Ariel Waissbein, Pedro Varangot, Martin
+    Mizrahi, Oren Isacson, Carlos Garcia, and Ivan Arce of Core Security
+    Technologies reported that SILC Client, Server, and Toolkit contain a
+    vulnerability in the silc_pkcs1_decode() function in the silccrypt
+    library (silcpkcs1.c), resulting in an integer underflow, signedness
+    error, and a buffer overflow (CVE-2008-1552).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities to cause a Denial
+    of Service or execute arbitrary code with the privileges of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SILC Toolkit users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-toolkit-1.1.7&quot;</code>
+    <p>
+    All SILC Client users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-client-1.1.4&quot;</code>
+    <p>
+    All SILC Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-server-1.1.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1227">CVE-2008-1227</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1429">CVE-2008-1429</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1552">CVE-2008-1552</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Mar 2008 02:19:53 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:27 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 23 Apr 2008 16:41:55 +0000">
+    keytoaster
+  </metadata>
+</glsa>

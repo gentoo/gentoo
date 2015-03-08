@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-06">
+  <title>LessTif: Multiple vulnerabilities in libXpm</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in libXpm, which is included
+    in LessTif, that can potentially lead to remote code execution.
+  </synopsis>
+  <product type="ebuild">lesstif</product>
+  <announced>February 06, 2005</announced>
+  <revised>February 06, 2005: 01</revised>
+  <bug>78483</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/lesstif" auto="yes" arch="*">
+      <unaffected range="ge">0.94.0</unaffected>
+      <vulnerable range="lt">0.94.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    LessTif is a clone of OSF/Motif, which is a standard user
+    interface toolkit available on Unix and Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities, including buffer overflows, out of
+    bounds memory access and directory traversals, have been discovered in
+    libXpm, which is shipped as a part of the X Window System. LessTif, an
+    application that includes libXpm, suffers from the same issues.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A carefully-crafted XPM file could crash applications making use
+    of the LessTif toolkit, potentially allowing the execution of arbitrary
+    code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All LessTif users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/lesstif-0.94.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
+    <uri link="http://www.lesstif.org/ReleaseNotes.html">LessTif Release Notes</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 16:13:30 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun,  6 Feb 2005 17:18:21 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-08">
+  <title>RPM: Buffer overflow</title>
+  <synopsis>
+    RPM is vulnerable to a buffer overflow and possibly the execution of
+    arbitrary code when opening specially crafted packages.
+  </synopsis>
+  <product type="ebuild">rpm</product>
+  <announced>November 13, 2006</announced>
+  <revised>November 13, 2006: 01</revised>
+  <bug>154218</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/rpm" auto="yes" arch="*">
+      <unaffected range="ge">4.4.6-r3</unaffected>
+      <vulnerable range="lt">4.4.6-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Red Hat Package Manager (RPM) is a command line driven package
+    management system capable of installing, uninstalling, verifying,
+    querying, and updating computer software packages.
+    </p>
+  </background>
+  <description>
+    <p>
+    Vladimir Mosgalin has reported that when processing certain packages,
+    RPM incorrectly allocates memory for the packages, possibly causing a
+    heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted RPM package
+    and execute code with the privileges of that user if certain locales
+    are set.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All RPM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/rpm-4.4.6-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5466">CVE-2006-5466</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 06 Nov 2006 23:03:12 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Nov 2006 23:11:11 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 07 Nov 2006 13:44:27 +0000">
+    falco
+  </metadata>
+</glsa>

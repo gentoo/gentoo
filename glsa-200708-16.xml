@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-16">
+  <title>Qt: Multiple format string vulnerabilities</title>
+  <synopsis>
+    Format string vulnerabilities in Qt 3 may lead to the remote execution of
+    arbitrary code in some Qt applications.
+  </synopsis>
+  <product type="ebuild">qt</product>
+  <announced>August 22, 2007</announced>
+  <revised>August 22, 2007: 01</revised>
+  <bug>185446</bug>
+  <access>remote, local</access>
+  <affected>
+    <package name="x11-libs/qt" auto="yes" arch="*">
+      <unaffected range="ge">3.3.8-r3</unaffected>
+      <vulnerable range="lt">3.3.8-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Qt is a cross-platform GUI framework, which is used e.g. by KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tim Brown of Portcullis Computer Security Ltd and Dirk Mueller of KDE
+    reported multiple format string errors in qWarning() calls in files
+    qtextedit.cpp, qdatatable.cpp, qsqldatabase.cpp, qsqlindex.cpp,
+    qsqlrecord.cpp, qglobal.cpp, and qsvgdevice.cpp.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could trigger one of the vulnerabilities by causing a Qt
+    application to parse specially crafted text, which may lead to the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Qt 3 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;=x11-libs/qt-3*&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3388">CVE-2007-3388</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Aug 2007 17:25:28 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Aug 2007 17:25:45 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Aug 2007 22:38:33 +0000">
+    falco
+  </metadata>
+</glsa>

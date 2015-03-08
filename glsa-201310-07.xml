@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-07">
+  <title>OpenJPEG: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities in OpenJPEG could result in execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">openjpeg</product>
+  <announced>October 10, 2013</announced>
+  <revised>October 10, 2013: 1</revised>
+  <bug>412895</bug>
+  <bug>425772</bug>
+  <bug>433766</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/openjpeg" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1</unaffected>
+      <vulnerable range="lt">1.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJPEG is an open-source JPEG 2000 library.</p>
+  </background>
+  <description>
+    <p>OpenJPEG contains an invalid free error and multiple buffer overflow
+      flaws. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted JPEG
+      file, possibly resulting in execution of arbitrary code or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJPEG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/openjpeg-1.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5030">CVE-2009-5030</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3358">CVE-2012-3358</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3535">CVE-2012-3535</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Sep 2013 15:22:41 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 10 Oct 2013 11:18:57 +0000">ackle</metadata>
+</glsa>

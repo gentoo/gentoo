@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-15">
+  <title>Roundcube: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Roundcube could result in arbitrary code
+    execution, SQL injection, or reading of arbitrary files.
+  </synopsis>
+  <product type="ebuild">roundcube</product>
+  <announced>February 11, 2014</announced>
+  <revised>February 11, 2014: 1</revised>
+  <bug>488954</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/roundcube" auto="yes" arch="*">
+      <unaffected range="ge">0.9.5</unaffected>
+      <unaffected range="rge">0.8.7</unaffected>
+      <vulnerable range="lt">0.9.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Roundcube is a browser-based multilingual IMAP client with an
+      application-like user interface.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in steps/utils/save_pref.inc allows remote attackers to
+      use the _session parameter to change configuration settings.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, inject SQL code, or read arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Roundcube 0.9 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-0.9.5"
+    </code>
+    
+    <p>All Roundcube 0.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-0.8.7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6172">CVE-2013-6172</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 28 Nov 2013 07:52:58 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Feb 2014 09:18:22 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

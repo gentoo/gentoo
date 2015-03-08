@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201001-09">
+  <title>Ruby: Terminal Control Character Injection</title>
+  <synopsis>
+    An input sanitation flaw in the WEBrick HTTP server included in Ruby might
+    allow remote attackers to inject arbitrary control characters into terminal
+    sessions.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>January 14, 2010</announced>
+  <revised>January 14, 2010: 01</revised>
+  <bug>300468</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.7_p249</unaffected>
+      <unaffected range="rge">1.8.6_p388</unaffected>
+      <vulnerable range="lt">1.8.7_p249</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an interpreted scripting language for quick and easy
+    object-oriented programming. It comes bundled with a HTTP server
+    ("WEBrick").
+    </p>
+  </background>
+  <description>
+    <p>
+    Giovanni Pellerano, Alessandro Tanasi and Francesco Ongaro reported
+    that WEBrick does not filter terminal control characters, for instance
+    when handling HTTP logs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted HTTP request to a
+    WEBrick server to inject arbitrary terminal control characters,
+    possibly resulting in the execution of arbitrary commands, data loss,
+    or other unspecified impact. This could also be used to facilitate
+    other attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby 1.8.7 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.7_p249&quot;</code>
+    <p>
+    All Ruby 1.8.6 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.6_p388&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4492">CVE-2009-4492</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 13 Jan 2010 19:56:42 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Jan 2010 20:40:12 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 13 Jan 2010 20:40:18 +0000">
+    a3li
+  </metadata>
+</glsa>

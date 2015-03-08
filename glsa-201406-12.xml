@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-12">
+  <title>FreeRADIUS: Arbitrary code execution</title>
+  <synopsis>A vulnerability in FreeRADIUS can lead to arbitrary code execution
+    or Denial of Service by authenticated users.
+  </synopsis>
+  <product type="ebuild">freeradius</product>
+  <announced>June 15, 2014</announced>
+  <revised>June 15, 2014: 1</revised>
+  <bug>501754</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">2.2.5</unaffected>
+      <vulnerable range="lt">2.2.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeRADIUS is an open source RADIUS authentication server.</p>
+  </background>
+  <description>
+    <p>Large passwords can trigger a stack-based buffer overflow in
+      FreeRADIUS’s rlm_pap module when authenticating against an LDAP server.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An authenticated user could set a specially crafted long password,
+      possibly leading to arbitrary code execution or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeRADIUS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/freeradius-2.2.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2015">CVE-2014-2015</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 May 2014 04:12:59 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Jun 2014 00:12:35 +0000">
+    creffett
+  </metadata>
+</glsa>

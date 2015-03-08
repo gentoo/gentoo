@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-17">
+  <title>SpamAssassin 3, Vipul's Razor: Denial of Service vulnerability</title>
+  <synopsis>
+    SpamAssassin and Vipul's Razor are vulnerable to a Denial of Service attack
+    when handling certain malformed messages.
+  </synopsis>
+  <product type="ebuild">SpamAssassin, Vipul's Razor</product>
+  <announced>June 21, 2005</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>94722</bug>
+  <bug>95492</bug>
+  <bug>96776</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/spamassassin" auto="yes" arch="*">
+      <unaffected range="ge">3.0.4</unaffected>
+      <unaffected range="lt">3.0.1</unaffected>
+      <vulnerable range="lt">3.0.4</vulnerable>
+    </package>
+    <package name="mail-filter/razor" auto="yes" arch="*">
+      <unaffected range="ge">2.74</unaffected>
+      <vulnerable range="lt">2.74</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SpamAssassin is an extensible email filter which is used to identify
+    junk email. Vipul's Razor is a client for a distributed, collaborative
+    spam detection and filtering network.
+    </p>
+  </background>
+  <description>
+    <p>
+    SpamAssassin and Vipul's Razor contain a Denial of Service
+    vulnerability when handling special misformatted long message headers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted message an attacker could cause a Denial
+    of Service attack against the SpamAssassin/Vipul's Razor server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SpamAssassin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/spamassassin-3.0.4&quot;</code>
+    <p>
+    All Vipul's Razor users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/razor-2.74&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1266">CAN-2005-1266</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2024">CVE-2005-2024</uri>
+    <uri link="http://mail-archives.apache.org/mod_mbox/spamassassin-announce/200506.mbox/%3c17072.35054.586017.822288@proton.pathname.com%3e">SpamAssassin Announcement</uri>
+    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=7520323&amp;forum_id=4259">Vipul's Razor Announcement</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 08 Jun 2005 05:05:05 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Jun 2005 04:49:42 +0000">
+    jaervosz
+  </metadata>
+</glsa>

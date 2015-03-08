@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-41">
+  <title>TikiWiki: Arbitrary command execution</title>
+  <synopsis>
+    A bug in TikiWiki allows certain users to upload and execute malicious PHP
+    scripts.
+  </synopsis>
+  <product type="ebuild">tikiwiki</product>
+  <announced>January 30, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>78944</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5</unaffected>
+      <vulnerable range="lt">1.8.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TikiWiki is a web-based groupware and content management system (CMS),
+    using PHP, ADOdb and Smarty.
+    </p>
+  </background>
+  <description>
+    <p>
+    TikiWiki does not validate files uploaded to the "temp" directory.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A malicious user could run arbitrary commands on the server by
+    uploading and calling a PHP script.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TikiWiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.8.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://tikiwiki.org/art102">TikiWiki Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0200">CVE-2005-0200</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 28 Jan 2005 00:00:37 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 29 Jan 2005 17:00:21 +0000">
+    vorlon078
+  </metadata>
+</glsa>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-24">
+  <title>Dnsmasq: Denial of Service </title>
+  <synopsis>A vulnerability in Dnsmasq can lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">dnsmasq</product>
+  <announced>June 25, 2014</announced>
+  <revised>June 25, 2014: 1</revised>
+  <bug>436894</bug>
+  <bug>453170</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.66</unaffected>
+      <vulnerable range="lt">2.66</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dnsmasq is a lightweight, easy to configure DNS forwarder and DHCP
+      server. 
+    </p>
+  </background>
+  <description>
+    <p>When used with certain libvirt configurations Dnsmasq replies to queries
+      from prohibited interfaces. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attackers can cause a Denial of Service via spoofed TCP based
+      DNS queries. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dnsmasq users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/dnsmasq-2.66"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3411">CVE-2012-3411</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0198">CVE-2013-0198</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 03:08:23 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 21:36:31 +0000">K_F</metadata>
+</glsa>

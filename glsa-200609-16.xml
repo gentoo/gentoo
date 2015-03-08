@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-16">
+  <title>Tikiwiki: Arbitrary command execution</title>
+  <synopsis>
+    Tikiwiki contains a cross-site scripting (XSS) vulnerability as well as a
+    second vulnerability which may allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tikiwiki</product>
+  <announced>September 26, 2006</announced>
+  <revised>September 26, 2006: 01</revised>
+  <bug>145714</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/tikiwiki" auto="yes" arch="*">
+      <unaffected range="ge">1.9.5</unaffected>
+      <vulnerable range="lt">1.9.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tikiwiki is a web-based groupware and content management system,
+    developed with PHP, ADOdb and Smarty.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability in jhot.php allows for an unrestricted file upload to
+    the img/wiki/ directory. Additionally, an XSS exists in the highlight
+    parameter of tiki-searchindex.php.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could execute arbitrary code with the rights of the user
+    running the web server by uploading a file and executing it via a
+    filepath parameter. The XSS could be exploited to inject and execute
+    malicious script code or to steal cookie-based authentication
+    credentials, potentially compromising the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tikiwiki users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --oneshot --verbose --ask &quot;&gt;=www-apps/tikiwiki-1.9.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4299">CVE-2006-4299</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4602">CVE-2006-4602</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Sep 2006 09:06:28 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Sep 2006 13:40:09 +0000">
+    hlieberman
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Sep 2006 18:24:26 +0000">
+    falco
+  </metadata>
+</glsa>

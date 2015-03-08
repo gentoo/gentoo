@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200804-02">
+  <title>bzip2: Denial of Service</title>
+  <synopsis>
+    A buffer overread vulnerability has been discovered in Bzip2.
+  </synopsis>
+  <product type="ebuild">bzip2</product>
+  <announced>April 02, 2008</announced>
+  <revised>April 02, 2008: 01</revised>
+  <bug>213820</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/bzip2" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    bzip2 is a free and open source lossless data compression program.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Oulu University discovered that bzip2 does not properly check
+    offsets provided by the bzip2 file, leading to a buffer overread.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers can entice a user or automated system to open a
+    specially crafted file that triggers a buffer overread, causing a
+    Denial of Service. libbz2 and programs linking against it are also
+    affected.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All bzip2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/bzip2-1.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1372">CVE-2008-1372</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Mar 2008 02:17:50 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Mar 2008 23:42:29 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 02 Apr 2008 13:31:45 +0000">
+    rbu
+  </metadata>
+</glsa>

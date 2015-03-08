@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-25">
+  <title>QtGui: Denial of Service</title>
+  <synopsis>A NULL pointer dereference in QtGui could lead to Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">qtgui</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>508984</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-qt/qtgui" auto="yes" arch="*">
+      <unaffected range="ge">4.8.5-r2</unaffected>
+      <vulnerable range="lt">4.8.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QtGui is the GUI module and platform plugins for the Qt5 framework.</p>
+  </background>
+  <description>
+    <p>A NULL pointer dereference has been found in QtGui.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted GIF image, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtGui users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtgui-4.8.5-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0190">CVE-2014-0190</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Jun 2014 13:56:15 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:55:19 +0000">ackle</metadata>
+</glsa>

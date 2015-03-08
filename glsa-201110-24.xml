@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-24">
+  <title>Squid: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Squid allowing attackers to
+    execute arbitrary code or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">Squid</product>
+  <announced>October 26, 2011</announced>
+  <revised>October 26, 2011: 1</revised>
+  <bug>279379</bug>
+  <bug>279380</bug>
+  <bug>301828</bug>
+  <bug>334263</bug>
+  <bug>381065</bug>
+  <bug>386215</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">3.1.15</unaffected>
+      <vulnerable range="lt">3.1.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Squid is a full-featured web proxy cache. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Squid. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Remote unauthenticated attackers may be able to execute arbitrary code
+      with the privileges of the Squid process or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All squid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-3.1.15"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since September 4, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2621">CVE-2009-2621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2622">CVE-2009-2622</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2855">CVE-2009-2855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0308">CVE-2010-0308</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0639">CVE-2010-0639</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2951">CVE-2010-2951</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3072">CVE-2010-3072</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3205">CVE-2011-3205</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:54 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Wed, 26 Oct 2011 20:47:18 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

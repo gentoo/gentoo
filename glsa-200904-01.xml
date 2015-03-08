@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-01">
+  <title>Openfire: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were discovered in Openfire, the worst of which
+    may allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openfire</product>
+  <announced>April 02, 2009</announced>
+  <revised>April 02, 2009: 01</revised>
+  <bug>246008</bug>
+  <bug>254309</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/openfire" auto="yes" arch="*">
+      <unaffected range="ge">3.6.3</unaffected>
+      <vulnerable range="lt">3.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ignite Realtime Openfire is a fast real-time collaboration server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two vulnerabilities have been reported by Federico Muttis, from CORE
+    IMPACT's Exploit Writing Team:
+    </p>
+    <ul>
+    <li>
+    Multiple missing or incomplete input validations in several .jsps
+    (CVE-2009-0496).
+    </li>
+    <li>
+    Incorrect input validation of the "log" parameter in log.jsp
+    (CVE-2009-0497).
+    </li>
+    </ul> <p>
+    Multiple vulnerabilities have been reported by Andreas Kurtz:
+    </p>
+    <ul>
+    <li>
+    Erroneous built-in exceptions to input validation in login.jsp
+    (CVE-2008-6508).
+    </li>
+    <li>
+    Unsanitized user input to the "type" parameter in
+    sipark-log-summary.jsp used in SQL statement. (CVE-2008-6509)
+    </li>
+    <li>
+    A Cross-Site-Scripting vulnerability due to unsanitized input to the
+    "url" parameter. (CVE-2008-6510, CVE-2008-6511)
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could execute arbitrary code on clients' systems by
+    uploading a specially crafted plugin, bypassing authentication.
+    Additionally, an attacker could read arbitrary files on the server or
+    execute arbitrary SQL statements. Depending on the server's
+    configuration the attacker might also execute code on the server via an
+    SQL injection.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Openfire users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/openfire-3.6.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6508">CVE-2008-6508</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6509">CVE-2008-6509</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6510">CVE-2008-6510</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6511">CVE-2008-6511</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0496">CVE-2009-0496</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0497">CVE-2009-0497</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 21 Mar 2009 10:46:26 +0000">
+    mabi
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 21 Mar 2009 11:36:24 +0000">
+    p-y
+  </metadata>
+</glsa>

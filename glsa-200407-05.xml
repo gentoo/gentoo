@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-05">
+  <title>XFree86, X.org: XDM ignores requestPort setting</title>
+  <synopsis>
+    XDM will open TCP sockets for its chooser, even if the
+    DisplayManager.requestPort setting is set to 0. This may allow authorized
+    users to access a machine remotely via X, even if the administrator has
+    configured XDM to refuse such connections.
+  </synopsis>
+  <product type="ebuild">xdm</product>
+  <announced>July 05, 2004</announced>
+  <revised>July 05, 2004: 01</revised>
+  <bug>53226</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-base/xfree" auto="yes" arch="*">
+      <unaffected range="ge">4.3.0-r6</unaffected>
+      <vulnerable range="le">4.3.0-r5</vulnerable>
+    </package>
+    <package name="x11-base/xorg-x11" auto="yes" arch="*">
+      <unaffected range="ge">6.7.0-r1</unaffected>
+      <vulnerable range="le">6.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The X Display Manager (XDM) is a program which provides a graphical login
+    prompt to users on the console or on remote X terminals. It has largely
+    been superseded by programs such as GDM and KDM.
+    </p>
+  </background>
+  <description>
+    <p>
+    XDM will open TCP sockets for its chooser, even if the
+    DisplayManager.requestPort setting is set to 0. Remote clients can use this
+    port to connect to XDM and request a login window, thus allowing access to
+    the system.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Authorized users may be able to login remotely to a machine running XDM,
+    even if this option is disabled in XDM's configuration. Please note that an
+    attacker must have a preexisting account on the machine in order to exploit
+    this vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users should upgrade to the
+    latest available version of X.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    If you are using XFree86, you should run the following:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=x11-base/xfree-4.3.0-r6"
+    # emerge ">=x11-base/xfree-4.3.0-r6"</code>
+    <p>
+    If you are using X.org's X11 server, you should run the following:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=x11-base/xorg-x11-6.7.0-r1"
+    # emerge ">=x11-base/xorg-x11-6.7.0-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0419">CAN 2004-0419</uri>
+    <uri link="http://bugs.xfree86.org/show_bug.cgi?id=1376">XFree86 Bug</uri>
+  </references>
+  <metadata tag="submitter">
+    condordes
+  </metadata>
+</glsa>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-17">
+  <title>Xpdf, Poppler, GPdf, libextractor, pdftohtml: Heap overflows</title>
+  <synopsis>
+    Xpdf, Poppler, GPdf, libextractor and pdftohtml are vulnerable to integer
+    overflows that may be exploited to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xpdf poppler gpdf libextractor pdftohtml</product>
+  <announced>January 30, 2006</announced>
+  <revised>January 30, 2006: 01</revised>
+  <bug>117481</bug>
+  <bug>117494</bug>
+  <bug>117495</bug>
+  <bug>115789</bug>
+  <bug>118665</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.01-r5</unaffected>
+      <vulnerable range="lt">3.01-r5</vulnerable>
+    </package>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.4.3-r4</unaffected>
+      <vulnerable range="lt">0.4.3-r4</vulnerable>
+    </package>
+    <package name="app-text/gpdf" auto="yes" arch="*">
+      <unaffected range="ge">2.10.0-r3</unaffected>
+      <vulnerable range="lt">2.10.0-r3</vulnerable>
+    </package>
+    <package name="media-libs/libextractor" auto="yes" arch="*">
+      <unaffected range="ge">0.5.9</unaffected>
+      <vulnerable range="lt">0.5.9</vulnerable>
+    </package>
+    <package name="app-text/pdftohtml" auto="yes" arch="*">
+      <vulnerable range="lt">0.36-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xpdf is a PDF file viewer that runs under the X Window System.
+    Poppler is a PDF rendering library based on the Xpdf 3.0 code base.
+    GPdf is a PDF file viewer for the GNOME 2 platform, also based on Xpdf.
+    libextractor is a library which includes Xpdf code to extract arbitrary
+    meta-data from files. pdftohtml is a utility to convert PDF files to
+    HTML or XML formats that makes use of Xpdf code to decode PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans has reported some integer overflows in Xpdf when
+    attempting to calculate buffer sizes for memory allocation, leading to
+    a heap overflow and a potential infinite loop when handling malformed
+    input files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a specially crafted PDF file to a victim, an attacker
+    could cause an overflow, potentially resulting in the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.01-r5&quot;</code>
+    <p>
+    All Poppler users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.4.3-r4&quot;</code>
+    <p>
+    All GPdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.10.0-r3&quot;</code>
+    <p>
+    All libextractor users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libextractor-0.5.9&quot;</code>
+    <p>
+    All pdftohtml users should migrate to the latest stable version
+    of Poppler.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3627">CVE-2005-3627</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3626">CVE-2005-3626</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3625">CVE-2005-3625</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3624">CVE-2005-3624</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jan 2006 22:04:57 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 17 Jan 2006 03:14:48 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 29 Jan 2006 17:26:11 +0000">
+    jaervosz
+  </metadata>
+</glsa>

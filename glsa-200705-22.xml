@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-22">
+  <title>FreeType: Buffer overflow</title>
+  <synopsis>
+    A vulnerability has been discovered in FreeType allowing for the execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">freetype</product>
+  <announced>May 30, 2007</announced>
+  <revised>May 30, 2007: 01</revised>
+  <bug>179161</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.3.4-r2</unaffected>
+      <unaffected range="lt">2.0</unaffected>
+      <vulnerable range="lt">2.3.4-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeType is a True Type Font rendering library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Victor Stinner discovered a heap-based buffer overflow in the function
+    Get_VMetrics() in src/truetype/ttgload.c when processing TTF files with
+    a negative n_points attribute.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted TTF
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running FreeType.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeType users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/freetype-2.3.4-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2754">CVE-2007-2754</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 22 May 2007 15:08:56 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 May 2007 15:38:03 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 27 May 2007 16:46:08 +0000">
+    p-y
+  </metadata>
+</glsa>

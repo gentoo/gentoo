@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-36">
+  <title>netkit-telnetd: Buffer overflow</title>
+  <synopsis>
+    The netkit-telnetd telnet client is vulnerable to a buffer overflow, which
+    could allow a malicious telnet server operator to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">netkit-telnetd</product>
+  <announced>March 31, 2005</announced>
+  <revised>March 31, 2005: 01</revised>
+  <bug>87211</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/netkit-telnetd" auto="yes" arch="*">
+      <unaffected range="ge">0.17-r6</unaffected>
+      <vulnerable range="lt">0.17-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    netkit-telnetd provides standard Linux telnet client and server.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been identified in the slc_add_reply()
+    function of netkit-telnetd client, where a large number of SLC commands
+    can overflow a fixed size buffer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful explotation would require a vulnerable user to connect
+    to an attacker-controlled host using telnet, potentially executing
+    arbitrary code with the permissions of the telnet user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All netkit-telnetd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/netkit-telnetd-0.17-r6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=220&amp;type=vulnerabilities">iDEFENSE Advisory 03-28-05</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 30 Mar 2005 08:13:45 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Mar 2005 13:44:36 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 30 Mar 2005 19:43:01 +0000">
+    koon
+  </metadata>
+</glsa>

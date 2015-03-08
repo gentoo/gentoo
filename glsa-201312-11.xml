@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-11">
+  <title>Win32 Codecs: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow vulnerability in Win32 Codecs can potentially
+    allow for user-assisted arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">win32codecs</product>
+  <announced>December 16, 2013</announced>
+  <revised>December 16, 2013: 1</revised>
+  <bug>232999</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/win32codecs" auto="yes" arch="*">
+      <vulnerable range="le">20071007-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Win32 Codecs is a set of Windows audio and video playback codecs.</p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow exists when handling Shockwave Flash files.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted Flash
+      file using a package linked against Win32 Codecs, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Win32 Codecs. We recommend that
+      users unmerge Win32 Codecs:
+    </p>
+    
+    <code>
+      # emerge --unmerge "media-libs/win32codecs"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5400">CVE-2007-5400</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 11 Dec 2013 01:23:33 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Dec 2013 12:38:30 +0000">
+    creffett
+  </metadata>
+</glsa>

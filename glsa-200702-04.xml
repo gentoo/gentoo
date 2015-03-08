@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-04">
+  <title>RAR, UnRAR: Buffer overflow</title>
+  <synopsis>
+    RAR and UnRAR contain a buffer overflow allowing the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">rar, unrar</product>
+  <announced>February 13, 2007</announced>
+  <revised>February 14, 2007: 02</revised>
+  <bug>166440</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/rar" auto="yes" arch="*">
+      <unaffected range="ge">3.7.0_beta1</unaffected>
+      <vulnerable range="lt">3.7.0_beta1</vulnerable>
+    </package>
+    <package name="app-arch/unrar" auto="yes" arch="*">
+      <unaffected range="ge">3.7.3</unaffected>
+      <vulnerable range="lt">3.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    RAR and UnRAR provide command line interfaces for compressing and
+    decompressing RAR files.
+    </p>
+  </background>
+  <description>
+    <p>
+    RAR and UnRAR contain a boundary error when processing
+    password-protected archives that could result in a stack-based buffer
+    overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process a specially crafted
+    password-protected archive and execute arbitrary code with the rights
+    of the user uncompressing the archive.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All UnRAR users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/unrar-3.7.3&quot;</code>
+    <p>
+    All RAR users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/rar-3.7.0_beta1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0855">CVE-2007-0855</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 15:25:34 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 23:14:14 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 Feb 2007 23:24:39 +0000">
+    falco
+  </metadata>
+</glsa>

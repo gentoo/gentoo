@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-17">
+  <title>teTeX: Multiple buffer overflows</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in teTeX, allowing for
+    user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tetex</product>
+  <announced>September 27, 2007</announced>
+  <revised>September 27, 2007: 01</revised>
+  <bug>170861</bug>
+  <bug>182055</bug>
+  <bug>188172</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/tetex" auto="yes" arch="*">
+      <unaffected range="ge">3.0_p1-r4</unaffected>
+      <vulnerable range="lt">3.0_p1-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    teTeX is a complete TeX distribution for editing documents.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mark Richters discovered a buffer overflow in the open_sty() function
+    in file mkind.c. Other vulnerabilities have also been discovered in the
+    same file but might not be exploitable (CVE-2007-0650). Tetex also
+    includes vulnerable code from GD library (GLSA 200708-05), and from
+    Xpdf (CVE-2007-3387).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process a specially crafted
+    PNG, GIF or PDF file, or to execute "makeindex" on an overly long
+    filename. In both cases, this could lead to the remote execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All teTeX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/tetex-3.0_p1-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0650">CVE-2007-0650</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
+    <uri link="/security/en/glsa/glsa-200708-05.xml">GLSA-200708-05</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Sep 2007 15:34:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Sep 2007 14:17:49 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Sep 2007 21:28:55 +0000">
+    p-y
+  </metadata>
+</glsa>

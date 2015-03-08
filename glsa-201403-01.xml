@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201403-01">
+  <title>Chromium, V8: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium and V8,
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium v8</product>
+  <announced>March 05, 2014</announced>
+  <revised>March 05, 2014: 1</revised>
+  <bug>486742</bug>
+  <bug>488148</bug>
+  <bug>491128</bug>
+  <bug>491326</bug>
+  <bug>493364</bug>
+  <bug>498168</bug>
+  <bug>499502</bug>
+  <bug>501948</bug>
+  <bug>503372</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">33.0.1750.146</unaffected>
+      <vulnerable range="lt">33.0.1750.146</vulnerable>
+    </package>
+    <package name="dev-lang/v8" auto="yes" arch="*">
+      <vulnerable range="lt">3.20.17.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project. V8 is Google’s open
+      source JavaScript engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and V8. Please
+      review the CVE identifiers and release notes referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted web site or JavaScript program using Chromium or V8, possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition. Furthermore, a remote attacker
+      may be able to bypass security restrictions or have other unspecified
+      impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-33.0.1750.146"
+    </code>
+    
+    <p>Gentoo has discontinued support for separate V8 package. We recommend
+      that users unmerge V8:
+    </p>
+    
+    <code>
+      # emerge --unmerge "dev-lang/v8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2906">CVE-2013-2906</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2907">CVE-2013-2907</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2908">CVE-2013-2908</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2909">CVE-2013-2909</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2910">CVE-2013-2910</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2911">CVE-2013-2911</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2912">CVE-2013-2912</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2913">CVE-2013-2913</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2915">CVE-2013-2915</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2916">CVE-2013-2916</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2917">CVE-2013-2917</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2918">CVE-2013-2918</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2919">CVE-2013-2919</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2920">CVE-2013-2920</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2921">CVE-2013-2921</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2922">CVE-2013-2922</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2923">CVE-2013-2923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2925">CVE-2013-2925</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2926">CVE-2013-2926</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2927">CVE-2013-2927</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2928">CVE-2013-2928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2931">CVE-2013-2931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6621">CVE-2013-6621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6622">CVE-2013-6622</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6623">CVE-2013-6623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6624">CVE-2013-6624</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6625">CVE-2013-6625</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6626">CVE-2013-6626</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6627">CVE-2013-6627</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6628">CVE-2013-6628</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6632">CVE-2013-6632</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6634">CVE-2013-6634</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6635">CVE-2013-6635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6636">CVE-2013-6636</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6637">CVE-2013-6637</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6638">CVE-2013-6638</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6639">CVE-2013-6639</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6640">CVE-2013-6640</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6641">CVE-2013-6641</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6643">CVE-2013-6643</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6644">CVE-2013-6644</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6645">CVE-2013-6645</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6646">CVE-2013-6646</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6649">CVE-2013-6649</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6650">CVE-2013-6650</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6652">CVE-2013-6652</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6653">CVE-2013-6653</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6654">CVE-2013-6654</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6655">CVE-2013-6655</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6656">CVE-2013-6656</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6657">CVE-2013-6657</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6658">CVE-2013-6658</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6659">CVE-2013-6659</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6660">CVE-2013-6660</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6661">CVE-2013-6661</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6663">CVE-2013-6663</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6664">CVE-2013-6664</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6665">CVE-2013-6665</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6666">CVE-2013-6666</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6667">CVE-2013-6667</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6668">CVE-2013-6668</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6802">CVE-2013-6802</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1681">CVE-2014-1681</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 04 Oct 2013 06:36:15 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Mar 2014 10:57:09 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-24">
+  <title>Xpdf, GPdf: New integer overflows</title>
+  <synopsis>
+    New integer overflows were discovered in Xpdf, potentially resulting in the
+    execution of arbitrary code. GPdf includes Xpdf code and therefore is
+    vulnerable to the same issues.
+  </synopsis>
+  <product type="ebuild">Xpdf</product>
+  <announced>December 28, 2004</announced>
+  <revised>December 28, 2004: 01</revised>
+  <bug>75191</bug>
+  <bug>75201</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/xpdf" auto="yes" arch="*">
+      <unaffected range="ge">3.00-r7</unaffected>
+      <vulnerable range="le">3.00-r6</vulnerable>
+    </package>
+    <package name="app-text/gpdf" auto="yes" arch="*">
+      <unaffected range="ge">2.8.1-r1</unaffected>
+      <vulnerable range="le">2.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xpdf is an open source viewer for Portable Document Format (PDF)
+    files. GPdf is a Gnome-based PDF viewer that includes some Xpdf code.
+    </p>
+  </background>
+  <description>
+    <p>
+    A new integer overflow issue was discovered in Xpdf's
+    Gfx::doImage() function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice an user to open a specially-crafted PDF
+    file, potentially resulting in execution of arbitrary code with the
+    rights of the user running Xpdf or GPdf.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xpdf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.00-r7&quot;</code>
+    <p>
+    All GPdf users should also upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.8.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=172&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 28 Dec 2004 09:21:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 28 Dec 2004 09:21:29 +0000">
+    koon
+  </metadata>
+</glsa>

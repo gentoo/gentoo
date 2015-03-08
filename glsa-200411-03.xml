@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-03">
+  <title>Apache 1.3: Buffer overflow vulnerability in mod_include</title>
+  <synopsis>
+    A buffer overflow vulnerability exists in mod_include which could possibly
+    allow a local attacker to gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>November 02, 2004</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>68564</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">1.3.32-r1</unaffected>
+      <vulnerable range="lt">1.3.32-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Apache HTTP server is one of the most popular web servers on the
+    internet. mod_include is an Apache module to handle Server Side Includes
+    (SSI).
+    </p>
+  </background>
+  <description>
+    <p>
+    A possible buffer overflow exists in the get_tag() function of
+    mod_include.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If Server Side Includes (SSI) are enabled, a local attacker may be able to
+    run arbitrary code with the rights of an httpd child process by making use
+    of a specially-crafted document with malformed SSI.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=www-servers/apache-1.3.32-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0940">CAN-2004-0940</uri>
+    <uri link="http://www.apacheweek.com/features/security-13">Security vulnerabilities in Apache httpd 1.3</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 27 Oct 2004 10:11:41 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Oct 2004 12:38:27 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  2 Nov 2004 11:16:30 +0000">
+    vorlon078
+  </metadata>
+</glsa>

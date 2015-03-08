@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-14">
+  <title>mod_python: Publisher Handler vulnerability</title>
+  <synopsis>
+    mod_python contains a vulnerability in the Publisher Handler potentially
+    leading to information disclosure.
+  </synopsis>
+  <product type="ebuild">mod_python</product>
+  <announced>February 13, 2005</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>80109</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_python" auto="yes" arch="*">
+      <unaffected range="ge">3.1.3-r1</unaffected>
+      <unaffected range="rge">2.7.11</unaffected>
+      <vulnerable range="lt">3.1.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    mod_python is an Apache module that embeds the Python interpreter
+    within the server allowing Python-based web-applications to be created.
+    </p>
+  </background>
+  <description>
+    <p>
+    Graham Dumpleton discovered a vulnerability in mod_python's Publisher
+    Handler.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    By requesting a specially crafted URL for a published module page, an
+    attacker could obtain information about restricted variables.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All mod_python users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose www-apache/mod_python</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0088">CAN-2005-0088</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Feb 2005 20:01:25 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 11 Feb 2005 20:10:55 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 11 Feb 2005 20:41:24 +0000">
+    jaervosz
+  </metadata>
+</glsa>

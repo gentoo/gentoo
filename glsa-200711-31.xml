@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-31">
+  <title>Net-SNMP: Denial of Service</title>
+  <synopsis>
+    A Denial of Service vulnerability has been discovered in Net-SNMP when
+    processing GETBULK requests.
+  </synopsis>
+  <product type="ebuild">net-snmp</product>
+  <announced>November 20, 2007</announced>
+  <revised>November 20, 2007: 01</revised>
+  <bug>198346</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/net-snmp" auto="yes" arch="*">
+      <unaffected range="ge">5.4.1-r1</unaffected>
+      <vulnerable range="lt">5.4.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Net-SNMP is a collection of tools for generating and retrieving SNMP
+    data.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SNMP agent (snmpd) does not properly handle GETBULK requests with
+    an overly large "max-repetitions" field.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote unauthenticated attacker could send a specially crafted SNMP
+    request to the vulnerable application, possibly resulting in a high CPU
+    and memory consumption.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Net-SNMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/net-snmp-5.4.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5846">CVE-2007-5846</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 22:35:11 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 22:35:17 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 19 Nov 2007 21:51:55 +0000">
+    p-y
+  </metadata>
+</glsa>

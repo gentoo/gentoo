@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-13">
+  <title>OpenOffice.Org: DOC document Heap Overflow</title>
+  <synopsis>
+    OpenOffice.Org is vulnerable to a heap overflow when processing DOC
+    documents, which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">OpenOffice</product>
+  <announced>April 15, 2005</announced>
+  <revised>May 08, 2005: 02</revised>
+  <bug>88863</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4-r1</unaffected>
+      <vulnerable range="lt">1.1.4-r1</vulnerable>
+    </package>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4-r1</unaffected>
+      <vulnerable range="lt">1.1.4-r1</vulnerable>
+    </package>
+    <package name="app-office/openoffice-ximian" auto="yes" arch="*">
+      <unaffected range="ge">1.3.9-r1</unaffected>
+      <unaffected range="rge">1.3.6-r1</unaffected>
+      <unaffected range="rge">1.3.7-r1</unaffected>
+      <vulnerable range="lt">1.3.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenOffice.org is an office productivity suite, including word
+    processing, spreadsheets, presentations, drawings, data charting,
+    formula editing, and file conversion facilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    AD-LAB has discovered a heap overflow in the "StgCompObjStream::Load()"
+    function when processing DOC documents.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could design a malicious DOC document containing a
+    specially crafted header which, when processed by OpenOffice.Org, would
+    result in the execution of arbitrary code with the rights of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenOffice.Org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-1.1.4-r1&quot;</code>
+    <p>
+    All OpenOffice.Org binary users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-1.1.4-r1&quot;</code>
+    <p>
+    All OpenOffice.Org Ximian users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose app-office/openoffice-ximian</code>
+    <p>
+    Note to PPC users: There is no stable OpenOffice.Org fixed version for
+    the PPC architecture. Affected users should switch to the latest
+    OpenOffice.Org Ximian version.
+    </p>
+    <p>
+    Note to SPARC users: There is no stable OpenOffice.Org fixed version
+    for the SPARC architecture. Affected users should switch to the latest
+    OpenOffice.Org Ximian version.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://www.openoffice.org/issues/show_bug.cgi?id=46388">OpenOffice.Org Issue 46388</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0941">CAN-2005-0941</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 13 Apr 2005 09:08:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 14 Apr 2005 15:46:07 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 15 Apr 2005 07:51:32 +0000">
+    koon
+  </metadata>
+</glsa>

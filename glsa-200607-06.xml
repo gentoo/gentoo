@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-06">
+  <title>libpng: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow has been found in the libpng library that could lead to
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>July 19, 2006</announced>
+  <revised>July 19, 2006: 01</revised>
+  <bug>138433</bug>
+  <bug>138672</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.2.12</unaffected>
+      <vulnerable range="lt">1.2.12</vulnerable>
+    </package>
+    <package name="app-emulation/emul-linux-x86-baselibs" auto="yes" arch="amd64">
+      <unaffected range="ge">2.5.1</unaffected>
+      <vulnerable range="lt">2.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpng is an open, extensible image format library, with lossless
+    compression.
+    </p>
+  </background>
+  <description>
+    <p>
+    In pngrutil.c, the function png_decompress_chunk() allocates
+    insufficient space for an error message, potentially overwriting stack
+    data, leading to a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to load a maliciously crafted PNG image, an attacker
+    could execute arbitrary code with the rights of the user, or crash the
+    application using the libpng library, such as the
+    emul-linux-x86-baselibs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libpng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.12&quot;</code>
+    <p>
+    All AMD64 emul-linux-x86-baselibs users should also upgrade to the
+    latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-baselibs-2.5.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://heanet.dl.sourceforge.net/sourceforge/libpng/libpng-1.2.12-README.txt">libpng Changelog</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3334">CVE-2006-3334</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Jul 2006 14:10:20 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Jul 2006 18:53:23 +0000">
+    daxomatic
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Jul 2006 16:54:49 +0000">
+    koon
+  </metadata>
+</glsa>

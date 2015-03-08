@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-21">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in ClamAV allowing for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ClamAV</product>
+  <announced>April 24, 2007</announced>
+  <revised>April 24, 2007: 01</revised>
+  <bug>174375</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.90.2</unaffected>
+      <vulnerable range="lt">0.90.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDefense Labs have reported a stack-based buffer overflow in the
+    cab_unstore() function when processing negative values in .cab files.
+    Multiple file descriptor leaks have also been reported in chmunpack.c,
+    pdf.c and dblock.c when processing .chm files.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted CHM file to the
+    scanner, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user running ClamAV.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.90.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1745">CVE-2007-1745</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1997">CVE-2007-1997</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Apr 2007 22:33:19 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 19 Apr 2007 10:34:20 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 22 Apr 2007 20:58:42 +0000">
+    falco
+  </metadata>
+</glsa>

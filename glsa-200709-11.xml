@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-11">
+  <title>GDM: Local Denial of Service</title>
+  <synopsis>
+    GDM can be crashed by a local user, preventing it from managing future
+    displays.
+  </synopsis>
+  <product type="ebuild">gdm</product>
+  <announced>September 18, 2007</announced>
+  <revised>September 18, 2007: 01</revised>
+  <bug>187919</bug>
+  <access>local</access>
+  <affected>
+    <package name="gnome-base/gdm" auto="yes" arch="*">
+      <unaffected range="ge">2.18.4</unaffected>
+      <unaffected range="rge">2.16.7</unaffected>
+      <vulnerable range="lt">2.18.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GDM is the GNOME display manager.
+    </p>
+  </background>
+  <description>
+    <p>
+    The result of a g_strsplit() call is incorrectly parsed in the files
+    daemon/gdm.c, daemon/gdmconfig.c, gui/gdmconfig.c and
+    gui/gdmflexiserver.c, allowing for a null pointer dereference.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A local user could send a crafted message to /tmp/.gdm_socket that
+    would trigger the null pointer dereference and crash GDM, thus
+    preventing it from managing future displays.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Restrict the write permissions on /tmp/.gdm_socket to trusted users
+    only after each GDM restart.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GDM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;gnome-base/gdm&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3381">CVE-2007-3381</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Aug 2007 05:40:23 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Aug 2007 05:40:36 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Aug 2007 09:31:53 +0000">
+    falco
+  </metadata>
+</glsa>

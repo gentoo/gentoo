@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-12">
+  <title>Fetchmail: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been reported in Fetchmail, allowing remote
+    attackers to execute arbitrary code or to conduct Man-in-the-Middle
+    attacks.
+  </synopsis>
+  <product type="ebuild">fetchmail</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>280537</bug>
+  <bug>307761</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/fetchmail" auto="yes" arch="*">
+      <unaffected range="ge">6.3.14</unaffected>
+      <vulnerable range="lt">6.3.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Fetchmail is a remote mail retrieval and forwarding utility.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Fetchmail:
+    </p>
+    <ul>
+    <li>The sdump() function might trigger a heap-based buffer overflow
+    during the escaping of non-printable characters with the high bit set
+    from an X.509 certificate (CVE-2010-0562).</li>
+    <li>The vendor reported
+    that Fetchmail does not properly handle Common Name (CN) fields in
+    X.509 certificates that contain an ASCII NUL character. Specifically,
+    the processing of such fields is stopped at the first occurrence of a
+    NUL character. This type of vulnerability was recently discovered by
+    Dan Kaminsky and Moxie Marlinspike (CVE-2009-2666).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect with Fetchmail to a
+    specially crafted SSL-enabled server in verbose mode, possibly
+    resulting in the execution of arbitrary code with the privileges of the
+    user running the application. NOTE: The issue is only existent on
+    platforms on which char is signed.
+    </p>
+    <p>
+    Furthermore, a remote attacker might employ a specially crafted X.509
+    certificate, containing a NUL character in the Common Name field to
+    conduct man-in-the-middle attacks on SSL connections made using
+    Fetchmail.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Fetchmail users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/fetchmail-6.3.14&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0562">CVE-2010-0562</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2666">CVE-2009-2666</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 29 Mar 2010 22:13:20 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Apr 2010 12:34:40 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 17:49:00 +0000">
+    vorlon
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-23">
+  <title>Imlib2: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in Imlib2.
+  </synopsis>
+  <product type="ebuild">imlib2</product>
+  <announced>December 23, 2008</announced>
+  <revised>December 23, 2008: 01</revised>
+  <bug>248057</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/imlib2" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2-r1</unaffected>
+      <vulnerable range="lt">1.4.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Imlib2 is replacement library from the Enlightenment project for
+    libraries like libXpm.
+    </p>
+  </background>
+  <description>
+    <p>
+    Julien Danjou reported a pointer arithmetic error and a heap-based
+    buffer overflow within the load() function of the XPM image loader.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process a specially crafted
+    XPM image, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user running the application, or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Imlib2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/imlib2-1.4.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5187">CVE-2008-5187</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 07 Dec 2008 11:53:50 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Dec 2008 12:38:00 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 12:38:09 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-11">
+  <title>BIND: Denial of Service</title>
+  <synopsis>
+    ISC BIND contains two vulnerabilities allowing a Denial of Service under
+    certain conditions.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>September 15, 2006</announced>
+  <revised>September 15, 2006: 01</revised>
+  <bug>146486</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.3.2-r4</unaffected>
+      <unaffected range="rge">9.2.6-r4</unaffected>
+      <vulnerable range="lt">9.3.2-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC BIND is the Internet Systems Consortium implementation of the
+    Domain Name System (DNS) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Queries for SIG records will cause an assertion error if more than one
+    SIG RRset is returned. Additionally, an INSIST failure can be triggered
+    by sending multiple recursive queries if the response to the query
+    arrives after all the clients looking for the response have left the
+    recursion queue.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker having access to a recursive server can crash the server by
+    querying the SIG records where there are multiple SIG RRsets, or by
+    sending many recursive queries in a short time. The exposure can be
+    lowered by restricting the clients that can ask for recursion. An
+    attacker can also crash an authoritative server serving a DNSSEC zone
+    in which there are multiple SIG RRsets.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BIND 9.3 users should update to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.3.2-r4&quot;</code>
+    <p>
+    All BIND 9.2 users should update to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.2.6-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4095">CVE-2006-4095</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4096">CVE-2006-4096</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 Sep 2006 10:13:53 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 07 Sep 2006 11:28:27 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 14 Sep 2006 22:49:56 +0000">
+    jaervosz
+  </metadata>
+</glsa>

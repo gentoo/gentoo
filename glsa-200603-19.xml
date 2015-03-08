@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-19">
+  <title>cURL/libcurl: Buffer overflow in the handling of TFTP URLs</title>
+  <synopsis>
+    libcurl is affected by a buffer overflow in the handling of URLs for the
+    TFTP protocol, which could be exploited to compromise a user's system.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>March 21, 2006</announced>
+  <revised>March 21, 2006: 01</revised>
+  <bug>125766</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="rge">7.15.1-r1</unaffected>
+      <unaffected range="ge">7.15.3</unaffected>
+      <unaffected range="le">7.14.1</unaffected>
+      <vulnerable range="lt">7.15.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cURL is a command line tool for transferring files with URL
+    syntax, supporting numerous protocols. libcurl is the corresponding
+    client-side library.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ulf Harnhammar reported a possible buffer overflow in the handling
+    of TFTP URLs in libcurl due to the lack of boundary checks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit this vulnerability to compromise a
+    user's system by enticing the user to request a malicious URL with
+    cURL/libcurl or to use a HTTP server redirecting to a malicious TFTP
+    URL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cURL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.15.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://curl.haxx.se/docs/adv_20060320.html">Project cURL Security Advisory, March 20th 2006</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1061">CVE-2006-1061</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 20 Mar 2006 17:27:58 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Mar 2006 17:28:46 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Mar 2006 22:09:32 +0000">
+    vorlon078
+  </metadata>
+</glsa>

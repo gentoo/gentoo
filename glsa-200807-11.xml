@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-11">
+  <title>PeerCast: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability in PeerCast may allow for the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">peercast</product>
+  <announced>July 21, 2008</announced>
+  <revised>July 21, 2008: 01</revised>
+  <bug>220281</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/peercast" auto="yes" arch="*">
+      <unaffected range="ge">0.1218-r1</unaffected>
+      <vulnerable range="lt">0.1218-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PeerCast is a client and server for P2P-radio networks.
+    </p>
+  </background>
+  <description>
+    <p>
+    Nico Golde reported a boundary error in the HTTP::getAuthUserPass()
+    function when processing overly long HTTP Basic authentication
+    requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted HTTP request to the
+    vulnerable server, possibly resulting in the remote execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PeerCast users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1218-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2040">CVE-2008-2040</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 08 Jul 2008 00:36:04 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 12 Jul 2008 19:41:58 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Jul 2008 15:19:30 +0000">
+    p-y
+  </metadata>
+</glsa>

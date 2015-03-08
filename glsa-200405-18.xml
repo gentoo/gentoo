@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-18">
+  <title>Buffer Overflow in Firebird</title>
+  <synopsis>
+    A buffer overflow via environmental variables in Firebird may allow a local
+    user to manipulate or destroy local databases and trojan the Firebird
+    binaries.
+  </synopsis>
+  <product type="ebuild">firebird</product>
+  <announced>May 23, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>20837</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-db/firebird" auto="yes" arch="*">
+      <unaffected range="ge">1.5</unaffected>
+      <vulnerable range="lt">1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Firebird is an open source relational database that runs on Linux,
+    Windows, and various UNIX systems.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow exists in three Firebird binaries (gds_inet_server,
+    gds_lock_mgr, and gds_drop) that is exploitable by setting a large
+    value to the INTERBASE environment variable.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could control program execution, allowing privilege
+    escalation to the UID of Firebird, full access to Firebird databases,
+    and trojaning the Firebird binaries. An attacker could use this to
+    compromise other user or root accounts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest version of Firebird:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=dev-db/firebird-1.5&quot;
+    # emerge &quot;&gt;=dev-db/firebird-1.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://securityfocus.com/bid/7546/info/">Bugtraq Security Announcement</uri>
+    <uri link=" http://sourceforge.net/tracker/?group_id=9028&amp;atid=109028&amp;func=detail&amp;aid=739480">Sourceforge BugTracker Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0281">CVE-2003-0281</uri>
+  </references>
+  <metadata tag="submitter">
+    dmargoli
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-06">
+  <title>Eye of GNOME: Untrusted search path</title>
+  <synopsis>
+    An untrusted search path vulnerability in the Eye of GNOME might result in
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">eog</product>
+  <announced>April 06, 2009</announced>
+  <revised>April 06, 2009: 01</revised>
+  <bug>257002</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-gfx/eog" auto="yes" arch="*">
+      <unaffected range="ge">2.22.3-r3</unaffected>
+      <vulnerable range="lt">2.22.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Eye of GNOME is the official image viewer for the GNOME Desktop
+    environment.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Vega reported an untrusted search path vulnerability in the
+    GObject Python interpreter wrapper in the Eye of GNOME, a vulnerabiliy
+    related to CVE-2008-5983.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user to run the Eye of GNOME from a
+    directory containing a specially crafted python module, resulting in
+    the execution of arbitrary code with the privileges of the user running
+    the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "eog" from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Eye of GNOME users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/eog-2.22.3-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5983">CVE-2008-5983</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5987">CVE-2008-5987</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 06 Apr 2009 11:38:51 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 06 Apr 2009 11:40:09 +0000">
+    p-y
+  </metadata>
+</glsa>

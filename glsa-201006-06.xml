@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-06">
+  <title>Transmission: Multiple vulnerabilities</title>
+  <synopsis>
+    Stack-based buffer overflows in Transmission may allow for remote execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">transmission</product>
+  <announced>June 01, 2010</announced>
+  <revised>June 01, 2010: 01</revised>
+  <bug>309831</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/transmission" auto="yes" arch="*">
+      <unaffected range="ge">1.92</unaffected>
+      <vulnerable range="lt">1.92</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Transmission is a cross-platform BitTorrent client.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple stack-based buffer overflows in the tr_magnetParse() function
+    in libtransmission/magnet.c have been discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause a Denial of Service or possibly execute
+    arbitrary code via a crafted magnet URL with a large number of tr or ws
+    links.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Transmission users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/transmission-1.92&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1853">CVE-2010-1853</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 May 2010 11:12:44 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 May 2010 13:42:12 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 17:53:20 +0000">
+    vorlon
+  </metadata>
+</glsa>

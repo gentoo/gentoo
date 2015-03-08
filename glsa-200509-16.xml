@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-16">
+  <title>Mantis: XSS and SQL injection vulnerabilities</title>
+  <synopsis>
+    Mantis is affected by an SQL injection and several cross-site scripting
+    (XSS) vulnerabilities.
+  </synopsis>
+  <product type="ebuild">Mantis</product>
+  <announced>September 24, 2005</announced>
+  <revised>September 24, 2005: 01</revised>
+  <bug>103308</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mantisbt" auto="yes" arch="*">
+      <unaffected range="ge">0.19.2</unaffected>
+      <vulnerable range="lt">0.19.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mantis is a web-based bugtracking system written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mantis fails to properly sanitize untrusted input before using it.
+    This leads to an SQL injection and several cross-site scripting
+    vulnerabilities.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could possibly use the SQL injection vulnerability to
+    access or modify information from the Mantis database. Furthermore the
+    cross-site scripting issues give an attacker the ability to inject and
+    execute malicious script code or to steal cookie-based authentication
+    credentials, potentially compromising the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mantis users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-0.19.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2556">CAN-2005-2556</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2557">CAN-2005-2557</uri>
+    <uri link="http://secunia.com/advisories/16506/">Secunia Advisory SA16506</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 23 Sep 2005 12:20:33 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 23 Sep 2005 12:21:10 +0000">
+    koon
+  </metadata>
+</glsa>

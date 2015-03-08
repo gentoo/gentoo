@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-17">
+  <title>l2tpd: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow in l2tpd could lead to remote code execution. It is not
+    known whether this bug is exploitable.
+  </synopsis>
+  <product type="ebuild">net-dialup/l2tpd</product>
+  <announced>July 22, 2004</announced>
+  <revised>July 22, 2004: 01</revised>
+  <bug>53009</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/l2tpd" auto="yes" arch="*">
+      <unaffected range="ge">0.69-r2</unaffected>
+      <vulnerable range="lt">0.69-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    l2tpd is a GPL implentation of the Layer 2 Tunneling Protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Thomas Walpuski discovered a buffer overflow that may be exploitable by
+    sending a specially crafted packet. In order to exploit the vulnerable
+    code, an attacker would need to fake the establishment of an L2TP tunnel.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker may be able to execute arbitrary code with the privileges
+    of the user running l2tpd.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround for this vulnerability.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users are recommended to upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-l2tpd-0.69-r2"
+    # emerge ">=net-l2tpd-0.69-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0649">CAN-2004-0649</uri>
+    <uri link="http://seclists.org/lists/fulldisclosure/2004/Jun/0094.html">Full Disclosure Report</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter">
+    dmargoli
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-01">
+  <title>Linux-PAM: Privilege escalation</title>
+  <synopsis>
+    An error in the handling of user names of Linux-PAM might allow remote
+    attackers to cause a Denial of Service or escalate privileges.
+  </synopsis>
+  <product type="ebuild">pam</product>
+  <announced>September 07, 2009</announced>
+  <revised>September 07, 2009: 01</revised>
+  <bug>261512</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/pam" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4</unaffected>
+      <vulnerable range="lt">1.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Linux-PAM (Pluggable Authentication Modules) is an architecture
+    allowing the separation of the development of privilege granting
+    software from the development of secure and appropriate authentication
+    schemes.
+    </p>
+  </background>
+  <description>
+    <p>
+    Marcus Granado repoted that Linux-PAM does not properly handle user
+    names that contain Unicode characters. This is related to integer
+    signedness errors in the pam_StrTok() function in libpam/pam_misc.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability to cause a Denial of
+    Service. A remote authenticated attacker could exploit this
+    vulnerability to log in to a system with the account of a user that has
+    a similar user name, but with non-ASCII characters.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Linux-PAM users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/pam-1.0.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0887">CVE-2009-0887</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 18:01:34 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 16:33:27 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:46 +0000">
+    a3li
+  </metadata>
+</glsa>

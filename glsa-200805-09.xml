@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-09">
+  <title>MoinMoin: Privilege escalation</title>
+  <synopsis>
+    A vulnerability in MoinMoin may allow a remote attacker to elevate his
+    privileges.
+  </synopsis>
+  <product type="ebuild">moinmoin</product>
+  <announced>May 11, 2008</announced>
+  <revised>May 11, 2008: 01</revised>
+  <bug>218752</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/moinmoin" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3</unaffected>
+      <vulnerable range="lt">1.6.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MoinMoin is an advanced and extensible Wiki Engine.
+    </p>
+  </background>
+  <description>
+    <p>
+    It has been reported that the user form processing in the file
+    userform.py does not properly manage users when using Access Control
+    Lists or a non-empty superusers list.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability to gain superuser
+    privileges on the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MoinMoin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/moinmoin-1.6.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1937">CVE-2008-1937</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 May 2008 22:43:27 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 May 2008 22:49:11 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 09 May 2008 14:03:55 +0000">
+    p-y
+  </metadata>
+</glsa>

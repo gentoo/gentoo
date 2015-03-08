@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-22">
+  <title>Pavuk: Remote buffer overflow</title>
+  <synopsis>
+    Pavuk contains a bug potentially allowing an attacker to run arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">Pavuk</product>
+  <announced>June 30, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/pavuk" auto="yes" arch="*">
+      <unaffected range="ge">0.9.28-r2</unaffected>
+      <vulnerable range="le">0.9.28-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pavuk is web spider and website mirroring tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    When Pavuk connects to a web server and the server sends back the HTTP
+    status code 305 (Use Proxy), Pavuk copies data from the HTTP Location
+    header in an unsafe manner.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could cause a stack-based buffer overflow which could lead
+    to arbitrary code execution with the rights of the user running Pavuk.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pavuk users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-misc/pavuk-0.9.28-r2&quot;
+    # emerge &quot;&gt;=&quot;net-misc/pavuk-0.9.28-r2</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0456">CVE-2004-0456</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

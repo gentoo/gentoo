@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200907-13">
+  <title>PulseAudio: Local privilege escalation</title>
+  <synopsis>
+    A vulnerability in PulseAudio may allow a local user to execute code with
+    escalated privileges.
+  </synopsis>
+  <product type="ebuild">pulseaudio</product>
+  <announced>July 16, 2009</announced>
+  <revised>July 16, 2009: 01</revised>
+  <bug>276986</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-sound/pulseaudio" auto="yes" arch="*">
+      <unaffected range="ge">0.9.9-r54</unaffected>
+      <vulnerable range="lt">0.9.9-r54</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PulseAudio is a network-enabled sound server with an advanced plug-in
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy and Julien Tinnes of the Google Security Team discovered
+    that the pulseaudio binary is installed setuid root, and does not drop
+    privileges before re-executing itself. The vulnerability has
+    independently been reported to oCERT by Yorick Koster.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local user who has write access to any directory on the file system
+    containing /usr/bin can exploit this vulnerability using a race
+    condition to execute arbitrary code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Ensure that the file system holding /usr/bin does not contain
+    directories that are writable for unprivileged users.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PulseAudio users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/pulseaudio-0.9.9-r54&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1894">CVE-2009-1894</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 09 Jul 2009 16:33:42 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 09 Jul 2009 16:51:52 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Jul 2009 14:13:15 +0000">
+    rbu
+  </metadata>
+</glsa>

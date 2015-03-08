@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-11">
+  <title>Perl, Locale Maketext Perl module: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Perl and
+    Locale::Maketext Perl module, the worst of which could allow a
+    context-dependent attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>January 19, 2014</announced>
+  <revised>January 19, 2014: 1</revised>
+  <bug>384887</bug>
+  <bug>448632</bug>
+  <bug>460444</bug>
+  <bug>483448</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.16.3</unaffected>
+      <vulnerable range="lt">5.16.3</vulnerable>
+    </package>
+    <package name="perl-core/locale-maketext" auto="yes" arch="*">
+      <unaffected range="ge">1.230.0</unaffected>
+      <vulnerable range="lt">1.230.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Perl is Larry Wall’s Practical Extraction and Report Language.
+      Locale::Maketext is a Perl module - framework for localization.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Perl and
+      Locale::Maketext Perl module. Please review the CVE identifiers
+      referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly execute arbitrary code with
+      the privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.16.3"
+    </code>
+    
+    <p>All Locale::Maketext users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=perl-core/locale-maketext-1.230.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2728">CVE-2011-2728</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2939">CVE-2011-2939</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5195">CVE-2012-5195
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1667">CVE-2013-1667</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Dec 2013 14:48:00 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Jan 2014 16:14:53 +0000">Zlogene</metadata>
+</glsa>

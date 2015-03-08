@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-11">
+  <title>Lighttpd: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities were reported in Lighttpd, most of them allowing a
+    Denial of Service and potentially the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>August 16, 2007</announced>
+  <revised>August 16, 2007: 01</revised>
+  <bug>185442</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.16</unaffected>
+      <vulnerable range="lt">1.4.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Lighttpd is a lightweight HTTP web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser discovered errors with evidence of memory corruption in
+    the code parsing the headers. Several independent researchers also
+    reported errors involving the handling of HTTP headers, the mod_auth
+    and mod_scgi modules, and the limitation of active connections.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can trigger any of these vulnerabilities by sending
+    malicious data to the server, which may lead to a crash or memory
+    exhaustion, and potentially the execution of arbitrary code.
+    Additionally, access-deny settings can be evaded by appending a final /
+    to a URL.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.16&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3946">CVE-2007-3946</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3947">CVE-2007-3947</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3948">CVE-2007-3948</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3949">CVE-2007-3949</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3950">CVE-2007-3950</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Jul 2007 18:07:17 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 12 Aug 2007 21:28:06 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 15 Aug 2007 05:43:43 +0000">
+    jaervosz
+  </metadata>
+</glsa>

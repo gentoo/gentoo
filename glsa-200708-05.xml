@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-05">
+  <title>GD: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in GD, allowing for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gd</product>
+  <announced>August 09, 2007</announced>
+  <revised>August 09, 2007: 01</revised>
+  <bug>179154</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/gd" auto="yes" arch="*">
+      <unaffected range="ge">2.0.35</unaffected>
+      <vulnerable range="lt">2.0.35</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GD is a graphic library for fast image creation.
+    </p>
+  </background>
+  <description>
+    <p>
+    Xavier Roche discovered an infinite loop in the gdPngReadData()
+    function when processing a truncated PNG file (CVE-2007-2756). An
+    integer overflow has been discovered in the gdImageCreateTrueColor()
+    function (CVE-2007-3472). An error has been discovered in the function
+    gdImageCreateXbm() function (CVE-2007-3473). Unspecified
+    vulnerabilities have been discovered in the GIF reader (CVE-2007-3474).
+    An error has been discovered when processing a GIF image that has no
+    global color map (CVE-2007-3475). An array index error has been
+    discovered in the file gd_gif_in.c when processing images with an
+    invalid color index (CVE-2007-3476). An error has been discovered in
+    the imagearc() and imagefilledarc() functions when processing overly
+    large angle values (CVE-2007-3477). A race condition has been
+    discovered in the gdImageStringFTEx() function (CVE-2007-3478).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit one of these vulnerabilities to cause a
+    Denial of Service or possibly execute arbitrary code with the
+    privileges of the user running GD.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gd-2.0.35&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2756">CVE-2007-2756</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3472">CVE-2007-3472</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3473">CVE-2007-3473</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3474">CVE-2007-3474</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3475">CVE-2007-3475</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3476">CVE-2007-3476</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3477">CVE-2007-3477</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3478">CVE-2007-3478</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 20 Jul 2007 21:01:20 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 31 Jul 2007 09:13:14 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 31 Jul 2007 09:13:30 +0000">
+    p-y
+  </metadata>
+</glsa>

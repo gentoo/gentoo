@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-03">
+  <title>pdnsd: Denial of Service and cache poisoning</title>
+  <synopsis>
+    Two errors in pdnsd allow for Denial of Service and cache poisoning.
+  </synopsis>
+  <product type="ebuild">pdnsd</product>
+  <announced>January 11, 2009</announced>
+  <revised>January 11, 2009: 01</revised>
+  <bug>231285</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdnsd" auto="yes" arch="*">
+      <unaffected range="ge">1.2.7</unaffected>
+      <vulnerable range="lt">1.2.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pdnsd is a proxy DNS server with permanent caching that is designed to
+    cope with unreachable DNS servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Two issues have been reported in pdnsd:
+    </p>
+    <ul>
+    <li>
+    The p_exec_query() function in src/dns_query.c does not properly handle
+    many entries in the answer section of a DNS reply, related to a
+    "dangling pointer bug" (CVE-2008-4194).
+    </li>
+    <li>
+    The default value for query_port_start was set to 0, disabling UDP
+    source port randomization for outgoing queries (CVE-2008-1447).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit the second weakness to poison the cache of
+    pdnsd and thus spoof DNS traffic, which could e.g. lead to the
+    redirection of web or mail traffic to malicious sites. The first issue
+    can be exploited by enticing pdnsd to send a query to a malicious DNS
+    server, or using the port randomization weakness, and might lead to a
+    Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Port randomization can be enabled by setting the "query_port_start"
+    option to 1024 which would resolve the CVE-2008-1447 issue.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pdnsd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdnsd-1.2.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4194">CVE-2008-4194</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:15:10 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 23:10:06 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 23:10:19 +0000">
+    rbu
+  </metadata>
+</glsa>

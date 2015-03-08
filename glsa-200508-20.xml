@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-20">
+  <title>phpGroupWare: Multiple vulnerabilities</title>
+  <synopsis>
+    phpGroupWare is vulnerable to multiple issues ranging from information
+    disclosure to a potential execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">phpgroupware</product>
+  <announced>August 30, 2005</announced>
+  <revised>August 30, 2005: 01</revised>
+  <bug>102379</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpgroupware" auto="yes" arch="*">
+      <unaffected range="ge">0.9.16.008</unaffected>
+      <vulnerable range="lt">0.9.16.008</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpGroupWare is a multi-user groupware suite written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    phpGroupWare improperly validates the "mid" parameter retrieved
+    via a forum post. The current version of phpGroupWare also adds several
+    safeguards to prevent XSS issues, and disables the use of a potentially
+    vulnerable XML-RPC library.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker may leverage the XML-RPC vulnerability to
+    execute arbitrary PHP script code. He could also create a specially
+    crafted request that will reveal private posts.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpGroupWare users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpgroupware-0.9.16.008&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-2498">CAN-2005-2498</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-2600">CAN-2005-2600</uri>
+    <uri link="http://secunia.com/advisories/16414">Secunia Advisory SA16414</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 28 Aug 2005 18:52:38 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Aug 2005 09:01:02 +0000">
+    adir
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 29 Aug 2005 10:35:27 +0000">
+    adir
+  </metadata>
+</glsa>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-44">
+  <title>ncpfs: Multiple vulnerabilities</title>
+  <synopsis>
+    The ncpfs utilities contain multiple flaws, potentially resulting in the
+    remote execution of arbitrary code or local file access with elevated
+    privileges.
+  </synopsis>
+  <product type="ebuild">ncpfs</product>
+  <announced>January 30, 2005</announced>
+  <revised>January 30, 2005: 01</revised>
+  <bug>77414</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="net-fs/ncpfs" auto="yes" arch="*">
+      <unaffected range="ge">2.2.6</unaffected>
+      <vulnerable range="lt">2.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ncpfs is a NCP protocol network filesystem driver that allows
+    access to NetWare services, to mount volumes of NetWare servers or
+    print to NetWare print queues.
+    </p>
+  </background>
+  <description>
+    <p>
+    Erik Sjolund discovered two vulnerabilities in the programs
+    bundled with ncpfs: there is a potentially exploitable buffer overflow
+    in ncplogin (CAN-2005-0014), and due to a flaw in nwclient.c, utilities
+    using the NetWare client functions insecurely access files with
+    elevated privileges (CAN-2005-0013).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    The buffer overflow might allow a malicious remote NetWare server
+    to execute arbitrary code on the NetWare client. Furthermore, a local
+    attacker may be able to create links and access files with elevated
+    privileges using SUID ncpfs utilities.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ncpfs users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/ncpfs-2.2.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0013">CAN-2005-0013</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0014">CAN-2005-0014</uri>
+    <uri link="ftp://platan.vc.cvut.cz/pub/linux/ncpfs/Changes-2.2.6">ncpfs ChangeLog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Jan 2005 09:02:48 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 29 Jan 2005 11:01:37 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Jan 2005 11:18:51 +0000">
+    koon
+  </metadata>
+</glsa>

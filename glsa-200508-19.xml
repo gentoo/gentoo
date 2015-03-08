@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-19">
+  <title>lm_sensors: Insecure temporary file creation</title>
+  <synopsis>
+    lm_sensors is vulnerable to linking attacks, potentially allowing a local
+    user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">lm_sensors</product>
+  <announced>August 30, 2005</announced>
+  <revised>August 30, 2005: 01</revised>
+  <bug>103568</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/lm_sensors" auto="yes" arch="*">
+      <unaffected range="ge">2.9.1-r1</unaffected>
+      <vulnerable range="lt">2.9.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    lm_sensors is a software package that provides drivers for
+    monitoring the temperatures, voltages, and fans of Linux systems with
+    hardware monitoring devices.
+    </p>
+  </background>
+  <description>
+    <p>
+    Javier Fernandez-Sanguino Pena has discovered that lm_sensors
+    insecurely creates temporary files with predictable filenames when
+    saving configurations.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary file
+    directory, pointing to a valid file somewhere on the filesystem. When
+    the pwmconfig script of lm_sensors is executed, this would result in
+    the file being overwritten with the rights of the user running the
+    script, which typically is the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All lm_sensors users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/lm_sensors-2.9.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2672">CAN-2005-2672</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 27 Aug 2005 09:37:19 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 27 Aug 2005 09:38:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 27 Aug 2005 22:28:16 +0000">
+    formula7
+  </metadata>
+</glsa>

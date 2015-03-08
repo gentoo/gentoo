@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200412-12">
+  <title>Adobe Acrobat Reader: Buffer overflow vulnerability</title>
+  <synopsis>
+    Adobe Acrobat Reader is vulnerable to a buffer overflow that could lead to
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>December 16, 2004</announced>
+  <revised>December 16, 2004: 01</revised>
+  <bug>74406</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">5.10</unaffected>
+      <vulnerable range="lt">5.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Acrobat Reader is a utility used to view PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been discovered in the email processing of
+    Adobe Acrobat Reader. This flaw exists in the mailListIsPdf function,
+    which checks if the input file is an email message containing a PDF
+    file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send the victim a specially-crafted email
+    and PDF attachment, which would trigger the buffer overflow and
+    possibly lead to the execution of arbitrary code with the permissions
+    of the user running Adobe Acrobat Reader.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Acrobat Reader users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-5.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1152">CAN-2004-1152</uri>
+    <uri link="http://www.adobe.com/support/techdocs/331153.html">Adobe Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Dec 2004 17:22:59 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Dec 2004 15:18:04 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 16 Dec 2004 17:02:05 +0000">
+    lewk
+  </metadata>
+</glsa>

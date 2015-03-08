@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-05">
+  <title>Gnumeric: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Several integer overflow vulnerabilities have been reported in Gnumeric,
+    possibly resulting in user-assisted execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnumeric</product>
+  <announced>February 12, 2008</announced>
+  <revised>February 12, 2008: 01</revised>
+  <bug>208356</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/gnumeric" auto="yes" arch="*">
+      <unaffected range="ge">1.8.1</unaffected>
+      <vulnerable range="lt">1.8.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Gnumeric spreadsheet is a versatile application developed as part
+    of the GNOME Office project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple integer overflow and signedness errors have been reported in
+    the excel_read_HLINK() function in file plugins/excel/ms-excel-read.c
+    when processing XLS HLINK opcodes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted XLS
+    file, possibly resulting in the remote execution of arbitrary code with
+    the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gnumeric users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/gnumeric-1.8.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0668">CVE-2008-0668</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 10 Feb 2008 23:12:13 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Feb 2008 23:12:22 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 12 Feb 2008 08:14:23 +0000">
+    p-y
+  </metadata>
+</glsa>

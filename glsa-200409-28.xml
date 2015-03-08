@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-28">
+  <title>GTK+ 2, gdk-pixbuf: Multiple image decoding vulnerabilities</title>
+  <synopsis>
+    The GdkPixbuf library, which is also included in GTK+ 2, contains several
+    vulnerabilities that could lead to a Denial of Service or the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">gtk+</product>
+  <announced>September 21, 2004</announced>
+  <revised>September 21, 2004: 01</revised>
+  <bug>64230</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gtk+" auto="yes" arch="*">
+      <unaffected range="ge">2.4.9-r1</unaffected>
+      <unaffected range="lt">2.0.0</unaffected>
+      <vulnerable range="lt">2.4.9-r1</vulnerable>
+    </package>
+    <package name="media-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">0.22.0-r3</unaffected>
+      <vulnerable range="lt">0.22.0-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GTK+ (GIMP Toolkit +) is a toolkit for creating graphical user interfaces.
+    The GdkPixbuf library provides facilities for image handling. It is
+    available as a standalone library as well as shipped with GTK+ 2.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been discovered in the BMP image preprocessor
+    (CAN-2004-0753). Furthermore, Chris Evans found a possible integer overflow
+    in the pixbuf_create_from_xpm() function, resulting in a heap overflow
+    (CAN-2004-0782). He also found a potential stack-based buffer overflow in
+    the xpm_extract_color() function (CAN-2004-0783). A possible integer
+    overflow has also been found in the ICO decoder.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    With a specially crafted BMP image an attacker could cause an affected
+    application to enter an infinite loop when that image is being processed.
+    Also, by making use of specially crafted XPM or ICO images an attacker
+    could trigger the overflows, which potentially allows the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GTK+ 2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=x11-libs/gtk+-2.4.9-r1"
+    # emerge ">=x11-libs/gtk+-2.4.9-r1"</code>
+    <p>
+    All GdkPixbuf users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=media-libs/gdk-pixbuf-0.22.0-r3"
+    # emerge ">=media-libs/gdk-pixbuf-0.22.0-r3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0753">CAN-2004-0753</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0782">CAN-2004-0782</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0783">CAN-2004-0783</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0788">CAN-2004-0788</uri>
+    <uri link="http://bugzilla.gnome.org/show_bug.cgi?id=150601">GNOME Bug 150601</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 20 Sep 2004 06:35:32 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2004 11:29:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Sep 2004 13:51:30 +0000">
+    vorlon078
+  </metadata>
+</glsa>

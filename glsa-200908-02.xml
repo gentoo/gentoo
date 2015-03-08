@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200908-02">
+  <title>BIND: Denial of Service</title>
+  <synopsis>
+    Dynamic Update packets can cause a Denial of Service in the BIND daemon.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>August 01, 2009</announced>
+  <revised>August 01, 2009: 01</revised>
+  <bug>279508</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.4.3_p3</unaffected>
+      <vulnerable range="lt">9.4.3_p3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC BIND is the Internet Systems Consortium implementation of the
+    Domain Name System (DNS) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Matthias Urlichs reported that the dns_db_findrdataset() function fails
+    when the prerequisite section of the dynamic update message contains a
+    record of type "ANY" and where at least one RRset for this FQDN exists
+    on the server.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote unauthenticated attacker could send a specially crafted
+    dynamic update message to the BIND daemon (named), leading to a Denial
+    of Service (daemon crash). This vulnerability affects all primary
+    (master) servers -- it is not limited to those that are configured to
+    allow dynamic updates.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Configure a firewall that performs Deep Packet Inspection to prevent
+    nsupdate messages from reaching named. Alternatively, expose only
+    secondary (slave) servers to untrusted networks.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BIND users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.3_p3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0696">CVE-2009-0696</uri>
+    <uri link="https://www.isc.org/node/474">ISC advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 28 Jul 2009 21:43:47 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 01 Aug 2009 20:00:21 +0000">
+    a3li
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-03">
+  <title>Audacity: Insecure temporary file creation</title>
+  <synopsis>
+    Audacity uses temporary files in an insecure manner, allowing for a symlink
+    attack.
+  </synopsis>
+  <product type="ebuild">audacity</product>
+  <announced>March 02, 2008</announced>
+  <revised>March 02, 2008: 01</revised>
+  <bug>199751</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-sound/audacity" auto="yes" arch="*">
+      <unaffected range="ge">1.3.4-r1</unaffected>
+      <vulnerable range="lt">1.3.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Audacity is a free cross-platform audio editor.
+    </p>
+  </background>
+  <description>
+    <p>
+    Viktor Griph reported that the "AudacityApp::OnInit()" method in file
+    src/AudacityApp.cpp does not handle temporary files properly.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to conduct symlink
+    attacks to delete arbitrary files and directories with the privileges
+    of the user running Audacity.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Audacity users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/audacity-1.3.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6061">CVE-2007-6061</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 20 Feb 2008 00:55:24 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 26 Feb 2008 22:46:54 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 22:47:07 +0000">
+    p-y
+  </metadata>
+</glsa>

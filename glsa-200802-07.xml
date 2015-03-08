@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200802-07">
+  <title>Pulseaudio: Privilege escalation</title>
+  <synopsis>
+    A vulnerability in pulseaudio may allow a local user to execute actions
+    with escalated privileges.
+  </synopsis>
+  <product type="ebuild">pulseaudio</product>
+  <announced>February 13, 2008</announced>
+  <revised>February 13, 2008: 01</revised>
+  <bug>207214</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-sound/pulseaudio" auto="yes" arch="*">
+      <unaffected range="ge">0.9.9</unaffected>
+      <vulnerable range="lt">0.9.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Pulseaudio is a networked sound server with an advanced plugin system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Marcus Meissner from SUSE reported that the pa_drop_root() function
+    does not properly check the return value of the system calls setuid(),
+    seteuid(), setresuid() and setreuid() when dropping its privileges.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could cause a resource exhaustion to make the system
+    calls fail, which would cause Pulseaudio to run as root. The attacker
+    could then perform actions with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Pulseaudio users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/pulseaudio-0.9.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0008">CVE-2008-0008</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Feb 2008 18:33:13 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Feb 2008 18:33:32 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 Feb 2008 20:35:58 +0000">
+    p-y
+  </metadata>
+</glsa>

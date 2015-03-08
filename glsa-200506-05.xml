@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-05">
+  <title>SilverCity: Insecure file permissions</title>
+  <synopsis>
+    Executable files with insecure permissions can be modified causing an
+    unsuspecting user to run arbitrary code.
+  </synopsis>
+  <product type="ebuild">silvercity</product>
+  <announced>June 08, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>93558</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/silvercity" auto="yes" arch="*">
+      <unaffected range="ge">0.9.5-r1</unaffected>
+      <vulnerable range="lt">0.9.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SilverCity provides lexical analysis for over 20 programming and markup
+    languages.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SilverCity package installs three executable files with insecure
+    permissions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could modify the executable files, causing arbitrary
+    code to be executed with the permissions of an unsuspecting SilverCity
+    user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SilverCity users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/silvercity-0.9.5-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1941">CVE-2005-1941</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 06 Jun 2005 18:24:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 06 Jun 2005 18:24:47 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 07 Jun 2005 01:08:04 +0000">
+    r2d2
+  </metadata>
+</glsa>

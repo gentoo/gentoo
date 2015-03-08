@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201301-03">
+  <title>Tor: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Tor, allowing attackers
+    to cause Denial of Service or obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">tor</product>
+  <announced>January 08, 2013</announced>
+  <revised>January 08, 2013: 1</revised>
+  <bug>432188</bug>
+  <bug>434882</bug>
+  <bug>444804</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tor" auto="yes" arch="*">
+      <unaffected range="ge">0.2.3.25</unaffected>
+      <vulnerable range="lt">0.2.3.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Tor is an implementation of second generation Onion Routing, a
+      connection-oriented anonymizing communication service.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Tor. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tor users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tor-0.2.3.25"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3517">CVE-2012-3517</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3518">CVE-2012-3518</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3519">CVE-2012-3519</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4419">CVE-2012-4419</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4922">CVE-2012-4922</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5573">CVE-2012-5573</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Sep 2012 10:40:15 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Tue, 08 Jan 2013 23:51:55 +0000">ackle</metadata>
+</glsa>

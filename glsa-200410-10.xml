@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-10">
+  <title>gettext: Insecure temporary file handling</title>
+  <synopsis>
+    The gettext utility is vulnerable to symlink attacks, potentially allowing
+    a local user to overwrite or change permissions on arbitrary files with the
+    rights of the user running gettext, which could be the root user.
+  </synopsis>
+  <product type="ebuild">gettext</product>
+  <announced>October 10, 2004</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>66355</bug>
+  <bug>85766</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-devel/gettext" auto="yes" arch="*">
+      <unaffected range="ge">0.14.1-r1</unaffected>
+      <unaffected range="rge">0.12.1-r2</unaffected>
+      <vulnerable range="lt">0.14.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gettext is a set of utilities for the GNU Translation Project which
+    provides a set of tools and documentation to help produce multi-lingual
+    messages in programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    gettext insecurely creates temporary files in world-writeable
+    directories with predictable names.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When
+    gettext is called, this would result in file access with the rights of
+    the user running the utility, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gettext users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-devel/gettext-0.14.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/advisories/7263">BugTraq Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0966">CVE-2004-0966</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 10 Oct 2004 10:51:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Oct 2004 10:51:21 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Oct 2004 21:46:28 +0000">
+    lewk
+  </metadata>
+</glsa>

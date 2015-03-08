@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201006-19">
+  <title>Bugzilla: Multiple vulnerabilities</title>
+  <synopsis>
+    Bugzilla is prone to multiple medium severity vulnerabilities.
+  </synopsis>
+  <product type="ebuild">bugzilla</product>
+  <announced>June 04, 2010</announced>
+  <revised>June 04, 2010: 02</revised>
+  <bug>239564</bug>
+  <bug>258592</bug>
+  <bug>264572</bug>
+  <bug>284824</bug>
+  <bug>303437</bug>
+  <bug>303725</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/bugzilla" auto="yes" arch="*">
+      <unaffected range="ge">3.2.6</unaffected>
+      <vulnerable range="lt">3.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Bugzilla is a bug tracking system from the Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in Bugzilla. Please review
+    the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might be able to disclose local files, bug
+    information, passwords, and other data under certain circumstances.
+    Furthermore, a remote attacker could conduct SQL injection, Cross-Site
+    Scripting (XSS) or Cross-Site Request Forgery (CSRF) attacks via
+    various vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Bugzilla users should upgrade to an unaffected version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/bugzilla-3.2.6&quot;</code>
+    <p>
+    Bugzilla 2.x and 3.0 have reached their end of life. There will be no
+    more security updates. All Bugzilla 2.x and 3.0 users should update to
+    a supported Bugzilla 3.x version.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4437">CVE-2008-4437</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6098">CVE-2008-6098</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0481">CVE-2009-0481</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0482">CVE-2009-0482</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0483">CVE-2009-0483</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0484">CVE-2009-0484</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0485">CVE-2009-0485</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0486">CVE-2009-0486</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1213">CVE-2009-1213</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3125">CVE-2009-3125</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3165">CVE-2009-3165</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3166">CVE-2009-3166</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3387">CVE-2009-3387</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3989">CVE-2009-3989</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 14 Feb 2009 18:17:01 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 10 Oct 2009 16:01:17 +0000">
+    jaervosz
+  </metadata>
+</glsa>

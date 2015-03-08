@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-27">
+  <title>polkit, Spice-Gtk, systemd, HPLIP, libvirt: Privilege escalation</title>
+  <synopsis>A race condition in polkit could allow a local attacker to gain
+    escalated privileges.
+  </synopsis>
+  <product type="ebuild">polkit spice-gtk systemd hplip libvirt</product>
+  <announced>June 26, 2014</announced>
+  <revised>June 26, 2014: 1</revised>
+  <bug>484486</bug>
+  <bug>484488</bug>
+  <bug>485420</bug>
+  <bug>485546</bug>
+  <bug>485904</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-print/hplip" auto="yes" arch="*">
+      <unaffected range="ge">3.14.1</unaffected>
+      <vulnerable range="lt">3.14.1</vulnerable>
+    </package>
+    <package name="net-misc/spice-gtk" auto="yes" arch="*">
+      <unaffected range="ge">0.21</unaffected>
+      <vulnerable range="lt">0.21</vulnerable>
+    </package>
+    <package name="sys-apps/systemd" auto="yes" arch="*">
+      <unaffected range="ge">204-r1</unaffected>
+      <vulnerable range="lt">204-r1</vulnerable>
+    </package>
+    <package name="app-emulation/libvirt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.2-r3</unaffected>
+      <vulnerable range="lt">1.1.2-r3</vulnerable>
+    </package>
+    <package name="sys-auth/polkit" auto="yes" arch="*">
+      <unaffected range="ge">0.112</unaffected>
+      <vulnerable range="lt">0.112</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>polkit is a toolkit for managing policies relating to unprivileged
+      processes communicating with privileged processes.
+    </p>
+  </background>
+  <description>
+    <p>polkit has a race condition which potentially allows a process to change
+      its UID/EUID via suid or pkexec before authentication is completed.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could start a suid or pkexec process through a
+      polkit-enabled application, which could result in privilege escalation or
+      bypass of polkit restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All polkit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-auth/polkit-0.112"
+    </code>
+    
+    <p>All HPLIP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/hplip-3.14.1"
+    </code>
+    
+    <p>All Spice-Gtk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/spice-gtk-0.21"
+    </code>
+    
+    <p>All systemd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/systemd-204-r1"
+    </code>
+    
+    <p>All libvirt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/libvirt-1.1.2-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4288">CVE-2013-4288</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4311">CVE-2013-4311</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4324">CVE-2013-4324</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4325">CVE-2013-4325</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4327">CVE-2013-4327</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Sep 2013 15:18:50 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Jun 2014 22:23:13 +0000">
+    creffett
+  </metadata>
+</glsa>

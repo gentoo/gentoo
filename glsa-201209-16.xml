@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-16">
+  <title>SQLAlchemy: SQL injection</title>
+  <synopsis>An input sanitation flaw in SQLAlchemy allows remote attacker to
+    conduct SQL injection. 
+  </synopsis>
+  <product type="ebuild">sqlalchemy</product>
+  <announced>September 26, 2012</announced>
+  <revised>September 26, 2012: 1</revised>
+  <bug>407437</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/sqlalchemy" auto="yes" arch="*">
+      <unaffected range="ge">0.7.4</unaffected>
+      <vulnerable range="lt">0.7.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SQLAlchemy is a Python SQL toolkit and Object Relational Mapper.</p>
+  </background>
+  <description>
+    <p>SQLAlchemy does not properly sanitize input passed from the “limit”
+      and “offset” keywords to the select() function before using it in an
+      SQL query. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit this vulnerability to execute arbitrary
+      SQL statements.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SQLAlchemy users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/sqlalchemy-0.7.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0805">CVE-2012-0805</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:04:11 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Sep 2012 21:43:47 +0000">ackle</metadata>
+</glsa>

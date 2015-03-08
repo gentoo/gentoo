@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-26">
+  <title>Convert-UUlib: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow has been reported in Convert-UUlib, potentially resulting
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Convert-UUlib</product>
+  <announced>April 26, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>89501</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/Convert-UUlib" auto="yes" arch="*">
+      <unaffected range="ge">1.051</unaffected>
+      <vulnerable range="lt">1.051</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Convert-UUlib provides a Perl interface to the uulib library, allowing
+    Perl applications to access data encoded in a variety of formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been reported in Convert-UUlib where a malformed
+    parameter can be provided by an attacker allowing a read operation to
+    overflow a buffer. The vendor credits Mark Martinec and Robert Lewis
+    with the discovery.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would permit an attacker to run arbitrary code
+    with the privileges of the user running the Perl application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Convert-UUlib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/Convert-UUlib-1.051&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1349">CVE-2005-1349</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Apr 2005 16:17:03 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 21 Apr 2005 08:24:58 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 25 Apr 2005 20:37:01 +0000">
+    taviso
+  </metadata>
+</glsa>

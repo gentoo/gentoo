@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-26">
+  <title>GProFTPD: gprostats format string vulnerability</title>
+  <synopsis>
+    gprostats, distributed with GProFTPD, is vulnerable to a format string
+    vulnerability, potentially leading to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">GProFTPD</product>
+  <announced>February 18, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>81894</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/gproftpd" auto="yes" arch="*">
+      <unaffected range="ge">8.1.9</unaffected>
+      <vulnerable range="lt">8.1.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GProFTPD is a GTK+ administration tool for the ProFTPD server. GProFTPD
+    is distributed with gprostats, a utility to parse ProFTPD transfer
+    logs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team has identified a
+    format string vulnerability in the gprostats utility.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit the vulnerability by performing a specially
+    crafted FTP transfer, the resulting ProFTPD transfer log could
+    potentially trigger the execution of arbitrary code when parsed by
+    GProFTPD.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GProFTPD users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/gproftpd-8.1.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0484">CVE-2005-0484</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 16 Feb 2005 19:27:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Feb 2005 00:01:48 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 18 Feb 2005 09:37:53 +0000">
+    koon
+  </metadata>
+</glsa>

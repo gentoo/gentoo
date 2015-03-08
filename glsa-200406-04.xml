@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-04">
+  <title>Mailman: Member password disclosure vulnerability</title>
+  <synopsis>
+    Mailman contains a bug allowing 3rd parties to retrieve member passwords.
+  </synopsis>
+  <product type="ebuild">mailman</product>
+  <announced>June 09, 2004</announced>
+  <revised>June 09, 2004: 01</revised>
+  <bug>51671</bug>
+  <access>remote  </access>
+  <affected>
+    <package name="net-mail/mailman" auto="yes" arch="*">
+      <unaffected range="ge">2.1.5</unaffected>
+      <vulnerable range="lt">2.1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mailman is a python-based mailing list server with an extensive web
+    interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mailman contains an unspecified vulnerability in the handling of request
+    emails.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a carefully crafted email request to the mailman server an
+    attacker could obtain member passwords.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of Mailman should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-mail/mailman-2.1.5"
+    # emerge ">=net-mail/mailman-2.1.5"</code>
+  </resolution>
+  <references>
+    <uri link="http://mail.python.org/pipermail/mailman-announce/2004-May/000072.html">Mailman 2.1.5 Release Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0412">CAN-2004-0412</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

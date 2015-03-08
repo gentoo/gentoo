@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-08">
+  <title>python-updater: Untrusted search path</title>
+  <synopsis>
+    An untrusted search path vulnerability in python-updater might result in
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">python-updater</product>
+  <announced>September 21, 2010</announced>
+  <revised>September 21, 2010: 01</revised>
+  <bug>288361</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/python-updater" auto="yes" arch="*">
+      <unaffected range="ge">0.7-r1</unaffected>
+      <vulnerable range="lt">0.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    python-updater is a script used to remerge python packages when
+    changing Python version.
+    </p>
+  </background>
+  <description>
+    <p>
+    Robert Buchholz of the Gentoo Security Team reported that
+    python-updater includes the current working directory and
+    subdirectories in the Python module search path (sys.path) before
+    calling "import".
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could entice the root user to run "python-updater"
+    from a directory containing a specially crafted Python module,
+    resulting in the execution of arbitrary code with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "python-updater" from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All python-updater users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/python-updater-0.7-r1&quot;</code>
+  </resolution>
+  <references/>
+  <metadata tag="requester" timestamp="Thu, 18 Mar 2010 00:20:22 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 09 Apr 2010 16:48:48 +0000">
+    craig
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 03 Sep 2010 20:36:47 +0000">
+    craig
+  </metadata>
+</glsa>

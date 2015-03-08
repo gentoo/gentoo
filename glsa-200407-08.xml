@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-08">
+  <title>Ethereal: Multiple security problems</title>
+  <synopsis>
+    Multiple vulnerabilities including one buffer overflow exist in Ethereal,
+    which may allow an attacker to run arbitrary code or crash the program.
+  </synopsis>
+  <product type="ebuild">Ethereal</product>
+  <announced>July 09, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>56423</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.5</unaffected>
+      <vulnerable range="le">0.10.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a feature rich network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are multiple vulnerabilities in versions of Ethereal earlier than
+    0.10.5, including:
+    </p>
+    <ul>
+    <li>In some cases the iSNS dissector could cause Ethereal to
+    abort.</li>
+    <li>If there was no policy name for a handle for SMB SID snooping it
+    could cause a crash.</li>
+    <li>A malformed or missing community string could cause the SNMP
+    dissector to crash.</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could use these vulnerabilities to crash Ethereal or even
+    execute arbitrary code with the permissions of the user running
+    Ethereal, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    For a temporary workaround you can disable all affected protocol
+    dissectors by selecting Analyze->Enabled Protocols... and deselecting
+    them from the list. For SMB you can disable SID snooping in the SMB
+    protocol preference. However, it is strongly recommended to upgrade to
+    the latest stable version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ethereal users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-analyzer/ethereal-0.10.5&quot;
+    # emerge &quot;&gt;=net-analyzer/ethereal-0.10.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ethereal.com/appnotes/enpa-sa-00015.html">Ethereal enpa-sa-00015</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0633">CVE-2004-0633</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0634">CVE-2004-0634</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0635">CVE-2004-0635</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

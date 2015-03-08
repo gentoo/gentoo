@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-13">
+  <title>BIND: Weak random number generation</title>
+  <synopsis>
+    The ISC BIND random number generator uses a weak algorithm, making it
+    easier to guess the next query ID and perform a DNS cache poisoning attack.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>August 18, 2007</announced>
+  <revised>August 18, 2007: 01</revised>
+  <bug>186556</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.4.1_p1</unaffected>
+      <vulnerable range="lt">9.4.1_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC BIND is the Internet Systems Consortium implementation of the
+    Domain Name System (DNS) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Amit Klein from Trusteer reported that the random number generator of
+    ISC BIND leads, half the time, to predictable (1 chance to 8) query IDs
+    in the resolver routine or in zone transfer queries (CVE-2007-2926).
+    Additionally, the default configuration file has been strengthen with
+    respect to the allow-recursion{} and the allow-query{} options
+    (CVE-2007-2925).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker can use this weakness by sending queries for a domain
+    he handles to a resolver (directly to a recursive server, or through
+    another process like an email processing) and then observing the
+    resulting IDs of the iterative queries. The attacker will half the time
+    be able to guess the next query ID, then perform cache poisoning by
+    answering with those guessed IDs, while spoofing the UDP source address
+    of the reply. Furthermore, with empty allow-recursion{} and
+    allow-query{} options, the default configuration allowed anybody to
+    make recursive queries and query the cache.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for the random generator
+    weakness. The allow-recursion{} and allow-query{} options should be set
+    to trusted hosts only in /etc/bind/named.conf, thus preventing several
+    security risks.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ISC BIND users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.1_p1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2925">CVE-2007-2925</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2926">CVE-2007-2926</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 05 Aug 2007 10:40:49 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 13 Aug 2007 23:06:16 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Aug 2007 23:00:40 +0000">
+    falco
+  </metadata>
+</glsa>

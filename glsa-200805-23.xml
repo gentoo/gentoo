@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-23">
+  <title>Samba: Heap-based buffer overflow</title>
+  <synopsis>
+    A heap-based buffer overflow vulnerability was found in Samba, allowing for
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>May 29, 2008</announced>
+  <revised>May 29, 2008: 01</revised>
+  <bug>222299</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">3.0.28a-r1</unaffected>
+      <vulnerable range="lt">3.0.28a-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Samba is a suite of SMB and CIFS client/server programs.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alin Rad Pop (Secunia Research) reported a vulnerability in Samba
+    within the receive_smb_raw() function in the file lib/util_sock.c when
+    parsing SMB packets, possibly leading to a heap-based buffer overflow
+    via an overly large SMB packet.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly exploit this vulnerability by enticing
+    a user to connect to a malicious server or by sending specially crafted
+    packets to an nmbd server configured as a local or domain master
+    browser, resulting in the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Samba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.28a-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1105">CVE-2008-1105</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 27 May 2008 15:20:30 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 May 2008 21:23:53 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 May 2008 13:07:54 +0000">
+    p-y
+  </metadata>
+</glsa>

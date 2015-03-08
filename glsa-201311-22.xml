@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-22">
+  <title>Namazu: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Namazu, worst of which
+    allows remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">namazu</product>
+  <announced>November 28, 2013</announced>
+  <revised>November 28, 2013: 1</revised>
+  <bug>391259</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/namazu" auto="yes" arch="*">
+      <unaffected range="ge">2.0.21</unaffected>
+      <vulnerable range="lt">2.0.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Namazu is a full-text search engine intended for easy use.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Namazu. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code or cause a Denial of
+      Service condition.
+      Furthermore, a remote attacker may be able to inject arbitrary web script
+      or HTML via a cookie.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Namazu users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/namazu-2.0.21"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5028">CVE-2009-5028</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4345">CVE-2011-4345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4711">CVE-2011-4711</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 01:13:31 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 09:20:14 +0000">Zlogene</metadata>
+</glsa>

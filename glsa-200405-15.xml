@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-15">
+  <title>cadaver heap-based buffer overflow</title>
+  <synopsis>
+    There is a heap-based buffer overflow vulnerability in the neon library
+    used in cadaver, possibly leading to execution of arbitrary code when
+    connected to a malicious server.
+  </synopsis>
+  <product type="ebuild">cadaver</product>
+  <announced>May 20, 2004</announced>
+  <revised>May 20, 2004: 01</revised>
+  <bug>51461</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-misc/cadaver" auto="yes" arch="*">
+      <unaffected range="ge">0.22.2</unaffected>
+      <vulnerable range="le">0.22.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cadaver is a command-line WebDAV client.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser discovered a vulnerability in the code of the neon library
+    (see GLSA 200405-13). This library is also included in cadaver.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    When connected to a malicious WebDAV server, this vulnerability could allow
+    remote execution of arbitrary code with the rights of the user running
+    cadaver.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to the latest available version of cadaver.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users of cadaver should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/cadaver-0.22.2"
+    # emerge ">=net-misc/cadaver-0.22.2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0398">CAN-2004-0398</uri>
+    <uri link="/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

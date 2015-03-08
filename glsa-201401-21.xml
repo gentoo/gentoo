@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-21">
+  <title>Poppler: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Poppler, allowing
+    remote attackers to execute arbitrary code or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>January 21, 2014</announced>
+  <revised>January 21, 2014: 1</revised>
+  <bug>489720</bug>
+  <bug>496770</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.24.5</unaffected>
+      <vulnerable range="lt">0.24.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Poppler is a cross-platform PDF rendering library originally based on
+      Xpdf. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Poppler. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF in
+      an application linked against Poppler, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Poppler users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.24.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4473">CVE-2013-4473</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4474">CVE-2013-4474</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7296">CVE-2013-7296</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Dec 2013 17:04:54 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 19:03:29 +0000">Zlogene</metadata>
+</glsa>

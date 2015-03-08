@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-20">
+  <title>AbiWord: RTF import stack-based buffer overflow</title>
+  <synopsis>
+    AbiWord is vulnerable to a stack-based buffer overflow during RTF import,
+    making it vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">AbiWord</product>
+  <announced>September 30, 2005</announced>
+  <revised>September 30, 2005: 01</revised>
+  <bug>107351</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/abiword" auto="yes" arch="*">
+      <unaffected range="ge">2.2.10</unaffected>
+      <vulnerable range="lt">2.2.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    AbiWord is a free and cross-platform word processing program. It
+    allows to import RTF files into AbiWord documents.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans discovered that the RTF import function in AbiWord is
+    vulnerable to a stack-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could design a malicious RTF file and entice the user
+    to import it in AbiWord, potentially resulting in the execution of
+    arbitrary code with the rights of the user running AbiWord.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AbiWord users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/abiword-2.2.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2964">CAN-2005-2964</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 28 Sep 2005 16:02:24 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 29 Sep 2005 12:13:23 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Sep 2005 20:47:05 +0000">
+    jaervosz
+  </metadata>
+</glsa>

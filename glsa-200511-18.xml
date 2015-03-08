@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-18">
+  <title>phpSysInfo: Multiple vulnerabilities</title>
+  <synopsis>
+    phpSysInfo is vulnerable to multiple issues, including a local file
+    inclusion leading to information disclosure and the potential execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">phpsysinfo</product>
+  <announced>November 22, 2005</announced>
+  <revised>November 22, 2005: 01</revised>
+  <bug>112482</bug>
+  <access>local and remote</access>
+  <affected>
+    <package name="www-apps/phpsysinfo" auto="yes" arch="*">
+      <unaffected range="ge">2.4.1</unaffected>
+      <vulnerable range="lt">2.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpSysInfo displays various system stats via PHP scripts.
+    </p>
+  </background>
+  <description>
+    <p>
+    Christopher Kunz from the Hardened-PHP Project discovered
+    that phpSysInfo is vulnerable to local file inclusion, cross-site
+    scripting and a HTTP Response Splitting attacks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker may exploit the file inclusion vulnerability by
+    sending malicious requests, causing the execution of arbitrary code
+    with the rights of the user running the web server. A remote attacker
+    could exploit the vulnerability to disclose local file content.
+    Furthermore, the cross-site scripting issues gives a remote attacker
+    the ability to inject and execute malicious script code in the user's
+    browser context or to steal cookie-based authentication credentials.
+    The HTTP response splitting issue give an attacker the ability to
+    perform site hijacking and cache poisoning.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpSysInfo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpsysinfo-2.4.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.hardened-php.net/advisory_222005.81.html">Original advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3347">CVE-2005-3347</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3348">CVE-2005-3348</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 21 Nov 2005 11:13:22 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 21 Nov 2005 13:32:38 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Nov 2005 18:14:24 +0000">
+    jaervosz
+  </metadata>
+</glsa>

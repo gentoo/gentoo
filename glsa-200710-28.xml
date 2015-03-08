@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-28">
+  <title>Qt: Buffer overflow</title>
+  <synopsis>
+    An off-by-one vulnerability has been discovered in Qt, possibly resulting
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">qt</product>
+  <announced>October 25, 2007</announced>
+  <revised>October 25, 2007: 01</revised>
+  <bug>192472</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/qt" auto="yes" arch="*">
+      <unaffected range="ge">3.3.8-r4</unaffected>
+      <vulnerable range="lt">3.3.8-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Qt is a cross-platform GUI framework, which is used e.g. by KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dirk Mueller from the KDE development team discovered a boundary error
+    in file qutfcodec.cpp when processing Unicode strings.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted Unicode string to a
+    vulnerable Qt application, possibly resulting in the remote execution
+    of arbitrary code with the privileges of the user running the
+    application. Note that the boundary error is present but reported to be
+    not exploitable in 4.x series.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Qt 3.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/qt-3.3.8-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4137">CVE-2007-4137</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 15 Sep 2007 12:11:04 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Sep 2007 13:54:49 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 29 Sep 2007 13:54:56 +0000">
+    p-y
+  </metadata>
+</glsa>

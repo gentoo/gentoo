@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200407-13">
+  <title>PHP: Multiple security vulnerabilities</title>
+  <synopsis>
+    Multiple security vulnerabilities, potentially allowing remote code
+    execution, were found and fixed in PHP.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>July 15, 2004</announced>
+  <revised>July 15, 2004: 01</revised>
+  <bug>56985</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.8</unaffected>
+      <vulnerable range="le">4.3.7-r1</vulnerable>
+    </package>
+    <package name="dev-php/mod_php" auto="yes" arch="*">
+      <unaffected range="ge">4.3.8</unaffected>
+      <vulnerable range="le">4.3.7-r1</vulnerable>
+    </package>
+    <package name="dev-php/php-cgi" auto="yes" arch="*">
+      <unaffected range="ge">4.3.8</unaffected>
+      <vulnerable range="le">4.3.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHP is a general-purpose scripting language widely used to develop
+    web-based applications. It can run inside a web server using the mod_php
+    module or the CGI version of PHP, or can run stand-alone in a CLI.
+    </p>
+  </background>
+  <description>
+    <p>
+    Several security vulnerabilities were found and fixed in version 4.3.8 of
+    PHP. The strip_tags() function, used to sanitize user input, could in
+    certain cases allow tags containing \0 characters (CAN-2004-0595). When
+    memory_limit is used, PHP might unsafely interrupt other functions
+    (CAN-2004-0594). The ftok and itpc functions were missing safe_mode checks.
+    It was possible to bypass open_basedir restrictions using MySQL's LOAD DATA
+    LOCAL function. Furthermore, the IMAP extension was incorrectly allocating
+    memory and alloca() calls were replaced with emalloc() for better stack
+    protection.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Successfully exploited, the memory_limit problem could allow remote
+    excution of arbitrary code. By exploiting the strip_tags vulnerability, it
+    is possible to pass HTML code that would be considered as valid tags by the
+    Microsoft Internet Explorer and Safari browsers. Using ftok, itpc or
+    MySQL's LOAD DATA LOCAL, it is possible to bypass PHP configuration
+    restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround that would solve all these problems. All users
+    are encouraged to upgrade to the latest available versions.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHP, mod_php and php-cgi users should upgrade to the latest stable
+    version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-php/php-4.3.8"
+    # emerge ">=dev-php/php-4.3.8"
+
+    # emerge -pv ">=dev-php/mod_php-4.3.8"
+    # emerge ">=dev-php/mod_php-4.3.8"
+
+    # emerge -pv ">=dev-php/php-cgi-4.3.8"
+    # emerge ">=dev-php/php-cgi-4.3.8"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0594">CAN-2004-0594</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0595">CAN-2004-0595</uri>
+    <uri link="http://security.e-matters.de/advisories/112004.html">E-Matters Advisory 11/2004</uri>
+    <uri link="http://security.e-matters.de/advisories/122004.html">E-Matters Advisory 12/2004</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

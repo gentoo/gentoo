@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-31">
+  <title>ProZilla: Multiple vulnerabilities</title>
+  <synopsis>
+    ProZilla contains several buffer overflow vulnerabilities that can be
+    exploited by a malicious server to execute arbitrary code with the rights
+    of the user running ProZilla.
+  </synopsis>
+  <product type="ebuild">ProZilla</product>
+  <announced>November 23, 2004</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>70090</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/prozilla" auto="yes" arch="*">
+      <vulnerable range="le">1.3.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ProZilla is a download accelerator for Linux.
+    </p>
+  </background>
+  <description>
+    <p>
+    ProZilla contains several exploitable buffer overflows in the code
+    handling the network protocols.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could setup a malicious server and entice a user to
+    retrieve files from that server using ProZilla. This could lead to the
+    execution of arbitrary code with the rights of the user running
+    ProZilla.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Currently, there is no released version of ProZilla that contains a fix
+    for these issues. The original author did not respond to our queries,
+    the code contains several other problems and more secure alternatives
+    exist. Therefore, the ProZilla package has been hard-masked prior to
+    complete removal from Portage, and current users are advised to unmerge
+    the package.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1120">CVE-2004-1120</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Nov 2004 17:28:48 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 22 Nov 2004 19:27:08 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 22 Nov 2004 19:46:53 +0000">
+    koon
+  </metadata>
+</glsa>

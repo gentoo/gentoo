@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-35">
+  <title>Evolution: Integer overflow in camel-lock-helper</title>
+  <synopsis>
+    An overflow in the camel-lock-helper application can be exploited by an
+    attacker to execute arbitrary code with elevated privileges.
+  </synopsis>
+  <product type="ebuild">evolution</product>
+  <announced>January 24, 2005</announced>
+  <revised>January 24, 2005: 01</revised>
+  <bug>79183</bug>
+  <access>local and remote</access>
+  <affected>
+    <package name="mail-client/evolution" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r1</unaffected>
+      <vulnerable range="le">2.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evolution is a GNOME groupware application similar to Microsoft
+    Outlook.
+    </p>
+  </background>
+  <description>
+    <p>
+    Max Vozeler discovered an integer overflow in the
+    camel-lock-helper application, which is installed as setgid mail by
+    default.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could exploit this vulnerability to execute
+    malicious code with the privileges of the 'mail' group. A remote
+    attacker could also setup a malicious POP server to execute arbitrary
+    code when an Evolution user connects to it.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Evolution users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/evolution-2.0.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0102">CAN-2005-0102</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 24 Jan 2005 14:31:03 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 24 Jan 2005 21:37:19 +0000">
+    lewk
+  </metadata>
+</glsa>

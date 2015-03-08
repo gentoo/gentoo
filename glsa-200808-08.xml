@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-08">
+  <title>stunnel: Security bypass</title>
+  <synopsis>
+    stunnel does not properly prevent the authentication of a revoked
+    certificate which would be published by OCSP.
+  </synopsis>
+  <product type="ebuild">stunnel</product>
+  <announced>August 08, 2008</announced>
+  <revised>August 09, 2009: 02</revised>
+  <bug>222805</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/stunnel" auto="yes" arch="*">
+      <unaffected range="ge">4.24</unaffected>
+      <unaffected range="lt">4</unaffected>
+      <vulnerable range="lt">4.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The stunnel program is designed to work as an SSL encryption wrapper
+    between a remote client and a local or remote server. OCSP (Online
+    Certificate Status Protocol), as described in RFC 2560, is an internet
+    protocol used for obtaining the revocation status of an X.509 digital
+    certificate.
+    </p>
+  </background>
+  <description>
+    <p>
+    An unspecified bug in the OCSP search functionality of stunnel has been
+    discovered.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker can use a revoked certificate that would be
+    successfully authenticated by stunnel. This issue only concerns the
+    users who have enabled the OCSP validation in stunnel.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All stunnel users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/stunnel-4.24&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2420">CVE-2008-2420</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 03 Aug 2008 21:53:49 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Aug 2008 21:07:35 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 05 Aug 2008 21:08:30 +0000">
+    falco
+  </metadata>
+</glsa>

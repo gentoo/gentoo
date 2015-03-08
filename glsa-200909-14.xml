@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200909-14">
+  <title>Horde: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Horde and two modules,
+    allowing for the execution of arbitrary code, information disclosure, or
+    Cross-Site Scripting.
+  </synopsis>
+  <product type="ebuild">horde horde-imp horde-passwd</product>
+  <announced>September 12, 2009</announced>
+  <revised>September 12, 2009: 01</revised>
+  <bug>256125</bug>
+  <bug>262976</bug>
+  <bug>262978</bug>
+  <bug>277294</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde" auto="yes" arch="*">
+      <unaffected range="ge">3.3.4</unaffected>
+      <vulnerable range="lt">3.3.4</vulnerable>
+    </package>
+    <package name="www-apps/horde-imp" auto="yes" arch="*">
+      <unaffected range="ge">4.3.4</unaffected>
+      <vulnerable range="lt">4.3.4</vulnerable>
+    </package>
+    <package name="www-apps/horde-passwd" auto="yes" arch="*">
+      <unaffected range="ge">3.1.1</unaffected>
+      <vulnerable range="lt">3.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Horde is a web application framework written in PHP. Horde IMP, the
+    "Internet Messaging Program", is a Webmail module and Horde Passwd is a
+    password changing module for Horde.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Horde:
+    </p>
+    <ul>
+    <li>Gunnar Wrobel reported an input sanitation and directory traversal
+    flaw in framework/Image/Image.php, related to the "Horde_Image driver
+    name" (CVE-2009-0932).</li>
+    <li>Gunnar Wrobel reported that data sent
+    to horde/services/portal/cloud_search.php is not properly sanitized
+    before used in the output (CVE-2009-0931).</li>
+    <li>It was reported
+    that data sent to framework/Text_Filter/Filter/xss.php is not properly
+    sanitized before used in the output (CVE-2008-5917).</li>
+    </ul> <p>
+    Horde Passwd: David Wharton reported that data sent via the "backend"
+    parameter to passwd/main.php is not properly sanitized before used in
+    the output (CVE-2009-2360).
+    </p>
+    <p>
+    Horde IMP: Gunnar Wrobel reported that data sent to smime.php, pgp.php,
+    and message.php is not properly sanitized before used in the output
+    (CVE-2009-0930).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote authenticated attacker could exploit these vulnerabilities to
+    execute arbitrary PHP files on the server, or disclose the content of
+    arbitrary files, both only if the file is readable to the web server. A
+    remote authenticated attacker could conduct Cross-Site Scripting
+    attacks. NOTE: Some Cross-Site Scripting vectors are limited to the
+    usage of Microsoft Internet Explorer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.3.4&quot;</code>
+    <p>
+    All Horde IMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-imp-4.3.4&quot;</code>
+    <p>
+    All Horde Passwd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-passwd-3.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5917">CVE-2008-5917</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0930">CVE-2009-0930</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0931">CVE-2009-0931</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0932">CVE-2009-0932</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2360">CVE-2009-2360</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 02 Sep 2009 04:40:46 +0000">
+    a3li
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 02 Sep 2009 04:40:52 +0000">
+    a3li
+  </metadata>
+</glsa>

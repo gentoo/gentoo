@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+
+<glsa id="200311-01">
+  <title>kdebase: KDM vulnerabilities</title>
+  <synopsis>
+    A bug in KDM can allow privilege escalation with certain configurations of
+    PAM modules.
+  </synopsis>
+  <product type="ebuild">kdebase</product>
+  <announced>2003-11-15</announced>
+  <revised>2003-11-15: 01</revised>
+  <bug>29406</bug>
+  <access>local / remote</access>
+  <affected>
+    <package name="kde-base/kdebase" auto="yes" arch="*">
+      <unaffected range="ge">3.1.4</unaffected>
+      <vulnerable range="le">3.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    KDM is the desktop manager included with the K Desktop Environment.
+    </p>
+  </background>
+  <description>
+    <p>
+    Firstly, versions of KDM &lt;=3.1.3 are vulnerable to a privilege escalation
+    bug with a specific configuration of PAM modules.  Users who do not use PAM
+    with KDM and users who use PAM with regular Unix crypt/MD5 based
+    authentication methods are not affected.
+    </p>
+    <p>
+    Secondly, KDM uses a weak cookie generation algorithm.  Users are advised to
+    upgrade to KDE 3.1.4, which uses /dev/urandom as a non-predictable source of
+    entropy to improve security.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote or local attacker could gain root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    It is recommended that all Gentoo Linux users who are running
+    kde-base/kdebase &lt;=3.1.3 upgrade:
+    </p>
+    <code>
+    # emerge sync
+    # emerge -pv '&gt;=kde-base/kde-3.1.4'
+    # emerge '&gt;=kde-base/kde-3.1.4'
+    # emerge clean</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0690">CAN-2003-0690</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0692">CAN-2003-0692</uri>
+    <uri link="http://www.kde.org/info/security/advisory-20030916-1.txt">KDE Security Advisory</uri>
+  </references>
+</glsa>

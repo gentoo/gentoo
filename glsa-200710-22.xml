@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-22">
+  <title>TRAMP: Insecure temporary file creation</title>
+  <synopsis>
+    The TRAMP package for GNU Emacs insecurely creates temporary files.
+  </synopsis>
+  <product type="ebuild">tramp</product>
+  <announced>October 20, 2007</announced>
+  <revised>December 30, 2007: 02</revised>
+  <bug>194713</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emacs/tramp" auto="yes" arch="*">
+      <unaffected range="ge">2.1.10-r2</unaffected>
+      <unaffected range="lt">2.1</unaffected>
+      <vulnerable range="lt">2.1.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    TRAMP is a remote file editing package for GNU Emacs, a highly
+    extensible and customizable text editor.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Monnier discovered that the tramp-make-tramp-temp-file()
+    function creates temporary files in an insecure manner.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the directory where the
+    temporary files are written, pointing to a valid file somewhere on the
+    filesystem that is writable by the user running TRAMP. When TRAMP
+    writes the temporary file, the target valid file would then be
+    overwritten with the contents of the TRAMP temporary file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All TRAMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emacs/tramp-2.1.10-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5377">CVE-2007-5377</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 11 Oct 2007 21:37:14 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Oct 2007 20:15:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Oct 2007 20:17:00 +0000">
+    rbu
+  </metadata>
+</glsa>

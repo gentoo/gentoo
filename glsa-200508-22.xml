@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-22">
+  <title>pam_ldap: Authentication bypass vulnerability</title>
+  <synopsis>
+    pam_ldap contains a vulnerability that may allow a remote attacker to gain
+    system access.
+  </synopsis>
+  <product type="ebuild">pam_ldap</product>
+  <announced>August 31, 2005</announced>
+  <revised>August 31, 2005: 01</revised>
+  <bug>103659</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-auth/pam_ldap" auto="yes" arch="*">
+      <unaffected range="ge">180</unaffected>
+      <vulnerable range="lt">180</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    pam_ldap is a Pluggable Authentication Module which allows
+    authentication against LDAP directories.
+    </p>
+  </background>
+  <description>
+    <p>
+    When a pam_ldap client attempts to authenticate against an LDAP
+    server that omits the optional error value from the
+    PasswordPolicyResponseValue, the authentication attempt will always
+    succeed.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may exploit this vulnerability to bypass the
+    LDAP authentication mechanism, gaining access to the system possibly
+    with elevated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All pam_ldap users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/pam_ldap-180&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2641">CAN-2005-2641</uri>
+    <uri link="http://www.kb.cert.org/vuls/id/778916">US-CERT VU#778916</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 29 Aug 2005 14:50:51 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 29 Aug 2005 14:51:34 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 29 Aug 2005 20:08:30 +0000">
+    adir
+  </metadata>
+</glsa>

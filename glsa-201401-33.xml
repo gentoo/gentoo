@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-33">
+  <title>Perl Digest-Base module: Arbitrary code execution</title>
+  <synopsis>A vulnerability has been found in the Digest-Base Perl module,
+    allowing remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">digest-base</product>
+  <announced>January 29, 2014</announced>
+  <revised>January 29, 2014: 1</revised>
+  <bug>385487</bug>
+  <access>remote</access>
+  <affected>
+    <package name="perl-core/digest-base" auto="yes" arch="*">
+      <unaffected range="ge">1.170.0</unaffected>
+      <vulnerable range="lt">1.170.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Digest-Base is a set of Perl modules that calculate message digests</p>
+  </background>
+  <description>
+    <p>The vulnerability is caused due to the “Digest-&gt;new()” function
+      not properly sanitising input before using it in an “eval()” call.
+    </p>
+  </description>
+  <impact type="high">
+    <p>The vulnerability might allow an attacker to execute arbitrary code.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Digest-Base module users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=perl-core/digest-base-1.170.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3597">CVE-2011-3597</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 22 Aug 2013 09:43:15 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 29 Jan 2014 08:01:48 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

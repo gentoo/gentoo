@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-21">
+  <title>Cacti: SQL injection vulnerability</title>
+  <synopsis>
+    With special configurations of Cacti it is possible to change passwords via
+    a SQL injection attack.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>August 23, 2004</announced>
+  <revised>May 22, 2006: 04</revised>
+  <bug>60630</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">0.8.5a-r1</unaffected>
+      <vulnerable range="le">0.8.5a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cacti is a complete web-based front end to rrdtool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cacti is vulnerable to a SQL injection attack where an attacker may
+    inject SQL into the Username field.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could compromise the Cacti service and potentially execute
+    programs with the permissions of the user running Cacti. Only systems
+    with php_flag magic_quotes_gpc set to Off are vulnerable. By default,
+    Gentoo Linux installs PHP with this option set to On.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Cacti.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest available version of Cacti, as
+    follows:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=net-analyzer/cacti-0.8.5a-r1&quot;
+    # emerge &quot;&gt;=net-analyzer/cacti-0.8.5a-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2004-08/0717.html">Full Disclosure Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1737">CVE-2004-1737</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Aug 2004 05:36:15 +0000">
+    dmargoli
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 19 Aug 2004 08:02:41 +0000">
+    jaervosz
+  </metadata>
+</glsa>

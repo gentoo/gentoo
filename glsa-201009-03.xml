@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201009-03">
+  <title>sudo: Privilege Escalation</title>
+  <synopsis>
+    The secure path feature and group handling in sudo allow local attackers to
+    escalate privileges.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>September 07, 2010</announced>
+  <revised>September 07, 2010: 01</revised>
+  <bug>322517</bug>
+  <bug>335381</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.7.4_p3-r1</unaffected>
+      <vulnerable range="lt">1.7.4_p3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    sudo allows a system administrator to give users the ability to run
+    commands as other users.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in sudo:
+    </p>
+    <ul>
+    <li>Evan
+    Broder and Anders Kaseorg of Ksplice, Inc. reported that the sudo
+    'secure path' feature does not properly handle multiple PATH variables
+    (CVE-2010-1646).</li>
+    <li>Markus Wuethrich of Swiss Post reported that
+    sudo fails to restrict access when using Runas groups and the group
+    (-g) command line option (CVE-2010-2956).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could exploit these vulnerabilities to gain the
+    ability to run certain commands with the privileges of other users,
+    including root, depending on the configuration.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All sudo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.7.4_p3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1646">CVE-2010-1646</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2956">CVE-2010-2956</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 13 Jun 2010 19:16:17 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 13 Jun 2010 19:16:52 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 07 Sep 2010 11:40:54 +0000">
+    a3li
+  </metadata>
+</glsa>

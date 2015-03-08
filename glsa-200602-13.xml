@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-13">
+  <title>GraphicsMagick: Format string vulnerability</title>
+  <synopsis>
+    A vulnerability in GraphicsMagick allows attackers to crash the application
+    and potentially execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">graphicsmagick</product>
+  <announced>February 26, 2006</announced>
+  <revised>February 26, 2006: 01</revised>
+  <bug>119476</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/graphicsmagick" auto="yes" arch="*">
+      <unaffected range="ge">1.1.7</unaffected>
+      <vulnerable range="lt">1.1.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GraphicsMagick is a collection of tools to read, write and
+    manipulate images in many formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SetImageInfo function was found vulnerable to a format string
+    mishandling. Daniel Kobras discovered that the handling of "%"-escaped
+    sequences in filenames passed to the function is inadequate in
+    ImageMagick GLSA 200602-06 and the same vulnerability exists in
+    GraphicsMagick.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By feeding specially crafted file names to GraphicsMagick an
+    attacker can crash the program and possibly execute arbitrary code with
+    the privileges of the user running GraphicsMagick.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GraphicsMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/graphicsmagick-1.1.7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200602-06.xml">GLSA 200602-06</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0082">CVE-2006-0082</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Feb 2006 18:24:37 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 22 Feb 2006 11:24:17 +0000">
+    dragonheart
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 22 Feb 2006 21:18:32 +0000">
+    koon
+  </metadata>
+</glsa>

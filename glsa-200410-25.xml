@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-25">
+  <title>Netatalk: Insecure tempfile handling in etc2ps.sh</title>
+  <synopsis>
+    The etc2ps.sh script, included in the Netatalk package, is vulnerable to
+    symlink attacks, potentially allowing a local user to overwrite arbitrary
+    files with the rights of the user running the utility.
+  </synopsis>
+  <product type="ebuild">Netatalk</product>
+  <announced>October 25, 2004</announced>
+  <revised>October 25, 2004: 01</revised>
+  <bug>66370</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-fs/netatalk" auto="yes" arch="*">
+      <unaffected range="ge">1.6.4-r1</unaffected>
+      <vulnerable range="lt">1.6.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Netatalk is a kernel level implementation of the AppleTalk Protocol Suite,
+    which allows Unix hosts to act as file, print, and time servers for Apple
+    computers. It includes several script utilities, including etc2ps.sh.
+    </p>
+  </background>
+  <description>
+    <p>
+    The etc2ps.sh script creates temporary files in world-writeable directories
+    with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary files
+    directory, pointing to a valid file somewhere on the filesystem. When
+    etc2ps.sh is executed, this would result in the file being overwritten with
+    the rights of the user running the utility, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Netatalk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-fs/netatalk-1.6.4-r1"
+    # emerge ">=net-fs/netatalk-1.6.4-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0974">CAN-2004-0974</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 10 Oct 2004 22:02:01 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Oct 2004 13:03:51 +0000">
+    koon
+  </metadata>
+</glsa>

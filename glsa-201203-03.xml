@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-03">
+  <title>Puppet: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Puppet, the worst of
+    which might allow local attackers to gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">puppet</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>303729</bug>
+  <bug>308031</bug>
+  <bug>384859</bug>
+  <bug>385149</bug>
+  <bug>388161</bug>
+  <bug>403963</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/puppet" auto="yes" arch="*">
+      <unaffected range="ge">2.7.11</unaffected>
+      <vulnerable range="lt">2.7.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Puppet is a system configuration management tool written in Ruby.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Puppet. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain elevated privileges, or access and modify
+      arbitrary files.  Furthermore, a remote attacker may be able to spoof a
+      Puppet Master or write X.509 Certificate Signing Requests to arbitrary
+      locations.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Puppet users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/puppet-2.7.11"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3564">CVE-2009-3564</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0156">CVE-2010-0156</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3848">CVE-2011-3848</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3869">CVE-2011-3869</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3870">CVE-2011-3870</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3871">CVE-2011-3871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3872">CVE-2011-3872</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1053">CVE-2012-1053
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1054">CVE-2012-1054</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:02 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:03:42 +0000" tag="submitter">ackle</metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-01">
+  <title>Libgdiplus: Arbitrary code execution</title>
+  <synopsis>Multiple integer overflow vulnerabilities in Libgdiplus may allow
+    remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libgdiplus</product>
+  <announced>January 05, 2014</announced>
+  <revised>January 05, 2014: 1</revised>
+  <bug>334101</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-dotnet/libgdiplus" auto="yes" arch="*">
+      <unaffected range="ge">2.6.7-r1</unaffected>
+      <vulnerable range="lt">2.6.7-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libgdiplus is the Mono library that provide a GDI+ comptible API on
+      non-Windows operating systems.
+    </p>
+  </background>
+  <description>
+    <p>An integer overflow flaw has been discovered in Libgdiplus.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially-crafted
+      TIFF/JPEG/BMP file, potentially resulting in arbitrary code execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libgdiplus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-dotnet/libgdiplus-2.6.7-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since September 12, 2010. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1526">CVE-2010-1526</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:09 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jan 2014 00:05:05 +0000">Zlogene</metadata>
+</glsa>

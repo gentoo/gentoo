@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-01">
+  <title>Perl: Format string errors can lead to code execution</title>
+  <synopsis>
+    A fix is available for Perl to mitigate the effects of format string
+    programming errors, that could otherwise be exploited to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">Perl</product>
+  <announced>December 07, 2005</announced>
+  <revised>December 07, 2005: 01</revised>
+  <bug>114113</bug>
+  <access>remote and local</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.8.7-r3</unaffected>
+      <unaffected range="rge">5.8.6-r8</unaffected>
+      <vulnerable range="lt">5.8.7-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Perl is a stable, cross-platform programming language created by
+    Larry Wall. It contains printf functions that allows construction of
+    strings from format specifiers and parameters, like the C printf
+    functions. A well-known class of vulnerabilities, called format string
+    errors, result of the improper use of the printf functions in C. Perl
+    in itself is vulnerable to a limited form of format string errors
+    through its own sprintf function, especially through wrapper functions
+    that call sprintf (for example the syslog function) and by taking
+    advantage of Perl powerful string expansion features rather than using
+    format string specifiers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Jack Louis discovered a new way to exploit format string errors in
+    Perl that could lead to the execution of arbitrary code. This is
+    perfomed by causing an integer wrap overflow in the efix variable
+    inside the function Perl_sv_vcatpvfn. The proposed fix closes that
+    specific exploitation vector to mitigate the risk of format string
+    programming errors in Perl. This fix does not remove the need to fix
+    such errors in Perl code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Perl applications making improper use of printf functions (or
+    derived functions) using untrusted data may be vulnerable to the
+    already-known forms of Perl format string exploits and also to the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Fix all misbehaving Perl applications so that they make proper use
+    of the printf and derived Perl functions.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Perl users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose dev-lang/perl</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3962">CVE-2005-3962</uri>
+    <uri link="http://www.dyadsecurity.com/perl-0002.html">Dyad Security Advisory</uri>
+    <uri link="http://www.securityfocus.com/archive/1/418460/30/30">Research on format string errors in Perl</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 01 Dec 2005 12:36:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 01 Dec 2005 16:05:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 07 Dec 2005 10:06:40 +0000">
+    koon
+  </metadata>
+</glsa>

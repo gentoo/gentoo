@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200808-11">
+  <title>UUDeview: Insecure temporary file creation</title>
+  <synopsis>
+    A vulnerability in UUDeview may allow local attackers to conduct symlink
+    attacks.
+  </synopsis>
+  <product type="ebuild">nzbget uudeview</product>
+  <announced>August 11, 2008</announced>
+  <revised>August 11, 2008: 01</revised>
+  <bug>222275</bug>
+  <bug>224193</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/uudeview" auto="yes" arch="*">
+      <unaffected range="ge">0.5.20-r1</unaffected>
+      <vulnerable range="lt">0.5.20-r1</vulnerable>
+    </package>
+    <package name="news-nntp/nzbget" auto="yes" arch="*">
+      <unaffected range="ge">0.4.0</unaffected>
+      <vulnerable range="lt">0.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    UUdeview is encoder and decoder supporting various binary formats.
+    NZBGet is a command-line based binary newsgrabber supporting .nzb
+    files.
+    </p>
+  </background>
+  <description>
+    <p>
+    UUdeview makes insecure usage of the tempnam() function when creating
+    temporary files. NZBGet includes a copy of the vulnerable code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability to overwrite
+    arbitrary files on the system.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All UUDview users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/uudeview-0.5.20-r1&quot;</code>
+    <p>
+    All NZBget users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=news-nntp/nzbget-0.4.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2266">CVE-2008-2266</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 06 Jul 2008 18:30:42 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 06 Jul 2008 18:32:00 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Jul 2008 11:22:12 +0000">
+    p-y
+  </metadata>
+</glsa>

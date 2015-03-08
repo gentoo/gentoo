@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201211-01">
+  <title>MantisBT: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MantisBT, the worst of
+    which allowing for local file inclusion.
+  </synopsis>
+  <product type="ebuild">MantisBT</product>
+  <announced>November 08, 2012</announced>
+  <revised>November 08, 2012: 1</revised>
+  <bug>348761</bug>
+  <bug>381417</bug>
+  <bug>386153</bug>
+  <bug>407121</bug>
+  <bug>420375</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mantisbt" auto="yes" arch="*">
+      <unaffected range="ge">1.2.11</unaffected>
+      <vulnerable range="lt">1.2.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MantisBT is a PHP/MySQL/Web based bugtracking system.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MantisBT. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit these vulnerabilities to conduct
+      directory traversal attacks, disclose the contents of local files, inject
+      arbitrary web scripts, obtain sensitive information, bypass
+      authentication and intended access restrictions, or manipulate bugs and
+      attachments.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MantisBT users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mantisbt-1.2.11"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3303">CVE-2010-3303</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3763">CVE-2010-3763</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4348">CVE-2010-4348</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4349">CVE-2010-4349</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4350">CVE-2010-4350</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2938">CVE-2011-2938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3356">CVE-2011-3356</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3357">CVE-2011-3357</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3358">CVE-2011-3358</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3578">CVE-2011-3578</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3755">CVE-2011-3755</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1118">CVE-2012-1118</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1119">CVE-2012-1119</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1120">CVE-2012-1120</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1121">CVE-2012-1121</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1122">CVE-2012-1122</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1123">CVE-2012-1123</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2691">CVE-2012-2691</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2692">CVE-2012-2692</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:13 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Nov 2012 10:37:33 +0000">
+    keytoaster
+  </metadata>
+</glsa>

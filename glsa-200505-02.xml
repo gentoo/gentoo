@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-02">
+  <title>Oops!: Remote code execution</title>
+  <synopsis>
+    The Oops! proxy server contains a remotely exploitable format string
+    vulnerability, which could potentially lead to the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">oops</product>
+  <announced>May 05, 2005</announced>
+  <revised>May 05, 2005: 02</revised>
+  <bug>91303</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/oops" auto="yes" arch="*">
+      <unaffected range="ge">1.5.24_pre20050503</unaffected>
+      <vulnerable range="lt">1.5.24_pre20050503</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Oops! is an advanced, multithreaded caching web proxy.
+    </p>
+  </background>
+  <description>
+    <p>
+    A format string flaw has been detected in the my_xlog() function of the
+    Oops! proxy, which is called by the passwd_mysql and passwd_pgsql
+    module's auth() functions.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted HTTP request to the
+    Oops! proxy, potentially triggering this vulnerability and leading to
+    the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Oops! users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/oops-1.5.24_pre20050503&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1121">CAN-2005-1121</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 04 May 2005 15:38:53 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 04 May 2005 15:39:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 05 May 2005 13:38:44 +0000">
+    lewk
+  </metadata>
+</glsa>

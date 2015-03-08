@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-08">
+  <title>Wicd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wicd, the worst of
+    which might allow execution of arbitrary code as root.
+  </synopsis>
+  <product type="ebuild">wicd</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>401005</bug>
+  <bug>411729</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/wicd" auto="yes" arch="*">
+      <unaffected range="ge">1.7.2.1</unaffected>
+      <vulnerable range="lt">1.7.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wicd is an open source wired and wireless network manager for Linux.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in Wicd:</p>
+    
+    <ul>
+      <li>Passwords and passphrases are written to /var/log/wicd
+        (CVE-2012-0813).
+      </li>
+      <li>Input from the daemon's D-Bus interface is not properly sanitized
+        (CVE-2012-2095).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain privileges of the root user or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wicd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wicd-1.7.2.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0813">CVE-2012-0813</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2095">CVE-2012-2095</uri>
+  </references>
+  <metadata timestamp="Sun, 15 Apr 2012 04:06:17 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 10:10:59 +0000" tag="submitter">ackle</metadata>
+</glsa>

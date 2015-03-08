@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201310-04">
+  <title>nginx: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in nginx, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nginx</product>
+  <announced>October 06, 2013</announced>
+  <revised>October 06, 2013: 1</revised>
+  <bug>458726</bug>
+  <bug>468870</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/nginx" auto="yes" arch="*">
+      <unaffected range="ge">1.4.1-r2</unaffected>
+      <vulnerable range="lt">1.4.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nginx is a robust, small, and high performance HTTP and reverse proxy
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in nginx. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process, or a Denial of Service condition. Furthermore, a
+      context-dependent attacker may be able to obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nginx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-1.4.1-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0337">CVE-2013-0337</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2028">CVE-2013-2028</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2070">CVE-2013-2070</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 30 Sep 2013 22:53:05 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Oct 2013 21:49:01 +0000">ackle</metadata>
+</glsa>

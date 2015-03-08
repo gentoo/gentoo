@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-09">
+  <title>ProFTPD Access Control List bypass vulnerability</title>
+  <synopsis>
+    Version 1.2.9 of ProFTPD introduced a vulnerability that causes CIDR-based
+    Access Control Lists (ACLs) to be treated as &quot;AllowAll&quot;, thereby
+    allowing remote users full access to files available to the FTP daemon.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>May 19, 2004</announced>
+  <revised>May 19, 2004: 01</revised>
+  <bug>49496</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.2.9-r2</unaffected>
+      <vulnerable range="eq">1.2.9-r1</vulnerable>
+      <vulnerable range="eq">1.2.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ProFTPD is an FTP daemon.
+    </p>
+  </background>
+  <description>
+    <p>
+    ProFTPD 1.2.9 introduced a vulnerability that allows CIDR-based ACLs (such
+    as 10.0.0.1/24) to be bypassed. The CIDR ACLs are disregarded, with the net
+    effect being similar to an "AllowAll" directive.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    This vulnerability may allow unauthorized files, including critical system
+    files to be downloaded and/or modified, thereby allowing a potential remote
+    compromise of the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users may work around the problem by avoiding use of CIDR-based ACLs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    ProFTPD users are encouraged to upgrade to the latest version of the
+    package:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-ftp/proftpd-1.2.9-r2"
+    # emerge ">=net-ftp/proftpd-1.2.9-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0432">CAN-2004-0432</uri>
+  </references>
+  <metadata tag="submitter">
+    klieber
+  </metadata>
+</glsa>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-10">
+  <title>zgv, xzgv: Heap overflow</title>
+  <synopsis>
+    xzgv and zgv attempt to decode JPEG images within the CMYK/YCCK colour
+    space incorrectly, potentially resulting in the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">xzgv</product>
+  <announced>April 21, 2006</announced>
+  <revised>June 10, 2006: 02</revised>
+  <bug>127008</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xzgv" auto="yes" arch="*">
+      <unaffected range="ge">0.8-r2</unaffected>
+      <vulnerable range="lt">0.8-r2</vulnerable>
+    </package>
+    <package name="media-gfx/zgv" auto="yes" arch="*">
+      <unaffected range="ge">5.9</unaffected>
+      <vulnerable range="lt">5.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xzgv and zgv are picture viewing utilities with a thumbnail based file
+    selector.
+    </p>
+  </background>
+  <description>
+    <p>
+    Andrea Barisani of Gentoo Linux discovered xzgv and zgv allocate
+    insufficient memory when rendering images with more than 3 output
+    components, such as images using the YCCK or CMYK colour space. When
+    xzgv or zgv attempt to render the image, data from the image overruns a
+    heap allocated buffer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may be able to construct a malicious image that executes
+    arbitrary code with the permissions of the xzgv or zgv user when
+    attempting to render the image.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xzgv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xzgv-0.8-r2&quot;</code>
+    <p>
+    All zgv users should also upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/zgv-5.9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1060">CVE-2006-1060</uri>
+    <uri link="http://www.svgalib.org/rus/zgv/">homepage plus Changelog</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Apr 2006 14:45:12 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 14 Apr 2006 20:39:46 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 20 Apr 2006 16:13:24 +0000">
+    taviso
+  </metadata>
+</glsa>

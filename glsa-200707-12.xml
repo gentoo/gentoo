@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-12">
+  <title>VLC media player: Format string vulnerabilities</title>
+  <synopsis>
+    A vulnerability has been discovered in VLC media player, allowing for the
+    remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>July 28, 2007</announced>
+  <revised>July 28, 2007: 01</revised>
+  <bug>182389</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6c</unaffected>
+      <vulnerable range="lt">0.8.6c</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VLC media player is a multimedia player for various audio and video
+    formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    David Thiel from iSEC Partners Inc. discovered format string errors in
+    various plugins when parsing data. The affected plugins include Vorbis,
+    Theora, CDDA and SAP.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted media
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running VLC media player.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VLC media player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6c&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3316">CVE-2007-3316</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Jul 2007 21:42:20 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Jul 2007 18:31:02 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 15 Jul 2007 18:31:47 +0000">
+    p-y
+  </metadata>
+</glsa>

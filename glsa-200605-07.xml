@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-07">
+  <title>Nagios: Buffer overflow</title>
+  <synopsis>
+    Nagios is vulnerable to a buffer overflow which may lead to remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nagios</product>
+  <announced>May 07, 2006</announced>
+  <revised>May 25, 2006: 03</revised>
+  <bug>132159</bug>
+  <bug>133487</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/nagios-core" auto="yes" arch="*">
+      <unaffected range="ge">1.4.1</unaffected>
+      <vulnerable range="lt">1.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Nagios is an open source host, service and network monitoring program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Sebastian Krahmer of the SuSE security team discovered a buffer
+    overflow vulnerability in the handling of a negative HTTP
+    Content-Length header.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A buffer overflow in Nagios CGI scripts under certain web servers
+    allows remote attackers to execute arbitrary code via a negative
+    content length HTTP header.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Nagios users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/nagios-core-1.4.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2162">CVE-2006-2162</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2489">CVE-2006-2489</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 04 May 2006 17:10:32 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 05 May 2006 19:09:01 +0000">
+    fox2mike
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 06 May 2006 04:21:12 +0000">
+    jaervosz
+  </metadata>
+</glsa>

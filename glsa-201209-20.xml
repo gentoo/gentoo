@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-20">
+  <title>mod_rpaf: Denial of Service</title>
+  <synopsis>A vulnerability in mod_rpaf may result in Denial of Service.</synopsis>
+  <product type="ebuild">mod_rpaf</product>
+  <announced>September 27, 2012</announced>
+  <revised>September 27, 2012: 1</revised>
+  <bug>432406</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_rpaf" auto="yes" arch="*">
+      <unaffected range="ge">0.6</unaffected>
+      <vulnerable range="lt">0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mod_rpaf is a reverse proxy add forward module for backend Apache
+      servers.
+    </p>
+  </background>
+  <description>
+    <p>An error has been found in the way mod_rpaf handles X-Forwarded-For
+      headers. Please review the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted HTTP header, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mod_rpaf users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_rpaf-0.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3526">CVE-2012-3526</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Sep 2012 10:41:24 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 19:53:08 +0000">ackle</metadata>
+</glsa>

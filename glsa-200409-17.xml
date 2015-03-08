@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-17">
+  <title>SUS: Local root vulnerability</title>
+  <synopsis>
+    SUS contains a string format bug that could lead to local privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">SUS</product>
+  <announced>September 14, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>63927</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sus" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r1</unaffected>
+      <vulnerable range="lt">2.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    SUS is a utility that allows regular users to be able to execute
+    certain commands as root.
+    </p>
+  </background>
+  <description>
+    <p>
+    Leon Juranic found a bug in the logging functionality of SUS that can
+    lead to local privilege escalation. A format string vulnerability
+    exists in the log() function due to an incorrect call to the syslog()
+    function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker with local user privileges can potentially exploit this
+    vulnerability to gain root access.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All SUS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-admin/sus-2.0.2-r1&quot;
+    # emerge &quot;&gt;=app-admin/sus-2.0.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://pdg.uow.edu.au/sus/CHANGES">SUS ChangeLog</uri>
+    <uri link="http://www.securityfocus.com/archive/1/375109/2004-09-11/2004-09-17/0">BugTraq Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1469">CVE-2004-1469</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 13 Sep 2004 21:20:06 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 14 Sep 2004 00:10:33 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Sep 2004 10:08:46 +0000">
+    koon
+  </metadata>
+</glsa>

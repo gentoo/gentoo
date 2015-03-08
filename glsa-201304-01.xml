@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201304-01">
+  <title>NVIDIA Drivers: Privilege escalation</title>
+  <synopsis>Two vulnerabilities in NVIDIA drivers may allow a local attacker to
+    gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">nvidia-drivers</product>
+  <announced>April 08, 2013</announced>
+  <revised>April 08, 2013: 1</revised>
+  <bug>429614</bug>
+  <bug>464248</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-drivers/nvidia-drivers" auto="yes" arch="*">
+      <unaffected range="ge">304.88</unaffected>
+      <vulnerable range="lt">304.88</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The NVIDIA drivers provide X11 and GLX support for NVIDIA graphic
+      boards.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been discovered in NVIDIA drivers:</p>
+    
+    <ul>
+      <li>A vulnerability has been found in the way NVIDIA drivers handle
+        read/write access to GPU device nodes, allowing access to arbitrary
+        system memory locations (CVE-2012-4225).
+      </li>
+      <li>A buffer overflow error has been discovered in NVIDIA drivers
+        (CVE-2013-0131).
+      </li>
+    </ul>
+    
+    <p>NOTE: Exposure to CVE-2012-4225 is reduced in Gentoo due to 660
+      permissions being used on the GPU device nodes by default.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NVIDIA driver users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=x11-drivers/nvidia-drivers-304.88"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4225">CVE-2012-4225</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0131">CVE-2013-0131</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 09 Aug 2012 20:47:12 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Apr 2013 22:10:10 +0000">ackle</metadata>
+</glsa>

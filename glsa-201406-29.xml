@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-29">
+  <title>spice-gtk: Privilege escalation</title>
+  <synopsis>A vulnerability in spice-gtk could allow local attackers to gain
+    escalated privileges.
+  </synopsis>
+  <product type="ebuild">spice-gtk</product>
+  <announced>June 26, 2014</announced>
+  <revised>June 26, 2014: 1</revised>
+  <bug>435694</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/spice-gtk" auto="yes" arch="*">
+      <unaffected range="ge">0.14</unaffected>
+      <vulnerable range="lt">0.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>spice-gtk is a set of GObject and Gtk objects for connecting to Spice
+      servers and a client GUI.
+    </p>
+  </background>
+  <description>
+    <p>spice-gtk does not properly sanitize the DBUS_SYSTEM_BUS_ADDRESS
+      environment variable.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All spice-gtk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/spice-gtk-0.14"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4425">CVE-2012-4425</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:53:39 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 26 Jun 2014 23:23:49 +0000">ackle</metadata>
+</glsa>
+

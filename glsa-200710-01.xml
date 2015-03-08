@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-01">
+  <title>RPCSEC_GSS library: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in librpcsecgss.
+  </synopsis>
+  <product type="ebuild">librcpsecgss</product>
+  <announced>October 04, 2007</announced>
+  <revised>October 04, 2007: 01</revised>
+  <bug>191479</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/librpcsecgss" auto="yes" arch="*">
+      <unaffected range="ge">0.16</unaffected>
+      <vulnerable range="lt">0.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    librpcsecgss is an implementation of RPCSEC_GSS for secure RPC
+    communications.
+    </p>
+  </background>
+  <description>
+    <p>
+    A stack based buffer overflow has been discovered in the
+    svcauth_gss_validate() function in file lib/rpc/svc_auth_gss.c when
+    processing an overly long string in a RPC message.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted RPC request to an
+    application relying on this library, e.g NFSv4 or Kerberos
+    (GLSA-200709-01), resulting in the execution of arbitrary code with the
+    privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All librpcsecgss users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/librpcsecgss-0.16&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3999">CVE-2007-3999</uri>
+    <uri link="/security/en/glsa/glsa-200709-01.xml">GLSA-200709-01</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 09 Sep 2007 19:27:24 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 09 Sep 2007 19:29:01 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Sep 2007 15:36:52 +0000">
+    p-y
+  </metadata>
+</glsa>

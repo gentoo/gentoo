@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200511-15">
+  <title>Smb4k: Local unauthorized file access</title>
+  <synopsis>
+    A vulnerability has been identified that allows unauthorized access to the
+    contents of /etc/sudoers and /etc/super.tab files.
+  </synopsis>
+  <product type="ebuild">Smb4k</product>
+  <announced>November 18, 2005</announced>
+  <revised>November 18, 2005: 01</revised>
+  <bug>111089</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/smb4k" auto="yes" arch="*">
+      <unaffected range="ge">0.6.4</unaffected>
+      <vulnerable range="lt">0.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Smb4K is a SMB/CIFS share browser for KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability leading to unauthorized file access has been
+    found. A pre-existing symlink from /tmp/sudoers and /tmp/super.tab to a
+    textfile will cause Smb4k to write the contents of these files to the
+    target of the symlink, as Smb4k does not check for the existence of
+    these files before writing to them.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could acquire local privilege escalation by adding
+    username(s) to the list of sudoers.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All smb4k users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/smb4k-0.6.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2851">CVE-2005-2851</uri>
+    <uri link="http://smb4k.berlios.de/">Smb4k Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Nov 2005 09:03:00 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Nov 2005 09:04:04 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 16 Nov 2005 02:48:46 +0000">
+    shellsage
+  </metadata>
+</glsa>

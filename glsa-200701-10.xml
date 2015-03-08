@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-10">
+  <title>WordPress: Multiple vulnerabilities</title>
+  <synopsis>
+    WordPress is vulnerable to SQL injection, information disclosure, and
+    cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">wordpress</product>
+  <announced>January 15, 2007</announced>
+  <revised>January 15, 2007: 01</revised>
+  <bug>159229</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">2.0.6</unaffected>
+      <vulnerable range="lt">2.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a popular personal publishing platform with a web
+    interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    When decoding trackbacks with alternate character sets, WordPress does
+    not correctly sanitize the entries before further modifying a SQL
+    query. WordPress also displays different error messages in wp-login.php
+    based upon whether or not a user exists. David Kierznowski has
+    discovered that WordPress fails to properly sanitize recent file
+    information in /wp-admin/templates.php before sending that information
+    to a browser.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could inject arbitrary SQL into WordPress database queries.
+    An attacker could also determine if a WordPress user existed by trying
+    to login as that user, better facilitating brute force attacks. Lastly,
+    an attacker authenticated to view the administrative section of a
+    WordPress instance could try to edit a file with a malicious filename;
+    this may cause arbitrary HTML or JavaScript to be executed in users'
+    browsers viewing /wp-admin/templates.php.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordPress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-2.0.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6808">CVE-2006-6808</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0107">CVE-2007-0107</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0109">CVE-2007-0109</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Jan 2007 10:45:23 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 09 Jan 2007 13:32:54 +0000">
+    shellsage
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 12 Jan 2007 13:12:39 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-11">
+  <title>TunePimp: Buffer overflow</title>
+  <synopsis>
+    A vulnerability in TunePimp has been reported which could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Tunepimp</product>
+  <announced>July 28, 2006</announced>
+  <revised>June 01, 2007: 02</revised>
+  <bug>140184</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tunepimp" auto="yes" arch="*">
+      <unaffected range="ge">0.5.0</unaffected>
+      <vulnerable range="le">0.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The TunePimp library (also referred to as libtunepimp) is a development
+    library geared towards developers who wish to create MusicBrainz
+    enabled tagging applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kevin Kofler has reported a vulnerability where three stack variables
+    are allocated with 255, 255 and 100 bytes respectively, yet 256 bytes
+    are read into each. This could lead to buffer overflows.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Running an affected version of TunePimp could lead to the execution of
+    arbitrary code by a remote attacker.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All tunepimp users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tunepimp-0.5.&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3600">CVE-2006-3600</uri>
+    <uri link="http://bugs.musicbrainz.org/ticket/1764">MusicBrainz bug #1764</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 25 Jul 2006 17:18:27 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Jul 2006 17:51:46 +0000">
+    koon
+  </metadata>
+</glsa>

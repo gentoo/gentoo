@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-12">
+  <title>OptiPNG: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability in OptiPNG might result in user-assisted execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">optipng</product>
+  <announced>March 09, 2009</announced>
+  <revised>March 09, 2009: 01</revised>
+  <bug>260265</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/optipng" auto="yes" arch="*">
+      <unaffected range="ge">0.6.2-r1</unaffected>
+      <vulnerable range="lt">0.6.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OptiPNG is a PNG optimizer that recompresses image files to a smaller
+    size, without losing any information.
+    </p>
+  </background>
+  <description>
+    <p>
+    Roy Tam reported a use-after-free vulnerability in the
+    GIFReadNextExtension() function in lib/pngxtern/gif/gifread.c leading
+    to a memory corruption when reading a GIF image.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to process a specially crafted
+    GIF image, possibly resulting in the execution of arbitrary code with
+    the privileges of the user running the application, or a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OptiPNG users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/optipng-0.6.2-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0749">CVE-2009-0749</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 16:36:48 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 07 Mar 2009 18:09:51 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 07 Mar 2009 18:10:05 +0000">
+    rbu
+  </metadata>
+</glsa>

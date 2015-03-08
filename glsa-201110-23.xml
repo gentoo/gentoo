@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-23">
+  <title>Apache mod_authnz_external: SQL injection</title>
+  <synopsis>An input sanitation flaw in mod_authnz_external allows remote
+    attacker to conduct SQL injection.
+  </synopsis>
+  <product type="ebuild">mod_authnz_external</product>
+  <announced>October 25, 2011</announced>
+  <revised>October 25, 2011: 1</revised>
+  <bug>386165</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_authnz_external" auto="yes" arch="*">
+      <unaffected range="ge">3.2.6</unaffected>
+      <vulnerable range="lt">3.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mod_authnz_external is a tool for creating custom authentication
+      backends for HTTP basic authentication.
+    </p>
+  </background>
+  <description>
+    <p>mysql/mysql-auth.pl in mod_authnz_external does not properly sanitize
+      input before using it in an SQL query.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could exploit this vulnerability to inject arbitrary
+      SQL statements by using a specially crafted username for HTTP
+      authentication on a site using mod_authnz_external.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache mod_authnz_external users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-apache/mod_authnz_external-3.2.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2688">CVE-2011-2688</uri>
+  </references>
+  <metadata timestamp="Tue, 18 Oct 2011 14:42:12 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Tue, 25 Oct 2011 17:13:58 +0000" tag="submitter">a3li</metadata>
+</glsa>

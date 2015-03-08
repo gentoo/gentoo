@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200601-06">
+  <title>xine-lib, FFmpeg: Heap-based buffer overflow</title>
+  <synopsis>
+    xine-lib and FFmpeg are vulnerable to a buffer overflow that may be
+    exploited by attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xine-lib ffmpeg</product>
+  <announced>January 10, 2006</announced>
+  <revised>January 10, 2006: 01</revised>
+  <bug>115849</bug>
+  <bug>116181</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1-r3</unaffected>
+      <vulnerable range="lt">1.1.1-r3</vulnerable>
+    </package>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">0.4.9_p20051216</unaffected>
+      <vulnerable range="lt">0.4.9_p20051216</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine is a GPL high-performance, portable and reusable multimedia
+    playback engine. xine-lib is xine's core engine. FFmpeg is a very fast
+    video and audio converter and is used in xine-lib.
+    </p>
+  </background>
+  <description>
+    <p>
+    Simon Kilvington has reported a vulnerability in FFmpeg
+    libavcodec. The flaw is due to a buffer overflow error in the
+    "avcodec_default_get_buffer()" function. This function doesn't properly
+    handle specially crafted PNG files as a result of a heap overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run an FFmpeg based
+    application on a maliciously crafted PNG file, resulting in the
+    execution of arbitrary code with the permissions of the user running
+    the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.1-r3&quot;</code>
+    <p>
+    All FFmpeg users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/ffmpeg-0.4.9_p20051216&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4048">CVE-2005-4048</uri>
+    <uri link="http://article.gmane.org/gmane.comp.video.ffmpeg.devel/26558">Original advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 03 Jan 2006 10:30:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 06 Jan 2006 00:22:43 +0000">
+    adir
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 09 Jan 2006 22:59:16 +0000">
+    DerCorny
+  </metadata>
+</glsa>

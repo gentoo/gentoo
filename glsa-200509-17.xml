@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-17">
+  <title>Webmin, Usermin: Remote code execution through PAM authentication</title>
+  <synopsis>
+    If Webmin or Usermin is configured to use full PAM conversations, it is
+    vulnerable to the remote execution of arbitrary code with root privileges.
+  </synopsis>
+  <product type="ebuild">Webmin Usermin</product>
+  <announced>September 24, 2005</announced>
+  <revised>September 24, 2005: 01</revised>
+  <bug>106705</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/webmin" auto="yes" arch="*">
+      <unaffected range="ge">1.230</unaffected>
+      <vulnerable range="lt">1.230</vulnerable>
+    </package>
+    <package name="app-admin/usermin" auto="yes" arch="*">
+      <unaffected range="ge">1.160</unaffected>
+      <vulnerable range="lt">1.160</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Webmin and Usermin are web-based system administration consoles.
+    Webmin allows an administrator to easily configure servers and other
+    features. Usermin allows users to configure their own accounts, execute
+    commands, and read e-mails.
+    </p>
+  </background>
+  <description>
+    <p>
+    Keigo Yamazaki discovered that the miniserv.pl webserver, used in
+    both Webmin and Usermin, does not properly validate authentication
+    credentials before sending them to the PAM (Pluggable Authentication
+    Modules) authentication process. The default configuration shipped with
+    Gentoo does not enable the "full PAM conversations" option and is
+    therefore unaffected by this flaw.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could bypass the authentication process and run
+    any command as the root user on the target server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not enable "full PAM conversations" in the Authentication
+    options of Webmin and Usermin.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Webmin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/webmin-1.230&quot;</code>
+    <p>
+    All Usermin users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/usermin-1.160&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3042">CAN-2005-3042</uri>
+    <uri link="http://www.lac.co.jp/business/sns/intelligence/SNSadvisory_e/83_e.html">Original Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Fri, 23 Sep 2005 12:50:05 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 23 Sep 2005 12:50:25 +0000">
+    koon
+  </metadata>
+</glsa>

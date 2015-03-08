@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-09">
+  <title>xv: Filename handling vulnerability</title>
+  <synopsis>
+    xv contains a format string vulnerability, potentially resulting in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xv</product>
+  <announced>March 04, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>83686</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xv" auto="yes" arch="*">
+      <unaffected range="ge">3.10a-r10</unaffected>
+      <vulnerable range="lt">3.10a-r10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xv is an interactive image manipulation package for X11.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team identified a flaw
+    in the handling of image filenames by xv.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would require a victim to process a specially
+    crafted image with a malformed filename, potentially resulting in the
+    execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xv-3.10a-r10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0665">CVE-2005-0665</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed,  2 Mar 2005 21:42:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed,  2 Mar 2005 22:55:00 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu,  3 Mar 2005 21:51:14 +0000">
+    koon
+  </metadata>
+</glsa>

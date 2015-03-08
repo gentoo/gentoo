@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-27">
+  <title>LibYAML: Arbitrary code execution</title>
+  <synopsis>A vulnerability in LibYAML could allow an attacker to execute
+    arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libyaml</product>
+  <announced>May 23, 2014</announced>
+  <revised>May 23, 2014: 1</revised>
+  <bug>505948</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libyaml" auto="yes" arch="*">
+      <unaffected range="ge">0.1.6</unaffected>
+      <vulnerable range="lt">0.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibYAML is a YAML 1.1 parser and emitter written in C.</p>
+  </background>
+  <description>
+    <p>The yaml_parser_scan_uri_escapes() function does not properly expand
+      strings passed as input, which can result in a heap-based buffer
+      overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could provide a specially-crafted YAML document, which, when
+      parsed by LibYAML, could result in arbitrary code execution or cause the
+      application to crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibYAML users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libyaml-0.1.6"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2525">CVE-2014-2525</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 May 2014 03:39:38 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 23 May 2014 08:42:20 +0000">
+    creffett
+  </metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-11">
+  <title>Pidgin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Pidgin, the worst of which
+    allowing for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Pidgin</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: 1</revised>
+  <bug>299751</bug>
+  <bug>372785</bug>
+  <bug>385073</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.10.0-r1</unaffected>
+      <vulnerable range="lt">2.10.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pidgin is an GTK Instant Messenger client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pidgin. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>These vulnerabilities allow for arbitrary file retrieval, Denial of
+      Service and arbitrary code execution with the privileges of the user
+      running Pidgin.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pidgin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.10.0-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0013">CVE-2010-0013</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2485">CVE-2011-2485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3594">CVE-2011-3594</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:06 +0000" tag="requester">
+    keytoaster
+  </metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 18:17:26 +0000" tag="submitter">craig</metadata>
+</glsa>

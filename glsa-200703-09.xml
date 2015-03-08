@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-09">
+  <title>Smb4K: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified in Smb4K.
+  </synopsis>
+  <product type="ebuild">smb4k</product>
+  <announced>March 09, 2007</announced>
+  <revised>March 09, 2007: 01</revised>
+  <bug>156152</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/smb4k" auto="yes" arch="*">
+      <unaffected range="ge">0.6.10a</unaffected>
+      <vulnerable range="lt">0.6.10a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Smb4K is a SMB/CIFS (Windows) share browser for KDE.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kees Cook of the Ubuntu Security Team has identified multiple
+    vulnerabilities in Smb4K.
+    </p>
+    <ul><li>The writeFile() function of
+    smb4k/core/smb4kfileio.cpp makes insecure usage of temporary
+    files.</li>
+    <li>The writeFile() function also stores the contents of
+    the sudoers file with incorrect permissions, allowing for the file's
+    contents to be world-readable.</li>
+    <li>The createLockFile() and
+    removeLockFile() functions improperly handle lock files, possibly
+    allowing for a race condition in file handling.</li>
+    <li>The smb4k_kill
+    utility distributed with Smb4K allows any user in the sudoers group to
+    kill any process on the system.</li>
+    <li>Lastly, there is the potential
+    for multiple stack overflows when any Smb4K utility is used with the
+    sudo command.</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could gain unauthorized access to arbitrary files via
+    numerous attack vectors. In some cases to obtain this unauthorized
+    access, an attacker would have to be a member of the sudoers list.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Smb4K users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/smb4k-0.6.10a&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0472">CVE-2007-0472</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0473">CVE-2007-0473</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0474">CVE-2007-0474</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0475">CVE-2007-0475</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 22:36:28 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Feb 2007 22:42:10 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 15:26:26 +0000">
+    shellsage
+  </metadata>
+</glsa>

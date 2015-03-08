@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-07">
+  <title>Eggdrop: Buffer overflow</title>
+  <synopsis>
+    A remote stack-based buffer overflow has been discovered in Eggdrop.
+  </synopsis>
+  <product type="ebuild">eggdrop</product>
+  <announced>September 15, 2007</announced>
+  <revised>September 26, 2007: 02</revised>
+  <bug>179354</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/eggdrop" auto="yes" arch="*">
+      <unaffected range="ge">1.6.18-r3</unaffected>
+      <vulnerable range="lt">1.6.18-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Eggdrop is an IRC bot extensible with C or Tcl.
+    </p>
+  </background>
+  <description>
+    <p>
+    Bow Sineath discovered a boundary error in the file
+    mod/server.mod/servrmsg.c when processing overly long private messages
+    sent by an IRC server.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice an Eggdrop user to connect the bot to a
+    malicious server, possibly resulting in the execution of arbitrary code
+    on the host running Eggdrop.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Eggdrop users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/eggdrop-1.6.18-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2807">CVE-2007-2807</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 23 Aug 2007 09:04:09 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 23 Aug 2007 09:04:22 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Sep 2007 09:43:27 +0000">
+    p-y
+  </metadata>
+</glsa>

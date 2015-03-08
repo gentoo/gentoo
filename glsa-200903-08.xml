@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-08">
+  <title>gEDA: Insecure temporary file creation</title>
+  <synopsis>
+    An insecure temporary file usage has been reported in gEDA, allowing for
+    symlink attacks.
+  </synopsis>
+  <product type="ebuild">geda</product>
+  <announced>March 07, 2009</announced>
+  <revised>March 07, 2009: 01</revised>
+  <bug>247538</bug>
+  <access>local</access>
+  <affected>
+    <package name="sci-electronics/geda" auto="yes" arch="*">
+      <unaffected range="ge">1.4.0-r1</unaffected>
+      <vulnerable range="lt">1.4.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gEDA is an Electronic Design Automation tool used for electrical
+    circuit design.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dmitry E. Oboukhov reported an insecure temporary file usage within the
+    sch2eaglepos.sh script.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could perform symlink attacks to overwrite arbitrary
+    files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gEDA users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=sci-electronics/geda-1.4.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5148">CVE-2008-5148</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:58:50 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:01:59 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:02:15 +0000">
+    rbu
+  </metadata>
+</glsa>

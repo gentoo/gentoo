@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201411-06">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>November 21, 2014</announced>
+  <revised>November 21, 2014: 2</revised>
+  <bug>525430</bug>
+  <bug>529088</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.418</unaffected>
+      <vulnerable range="lt">11.2.202.418</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or bypass security restrictions. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.418"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0558">CVE-2014-0558</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0564">CVE-2014-0564</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0569">CVE-2014-0569</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0573">CVE-2014-0573</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0574">CVE-2014-0574</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0576">CVE-2014-0576</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0577">CVE-2014-0577</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0581">CVE-2014-0581</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0582">CVE-2014-0582</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0583">CVE-2014-0583</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0584">CVE-2014-0584</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0585">CVE-2014-0585</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0586">CVE-2014-0586</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0588">CVE-2014-0588</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0589">CVE-2014-0589</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0590">CVE-2014-0590</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8437">CVE-2014-8437</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8438">CVE-2014-8438</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8440">CVE-2014-8440</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8441">CVE-2014-8441</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8442">CVE-2014-8442</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 16 Nov 2014 14:56:06 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Nov 2014 12:07:58 +0000">K_F</metadata>
+</glsa>

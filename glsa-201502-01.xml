@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-01">
+  <title>mpg123: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability has been found in mpg123, which could result in
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">mpg123</product>
+  <announced>February 06, 2015</announced>
+  <revised>February 06, 2015: 1</revised>
+  <bug>500262</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/mpg123" auto="yes" arch="*">
+      <unaffected range="ge">1.18.1</unaffected>
+      <vulnerable range="lt">1.18.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mpg123 is a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and
+      3.
+    </p>
+  </background>
+  <description>
+    <p>An issue has been found in mpg123 when decoding specifically crafted MP3
+      file, that causes a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted MPEG
+      file using mpg123, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mpg123 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/mpg123-1.18.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9497">CVE-2014-9497</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 Jun 2014 00:30:07 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 06 Feb 2015 14:40:46 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

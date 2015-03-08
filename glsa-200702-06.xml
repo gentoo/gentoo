@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-06">
+  <title>BIND: Denial of Service</title>
+  <synopsis>
+    ISC BIND contains two vulnerabilities allowing a Denial of Service under
+    certain conditions.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>February 17, 2007</announced>
+  <revised>February 17, 2007: 01</revised>
+  <bug>163692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.3.4</unaffected>
+      <unaffected range="rge">9.2.8</unaffected>
+      <vulnerable range="lt">9.3.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC BIND is the Internet Systems Consortium implementation of the
+    Domain Name System (DNS) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    An unspecified improper usage of an already freed context has been
+    reported. Additionally, an assertion error could be triggered in the
+    DNSSEC validation of some responses to type ANY queries with multiple
+    RRsets.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could crash the server through unspecified vectors
+    or, if DNSSEC validation is enabled, by sending certain crafted ANY
+    queries.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time for the first issue. The
+    DNSSEC validation Denial of Service can be prevented by disabling
+    DNSSEC validation until the upgrade to a fixed version. Note that
+    DNSSEC validation is disabled on a default configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ISC BIND 9.3 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.3.4&quot;</code>
+    <p>
+    All ISC BIND 9.2 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.2.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0493">CVE-2007-0493</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0494">CVE-2007-0494</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 16 Feb 2007 09:07:21 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 16 Feb 2007 17:39:52 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 17 Feb 2007 15:53:00 +0000">
+    falco
+  </metadata>
+</glsa>

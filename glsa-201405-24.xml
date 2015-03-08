@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-24">
+  <title>Apache Portable Runtime, APR Utility Library: Denial of Service</title>
+  <synopsis>Memory consumption errors in Apache Portable Runtime and APR
+    Utility Library could result in Denial of Service.
+  </synopsis>
+  <product type="ebuild">apr apr-util</product>
+  <announced>May 18, 2014</announced>
+  <revised>May 18, 2014: 1</revised>
+  <bug>339527</bug>
+  <bug>366903</bug>
+  <bug>368651</bug>
+  <bug>399089</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/apr" auto="yes" arch="*">
+      <unaffected range="ge">1.4.8-r1</unaffected>
+      <vulnerable range="lt">1.4.8-r1</vulnerable>
+    </package>
+    <package name="dev-libs/apr-util" auto="yes" arch="*">
+      <unaffected range="ge">1.3.10</unaffected>
+      <vulnerable range="lt">1.3.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Apache Portable Runtime (aka APR) provides a set of APIs for
+      creating platform-independent applications. The Apache Portable Runtime
+      Utility Library (aka APR-Util) provides an interface to functionality
+      such as XML parsing, string matching and database connections. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache Portable Runtime
+      and APR Utility Library. Please review the CVE identifiers referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Portable Runtime users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/apr-1.4.8-r1"
+    </code>
+    
+    <p>All users of the APR Utility Library should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/apr-util-1.3.10"
+    </code>
+    
+    <p>Packages which depend on these libraries may need to be recompiled.
+      Tools such as revdep-rebuild may assist in identifying some of these
+      packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1623">CVE-2010-1623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0419">CVE-2011-0419</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1928">CVE-2011-1928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0840">CVE-2012-0840</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:24 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:30:44 +0000">ackle</metadata>
+</glsa>

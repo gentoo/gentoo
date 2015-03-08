@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201301-07">
+  <title>DokuWiki: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in DokuWiki, the worst of which
+    leading to privilege escalation.
+  </synopsis>
+  <product type="ebuild">DokuWiki</product>
+  <announced>January 09, 2013</announced>
+  <revised>January 09, 2013: 1</revised>
+  <bug>301310</bug>
+  <bug>386155</bug>
+  <bug>412891</bug>
+  <bug>427232</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/dokuwiki" auto="yes" arch="*">
+      <unaffected range="ge">20121013</unaffected>
+      <vulnerable range="lt">20121013</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>DokuWiki is a simple to use Wiki aimed at a small company’s
+      documentation needs.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in DokuWiki. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerabilities might allow an attacker to disclose local files, to
+      inject arbitrary web script, or to gain elevated privileges in the
+      DokuWiki application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All DokuWiki users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/dokuwiki-20121013"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0287">CVE-2010-0287</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0288">CVE-2010-0288</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0289">CVE-2010-0289</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2510">CVE-2011-2510</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3727">CVE-2011-3727</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0283">CVE-2012-0283</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:15 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Jan 2013 00:43:00 +0000">craig</metadata>
+</glsa>

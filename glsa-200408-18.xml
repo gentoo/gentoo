@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-18">
+  <title>xine-lib: VCD MRL buffer overflow</title>
+  <synopsis>
+    xine-lib contains an exploitable buffer overflow in the VCD handling code
+  </synopsis>
+  <product type="ebuild">xine-lib</product>
+  <announced>August 17, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>59948</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1_rc5-r3</unaffected>
+      <vulnerable range="le">1_rc5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xine-lib is a multimedia library which can be utilized to create
+    multimedia frontends.
+    </p>
+  </background>
+  <description>
+    <p>
+    xine-lib contains a bug where it is possible to overflow the vcd://
+    input source identifier management buffer through carefully crafted
+    playlists.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may construct a carefully-crafted playlist file which will
+    cause xine-lib to execute arbitrary code with the permissions of the
+    user. In order to conform with the generic naming standards of most
+    Unix-like systems, playlists can have extensions other than .asx (the
+    standard xine playlist format), and made to look like another file
+    (MP3, AVI, or MPEG for example). If an attacker crafts a playlist with
+    a valid header, they can insert a VCD playlist line that can cause a
+    buffer overflow and possible shellcode execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of xine-lib.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xine-lib users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=media-libs/xine-lib-1_rc5-r3&quot;
+    # emerge &quot;&gt;=media-libs/xine-lib-1_rc5-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.open-security.org/advisories/6">Open Security Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1475">CVE-2004-1475</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 14 Aug 2004 05:07:02 +0000">
+    jaervosz
+  </metadata>
+</glsa>

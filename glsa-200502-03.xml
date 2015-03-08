@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-03">
+  <title>enscript: Multiple vulnerabilities</title>
+  <synopsis>
+    enscript suffers from vulnerabilities and design flaws, potentially
+    resulting in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">enscript</product>
+  <announced>February 02, 2005</announced>
+  <revised>February 02, 2005: 01</revised>
+  <bug>77408</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/enscript" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r3</unaffected>
+      <vulnerable range="lt">1.6.3-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    enscript is a powerful ASCII to PostScript file converter.
+    </p>
+  </background>
+  <description>
+    <p>
+    Erik Sjolund discovered several issues in enscript: it suffers
+    from several buffer overflows (CAN-2004-1186), quotes and shell escape
+    characters are insufficiently sanitized in filenames (CAN-2004-1185),
+    and it supported taking input from an arbitrary command pipe, with
+    unwanted side effects (CAN-2004-1184).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could design malicious files or input data which, once
+    feeded into enscript, would trigger the execution of arbitrary code
+    with the rights of the user running enscript.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All enscript users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/enscript-1.6.3-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1184">CAN-2004-1184</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1185">CAN-2004-1185</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1186">CAN-2004-1186</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 28 Jan 2005 10:31:54 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  1 Feb 2005 17:01:52 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  1 Feb 2005 21:40:35 +0000">
+    koon
+  </metadata>
+</glsa>

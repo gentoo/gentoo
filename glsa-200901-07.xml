@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-07">
+  <title>MPlayer: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in MPlayer may lead to the execution of arbitrary
+    code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">mplayer</product>
+  <announced>January 12, 2009</announced>
+  <revised>January 12, 2009: 01</revised>
+  <bug>231836</bug>
+  <bug>239130</bug>
+  <bug>251017</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_rc2_p28058-r1 </unaffected>
+      <vulnerable range="lt">1.0_rc2_p28058-r1 </vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player including support for a wide range of audio
+    and video formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been reported in MPlayer:
+    </p>
+    <ul>
+    <li>A
+    stack-based buffer overflow was found in the str_read_packet() function
+    in libavformat/psxstr.c when processing crafted STR files that
+    interleave audio and video sectors (CVE-2008-3162).</li>
+    <li>Felipe
+    Andres Manzano reported multiple integer underflows in the
+    demux_real_fill_buffer() function in demux_real.c when processing
+    crafted Real Media files that cause the stream_read() function to read
+    or write arbitrary memory (CVE-2008-3827).</li>
+    <li>Tobias Klein
+    reported a stack-based buffer overflow in the demux_open_vqf() function
+    in libmpdemux/demux_vqf.c when processing malformed TwinVQ files
+    (CVE-2008-5616).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted STR,
+    Real Media, or TwinVQ file to execute arbitrary code or cause a Denial of
+    Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc2_p28058-r1 &quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3162">CVE-2008-3162</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3827">CVE-2008-3827</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5616">CVE-2008-5616</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 29 Nov 2008 14:10:43 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Jan 2009 12:40:15 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 11 Jan 2009 14:37:53 +0000">
+    p-y
+  </metadata>
+</glsa>

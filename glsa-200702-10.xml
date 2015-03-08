@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-10">
+  <title>UFO2000: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in the network components of
+    UFO2000 that could result in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ufo2000</product>
+  <announced>February 25, 2007</announced>
+  <revised>February 25, 2007: 01</revised>
+  <bug>142392</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-strategy/ufo2000" auto="yes" arch="*">
+      <unaffected range="ge">0.7.1062</unaffected>
+      <vulnerable range="lt">0.7.1062</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    UFO2000 is a multi-player, turn-based tactical simulation.
+    </p>
+  </background>
+  <description>
+    <p>
+    Five vulnerabilities were found: a buffer overflow in recv_add_unit();
+    a problem with improperly trusting user-supplied string information in
+    decode_stringmap(); several issues with array manipulation via various
+    commands during play; an SQL injection in server_protocol.cpp; and
+    finally, a second buffer overflow in recv_map_data().
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could send crafted network traffic as part of a
+    multi-player game that could result in remote code execution on the
+    remote opponent or the server. A remote attacker could also run
+    arbitrary SQL queries against the server account database, and perform
+    a Denial of Service on a remote opponent by causing the game to crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    UFO2000 currently depends on the dumb-0.9.2 library, which has been
+    removed from portage due to security problems (GLSA 200608-14) .
+    Because of this, UFO2000 has been masked, and we recommend unmerging
+    the package until the next beta release can remove the dependency on
+    dumb.
+    </p>
+    <code>
+    # emerge --ask --verbose --unmerge ufo2000</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3788">CVE-2006-3788</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3789">CVE-2006-3789</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3790">CVE-2006-3790</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3791">CVE-2006-3791</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3792">CVE-2006-3792</uri>
+    <uri link="/security/en/glsa/glsa-200608-14.xml">GLSA 200608-14</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Feb 2007 19:42:06 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Feb 2007 03:39:23 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 19 Feb 2007 21:24:04 +0000">
+    falco
+  </metadata>
+</glsa>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-03">
+  <title>NetKit-telnetd: buffer overflows in telnet and telnetd</title>
+  <synopsis>
+    Buffer overflows exist in the telnet client and daemon provided by
+    netkit-telnetd, which could possibly allow a remote attacker to gain root
+    privileges and compromise the system.
+  </synopsis>
+  <product type="ebuild">netkit-telnetd</product>
+  <announced>October 05, 2004</announced>
+  <revised>October 05, 2004: 01</revised>
+  <bug>64632</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/netkit-telnetd" auto="yes" arch="*">
+      <unaffected range="ge">0.17-r4</unaffected>
+      <vulnerable range="le">0.17-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NetKit-telnetd is a standard Linux telnet client and server from the NetKit
+    utilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    A possible buffer overflow exists in the parsing of option strings by the
+    telnet daemon, where proper bounds checking is not applied when writing to
+    a buffer. Additionaly, another possible buffer overflow has been found by
+    Josh Martin in the handling of the environment variable HOME.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker sending a specially-crafted options string to the telnet
+    daemon could be able to run arbitrary code with the privileges of the user
+    running the telnet daemon, usually root. Furthermore, an attacker could
+    make use of an overlong HOME variable to cause a buffer overflow in the
+    telnet client, potentially leading to the local execution of arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NetKit-telnetd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/netkit-telnetd-0.17-r4"
+    # emerge ">=net-misc/netkit-telnetd-0.17-r4"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2001-0554">CVE-2001-0554</uri>
+    <uri link="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=264846">Debian Bug #264846</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon,  4 Oct 2004 14:59:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon,  4 Oct 2004 16:13:52 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  5 Oct 2004 14:10:00 +0000">
+    vorlon078
+  </metadata>
+</glsa>

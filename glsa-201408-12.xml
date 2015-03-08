@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-12">
+  <title>Apache HTTP Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in Apache HTTP
+    Server, the worse of which could lead to execution of arbitrary code or a
+    Denial of Service condition
+  </synopsis>
+  <product type="ebuild">apache,dos,ace</product>
+  <announced>August 29, 2014</announced>
+  <revised>August 29, 2014: 1</revised>
+  <bug>504990</bug>
+  <bug>507866</bug>
+  <bug>517298</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.2.27-r4</unaffected>
+      <vulnerable range="lt">2.2.27-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache HTTP Server is one of the most popular web servers on the
+      Internet. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Apache HTTP Server. Please
+      review the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted request to possibly
+      execute arbitrary code, cause Denial of Service, or obtain sensitive
+      information. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache HTTP Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.27-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6438">CVE-2013-6438</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0098">CVE-2014-0098</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0226">CVE-2014-0226</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 20 May 2014 22:08:40 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 10:56:11 +0000">K_F</metadata>
+</glsa>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200905-02">
+  <title>Cscope: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple vulnerabilities in Cscope might allow for the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">cscope</product>
+  <announced>May 24, 2009</announced>
+  <revised>May 24, 2009: 01</revised>
+  <bug>263023</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/cscope" auto="yes" arch="*">
+      <unaffected range="ge">15.7a</unaffected>
+      <vulnerable range="lt">15.7a</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Cscope is a developer's tool for browsing source code.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Peach of Apple discovered a stack-based buffer overflow in
+    cscope's handling of long file system paths (CVE-2009-0148). Multiple
+    stack-based buffer overflows were reported in the putstring function
+    when processing an overly long function name or symbol in a source code
+    file (CVE-2009-1577).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    source file, possibly resulting in the remote execution of arbitrary
+    code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Cscope users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/cscope-15.7a&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0148">CVE-2009-0148</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1577">CVE-2009-1577</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 03 May 2009 18:51:15 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 04 May 2009 12:25:17 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 04 May 2009 12:25:25 +0000">
+    p-y
+  </metadata>
+</glsa>

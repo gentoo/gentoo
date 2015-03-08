@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-04">
+  <title>Shoutcast Server: Remote code execution</title>
+  <synopsis>
+    Shoutcast Server contains a possible buffer overflow that could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Shoutcast-server-bin</product>
+  <announced>January 05, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>75482</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/shoutcast-server-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.9.5</unaffected>
+      <vulnerable range="le">1.9.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Shoutcast Server is Nullsoft's streaming audio server. It runs on a
+    variety of platforms, including Linux, and is extremely popular with
+    Internet broadcasters.
+    </p>
+  </background>
+  <description>
+    <p>
+    Part of the Shoutcast Server Linux binary has been found to improperly
+    handle sprintf() parsing.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious attacker could send a formatted URL request to the
+    Shoutcast Server. This formatted URL would cause either the server
+    process to crash, or the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Shoutcast Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/shoutcast-server-bin-1.9.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/archive/1/385350">BugTraq Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1373">CVE-2004-1373</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 29 Dec 2004 14:31:08 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 19:23:19 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  4 Jan 2005 20:51:10 +0000">
+    chriswhite
+  </metadata>
+</glsa>

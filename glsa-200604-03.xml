@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-03">
+  <title>FreeRADIUS: Authentication bypass in EAP-MSCHAPv2 module</title>
+  <synopsis>
+    The EAP-MSCHAPv2 module of FreeRADIUS is affected by a validation issue
+    which causes some authentication checks to be bypassed.
+  </synopsis>
+  <product type="ebuild">freeradius</product>
+  <announced>April 04, 2006</announced>
+  <revised>April 04, 2006: 01</revised>
+  <bug>127229</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1</unaffected>
+      <unaffected range="lt">1.0.0</unaffected>
+      <vulnerable range="lt">1.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    FreeRADIUS is an open source RADIUS authentication server
+    implementation.
+    </p>
+  </background>
+  <description>
+    <p>
+    FreeRADIUS suffers from insufficient input validation in the
+    EAP-MSCHAPv2 state machine.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could cause the server to bypass authentication checks
+    by manipulating the EAP-MSCHAPv2 client state machine.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All FreeRADIUS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/freeradius-1.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1354">CVE-2006-1354</uri>
+    <uri link="http://www.freeradius.org/security.html">FreeRADIUS Vulnerability Notifications</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 01 Apr 2006 10:41:34 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 01 Apr 2006 10:42:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 01 Apr 2006 23:30:58 +0000">
+    vorlon078
+  </metadata>
+</glsa>

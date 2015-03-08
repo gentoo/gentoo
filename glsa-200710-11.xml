@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-11">
+  <title>X Font Server: Multiple Vulnerabilities</title>
+  <synopsis>
+    Three vulnerabilities have been discovered in the X Font Server possibly
+    allowing local attackers to gain elevated privileges.
+  </synopsis>
+  <product type="ebuild">xfs</product>
+  <announced>October 12, 2007</announced>
+  <revised>October 12, 2007: 01</revised>
+  <bug>185660</bug>
+  <bug>194606</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-apps/xfs" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5</unaffected>
+      <vulnerable range="lt">1.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The X.Org X11 X Font Server provides a standard mechanism for an X
+    server to communicate with a font renderer.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDefense reported that the xfs init script does not correctly handle a
+    race condition when setting permissions of a temporary file
+    (CVE-2007-3103). Sean Larsson discovered an integer overflow
+    vulnerability in the build_range() function possibly leading to a
+    heap-based buffer overflow when handling "QueryXBitmaps" and
+    "QueryXExtents" protocol requests (CVE-2007-4568). Sean Larsson also
+    discovered an error in the swap_char2b() function possibly leading to a
+    heap corruption when handling the same protocol requests
+    (CVE-2007-4990).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The first issue would allow a local attacker to change permissions of
+    arbitrary files to be world-writable by performing a symlink attack.
+    The second and third issues would allow a local attacker to execute
+    arbitrary code with privileges of the user running the X Font Server,
+    usually xfs.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X Font Server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-apps/xfs-1.0.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3103">CVE-2007-3103</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4568">CVE-2007-4568</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4990">CVE-2007-4990</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 11 Oct 2007 20:30:03 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Oct 2007 21:39:17 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 11 Oct 2007 21:39:34 +0000">
+    rbu
+  </metadata>
+</glsa>

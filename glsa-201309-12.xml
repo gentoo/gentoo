@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-12">
+  <title>Apache HTTP Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in Apache HTTP
+    Server, possibly allowing remote attackers to execute arbitrary code, cause
+    a Denial of Service condition or perform man-in-the-middle attacks.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>September 23, 2013</announced>
+  <revised>September 23, 2013: 1</revised>
+  <bug>275645</bug>
+  <bug>438680</bug>
+  <bug>466502</bug>
+  <bug>476568</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.2.25</unaffected>
+      <vulnerable range="lt">2.2.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache HTTP Server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Apache HTTP Server. Please
+      review the CVE identifiers and research paper referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request to possibly
+      execute arbitrary code, cause Denial of Service, or obtain sensitive
+      information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache HTTP Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.25"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6750">CVE-2007-6750</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4929">CVE-2012-4929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1862">CVE-2013-1862</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1896">CVE-2013-1896</uri>
+    <uri link="http://www.iacr.org/cryptodb/archive/2002/FSE/3091/3091.pdf">
+      Compression and Information Leakage of Plaintext
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 01:03:17 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Mon, 23 Sep 2013 23:22:02 +0000">ackle</metadata>
+</glsa>

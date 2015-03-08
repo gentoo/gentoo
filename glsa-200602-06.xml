@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200602-06">
+  <title>ImageMagick: Format string vulnerability</title>
+  <synopsis>
+    A vulnerability in ImageMagick allows attackers to crash the application
+    and potentially execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ImageMagick</product>
+  <announced>February 13, 2006</announced>
+  <revised>February 13, 2006: 01</revised>
+  <bug>83542</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.2.5.5</unaffected>
+      <vulnerable range="lt">6.2.5.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ImageMagick is an application suite to manipulate and convert
+    images. It is often used as a utility backend by web applications like
+    forums, content management systems or picture galleries.
+    </p>
+  </background>
+  <description>
+    <p>
+    The SetImageInfo function was found vulnerable to a format string
+    mishandling. Daniel Kobras discovered that the handling of "%"-escaped
+    sequences in filenames passed to the function is inadequate. This is a
+    new vulnerability that is not addressed by GLSA 200503-11.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By feeding specially crafted file names to ImageMagick, an
+    attacker can crash the program and possibly execute arbitrary code with
+    the privileges of the user running ImageMagick.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ImageMagick users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.2.5.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0082">CVE-2006-0082</uri>
+    <uri link="/security/en/glsa/glsa-200503-11.xml">GLSA 200503-11</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 01 Feb 2006 19:11:00 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 02 Feb 2006 08:22:50 +0000">
+    frilled
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 09 Feb 2006 18:59:37 +0000">
+    koon
+  </metadata>
+</glsa>

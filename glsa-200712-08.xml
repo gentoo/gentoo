@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-08">
+  <title>AMD64 x86 emulation Qt library: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in the AMD64 x86 emulation Qt library may lead to
+    the remote execution of arbitrary code in Qt applications.
+  </synopsis>
+  <product type="ebuild">emul-linux-x86-qtlibs</product>
+  <announced>December 09, 2007</announced>
+  <revised>December 09, 2007: 01</revised>
+  <bug>189536</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/emul-linux-x86-qtlibs" auto="yes" arch="amd64">
+      <unaffected range="ge">20071114-r2</unaffected>
+      <vulnerable range="lt">20071114-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Qt is a cross-platform GUI framework, which is used e.g. by KDE. The
+    AMD64 x86 emulation Qt library packages Qt libraries for 32bit x86
+    emulation on AMD64.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Qt versions used by the AMD64 x86 emulation Qt libraries were
+    vulnerable to several flaws (GLSA 200708-16, GLSA 200710-28)
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could trigger one of the vulnerabilities by causing a Qt
+    application to parse specially crafted text or Unicode strings, which
+    may lead to the execution of arbitrary code with the privileges of the
+    user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AMD64 x86 emulation Qt library users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-qtlibs-20071114-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200708-16.xml">GLSA 200708-16</uri>
+    <uri link="/security/en/glsa/glsa-200710-28.xml">GLSA 200710-28</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 02 Dec 2007 12:28:12 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 09 Dec 2007 19:55:14 +0000">
+    welp
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 09 Dec 2007 20:04:39 +0000">
+    welp
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-05">
+  <title>CAPI4Hylafax fax receiver: Execution of arbitrary code</title>
+  <synopsis>
+    CAPI4Hylafax allows remote attackers to execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">capi4hylafax</product>
+  <announced>October 17, 2006</announced>
+  <revised>October 17, 2006: 01</revised>
+  <bug>145982</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/capi4hylafax" auto="yes" arch="*">
+      <unaffected range="ge">01.03.00.99.300.3-r1</unaffected>
+      <vulnerable range="lt">01.03.00.99.300.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CAPI4Hylafax makes it possible to send and receive faxes via CAPI and
+    AVM Fritz!Cards.
+    </p>
+  </background>
+  <description>
+    <p>
+    Lionel Elie Mamane discovered an error in c2faxrecv, which doesn't
+    properly sanitize TSI strings when handling incoming calls.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker can send null (\0) and shell metacharacters in the
+    TSI string from an anonymous fax number, leading to the execution of
+    arbitrary code with the rights of the user running c2faxrecv.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CAPI4Hylafax users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/capi4hylafax-01.03.00.99.300.3-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3126">CVE-2006-3126</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 11 Oct 2006 11:18:55 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Oct 2006 13:56:18 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 13 Oct 2006 13:57:08 +0000">
+    falco
+  </metadata>
+</glsa>

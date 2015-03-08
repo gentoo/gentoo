@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-08">
+  <title>Gnash: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Gnash which could
+    result in execution of arbitrary code, Denial of Service, or information
+    disclosure.
+  </synopsis>
+  <product type="ebuild">Gnash</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>391283</bug>
+  <bug>408209</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-plugins/gnash" auto="yes" arch="*">
+      <unaffected range="ge">0.8.10-r2</unaffected>
+      <vulnerable range="lt">0.8.10-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Gnash is a GNU flash movie player that supports many SWF features.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Gnash:</p>
+    
+    <ul>
+      <li>The "nsPluginInstance::setupCookies()" function in plugin.cpp creates
+        world-readable cookies with predictable file names (CVE-2011-4328).
+      </li>
+      <li>The "GnashImage::size()" function in GnashImage.h contains an integer
+        overflow error which could cause a heap-based buffer overflow
+        (CVE-2012-1175).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted SWF
+      file, possibly resulting in execution of arbitrary code or a Denial of
+      Service condition. Furthermore, a local attacker may be able to obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Gnash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-plugins/gnash-0.8.10-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4328">CVE-2011-4328</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1175">CVE-2012-1175</uri>
+  </references>
+  <metadata timestamp="Sat, 17 Mar 2012 23:44:44 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 23:29:06 +0000" tag="submitter">ackle</metadata>
+</glsa>

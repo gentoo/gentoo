@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-09">
+  <title>xzgv: Multiple overflows</title>
+  <synopsis>
+    xzgv contains multiple overflows that may lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">xzgv</product>
+  <announced>January 06, 2005</announced>
+  <revised>January 06, 2005: 01</revised>
+  <bug>74069</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/xzgv" auto="yes" arch="*">
+      <unaffected range="ge">0.8-r1</unaffected>
+      <vulnerable range="le">0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    xzgv is a picture viewer for X, with a thumbnail-based file
+    selector.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple overflows have been found in the image processing code of
+    xzgv, including an integer overflow in the PRF parsing code
+    (CAN-2004-0994).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open or browse a
+    specially-crafted image file, potentially resulting in the execution of
+    arbitrary code with the rights of the user running xzgv.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All xzgv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xzgv-0.8-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0994">CAN-2004-0994</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=160&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu,  6 Jan 2005 12:54:06 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu,  6 Jan 2005 12:55:35 +0000">
+    koon
+  </metadata>
+</glsa>

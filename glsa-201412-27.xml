@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-27">
+  <title>Ruby: Denial of Service</title>
+  <synopsis>Multiple vulnerabilities have been found in Ruby, allowing
+    context-dependent attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">Ruby</product>
+  <announced>December 13, 2014</announced>
+  <revised>December 13, 2014: 1</revised>
+  <bug>355439</bug>
+  <bug>369141</bug>
+  <bug>396301</bug>
+  <bug>437366</bug>
+  <bug>442580</bug>
+  <bug>458776</bug>
+  <bug>492282</bug>
+  <bug>527084</bug>
+  <bug>529216</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="rge">1.9.3_p551</unaffected>
+      <unaffected range="ge">2.0.0_p598</unaffected>
+      <vulnerable range="lt">2.0.0_p598</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ruby is an object-oriented scripting language.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ruby. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly execute arbitrary code with
+      the privileges of the process, cause a Denial of Service condition, or
+      bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby 1.9 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.9.3_p551"
+    </code>
+    
+    <p>All Ruby 2.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-2.0.0_p598"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0188">CVE-2011-0188</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1004">CVE-2011-1004</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1005">CVE-2011-1005</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4815">CVE-2011-4815</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4481">CVE-2012-4481</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5371">CVE-2012-5371</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0269">CVE-2013-0269</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1821">CVE-2013-1821</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4164">CVE-2013-4164</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8080">CVE-2014-8080</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8090">CVE-2014-8090</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:04 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:56:30 +0000">craig</metadata>
+</glsa>

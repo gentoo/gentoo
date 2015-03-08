@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200608-13">
+  <title>ClamAV: Heap buffer overflow</title>
+  <synopsis>
+    ClamAV is vulnerable to a heap-based buffer overflow resulting in a Denial
+    of Service and potentially remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>August 08, 2006</announced>
+  <revised>August 08, 2006: 02</revised>
+  <bug>143093</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.88.4</unaffected>
+      <vulnerable range="lt">0.88.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    Damian Put has discovered a boundary error in the pefromupx() function
+    used by the UPX extraction module, which unpacks PE Windows executable
+    files. Both the "clamscan" command-line utility and the "clamd" daemon
+    are affected.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    By sending a malicious attachment to a mail server running ClamAV, a
+    remote attacker can cause a Denial of Service and potentially the
+    execution of arbitrary code with the permissions of the user running
+    ClamAV.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.clamav.net/security/0.88.4.html">ClamAV security advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4018">CVE-2006-4018</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 08 Aug 2006 07:45:00 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 08 Aug 2006 09:57:22 +0000">
+    vorlon078
+  </metadata>
+</glsa>

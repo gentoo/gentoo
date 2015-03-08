@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-11">
+  <title>Adobe Reader: Buffer Overflow</title>
+  <synopsis>
+    Adobe Reader is vulnerable to a buffer overflow which could potentially
+    lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>August 19, 2005</announced>
+  <revised>August 19, 2005: 01</revised>
+  <bug>102730</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">7.0.1.1</unaffected>
+      <vulnerable range="lt">7.0.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Reader is a utility used to view PDF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    A buffer overflow has been reported within a core application
+    plug-in, which is part of Adobe Reader.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker may create a specially-crafted PDF file, enticing a
+    user to open it. This could trigger a buffer overflow as the file is
+    being loaded, resulting in the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-7.0.1.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2470">CAN-2005-2470</uri>
+    <uri link="http://www.adobe.com/support/techdocs/321644.html">Adobe Document 321644</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 16 Aug 2005 23:13:16 +0000">
+    formula7
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 17 Aug 2005 16:19:50 +0000">
+    adir
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 17 Aug 2005 16:52:49 +0000">
+    adir
+  </metadata>
+</glsa>

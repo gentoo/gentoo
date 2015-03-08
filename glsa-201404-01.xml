@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201404-01">
+  <title>CUPS: Arbitrary file read/write</title>
+  <synopsis>A vulnerability in CUPS may allow for arbitrary file access.</synopsis>
+  <product type="ebuild">cups</product>
+  <announced>April 07, 2014</announced>
+  <revised>April 07, 2014: 1</revised>
+  <bug>442926</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.6.2-r5</unaffected>
+      <vulnerable range="lt">1.6.2-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CUPS, the Common Unix Printing System, is a full-featured print server.</p>
+  </background>
+  <description>
+    <p>Members of the lpadmin group have admin access to the web interface,
+      where they can
+      edit the config file and set some “dangerous” directives (like the
+      logfilenames), which enable them to read or write files as the user
+      running
+      the CUPS webserver.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly exploit this vulnerability to read or
+      write files as the user running the CUPS webserver.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CUPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.6.2-r5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5519">CVE-2012-5519</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 Aug 2013 11:14:06 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 07 Apr 2014 07:41:06 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

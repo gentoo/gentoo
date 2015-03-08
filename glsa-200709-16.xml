@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-16">
+  <title>Lighttpd: Buffer overflow</title>
+  <synopsis>
+    Lighttpd is vulnerable to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">lighttpd</product>
+  <announced>September 27, 2007</announced>
+  <revised>September 27, 2007: 01</revised>
+  <bug>191912</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/lighttpd" auto="yes" arch="*">
+      <unaffected range="ge">1.4.18</unaffected>
+      <vulnerable range="lt">1.4.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Lighttpd is a lightweight HTTP web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mattias Bengtsson and Philip Olausson have discovered a buffer overflow
+    vulnerability in the function fcgi_env_add() in the file mod_fastcgi.c
+    when processing overly long HTTP headers.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted request to the
+    vulnerable Lighttpd server, resulting in the remote execution of
+    arbitrary code with privileges of the user running the web server. Note
+    that mod_fastcgi is disabled in Gentoo's default configuration.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Edit the file /etc/lighttpd/lighttpd.conf and comment the following
+    line: "include mod_fastcgi.conf"
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Lighttpd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.18&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4727">CVE-2007-4727</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Sep 2007 21:10:23 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Sep 2007 21:10:32 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Sep 2007 16:06:46 +0000">
+    p-y
+  </metadata>
+</glsa>

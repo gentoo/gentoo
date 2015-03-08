@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-30">
+  <title>cmd5checkpw: Local password leak vulnerability</title>
+  <synopsis>
+    cmd5checkpw contains a flaw allowing local users to access other users
+    cmd5checkpw passwords.
+  </synopsis>
+  <product type="ebuild">cmd5checkpw</product>
+  <announced>February 25, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>78256</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-mail/cmd5checkpw" auto="yes" arch="*">
+      <unaffected range="ge">0.22-r2</unaffected>
+      <vulnerable range="le">0.22-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    cmd5checkpw is a checkpassword compatible authentication program that
+    uses CRAM-MD5 authentication mode.
+    </p>
+  </background>
+  <description>
+    <p>
+    Florian Westphal discovered that cmd5checkpw is installed setuid
+    cmd5checkpw but does not drop privileges before calling execvp(), so
+    the invoked program retains the cmd5checkpw euid.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    Local users that know at least one valid /etc/poppasswd user/password
+    combination can read the /etc/poppasswd file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All cmd5checkpw users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync 
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/cmd5checkpw-0.22-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0580">CVE-2005-0580</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 24 Feb 2005 11:26:13 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 25 Feb 2005 09:22:33 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 25 Feb 2005 09:25:07 +0000">
+    koon
+  </metadata>
+</glsa>

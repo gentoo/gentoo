@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="201101-08">
+  <title>Adobe Reader: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Adobe Reader might result in the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>January 21, 2011</announced>
+  <revised>January 21, 2011: 02</revised>
+  <bug>336508</bug>
+  <bug>343091</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">9.4.1</unaffected>
+      <vulnerable range="lt">9.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Reader (formerly Adobe Acrobat Reader) is a closed-source PDF
+    reader.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in Adobe Reader. For further
+    information please consult the CVE entries and the Adobe Security
+    Bulletins referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker might entice a user to open a specially crafted PDF
+    file, possibly resulting in the execution of arbitrary code with the
+    privileges of the user running the application, or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Reader users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-9.4.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-21.html">APSB10-21</uri>
+    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-28.html">APSB10-28</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2883">CVE-2010-2883</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2884">CVE-2010-2884</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2887">CVE-2010-2887</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2889">CVE-2010-2889</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2890">CVE-2010-2890</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3619">CVE-2010-3619</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3620">CVE-2010-3620</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3621">CVE-2010-3621</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3622">CVE-2010-3622</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3625">CVE-2010-3625</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3626">CVE-2010-3626</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3627">CVE-2010-3627</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3628">CVE-2010-3628</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3629">CVE-2010-3629</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3630">CVE-2010-3630</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3632">CVE-2010-3632</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3654">CVE-2010-3654</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3656">CVE-2010-3656</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3657">CVE-2010-3657</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3658">CVE-2010-3658</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4091">CVE-2010-4091</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Oct 2010 13:07:56 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Jan 2011 16:33:24 +0000">
+    underling
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 15 Jan 2011 16:35:28 +0000">
+    underling
+  </metadata>
+</glsa>

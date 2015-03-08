@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200406-14">
+  <title>aspell: Buffer overflow in word-list-compress</title>
+  <synopsis>
+    A bug in the aspell utility word-list-compress can allow an attacker to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">aspell</product>
+  <announced>June 17, 2004</announced>
+  <revised>May 22, 2006: 03</revised>
+  <bug>53389</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-text/aspell" auto="yes" arch="*">
+      <unaffected range="ge">0.50.5-r4</unaffected>
+      <vulnerable range="le">0.50.5-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    aspell is a popular spell-checker. Dictionaries are available for many
+    languages.
+    </p>
+  </background>
+  <description>
+    <p>
+    aspell includes a utility for handling wordlists called
+    word-list-compress. This utility fails to do proper bounds checking
+    when processing words longer than 256 bytes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If an attacker could entice a user to handle a wordlist containing very
+    long word lengths it could result in the execution of arbitrary code
+    with the permissions of the user running the program.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest available version of aspell.
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=app-text/aspell-0.50.5-r4&quot;
+    # emerge &quot;&gt;=app-text/aspell-0.50.5-r4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://nettwerked.mg2.org/advisories/wlc">Nettwerked Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0548">CVE-2004-0548</uri>
+  </references>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

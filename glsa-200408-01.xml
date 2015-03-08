@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-01">
+  <title>MPlayer: GUI filename handling overflow</title>
+  <synopsis>
+    When compiled with GUI support MPlayer is vulnerable to a remotely
+    exploitable buffer overflow attack.
+  </synopsis>
+  <product type="ebuild">MPlayer</product>
+  <announced>August 01, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>55456</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/mplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.0_pre4-r7</unaffected>
+      <vulnerable range="lt">1.0_pre4-r7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MPlayer is a media player capable of handling multiple multimedia file
+    formats.
+    </p>
+  </background>
+  <description>
+    <p>
+    The MPlayer GUI code contains several buffer overflow vulnerabilities,
+    and at least one in the TranslateFilename() function is exploitable.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to play a file with a carefully crafted filename an
+    attacker could execute arbitrary code with the permissions of the user
+    running MPlayer.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    To work around this issue, users can compile MPlayer without GUI
+    support by disabling the gtk USE flag. All users are encouraged to
+    upgrade to the latest available version of MPlayer.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MPlayer users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv &quot;&gt;=media-video/mplayer-1.0_pre4-r7&quot;
+    # emerge &quot;&gt;=media-video/mplayer-1.0_pre4-r7&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/10615/">Bugtraq Announcement</uri>
+    <uri link="http://www.open-security.org/advisories/5">Open-Security Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0659">CVE-2004-0659</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter">
+    jaervosz
+  </metadata>
+</glsa>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-19">
+  <title>gxine: Format string vulnerability</title>
+  <synopsis>
+    A format string vulnerability in gxine could allow a remote attacker to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">gxine</product>
+  <announced>May 26, 2005</announced>
+  <revised>May 26, 2005: 01</revised>
+  <bug>93532</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/gxine" auto="yes" arch="*">
+      <unaffected range="rge">0.3.3-r2</unaffected>
+      <unaffected range="rge">0.4.1-r1</unaffected>
+      <unaffected range="ge">0.4.4</unaffected>
+      <vulnerable range="lt">0.4.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gxine is a GTK+ and xine-lib based media player.
+    </p>
+  </background>
+  <description>
+    <p>
+    Exworm discovered that gxine insecurely implements formatted
+    printing in the hostname decoding function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a carefully crafted
+    file with gxine, possibly leading to the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gxine users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose media-video/gxine</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1692">CAN-2005-1692</uri>
+    <uri link="http://www.securityfocus.com/bid/13707">Bugtraq ID 13707</uri>
+    <uri link="http://www.0xbadexworm.org/adv/gxinefmt.txt">Original Advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 24 May 2005 14:37:48 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 26 May 2005 11:13:38 +0000">
+    koon
+  </metadata>
+</glsa>

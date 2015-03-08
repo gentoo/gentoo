@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200403-06">
+  <title>Multiple remote buffer overflow vulnerabilities in Courier</title>
+  <synopsis>
+    Remote buffer overflow vulnerabilities have been found in Courier-IMAP and
+    Courier MTA. These exploits may allow the execution of abritrary code,
+    allowing unauthorized access to a vulnerable system. 
+  </synopsis>
+  <product type="ebuild">Courier</product>
+  <announced>March 26, 2004</announced>
+  <revised>March 26, 2004: 01</revised>
+  <bug>45584</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/courier-imap" auto="yes" arch="*">
+      <unaffected range="ge">3.0.0</unaffected>
+      <vulnerable range="lt">3.0.0</vulnerable>
+    </package>
+    <package name="mail-mta/courier" auto="yes" arch="*">
+      <unaffected range="ge">0.45</unaffected>
+      <vulnerable range="lt">0.45</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Courier MTA is a multiprotocol mail server suite that provides webmail,
+    mailing lists, IMAP, and POP3 services. Courier-IMAP is a standalone server
+    that gives IMAP access to local mailboxes.
+    </p>
+  </background>
+  <description>
+    <p>
+    The vulnerabilities have been found in the 'SHIFT_JIS' converter in
+    'shiftjis.c' and 'ISO2022JP' converter in 'so2022jp.c'. An attacker may
+    supply Unicode characters that exceed BMP (Basic Multilingual Plane) range,
+    causing an overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker without privileges may exploit this vulnerability remotely, allowing arbitrary code to be executed in order to gain unauthorized access. 
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    While a workaround is not currently known for this issue, all users are
+    advised to upgrade to the latest version of the affected packages.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to current versions of the affected packages:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-mail/courier-imap-3.0.0"
+    # emerge ">=net-mail/courier-imap-3.0.0"
+
+    # ** Or; depending on your installation... **
+
+    # emerge -pv ">=mail-mta/courier-0.45"
+    # emerge ">=mail-mta/courier-0.45"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://www.securityfocus.com/bid/9845">Courier Multiple Remote Buffer Overflow Vulnerabilities</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0224">CAN-2004-0224</uri>
+  </references>
+</glsa>

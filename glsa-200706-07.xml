@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-07">
+  <title>PHProjekt: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in PHProjekt, allowing for
+    the execution of arbitrary PHP and SQL code, and cross-site scripting
+    attacks.
+  </synopsis>
+  <product type="ebuild">phprojekt</product>
+  <announced>June 19, 2007</announced>
+  <revised>June 19, 2007: 01</revised>
+  <bug>170905</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phprojekt" auto="yes" arch="*">
+      <unaffected range="ge">5.2.1</unaffected>
+      <vulnerable range="lt">5.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PHProjekt is a project management and coordination tool written in PHP.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alexios Fakos from n.runs AG has discovered multiple vulnerabilities in
+    PHProjekt, including the execution of arbitrary SQL commands using
+    unknown vectors (CVE-2007-1575), the execution of arbitrary PHP code
+    using an unrestricted file upload (CVE-2007-1639), cross-site request
+    forgeries using different modules (CVE-2007-1638), and a cross-site
+    scripting attack using unkown vectors (CVE-2007-1576).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An authenticated user could elevate their privileges by exploiting the
+    vulnerabilities described above. Note that the magic_quotes_gpc PHP
+    configuration setting must be set to "off" to exploit these
+    vulnerabilities.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PHProjekt users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phprojekt-5.2.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1575">CVE-2007-1575</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1576">CVE-2007-1576</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1638">CVE-2007-1638</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1639">CVE-2007-1639</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 07 Jun 2007 21:18:57 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 13:59:19 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 13:59:28 +0000">
+    p-y
+  </metadata>
+</glsa>

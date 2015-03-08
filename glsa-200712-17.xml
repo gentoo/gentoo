@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200712-17">
+  <title>exiftags: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in exiftags possibly allow for the execution of
+    arbitrary code or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">exiftags</product>
+  <announced>December 29, 2007</announced>
+  <revised>December 29, 2007: 01</revised>
+  <bug>202354</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/exiftags" auto="yes" arch="*">
+      <unaffected range="ge">1.01</unaffected>
+      <vulnerable range="lt">1.01</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    exiftags is a library and set of tools for parsing, editing and saving
+    Exif metadata from images. Exif, the Exchangeable image file format,
+    specifies the addition of metadata tags to JPEG, TIFF and RIFF files.
+    </p>
+  </background>
+  <description>
+    <p>
+    Meder Kydyraliev (Google Security) discovered that Exif metadata is not
+    properly sanitized before being processed, resulting in illegal memory
+    access in the postprop() and other functions (CVE-2007-6354). He also
+    discovered integer overflow vulnerabilities in the parsetag() and other
+    functions (CVE-2007-6355) and an infinite recursion in the readifds()
+    function caused by recursive IFD references (CVE-2007-6356).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice the user of an application making use of
+    exiftags or an application included in exiftags to load an image file
+    with specially crafted Exif tags, possibly resulting in the execution
+    of arbitrary code with the privileges of the user running the
+    application or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All exiftags users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/exiftags-1.01&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6354">CVE-2007-6354</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6355">CVE-2007-6355</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6356">CVE-2007-6356</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Dec 2007 01:37:57 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 23 Dec 2007 19:27:52 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 23 Dec 2007 19:28:18 +0000">
+    rbu
+  </metadata>
+</glsa>

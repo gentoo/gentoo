@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200405-11">
+  <title>KDE URI Handler Vulnerabilities</title>
+  <synopsis>
+    Vulnerabilities in KDE URI handlers makes your system vulnerable to various
+    attacks.
+  </synopsis>
+  <product type="ebuild">kdelibs</product>
+  <announced>May 19, 2004</announced>
+  <revised>May 19, 2004: 01</revised>
+  <bug>51276</bug>
+  <access>remote </access>
+  <affected>
+    <package name="kde-base/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">3.2.2-r1</unaffected>
+      <unaffected range="eq">3.1.5-r1</unaffected>
+      <vulnerable range="le">3.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The K Desktop Environment (KDE) is a powerful Free Software graphical
+    desktop environment. KDE makes use of URI handlers to trigger various
+    programs when specific URLs are received.
+    </p>
+  </background>
+  <description>
+    <p>
+    The telnet, rlogin, ssh and mailto URI handlers in KDE do not check for '-'
+    at the beginning of the hostname passed. By crafting a malicious URI and
+    entice an user to click on it, it is possible to pass an option to the
+    programs started by the handlers (typically telnet, kmail...).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If the attacker controls the options passed to the URI handling programs,
+    it becomes possible for example to overwrite arbitrary files (possibly
+    leading to denial of service), to open kmail on an attacker-controlled
+    remote display or with an alternate configuration file (possibly leading to
+    control of the user account).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are advised to upgrade
+    to a corrected version of kdelibs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Users of KDE 3.1 should upgrade to the corrected version of kdelibs:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv "=kde-base/kdelibs-3.1.5-r1"
+    # emerge "=kde-base/kdelibs-3.1.5-r1"</code>
+    <p>
+    Users of KDE 3.2 should upgrade to the latest available version of kdelibs:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=kde-base/kdelibs-3.2.2-r1"
+    # emerge ">=kde-base/kdelibs-3.2.2-r1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0411">CAN-2004-0411</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

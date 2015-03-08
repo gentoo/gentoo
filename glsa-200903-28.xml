@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-28">
+  <title>libpng: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in libpng, which might result in the
+    execution of arbitrary code
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>March 15, 2009</announced>
+  <revised>March 15, 2009: 01</revised>
+  <bug>244808</bug>
+  <bug>255231</bug>
+  <bug>259578</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.2.35</unaffected>
+      <vulnerable range="lt">1.2.35</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libpng is the official PNG reference library used to read, write and
+    manipulate PNG images.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in libpng:
+    </p>
+    <ul>
+    <li>A
+    memory leak bug was reported in png_handle_tEXt(), a function that is
+    used while reading PNG images (CVE-2008-6218).</li>
+    <li>A memory
+    overwrite bug was reported by Jon Foster in png_check_keyword(), caused
+    by writing overlong keywords to a PNG file (CVE-2008-5907).</li>
+    <li>A
+    memory corruption issue, caused by an incorrect handling of an out of
+    memory condition has been reported by Tavis Ormandy of the Google
+    Security Team. That vulnerability affects direct uses of
+    png_read_png(), pCAL chunk and 16-bit gamma table handling
+    (CVE-2009-0040).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may execute arbitrary code with the privileges of the
+    user opening a specially crafted PNG file by exploiting the erroneous
+    out-of-memory handling. An attacker may also exploit the
+    png_check_keyword() error to set arbitrary memory locations to 0, if
+    the application allows overlong, user-controlled keywords when writing
+    PNG files. The png_handle_tEXT() vulnerability may be exploited by an
+    attacker to potentially consume all memory on a users system when a
+    specially crafted PNG file is opened.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libpng users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.35&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5907">CVE-2008-5907</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6218">CVE-2008-6218</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0040">CVE-2009-0040</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:45:00 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 13 Feb 2009 19:13:22 +0000">
+    mabi
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 13 Mar 2009 19:09:44 +0000">
+    p-y
+  </metadata>
+</glsa>

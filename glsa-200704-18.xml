@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-18">
+  <title>Courier-IMAP: Remote execution of arbitrary code</title>
+  <synopsis>
+    A vulnerability has been discovered in Courier-IMAP allowing for remote
+    code execution with root privileges.
+  </synopsis>
+  <product type="ebuild">courier-imap</product>
+  <announced>April 22, 2007</announced>
+  <revised>April 23, 2007: 02</revised>
+  <bug>168196</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/courier-imap" auto="yes" arch="*">
+      <unaffected range="ge">4.0.6-r2</unaffected>
+      <unaffected range="lt">4.0.0</unaffected>
+      <vulnerable range="lt">4.0.6-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Courier-IMAP is an IMAP server which is part of the Courier mail
+    system. It provides access only to maildirs.
+    </p>
+  </background>
+  <description>
+    <p>
+    CJ Kucera has discovered that some Courier-IMAP scripts don't properly
+    handle the XMAILDIR variable, allowing for shell command injection.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send specially crafted login credentials to a
+    Courier-IMAP server instance, possibly leading to remote code execution
+    with root privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Courier-IMAP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/courier-imap-4.0.6-r2&quot;</code>
+  </resolution>
+  <references/>
+  <metadata tag="requester" timestamp="Thu, 12 Apr 2007 14:15:03 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Apr 2007 14:15:17 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Apr 2007 21:50:11 +0000">
+    p-y
+  </metadata>
+</glsa>

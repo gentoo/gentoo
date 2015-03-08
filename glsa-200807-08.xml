@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-08">
+  <title>BIND: Cache poisoning</title>
+  <synopsis>
+    A weakness in the DNS protocol has been reported, which could lead to cache
+    poisoning on recursive resolvers.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>July 11, 2008</announced>
+  <revised>July 11, 2008: 01</revised>
+  <bug>231201</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.4.2_p1</unaffected>
+      <vulnerable range="lt">9.4.2_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ISC BIND is the Internet Systems Consortium implementation of the
+    Domain Name System (DNS) protocol.
+    </p>
+  </background>
+  <description>
+    <p>
+    Dan Kaminsky of IOActive has reported a weakness in the DNS protocol
+    related to insufficient randomness of DNS transaction IDs and query
+    source ports.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker could exploit this weakness to poison the cache of a
+    recursive resolver and thus spoof DNS traffic, which could e.g. lead to
+    the redirection of web or mail traffic to malicious sites.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All BIND users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.2_p1&quot;</code>
+    <p>
+    Note: In order to utilize the query port randomization to mitigate the
+    weakness, you need to make sure that your network setup allows the DNS
+    server to use random source ports for query and that you have not set a
+    fixed query port via the "query-source port" directive in the BIND
+    configuration.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 09 Jul 2008 08:55:27 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Jul 2008 14:42:45 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 11 Jul 2008 17:35:39 +0000">
+    rbu
+  </metadata>
+</glsa>

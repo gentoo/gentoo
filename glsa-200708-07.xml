@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-07">
+  <title>Xfce Terminal: Remote arbitrary code execution</title>
+  <synopsis>
+    A vulnerability has been discovered in the Xfce Terminal program, allowing
+    for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">terminal</product>
+  <announced>August 11, 2007</announced>
+  <revised>July 12, 2008: 02</revised>
+  <bug>184886</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-terms/terminal" auto="yes" arch="*">
+      <unaffected range="ge">0.2.6_p25931</unaffected>
+      <vulnerable range="lt">0.2.6_p25931</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Xfce Terminal is a console tool for the Xfce desktop environment.
+    </p>
+  </background>
+  <description>
+    <p>
+    Lasse Karkkainen discovered that the function terminal_helper_execute()
+    in file terminal-helper.c does not properly escape the URIs before
+    processing.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted link,
+    possibly leading to the remote execution of arbitrary code with the
+    privileges of the user running Xfce Terminal. Note that the exploit
+    code depends on the browser used to open the crafted link.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Xfce Terminal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/terminal-0.2.6_p25931&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3770">CVE-2007-3770</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 28 Jul 2007 07:40:26 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 28 Jul 2007 07:40:36 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 31 Jul 2007 08:48:45 +0000">
+    p-y
+  </metadata>
+</glsa>

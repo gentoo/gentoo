@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201308-02">
+  <title>D-Bus: Denial of Service</title>
+  <synopsis>A vulnerability has been found in D-Bus which allows a local user
+    to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">d-bus</product>
+  <announced>August 22, 2013</announced>
+  <revised>August 22, 2013: 1</revised>
+  <bug>473190</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.6.12</unaffected>
+      <vulnerable range="lt">1.6.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system which processes can use to talk to each
+      other.
+    </p>
+  </background>
+  <description>
+    <p>D-Bus’ _dbus_printf_string_upper_bound() function crashes if it
+      returns exactly 1024 bytes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could provide specially-crafted input to an application
+      using D-Bus which would cause _dbus_printf_string_upper_bound() to return
+      1024 bytes and crash, causing a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.6.12"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2168">
+      CVE-2013-2168
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Jul 2013 01:19:11 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 22 Aug 2013 15:34:55 +0000">
+    creffett
+  </metadata>
+</glsa>

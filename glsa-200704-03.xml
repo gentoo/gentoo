@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-03">
+  <title>OpenAFS: Privilege escalation</title>
+  <synopsis>
+    OpenAFS is subject to a design flaw that could allow privilege escalation
+    on the client.
+  </synopsis>
+  <product type="ebuild">openafs</product>
+  <announced>April 03, 2007</announced>
+  <revised>April 03, 2007: 01</revised>
+  <bug>171662</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/openafs" auto="yes" arch="*">
+      <unaffected range="ge">1.4.4</unaffected>
+      <vulnerable range="lt">1.4.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenAFS is a distributed network filesystem.
+    </p>
+  </background>
+  <description>
+    <p>
+    Benjamin Bennett discovered that the OpenAFS client contains a design
+    flaw where cache managers do not use authenticated server connections
+    when performing actions not requested by a user.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    If setuid is enabled on the client cells, an attacker can supply a fake
+    FetchStatus reply that sets setuid and root ownership of a file being
+    executed. This could provide root access on the client. Remote attacks
+    may be possible if an attacker can entice a user to execute a known
+    file. Note that setuid is enabled by default in versions of OpenAFS
+    prior to 1.4.4.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable the setuid functionality on all client cells. This is now the
+    default configuration in OpenAFS.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenAFS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/openafs-1.4.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1507">CVE-2007-1507</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 25 Mar 2007 06:35:01 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 28 Mar 2007 13:53:51 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:30 +0000">
+    falco
+  </metadata>
+</glsa>

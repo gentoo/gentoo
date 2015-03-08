@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-10">
+  <title>gv: Exploitable Buffer Overflow</title>
+  <synopsis>
+    gv contains an exploitable buffer overflow that allows an attacker to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">gv</product>
+  <announced>August 12, 2004</announced>
+  <revised>August 12, 2004: 01</revised>
+  <bug>59385</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/gv" auto="yes" arch="*">
+      <unaffected range="ge">3.5.8-r4</unaffected>
+      <vulnerable range="le">3.5.8-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gv is a PostScript and PDF viewer for X which provides a user interface for
+    the ghostscript interpreter.
+    </p>
+  </background>
+  <description>
+    <p>
+    gv contains a buffer overflow vulnerability where an unsafe sscanf() call
+    is used to interpret PDF and PostScript files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By enticing a user to view a malformed PDF or PostScript file an attacker
+    could execute arbitrary code with the permissions of the user running gv.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of gv.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gv users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=app-text/gv-3.5.8-r4"
+    # emerge ">=app-text/gv-3.5.8-r4"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2002-0838">CAN-2002-0838</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu,  5 Aug 2004 09:15:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun,  8 Aug 2004 20:43:19 +0000">
+    jaervosz
+  </metadata>
+</glsa>

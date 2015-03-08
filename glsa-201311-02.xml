@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201311-02">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in phpMyAdmin, allowing
+    remote authenticated attackers to execute arbitrary code, inject SQL code
+    or conduct other attacks.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>November 04, 2013</announced>
+  <revised>November 04, 2013: 1</revised>
+  <bug>465420</bug>
+  <bug>467080</bug>
+  <bug>478696</bug>
+  <bug>479870</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">4.0.5</unaffected>
+      <vulnerable range="lt">4.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>phpMyAdmin is a web-based management tool for MySQL databases.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in phpMyAdmin. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker could exploit these vulnerabilities to
+      execute arbitrary code with the privileges of the process running
+      phpMyAdmin, inject SQL code, or to conduct Cross-Site Scripting and
+      Clickjacking attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All phpMyAdmin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.0.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1937">CVE-2013-1937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3238">CVE-2013-3238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3239">CVE-2013-3239</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4995">CVE-2013-4995</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4996">CVE-2013-4996</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4997">CVE-2013-4997</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4998">CVE-2013-4998</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4999">CVE-2013-4999</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5000">CVE-2013-5000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5001">CVE-2013-5001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5002">CVE-2013-5002</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5003">CVE-2013-5003</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5029">CVE-2013-5029</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 24 Aug 2013 20:08:03 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Mon, 04 Nov 2013 11:28:46 +0000">a3li</metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-13">
+  <title>webapp-config: Insecure temporary file handling</title>
+  <synopsis>
+    The webapp-config utility insecurely creates temporary files in a world
+    writable directory, potentially allowing the execution of arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">webapp-config</product>
+  <announced>June 17, 2005</announced>
+  <revised>December 30, 2007: 03</revised>
+  <bug>91785</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/webapp-config" auto="yes" arch="*">
+      <unaffected range="ge">1.11</unaffected>
+      <vulnerable range="lt">1.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    webapp-config is a Gentoo Linux utility to help manage the installation
+    of web-based applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Eric Romang discovered webapp-config uses a predictable temporary
+    filename while processing certain options, resulting in a race
+    condition.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation of the race condition would allow an attacker
+    to disrupt the operation of webapp-config, or execute arbitrary shell
+    commands with the privileges of the user running webapp-config. A local
+    attacker could use a symlink attack to create or overwrite files with
+    the permissions of the user running webapp-config.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All webapp-config users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/webapp-config-1.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1707">CVE-2005-1707</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 May 2005 15:08:15 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 10 May 2005 15:49:46 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 17 Jun 2005 08:32:12 +0000">
+    koon
+  </metadata>
+</glsa>

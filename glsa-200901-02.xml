@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200901-02">
+  <title>JHead: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in JHead might lead to the execution of arbitrary
+    code or data loss.
+  </synopsis>
+  <product type="ebuild">jhead</product>
+  <announced>January 11, 2009</announced>
+  <revised>January 11, 2009: 01</revised>
+  <bug>242702</bug>
+  <bug>243238</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/jhead" auto="yes" arch="*">
+      <unaffected range="ge">2.84-r1</unaffected>
+      <vulnerable range="lt">2.84-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    JHead is an exif jpeg header manipulation tool.
+    </p>
+  </background>
+  <description>
+    <p>
+    Marc Merlin and John Dong reported multiple vulnerabilities in JHead:
+    </p>
+    <ul>
+    <li>
+    A buffer overflow in the DoCommand() function when processing the cmd
+    argument and related to potential string overflows (CVE-2008-4575).
+    </li>
+    <li>
+    An insecure creation of a temporary file (CVE-2008-4639).
+    </li>
+    <li>
+    A error when unlinking a file (CVE-2008-4640).
+    </li>
+    <li>
+    Insufficient escaping of shell metacharacters (CVE-2008-4641).
+    </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could possibly execute arbitrary code by enticing a
+    user or automated system to open a file with a long filename or via
+    unspecified vectors. It is also possible to trick a user into deleting
+    or overwriting files.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All JHead users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/jhead-2.84-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4575">CVE-2008-4575</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4639">CVE-2008-4639</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4640">CVE-2008-4640</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4641">CVE-2008-4641</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:47:59 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 21:08:46 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 10 Dec 2008 17:01:39 +0000">
+    rbu
+  </metadata>
+</glsa>

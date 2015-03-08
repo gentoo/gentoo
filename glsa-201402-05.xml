@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-05">
+  <title>Banshee: Arbitrary code execution</title>
+  <synopsis>An environment variable processing error has been reported in
+    Banshee, possibly allowing local attacker to load a specially crafted
+    shared library.
+  </synopsis>
+  <product type="ebuild">banshee</product>
+  <announced>February 05, 2014</announced>
+  <revised>February 05, 2014: 1</revised>
+  <bug>345567</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-sound/banshee" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0-r1</unaffected>
+      <vulnerable range="lt">1.8.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Banshee is a multimedia management and playback application for GNOME.</p>
+  </background>
+  <description>
+    <p>Banshee places a zero-length directory name in PATH, which allows
+      libraries to be loaded from the working directory.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A local attacker could put specially crafted library into working
+      directory of Banshee, possibly resulting in execution of arbitrary code
+      with the privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Banshee users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/banshee-1.8.0-r1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since November 17, 2010. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3998">CVE-2010-3998</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:16 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Wed, 05 Feb 2014 10:53:24 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

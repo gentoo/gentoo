@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-13">
+  <title>VirtualBox: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, allowing
+    local attackers to escalate their privileges or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>January 20, 2014</announced>
+  <revised>January 20, 2014: 1</revised>
+  <bug>434872</bug>
+  <bug>498166</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge">4.2.22</unaffected>
+      <vulnerable range="lt">4.2.22</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
+      <unaffected range="ge">4.2.22</unaffected>
+      <vulnerable range="lt">4.2.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Virtualbox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker in a guest virtual machine may be able to escalate
+      privileges or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All virtualbox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-4.2.22"
+    </code>
+    
+    <p>All virtualbox-bin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-4.2.22"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3221">CVE-2012-3221</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5892">CVE-2013-5892</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0404">CVE-2014-0404</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0405">CVE-2014-0405</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0406">CVE-2014-0406</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0407">CVE-2014-0407</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 20 Sep 2012 23:38:57 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 08:52:54 +0000">ackle</metadata>
+</glsa>

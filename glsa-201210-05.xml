@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201210-05">
+  <title>Bash: Multiple vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been found in Bash, the worst of which may
+    allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">bash</product>
+  <announced>October 20, 2012</announced>
+  <revised>October 20, 2012: 1</revised>
+  <bug>251319</bug>
+  <bug>431850</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-shells/bash" auto="yes" arch="*">
+      <unaffected range="ge">4.2_p37</unaffected>
+      <vulnerable range="lt">4.2_p37</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bash is the standard GNU Bourne Again SHell. </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in Bash:</p>
+    
+    <ul>
+      <li>Bash example scripts do not handle temporary files securely
+        (CVE-2008-5374).
+      </li>
+      <li>Improper bounds checking in Bash could cause a stack-based buffer
+        overflow (CVE-2012-3410).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted Bash
+      script, possibly resulting in execution of arbitrary code with the
+      privileges of the process, or a Denial of Service condition of the Bash
+      executable. 
+    </p>
+    
+    <p>A local attacker may be able to perform symlink attacks to overwrite
+      arbitrary files with the privileges of the user running the application
+      or bypass shell access restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.2_p37"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5374">CVE-2008-5374</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3410">CVE-2012-3410</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Sep 2012 16:02:06 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 20 Oct 2012 00:12:47 +0000">ackle</metadata>
+</glsa>

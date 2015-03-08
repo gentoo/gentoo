@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-12">
+  <title>abcm2ps: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities, including buffer overflows, have been
+    found in abcm2ps.
+  </synopsis>
+  <product type="ebuild">abcm2ps</product>
+  <announced>November 20, 2011</announced>
+  <revised>November 20, 2011: 1</revised>
+  <bug>322859</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/abcm2ps" auto="yes" arch="*">
+      <unaffected range="ge">5.9.13</unaffected>
+      <vulnerable range="lt">5.9.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>abcm2ps is a program to convert abc files to Postscript files.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in abcm2ps:</p>
+    
+    <ul>
+      <li>Boundary errors in the PUT0 and PUT1 macros, the trim_title()
+        function, or a long "-O" command line option can lead to a buffer
+        overflow (CVE-2010-3441). 
+      </li>
+      <li>A vulnerability in the getarena() function in abc2ps.c can cause a
+        heap-based buffer overflow in abcm2ps (CVE-2010-4743).
+      </li>
+      <li>Multiple unspecified vulnerabilities (CVE-2010-4744).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to load a specially crafted ABC
+      file or use a long -O option on the command line, resulting in the
+      execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All abcm2ps users should upgrade to the latest stable version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/abcm2ps-5.9.13"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 27, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3441">CVE-2010-3441</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4743">CVE-2010-4743</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4744">CVE-2010-4744</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:36:59 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sun, 20 Nov 2011 17:57:02 +0000" tag="submitter">ackle</metadata>
+</glsa>

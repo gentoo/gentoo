@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-12">
+  <title>Webmin: Information leak in Gentoo binary package</title>
+  <synopsis>
+    Portage-built Webmin binary packages accidentally include a file containing
+    the local encrypted root password.
+  </synopsis>
+  <product type="ebuild">Webmin</product>
+  <announced>February 11, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>77731</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/webmin" auto="yes" arch="*">
+      <unaffected range="ge">1.170-r3</unaffected>
+      <vulnerable range="lt">1.170-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Webmin is a web-based system administration console allowing an
+    administrator to easily configure servers and other features. Using the
+    'buildpkg' FEATURE, or the -b/-B emerge options, Portage can build
+    reusable binary packages for any of the packages available through the
+    Portage tree.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Gentoo Linux Security Audit Team discovered that
+    the Webmin ebuild contains a design flaw. It imports the encrypted
+    local root password into the miniserv.users file before building binary
+    packages that include this file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could retrieve Portage-built Webmin binary packages
+    and recover the encrypted root password from the build host.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Users who never built or shared a Webmin binary package are unaffected
+    by this.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    Webmin users should delete any old shared Webmin binary package as soon
+    as possible. They should also consider their buildhost root password
+    potentially exposed and follow proper audit procedures.
+    </p>
+    <p>
+    If you plan to build binary packages, you should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/webmin-1.170-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0427">CVE-2005-0427</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 10 Feb 2005 15:50:39 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 10 Feb 2005 15:50:49 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200903-30">
+  <title>Opera: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in Opera, the worst of which allow for
+    the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">opera</product>
+  <announced>March 16, 2009</announced>
+  <revised>March 17, 2009: 02</revised>
+  <bug>247229</bug>
+  <bug>261032</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/opera" auto="yes" arch="*">
+      <unaffected range="ge">9.64</unaffected>
+      <vulnerable range="lt">9.64</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Opera is a fast web browser that is available free of charge.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were discovered in Opera:
+    </p>
+    <ul>
+    <li>Vitaly McLain reported a heap-based buffer overflow when processing
+    host names in file:// URLs (CVE-2008-5178).</li>
+    <li>Alexios Fakos reported a vulnerability in the HTML parsing engine
+    when processing web pages that trigger an invalid pointer calculation
+    and heap corruption (CVE-2008-5679).</li>
+    <li>Red XIII reported that certain text-area contents can be
+    manipulated to cause a buffer overlow (CVE-2008-5680).</li>
+    <li>David Bloom discovered that unspecified "scripted URLs" are not
+    blocked during the feed preview (CVE-2008-5681).</li>
+    <li>Robert Swiecki of the Google Security Team reported a Cross-site
+    scripting vulnerability (CVE-2008-5682).</li>
+    <li>An unspecified vulnerability reveals random data
+    (CVE-2008-5683).</li>
+    <li>Tavis Ormandy of the Google Security Team reported a vulnerability
+    when processing JPEG images that may corrupt memory
+    (CVE-2009-0914).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted JPEG
+    image to cause a Denial of Service or execute arbitrary code, to
+    process an overly long file:// URL or to open a specially crafted web
+    page to execute arbitrary code. He could also read existing
+    subscriptions and force subscriptions to arbitrary feed URLs, as well
+    as inject arbitrary web script or HTML via built-in XSLT templates.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Opera users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.64&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5178">CVE-2008-5178</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5679">CVE-2008-5679</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5680">CVE-2008-5680</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5681">CVE-2008-5681</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5682">CVE-2008-5682</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5683">CVE-2008-5683</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0914">CVE-2009-0914</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 09:16:02 +0000">
+    a3li
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 09 Mar 2009 15:15:16 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 16 Mar 2009 21:43:27 +0000">
+    p-y
+  </metadata>
+</glsa>

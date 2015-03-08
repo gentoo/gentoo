@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-03">
+  <title>Ethereal: Numerous vulnerabilities</title>
+  <synopsis>
+    Ethereal is vulnerable to numerous vulnerabilities potentially resulting in
+    the execution of arbitrary code or abnormal termination.
+  </synopsis>
+  <product type="ebuild">Ethereal</product>
+  <announced>May 06, 2005</announced>
+  <revised>May 06, 2005: 01</revised>
+  <bug>90539</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ethereal" auto="yes" arch="*">
+      <unaffected range="ge">0.10.11</unaffected>
+      <vulnerable range="lt">0.10.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ethereal is a feature rich network protocol analyzer.
+    </p>
+  </background>
+  <description>
+    <p>
+    There are numerous vulnerabilities in versions of Ethereal prior
+    to 0.10.11, including:
+    </p>
+    <ul>
+    <li>The ANSI A and DHCP dissectors are
+    vulnerable to format string vulnerabilities.</li>
+    <li>The DISTCC,
+    FCELS, SIP, ISIS, CMIP, CMP, CMS, CRMF, ESS, OCSP, PKIX1Explitit, PKIX
+    Qualified, X.509, Q.931, MEGACO, NCP, ISUP, TCAP and Presentation
+    dissectors are vulnerable to buffer overflows.</li>
+    <li>The KINK, WSP,
+    SMB Mailslot, H.245, MGCP, Q.931, RPC, GSM and SMB NETLOGON dissectors
+    are vulnerable to pointer handling errors.</li>
+    <li>The LMP, KINK,
+    MGCP, RSVP, SRVLOC, EIGRP, MEGACO, DLSw, NCP and L2TP dissectors are
+    vulnerable to looping problems.</li>
+    <li>The Telnet and DHCP dissectors
+    could abort.</li>
+    <li>The TZSP, Bittorrent, SMB, MGCP and ISUP
+    dissectors could cause a segmentation fault.</li>
+    <li>The WSP, 802.3
+    Slow protocols, BER, SMB Mailslot, SMB, NDPS, IAX2, RADIUS, SMB PIPE,
+    MRDISC and TCAP dissectors could throw assertions.</li>
+    <li>The DICOM,
+    NDPS and ICEP dissectors are vulnerable to memory handling errors.</li>
+    <li>The GSM MAP, AIM, Fibre Channel,SRVLOC, NDPS, LDAP and NTLMSSP
+    dissectors could terminate abnormallly.</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker might be able to use these vulnerabilities to crash
+    Ethereal and execute arbitrary code with the permissions of the user
+    running Ethereal, which could be the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ethereal users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.ethereal.com/appnotes/enpa-sa-00019.html">Ethereal enpa-sa-00019</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1456">CAN-2005-1456</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1457">CAN-2005-1457</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1458">CAN-2005-1458</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1459">CAN-2005-1459</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1460">CAN-2005-1460</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1461">CAN-2005-1461</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1462">CAN-2005-1462</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1463">CAN-2005-1463</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1464">CAN-2005-1464</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1465">CAN-2005-1465</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1466">CAN-2005-1466</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1467">CAN-2005-1467</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1468">CAN-2005-1468</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1469">CAN-2005-1469</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1470">CAN-2005-1470</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 05 May 2005 19:56:33 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 May 2005 17:24:39 +0000">
+    jaervosz
+  </metadata>
+</glsa>

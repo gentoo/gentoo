@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200706-09">
+  <title>libexif: Buffer overflow</title>
+  <synopsis>
+    libexif does not properly handle image EXIF information, possibly allowing
+    for the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libexif</product>
+  <announced>June 26, 2007</announced>
+  <revised>June 26, 2007: 01</revised>
+  <bug>181922</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libexif" auto="yes" arch="*">
+      <unaffected range="ge">0.6.16</unaffected>
+      <vulnerable range="lt">0.6.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    libexif is a library for parsing, editing and saving EXIF metadata from
+    images.
+    </p>
+  </background>
+  <description>
+    <p>
+    iDefense Labs have discovered that the exif_data_load_data_entry()
+    function in libexif/exif-data.c improperly handles integer data while
+    working with an image with many EXIF components, allowing an integer
+    overflow possibly leading to a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user of an application making use of a
+    vulnerable version of libexif to load a specially crafted image file,
+    possibly resulting in a crash of the application or the execution of
+    arbitrary code with the rights of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All libexif users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libexif-0.6.16&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4168">CVE-2006-4168</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 16 Jun 2007 06:17:21 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 16 Jun 2007 06:17:44 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Jun 2007 02:58:18 +0000">
+    shellsage
+  </metadata>
+</glsa>

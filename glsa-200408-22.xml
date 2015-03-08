@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-22">
+  <title>Mozilla, Firefox, Thunderbird, Galeon, Epiphany: New releases fix vulnerabilities</title>
+  <synopsis>
+    New releases of Mozilla, Epiphany, Galeon, Mozilla Thunderbird, and Mozilla
+    Firefox fix several vulnerabilities, including remote DoS and buffer
+    overflows.
+  </synopsis>
+  <product type="ebuild">www-client/mozilla, www-client/mozilla-firefox, mail-client/mozilla-thunderbird, www-client/galeon, www-client/epiphany</product>
+  <announced>August 23, 2004</announced>
+  <revised>December 30, 2007: 06</revised>
+  <bug>57380</bug>
+  <bug>59419</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/mozilla" auto="yes" arch="*">
+      <unaffected range="ge">1.7.2</unaffected>
+      <vulnerable range="lt">1.7.2</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox" auto="yes" arch="*">
+      <unaffected range="ge">0.9.3</unaffected>
+      <vulnerable range="lt">0.9.3</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">0.7.3</unaffected>
+      <vulnerable range="lt">0.7.3</vulnerable>
+    </package>
+    <package name="www-client/mozilla-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.7.2</unaffected>
+      <vulnerable range="lt">1.7.2</vulnerable>
+    </package>
+    <package name="www-client/mozilla-firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">0.9.3</unaffected>
+      <vulnerable range="lt">0.9.3</vulnerable>
+    </package>
+    <package name="mail-client/mozilla-thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">0.7.3</unaffected>
+      <vulnerable range="lt">0.7.3</vulnerable>
+    </package>
+    <package name="www-client/epiphany" auto="yes" arch="*">
+      <unaffected range="ge">1.2.7-r1</unaffected>
+      <vulnerable range="lt">1.2.7-r1</vulnerable>
+    </package>
+    <package name="www-client/galeon" auto="yes" arch="*">
+      <unaffected range="ge">1.3.17</unaffected>
+      <vulnerable range="lt">1.3.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mozilla is a popular web browser that includes a mail and newsreader.
+    Galeon and Epiphany are both web browsers that use gecko, the Mozilla
+    rendering engine. Mozilla Firefox is the next-generation browser from
+    the Mozilla project that incorporates advanced features that are yet to
+    be incorporated into Mozilla. Mozilla Thunderbird is the
+    next-generation mail client from the Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mozilla, Galeon, Epiphany, Mozilla Firefox and Mozilla Thunderbird
+    contain the following vulnerabilities:
+    </p>
+    <ul>
+    <li>All Mozilla tools use libpng for graphics. This library contains a
+    buffer overflow which may lead to arbitrary code execution.</li>
+    <li>If a user imports a forged Certificate Authority (CA) certificate,
+    it may overwrite and corrupt the valid CA already installed on the
+    machine.</li>
+    </ul>
+    <p>
+    Mozilla, Mozilla Firefox, and other gecko-based browsers also contain a
+    bug in their caching which may allow the SSL icon to remain visible,
+    even when the site in question is an insecure site.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Users of Mozilla, Mozilla Firefox, and other gecko-based browsers are
+    susceptible to SSL certificate spoofing, a Denial of Service against
+    legitimate SSL sites, crashes, and arbitrary code execution. Users of
+    Mozilla Thunderbird are susceptible to crashes and arbitrary code
+    execution via malicious e-mails.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround for most of these vulnerabilities. All
+    users are advised to upgrade to the latest available version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All users should upgrade to the latest stable version:
+    </p>
+    <code>
+    # emerge sync
+    
+    # emerge -pv your-version
+    # emerge your-version</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0763">CAN-2004-0763</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0758">CAN-2004-0758</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0597">CAN-2004-0597</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0598">CAN-2004-0598</uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0599">CAN-2004-0599</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu,  5 Aug 2004 18:21:36 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 19:57:21 +0000">
+    dmargoli
+  </metadata>
+</glsa>

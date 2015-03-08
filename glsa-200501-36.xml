@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-36">
+  <title>AWStats: Remote code execution</title>
+  <synopsis>
+    AWStats fails to validate certain input, which could lead to the remote
+    execution of arbitrary code or to the leak of information.
+  </synopsis>
+  <product type="ebuild">awstats</product>
+  <announced>January 25, 2005</announced>
+  <revised>May 28, 2009: 04</revised>
+  <bug>77963</bug>
+  <bug>81775</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-misc/awstats" auto="yes" arch="*">
+      <unaffected range="ge">6.3-r2</unaffected>
+      <vulnerable range="lt">6.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    AWStats is an advanced log file analyzer and statistics generator.
+    </p>
+  </background>
+  <description>
+    <p>
+    When 'awstats.pl' is run as a CGI script, it fails to validate specific
+    inputs which are used in a Perl open() function call. Furthermore, a
+    user could read log file content even when plugin rawlog was not
+    enabled.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could supply AWStats malicious input, potentially
+    allowing the execution of arbitrary code with the rights of the web
+    server. He could also access raw log contents.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Making sure that AWStats does not run as a CGI script will avoid the
+    issue, but we recommend that users upgrade to the latest version, which
+    fixes these bugs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AWStats users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-misc/awstats-6.3-r2&quot;</code>
+    <p>
+    Note: Users with the vhosts USE flag set should manually use
+    webapp-config to finalize the update.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://awstats.sourceforge.net/docs/awstats_changelog.txt">AWStats ChangeLog</uri>
+    <uri link="http://www.idefense.com/application/poi/display?id=185">iDEFENSE Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0116">CAN-2005-0116</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0362">CAN-2005-0362</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0363">CAN-2005-0363</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 18 Jan 2005 13:51:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Jan 2005 01:15:21 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 25 Jan 2005 18:48:59 +0000">
+    jaervosz
+  </metadata>
+</glsa>

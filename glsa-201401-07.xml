@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-07">
+  <title>libxslt: Denial of Service</title>
+  <synopsis>Multiple Denial of Service vulnerabilities have been found in
+    libxslt.
+  </synopsis>
+  <product type="ebuild">libxslt</product>
+  <announced>January 10, 2014</announced>
+  <revised>January 10, 2014: 1</revised>
+  <bug>433603</bug>
+  <bug>436284</bug>
+  <bug>463236</bug>
+  <bug>496114</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxslt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.28</unaffected>
+      <vulnerable range="lt">1.1.28</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxslt is the XSLT C library developed for the GNOME project. XSLT is
+      an XML language to define transformations for XML.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in libxslt:</p>
+    
+    <ul>
+      <li>Multiple errors exist in pattern.c and functions.c (CVE-2012-2870,
+        CVE-2012-6139).
+      </li>
+      <li>A double-free error exists in templates.c (CVE-2012-2893).</li>
+      <li>A NULL pointer dereference in keys.c (CVE-2012-6139).</li>
+      <li>An error in handling stylesheets containing DTDs (CVE-2013-4520).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file in an application linked against libxslt, possibly resulting in a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxslt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxslt-1.1.28"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2870">CVE-2012-2870</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2893">CVE-2012-2893</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6139">CVE-2012-6139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4520">CVE-2013-4520</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 30 Sep 2012 01:49:44 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jan 2014 14:13:14 +0000">ackle</metadata>
+</glsa>

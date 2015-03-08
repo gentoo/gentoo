@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200410-22">
+  <title>MySQL: Multiple vulnerabilities</title>
+  <synopsis>
+    Several vulnerabilities including privilege abuse, Denial of Service, and
+    potentially remote arbitrary code execution have been discovered in MySQL.
+  </synopsis>
+  <product type="ebuild">MySQL</product>
+  <announced>October 24, 2004</announced>
+  <revised>October 24, 2004: 01</revised>
+  <bug>67062</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">4.0.21</unaffected>
+      <vulnerable range="lt">4.0.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    MySQL is a popular open-source, multi-threaded, multi-user SQL database
+    server.
+    </p>
+  </background>
+  <description>
+    <p>
+    The following vulnerabilities were found and fixed in MySQL:
+    </p>
+    <p>
+    Oleksandr Byelkin found that ALTER TABLE ... RENAME checks CREATE/INSERT
+    rights of the old table instead of the new one (CAN-2004-0835). Another
+    privilege checking bug allowed users to grant rights on a database they had
+    no rights on.
+    </p>
+    <p>
+    Dean Ellis found a defect where multiple threads ALTERing the MERGE tables
+    to change the UNION could cause the server to crash (CAN-2004-0837).
+    Another crash was found in MATCH ... AGAINST() queries with missing closing
+    double quote.
+    </p>
+    <p>
+    Finally, a buffer overrun in the mysql_real_connect function was found by
+    Lukasz Wojtow (CAN-2004-0836).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The privilege checking issues could be used by remote users to bypass their
+    rights on databases. The two crashes issues could be exploited by a remote
+    user to perform a Denial of Service attack on MySQL server. The buffer
+    overrun issue could also be exploited as a Denial of Service attack, and
+    may allow to execute arbitrary code with the rights of the MySQL daemon
+    (typically, the "mysql" user).
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All MySQL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=dev-db/mysql-4.0.21"
+    # emerge ">=dev-db/mysql-4.0.21"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0835">CAN-2004-0835</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0836">CAN-2004-0836</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0837">CAN-2004-0837</uri>
+    <uri link="http://bugs.mysql.com/bug.php?id=3933">Privilege granting bug</uri>
+    <uri link="http://bugs.mysql.com/bug.php?id=3870">MATCH ... AGAINST crash bug</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 19 Oct 2004 17:45:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 22 Oct 2004 20:06:53 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 23 Oct 2004 08:53:17 +0000">
+    koon
+  </metadata>
+</glsa>

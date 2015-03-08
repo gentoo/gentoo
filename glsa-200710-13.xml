@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-13">
+  <title>Ampache: Multiple vulnerabilities</title>
+  <synopsis>
+    An SQL injection vulnerability and a possible identity theft have been
+    discovered in Ampache.
+  </synopsis>
+  <product type="ebuild">ampache</product>
+  <announced>October 13, 2007</announced>
+  <revised>October 13, 2007: 01</revised>
+  <bug>189607</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/ampache" auto="yes" arch="*">
+      <unaffected range="ge">3.3.3.5</unaffected>
+      <vulnerable range="lt">3.3.3.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ampache is a PHP-based tool for managing, updating and playing audio
+    files via a web interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    LT discovered that the "match" parameter in albums.php is not properly
+    sanitized before being processed. The Ampache development team also
+    reported an error when handling user sessions.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could provide malicious input to the application,
+    possibly resulting in the execution of arbitrary SQL code. He could
+    also entice a user to open a specially crafted link to steal the user's
+    session.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ampache users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/ampache-3.3.3.5&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4437">CVE-2007-4437</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4438">CVE-2007-4438</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 17 Sep 2007 21:08:28 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 17 Sep 2007 21:08:38 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 19:57:29 +0000">
+    p-y
+  </metadata>
+</glsa>

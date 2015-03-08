@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200503-23">
+  <title>rxvt-unicode: Buffer overflow</title>
+  <synopsis>
+    rxvt-unicode is vulnerable to a buffer overflow that could lead to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">rxvt-unicode</product>
+  <announced>March 20, 2005</announced>
+  <revised>March 20, 2005: 01</revised>
+  <bug>84680</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-terms/rxvt-unicode" auto="yes" arch="*">
+      <unaffected range="ge">5.3</unaffected>
+      <unaffected range="lt">4.8</unaffected>
+      <vulnerable range="lt">5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rxvt-unicode is a clone of the well known terminal emulator rxvt.
+    </p>
+  </background>
+  <description>
+    <p>
+    Rob Holland of the Gentoo Linux Security Audit Team discovered
+    that rxvt-unicode fails to properly check input length.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Successful exploitation would allow an attacker to execute
+    arbitrary code with the permissions of the user running rxvt-unicode.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All rxvt-unicode users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/rxvt-unicode-5.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0764">CAN-2005-0764</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Mar 2005 14:52:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Mar 2005 23:51:13 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Mar 2005 16:52:52 +0000">
+    jaervosz
+  </metadata>
+</glsa>

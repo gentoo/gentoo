@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200812-17">
+  <title>Ruby: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in Ruby that allow for
+    attacks including arbitrary code execution and Denial of Service.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>December 16, 2008</announced>
+  <revised>December 16, 2008: 01</revised>
+  <bug>225465</bug>
+  <bug>236060</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.6_p287-r1</unaffected>
+      <vulnerable range="lt">1.8.6_p287-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an interpreted object-oriented programming language. The
+    elaborate standard library includes an HTTP server ("WEBRick") and a
+    class for XML parsing ("REXML").
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in the Ruby interpreter
+    and its standard libraries. Drew Yao of Apple Product Security
+    discovered the following flaws:
+    </p>
+    <ul>
+    <li>Arbitrary code execution
+    or Denial of Service (memory corruption) in the rb_str_buf_append()
+    function (CVE-2008-2662).</li>
+    <li>Arbitrary code execution or Denial
+    of Service (memory corruption) in the rb_ary_stor() function
+    (CVE-2008-2663).</li>
+    <li>Memory corruption via alloca in the
+    rb_str_format() function (CVE-2008-2664).</li>
+    <li>Memory corruption
+    ("REALLOC_N") in the rb_ary_splice() and rb_ary_replace() functions
+    (CVE-2008-2725).</li>
+    <li>Memory corruption ("beg + rlen") in the
+    rb_ary_splice() and rb_ary_replace() functions (CVE-2008-2726).</li>
+    </ul> <p>
+    Furthermore, several other vulnerabilities have been reported:
+    </p>
+    <ul>
+    <li>Tanaka Akira reported an issue with resolv.rb that enables
+    attackers to spoof DNS responses (CVE-2008-1447).</li>
+    <li>Akira Tagoh
+    of RedHat discovered a Denial of Service (crash) issue in the
+    rb_ary_fill() function in array.c (CVE-2008-2376).</li>
+    <li>Several
+    safe level bypass vulnerabilities were discovered and reported by Keita
+    Yamaguchi (CVE-2008-3655).</li>
+    <li>Christian Neukirchen is credited
+    for discovering a Denial of Service (CPU consumption) attack in the
+    WEBRick HTTP server (CVE-2008-3656).</li>
+    <li>A fault in the dl module
+    allowed the circumvention of taintness checks which could possibly lead
+    to insecure code execution was reported by "sheepman"
+    (CVE-2008-3657).</li>
+    <li>Tanaka Akira again found a DNS spoofing
+    vulnerability caused by the resolv.rb implementation using poor
+    randomness (CVE-2008-3905).</li>
+    <li>Luka Treiber and Mitja Kolsek
+    (ACROS Security) disclosed a Denial of Service (CPU consumption)
+    vulnerability in the REXML module when dealing with recursive entity
+    expansion (CVE-2008-3790).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    These vulnerabilities allow remote attackers to execute arbitrary code,
+    spoof DNS responses, bypass Ruby's built-in security and taintness
+    checks, and cause a Denial of Service via crash or CPU exhaustion.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.6_p287-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2376">CVE-2008-2376</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2662">CVE-2008-2662</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2663">CVE-2008-2663</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2664">CVE-2008-2664</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2725">CVE-2008-2725</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2726">CVE-2008-2726</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3655">CVE-2008-3655</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3656">CVE-2008-3656</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3657">CVE-2008-3657</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3790">CVE-2008-3790</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3905">CVE-2008-3905</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Sep 2008 11:43:41 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Nov 2008 18:52:14 +0000">
+    hoffie
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 27 Nov 2008 16:38:46 +0000">
+    rbu
+  </metadata>
+</glsa>

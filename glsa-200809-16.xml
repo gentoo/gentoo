@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-16">
+  <title>Git: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    Multiple buffer overflow vulnerabilities have been discovered in Git.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>September 25, 2008</announced>
+  <revised>September 25, 2008: 01</revised>
+  <bug>234075</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/git" auto="yes" arch="*">
+      <unaffected range="ge">1.5.6.4</unaffected>
+      <vulnerable range="lt">1.5.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Git is a distributed version control system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple boundary errors in the functions diff_addremove() and
+    diff_change() when processing overly long repository path names were
+    reported.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run commands like "git-diff"
+    or "git-grep" on a specially crafted repository, possibly resulting in
+    the remote execution of arbitrary code with the privileges of the user
+    running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Git users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/git-1.5.6.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3546">CVE-2008-3546</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Sep 2008 11:13:42 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 21 Sep 2008 11:16:38 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 22 Sep 2008 11:39:05 +0000">
+    p-y
+  </metadata>
+</glsa>

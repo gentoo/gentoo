@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200707-03">
+  <title>Evolution: User-assisted remote execution of arbitrary code</title>
+  <synopsis>
+    The IMAP client of Evolution contains a vulnerability potentially leading
+    to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">evolution-data-server</product>
+  <announced>July 02, 2007</announced>
+  <revised>July 02, 2007: 01</revised>
+  <bug>182011</bug>
+  <access>remote</access>
+  <affected>
+    <package name="gnome-extra/evolution-data-server" auto="yes" arch="*">
+      <unaffected range="ge">1.8.3-r5</unaffected>
+      <unaffected range="rge">1.6.2-r1</unaffected>
+      <vulnerable range="lt">1.8.3-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evolution is the mail client of the GNOME desktop environment. Camel is
+    the Evolution Data Server module that handles mail functions.
+    </p>
+  </background>
+  <description>
+    <p>
+    The imap_rescan() function of the file camel-imap-folder.c does not
+    properly sanitize the "SEQUENCE" response sent by an IMAP server before
+    being used to index arrays.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious or compromised IMAP server could trigger the vulnerability
+    and execute arbitrary code with the permissions of the user running
+    Evolution.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Evolution users should upgrade evolution-data-server to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;gnome-extra/evolution-data-server&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3257">CVE-2007-3257</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 20 Jun 2007 15:13:37 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 25 Jun 2007 16:19:12 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 25 Jun 2007 16:19:36 +0000">
+    falco
+  </metadata>
+</glsa>

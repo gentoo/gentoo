@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-21">
+  <title>Trac: File upload vulnerability</title>
+  <synopsis>
+    Trac may allow remote attackers to upload files, possibly leading to the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">trac</product>
+  <announced>June 22, 2005</announced>
+  <revised>June 22, 2005: 01</revised>
+  <bug>96572</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/trac" auto="yes" arch="*">
+      <unaffected range="ge">0.8.4</unaffected>
+      <vulnerable range="lt">0.8.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Trac is a minimalistic web-based project management, wiki and bug
+    tracking system including a Subversion interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Stefan Esser of the Hardened-PHP project discovered that Trac
+    fails to validate the "id" parameter when uploading attachments to the
+    wiki or the bug tracking system.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit the vulnerability to upload
+    arbitrary files to a directory where the webserver has write access to,
+    possibly leading to the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Trac users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/trac-0.8.4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.hardened-php.net/advisory-012005.php">Hardened PHP Advisory 012005</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Jun 2005 20:04:48 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 22 Jun 2005 01:36:58 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 22 Jun 2005 08:15:34 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200607-12">
+  <title>OpenOffice.org: Multiple vulnerabilities</title>
+  <synopsis>
+    OpenOffice.org is affected by three security vulnerabilities which can be
+    exploited to allow the execution of arbitrary code by a remote attacker.
+  </synopsis>
+  <product type="ebuild">OpenOffice.org</product>
+  <announced>July 28, 2006</announced>
+  <revised>July 28, 2006: 01</revised>
+  <bug>138545</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3</unaffected>
+      <vulnerable range="lt">2.0.3</vulnerable>
+    </package>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3</unaffected>
+      <vulnerable range="lt">2.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenOffice.org is an open source office productivity suite, including
+    word processing, spreadsheet, presentation, drawing, data charting,
+    formula editing, and file conversion facilities.
+    </p>
+  </background>
+  <description>
+    <p>
+    Internal security audits by OpenOffice.org have discovered three
+    security vulnerabilities related to Java applets, macros and the XML
+    file format parser.
+    </p>
+    <ul><li>Specially crafted Java applets can
+    break through the "sandbox".</li>
+    <li>Specially crafted macros make it
+    possible to inject BASIC code into documents which is executed when the
+    document is loaded.</li>
+    <li>Loading a malformed XML file can cause a
+    buffer overflow.</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker might exploit these vulnerabilities to escape the Java
+    sandbox, execute arbitrary code or BASIC code with the permissions of
+    the user running OpenOffice.org.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disabling Java applets will protect against the vulnerability in the
+    handling of Java applets. There are no workarounds for the macro and
+    file format vulnerabilities.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenOffice.org users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.0.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.openoffice.org/security/bulletin-20060629.html">OpenOffice.org Security Bulletin 2006-06-29</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-2199">CVE-2006-2199</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-2198">CVE-2006-2198</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-3117">CVE-2006-3117</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 19 Jul 2006 12:40:14 +0000">
+    dizzutch
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 20 Jul 2006 16:32:57 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-06">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in PHP, the worst of which
+    leading to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>October 10, 2011</announced>
+  <revised>October 10, 2011: 2</revised>
+  <bug>306939</bug>
+  <bug>332039</bug>
+  <bug>340807</bug>
+  <bug>350908</bug>
+  <bug>355399</bug>
+  <bug>358791</bug>
+  <bug>358975</bug>
+  <bug>369071</bug>
+  <bug>372745</bug>
+  <bug>373965</bug>
+  <bug>380261</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.3.8</unaffected>
+      <vulnerable range="lt">5.3.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is a widely-used general-purpose scripting language that is
+      especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker could execute arbitrary code, obtain
+      sensitive information from process memory, bypass intended access
+      restrictions, or cause a Denial of Service in various ways.
+    </p>
+    
+    <p>A remote attacker could cause a Denial of Service in various ways,
+      bypass spam detections, or bypass open_basedir restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.3.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-7243">CVE-2006-7243</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5016">CVE-2009-5016</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1128">CVE-2010-1128</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1129">CVE-2010-1129</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1130">CVE-2010-1130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1860">CVE-2010-1860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1861">CVE-2010-1861</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1862">CVE-2010-1862</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1864">CVE-2010-1864</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1866">CVE-2010-1866</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1868">CVE-2010-1868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1914">CVE-2010-1914</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1915">CVE-2010-1915</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1917">CVE-2010-1917</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2093">CVE-2010-2093</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2094">CVE-2010-2094</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2097">CVE-2010-2097</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2100">CVE-2010-2100</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2101">CVE-2010-2101</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2190">CVE-2010-2190</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2191">CVE-2010-2191</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2225">CVE-2010-2225</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2484">CVE-2010-2484</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2531">CVE-2010-2531</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2950">CVE-2010-2950</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3062">CVE-2010-3062</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3063">CVE-2010-3063</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3064">CVE-2010-3064</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3065">CVE-2010-3065</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3436">CVE-2010-3436</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3709">CVE-2010-3709</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3709">CVE-2010-3709</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3710">CVE-2010-3710</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3710">CVE-2010-3710</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3870">CVE-2010-3870</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4150">CVE-2010-4150</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4409">CVE-2010-4409</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4645">CVE-2010-4645</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4697">CVE-2010-4697</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4698">CVE-2010-4698</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4699">CVE-2010-4699</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4700">CVE-2010-4700</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0420">CVE-2011-0420</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0421">CVE-2011-0421</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0708">CVE-2011-0708</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0752">CVE-2011-0752</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0753">CVE-2011-0753</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0755">CVE-2011-0755</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1092">CVE-2011-1092</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1148">CVE-2011-1148</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1153">CVE-2011-1153</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1464">CVE-2011-1464</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1466">CVE-2011-1466</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1467">CVE-2011-1467</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1468">CVE-2011-1468</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1469">CVE-2011-1469</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1470">CVE-2011-1470</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1471">CVE-2011-1471</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1657">CVE-2011-1657</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1938">CVE-2011-1938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2202">CVE-2011-2202</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2483">CVE-2011-2483</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3182">CVE-2011-3182</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3189">CVE-2011-3189</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3267">CVE-2011-3267</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3268">CVE-2011-3268</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:20 +0000" tag="requester">craig</metadata>
+  <metadata timestamp="Mon, 10 Oct 2011 21:51:57 +0000" tag="submitter">
+    keytoaster
+  </metadata>
+</glsa>

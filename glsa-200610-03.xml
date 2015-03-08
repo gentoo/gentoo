@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200610-03">
+  <title>ncompress: Buffer Underflow</title>
+  <synopsis>
+    A buffer underflow vulnerability has been reported in ncompress allowing
+    for the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ncompress</product>
+  <announced>October 06, 2006</announced>
+  <revised>October 06, 2006: 01</revised>
+  <bug>141728</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/ncompress" auto="yes" arch="*">
+      <unaffected range="ge">4.2.4.1</unaffected>
+      <vulnerable range="lt">4.2.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ncompress is a suite of utilities to create and extract
+    Lempel-Ziff-Welch (LZW) compressed archives.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team discovered a static buffer
+    underflow in ncompress.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could create a specially crafted LZW archive, that when
+    decompressed by a user or automated system would result in the
+    execution of arbitrary code with the permissions of the user invoking
+    the utility.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ncompress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/ncompress-4.2.4.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1168">CVE-2006-1168</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 Sep 2006 14:20:45 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Oct 2006 10:06:04 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 06 Oct 2006 17:50:24 +0000">
+    falco
+  </metadata>
+</glsa>

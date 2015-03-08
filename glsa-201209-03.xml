@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-03">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in PHP, the worst of which lead
+    to remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>September 24, 2012</announced>
+  <revised>September 24, 2012: 1</revised>
+  <bug>384301</bug>
+  <bug>396311</bug>
+  <bug>396533</bug>
+  <bug>399247</bug>
+  <bug>399567</bug>
+  <bug>399573</bug>
+  <bug>401997</bug>
+  <bug>410957</bug>
+  <bug>414553</bug>
+  <bug>421489</bug>
+  <bug>427354</bug>
+  <bug>429630</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.3.15</unaffected>
+      <unaffected range="ge">5.4.5</unaffected>
+      <vulnerable range="lt">5.3.15</vulnerable>
+      <vulnerable range="lt">5.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is a widely-used general-purpose scripting language that is
+      especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, obtain sensitive
+      information, create arbitrary files, conduct directory traversal attacks,
+      bypass protection mechanisms, or perform further attacks with unspecified
+      impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.3.15"
+    </code>
+    
+    <p>All PHP users on ARM should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.4.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1398">CVE-2011-1398</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3379">CVE-2011-3379</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4566">CVE-2011-4566</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4885">CVE-2011-4885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0057">CVE-2012-0057</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0788">CVE-2012-0788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0789">CVE-2012-0789</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0830">CVE-2012-0830</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0831">CVE-2012-0831</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1172">CVE-2012-1172</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1823">CVE-2012-1823</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2143">CVE-2012-2143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2311">CVE-2012-2311</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2335">CVE-2012-2335</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2336">CVE-2012-2336</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2386">CVE-2012-2386</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2688">CVE-2012-2688</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3365">CVE-2012-3365</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3450">CVE-2012-3450</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 17 Jan 2012 08:58:04 +0000">ago</metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 00:00:49 +0000">ackle</metadata>
+</glsa>

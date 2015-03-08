@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-37">
+  <title>Open DC Hub: Remote code execution</title>
+  <synopsis>
+    Open DC Hub contains a buffer overflow that can be exploited to allow
+    remote code execution.
+  </synopsis>
+  <product type="ebuild">opendchub</product>
+  <announced>November 28, 2004</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>72371</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/opendchub" auto="yes" arch="*">
+      <unaffected range="ge">0.7.14-r2</unaffected>
+      <vulnerable range="lt">0.7.14-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Open DC Hub is the hub software for the Direct Connect file sharing
+    network.
+    </p>
+  </background>
+  <description>
+    <p>
+    Donato Ferrante discovered a buffer overflow vulnerability in the
+    RedirectAll command of the Open DC Hub.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    Upon exploitation, a remote user with administrative privileges can
+    execute arbitrary code on the system running the Open DC Hub.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Only give administrative rights to trusted users.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Open DC Hub users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/opendchub-0.7.14-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2004-11/1115.html">Full-Disclosure Advisory</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1127">CVE-2004-1127</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sun, 28 Nov 2004 03:48:46 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 28 Nov 2004 03:49:07 +0000">
+    lewk
+  </metadata>
+</glsa>

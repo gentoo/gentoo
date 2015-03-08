@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-04">
+  <title>ClamAV: Denial of Service</title>
+  <synopsis>
+    A vulnerability has been discovered in ClamAV, allowing for a Denial of
+    Service.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>August 09, 2007</announced>
+  <revised>August 09, 2007: 01</revised>
+  <bug>185013</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.91</unaffected>
+      <vulnerable range="lt">0.91</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ClamAV is a GPL virus scanner.
+    </p>
+  </background>
+  <description>
+    <p>
+    Metaeye Security Group reported a NULL pointer dereference in ClamAV
+    when processing RAR archives.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could send a specially crafted RAR archive to the
+    clamd daemon, resulting in a crash and a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ClamAV users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.91&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3725">CVE-2007-3725</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Jul 2007 22:16:39 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 04 Aug 2007 17:18:26 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 04 Aug 2007 17:18:43 +0000">
+    p-y
+  </metadata>
+</glsa>

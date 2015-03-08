@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-21">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in Asterisk might allow unauthenticated
+    remote attackers to execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">Asterisk</product>
+  <announced>October 24, 2011</announced>
+  <revised>October 24, 2011: 1</revised>
+  <bug>352059</bug>
+  <bug>355967</bug>
+  <bug>359767</bug>
+  <bug>364887</bug>
+  <bug>372793</bug>
+  <bug>373409</bug>
+  <bug>387453</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">1.8.7.1</unaffected>
+      <unaffected range="rge">1.6.2.18.2</unaffected>
+      <vulnerable range="lt">1.8.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Asterisk is an open source telephony engine and toolkit. </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An unauthenticated remote attacker may execute code with the privileges
+      of the Asterisk process or cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All asterisk 1.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.6.2.18.2"
+    </code>
+    
+    <p>All asterisk 1.8.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.8.7.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1147">CVE-2011-1147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1174">CVE-2011-1174</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1175">CVE-2011-1175</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1507">CVE-2011-1507</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1599">CVE-2011-1599</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2529">CVE-2011-2529</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2535">CVE-2011-2535</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2536">CVE-2011-2536</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2665">CVE-2011-2665</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2666">CVE-2011-2666</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4063">CVE-2011-4063</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:05 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 24 Oct 2011 18:44:10 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

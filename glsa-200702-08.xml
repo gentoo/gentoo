@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200702-08">
+  <title>AMD64 x86 emulation Sun's J2SE Development Kit: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple unspecified vulnerabilities have been identified in Sun Java
+    Development Kit (JDK) and Sun Java Runtime Environment (JRE).
+  </synopsis>
+  <product type="ebuild">java</product>
+  <announced>February 17, 2007</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>159547</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/emul-linux-x86-java" auto="yes" arch="amd64">
+      <unaffected range="ge">1.5.0.10</unaffected>
+      <unaffected range="rge">1.4.2.19</unaffected>
+      <vulnerable range="lt">1.5.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Sun Java Development Kit (JDK) and the Sun Java Runtime Environment
+    (JRE) provide the Sun Java platform. The x86 emulation Sun's J2SE
+    Development Kit for AMD64 contains a vulnerable version of Sun's JDK.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chris Evans has discovered multiple buffer overflows in Sun JDK and Sun
+    JRE possibly related to various AWT or font layout functions. Tom
+    Hawtin has discovered an unspecified vulnerability in Sun JDK and Sun
+    JRE relating to unintended applet data access. He has also discovered
+    multiple other unspecified vulnerabilities in Sun JDK and Sun JRE
+    allowing unintended Java applet or application resource acquisition.
+    Additionally, a memory corruption error has been found in the handling
+    of GIF images with zero width field blocks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to run a specially crafted Java applet
+    or application that could read, write, or execute local files with the
+    privileges of the user running the JVM, access data maintained in other
+    Java applets, or escalate the privileges of the currently running Java
+    applet or application allowing for unauthorized access to system
+    resources.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All AMD64 x86 emulation Sun's J2SE Development Kit users should upgrade
+    to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.5.0.10&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6731">CVE-2006-6731</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6736">CVE-2006-6736</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6737">CVE-2006-6737</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6745">CVE-2006-6745</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0243">CVE-2007-0243</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 22:34:40 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 Feb 2007 22:42:06 +0000">
+    falco
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 22:57:40 +0000">
+    falco
+  </metadata>
+</glsa>

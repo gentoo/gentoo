@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200801-22">
+  <title>PeerCast: Buffer overflow</title>
+  <synopsis>
+    A buffer overflow vulnerability has been discovered in PeerCast.
+  </synopsis>
+  <product type="ebuild">peercast</product>
+  <announced>January 30, 2008</announced>
+  <revised>January 30, 2008: 02</revised>
+  <bug>202747</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/peercast" auto="yes" arch="*">
+      <unaffected range="ge">0.1218</unaffected>
+      <vulnerable range="lt">0.1218</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PeerCast is a client and server for P2P-radio network
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma reported a heap-based buffer overflow within the
+    "handshakeHTTP()" function when processing HTTP requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a specially crafted request to the
+    vulnerable server, possibly resulting in the remote execution of
+    arbitrary code with the privileges of the user running the PeerCast
+    server, usually "nobody".
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PeerCast users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1218&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6454">CVE-2007-6454</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Jan 2008 08:22:19 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 29 Jan 2008 19:51:49 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 29 Jan 2008 23:04:06 +0000">
+    falco
+  </metadata>
+</glsa>

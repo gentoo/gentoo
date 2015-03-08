@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-43">
+  <title>f2c: Insecure temporary file creation</title>
+  <synopsis>
+    f2c is vulnerable to symlink attacks, potentially allowing a local user to
+    overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">f2c</product>
+  <announced>January 30, 2005</announced>
+  <revised>January 30, 2005: 01</revised>
+  <bug>79725</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/f2c" auto="yes" arch="*">
+      <unaffected range="ge">20030320-r1</unaffected>
+      <vulnerable range="le">20030320</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    f2c is a Fortran to C translator. Portage uses this package in
+    some ebuilds to build Fortran sources.
+    </p>
+  </background>
+  <description>
+    <p>
+    Javier Fernandez-Sanguino Pena from the Debian Security Audit Team
+    discovered that f2c creates temporary files in world-writeable
+    directories with predictable names.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could create symbolic links in the temporary
+    files directory, pointing to a valid file somewhere on the filesystem.
+    When f2c is executed, this would result in the file being overwritten
+    with the rights of the user running the software, which could be the
+    root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All f2c users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/f2c-20030320-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0017">CAN-2005-0017</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 29 Jan 2005 12:00:55 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 29 Jan 2005 16:13:04 +0000">
+    vorlon078
+  </metadata>
+</glsa>

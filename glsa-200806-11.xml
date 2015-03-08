@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200806-11">
+  <title>IBM JDK/JRE: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been found in IBM Java Development Kit (JDK)
+    and Java Runtime Environment (JRE), resulting in the execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">ibm-jdk-bin ibm-jre-bin</product>
+  <announced>June 25, 2008</announced>
+  <revised>June 25, 2008: 01</revised>
+  <bug>186277</bug>
+  <bug>198644</bug>
+  <bug>216112</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/ibm-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.7</unaffected>
+      <unaffected range="rge">1.4.2.11</unaffected>
+      <vulnerable range="lt">1.5.0.7</vulnerable>
+    </package>
+    <package name="dev-java/ibm-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0.7</unaffected>
+      <unaffected range="rge">1.4.2.11</unaffected>
+      <vulnerable range="lt">1.5.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The IBM Java Development Kit (JDK) and the IBM Java Runtime Environment
+    (JRE) provide the IBM Java platform.
+    </p>
+  </background>
+  <description>
+    <p>
+    Because of sharing the same codebase, IBM JDK and JRE are affected by
+    the vulnerabilities mentioned in GLSA 200804-20.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to run a specially crafted applet
+    on a website or start an application in Java Web Start to execute
+    arbitrary code outside of the Java sandbox and of the Java security
+    restrictions with the privileges of the user running Java. The attacker
+    could also obtain sensitive information, create, modify, rename and
+    read local files, execute local applications, establish connections in
+    the local network, bypass the same origin policy, and cause a Denial of
+    Service via multiple vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All IBM JDK 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jdk-bin-1.5.0.7&quot;</code>
+    <p>
+    All IBM JDK 1.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jdk-bin-1.4.2.11&quot;</code>
+    <p>
+    All IBM JRE 1.5 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jre-bin-1.5.0.7&quot;</code>
+    <p>
+    All IBM JRE 1.4 users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jre-bin-1.4.2.11&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200804-20.xml">GLSA 200804-20</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 05 Apr 2008 22:14:16 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 23 Apr 2008 17:16:09 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 24 Jun 2008 01:10:44 +0000">
+    rbu
+  </metadata>
+</glsa>

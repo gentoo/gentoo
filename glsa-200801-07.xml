@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200801-07">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been identified, the worst of which allow
+    arbitrary code execution on a user's system via a malicious Flash file.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>January 20, 2008</announced>
+  <revised>May 28, 2009: 03</revised>
+  <bug>193519</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">9.0.115.0</unaffected>
+      <vulnerable range="lt">9.0.115.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Adobe Flash Player is a renderer for the popular SWF file format,
+    which is commonly used to provide interactive websites, digital
+    experiences and mobile content.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>Flash contains a copy of PCRE which is vulnerable to a heap-based
+    buffer overflow (GLSA 200711-30, CVE-2007-4768).</li>
+    <li>Aaron Portnoy reported an unspecified vulnerability related to
+    input validation (CVE-2007-6242).</li>
+    <li>Jesse Michael and Thomas Biege reported that Flash does not
+    correctly set memory permissions (CVE-2007-6246).</li>
+    <li>Dan Boneh, Adam Barth, Andrew Bortz, Collin Jackson, and Weidong
+    Shao reported that Flash does not pin DNS hostnames to a single IP
+    addresses, allowing for DNS rebinding attacks (CVE-2007-5275).</li>
+    <li>David Neu reported an error withing the implementation of the
+    Socket and XMLSocket ActionScript 3 classes (CVE-2007-4324).</li>
+    <li>Toshiharu Sugiyama reported that Flash does not sufficiently
+    restrict the interpretation and usage of cross-domain policy files,
+    allowing for easier cross-site scripting attacks (CVE-2007-6243).</li>
+    <li>Rich Cannings reported a cross-site scripting vulnerability in the
+    way the "asfunction:" protocol was handled (CVE-2007-6244).</li>
+    <li>Toshiharu Sugiyama discovered that Flash allows remote attackers to
+    modify HTTP headers for client requests and conduct HTTP Request
+    Splitting attacks (CVE-2007-6245).</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted file
+    (usually in a web browser), possibly leading to the execution of
+    arbitrary code with the privileges of the user running the Adobe Flash
+    Player. The attacker could also cause a user's machine to establish TCP
+    sessions with arbitrary hosts, bypass the Security Sandbox Model,
+    obtain sensitive information, port scan arbitrary hosts, or conduct
+    cross-site-scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Flash Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-9.0.115.0&quot;</code>
+    <p>
+    Please be advised that unaffected packages of the Adobe Flash Player
+    have known problems when used from within the Konqueror and Opera
+    browsers.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4324">CVE-2007-4324</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4768">CVE-2007-4768</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5275">CVE-2007-5275</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6242">CVE-2007-6242</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6243">CVE-2007-6243</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6244">CVE-2007-6244</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6245">CVE-2007-6245</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6246">CVE-2007-6246</uri>
+    <uri link="/security/en/glsa/glsa-200711-30.xml">GLSA 200711-30</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 01 Jan 2008 22:05:12 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Jan 2008 17:34:55 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 15 Jan 2008 17:41:04 +0000">
+    rbu
+  </metadata>
+</glsa>

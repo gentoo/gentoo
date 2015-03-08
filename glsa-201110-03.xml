@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-03">
+  <title>Bugzilla: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Bugzilla, the worst of which
+    leading to privilege escalation.
+  </synopsis>
+  <product type="ebuild">bugzilla</product>
+  <announced>October 10, 2011</announced>
+  <revised>October 10, 2011: 1</revised>
+  <bug>352781</bug>
+  <bug>380255</bug>
+  <bug>386203</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-apps/bugzilla" auto="yes" arch="*">
+      <unaffected range="ge">3.6.6</unaffected>
+      <vulnerable range="lt">3.6.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bugzilla is the bug-tracking system from the Mozilla project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Bugzilla. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could conduct cross-site scripting attacks, conduct
+      script insertion and spoofing attacks, hijack the authentication of
+      arbitrary users, inject arbitrary HTTP headers, obtain access to
+      arbitrary accounts, disclose the existence of confidential groups and its
+      names, or inject arbitrary e-mail headers.
+    </p>
+    
+    <p>A local attacker could disclose the contents of temporarfy files for
+      uploaded attachments.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bugzilla users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/bugzilla-3.6.6"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since August 27, 2011. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2761">CVE-2010-2761</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3172">CVE-2010-3172</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3764">CVE-2010-3764</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4411">CVE-2010-4411</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4567">CVE-2010-4567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4568">CVE-2010-4568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4569">CVE-2010-4569</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4570">CVE-2010-4570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4572">CVE-2010-4572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0046">CVE-2011-0046</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0048">CVE-2011-0048</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2379">CVE-2011-2379</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2380">CVE-2011-2380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2381">CVE-2011-2381</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2976">CVE-2011-2976</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2977">CVE-2011-2977</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2978">CVE-2011-2978</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2979">CVE-2011-2979</uri>
+  </references>
+  <metadata timestamp="Sat, 08 Oct 2011 21:15:32 +0000" tag="requester">
+    keytoaster
+  </metadata>
+  <metadata timestamp="Mon, 10 Oct 2011 19:51:47 +0000" tag="submitter">craig</metadata>
+</glsa>

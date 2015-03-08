@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200507-08">
+  <title>phpGroupWare, eGroupWare: PHP script injection vulnerability</title>
+  <synopsis>
+    phpGroupWare and eGroupWare include an XML-RPC implementation which allows
+    remote attackers to execute arbitrary PHP script commands.
+  </synopsis>
+  <product type="ebuild">phpgroupware egroupware</product>
+  <announced>July 10, 2005</announced>
+  <revised>July 10, 2005: 01</revised>
+  <bug>97460</bug>
+  <bug>97651</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phpgroupware" auto="yes" arch="*">
+      <unaffected range="ge">0.9.16.006</unaffected>
+      <vulnerable range="lt">0.9.16.006</vulnerable>
+    </package>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0.008</unaffected>
+      <vulnerable range="lt">1.0.0.008</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    phpGroupWare and eGroupWare are web based collaboration software
+    suites.
+    </p>
+  </background>
+  <description>
+    <p>
+    The XML-RPC implementations of phpGroupWare and eGroupWare fail to
+    sanitize input sent to the XML-RPC server using the "POST" method.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit the XML-RPC vulnerability to
+    execute arbitrary PHP script code by sending specially crafted XML data
+    to the XML-RPC servers of phpGroupWare or eGroupWare.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There are no known workarounds at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All phpGroupWare users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-app/phpgroupware-0.9.16.006&quot;</code>
+    <p>
+    All eGroupWare users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-app/egroupware-1.0.0.008&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 Jul 2005 12:50:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 06 Jul 2005 15:06:09 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 10 Jul 2005 19:07:48 +0000">
+    DerCorny
+  </metadata>
+</glsa>

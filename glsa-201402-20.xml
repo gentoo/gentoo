@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-20">
+  <title>KVIrc: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in KVIrc, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">kvirc</product>
+  <announced>February 21, 2014</announced>
+  <revised>February 21, 2014: 1</revised>
+  <bug>326149</bug>
+  <bug>330111</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/kvirc" auto="yes" arch="*">
+      <unaffected range="ge">4.1_pre4693</unaffected>
+      <vulnerable range="lt">4.1_pre4693</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>KVIrc is a free portable IRC client based on Qt.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in KVIrc. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of
+      Service condition, or overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KVIrc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/kvirc-4.1_pre4693"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since July 29, 2010. It is likely that your system is already
+      no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2451">CVE-2010-2451</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2452">CVE-2010-2452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2785">CVE-2010-2785</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:28 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:14:41 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

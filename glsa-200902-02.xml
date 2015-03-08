@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200902-02">
+  <title>OpenSSL: Certificate validation error</title>
+  <synopsis>
+    An error in the OpenSSL certificate chain validation might allow for
+    spoofing attacks.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>February 12, 2009</announced>
+  <revised>February 12, 2009: 01</revised>
+  <bug>251346</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">0.9.8j</unaffected>
+      <vulnerable range="lt">0.9.8j</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+    (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+    purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>
+    The Google Security Team reported that several functions incorrectly
+    check the result after calling the EVP_VerifyFinal() function, allowing
+    a malformed signature to be treated as a good signature rather than as
+    an error. This issue affects the signature checks on DSA and ECDSA keys
+    used with SSL/TLS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit this vulnerability and spoof arbitrary
+    names to conduct Man-In-The-Middle attacks and intercept sensitive
+    information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All OpenSSL users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8j&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5077">CVE-2008-5077</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:07:15 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 13 Jan 2009 17:07:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Jan 2009 17:14:56 +0000">
+    rbu
+  </metadata>
+</glsa>

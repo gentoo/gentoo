@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-12">
+  <title>tftp-hpa: Remote buffer overflow</title>
+  <synopsis>A vulnerability was found in tftp-hpa, which leads to remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tftp-hpa</product>
+  <announced>June 21, 2012</announced>
+  <revised>June 21, 2012: draft</revised>
+  <bug>374001</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/tftp-hpa" auto="yes" arch="*">
+      <unaffected range="ge">5.1</unaffected>
+      <vulnerable range="lt">5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tftp-hpa is the port of the OpenBSD TFTP server.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in tftp-hpa. Please review the CVE
+      identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>The vulnerability might allow remote attackers to execute arbitrary
+      code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tftp-hpa users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/tftp-hpa-5.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2199">CVE-2011-2199</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:00 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Thu, 21 Jun 2012 18:54:51 +0000" tag="submitter">craig</metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-52">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark which could
+    allow remote attackers to cause Denial of Service. 
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>December 28, 2014</announced>
+  <revised>December 28, 2014: 1</revised>
+  <bug>522968</bug>
+  <bug>529100</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">1.12.2</unaffected>
+      <vulnerable range="lt">1.12.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause a Denial of Service condition via specially
+      crafted packets. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.12.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6421">CVE-2014-6421</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6422">CVE-2014-6422</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6423">CVE-2014-6423</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6424">CVE-2014-6424</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6425">CVE-2014-6425</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6426">CVE-2014-6426</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6427">CVE-2014-6427</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6428">CVE-2014-6428</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6429">CVE-2014-6429</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6430">CVE-2014-6430</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6431">CVE-2014-6431</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6432">CVE-2014-6432</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 28 Dec 2014 19:18:05 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 28 Dec 2014 22:15:09 +0000">Zlogene</metadata>
+</glsa>

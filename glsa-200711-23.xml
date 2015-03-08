@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200711-23">
+  <title>VMware Workstation and Player: Multiple vulnerabilities</title>
+  <synopsis>
+    VMware guest operating systems might be able to execute arbitrary code with
+    elevated privileges on the host operating system through multiple flaws.
+  </synopsis>
+  <product type="ebuild">vmware-workstation vmware-player</product>
+  <announced>November 18, 2007</announced>
+  <revised>April 16, 2008: 03</revised>
+  <bug>193196</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/vmware-workstation" auto="yes" arch="*">
+      <unaffected range="ge">5.5.5.56455</unaffected>
+      <vulnerable range="lt">5.5.5.56455</vulnerable>
+      <vulnerable range="eq">6.0.0.45731</vulnerable>
+    </package>
+    <package name="app-emulation/vmware-player" auto="yes" arch="*">
+      <unaffected range="ge">1.0.5.56455</unaffected>
+      <vulnerable range="lt">1.0.5.56455</vulnerable>
+      <vulnerable range="eq">2.0.0.45731</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VMware Workstation is a virtual machine for developers and system
+    administrators. VMware Player is a freeware virtualization software
+    that can run guests produced by other VMware products.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in several VMware
+    products. Neel Mehta and Ryan Smith (IBM ISS X-Force) discovered that
+    the DHCP server contains an integer overflow vulnerability
+    (CVE-2007-0062), an integer underflow vulnerability (CVE-2007-0063) and
+    another error when handling malformed packets (CVE-2007-0061), leading
+    to stack-based buffer overflows or stack corruption. Rafal Wojtczvk
+    (McAfee) discovered two unspecified errors that allow authenticated
+    users with administrative or login privileges on a guest operating
+    system to corrupt memory or cause a Denial of Service (CVE-2007-4496,
+    CVE-2007-4497). Another unspecified vulnerability related to untrusted
+    virtual machine images was discovered (CVE-2007-5617).
+    </p>
+    <p>
+    VMware products also shipped code copies of software with several
+    vulnerabilities: Samba (GLSA-200705-15), BIND (GLSA-200702-06), MIT
+    Kerberos 5 (GLSA-200707-11), Vixie Cron (GLSA-200704-11), shadow
+    (GLSA-200606-02), OpenLDAP (CVE-2006-4600), PAM (CVE-2004-0813,
+    CVE-2007-1716), GCC (CVE-2006-3619) and GDB (CVE-2006-4146).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    Remote attackers within a guest system could possibly exploit these
+    vulnerabilities to execute code on the host system with elevated
+    privileges or to cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VMware Workstation users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/vmware-workstation-5.5.5.56455&quot;</code>
+    <p>
+    All VMware Player users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/vmware-player-1.0.5.56455&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0813">CVE-2004-0813</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3619">CVE-2006-3619</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4146">CVE-2006-4146</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4600">CVE-2006-4600</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0061">CVE-2007-0061</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0062">CVE-2007-0062</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0063">CVE-2007-0063</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1716">CVE-2007-1716</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4496">CVE-2007-4496</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4497">CVE-2007-4497</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5617">CVE-2007-5617</uri>
+    <uri link="/security/en/glsa/glsa-200606-02.xml">GLSA-200606-02</uri>
+    <uri link="/security/en/glsa/glsa-200702-06.xml">GLSA-200702-06</uri>
+    <uri link="/security/en/glsa/glsa-200704-11.xml">GLSA-200704-11</uri>
+    <uri link="/security/en/glsa/glsa-200705-15.xml">GLSA-200705-15</uri>
+    <uri link="/security/en/glsa/glsa-200707-11.xml">GLSA-200707-11</uri>
+    <uri link="http://lists.vmware.com/pipermail/security-announce/2007/000001.html">VMSA-2007-0006</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Nov 2007 01:24:32 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 02:06:33 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 15 Nov 2007 23:43:42 +0000">
+    rbu
+  </metadata>
+</glsa>

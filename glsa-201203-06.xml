@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-06">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>Two vulnerabilities have been discovered in sudo, allowing local
+    attackers to possibly gain escalated privileges.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>March 06, 2012</announced>
+  <revised>March 06, 2012: 1</revised>
+  <bug>351490</bug>
+  <bug>401533</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.3_p2</unaffected>
+      <unaffected range="rge">1.7.4_p5</unaffected>
+      <vulnerable range="lt">1.8.3_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo allows a system administrator to give users the ability to run
+      commands as other users.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been discovered in sudo:</p>
+    
+    <ul>
+      <li>When the sudoers file is configured with a Runas group, sudo does not
+        prompt for a password when changing to the new group (CVE-2011-0010). 
+      </li>
+      <li>A format string vulnerability exists in the "sudo_debug()" function
+        (CVE-2012-0809).
+      </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A local attacker could possibly gain the ability to run arbitrary
+      commands with the privileges of other users or groups, including root.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.3_p2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0010">CVE-2011-0010</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0809">CVE-2012-0809</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:40 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Tue, 06 Mar 2012 01:39:33 +0000" tag="submitter">ackle</metadata>
+</glsa>

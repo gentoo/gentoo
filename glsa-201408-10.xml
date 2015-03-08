@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-10">
+  <title>Libgcrypt: Side-channel attack</title>
+  <synopsis>A vulnerability in Libgcrypt could allow a remote attacker to
+    extract ElGamal private key information. 
+  </synopsis>
+  <product type="ebuild">libgcrypt,side-channel,elgamal</product>
+  <announced>August 29, 2014</announced>
+  <revised>August 29, 2014: 1</revised>
+  <bug>519396</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libgcrypt" auto="yes" arch="*">
+      <unaffected range="ge">1.5.4</unaffected>
+      <vulnerable range="lt">1.5.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libgcrypt is a general purpose cryptographic library derived out of
+      GnuPG. 
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in the implementation of ElGamal decryption procedures
+      of Libgcrypt leaks information to various side-channels.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A physical side-channel attack allows a remote attacker to fully extract
+      decryption keys during the decryption of a chosen ciphertext.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libgcrypt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgcrypt-1.5.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5270">CVE-2014-5270</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 24 Aug 2014 09:53:40 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 10:08:01 +0000">K_F</metadata>
+</glsa>

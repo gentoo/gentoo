@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200704-06">
+  <title>Evince: Stack overflow in included gv code</title>
+  <synopsis>
+    Evince improperly handles user-supplied data possibly allowing for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">evince</product>
+  <announced>April 06, 2007</announced>
+  <revised>April 06, 2007: 01</revised>
+  <bug>156573</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/evince" auto="yes" arch="*">
+      <unaffected range="ge">0.6.1-r3</unaffected>
+      <vulnerable range="lt">0.6.1-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Evince is a document viewer for multiple document formats, including
+    PostScript.
+    </p>
+  </background>
+  <description>
+    <p>
+    Evince includes code from GNU gv that does not properly boundary check
+    user-supplied data before copying it into process buffers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to open a specially crafted PostScript
+    document with Evince and possibly execute arbitrary code with the
+    rights of the user running Evince.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Evince users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/evince-0.6.1-r3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5864">CVE-2006-5864</uri>
+    <uri link="/security/en/glsa/glsa-200611-20.xml">GLSA-200611-20</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 29 Mar 2007 16:08:33 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 13:26:04 +0000">
+    aetius
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:26 +0000">
+    falco
+  </metadata>
+</glsa>

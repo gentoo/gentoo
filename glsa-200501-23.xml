@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-23">
+  <title>Exim: Two buffer overflows</title>
+  <synopsis>
+    Buffer overflow vulnerabilities, which could lead to arbitrary code
+    execution, have been found in the handling of IPv6 addresses as well as in
+    the SPA authentication mechanism in Exim.
+  </synopsis>
+  <product type="ebuild">exim</product>
+  <announced>January 12, 2005</announced>
+  <revised>January 12, 2005: 01</revised>
+  <bug>76893</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.43-r2</unaffected>
+      <vulnerable range="lt">4.43-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Exim is an highly configurable message transfer agent (MTA)
+    developed at the University of Cambridge.
+    </p>
+  </background>
+  <description>
+    <p>
+    Buffer overflows have been found in the host_aton() function
+    (CAN-2005-0021) as well as in the spa_base64_to_bits() function
+    (CAN-2005-0022), which is part of the SPA authentication code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could trigger the buffer overflow in host_aton()
+    by supplying an illegal IPv6 address with more than 8 components, using
+    a command line option. The second vulnerability could be remotely
+    exploited during SPA authentication, if it is enabled on the server.
+    Both buffer overflows can potentially lead to the execution of
+    arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Exim users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/exim-4.43-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.exim.org/mail-archives/exim-announce/2005/msg00000.html">Exim Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0021">CAN-2005-0021</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0022">CAN-2005-0022</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Jan 2005 09:24:16 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Jan 2005 10:01:20 +0000">
+    vorlon078
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 12 Jan 2005 21:52:22 +0000">
+    koon
+  </metadata>
+</glsa>

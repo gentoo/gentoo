@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-02">
+  <title>Oracle JRE/JDK: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the Oracle JRE/JDK,
+    allowing attackers to cause unspecified impact.
+  </synopsis>
+  <product type="ebuild">sun-jre-bin sun-jdk emul-linux-x86-java</product>
+  <announced>November 05, 2011</announced>
+  <revised>November 05, 2011: 1</revised>
+  <bug>340421</bug>
+  <bug>354213</bug>
+  <bug>370559</bug>
+  <bug>387851</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/sun-jre-bin" auto="no" arch="*">
+      <unaffected range="ge">1.6.0.29</unaffected>
+      <vulnerable range="lt">1.6.0.29</vulnerable>
+    </package>
+    <package name="app-emulation/emul-linux-x86-java" auto="no" arch="*">
+      <unaffected range="ge">1.6.0.29</unaffected>
+      <vulnerable range="lt">1.6.0.29</vulnerable>
+    </package>
+    <package name="dev-java/sun-jdk" auto="no" arch="*">
+      <unaffected range="ge">1.6.0.29</unaffected>
+      <vulnerable range="lt">1.6.0.29</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Oracle Java Development Kit (JDK) (formerly known as Sun JDK) and
+      the Oracle Java Runtime Environment (JRE) (formerly known as Sun JRE)
+      provide the Oracle Java platform (formerly known as Sun Java Platform).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been reported in the Oracle Java
+      implementation. Please review the CVE identifiers referenced below and
+      the associated Oracle Critical Patch Update Advisory for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit these vulnerabilities to cause
+      unspecified impact, possibly including remote execution of arbitrary
+      code. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JDK 1.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.6.0.29"
+    </code>
+    
+    <p>All Oracle JRE 1.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.6.0.29"
+    </code>
+    
+    <p>All users of the precompiled 32-bit Oracle JRE 1.6 should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/emul-linux-x86-java-1.6.0.29"
+    </code>
+    
+    <p>NOTE: As Oracle has revoked the DLJ license for its Java implementation,
+      the packages can no longer be updated automatically. This limitation is
+      not present on a non-fetch restricted implementation such as
+      dev-java/icedtea-bin.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3541">CVE-2010-3541</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3548">CVE-2010-3548</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3549">CVE-2010-3549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3550">CVE-2010-3550</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3551">CVE-2010-3551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3552">CVE-2010-3552</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3553">CVE-2010-3553</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3554">CVE-2010-3554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3555">CVE-2010-3555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3556">CVE-2010-3556</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3557">CVE-2010-3557</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3558">CVE-2010-3558</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3559">CVE-2010-3559</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3560">CVE-2010-3560</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3561">CVE-2010-3561</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3562">CVE-2010-3562</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3563">CVE-2010-3563</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3565">CVE-2010-3565</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3566">CVE-2010-3566</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3567">CVE-2010-3567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3568">CVE-2010-3568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3569">CVE-2010-3569</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3570">CVE-2010-3570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3571">CVE-2010-3571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3572">CVE-2010-3572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3573">CVE-2010-3573</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3574">CVE-2010-3574</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4422">CVE-2010-4422</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4447">CVE-2010-4447</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4448">CVE-2010-4448</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4450">CVE-2010-4450</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4451">CVE-2010-4451</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4452">CVE-2010-4452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4454">CVE-2010-4454</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4462">CVE-2010-4462</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4463">CVE-2010-4463</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4465">CVE-2010-4465</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4466">CVE-2010-4466</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4467">CVE-2010-4467</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4468">CVE-2010-4468</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4469">CVE-2010-4469</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4470">CVE-2010-4470</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4471">CVE-2010-4471</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4472">CVE-2010-4472</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4473">CVE-2010-4473</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4474">CVE-2010-4474</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4475">CVE-2010-4475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4476">CVE-2010-4476</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0802">CVE-2011-0802</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0814">CVE-2011-0814</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0815">CVE-2011-0815</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0862">CVE-2011-0862</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0863">CVE-2011-0863</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0864">CVE-2011-0864</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0865">CVE-2011-0865</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0867">CVE-2011-0867</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0868">CVE-2011-0868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0869">CVE-2011-0869</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0871">CVE-2011-0871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0872">CVE-2011-0872</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0873">CVE-2011-0873</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3389">CVE-2011-3389</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3516">CVE-2011-3516</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3521">CVE-2011-3521</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3544">CVE-2011-3544</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3545">CVE-2011-3545</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3546">CVE-2011-3546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3547">CVE-2011-3547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3548">CVE-2011-3548</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3549">CVE-2011-3549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3550">CVE-2011-3550</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3551">CVE-2011-3551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3552">CVE-2011-3552</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3553">CVE-2011-3553</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3554">CVE-2011-3554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3555">CVE-2011-3555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3556">CVE-2011-3556</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3557">CVE-2011-3557</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3558">CVE-2011-3558</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3560">CVE-2011-3560</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3561">CVE-2011-3561</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:38:14 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Sat, 05 Nov 2011 10:22:49 +0000" tag="submitter">craig</metadata>
+</glsa>

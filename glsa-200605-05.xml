@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200605-05">
+  <title>rsync: Potential integer overflow</title>
+  <synopsis>
+    An attacker having write access to an rsync module might be able to execute
+    arbitrary code on an rsync server.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>May 06, 2006</announced>
+  <revised>May 06, 2006: 01</revised>
+  <bug>131631</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">2.6.8</unaffected>
+      <vulnerable range="lt">2.6.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    rsync is a server and client utility that provides fast
+    incremental file transfers. It is used to efficiently synchronize files
+    between hosts and is used by emerge to fetch Gentoo's Portage tree.
+    </p>
+  </background>
+  <description>
+    <p>
+    An integer overflow was found in the receive_xattr function from
+    the extended attributes patch (xattr.c) for rsync. The vulnerable
+    function is only present when the "acl" USE flag is set.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker with write access to an rsync module could craft
+    malicious extended attributes which would trigger the integer overflow,
+    potentially resulting in the execution of arbitrary code with the
+    rights of the rsync daemon.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not provide write access to an rsync module to untrusted
+    parties.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All rsync users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/rsync-2.6.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2083">CVE-2006-2083</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 02 May 2006 15:25:29 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 02 May 2006 16:18:28 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 04 May 2006 20:00:28 +0000">
+    koon
+  </metadata>
+</glsa>

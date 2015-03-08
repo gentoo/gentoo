@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200701-27">
+  <title>ELinks: Arbitrary Samba command execution</title>
+  <synopsis>
+    ELinks does not properly validate "smb://" URLs, making it vulnerable to
+    the execution of arbitrary Samba commands.
+  </synopsis>
+  <product type="ebuild">elinks</product>
+  <announced>January 30, 2007</announced>
+  <revised>January 30, 2007: 01</revised>
+  <bug>155358</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/elinks" auto="yes" arch="*">
+      <unaffected range="ge">0.11.2</unaffected>
+      <vulnerable range="lt">0.11.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    ELinks is a text mode web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Teemu Salmela discovered an error in the validation code of "smb://"
+    URLs used by ELinks, the same issue as reported in GLSA 200612-16
+    concerning Links.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to browse to a specially crafted
+    "smb://" URL and execute arbitrary Samba commands, which would allow
+    the overwriting of arbitrary local files or the upload or download of
+    arbitrary files. This vulnerability can be exploited only if
+    "smbclient" is installed on the victim's computer, which is provided by
+    the "samba" Gentoo package.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All ELinks users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/elinks-0.11.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5925">CVE-2006-5925</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 30 Jan 2007 10:52:21 +0000">
+    hyakuhei
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 30 Jan 2007 11:02:26 +0000">
+    falco
+  </metadata>
+</glsa>

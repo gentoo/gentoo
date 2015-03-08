@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-01">
+  <title>GNU C Library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNU C Library, the
+    worst of which allowing arbitrary code execution and privilege escalation.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>December 03, 2013</announced>
+  <revised>December 03, 2013: 1</revised>
+  <bug>350744</bug>
+  <bug>356567</bug>
+  <bug>386323</bug>
+  <bug>386327</bug>
+  <bug>386329</bug>
+  <bug>386333</bug>
+  <bug>386343</bug>
+  <bug>386349</bug>
+  <bug>393477</bug>
+  <bug>404993</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.15-r3</unaffected>
+      <vulnerable range="lt">2.15-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU C library is the standard C library used by Gentoo Linux
+      systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU C Library. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could trigger vulnerabilities in dynamic library
+      loader, making it possible to load attacker-controlled shared objects
+      during execution of setuid/setgid programs to escalate privileges.
+    </p>
+    
+    <p>A context-dependent attacker could trigger various vulnerabilities in
+      GNU C Library, including a buffer overflow, leading to execution of
+      arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU C Library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.15-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5029">CVE-2009-5029</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3847">CVE-2010-3847</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0536">CVE-2011-0536</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1071">CVE-2011-1071</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1089">CVE-2011-1089</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1095">CVE-2011-1095</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1658">CVE-2011-1658</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1659">CVE-2011-1659</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0864">CVE-2012-0864</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Aug 2012 04:55:03 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Dec 2013 03:49:15 +0000">
+    phajdan.jr
+  </metadata>
+</glsa>

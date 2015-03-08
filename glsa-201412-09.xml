@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201412-09">
+  <title>Multiple packages, Multiple vulnerabilities fixed in 2011</title>
+  <synopsis>This GLSA contains notification of vulnerabilities found in several
+    Gentoo packages which have been fixed prior to January 1, 2012. The worst
+    of these vulnerabilities could lead to local privilege escalation and
+    remote code execution. Please see the package list and CVE identifiers
+    below for more information.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>December 11, 2014</announced>
+  <revised>December 11, 2014: 2</revised>
+  <bug>194151</bug>
+  <bug>294253</bug>
+  <bug>294256</bug>
+  <bug>334087</bug>
+  <bug>344059</bug>
+  <bug>346897</bug>
+  <bug>350598</bug>
+  <bug>352608</bug>
+  <bug>354209</bug>
+  <bug>355207</bug>
+  <bug>356893</bug>
+  <bug>358611</bug>
+  <bug>358785</bug>
+  <bug>358789</bug>
+  <bug>360891</bug>
+  <bug>361397</bug>
+  <bug>362185</bug>
+  <bug>366697</bug>
+  <bug>366699</bug>
+  <bug>369069</bug>
+  <bug>370839</bug>
+  <bug>372971</bug>
+  <bug>376793</bug>
+  <bug>381169</bug>
+  <bug>386321</bug>
+  <bug>386361</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="games-sports/racer-bin" auto="yes" arch="*">
+      <vulnerable range="ge">0.5.0-r1</vulnerable>
+    </package>
+    <package name="media-libs/fmod" auto="yes" arch="*">
+      <unaffected range="ge">4.38.00</unaffected>
+      <vulnerable range="lt">4.38.00</vulnerable>
+    </package>
+    <package name="dev-php/PEAR-Mail" auto="yes" arch="*">
+      <unaffected range="ge">1.2.0</unaffected>
+      <vulnerable range="lt">1.2.0</vulnerable>
+    </package>
+    <package name="sys-fs/lvm2" auto="yes" arch="*">
+      <unaffected range="ge">2.02.72</unaffected>
+      <vulnerable range="lt">2.02.72</vulnerable>
+    </package>
+    <package name="app-office/gnucash" auto="yes" arch="*">
+      <unaffected range="ge">2.4.4</unaffected>
+      <vulnerable range="lt">2.4.4</vulnerable>
+    </package>
+    <package name="media-libs/xine-lib" auto="yes" arch="*">
+      <unaffected range="ge">1.1.19</unaffected>
+      <vulnerable range="lt">1.1.19</vulnerable>
+    </package>
+    <package name="media-sound/lastfmplayer" auto="yes" arch="*">
+      <unaffected range="ge">1.5.4.26862-r3</unaffected>
+      <vulnerable range="lt">1.5.4.26862-r3</vulnerable>
+    </package>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.7</unaffected>
+      <vulnerable range="lt">1.2.7</vulnerable>
+    </package>
+    <package name="sys-apps/shadow" auto="yes" arch="*">
+      <unaffected range="ge">4.1.4.3</unaffected>
+      <vulnerable range="lt">4.1.4.3</vulnerable>
+    </package>
+    <package name="dev-php/PEAR-PEAR" auto="yes" arch="*">
+      <unaffected range="ge">1.9.2-r1</unaffected>
+      <vulnerable range="lt">1.9.2-r1</vulnerable>
+    </package>
+    <package name="dev-db/unixODBC" auto="yes" arch="*">
+      <unaffected range="ge">2.3.0-r1</unaffected>
+      <vulnerable range="lt">2.3.0-r1</vulnerable>
+    </package>
+    <package name="sys-cluster/resource-agents" auto="yes" arch="*">
+      <unaffected range="ge">1.0.4-r1</unaffected>
+      <vulnerable range="lt">1.0.4-r1</vulnerable>
+    </package>
+    <package name="net-misc/mrouted" auto="yes" arch="*">
+      <unaffected range="ge">3.9.5</unaffected>
+      <vulnerable range="lt">3.9.5</vulnerable>
+    </package>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">3.0.8</unaffected>
+      <vulnerable range="lt">3.0.8</vulnerable>
+    </package>
+    <package name="dev-libs/xmlsec" auto="yes" arch="*">
+      <unaffected range="ge">1.2.17</unaffected>
+      <vulnerable range="lt">1.2.17</vulnerable>
+    </package>
+    <package name="x11-apps/xrdb" auto="yes" arch="*">
+      <unaffected range="ge">1.0.9</unaffected>
+      <vulnerable range="lt">1.0.9</vulnerable>
+    </package>
+    <package name="net-misc/vino" auto="yes" arch="*">
+      <unaffected range="ge">2.32.2</unaffected>
+      <vulnerable range="lt">2.32.2</vulnerable>
+    </package>
+    <package name="dev-util/oprofile" auto="yes" arch="*">
+      <unaffected range="ge">0.9.6-r1</unaffected>
+      <vulnerable range="lt">0.9.6-r1</vulnerable>
+    </package>
+    <package name="app-admin/syslog-ng" auto="yes" arch="*">
+      <unaffected range="ge">3.2.4</unaffected>
+      <vulnerable range="lt">3.2.4</vulnerable>
+    </package>
+    <package name="net-analyzer/sflowtool" auto="yes" arch="*">
+      <unaffected range="ge">3.20</unaffected>
+      <vulnerable range="lt">3.20</vulnerable>
+    </package>
+    <package name="gnome-base/gdm" auto="yes" arch="*">
+      <unaffected range="ge">3.8.4-r3</unaffected>
+      <vulnerable range="lt">3.8.4-r3</vulnerable>
+    </package>
+    <package name="net-libs/libsoup" auto="yes" arch="*">
+      <unaffected range="ge">2.34.3</unaffected>
+      <vulnerable range="lt">2.34.3</vulnerable>
+    </package>
+    <package name="app-misc/ca-certificates" auto="yes" arch="*">
+      <unaffected range="ge">20110502-r1</unaffected>
+      <vulnerable range="lt">20110502-r1</vulnerable>
+    </package>
+    <package name="dev-vcs/gitolite" auto="yes" arch="*">
+      <unaffected range="ge">1.5.9.1</unaffected>
+      <vulnerable range="lt">1.5.9.1</vulnerable>
+    </package>
+    <package name="dev-util/qt-creator" auto="yes" arch="*">
+      <unaffected range="ge">2.1.0</unaffected>
+      <vulnerable range="lt">2.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>For more information on the packages listed in this GLSA, please see
+      their homepage referenced in the ebuild.
+    </p>
+  </background>
+  <description>
+    <p>Vulnerabilities have been discovered in the packages listed below.
+      Please review the CVE identifiers in the Reference section for details.
+    </p>
+    
+    <ul>
+      <li>FMOD Studio</li>
+      <li>PEAR Mail</li>
+      <li>LVM2</li>
+      <li>GnuCash</li>
+      <li>xine-lib</li>
+      <li>Last.fm Scrobbler</li>
+      <li>WebKitGTK+</li>
+      <li>shadow tool suite</li>
+      <li>PEAR</li>
+      <li>unixODBC</li>
+      <li>Resource Agents</li>
+      <li>mrouted</li>
+      <li>rsync</li>
+      <li>XML Security Library</li>
+      <li>xrdb</li>
+      <li>Vino</li>
+      <li>OProfile</li>
+      <li>syslog-ng</li>
+      <li>sFlow Toolkit</li>
+      <li>GNOME Display Manager</li>
+      <li>libsoup</li>
+      <li>CA Certificates</li>
+      <li>Gitolite</li>
+      <li>QtCreator</li>
+      <li>Racer</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>A context-dependent attacker may be able to gain escalated privileges,
+      execute arbitrary code, cause Denial of Service, obtain sensitive
+      information, or otherwise bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FMOD Studio users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/fmod-4.38.00"
+    </code>
+    
+    <p>All PEAR Mail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-Mail-1.2.0"
+    </code>
+    
+    <p>All LVM2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/lvm2-2.02.72"
+    </code>
+    
+    <p>All GnuCash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/gnucash-2.4.4"
+    </code>
+    
+    <p>All xine-lib users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.19"
+    </code>
+    
+    <p>All Last.fm Scrobbler users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-sound/lastfmplayer-1.5.4.26862-r3"
+    </code>
+    
+    <p>All WebKitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-1.2.7"
+    </code>
+    
+    <p>All shadow tool suite users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/shadow-4.1.4.3"
+    </code>
+    
+    <p>All PEAR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-PEAR-1.9.2-r1"
+    </code>
+    
+    <p>All unixODBC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/unixODBC-2.3.0-r1"
+    </code>
+    
+    <p>All Resource Agents users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=sys-cluster/resource-agents-1.0.4-r1"
+    </code>
+    
+    <p>All mrouted users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/mrouted-3.9.5"
+    </code>
+    
+    <p>All rsync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rsync-3.0.8"
+    </code>
+    
+    <p>All XML Security Library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/xmlsec-1.2.17"
+    </code>
+    
+    <p>All xrdb users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-apps/xrdb-1.0.9"
+    </code>
+    
+    <p>All Vino users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/vino-2.32.2"
+    </code>
+    
+    <p>All OProfile users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/oprofile-0.9.6-r1"
+    </code>
+    
+    <p>All syslog-ng users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/syslog-ng-3.2.4"
+    </code>
+    
+    <p>All sFlow Toolkit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/sflowtool-3.20"
+    </code>
+    
+    <p>All GNOME Display Manager users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=gnome-base/gdm-3.8.4-r3"
+    </code>
+    
+    <p>All libsoup users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libsoup-2.34.3"
+    </code>
+    
+    <p>All CA Certificates users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-misc/ca-certificates-20110502-r1"
+    </code>
+    
+    <p>All Gitolite users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/gitolite-1.5.9.1"
+    </code>
+    
+    <p>All QtCreator users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/qt-creator-2.1.0"
+    </code>
+    
+    <p>Gentoo has discontinued support for Racer. We recommend that users
+      unmerge Racer:
+    </p>
+    
+    <code>
+      # emerge --unmerge "games-sports/racer-bin"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures have
+      been available since 2012. It is likely that your system is already no
+      longer affected by these issues.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-4370">CVE-2007-4370</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4023">CVE-2009-4023</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4111">CVE-2009-4111</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0778">CVE-2010-0778</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1780">CVE-2010-1780</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1782">CVE-2010-1782</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1783">CVE-2010-1783</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1784">CVE-2010-1784</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1785">CVE-2010-1785</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1786">CVE-2010-1786</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1787">CVE-2010-1787</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1788">CVE-2010-1788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1790">CVE-2010-1790</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1791">CVE-2010-1791</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1792">CVE-2010-1792</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1793">CVE-2010-1793</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1807">CVE-2010-1807</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1812">CVE-2010-1812</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1814">CVE-2010-1814</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1815">CVE-2010-1815</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2526">CVE-2010-2526</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2901">CVE-2010-2901</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3255">CVE-2010-3255</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3257">CVE-2010-3257</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3259">CVE-2010-3259</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3362">CVE-2010-3362</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3374">CVE-2010-3374</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3389">CVE-2010-3389</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3812">CVE-2010-3812</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3813">CVE-2010-3813</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3999">CVE-2010-3999</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4042">CVE-2010-4042</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4197">CVE-2010-4197</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4198">CVE-2010-4198</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4204">CVE-2010-4204</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4206">CVE-2010-4206</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4492">CVE-2010-4492</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4493">CVE-2010-4493</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4577">CVE-2010-4577</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4578">CVE-2010-4578</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0007">CVE-2011-0007</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0465">CVE-2011-0465</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0482">CVE-2011-0482</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0721">CVE-2011-0721</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0727">CVE-2011-0727</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0904">CVE-2011-0904</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0905">CVE-2011-0905</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1072">CVE-2011-1072</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1097">CVE-2011-1097</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1144">CVE-2011-1144</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1425">CVE-2011-1425</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1572">CVE-2011-1572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1760">CVE-2011-1760</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1951">CVE-2011-1951</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2471">CVE-2011-2471</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2472">CVE-2011-2472</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2473">CVE-2011-2473</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2524">CVE-2011-2524</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3365">CVE-2011-3365</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3366">CVE-2011-3366</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3367">CVE-2011-3367</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Aug 2014 19:34:29 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Dec 2014 23:55:16 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-03">
+  <title>Gnumeric: Untrusted search path</title>
+  <synopsis>
+    An untrusted search path vulnerability in Gnumeric might result in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnumeric</product>
+  <announced>April 03, 2009</announced>
+  <revised>April 03, 2009: 01</revised>
+  <bug>257012</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-office/gnumeric" auto="yes" arch="*">
+      <unaffected range="ge">1.8.4-r1</unaffected>
+      <vulnerable range="lt">1.8.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Gnumeric spreadsheet is a versatile application developed as part
+    of the GNOME Office project.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Vega reported an untrusted search path vulnerability in the
+    GObject Python interpreter wrapper in Gnumeric.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could entice a user to run Gnumeric from a directory
+    containing a specially crafted python module, resulting in the
+    execution of arbitrary code with the privileges of the user running
+    Gnumeric.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Do not run "gnumeric" from untrusted working directories.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Gnumeric users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/gnumeric-1.8.4-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0318">CVE-2009-0318</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Thu, 02 Apr 2009 12:39:58 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 02 Apr 2009 12:40:05 +0000">
+    rbu
+  </metadata>
+</glsa>

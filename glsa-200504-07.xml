@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200504-07">
+  <title>GnomeVFS, libcdaudio: CDDB response overflow</title>
+  <synopsis>
+    The GnomeVFS and libcdaudio libraries contain a buffer overflow that can be
+    triggered by a large CDDB response, potentially allowing the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">GnomeVFS</product>
+  <announced>April 08, 2005</announced>
+  <revised>April 13, 2005: 02</revised>
+  <bug>84936</bug>
+  <access>remote</access>
+  <affected>
+    <package name="gnome-base/gnome-vfs" auto="yes" arch="*">
+      <unaffected range="ge">2.8.4-r1</unaffected>
+      <unaffected range="rge">1.0.5-r4</unaffected>
+      <vulnerable range="lt">2.8.4-r1</vulnerable>
+    </package>
+    <package name="media-libs/libcdaudio" auto="yes" arch="*">
+      <unaffected range="ge">0.99.10-r1</unaffected>
+      <vulnerable range="lt">0.99.10-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    GnomeVFS is a filesystem abstraction library for the GNOME desktop
+    environment. libcdaudio is a multi-platform CD player development
+    library. They both include code to query CDDB servers to get Audio CD
+    track titles.
+    </p>
+  </background>
+  <description>
+    <p>
+    Joseph VanAndel has discovered a buffer overflow in Grip when
+    processing large CDDB results (see GLSA 200503-21). The same overflow
+    is present in GnomeVFS and libcdaudio code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A malicious CDDB server could cause applications making use of GnomeVFS
+    or libcdaudio libraries to crash, potentially allowing the execution of
+    arbitrary code with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All GnomeVFS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose gnome-base/gnome-vfs</code>
+    <p>
+    All libcdaudio users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libcdaudio-0.99.10-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0706">CAN-2005-0706</uri>
+    <uri link="/security/en/glsa/glsa-200503-21.xml">GLSA 200503-21</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue,  5 Apr 2005 09:35:13 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri,  8 Apr 2005 11:17:13 +0000">
+    koon
+  </metadata>
+</glsa>

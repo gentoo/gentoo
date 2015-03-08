@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-07">
+  <title>International Components for Unicode: User-assisted execution of
+    arbitrary code
+  </title>
+  <synopsis>A buffer overflow in International Components for Unicode could
+    result in execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">icu</product>
+  <announced>September 24, 2012</announced>
+  <revised>September 24, 2012: 1</revised>
+  <bug>394201</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">49.1.1-r1</unaffected>
+      <vulnerable range="lt">49.1.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>International Components for Unicode (ICU) is a set of C/C++ and Java
+      libraries providing Unicode and Globalization support for software
+      applications.
+    </p>
+  </background>
+  <description>
+    <p>An error in the _canonicalize() function in uloc.cpp could cause a
+      stack-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted locale
+      representation using an application linked against ICU, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ICU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/icu-49.1.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4599">CVE-2011-4599</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 07 Jun 2012 15:27:29 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 23:23:13 +0000">ackle</metadata>
+</glsa>

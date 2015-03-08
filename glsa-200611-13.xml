@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200611-13">
+  <title>Avahi: &quot;netlink&quot; message vulnerability</title>
+  <synopsis>
+    Avahi fails to verify the origin of netlink messages, which could allow
+    local users to spoof network changes.
+  </synopsis>
+  <product type="ebuild">avahi</product>
+  <announced>November 20, 2006</announced>
+  <revised>November 20, 2006: 01</revised>
+  <bug>154322</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-dns/avahi" auto="yes" arch="*">
+      <unaffected range="ge">0.6.15</unaffected>
+      <vulnerable range="lt">0.6.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Avahi is a system that facilitates service discovery on a local
+    network.
+    </p>
+  </background>
+  <description>
+    <p>
+    Avahi does not check that the netlink messages come from the kernel
+    instead of a user-space process.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A local attacker could exploit this vulnerability by crafting malicious
+    netlink messages and trick Avahi to react to fake network changes. This
+    could lead users to connect to untrusted services without knowing.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Avahi users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/avahi-0.6.15&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5461">CVE-2006-5461</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Nov 2006 11:46:25 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 16 Nov 2006 11:47:51 +0000">
+    vorlon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Nov 2006 08:40:32 +0000">
+    jaervosz
+  </metadata>
+</glsa>

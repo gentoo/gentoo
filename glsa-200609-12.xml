@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-12">
+  <title>Mailman: Multiple vulnerabilities</title>
+  <synopsis>
+    Mailman has multiple vulnerable that can result in Denial of Service, log
+    file injection and XSS.
+  </synopsis>
+  <product type="ebuild">mailman</product>
+  <announced>September 19, 2006</announced>
+  <revised>September 19, 2006: 01</revised>
+  <bug>139976</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/mailman" auto="yes" arch="*">
+      <unaffected range="ge">2.1.9_rc1</unaffected>
+      <vulnerable range="lt">2.1.9_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Mailman is a Python based mailing list server with an extensive web
+    interface.
+    </p>
+  </background>
+  <description>
+    <p>
+    Mailman fails to properly handle standards-breaking RFC 2231 formatted
+    headers. Furthermore, Moritz Naumann discovered several XSS
+    vulnerabilities and a log file injection.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could exploit these vulnerabilities to cause Mailman to
+    stop processing mails, to inject content into the log file or to
+    execute arbitrary scripts running in the context of the administrator
+    or mailing list user's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Mailman users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailman-2.1.9_rc1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2941">CVE-2006-2941</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2006-3636">CVE-2006-3636</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 14 Sep 2006 10:21:53 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 14 Sep 2006 16:20:16 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Sep 2006 07:26:33 +0000">
+    jaervosz
+  </metadata>
+</glsa>

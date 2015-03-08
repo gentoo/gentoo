@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200506-15">
+  <title>PeerCast: Format string vulnerability</title>
+  <synopsis>
+    PeerCast suffers from a format string vulnerability that could allow
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">peercast</product>
+  <announced>June 19, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>96199</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/peercast" auto="yes" arch="*">
+      <unaffected range="ge">0.1212</unaffected>
+      <vulnerable range="lt">0.1212</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PeerCast is a media streaming system based on P2P technology.
+    </p>
+  </background>
+  <description>
+    <p>
+    James Bercegay of the GulfTech Security Research Team discovered that
+    PeerCast insecurely implements formatted printing when receiving a
+    request with a malformed URL.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit this vulnerability by sending a request
+    with a specially crafted URL to a PeerCast server to execute arbitrary
+    code.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PeerCast users should upgrade to the latest available version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1212&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.gulftech.org/?node=research&amp;article_id=00077-05282005">GulfTech Advisory</uri>
+    <uri link="http://www.peercast.org/forum/viewtopic.php?p=11596">PeerCast Announcement</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1806">CVE-2005-1806</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 15 Jun 2005 19:02:57 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 15 Jun 2005 19:42:18 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 19 Jun 2005 19:09:07 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-27">
+  <title>pidgin-knotify: Arbitrary code execution</title>
+  <synopsis>A vulnerability in pidgin-knotify might allow remote attackers to
+    execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">pidgin-knotify</product>
+  <announced>February 26, 2014</announced>
+  <revised>February 26, 2014: 1</revised>
+  <bug>336916</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-plugins/pidgin-knotify" auto="yes" arch="*">
+      <vulnerable range="le">0.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>pidgin-knotify is a Pidgin plug-in to display message notifications in
+      KDE.
+    </p>
+  </background>
+  <description>
+    <p>pidgin-knotify does not properly sanitize shell metacharacters from
+      received messages.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted instant message,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the Pidgin process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for pidgin-knotify. We recommend that
+      users unmerge pidgin-knotify:
+    </p>
+    
+    <code>
+      # emerge --unmerge "x11-plugins/pidgin-knotify"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3088">CVE-2010-3088</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 22 Sep 2012 18:54:54 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 26 Feb 2014 14:28:15 +0000">ackle</metadata>
+</glsa>

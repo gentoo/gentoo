@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-05">
+  <title>Doomsday: Format string vulnerability</title>
+  <synopsis>
+    Format string vulnerabilities in Doomsday may lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">doomsday</product>
+  <announced>April 06, 2006</announced>
+  <revised>June 15, 2006: 02</revised>
+  <bug>128690</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-fps/doomsday" auto="yes" arch="*">
+      <unaffected range="ge">1.9.0_beta4</unaffected>
+      <vulnerable range="le">1.9.0_beta4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Doomsday is a modern gaming engine for popular ID games like Doom,
+    Heretic and Hexen.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma discovered that Doomsday incorrectly implements
+    formatted printing.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could exploit these vulnerabilities to execute
+    arbitrary code with the rights of the user running the Doomsday server
+    or client by sending specially crafted strings.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Doomsday users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/doomsday-1.9.0_beta4&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1618">CVE-2006-1618</uri>
+    <uri link="http://aluigi.altervista.org/adv/doomsdayfs-adv.txt">Original advisory by Luigi Auriemma</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Apr 2006 04:57:40 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 04 Apr 2006 10:51:26 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 04 Apr 2006 12:10:41 +0000">
+    DerCorny
+  </metadata>
+</glsa>

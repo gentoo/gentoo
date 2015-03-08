@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200904-11">
+  <title>Tor: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Tor might allow for heap corruption, Denial of
+    Service, escalation of privileges and information disclosure.
+  </synopsis>
+  <product type="ebuild">tor</product>
+  <announced>April 08, 2009</announced>
+  <revised>April 08, 2009: 01</revised>
+  <bug>250018</bug>
+  <bug>256078</bug>
+  <bug>258833</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tor" auto="yes" arch="*">
+      <unaffected range="ge">0.2.0.34</unaffected>
+      <vulnerable range="lt">0.2.0.34</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Tor is an implementation of second generation Onion Routing, a
+    connection-oriented anonymizing communication service.
+    </p>
+  </background>
+  <description>
+    <ul>
+    <li>
+    Theo de Raadt reported that the application does not properly drop
+    privileges to the primary groups of the user specified via the "User"
+    configuration option (CVE-2008-5397).
+    </li>
+    <li>
+    rovv reported that the "ClientDNSRejectInternalAddresses" configuration
+    option is not always enforced (CVE-2008-5398).
+    </li>
+    <li>
+    Ilja van Sprundel reported a heap-corruption vulnerability that might
+    be remotely triggerable on some platforms (CVE-2009-0414).
+    </li>
+    <li>
+    It has been reported that incomplete IPv4 addresses are treated as
+    valid, violating the specification (CVE-2009-0939).
+    </li>
+    <li>
+    Three unspecified vulnerabilities have also been reported
+    (CVE-2009-0936, CVE-2009-0937, CVE-2009-0938).
+    </li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A local attacker could escalate privileges by leveraging unintended
+    supplementary group memberships of the Tor process. A remote attacker
+    could exploit these vulnerabilities to cause a heap corruption with
+    unknown impact and attack vectors, to cause a Denial of Service via CPU
+    consuption or daemon crash, and to weaken anonymity provided by the
+    service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Tor users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/tor-0.2.0.34&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5397">CVE-2008-5397</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5398">CVE-2008-5398</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0414">CVE-2009-0414</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0936">CVE-2009-0936</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0937">CVE-2009-0937</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0938">CVE-2009-0938</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0939">CVE-2009-0939</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 25 Jan 2009 14:41:40 +0000">
+    craig
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 16:48:01 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 16:48:17 +0000">
+    rbu
+  </metadata>
+</glsa>

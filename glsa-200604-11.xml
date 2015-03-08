@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200604-11">
+  <title>Crossfire server: Denial of Service and potential arbitrary code execution</title>
+  <synopsis>
+    The Crossfire game server is vulnerable to a Denial of Service and
+    potentially to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Crossfire</product>
+  <announced>April 22, 2006</announced>
+  <revised>April 22, 2006: 01</revised>
+  <bug>126169</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-server/crossfire-server" auto="yes" arch="*">
+      <unaffected range="ge">1.9.0</unaffected>
+      <vulnerable range="lt">1.9.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Crossfire is a cooperative multiplayer graphical adventure and
+    role-playing game. The Crossfire game server allows various compatible
+    clients to connect to participate in a cooperative game.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luigi Auriemma discovered a vulnerability in the Crossfire game
+    server, in the handling of the "oldsocketmode" option when processing
+    overly large requests.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    An attacker can set up a malicious Crossfire client that would
+    send a large request in "oldsocketmode", resulting in a Denial of
+    Service on the Crossfire server and potentially in the execution of
+    arbitrary code on the server with the rights of the game server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Crossfire server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=games-server/crossfire-server-1.9.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1010">CVE-2006-1010</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 21 Apr 2006 16:56:02 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 21 Apr 2006 16:56:22 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Apr 2006 08:20:53 +0000">
+    koon
+  </metadata>
+</glsa>

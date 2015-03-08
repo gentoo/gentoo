@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-04">
+  <title>eGroupWare: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in eGroupWare may lead to execution of arbitrary
+    PHP code, the ability to upload malicious files and cross-site scripting
+    attacks.
+  </synopsis>
+  <product type="ebuild">egroupware</product>
+  <announced>May 07, 2008</announced>
+  <revised>May 07, 2008: 01</revised>
+  <bug>214212</bug>
+  <bug>218625</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge">1.4.004</unaffected>
+      <vulnerable range="lt">1.4.004</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    eGroupWare is a suite of web-based group applications including
+    calendar, address book, messenger and email.
+    </p>
+  </background>
+  <description>
+    <p>
+    A vulnerability has been reported in FCKEditor due to the way that file
+    uploads are handled in the file
+    editor/filemanager/upload/php/upload.php when a filename has multiple
+    file extensions (CVE-2008-2041). Another vulnerability exists in the
+    _bad_protocol_once() function in the file
+    phpgwapi/inc/class.kses.inc.php, which allows remote attackers to
+    bypass HTML filtering (CVE-2008-1502).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    The first vulnerability can be exploited to upload malicious files and
+    execute arbitrary PHP code provided that a directory is writable by the
+    webserver. The second vulnerability can be exploited by remote
+    attackers via a specially crafted URL in order to conduct cross-site
+    scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All eGroupWare users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/egroupware-1.4.004&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1502">CVE-2008-1502</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2041">CVE-2008-2041</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 12:58:46 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 29 Apr 2008 13:57:44 +0000">
+    mfleming
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 29 Apr 2008 14:01:45 +0000">
+    vorlon
+  </metadata>
+</glsa>

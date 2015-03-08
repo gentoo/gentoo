@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200801-09">
+  <title>X.Org X server and Xfont library: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities have been discovered in the X.Org X server and
+    Xfont library, allowing for a local privilege escalation and arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">xorg-server libXfont</product>
+  <announced>January 20, 2008</announced>
+  <revised>March 05, 2008: 03</revised>
+  <bug>204362</bug>
+  <bug>208343</bug>
+  <access>remote, local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.3.0.0-r5</unaffected>
+      <vulnerable range="lt">1.3.0.0-r5</vulnerable>
+    </package>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1-r1</unaffected>
+      <vulnerable range="lt">1.3.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The X Window System is a graphical windowing system based on a
+    client/server model.
+    </p>
+  </background>
+  <description>
+    <p>
+    regenrecht reported multiple vulnerabilities in various X server
+    extension via iDefense:
+    </p>
+    <ul>
+    <li>The XFree86-Misc extension does not properly sanitize a parameter
+    within a PassMessage request, allowing the modification of a function
+    pointer (CVE-2007-5760).</li>
+    <li>Multiple functions in the XInput extension do not properly sanitize
+    client requests for swapping bytes, leading to corruption of heap
+    memory (CVE-2007-6427).</li>
+    <li>Integer overflow vulnerabilities in the EVI extension and in the
+    MIT-SHM extension can lead to buffer overflows (CVE-2007-6429).</li>
+    <li>The TOG-CUP extension does not sanitize an index value in the
+    ProcGetReservedColormapEntries() function, leading to arbitrary memory
+    access (CVE-2007-6428).</li>
+    <li>A buffer overflow was discovered in the Xfont library when
+    processing PCF font files (CVE-2008-0006).</li>
+    <li>The X server does not enforce restrictions when a user specifies a
+    security policy file and attempts to open it (CVE-2007-5958).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    Remote attackers could exploit the vulnerability in the Xfont library
+    by enticing a user to load a specially crafted PCF font file resulting
+    in the execution of arbitrary code with the privileges of the user
+    running the X server, typically root. Local attackers could exploit
+    this and the vulnerabilities in the X.org extensions to gain elevated
+    privileges. If the X server allows connections from the network, these
+    vulnerabilities could be exploited remotely. A local attacker could
+    determine the existence of arbitrary files by exploiting the last
+    vulnerability or possibly cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Workarounds for some of the vulnerabilities can be found in the X.Org
+    security advisory as listed under References.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All X.Org X server users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.3.0.0-r5&quot;</code>
+    <p>
+    All X.Org Xfont library users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libXfont-1.3.1-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5760">CVE-2007-5760</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5958">CVE-2007-5958</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6427">CVE-2007-6427</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6428">CVE-2007-6428</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6429">CVE-2007-6429</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0006">CVE-2008-0006</uri>
+    <uri link="http://lists.freedesktop.org/archives/xorg/2008-January/031918.html">X.Org security advisory</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Sat, 05 Jan 2008 02:03:56 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 17 Jan 2008 15:57:38 +0000">
+    p-y
+  </metadata>
+</glsa>

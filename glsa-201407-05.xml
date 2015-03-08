@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201407-05">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, possibly
+    allowing remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>July 27, 2014</announced>
+  <revised>July 27, 2014: 1</revised>
+  <bug>512506</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1h-r1</unaffected>
+      <unaffected range="rge">1.0.0m</unaffected>
+      <unaffected range="rge">0.9.8z_p1</unaffected>
+      <unaffected range="rge">0.9.8z_p2</unaffected>
+      <unaffected range="rge">0.9.8z_p3</unaffected>
+      <unaffected range="rge">0.9.8z_p4</unaffected>
+      <unaffected range="rge">0.9.8z_p5</unaffected>
+      <vulnerable range="lt">1.0.1h-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the OpenSSL Security Advisory [05 Jun 2014] and the CVE identifiers
+      referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send specially crafted DTLS fragments to an
+      OpenSSL DTLS client or server to possibly execute arbitrary code with the
+      privileges of the process using OpenSSL.
+    </p>
+    
+    <p>Furthermore, an attacker could force the use of weak keying material in
+      OpenSSL SSL/TLS clients and servers, inject data across sessions, or
+      cause a Denial of Service via various vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.1h-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5298">CVE-2010-5298</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0195">CVE-2014-0195</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0198">CVE-2014-0198</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0221">CVE-2014-0221</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0224">CVE-2014-0224</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3470">CVE-2014-3470</uri>
+    <uri link="http://www.openssl.org/news/secadv_20140605.txt">OpenSSL
+      Security Advisory [05 Jun 2014]
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 06 Jun 2014 10:20:51 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 27 Jul 2014 21:35:36 +0000">
+    keytoaster
+  </metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-15">
+  <title>gif2png: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in gif2png, the worst of
+    which might allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gif2png</product>
+  <announced>March 16, 2012</announced>
+  <revised>March 16, 2012: 1</revised>
+  <bug>351698</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gif2png" auto="yes" arch="*">
+      <unaffected range="ge">2.5.8</unaffected>
+      <vulnerable range="lt">2.5.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>gif2png converts images from GIF format to PNG format.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been found in gif2png:</p>
+    
+    <ul>
+      <li>A boundary error in gif2png.c could cause a buffer overflow
+        (CVE-2010-4694).
+      </li>
+      <li>The patch for CVE-2009-5018 causes gif2png to truncate GIF pathnames
+        (CVE-2010-4695).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted GIF
+      file, possibly resulting in execution of arbitrary code, a Denial of
+      Service condition, or the creation of PNG files in unintended
+      directories.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All gif2png users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/gif2png-2.5.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4694">CVE-2010-4694</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4695">CVE-2010-4695</uri>
+  </references>
+  <metadata timestamp="Fri, 09 Mar 2012 22:46:15 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Fri, 16 Mar 2012 10:58:44 +0000" tag="submitter">ackle</metadata>
+</glsa>

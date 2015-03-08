@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200703-27">
+  <title>Squid: Denial of Service</title>
+  <synopsis>
+    Squid is affected by a Denial of Service vulnerability.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>March 31, 2007</announced>
+  <revised>March 31, 2007: 01</revised>
+  <bug>171681</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">2.6.12</unaffected>
+      <vulnerable range="lt">2.6.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Squid is a multi-protocol proxy server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Squid incorrectly handles TRACE requests that contain a "Max-Forwards"
+    header field with value "0" in the clientProcessRequest() function.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker can send specially crafted TRACE HTTP requests that
+    will terminate the child process. A quickly repeated attack will lead
+    to a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Squid users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.6.12&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1560">CVE-2007-1560</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 24 Mar 2007 22:35:04 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 26 Mar 2007 20:36:04 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 21:14:51 +0000">
+    falco
+  </metadata>
+</glsa>

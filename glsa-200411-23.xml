@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200411-23">
+  <title>Ruby: Denial of Service issue</title>
+  <synopsis>
+    The CGI module in Ruby can be sent into an infinite loop, resulting in a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">Ruby</product>
+  <announced>November 16, 2004</announced>
+  <revised>November 16, 2004: 01</revised>
+  <bug>69985</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="rge">1.6.8-r12</unaffected>
+      <unaffected range="ge">1.8.2_pre3</unaffected>
+      <vulnerable range="lt">1.8.2_pre3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is an interpreted scripting language for quick and easy
+    object-oriented programming. Ruby's CGI module can be used to build web
+    applications.
+    </p>
+  </background>
+  <description>
+    <p>
+    Ruby's developers found and fixed an issue in the CGI module that
+    can be triggered remotely and cause an infinite loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could trigger the vulnerability through an
+    exposed Ruby web application and cause the server to use unnecessary
+    CPU resources, potentially resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby 1.6.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=dev-lang/ruby-1.6.8-r12"</code>
+    <p>
+    All Ruby 1.8.x users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose ">=dev-lang/ruby-1.8.2_pre3"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0983">CAN-2004-0983</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 15 Nov 2004 10:02:12 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 15 Nov 2004 10:02:22 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 15 Nov 2004 20:10:34 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200612-21">
+  <title>Ruby: Denial of Service vulnerability</title>
+  <synopsis>
+    The Ruby cgi.rb CGI library is vulnerable to a Denial of Service attack.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>December 20, 2006</announced>
+  <revised>December 20, 2006: 01</revised>
+  <bug>157048</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5_p2</unaffected>
+      <vulnerable range="lt">1.8.5_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Ruby is a dynamic, open source programming language with a focus on
+    simplicity and productivity.
+    </p>
+  </background>
+  <description>
+    <p>
+    The read_multipart function of the CGI library shipped with Ruby
+    (cgi.rb) does not properly check boundaries in MIME multipart content.
+    This is a different issue than GLSA 200611-12.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    The vulnerability can be exploited by sending the cgi.rb library a
+    crafted HTTP request with multipart MIME encoding that contains a
+    malformed MIME boundary specifier. Successful exploitation of the
+    vulnerability causes the library to go into an infinite loop.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Ruby users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.5_p2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6303">CVE-2006-6303</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 19 Dec 2006 16:20:14 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 19 Dec 2006 16:20:29 +0000">
+    falco
+  </metadata>
+</glsa>

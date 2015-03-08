@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200502-05">
+  <title>Newspost: Buffer overflow vulnerability</title>
+  <synopsis>
+    A buffer overflow can be exploited to crash Newspost remotely and
+    potentially execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">newspost</product>
+  <announced>February 03, 2005</announced>
+  <revised>February 21, 2005: 02</revised>
+  <bug>78530</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nntp/newspost" auto="yes" arch="*">
+      <unaffected range="rge">2.0-r1</unaffected>
+      <unaffected range="ge">2.1.1-r1</unaffected>
+      <vulnerable range="lt">2.1.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Newspost is a Usenet News binary autoposter.
+    </p>
+  </background>
+  <description>
+    <p>
+    Niels Heinen has discovered a buffer overflow in the socket_getline()
+    function of Newspost, which can be triggered by providing long strings
+    that do not end with a newline character.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could setup a malicious NNTP server and entice a
+    Newspost user to post to it, leading to the crash of the Newspost
+    process and potentially the execution of arbitrary code with the rights
+    of the Newspost user.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Newspost users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-nntp/newspost-2.0-r1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0101">CAN-2005-0101</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 15:47:51 +0000">
+    DerCorny
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed,  2 Feb 2005 17:29:13 +0000">
+    lewk
+  </metadata>
+</glsa>

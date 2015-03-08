@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201502-10">
+  <title>libpng: User-assisted execution of arbitrary code</title>
+  <synopsis>Two vulnerabilities have been found in libpng, possibly resulting
+    in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>February 15, 2015</announced>
+  <revised>February 15, 2015: 1</revised>
+  <bug>531264</bug>
+  <bug>533358</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.6.16</unaffected>
+      <unaffected range="rge">1.5.21</unaffected>
+      <unaffected range="rge">1.2.52</unaffected>
+      <vulnerable range="lt">1.6.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several programs, including web browsers
+      and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>Two vulnerabilities have been discovered in libpng:</p>
+    
+    <ul>
+      <li>The png_user_version_check function contains an out-of-bounds memory
+        access error (libpng 1.6.15 Release Notes)
+      </li>
+      <li>The png_combine_row function contains an integer overflow error,
+        which could result in a heap-based buffer overflow (CVE-2014-9495)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted PNG file using an application linked against libpng, possibly
+      resulting in execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpng 1.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.6.16"
+    </code>
+    
+    <p>All libpng 1.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.21"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9495">CVE-2014-9495</uri>
+    <uri link="http://www.libpng.org/pub/png/src/libpng-1.6.15-README.txt">
+      libpng 1.6.15 Release Notes
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 22:55:48 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 15 Feb 2015 14:32:36 +0000">ackle</metadata>
+</glsa>

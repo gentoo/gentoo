@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200404-14">
+  <title>Multiple format string vulnerabilities in cadaver</title>
+  <synopsis>
+    There are multiple format string vulnerabilities in the neon library used
+    in cadaver, possibly leading to execution of arbitrary code when connected
+    to a malicious server.
+  </synopsis>
+  <product type="ebuild">cadaver</product>
+  <announced>April 19, 2004</announced>
+  <revised>April 19, 2004: 01</revised>
+  <bug>47799</bug>
+  <access>remote </access>
+  <affected>
+    <package name="net-misc/cadaver" auto="yes" arch="*">
+      <unaffected range="ge">0.22.1</unaffected>
+      <vulnerable range="lt">0.22.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    According to <uri
+    link="http://www.webdav.org/cadaver">http://www.webdav.org/cadaver</uri>,
+    cadaver is a command-line WebDAV client for Unix. It supports file upload,
+    download, on-screen display, namespace operations (move/copy), collection
+    creation and deletion, and locking operations.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cadaver code includes the neon library, which in versions 0.24.4 and
+    previous is vulnerable to multiple format string attacks. The latest
+    version of cadaver uses version 0.24.5 of the neon library, which makes it
+    immune to this vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    When using cadaver to connect to an untrusted WebDAV server, this
+    vulnerability can allow a malicious remote server to execute arbitrary code
+    on the client with the rights of the user using cadaver.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    A workaround is not currently known for this issue. All users are advised
+    to upgrade to the latest version of the affected package.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    cadaver users should upgrade to version 0.22.1 or later:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-misc/cadaver-0.22.1"
+    # emerge ">=net-misc/cadaver-0.22.1"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CAN-2004-0179</uri>
+  </references>
+  <metadata tag="submitter">
+    koon
+  </metadata>
+</glsa>

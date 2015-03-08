@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200508-10">
+  <title>Kismet: Multiple vulnerabilities</title>
+  <synopsis>
+    Kismet is vulnerable to multiple issues potentially resulting in the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">Kismet</product>
+  <announced>August 19, 2005</announced>
+  <revised>May 22, 2006: 02</revised>
+  <bug>102702</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/kismet" auto="yes" arch="*">
+      <unaffected range="ge">2005.08.1</unaffected>
+      <vulnerable range="lt">2005.08.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Kismet is an 802.11 Layer 2 wireless network detector, sniffer, and
+    intrusion detection system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Kismet is vulnerable to a heap overflow when handling pcap captures and
+    to an integer underflow in the CDP protocol dissector.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    With a specially crafted packet an attacker could cause Kismet to
+    execute arbitrary code with the rights of the user running the program.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Kismet users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/kismet-2005.08.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://www.kismetwireless.net/blog/?entry=/kismet/entry-1124158146.txt">Kismet Release Notes</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2626">CVE-2005-2626</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2627">CVE-2005-2627</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 17 Aug 2005 05:08:47 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Aug 2005 05:16:35 +0000">
+    jaervosz
+  </metadata>
+  <metadata tag="bugReady" timestamp="Thu, 18 Aug 2005 07:53:07 +0000">
+    adir
+  </metadata>
+</glsa>

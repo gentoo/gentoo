@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201111-01">
+  <title>Chromium, V8: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been reported in Chromium and V8,
+    some of which may allow execution of arbitrary code and local root
+    privilege escalation.
+  </synopsis>
+  <product type="ebuild">chromium v8</product>
+  <announced>November 01, 2011</announced>
+  <revised>November 01, 2011: 1</revised>
+  <bug>351525</bug>
+  <bug>353626</bug>
+  <bug>354121</bug>
+  <bug>356933</bug>
+  <bug>357963</bug>
+  <bug>358581</bug>
+  <bug>360399</bug>
+  <bug>363629</bug>
+  <bug>365125</bug>
+  <bug>366335</bug>
+  <bug>367013</bug>
+  <bug>368649</bug>
+  <bug>370481</bug>
+  <bug>373451</bug>
+  <bug>373469</bug>
+  <bug>377475</bug>
+  <bug>377629</bug>
+  <bug>380311</bug>
+  <bug>380897</bug>
+  <bug>381713</bug>
+  <bug>383251</bug>
+  <bug>385649</bug>
+  <bug>388461</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">15.0.874.102</unaffected>
+      <vulnerable range="lt">15.0.874.102</vulnerable>
+    </package>
+    <package name="dev-lang/v8" auto="yes" arch="*">
+      <unaffected range="ge">3.5.10.22</unaffected>
+      <vulnerable range="lt">3.5.10.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project. V8 is Google's open
+      source JavaScript engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and V8. Please
+      review the CVE identifiers and release notes referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain root privileges (CVE-2011-1444, fixed in
+      chromium-11.0.696.57).
+    </p>
+    
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted web site or JavaScript program using Chromium or V8, possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process, or a Denial of Service condition. The attacker also could obtain
+      cookies and other sensitive information, conduct man-in-the-middle
+      attacks, perform address bar spoofing, bypass the same origin policy,
+      perform Cross-Site Scripting attacks, or bypass pop-up blocks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-15.0.874.102"
+    </code>
+    
+    <p>All V8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/v8-3.5.10.22"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2345">CVE-2011-2345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2346">CVE-2011-2346</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2347">CVE-2011-2347</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2348">CVE-2011-2348</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2349">CVE-2011-2349</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2350">CVE-2011-2350</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2351">CVE-2011-2351</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2834">CVE-2011-2834</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2835">CVE-2011-2835</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2837">CVE-2011-2837</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2838">CVE-2011-2838</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2839">CVE-2011-2839</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2840">CVE-2011-2840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2841">CVE-2011-2841</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2843">CVE-2011-2843</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2844">CVE-2011-2844</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2845">CVE-2011-2845</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2846">CVE-2011-2846</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2847">CVE-2011-2847</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2848">CVE-2011-2848</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2849">CVE-2011-2849</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2850">CVE-2011-2850</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2851">CVE-2011-2851</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2852">CVE-2011-2852</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2853">CVE-2011-2853</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2854">CVE-2011-2854</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2855">CVE-2011-2855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2856">CVE-2011-2856</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2857">CVE-2011-2857</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2858">CVE-2011-2858</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2859">CVE-2011-2859</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2860">CVE-2011-2860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2861">CVE-2011-2861</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2862">CVE-2011-2862</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2864">CVE-2011-2864</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2874">CVE-2011-2874</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3234">CVE-2011-3234</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3873">CVE-2011-3873</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3875">CVE-2011-3875</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3876">CVE-2011-3876</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3877">CVE-2011-3877</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3878">CVE-2011-3878</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3879">CVE-2011-3879</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3880">CVE-2011-3880</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3881">CVE-2011-3881</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3882">CVE-2011-3882</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3883">CVE-2011-3883</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3884">CVE-2011-3884</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3885">CVE-2011-3885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3886">CVE-2011-3886</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3887">CVE-2011-3887</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3888">CVE-2011-3888</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3889">CVE-2011-3889</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3890">CVE-2011-3890</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3891">CVE-2011-3891</uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/03/chrome-stable-release.html">
+      Release Notes 10.0.648.127
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/03/stable-and-beta-channel-updates.html">
+      Release Notes 10.0.648.133
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/04/stable-channel-update.html">
+      Release Notes 10.0.648.205
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/04/chrome-stable-update.html">
+      Release Notes 11.0.696.57
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/05/beta-and-stable-channel-update.html">
+      Release Notes 11.0.696.65
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/05/stable-channel-update.html">
+      Release Notes 11.0.696.68
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/05/stable-channel-update_24.html">
+      Release Notes 11.0.696.71
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/06/stable-channel-update_28.html">
+      Release Notes 12.0.742.112
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/06/chrome-stable-release.html">
+      Release Notes 12.0.742.91
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/08/stable-channel-update.html">
+      Release Notes 13.0.782.107
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/08/stable-channel-update_22.html">
+      Release Notes 13.0.782.215
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/09/stable-channel-update.html">
+      Release Notes 13.0.782.220
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/09/stable-channel-update_16.html">
+      Release Notes 14.0.835.163
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/10/stable-channel-update.html">
+      Release Notes 14.0.835.202
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/10/chrome-stable-release.html">
+      Release Notes 15.0.874.102
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/01/chrome-stable-release.html">
+      Release Notes 8.0.552.237
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/02/stable-channel-update_28.html">
+      Release Notes 9.0.597.107
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/02/stable-channel-update.html">
+      Release Notes 9.0.597.84
+    </uri>
+    <uri link="http://googlechromereleases.blogspot.com/2011/02/stable-channel-update_08.html">
+      Release Notes 9.0.597.94
+    </uri>
+  </references>
+  <metadata timestamp="Wed, 26 Oct 2011 07:38:36 +0000" tag="requester">
+    phajdan.jr
+  </metadata>
+  <metadata timestamp="Tue, 01 Nov 2011 09:59:26 +0000" tag="submitter">
+    phajdan.jr
+  </metadata>
+</glsa>

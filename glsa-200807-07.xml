@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200807-07">
+  <title>NX: User-assisted execution of arbitrary code</title>
+  <synopsis>
+    NX uses code from the X.org X11 server which is prone to multiple
+    vulnerabilities.
+  </synopsis>
+  <product type="ebuild">nx, nxnode</product>
+  <announced>July 09, 2008</announced>
+  <revised>July 09, 2008: 01</revised>
+  <bug>230147</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/nxnode" auto="yes" arch="*">
+      <unaffected range="ge">3.2.0-r3</unaffected>
+      <vulnerable range="lt">3.2.0-r3</vulnerable>
+    </package>
+    <package name="net-misc/nx" auto="yes" arch="*">
+      <unaffected range="ge">3.2.0-r2</unaffected>
+      <vulnerable range="lt">3.2.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    NoMachine's NX establishes remote connections to X11 desktops over
+    small bandwidth links. NX and NX Node are the compression core
+    libraries, whereas NX is used by FreeNX and NX Node by the binary-only
+    NX servers.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple integer overflow and buffer overflow vulnerabilities have been
+    discovered in the X.Org X server as shipped by NX and NX Node (GLSA
+    200806-07).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could exploit these vulnerabilities via unspecified
+    vectors, leading to the execution of arbitrary code with the privileges
+    of the user on the machine running the NX server.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All NX Node users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nxnode-3.2.0-r3&quot;</code>
+    <p>
+    All NX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nx-3.2.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200806-07.xml">GLSA 200806-07</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Mon, 07 Jul 2008 00:06:37 +0000">
+    rbu
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 07 Jul 2008 00:06:48 +0000">
+    rbu
+  </metadata>
+</glsa>

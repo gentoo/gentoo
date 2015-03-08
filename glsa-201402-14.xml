@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-14">
+  <title>International Components for Unicode: Denial of Service</title>
+  <synopsis>Two vulnerabilities in International Components for Unicode might
+    allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">icu</product>
+  <announced>February 10, 2014</announced>
+  <revised>February 10, 2014: 1</revised>
+  <bug>460426</bug>
+  <bug>486948</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">51.2-r1</unaffected>
+      <vulnerable range="lt">51.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>International Components for Unicode is a set of C/C++ and Java
+      libraries providing Unicode and Globalization support for software
+      applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in International
+      Components for Unicode. Please review the CVE identifiers referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All International Components for Unicode users should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/icu-51.2-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0900">CVE-2013-0900</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2924">CVE-2013-2924</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 15 Nov 2013 07:06:44 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Feb 2014 10:38:54 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

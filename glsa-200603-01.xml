@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-01">
+  <title>WordPress: SQL injection vulnerability</title>
+  <synopsis>
+    WordPress is vulnerable to an SQL injection vulnerability.
+  </synopsis>
+  <product type="ebuild">WordPress</product>
+  <announced>March 04, 2006</announced>
+  <revised>March 04, 2006: 01</revised>
+  <bug>121661</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/wordpress" auto="yes" arch="*">
+      <unaffected range="ge">2.0.1</unaffected>
+      <vulnerable range="le">1.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    WordPress is a PHP and MySQL based content management and
+    publishing system.
+    </p>
+  </background>
+  <description>
+    <p>
+    Patrik Karlsson reported that WordPress 1.5.2 makes use of an
+    insufficiently filtered User Agent string in SQL queries related to
+    comments posting. This vulnerability was already fixed in the
+    2.0-series of WordPress.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could send a comment with a malicious User Agent
+    parameter, resulting in SQL injection and potentially in the subversion
+    of the WordPress database. This vulnerability wouldn't affect WordPress
+    sites which do not allow comments or which require that comments go
+    through a moderator.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    Disable or moderate comments on your WordPress blogs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All WordPress users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-2.0.1&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1012">CVE-2006-1012</uri>
+  </references>
+  
+  <metadata tag="submitter" timestamp="Sun, 26 Feb 2006 14:42:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 26 Feb 2006 14:42:47 +0000">
+    koon
+  </metadata>
+</glsa>

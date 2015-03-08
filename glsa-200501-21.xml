@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200501-21">
+  <title>HylaFAX: hfaxd unauthorized login vulnerability</title>
+  <synopsis>
+    HylaFAX is subject to a vulnerability in its username matching code,
+    potentially allowing remote users to bypass access control lists.
+  </synopsis>
+  <product type="ebuild">HylaFAX</product>
+  <announced>January 11, 2005</announced>
+  <revised>January 11, 2005: 01</revised>
+  <bug>75941</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/hylafax" auto="yes" arch="*">
+      <unaffected range="ge">4.2.0-r2</unaffected>
+      <vulnerable range="lt">4.2.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    HylaFAX is a software package for sending and receiving facsimile
+    messages.
+    </p>
+  </background>
+  <description>
+    <p>
+    The code used by hfaxd to match a given username and hostname with
+    an entry in the hosts.hfaxd file is insufficiently protected against
+    malicious entries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If the HylaFAX installation uses a weak hosts.hfaxd file, a remote
+    attacker could authenticate using a malicious username or hostname and
+    bypass the intended access restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    As a workaround, administrators may consider adding passwords to
+    all entries in the hosts.hfaxd file.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All HylaFAX users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/hylafax-4.2.0-r2&quot;</code>
+    <p>
+    Note: Due to heightened security, weak entries in the
+    hosts.hfaxd file may no longer work. Please see the HylaFAX
+    documentation for details of accepted syntax in the hosts.hfaxd file.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1182">CAN-2004-1182</uri>
+    <uri link="http://marc.theaimsgroup.com/?l=hylafax&amp;m=110545119911558&amp;w=2">HylaFAX Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Jan 2005 09:56:02 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Jan 2005 13:48:18 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 16:16:35 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200805-11">
+  <title>Chicken: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities in Chicken could result in the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">chicken</product>
+  <announced>May 12, 2008</announced>
+  <revised>May 12, 2008: 01</revised>
+  <bug>198979</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-scheme/chicken" auto="yes" arch="*">
+      <unaffected range="ge">3.1.0</unaffected>
+      <vulnerable range="lt">3.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Chicken is a Scheme interpreter and native Scheme to C compiler.
+    </p>
+  </background>
+  <description>
+    <p>
+    Chicken includes a copy of PCRE which is vulnerable to multiple buffer
+    overflows and memory corruption vulnerabilities (GLSA 200711-30).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    An attacker could entice a user to process specially crafted regular
+    expressions with Chicken, which could possibly lead to the execution of
+    arbitrary code, a Denial of Service or the disclosure of sensitive
+    information.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Chicken users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-scheme/chicken-3.1.0&quot;</code>
+  </resolution>
+  <references>
+    <uri link="/security/en/glsa/glsa-200711-30.xml">GLSA 200711-30</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 12 May 2008 11:47:42 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 12 May 2008 11:47:52 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 May 2008 12:10:35 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200709-18">
+  <title>Bugzilla: Multiple vulnerabilities</title>
+  <synopsis>
+    Bugzilla contains several vulnerabilities, some of them possibly leading to
+    the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">bugzilla</product>
+  <announced>September 30, 2007</announced>
+  <revised>May 28, 2009: 03</revised>
+  <bug>190112</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/bugzilla" auto="yes" arch="*">
+      <unaffected range="rge">2.20.5</unaffected>
+      <unaffected range="rge">2.22.3</unaffected>
+      <unaffected range="ge">3.0.1</unaffected>
+      <unaffected range="rge">2.22.5</unaffected>
+      <unaffected range="rge">2.20.6</unaffected>
+      <vulnerable range="lt">3.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Bugzilla is a web application designed to help with managing software
+    development.
+    </p>
+  </background>
+  <description>
+    <p>
+    Masahiro Yamada found that from the 2.17.1 version, Bugzilla does not
+    properly sanitize the content of the "buildid" parameter when filing
+    bugs (CVE-2007-4543). The next two vulnerabilities only affect Bugzilla
+    2.23.3 or later, hence the stable Gentoo Portage tree does not contain
+    these two vulnerabilities: Loic Minier reported that the
+    "Email::Send::Sendmail()" function does not properly sanitise "from"
+    email information before sending it to the "-f" parameter of
+    /usr/sbin/sendmail (CVE-2007-4538), and Frederic Buclin discovered that
+    the XML-RPC interface does not correctly check permissions in the
+    time-tracking fields (CVE-2007-4539).
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could trigger the "buildid" vulnerability by sending
+    a specially crafted form to Bugzilla, leading to a persistent XSS, thus
+    allowing for theft of credentials. With Bugzilla 2.23.3 or later, an
+    attacker could also execute arbitrary code with the permissions of the
+    web server by injecting a specially crafted "from" email address and
+    gain access to normally restricted time-tracking information through
+    the XML-RPC service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Bugzilla users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose www-apps/bugzilla</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4538">CVE-2007-4538</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4539">CVE-2007-4539</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4543">CVE-2007-4543</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 12 Sep 2007 09:19:32 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Sep 2007 16:25:04 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 14 Sep 2007 08:36:10 +0000">
+    falco
+  </metadata>
+</glsa>

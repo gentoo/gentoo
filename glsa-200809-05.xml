@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200809-05">
+  <title>Courier Authentication Library: SQL injection vulnerability</title>
+  <synopsis>
+    An SQL injection vulnerability has been discovered in the Courier
+    Authentication Library.
+  </synopsis>
+  <product type="ebuild">courier-authlib</product>
+  <announced>September 05, 2008</announced>
+  <revised>September 05, 2008: 01</revised>
+  <bug>225407</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/courier-authlib" auto="yes" arch="*">
+      <unaffected range="ge">0.60.6</unaffected>
+      <vulnerable range="lt">0.60.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Courier Authentication Library is a generic authentication API that
+    encapsulates the process of validating account passwords.
+    </p>
+  </background>
+  <description>
+    <p>
+    It has been discovered that some input (e.g. the username) passed to
+    the library are not properly sanitised before being used in SQL
+    queries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could provide specially crafted input to the library,
+    possibly resulting in the remote execution of arbitrary SQL commands.
+    NOTE: Exploitation of this vulnerability requires that a MySQL database
+    is used for authentication and that a Non-Latin character set is
+    selected.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Courier Authentication Library users should upgrade to the latest
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/courier-authlib-0.60.6&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2667">CVE-2008-2667</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Aug 2008 18:54:58 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 11 Aug 2008 18:56:59 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 28 Aug 2008 21:07:13 +0000">
+    p-y
+  </metadata>
+</glsa>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200705-12">
+  <title>PostgreSQL: Privilege escalation</title>
+  <synopsis>
+    PostgreSQL contains a vulnerability that could result in SQL privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>May 10, 2007</announced>
+  <revised>May 28, 2009: 02</revised>
+  <bug>175791</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge">8.0.13</unaffected>
+      <unaffected range="rge">7.4.17</unaffected>
+      <unaffected range="rge">7.3.19</unaffected>
+      <unaffected range="rge">7.3.21</unaffected>
+      <unaffected range="rge">7.4.19</unaffected>
+      <vulnerable range="lt">8.0.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    PostgreSQL is an open source object-relational database management
+    system.
+    </p>
+  </background>
+  <description>
+    <p>
+    An error involving insecure search_path settings in the SECURITY
+    DEFINER functions has been reported in PostgreSQL.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    If allowed to call a SECURITY DEFINER function, an attacker could gain
+    the SQL privileges of the owner of the called function.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All PostgreSQL users should upgrade to the latest version and fix their
+    SECURITY DEFINER functions:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;dev-db/postgresql&quot;</code>
+    <p>
+    In order to fix the SECURITY DEFINER functions, PostgreSQL users are
+    advised to refer to the PostgreSQL documentation: <uri
+    link="http://www.postgresql.org/docs/techdocs.77">http://www.postgresql
+    .org/docs/techdocs.77</uri>
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2138">CVE-2007-2138</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 03 May 2007 18:37:29 +0000">
+    aetius
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 May 2007 22:14:19 +0000">
+    falco
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 08 May 2007 06:08:11 +0000">
+    jaervosz
+  </metadata>
+</glsa>

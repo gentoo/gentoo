@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200408-02">
+  <title>Courier: Cross-site scripting vulnerability in SqWebMail</title>
+  <synopsis>
+    The SqWebMail web application, included in the Courier suite, is vulnerable
+    to cross-site scripting attacks.
+  </synopsis>
+  <product type="ebuild">Courier</product>
+  <announced>August 04, 2004</announced>
+  <revised>August 04, 2004: 01</revised>
+  <bug>58020</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/courier" auto="yes" arch="*">
+      <unaffected range="ge">0.45.6.20040618</unaffected>
+      <vulnerable range="le">0.45.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Courier is an integrated mail and groupware server based on open protocols.
+    It provides ESMTP, IMAP, POP3, webmail, and mailing list services within a
+    single framework. The webmail functionality included in Courier called
+    SqWebMail allows you to access mailboxes from a web browser.
+    </p>
+  </background>
+  <description>
+    <p>
+    Luca Legato found that SqWebMail is vulnerable to a cross-site scripting
+    (XSS) attack. An XSS attack allows an attacker to insert malicious code
+    into a web-based application. SqWebMail doesn't filter appropriately data
+    coming from message headers before displaying them.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    By sending a carefully crafted message, an attacker can inject and execute
+    script code in the victim's browser window. This allows to modify the
+    behaviour of the SqWebMail application, and/or leak session information
+    such as cookies to the attacker.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time. All users are encouraged to
+    upgrade to the latest available version of Courier.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Courier users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=mail-mta/courier-0.45.6.20040618"
+    # emerge ">=mail-mta/courier-0.45.6.20040618"</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0591">CAN-2004-0591</uri>
+    <uri link="http://www.cert.org/advisories/CA-2000-02.html">XSS definition</uri>
+  </references>
+  <metadata tag="requester">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue,  3 Aug 2004 15:23:08 +0000">
+    koon
+  </metadata>
+</glsa>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200710-17">
+  <title>Balsa: Buffer overflow</title>
+  <synopsis>
+    Balsa is vulnerable to a buffer overflow allowing for the user-assisted
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">balsa</product>
+  <announced>October 16, 2007</announced>
+  <revised>October 16, 2007: 01</revised>
+  <bug>193179</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/balsa" auto="yes" arch="*">
+      <unaffected range="ge">2.3.20</unaffected>
+      <vulnerable range="lt">2.3.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Balsa is a highly configurable email client for GNOME.
+    </p>
+  </background>
+  <description>
+    <p>
+    Evil Ninja Squirrel discovered a stack-based buffer overflow in the
+    ir_fetch_seq() function when receiving a long response to a FETCH
+    command (CVE-2007-5007).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to connect to a malicious or
+    compromised IMAP server, possibly leading to the execution of arbitrary
+    code with the rights of the user running Balsa.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Balsa users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/balsa-2.3.20&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5007">CVE-2007-5007</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 26 Sep 2007 14:01:38 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 26 Sep 2007 14:01:46 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Oct 2007 00:14:17 +0000">
+    rbu
+  </metadata>
+</glsa>

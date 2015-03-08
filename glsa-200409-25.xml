@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200409-25">
+  <title>CUPS: Denial of service vulnerability</title>
+  <synopsis>
+    A vulnerability in CUPS allows remote attackers to cause a denial of
+    service when sending a carefully-crafted UDP packet to the IPP port.
+  </synopsis>
+  <product type="ebuild">CUPS</product>
+  <announced>September 20, 2004</announced>
+  <revised>September 21, 2004: 02</revised>
+  <bug>64168</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.1.20-r2</unaffected>
+      <vulnerable range="lt">1.1.20-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Common UNIX Printing System (CUPS) is a cross-platform print spooler.
+    </p>
+  </background>
+  <description>
+    <p>
+    Alvaro Martinez Echevarria discovered a hole in the CUPS Internet Printing
+    Protocol (IPP) implementation that allows remote attackers to cause CUPS to
+    stop listening on the IPP port.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote user with malicious intent can easily cause a denial of service to
+    the CUPS daemon by sending a specially-crafted UDP datagram packet to the
+    IPP port.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CUPS users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge sync
+
+    # emerge -pv ">=net-print/cups-1.1.20-r2"
+    # emerge ">=net-print/cups-1.1.20-r2"</code>
+  </resolution>
+  <references>
+    <uri link="http://www.cups.org/str.php?L863">CUPS Software Trouble Report</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0558">CAN-2004-0558</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 19 Sep 2004 06:22:23 +0000">
+    lewk
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Sep 2004 00:58:55 +0000">
+    lewk
+  </metadata>
+  <metadata tag="bugReady" timestamp="Mon, 20 Sep 2004 00:59:53 +0000">
+    lewk
+  </metadata>
+</glsa>

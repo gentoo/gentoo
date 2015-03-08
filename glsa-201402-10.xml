@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-10">
+  <title>PulseAudio: Insecure temporary file usage</title>
+  <synopsis>An insecure temporary file usage has been reported in PulseAudio,
+    possibly allowing symlink attacks.
+  </synopsis>
+  <product type="ebuild">pulseaudio</product>
+  <announced>February 07, 2014</announced>
+  <revised>February 07, 2014: 1</revised>
+  <bug>313329</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-sound/pulseaudio" auto="yes" arch="*">
+      <unaffected range="ge">0.9.22</unaffected>
+      <vulnerable range="lt">0.9.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PulseAudio is a sound system for POSIX OSes.</p>
+  </background>
+  <description>
+    <p>The pa_make_secure_dir function in core-util.c does not handle temporary
+      files securely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PulseAudio users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/pulseaudio-0.9.22"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1299">CVE-2009-1299</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:12:38 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Fri, 07 Feb 2014 20:28:06 +0000">Zlogene</metadata>
+</glsa>

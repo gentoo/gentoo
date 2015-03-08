@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200505-01">
+  <title>Horde Framework: Multiple XSS vulnerabilities</title>
+  <synopsis>
+    Various modules of the Horde Framework are vulnerable to multiple
+    cross-site scripting (XSS) vulnerabilities.
+  </synopsis>
+  <product type="ebuild">Horde</product>
+  <announced>May 01, 2005</announced>
+  <revised>May 01, 2005: 01</revised>
+  <bug>90365</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/horde-vacation" auto="yes" arch="*">
+      <unaffected range="ge">2.2.2</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+    <package name="www-apps/horde-turba" auto="yes" arch="*">
+      <unaffected range="ge">1.2.5</unaffected>
+      <vulnerable range="lt">1.2.5</vulnerable>
+    </package>
+    <package name="www-apps/horde-passwd" auto="yes" arch="*">
+      <unaffected range="ge">2.2.2</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+    <package name="www-apps/horde-nag" auto="yes" arch="*">
+      <unaffected range="ge">1.1.3</unaffected>
+      <vulnerable range="lt">1.1.3</vulnerable>
+    </package>
+    <package name="www-apps/horde-mnemo" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+    <package name="www-apps/horde-kronolith" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+    <package name="www-apps/horde-imp" auto="yes" arch="*">
+      <unaffected range="ge">3.2.8</unaffected>
+      <vulnerable range="lt">3.2.8</vulnerable>
+    </package>
+    <package name="www-apps/horde-accounts" auto="yes" arch="*">
+      <unaffected range="ge">2.1.2</unaffected>
+      <vulnerable range="lt">2.1.2</vulnerable>
+    </package>
+    <package name="www-apps/horde-forwards" auto="yes" arch="*">
+      <unaffected range="ge">2.2.2</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+    <package name="www-apps/horde-chora" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+    <package name="www-apps/horde" auto="yes" arch="*">
+      <unaffected range="ge">2.2.8</unaffected>
+      <vulnerable range="lt">2.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    The Horde Framework is a PHP based framework for building web
+    applications. It provides many modules including calendar, address
+    book, CVS viewer and Internet Messaging Program.
+    </p>
+  </background>
+  <description>
+    <p>
+    Cross-site scripting vulnerabilities have been discovered in
+    various modules of the Horde Framework.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    These vulnerabilities could be exploited by an attacker to execute
+    arbitrary HTML and script code in context of the victim's browser.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Horde users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-2.2.8&quot;</code>
+    <p>
+    All Horde Vacation users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-vacation-2.2.2&quot;</code>
+    <p>
+    All Horde Turba users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-turba-1.2.5&quot;</code>
+    <p>
+    All Horde Passwd users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-passwd-2.2.2&quot;</code>
+    <p>
+    All Horde Nag users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-nag-1.1.3&quot;</code>
+    <p>
+    All Horde Mnemo users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-mnemo-1.1.4&quot;</code>
+    <p>
+    All Horde Kronolith users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-kronolith-1.1.4&quot;</code>
+    <p>
+    All Horde IMP users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-imp-3.2.8&quot;</code>
+    <p>
+    All Horde Accounts users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-accounts-2.1.2&quot;</code>
+    <p>
+    All Horde Forwards users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-forwards-2.2.2&quot;</code>
+    <p>
+    All Horde Chora users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-chora-1.2.3&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://marc.theaimsgroup.com/?l=horde-announce&amp;r=1&amp;b=200504&amp;w=2">Horde Announcement</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 Apr 2005 18:22:59 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 29 Apr 2005 18:24:07 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Apr 2005 20:44:12 +0000">
+    formula7
+  </metadata>
+</glsa>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200603-15">
+  <title>Crypt::CBC: Insecure initialization vector</title>
+  <synopsis>
+    Crypt::CBC uses an insecure initialization vector, potentially resulting in
+    a weaker encryption.
+  </synopsis>
+  <product type="ebuild">crypt-cbc</product>
+  <announced>March 17, 2006</announced>
+  <revised>March 17, 2006: 01</revised>
+  <bug>126048</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-perl/crypt-cbc" auto="yes" arch="*">
+      <unaffected range="ge">2.17</unaffected>
+      <vulnerable range="lt">2.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Crypt::CBC is a Perl module to encrypt data using cipher block
+    chaining (CBC).
+    </p>
+  </background>
+  <description>
+    <p>
+    Lincoln Stein discovered that Crypt::CBC fails to handle 16 bytes
+    long initializiation vectors correctly when running in the RandomIV
+    mode, resulting in a weaker encryption because the second part of every
+    block will always be encrypted with zeros if the blocksize of the
+    cipher is greater than 8 bytes.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    An attacker could exploit weak ciphertext produced by Crypt::CBC
+    to bypass certain security restrictions or to gain access to sensitive
+    data.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Crypt::CBC users should upgrade to the latest available
+    version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/crypt-cbc-2.17&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0898">CVE-2006-0898</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Mar 2006 21:26:26 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Tue, 14 Mar 2006 21:26:50 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 14 Mar 2006 23:04:56 +0000">
+    DerCorny
+  </metadata>
+</glsa>

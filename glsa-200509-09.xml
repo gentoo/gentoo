@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200509-09">
+  <title>Py2Play: Remote execution of arbitrary Python code</title>
+  <synopsis>
+    A design error in Py2Play allows attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">py2play</product>
+  <announced>September 17, 2005</announced>
+  <revised>September 05, 2006: 02</revised>
+  <bug>103524</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/py2play" auto="yes" arch="*">
+      <unaffected range="ge">0.1.8</unaffected>
+      <vulnerable range="le">0.1.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Py2Play is a peer-to-peer network game engine written in Python.
+    Pickling is a Python feature allowing to serialize Python objects into
+    string representations (called pickles) that can be sent over the
+    network.
+    </p>
+  </background>
+  <description>
+    <p>
+    Arc Riley discovered that Py2Play uses Python pickles to send objects
+    over a peer-to-peer game network, and that clients accept without
+    restriction the objects and code sent by peers.
+    </p>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker participating in a Py2Play-powered game can send
+    malicious Python pickles, resulting in the execution of arbitrary
+    Python code on the targeted game client.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All py2play users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-python/py2play-0.1.8&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2875">CAN-2005-2875</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Sep 2005 14:02:17 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 14 Sep 2005 11:59:59 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Sep 2005 20:47:34 +0000">
+    koon
+  </metadata>
+</glsa>

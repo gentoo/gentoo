@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-01">
+  <title>Adobe Acrobat Reader: Multiple vulnerabilities</title>
+  <synopsis>
+    Adobe Acrobat Reader is vulnerable to remote code execution, Denial of
+    Service, and cross-site request forgery attacks.
+  </synopsis>
+  <product type="ebuild">acroread</product>
+  <announced>March 02, 2008</announced>
+  <revised>March 05, 2008: 05</revised>
+  <bug>170177</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/acroread" auto="yes" arch="*">
+      <unaffected range="ge">8.1.2</unaffected>
+      <vulnerable range="lt">8.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Adobe Acrobat Reader is a PDF reader released by Adobe.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities have been discovered in Adobe Acrobat Reader,
+    including:
+    </p>
+    <ul><li>A file disclosure when using file:// in PDF documents
+    (CVE-2007-1199)</li>
+    <li>Multiple buffer overflows in unspecified Javascript methods
+    (CVE-2007-5659)</li>
+    <li>An unspecified vulnerability in the Escript.api plugin
+    (CVE-2007-5663)</li>
+    <li>An untrusted search path (CVE-2007-5666)</li>
+    <li>Incorrect handling of printers (CVE-2008-0667)</li>
+    <li>An integer overflow when passing incorrect arguments to
+    "printSepsWithParams" (CVE-2008-0726)</li>
+    </ul>
+    <p>
+    Other unspecified vulnerabilities have also been reported
+    (CVE-2008-0655).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could entice a user to open a specially crafted
+    document, possibly resulting in the remote execution of arbitrary code
+    with the privileges of the user running the application. A remote
+    attacker could also perform cross-site request forgery attacks, or
+    cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Adobe Acrobat Reader users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1199">CVE-2007-1199</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5659">CVE-2007-5659</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5663">CVE-2007-5663</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5666">CVE-2007-5666</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0655">CVE-2008-0655</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0667">CVE-2008-0667</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0726">CVE-2008-0726</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 12 Feb 2008 00:03:23 +0000">
+    rbu
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 27 Feb 2008 22:32:54 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Wed, 27 Feb 2008 22:33:01 +0000">
+    p-y
+  </metadata>
+</glsa>

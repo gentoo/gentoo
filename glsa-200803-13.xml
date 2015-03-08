@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200803-13">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>
+    Multiple vulnerabilities were found in VLC, allowing for the execution of
+    arbitrary code and Denial of Service.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>March 07, 2008</announced>
+  <revised>March 07, 2008: 01</revised>
+  <bug>203345</bug>
+  <bug>211575</bug>
+  <bug>205299</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">0.8.6e</unaffected>
+      <vulnerable range="lt">0.8.6e</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    VLC is a cross-platform media player and streaming server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Multiple vulnerabilities were found in VLC:
+    </p>
+    <ul>
+    <li>Michal Luczaj
+    and Luigi Auriemma reported that VLC contains boundary errors when
+    handling subtitles in the ParseMicroDvd(), ParseSSA(), and
+    ParseVplayer() functions in the modules/demux/subtitle.c file, allowing
+    for a stack-based buffer overflow (CVE-2007-6681).</li>
+    <li>The web
+    interface listening on port 8080/tcp contains a format string error in
+    the httpd_FileCallBack() function in the network/httpd.c file
+    (CVE-2007-6682).</li>
+    <li>The browser plugin possibly contains an
+    argument injection vulnerability (CVE-2007-6683).</li>
+    <li>The RSTP
+    module triggers a NULL pointer dereference when processing a request
+    without a "Transport" parameter (CVE-2007-6684).</li>
+    <li>Luigi
+    Auriemma and Remi Denis-Courmont found a boundary error in the
+    modules/access/rtsp/real_sdpplin.c file when processing SDP data for
+    RTSP sessions (CVE-2008-0295) and a vulnerability in the
+    libaccess_realrtsp plugin (CVE-2008-0296), possibly resulting in a
+    heap-based buffer overflow.</li>
+    <li>Felipe Manzano and Anibal Sacco
+    (Core Security Technologies) discovered an arbitrary memory overwrite
+    vulnerability in VLC's MPEG-4 file format parser (CVE-2008-0984).</li>
+    </ul>
+  </description>
+  <impact type="high">
+    <p>
+    A remote attacker could send a long subtitle in a file that a user is
+    enticed to open, a specially crafted MP4 input file, long SDP data, or
+    a specially crafted HTTP request with a "Connection" header value
+    containing format specifiers, possibly resulting in the remote
+    execution of arbitrary code. Also, a Denial of Service could be caused
+    and arbitrary files could be overwritten via the "demuxdump-file"
+    option in a filename in a playlist or via an EXTVLCOPT statement in an
+    MP3 file.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All VLC users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6e&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6681">CVE-2007-6681</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6682">CVE-2007-6682</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6683">CVE-2007-6683</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6684">CVE-2007-6684</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0295">CVE-2008-0295</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0296">CVE-2008-0296</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0984">CVE-2008-0984</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Wed, 05 Mar 2008 21:55:08 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="bugReady" timestamp="Fri, 07 Mar 2008 18:42:04 +0000">
+    p-y
+  </metadata>
+</glsa>

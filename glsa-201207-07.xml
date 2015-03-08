@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-07">
+  <title>Keepalived: Denial of Service</title>
+  <synopsis>Keepalived uses world-writable PID files, allowing a local attacker
+    to kill arbitrary processes.
+  </synopsis>
+  <product type="ebuild">keepalived</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>371469</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-cluster/keepalived" auto="yes" arch="*">
+      <unaffected range="ge">1.2.2-r3</unaffected>
+      <vulnerable range="lt">1.2.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Keepalived is a strong &amp; robust keepalive facility to the Linux
+      Virtual Server project.
+    </p>
+  </background>
+  <description>
+    <p>The "pidfile_write()" function in pidfile.c in Keepalived writes PID
+      files with insecure permissions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker may be able to cause a Denial of Service of arbitrary
+      processes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Keepalived users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-cluster/keepalived-1.2.2-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1784">CVE-2011-1784</uri>
+  </references>
+  <metadata timestamp="Mon, 11 Jun 2012 19:50:31 +0000" tag="requester">ackle</metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 23:28:51 +0000" tag="submitter">ackle</metadata>
+</glsa>

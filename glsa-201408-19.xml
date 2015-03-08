@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201408-19">
+  <title>OpenOffice, LibreOffice: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenOffice and
+    LibreOffice, the worst of which may result in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openoffice</product>
+  <announced>August 31, 2014</announced>
+  <revised>August 31, 2014: 1</revised>
+  <bug>283370</bug>
+  <bug>305195</bug>
+  <bug>320491</bug>
+  <bug>332321</bug>
+  <bug>352864</bug>
+  <bug>386081</bug>
+  <bug>409509</bug>
+  <bug>429482</bug>
+  <bug>514886</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">3.5.5.3</unaffected>
+      <vulnerable range="lt">3.5.5.3</vulnerable>
+    </package>
+    <package name="app-office/openoffice" auto="yes" arch="*">
+      <vulnerable range="le">3.5.5.3</vulnerable>
+    </package>
+    <package name="app-office/libreoffice" auto="yes" arch="*">
+      <unaffected range="ge">4.2.5.2</unaffected>
+      <vulnerable range="lt">4.2.5.2</vulnerable>
+    </package>
+    <package name="app-office/libreoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">4.2.5.2</unaffected>
+      <vulnerable range="lt">4.2.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenOffice is the open source version of StarOffice, a full office
+      productivity suite. LibreOffice is a fork of OpenOffice.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenOffice and
+      Libreoffice. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using OpenOffice, possibly resulting in execution of arbitrary code with
+      the privileges of the process, a Denial of Service condition, execution
+      of arbitrary Python code, authentication bypass, or reading and writing
+      of arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenOffice (binary) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-office/openoffice-bin-3.5.5.3"
+    </code>
+    
+    <p>All LibreOffice users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/libreoffice-4.2.5.2"
+    </code>
+    
+    <p>All LibreOffice (binary) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-office/libreoffice-bin-4.2.5.2"
+    </code>
+    
+    <p>We recommend that users unmerge OpenOffice:</p>
+    
+    <code>
+      # emerge --unmerge "app-office/openoffice"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-4339">CVE-2006-4339</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0200">CVE-2009-0200</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0201">CVE-2009-0201</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0217">CVE-2009-0217</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2949">CVE-2009-2949</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2950">CVE-2009-2950</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3301">CVE-2009-3301</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3302">CVE-2009-3302</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0395">CVE-2010-0395</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2935">CVE-2010-2935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2936">CVE-2010-2936</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3450">CVE-2010-3450</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3451">CVE-2010-3451</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3452">CVE-2010-3452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3453">CVE-2010-3453</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3454">CVE-2010-3454</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3689">CVE-2010-3689</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4253">CVE-2010-4253</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4643">CVE-2010-4643</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2713">CVE-2011-2713</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0037">CVE-2012-0037</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1149">CVE-2012-1149</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2149">CVE-2012-2149</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2334">CVE-2012-2334</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2665">CVE-2012-2665</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0247">CVE-2014-0247</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:58 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Sun, 31 Aug 2014 14:48:34 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201210-01">
+  <title>w3m: SSL spoofing vulnerability</title>
+  <synopsis>An error in the hostname matching of w3m might enable remote
+    attackers to conduct man-in-the-middle attacks. 
+  </synopsis>
+  <product type="ebuild">w3m</product>
+  <announced>October 18, 2012</announced>
+  <revised>October 18, 2012: 1</revised>
+  <bug>325431</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/w3m" auto="yes" arch="*">
+      <unaffected range="ge">0.5.2-r4</unaffected>
+      <vulnerable range="lt">0.5.2-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>w3m is a text based WWW browser.</p>
+  </background>
+  <description>
+    <p>A SSL spoofing vulnerability has been discovered in w3m. Please review
+      the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might employ a specially crafted certificate to
+      conduct man-in-the-middle attacks on SSL connections made using w3m. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All w3m users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/w3m-0.5.2-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2074">CVE-2010-2074</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:00 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:42:33 +0000">craig</metadata>
+</glsa>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201309-02">
+  <title>strongSwan: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in strongSwan, possibly
+    allowing remote attackers to authenticate as other users or cause a Denial
+    of Service condition.
+  </synopsis>
+  <product type="ebuild">strongswan</product>
+  <announced>September 01, 2013</announced>
+  <revised>September 01, 2013: 1</revised>
+  <bug>468504</bug>
+  <bug>479396</bug>
+  <bug>483202</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/strongswan" auto="yes" arch="*">
+      <unaffected range="ge">5.1.0</unaffected>
+      <vulnerable range="lt">5.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>strongSwan is an IPSec implementation for Linux.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in strongSwan. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could use ECDSA to authenticate as another user with
+      an invalid signature. Additionally, a remote attacker could send a
+      specially crafted request, possibly resulting in a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All strongSwan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/strongswan-5.1.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2054">CVE-2013-2054</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2944">CVE-2013-2944</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5018">CVE-2013-5018</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 13:39:48 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Sep 2013 23:59:13 +0000">
+    creffett
+  </metadata>
+</glsa>

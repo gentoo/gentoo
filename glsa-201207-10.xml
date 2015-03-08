@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201207-10">
+  <title>CUPS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in CUPS, some of which may
+    allow execution of arbitrary code or local privilege escalation.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>July 09, 2012</announced>
+  <revised>July 09, 2012: 1</revised>
+  <bug>295256</bug>
+  <bug>308045</bug>
+  <bug>325551</bug>
+  <bug>380771</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">1.4.8-r1</unaffected>
+      <vulnerable range="lt">1.4.8-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CUPS, the Common Unix Printing System, is a full-featured print server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in CUPS. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker may be able to execute arbitrary code using specially
+      crafted streams, IPP requests or files, or cause a Denial of Service
+      (daemon crash or hang). A local attacker may be able to gain escalated
+      privileges or overwrite arbitrary files. Furthermore, a remote attacker
+      may be able to obtain sensitive information from the CUPS process or
+      hijack a CUPS administrator authentication request.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CUPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.4.8-r1"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since September 03, 2011. It is likely that your system is
+      already no longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3553">
+      CVE-2009-3553
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0302">
+      CVE-2010-0302
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0393">
+      CVE-2010-0393
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0540">
+      CVE-2010-0540
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0542">
+      CVE-2010-0542
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1748">
+      CVE-2010-1748
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2431">
+      CVE-2010-2431
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2432">
+      CVE-2010-2432
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2941">
+      CVE-2010-2941
+    </uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3170">
+      CVE-2011-3170
+    </uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:16 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 09 Jul 2012 23:33:59 +0000" tag="submitter">craig</metadata>
+</glsa>

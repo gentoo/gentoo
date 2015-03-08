@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200512-11">
+  <title>CenterICQ: Multiple vulnerabilities</title>
+  <synopsis>
+    CenterICQ is vulnerable to a Denial of Service issue, and also potentially
+    to the execution of arbitrary code through an included vulnerable ktools
+    library.
+  </synopsis>
+  <product type="ebuild">CenterICQ</product>
+  <announced>December 20, 2005</announced>
+  <revised>December 20, 2005: 01</revised>
+  <bug>100519</bug>
+  <bug>114038</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/centericq" auto="yes" arch="*">
+      <unaffected range="ge">4.21.0-r2</unaffected>
+      <vulnerable range="lt">4.21.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    CenterICQ is a text-based instant messaging interface that
+    supports multiple protocols. It includes the ktools library, which
+    provides text-mode user interface controls.
+    </p>
+  </background>
+  <description>
+    <p>
+    Gentoo developer Wernfried Haas discovered that when the "Enable
+    peer-to-peer communications" option is enabled, CenterICQ opens a port
+    that insufficiently validates whatever is sent to it. Furthermore,
+    Zone-H Research reported a buffer overflow in the ktools library.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker could cause a crash of CenterICQ by sending
+    packets to the peer-to-peer communications port, and potentially cause
+    the execution of arbitrary code by enticing a CenterICQ user to edit
+    overly long contact details.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All CenterICQ users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/centericq-4.21.0-r2&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3694">CVE-2005-3694</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3863">CVE-2005-3863</uri>
+    <uri link="http://www.zone-h.org/en/advisories/read/id=8480/">Zone-H Research ZRCSA 200503</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 16 Dec 2005 12:39:29 +0000">
+    koon
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 17 Dec 2005 10:48:20 +0000">
+    koon
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 Dec 2005 11:38:58 +0000">
+    koon
+  </metadata>
+</glsa>

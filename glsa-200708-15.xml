@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200708-15">
+  <title>Apache mod_jk: Directory traversal</title>
+  <synopsis>
+    A directory traversal vulnerability has been discovered in Apache mod_jk.
+  </synopsis>
+  <product type="ebuild">mod_jk</product>
+  <announced>August 19, 2007</announced>
+  <revised>August 19, 2007: 01</revised>
+  <bug>186218</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_jk" auto="yes" arch="*">
+      <unaffected range="ge">1.2.23</unaffected>
+      <vulnerable range="lt">1.2.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    Apache mod_jk is a connector for the Tomcat web server.
+    </p>
+  </background>
+  <description>
+    <p>
+    Apache mod_jk decodes the URL within Apache before passing them to
+    Tomcat, which decodes them a second time.
+    </p>
+  </description>
+  <impact type="low">
+    <p>
+    A remote attacker could browse a specially crafted URL on an Apache
+    server running mod_jk, possibly gaining access to restricted resources.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All Apache mod_jk users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_jk-1.2.23&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1860">CVE-2007-1860</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Jul 2007 22:06:43 +0000">
+    p-y
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sun, 29 Jul 2007 22:08:30 +0000">
+    p-y
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 12 Aug 2007 21:01:34 +0000">
+    p-y
+  </metadata>
+</glsa>

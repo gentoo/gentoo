@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-28">
+  <title>TeX Live: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in texlive-core, allowing
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">TeX Live</product>
+  <announced>June 25, 2012</announced>
+  <revised>June 25, 2012: 1</revised>
+  <bug>264598</bug>
+  <bug>324019</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/texlive-core" auto="yes" arch="*">
+      <unaffected range="ge">2009-r2</unaffected>
+      <vulnerable range="lt">2009-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TeX Live is a complete TeX distribution.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in texlive-core. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>These vulnerabilities might allow user-assisted remote attackers to
+      execute arbitrary code via a specially-crafted DVI file, or cause a
+      Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All texlive-core users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/texlive-core-2009-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1284">CVE-2009-1284</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0739">CVE-2010-0739</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0827">CVE-2010-0827</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1440">CVE-2010-1440</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:59 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Mon, 25 Jun 2012 18:50:51 +0000" tag="submitter">craig</metadata>
+</glsa>

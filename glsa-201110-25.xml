@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201110-25">
+  <title>Pure-FTPd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Pure-FTPd allowing attackers
+    to inject FTP commands or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">Pure-FTPd</product>
+  <announced>October 26, 2011</announced>
+  <revised>October 26, 2011: 1</revised>
+  <bug>358375</bug>
+  <bug>365751</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/pure-ftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.0.32</unaffected>
+      <vulnerable range="lt">1.0.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pure-FTPd is a fast, production-quality and standards-compliant FTP
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pure-FTPd. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote unauthenticated attackers may be able to inject FTP commands or
+      cause a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All pure-ftpd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/pure-ftpd-1.0.32"
+    </code>
+    
+    <p>NOTE: This is a legacy GLSA. Updates for all affected architectures are
+      available since May 14, 2011. It is likely that your system is already no
+      longer affected by this issue.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0418">CVE-2011-0418</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1575">CVE-2011-1575</uri>
+  </references>
+  <metadata timestamp="Fri, 07 Oct 2011 23:37:42 +0000" tag="requester">
+    underling
+  </metadata>
+  <metadata timestamp="Wed, 26 Oct 2011 20:49:23 +0000" tag="submitter">
+    underling
+  </metadata>
+</glsa>

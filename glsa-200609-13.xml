@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+
+<glsa id="200609-13">
+  <title>gzip: Multiple vulnerabilities</title>
+  <synopsis>
+    gzip is affected by multiple vulnerabilities, including buffer overflows
+    and infinite loops, possibly allowing the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gzip</product>
+  <announced>September 23, 2006</announced>
+  <revised>September 23, 2006: 01</revised>
+  <bug>145511</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/gzip" auto="yes" arch="*">
+      <unaffected range="ge">1.3.5-r9</unaffected>
+      <vulnerable range="lt">1.3.5-r9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>
+    gzip, the GNU zip compression utility, is a free and patent
+    unencumbered replacement for the standard compress utility.
+    </p>
+  </background>
+  <description>
+    <p>
+    Tavis Ormandy of the Google Security Team has reported multiple
+    vulnerabilities in gzip. A stack buffer modification vulnerability was
+    discovered in the LZH decompression code, where a pathological data
+    stream may result in the modification of stack data such as frame
+    pointer, return address or saved registers. A static buffer underflow
+    was discovered in the pack decompression support, allowing a specially
+    crafted pack archive to underflow a .bss buffer. A static buffer
+    overflow was uncovered in the LZH decompression code, allowing a data
+    stream consisting of pathological huffman codes to overflow a .bss
+    buffer. Multiple infinite loops were also uncovered in the LZH
+    decompression code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>
+    A remote attacker may create a specially crafted gzip archive, which
+    when decompressed by a user or automated system exectues arbitrary code
+    with the privileges of the user id invoking gzip. The infinite loops
+    may be abused by an attacker to disrupt any automated systems invoking
+    gzip to handle data decompression.
+    </p>
+  </impact>
+  <workaround>
+    <p>
+    There is no known workaround at this time.
+    </p>
+  </workaround>
+  <resolution>
+    <p>
+    All gzip users should upgrade to the latest version:
+    </p>
+    <code>
+    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/gzip-1.3.5-r9&quot;</code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4334">CVE-2006-4334</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4335">CVE-2006-4335</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4336">CVE-2006-4336</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4337">CVE-2006-4337</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4338">CVE-2006-4338</uri>
+  </references>
+  <metadata tag="submitter" timestamp="Tue, 19 Sep 2006 13:55:56 +0000">
+    taviso
+  </metadata>
+  <metadata tag="bugReady" timestamp="Sat, 23 Sep 2006 06:36:04 +0000">
+    jaervosz
+  </metadata>
+</glsa>

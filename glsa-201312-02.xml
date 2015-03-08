@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-02">
+  <title>BusyBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BusyBox, allowing
+    remote attackers to execute arbitrary code or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">busybox</product>
+  <announced>December 03, 2013</announced>
+  <revised>December 03, 2013: 1</revised>
+  <bug>379857</bug>
+  <bug>426504</bug>
+  <bug>461372</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/busybox" auto="yes" arch="*">
+      <unaffected range="ge">1.21.0</unaffected>
+      <vulnerable range="lt">1.21.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BusyBox is set of tools for embedded systems and is a replacement for
+      GNU Coreutils.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BusyBox. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted DHCP request to
+      possibly execute arbitrary code or cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BusyBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/busybox-1.21.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-1168">CVE-2006-1168</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2716">CVE-2011-2716</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1813">CVE-2013-1813</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:58 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Dec 2013 03:51:08 +0000">
+    pinkbyte
+  </metadata>
+</glsa>
