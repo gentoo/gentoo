@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/xsl/glsa.xsl"?>
-<?xml-stylesheet type="text/xsl" href="/xsl/guide.xsl"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201206-18">
   <title>GnuTLS: Multiple vulnerabilities</title>

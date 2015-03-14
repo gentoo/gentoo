@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet href="/xsl/glsa.xsl" type="text/xsl"?>
-<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 
 <glsa id="200710-22">
