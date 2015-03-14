@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-06">
+  <title>ICU: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ICU, possibly resulting
+    in Denial of Service.
+  </synopsis>
+  <product type="ebuild">icu</product>
+  <announced>March 14, 2015</announced>
+  <revised>March 14, 2015: 1</revised>
+  <bug>537560</bug>
+  <bug>539108</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">54.1-r1</unaffected>
+      <vulnerable range="lt">54.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ICU is a mature, widely used set of C/C++ and Java libraries providing
+      Unicode and Globalization support for software applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ICU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause Denial of Service.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ICU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/icu-54.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7923">CVE-2014-7923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7926">CVE-2014-7926</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7940">CVE-2014-7940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9654">CVE-2014-9654</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 25 Feb 2015 04:20:24 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 14 Mar 2015 18:20:46 +0000">Zlogene</metadata>
+</glsa>
