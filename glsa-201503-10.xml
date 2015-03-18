@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-10">
+  <title>Python: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Python, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>March 18, 2015</announced>
+  <revised>March 18, 2015: 1</revised>
+  <bug>495224</bug>
+  <bug>500518</bug>
+  <bug>505068</bug>
+  <bug>506084</bug>
+  <bug>514686</bug>
+  <bug>523792</bug>
+  <bug>532232</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">3.3.5-r1</unaffected>
+      <unaffected range="rge">2.7.9-r1</unaffected>
+      <vulnerable range="lt">3.3.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Python. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker may be able to execute arbitrary code or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python 3.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.3.5-r1"
+    </code>
+    
+    <p>All Python 2.7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.9-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1752">CVE-2013-1752</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7338">CVE-2013-7338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1912">CVE-2014-1912</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2667">CVE-2014-2667</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4616">CVE-2014-4616</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7185">CVE-2014-7185</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9365">CVE-2014-9365</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 18 Aug 2014 20:14:36 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 18 Mar 2015 22:30:27 +0000">
+    BlueKnight
+  </metadata>
+</glsa>
