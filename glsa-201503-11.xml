@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-11">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL that can result
+    in either Denial of Service or information disclosure.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>March 19, 2015</announced>
+  <revised>March 19, 2015: 1</revised>
+  <bug>543552</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1l-r1</unaffected>
+      <unaffected range="rge">0.9.8z_p5-r1</unaffected>
+      <vulnerable range="lt">1.0.1l-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in OpenSSL. Please review the
+      CVE identifiers and the upstream advisory referenced below for details:
+    </p>
+    
+    <ul>
+      <li>RSA silently downgrades to EXPORT_RSA [Client] (Reclassified)
+        (CVE-2015-0204)
+      </li>
+      <li>Segmentation fault in ASN1_TYPE_cmp (CVE-2015-0286)</li>
+      <li>ASN.1 structure reuse memory corruption (CVE-2015-0287)</li>
+      <li>X509_to_X509_REQ NULL pointer deref (CVE-2015-0288)</li>
+      <li>PKCS7 NULL pointer dereferences (CVE-2015-0289)</li>
+      <li>Base64 decode (CVE-2015-0292)</li>
+      <li>DoS via reachable assert in SSLv2 servers (CVE-2015-0293)</li>
+      <li>Use After Free following d2i_ECPrivatekey error (CVE-2015-0209)</li>
+    </ul>
+    
+    <p>The following issues affect OpenSSL 1.0.2 only which is not part of the
+      supported Gentoo stable tree:
+    </p>
+    
+    <ul>
+      <li>OpenSSL 1.0.2 ClientHello sigalgs DoS (CVE-2015-0291)</li>
+      <li>Multiblock corrupted pointer (CVE-2015-0290)</li>
+      <li>Segmentation fault in DTLSv1_listen (CVE-2015-0207)</li>
+      <li>Segmentation fault for invalid PSS parameters (CVE-2015-0208)</li>
+      <li>Empty CKE with client auth and DHE (CVE-2015-1787)</li>
+      <li>Handshake with unseeded PRNG (CVE-2015-0285)</li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can utilize multiple vectors to cause Denial of
+      Service or Information Disclosure.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL 1.0.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.1l-r1"
+    </code>
+    
+    <p>All OpenSSL 0.9.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8z_p5-r1"
+    </code>
+    
+    <p>Packages which depend on the OpenSSL library need to be restarted for
+      the upgrade to take effect. Some packages may need to be recompiled.
+      Tools such as revdep-rebuild may assist in identifying some of these
+      packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0204">CVE-2015-0204</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0207">CVE-2015-0207</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0208">CVE-2015-0208</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0209">CVE-2015-0209</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0285">CVE-2015-0285</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0287">CVE-2015-0287</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0288">CVE-2015-0288</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0289">CVE-2015-0289</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0290">CVE-2015-0290</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0291">CVE-2015-0291</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0292">CVE-2015-0292</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0293">CVE-2015-0293</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1787">CVE-2015-1787</uri>
+    <uri link="http://openssl.org/news/secadv_20150319.txt">OpenSSL Security
+      Advisory [19 Mar 2015]
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Mar 2015 09:52:36 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Thu, 19 Mar 2015 17:26:40 +0000">K_F</metadata>
+</glsa>
