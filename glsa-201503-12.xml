@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-12">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which can allow remote attackers to cause Denial of Service or bypass
+    security restrictions. 
+  </synopsis>
+  <product type="ebuild">chromimu</product>
+  <announced>March 22, 2015</announced>
+  <revised>March 22, 2015: 1</revised>
+  <bug>542090</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">41.0.2272.76</unaffected>
+      <vulnerable range="lt">41.0.2272.76</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service condition,
+      bypass security restrictions, or have other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-41.0.2272.76"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1213">CVE-2015-1213</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1214">CVE-2015-1214</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1215">CVE-2015-1215</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1216">CVE-2015-1216</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1217">CVE-2015-1217</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1218">CVE-2015-1218</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1219">CVE-2015-1219</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1220">CVE-2015-1220</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1221">CVE-2015-1221</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1222">CVE-2015-1222</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1223">CVE-2015-1223</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1224">CVE-2015-1224</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1225">CVE-2015-1225</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1226">CVE-2015-1226</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1227">CVE-2015-1227</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1228">CVE-2015-1228</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1229">CVE-2015-1229</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1230">CVE-2015-1230</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1231">CVE-2015-1231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1232">CVE-2015-1232</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 21 Mar 2015 14:01:08 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 22 Mar 2015 22:04:32 +0000">Zlogene</metadata>
+</glsa>
