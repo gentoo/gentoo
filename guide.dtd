@@ -1,0 +1,42 @@
+<!ENTITY % common SYSTEM "common.dtd">
+
+%common;
+
+<!ELEMENT mainpage  (title, author+, abstract?, license?, version, date?, (devmap? | newsitems? | (mirrorlist|chapter)+))>
+<!ATTLIST mainpage
+          redirect     CDATA #IMPLIED
+          lang         CDATA #IMPLIED>
+
+<!ELEMENT newsitems EMPTY>
+
+<!ELEMENT devmap    EMPTY>
+
+<!ELEMENT guide			(title, subtitle?, values?, author+, abstract, summary?, license?, version, date, faqindex?, chapter+)>
+<!ATTLIST guide         type CDATA #IMPLIED
+                        disclaimer (articles|oldbook|draft|obsolete) #IMPLIED
+                        redirect CDATA #IMPLIED
+                        lang CDATA #IMPLIED>
+
+<!ELEMENT news			(poster, date, title, summary?, body)>
+<!ATTLIST news			gentoo (yes|no) "no"
+						      category (gentoo|main|linux|moo|plans|birthday) #REQUIRED>
+
+<!ELEMENT subtitle		(#PCDATA)>
+
+<!ELEMENT poster    (#PCDATA)>
+
+<!ELEMENT faqindex  (title, section?)>
+
+<!ELEMENT chapter		(include | (title, section+))>
+<!ATTLIST chapter   id CDATA #IMPLIED>
+
+<!ELEMENT section   (include | (title?, body+))>
+
+<!ELEMENT body      (mirrorlist | include | (%block.class;|glsa-latest|glsaindex|glepindex)+)>
+
+<!ELEMENT glsaindex	EMPTY>
+<!ELEMENT glsa-latest EMPTY>
+
+<!ELEMENT mirrorlist EMPTY>
+<!ATTLIST mirrorlist select (full|partial)  'full'>
+<!ATTLIST mirrorlist src    CDATA           '/main/en/mirrors3.xml'>

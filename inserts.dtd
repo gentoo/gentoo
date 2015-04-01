@@ -1,0 +1,12 @@
+<!ELEMENT inserts (version?,insert+)>
+<!ATTLIST inserts lang CDATA #REQUIRED>
+
+<!ELEMENT version (#PCDATA)>
+<!ELEMENT insert (#PCDATA|uri|br|docdate)*>
+<!ATTLIST insert  name CDATA #REQUIRED>
+
+<!ELEMENT uri (#PCDATA)>
+<!ATTLIST uri link CDATA #REQUIRED>
+
+<!ELEMENT br EMPTY>
+<!ELEMENT docdate EMPTY>
