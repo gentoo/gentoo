@@ -128,8 +128,7 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-CMAKE_EXPF="src_prepare src_configure src_compile src_test src_install"
-EXPORT_FUNCTIONS ${CMAKE_EXPF}
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
