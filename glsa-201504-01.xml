@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">firefox thunderbird seamonkey</product>
   <announced>April 07, 2015</announced>
-  <revised>April 07, 2015: 1</revised>
+  <revised>April 08, 2015: 2</revised>
   <bug>489796</bug>
   <bug>491234</bug>
   <bug>493850</bug>
@@ -189,6 +189,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1499">CVE-2014-1499</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1500">CVE-2014-1500</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1502">CVE-2014-1502</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1504">CVE-2014-1504</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1505">CVE-2014-1505</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1508">CVE-2014-1508</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1509">CVE-2014-1509</uri>
@@ -295,10 +296,10 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0834">CVE-2015-0834</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0835">CVE-2015-0835</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0836">CVE-2015-0836</uri>
-    <uri link="">VE-2014-1504</uri>
   </references>
   <metadata tag="requester" timestamp="Wed, 21 May 2014 03:07:39 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 07 Apr 2015 08:53:57 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 08 Apr 2015 20:01:24 +0000">ackle</metadata>
 </glsa>
+
