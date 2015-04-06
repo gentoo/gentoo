@@ -1,8 +1,8 @@
-Title: Apache AddHandler/AddType vulnerability protection
+Title: Apache AddHandler/AddType exploit protection
 Author: Sebastian Pipping <sping@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-04-06
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: www-servers/apache
 
@@ -22,7 +22,7 @@ index.php.png is not executed, but index.php.disabled still is.
 
 Apache's notes on multiple file extensions [3] document
 a multi-language website as a context where that behavior
-may be helpful.  Unfortunately, it can be a security threat.
+may be helpful.  Unfortunately, it can also be a security threat.
 
 Combined with (not just PHP) applications that support
 file upload, the AddHandler/AddType directive can get you into
@@ -43,6 +43,10 @@ Why this news entry?
  * Since Apache configuration lives below /etc,
    you need to run etc-update (or a substitute)
    to actually have related fixes applied.
+   To get them into the running instance of Apache,
+   you need to make it reload its configuration, e.g.
+
+     sudo /etc/init.d/apache2 reload
 
  * If you are currently relying on AddHandler to execute
    secret_database_stuff.php.inc, moving away from AddHandler
@@ -71,7 +75,7 @@ Why this news entry?
        #RewriteRule .* - [R=404,L]
      </FilesMatch>
 
- * You may be using AddHandler or AddType at other places,
+ * You may be using AddHandler or AddType in other places,
    including off-package files.  Please have a look.
 
  * app-eselect/eselect-php is not the only package affected.
