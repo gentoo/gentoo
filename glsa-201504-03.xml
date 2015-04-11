@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201504-03">
+  <title>Apache: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Apache HTTP Server, the
+    worst of which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>April 11, 2015</announced>
+  <revised>April 11, 2015: 1</revised>
+  <bug>535948</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.2.29</unaffected>
+      <vulnerable range="lt">2.2.29</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache HTTP Server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache HTTP Server.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.29"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0118">CVE-2014-0118</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0226">CVE-2014-0226</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0231">CVE-2014-0231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5704">CVE-2014-5704</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 25 Feb 2015 02:07:45 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Apr 2015 19:33:45 +0000">
+    BlueKnight
+  </metadata>
+</glsa>
