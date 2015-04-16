@@ -2,7 +2,7 @@ Title: ffmpeg/libav conflict management: USE=libav
 Author: Michał Górny <mgorny@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-02-01
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: media-video/ffmpeg
 Display-If-Installed: media-video/libav
@@ -20,17 +20,14 @@ support for ffmpeg or a compatible implementation (libav) in a package.
 However, whenever appropriate additional USE=libav will be introduced to
 control the preference of one implementation over the other.
 
-Users who currently use libav (the Gentoo default) do not have to
-perform any action since USE=libav is enabled by default. It should be
-noted that the users still need to enable USE=ffmpeg on packages with
-optional libav support as well. Users who want to use ffmpeg instead
-need to specify USE=-libav in make.conf explicitly.
+Users who currently use libav need to enable USE=libav in
+/etc/portage/make.conf. It should be noted that users still need to
+enable USE=ffmpeg on packages with optional libav support as well.
+Users who currently use ffmpeg need to take no action.
 
 Please also note that some packages support only one of the two
 implementations. An attempt to install one of those packages may result
 in blockers requiring the user changes the global USE=libav state.
-The most notable example of such package is media-video/mplayer.
-media-video/mpv may be used as a replacement for users who prefer libav.
 
 Please do not alter the state of 'libav' flag on a per-package basis
 (e.g. via package.use). The flag needs to be set globally to have
