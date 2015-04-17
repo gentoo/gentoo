@@ -8,8 +8,9 @@
   </synopsis>
   <product type="ebuild">xorg-server</product>
   <announced>April 17, 2015</announced>
-  <revised>April 17, 2015: 1</revised>
+  <revised>April 17, 2015: 2</revised>
   <bug>532086</bug>
+  <bug>539692</bug>
   <access>remote</access>
   <affected>
     <package name="x11-base/xorg-server" auto="yes" arch="*">
@@ -63,5 +64,5 @@
   <metadata tag="requester" timestamp="Sat, 31 Jan 2015 19:25:14 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 17 Apr 2015 12:51:01 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Fri, 17 Apr 2015 12:55:13 +0000">Zlogene</metadata>
 </glsa>
