@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libpng</product>
   <announced>August 14, 2014</announced>
-  <revised>August 14, 2014: 2</revised>
+  <revised>June 06, 2015: 4</revised>
   <bug>503014</bug>
   <bug>507378</bug>
   <access>remote</access>
@@ -16,6 +16,13 @@
       <unaffected range="ge">1.6.10</unaffected>
       <unaffected range="lt">1.3</unaffected>
       <unaffected range="rge">1.5.18</unaffected>
+      <unaffected range="rge">1.5.19</unaffected>
+      <unaffected range="rge">1.5.20</unaffected>
+      <unaffected range="rge">1.5.21</unaffected>
+      <unaffected range="rge">1.5.22</unaffected>
+      <unaffected range="rge">1.5.23</unaffected>
+      <unaffected range="rge">1.5.24</unaffected>
+      <unaffected range="rge">1.5.25</unaffected>
       <vulnerable range="lt">1.6.10</vulnerable>
     </package>
   </affected>
@@ -52,31 +59,27 @@
     </code>
     
     <p>Users with current installs in the 1.5 branch should also upgrade this
-      using:</p>
-      <code>
-        # emerge --sync
-        # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.18:1.5"
-      </code>
-      
-      <p>Packages which depend on this library may need to be recompiled. Tools
-        such as revdep-rebuild may assist in identifying these packages.
-      </p>
-    </resolution>
-    <references>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7353">
-        CVE-2013-7353
-      </uri>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7354">
-        CVE-2013-7354
-      </uri>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0333">
-        CVE-2014-0333
-      </uri>
-    </references>
-    <metadata tag="requester" timestamp="Thu, 15 May 2014 04:38:43 +0000">
-      BlueKnight
-    </metadata>
-    <metadata tag="submitter" timestamp="Thu, 14 Aug 2014 13:52:46 +0000">
-      pinkbyte
-    </metadata>
-  </glsa>
+      using:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.18:1.5"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7353">CVE-2013-7353</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7354">CVE-2013-7354</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0333">CVE-2014-0333</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 May 2014 04:38:43 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:44:55 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

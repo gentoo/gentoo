@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libpng</product>
   <announced>February 15, 2015</announced>
-  <revised>February 15, 2015: 1</revised>
+  <revised>June 06, 2015: 2</revised>
   <bug>531264</bug>
   <bug>533358</bug>
   <access>local, remote</access>
@@ -16,6 +16,14 @@
       <unaffected range="ge">1.6.16</unaffected>
       <unaffected range="rge">1.5.21</unaffected>
       <unaffected range="rge">1.2.52</unaffected>
+      <unaffected range="rge">1.2.53</unaffected>
+      <unaffected range="rge">1.2.54</unaffected>
+      <unaffected range="rge">1.2.55</unaffected>
+      <unaffected range="rge">1.2.56</unaffected>
+      <unaffected range="rge">1.5.22</unaffected>
+      <unaffected range="rge">1.5.23</unaffected>
+      <unaffected range="rge">1.5.24</unaffected>
+      <unaffected range="rge">1.5.25</unaffected>
       <vulnerable range="lt">1.6.16</vulnerable>
     </package>
   </affected>
@@ -70,5 +78,5 @@
   <metadata tag="requester" timestamp="Thu, 15 Jan 2015 22:55:48 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Feb 2015 14:32:36 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:41:25 +0000">ackle</metadata>
 </glsa>
