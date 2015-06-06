@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openssl</product>
   <announced>April 08, 2014</announced>
-  <revised>July 07, 2014: 3</revised>
+  <revised>June 06, 2015: 4</revised>
   <bug>505278</bug>
   <bug>507074</bug>
   <access>remote</access>
@@ -20,6 +20,16 @@
       <unaffected range="rge">0.9.8z_p3</unaffected>
       <unaffected range="rge">0.9.8z_p4</unaffected>
       <unaffected range="rge">0.9.8z_p5</unaffected>
+      <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
       <vulnerable range="lt">1.0.1g</vulnerable>
     </package>
   </affected>
@@ -77,5 +87,5 @@
     <uri link="http://heartbleed.com/">Heartbleed bug website</uri>
   </references>
   <metadata tag="requester" timestamp="Tue, 08 Apr 2014 09:37:45 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Jul 2014 12:55:02 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:11:05 +0000">a3li</metadata>
 </glsa>

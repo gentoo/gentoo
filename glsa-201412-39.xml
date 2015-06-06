@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openssl</product>
   <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <revised>June 06, 2015: 2</revised>
   <bug>494816</bug>
   <bug>519264</bug>
   <bug>525468</bug>
@@ -16,6 +16,19 @@
     <package name="dev-libs/openssl" auto="yes" arch="*">
       <unaffected range="ge">1.0.1j</unaffected>
       <unaffected range="rge">0.9.8z_p2</unaffected>
+      <unaffected range="rge">0.9.8z_p3</unaffected>
+      <unaffected range="rge">0.9.8z_p4</unaffected>
+      <unaffected range="rge">0.9.8z_p5</unaffected>
+      <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
       <vulnerable range="lt">1.0.1j</vulnerable>
     </package>
   </affected>
@@ -74,5 +87,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5139">CVE-2014-5139</uri>
   </references>
   <metadata tag="requester" timestamp="Thu, 04 Sep 2014 10:53:11 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 00:40:33 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:14:38 +0000">K_F</metadata>
 </glsa>

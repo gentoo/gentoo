@@ -7,13 +7,23 @@
   </synopsis>
   <product type="ebuild">openssl</product>
   <announced>March 19, 2015</announced>
-  <revised>March 19, 2015: 1</revised>
+  <revised>June 06, 2015: 2</revised>
   <bug>543552</bug>
   <access>remote</access>
   <affected>
     <package name="dev-libs/openssl" auto="yes" arch="*">
       <unaffected range="ge">1.0.1l-r1</unaffected>
-      <unaffected range="rge">0.9.8z_p5-r1</unaffected>
+      <unaffected range="rge">0.9.8z_p5</unaffected>
+      <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
       <vulnerable range="lt">1.0.1l-r1</vulnerable>
     </package>
   </affected>
@@ -102,5 +112,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="Thu, 19 Mar 2015 09:52:36 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Thu, 19 Mar 2015 17:26:40 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:16:23 +0000">K_F</metadata>
 </glsa>
