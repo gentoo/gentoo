@@ -1,12 +1,12 @@
-Title: udev-init-scripts-28 important changes
+Title: udev-init-scripts-29 important changes
 Author: William Hubbs <williamh@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-06-08
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
-Display-If-Installed: <=sys-fs/udev-init-scripts-28
+Display-If-Installed: <=sys-fs/udev-init-scripts-29
 
-In udev-init-scripts-28 and newer, the udev service script has been
+In udev-init-scripts-29 and newer, the udev service script has been
 split into udev, udev-settle and udev-trigger.
 
 This means the settings in /etc/conf.d/udev have also been migrated
