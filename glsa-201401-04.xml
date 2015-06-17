@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">python</product>
   <announced>January 06, 2014</announced>
-  <revised>July 07, 2014: 4</revised>
+  <revised>June 17, 2015: 5</revised>
   <bug>325593</bug>
   <bug>355927</bug>
   <bug>358663</bug>
@@ -28,6 +28,12 @@
       <unaffected range="rge">2.7.7</unaffected>
       <unaffected range="rge">2.7.8</unaffected>
       <unaffected range="rge">2.7.9</unaffected>
+      <unaffected range="rge">2.7.10</unaffected>
+      <unaffected range="rge">2.7.11</unaffected>
+      <unaffected range="rge">2.7.12</unaffected>
+      <unaffected range="rge">2.7.13</unaffected>
+      <unaffected range="rge">2.7.14</unaffected>
+      <unaffected range="rge">2.7.15</unaffected>
       <vulnerable range="lt">3.3.2-r1</vulnerable>
     </package>
   </affected>
@@ -91,7 +97,7 @@
   <metadata tag="requester" timestamp="Wed, 18 Sep 2013 03:32:23 +0000">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Jul 2014 12:53:14 +0000">
+  <metadata tag="submitter" timestamp="Wed, 17 Jun 2015 19:34:44 +0000">
     creffett
   </metadata>
 </glsa>

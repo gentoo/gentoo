@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">python</product>
   <announced>March 18, 2015</announced>
-  <revised>March 18, 2015: 1</revised>
+  <revised>June 17, 2015: 2</revised>
   <bug>495224</bug>
   <bug>500518</bug>
   <bug>505068</bug>
@@ -20,6 +20,12 @@
     <package name="dev-lang/python" auto="yes" arch="*">
       <unaffected range="ge">3.3.5-r1</unaffected>
       <unaffected range="rge">2.7.9-r1</unaffected>
+      <unaffected range="rge">2.7.10</unaffected>
+      <unaffected range="rge">2.7.11</unaffected>
+      <unaffected range="rge">2.7.12</unaffected>
+      <unaffected range="rge">2.7.13</unaffected>
+      <unaffected range="rge">2.7.14</unaffected>
+      <unaffected range="rge">2.7.15</unaffected>
       <vulnerable range="lt">3.3.5-r1</vulnerable>
     </package>
   </affected>
@@ -66,7 +72,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9365">CVE-2014-9365</uri>
   </references>
   <metadata tag="requester" timestamp="Mon, 18 Aug 2014 20:14:36 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 18 Mar 2015 22:30:27 +0000">
+  <metadata tag="submitter" timestamp="Wed, 17 Jun 2015 19:35:55 +0000">
     BlueKnight
   </metadata>
 </glsa>
