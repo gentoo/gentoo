@@ -1,6 +1,10 @@
 # ChangeLog for gnome-base/gnome-shell
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-shell/ChangeLog,v 1.95 2015/06/15 18:34:47 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-shell/ChangeLog,v 1.96 2015/06/19 17:20:31 pacho Exp $
+
+  19 Jun 2015; Pacho Ramos <pacho@gentoo.org> gnome-shell-3.16.2.ebuild:
+  Needs dev-libs/libical:= as just seen when updating libical and gnome-shell
+  needing to be rebuilt
 
   15 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
   gnome-shell-3.16.2.ebuild:

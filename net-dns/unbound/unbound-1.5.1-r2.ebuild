@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/unbound/unbound-1.5.1-r2.ebuild,v 1.5 2015/05/15 11:57:39 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/unbound/unbound-1.5.1-r2.ebuild,v 1.6 2015/06/19 17:14:49 maekke Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -14,7 +14,7 @@ SRC_URI="http://unbound.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
 IUSE="debug dnstap +ecdsa gost python selinux static-libs test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

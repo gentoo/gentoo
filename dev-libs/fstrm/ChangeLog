@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/fstrm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/fstrm/ChangeLog,v 1.6 2015/05/15 11:28:29 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/fstrm/ChangeLog,v 1.7 2015/06/19 17:13:31 maekke Exp $
+
+  19 Jun 2015; Markus Meier <maekke@gentoo.org> fstrm-0.2.0-r1.ebuild:
+  add ~arm, bug #531068
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> fstrm-0.2.0-r1.ebuild:
   keyword and stable on ppc and ppc64 (#531068)

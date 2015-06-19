@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-shell/gnome-shell-3.16.2.ebuild,v 1.2 2015/06/15 18:34:47 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-shell/gnome-shell-3.16.2.ebuild,v 1.3 2015/06/19 17:20:31 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -28,6 +28,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.39.1:2[dbus]
 	>=dev-libs/gjs-1.39
 	>=dev-libs/gobject-introspection-0.10.1:=
+	dev-libs/libical:=
 	>=x11-libs/gtk+-3.15.0:3[introspection]
 	>=media-libs/clutter-1.21.5:1.0[introspection]
 	>=dev-libs/json-glib-0.13.2

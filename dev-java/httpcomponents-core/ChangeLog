@@ -1,6 +1,14 @@
 # ChangeLog for dev-java/httpcomponents-core
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-core/ChangeLog,v 1.3 2014/08/10 20:14:50 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-core/ChangeLog,v 1.4 2015/06/19 16:42:19 monsieurp Exp $
+
+*httpcomponents-core-4.4.1 (19 Jun 2015)
+
+  19 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/httpcomponents-core-4.4.1-httpcore-build.xml,
+  +files/httpcomponents-core-4.4.1-httpcore-nio-build.xml,
+  +httpcomponents-core-4.4.1.ebuild:
+  Version bump. Fix security bug 520200.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
   httpcomponents-core-4.2.4.ebuild, httpcomponents-core-4.3.ebuild:

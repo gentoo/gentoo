@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/execline
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/execline/ChangeLog,v 1.5 2015/03/16 23:22:03 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/execline/ChangeLog,v 1.6 2015/06/19 17:18:50 williamh Exp $
+
+  19 Jun 2015; William Hubbs <williamh@gentoo.org> -execline-2.0.2.1.ebuild:
+  remove old version
 
 *execline-2.1.1.0 (16 Mar 2015)
 

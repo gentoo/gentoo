@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libvpx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libvpx/ChangeLog,v 1.125 2015/06/02 05:20:43 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvpx/ChangeLog,v 1.126 2015/06/19 17:13:24 maekke Exp $
+
+  19 Jun 2015; Markus Meier <maekke@gentoo.org> libvpx-1.4.0.ebuild:
+  arm stable, bug #549978
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> libvpx-1.4.0.ebuild:
   sparc stable wrt bug #549978

@@ -1,6 +1,13 @@
 # ChangeLog for gnome-extra/evolution-data-server
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/ChangeLog,v 1.415 2015/06/09 14:44:00 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/ChangeLog,v 1.416 2015/06/19 16:36:31 pacho Exp $
+
+*evolution-data-server-3.16.4_pre20150619 (19 Jun 2015)
+
+  19 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +evolution-data-server-3.16.4_pre20150619.ebuild:
+  Snapshot fixing multiple bugs, also 'doesn't support prompt for credentials'
+  bug #551804 by Juergen Rose.
 
 *evolution-data-server-3.16.3 (09 Jun 2015)
 
